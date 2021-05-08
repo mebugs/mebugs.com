@@ -1,0 +1,38 @@
+*{margin:0;padding:0;text-decoration:unset;border-radius:4px;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#222;font-size:14px;transition:all .3s ease;box-sizing:border-box}
+html,body{border-radius:0;background-color:#f9f9f9}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background-color:#4a96a6}
+::-webkit-scrollbar-track{background-color:#fff}
+h1,h2,h3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.b,.head,.box,.binf,.fa{display:flex;flex-wrap:wrap}
+.f{width:100%}
+.t{background:#fff;padding:100px 0 40px 0;margin-bottom:40px}
+.e{width:1200px;margin:0 auto;overflow:hidden}
+.b{margin:0 -15px}
+header{width:100%;position:fixed;background:#fff;z-index:99;left:0;top:0}
+.head{height:70px;border-radius:0}
+.logo{position:relative;margin:10px 0;overflow:hidden;width:145px}
+.logo img{display:block}
+.logo:before{content:'';width:10px;height:200px;position:absolute;left:-100px;top:-50px;background:rgba(255,255,255,0.5);transform:rotate(302deg);transform-origin:center right;animation:logoroud 2s ease infinite alternate}
+@keyframes logoroud{0%{left:-100px;top:-50px}
+100%{left:240px;top:-100px}
+}
+.menu{width:calc(100% - 145px);text-align:right}
+.menu a{line-height:70px;font-size:17px;font-weight:900;width:70px;display:inline-block;border-radius:0;color:#58b1c4}
+.menu a:hover{background:#58b1c4;color:#fff;padding-right:18px}
+.tre{width:380px;margin:15px}
+.two{margin:15px;width:790px}
+.one{width:380px;margin:15px}
+.half{width:calc(50% - 30px);margin:15px}
+.full{width:calc(100% - 30px);margin:15px}
+.five{width:calc(20% - 30px);margin:15px}
+.wait{background:#e9f5f7;min-height:60px}
+.box{width:100%}
+.btop{width:100%;background-color:#58b1c4!important;background-position:97% center!important;height:60px;border-radius:4px 4px 0 0;margin-bottom:20px}
+.btop h1{line-height:60px;padding-left:15px;font-size:16px;color:rgba(255,255,255,0.8)}
+.binf{margin:-10px}
+.mt40{margin-top:40px}
+footer{background:#31636e;padding:30px 0;border-radius:0}
+footer p{color:rgba(255,255,255,0.7);line-height:30px}
+footer h2{color:rgba(255,255,255,0.9);line-height:30px;font-size:16px}
+footer a{color:rgba(255,255,255,1);font-size:15px}

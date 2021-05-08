@@ -1,0 +1,117 @@
+*{margin:0;padding:0;text-decoration:unset;border-radius: 4px;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color: #222;font-size:14px;transition: all .6s ease;box-sizing:border-box;}
+html,body{border-radius:0;width: 100vw;overflow-x: hidden;background-color:#f9f8f7;}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background-color:#20232a}
+::-webkit-scrollbar-track{background-color:#ffffff;}
+h1,h2,h3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+header {
+    width: 100vw;
+    height: 70px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.fixheader {
+	background: #fff;
+}
+.logo {
+    margin: 10px 0;
+    display: block;
+    height: 50px;
+    width: 210px;
+}
+
+.rmenu {
+    width: calc(100% - 210px);
+    text-align: right;
+}
+
+.rmenu a {
+    line-height: 70px;
+    font-size: 18px;
+    color: #333;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 900;
+    width: 70px;
+	border-radius: 0;
+}
+.fixheader .rmenu a {
+	color: #222;
+}
+.rmenu a:hover{
+    background: #20232a;
+    padding-right: 17px;
+	color: #fff;
+}
+
+
+.t {
+	width: 100%;
+	padding: 100px 0 50px 0;
+	background: #fff;
+}
+
+.b {
+    width: 1200px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.l {
+    width: 790px;
+}
+.r {
+    width: 380px;
+    margin-left: 30px;
+}
+.h {
+    width: 50%;
+	margin-right: 15px;
+}
+.hr{
+	margin: 0 0 0 15px;
+}
+.m {
+	width: 100vw;
+    padding-top: 40px;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+	background: #fff;
+}
+.box.mbox {
+    margin: 10px 0 30px 0;
+}
+.btop {
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+}
+.btop h1 {
+    line-height: 50px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+}
+.more {
+    height: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+.more a {
+    line-height: 50px;
+    color: #20232a;
+    font-weight: 900;
+    font-size: 16px;
+}
+footer {
+    padding: 20px;
+    background: #20232a;
+}

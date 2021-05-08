@@ -1,0 +1,65 @@
+.wb{margin-top:40px;background:#fff;padding:40px 0}
+.bn{width:100%;height:380px}
+.bni{display:block;width:100%;height:100%}
+.bn.swiper-container-horizontal>.swiper-pagination-bullets{bottom:10px;width:150px;left:unset;right:10px}
+.bn span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#58b1c4}
+.nl .btop{background:url(/sc/static/img/top_new.png) no-repeat;margin-bottom:15px}
+.jl .btop{background:url(/sc/static/img/top_good.png) no-repeat}
+.hl .btop{background:url(/sc/static/img/top_hot.png) no-repeat}
+.sl .btop{background:url(/sc/static/img/top_rand.png) no-repeat}
+.tl .btop{background:url(/sc/static/img/top_tag.png) no-repeat}
+.cl .btop{background:url(/sc/static/img/top_team.png) no-repeat}
+.kl .btop{background:url(/sc/static/img/top_code.png) no-repeat}
+.dl .btop{background:url(/sc/static/img/top_demo.png) no-repeat}
+.nl .binf,.sl .binf,.tl .binf{margin:-7px -8px;width:100%}
+.tl .binf{width:400px}
+.fa{width:100%;margin:7px 8px;display:block;position:relative;background:#f9f9f9}
+.sl .fa{background:#fff}
+.tl .fa{width:calc(50% - 16px)}
+.cl .fa{width:calc(33.3333% - 16px)}
+.fa h2{line-height:50px;padding:0 5px 0 60px;font-weight:normal}
+.sl .fa h2{padding:0 55px 0 10px}
+.tl .fa h2{text-align:center}
+.fa p{position:absolute;width:50px;line-height:50px;font-size:12px;text-align:center;font-weight:900;color:#58b1c4;background:#daedf2}
+.sl .fa p{right:0}
+.timg{margin:-8px -10px}
+.tim{width:calc(50% - 20px);margin:8px 10px;height:116px;display:block}
+.tim img{width:100%;height:100%}
+.pa{width:calc(33.3333% - 20px);margin:10px;background:#fff}
+.pimg{width:100%;height: 141.5px;overflow:hidden;position:relative;}
+.pimg img{width:100%;height:100%;display:block}
+.pinf{padding:5px 5px 10px 5px}
+.pinf h2{color:#1f4149;line-height:30px}
+.pinf p span{line-height:25px;font-size:13px;color:#999;display:inline-block;margin-right:10px}
+.pinf p span.pte{width:50px;text-align:center;background:#c2e3ea;color:#58b1c4;font-weight:900;font-size:12px}
+.pta img{width:22px;height:22px;display:inline-block;margin-bottom:-5px}
+.pa:hover{box-shadow:0 0 12px rgb(0 0 0 / 10%);transform:translateY(-5px)}
+.pa:hover .pimg img{transform:scale(1.1)}
+.me{background:#fff;padding:10px 5px}
+.avt{width:100%;display:flex}
+.avtor{width:70px;height:70px;display:block;margin:5px;border-radius:35px}
+.ainfo{width:calc(100% - 110px);padding-left:8px}
+.ainfo h1{line-height:30px;font-size:17px;color:#333}
+.ainfo p{line-height:20px;font-size:12px;color:#888}
+.amore{width:30px;height:80px}
+.amore img{width:30px;display:block;margin:25px 0;height:30px}
+.avt:hover{background:#daedf2}
+.conc{display:flex;width:100%;margin:5px}
+.conc a{height:55px;width:calc(20% - 10px);margin:0 5px;display:block;background:#58b1c4}
+.conc a img{width:50px;height:50px;display:block;margin:3px auto}
+.conc a:hover{transform:scale(0.9);background:#c2e3ea}
+.half .pa{width:calc(50% - 20px);background:#f9f9f9}
+.half .pimg{height:160px}
+.ltop{width:100%;line-height:30px;padding:5px;border-bottom:2px solid #58b1c4;border-radius:0}
+.ltop h1{font-size:16px;color:#58b1c4;position:relative}
+.ltop h1 a{position:absolute;right:0;font-weight:normal;width:80px;text-align:right}
+.llink{padding:10px 0}
+.llink a{margin:5px;line-height:25px}
+.fleft{display:flex}
+.flogo{width:120px;height:120px;display:block}
+.frinf{padding:0 15px}
+.frinf h2 em{font-size:12px;margin:0 5px;font-style:normal;color:#c1ccce}
+.fcent{text-align:center}
+.fright{text-align:right}
+.fright a{margin-left:5px;line-height:24px;display:inline-block}
+.fright p{max-height:90px;overflow:hidden}
