@@ -1,13 +1,13 @@
 *{margin:0;padding:0;text-decoration:unset;border-radius:4px;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#222;font-size:14px;transition:all .3s ease;box-sizing:border-box}
 html,body{border-radius:0;background-color:#f9f9f9}
 ::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-thumb{background-color:#5075ac}
+::-webkit-scrollbar-thumb{background-color:#6673a7}
 ::-webkit-scrollbar-track{background-color:#fff}
 h1,h2,h3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .b,.head,.box,.binf,.fa{display:flex;flex-wrap:wrap}
 .f{width:100%}
 .t{background:#fff;padding:100px 0 40px 0;margin-bottom:40px}
-.e{width:1200px;margin:0 auto;overflow:hidden}
+.e{width:1200px;margin:0 auto;}
 .b{margin:0 -15px}
 header{width:100%;position:fixed;background:#fff;z-index:99;left:0;top:0}
 .head{height:70px;border-radius:0}
@@ -18,8 +18,8 @@ header{width:100%;position:fixed;background:#fff;z-index:99;left:0;top:0}
 100%{left:240px;top:-100px}
 }
 .menu{width:calc(100% - 145px);text-align:right}
-.menu a{line-height:70px;font-size:17px;font-weight:900;width:70px;display:inline-block;border-radius:0;color:#5075ac}
-.menu a:hover{background:#5075ac;color:#fff;padding-right:18px}
+.menu a{line-height:70px;font-size:17px;font-weight:900;width:70px;display:inline-block;border-radius:0;color:#6673a7}
+.menu a:hover{background:#6673a7;color:#fff;padding-right:18px}
 .tre{width:380px;margin:15px}
 .two{margin:15px;width:790px}
 .one{width:380px;margin:15px}
@@ -27,13 +27,25 @@ header{width:100%;position:fixed;background:#fff;z-index:99;left:0;top:0}
 .full{width:calc(100% - 30px);margin:15px}
 .four{width:calc(25% - 30px);margin:15px}
 .five{width:calc(20% - 30px);margin:15px}
-.wait{background:#e9f5f7;min-height:60px}
+.ft2{width: 250px;}
+.ft4{width: 445px;}
+.wait{background:#e5eaff;min-height:60px}
 .box{width:100%}
-.btop{width:100%;background-color:#5075ac!important;background-position:97% center!important;height:60px;border-radius:4px 4px 0 0;margin-bottom:20px}
+.btop{width:100%;background-color:#6673a7!important;background-position:97% center!important;height:60px;border-radius:4px 4px 0 0;margin-bottom:20px}
 .btop h1{line-height:60px;padding-left:15px;font-size:16px;color:rgba(255,255,255,0.8)}
 .binf{margin:-10px}
 .mt40{margin-top:40px}
-footer{background:#5075ac;padding:30px 0;border-radius:0}
+footer{background:#6673a7;padding:30px 0;border-radius:0}
 footer p{color:rgba(255,255,255,0.7);line-height:30px}
-footer h2{color:rgba(255,255,255,0.9);line-height:30px;font-size:16px}
+footer h2{color:rgba(255,255,255,0.9);line-height:40px;font-size:16px;margin-bottom: 5px;}
 footer a{color:rgba(255,255,255,1);font-size:15px}
+.fleft{display:flex}
+.flogo{}
+.frinf{}
+.frinf h2 em{font-size:12px;margin:0 5px;font-style:normal;color:#c1ccce}
+.fcent{text-align:center}
+.fright{text-align:right}
+.fright a{margin-left:5px;line-height:24px;display:inline-block}
+.fright p{max-height:90px;overflow:hidden}
+.pa,.fa{cursor: pointer;}
+.pa:hover,.fa:hover{box-shadow:0 0 20px rgb(0 0 0 / 25%);/*transform:translateY(-5px)*/}
