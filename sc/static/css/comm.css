@@ -49,3 +49,6 @@ footer a{color:rgba(255,255,255,1);font-size:15px}
 .fright p{max-height:90px;overflow:hidden}
 .pa,.fa{cursor: pointer;}
 .pa:hover,.fa:hover{box-shadow:0 0 20px rgb(0 0 0 / 25%);/*transform:translateY(-5px)*/}
+.qkbt{position:fixed;bottom:40px;width:60px;right:calc(50% - 680px)}
+.btli{width:60px;height:60px;background:rgb(102 115 167 /80%);padding:10px;cursor:pointer;margin-bottom:5px}
+.btli img{display:block;width:100%}
