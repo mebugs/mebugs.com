@@ -29,7 +29,7 @@ header{width:100%;position:fixed;background:#fff;z-index:99;left:0;top:0}
 .five{width:calc(20% - 30px);margin:15px}
 .ft2{width: 250px;}
 .ft4{width: 445px;}
-.wait{background:#e5eaff;min-height:60px}
+.wait{min-height:60px}
 .box{width:100%}
 .btop{width:100%;background-color:#6673a7!important;background-position:97% center!important;height:60px;border-radius:4px 4px 0 0;margin-bottom:20px}
 .btop h1{line-height:60px;padding-left:15px;font-size:16px;color:rgba(255,255,255,0.8)}
