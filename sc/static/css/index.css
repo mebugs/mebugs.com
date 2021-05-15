@@ -29,7 +29,7 @@
 .pta img{width:22px;height:22px;display:inline-block;margin-bottom:-5px}
 .pa:hover .pimg img{transform:scale(1.1)}
 .me{background:#fff;padding:10px 5px}
-.avt{width:100%;display:flex}
+.avt{width:100%;display:flex;cursor: pointer;}
 .avtor{width:70px;height:70px;display:block;margin:5px;border-radius:35px}
 .ainfo{width:calc(100% - 110px);padding-left:8px}
 .ainfo h1{line-height:30px;font-size:17px;color:#333}
@@ -40,7 +40,7 @@
 .conc{display:flex;width:100%;margin:5px}
 .conc a{height:55px;width:calc(20% - 10px);margin:0 5px;display:block;background:#838eb7}
 .conc a img{width:50px;height:50px;display:block;margin:3px auto}
-.conc a:hover{transform:scale(0.9);background:#eff1f6}
+.conc a:hover{transform:scale(0.96);background:#eff1f6}
 .half .pa{width:calc(50% - 20px);background:#f9f9f9}
 .half .pimg{height:160px}
 .ltop{width:100%;line-height:30px;padding:5px;border-bottom:2px solid #838eb7;border-radius:0}

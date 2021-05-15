@@ -28,3 +28,5 @@
 .peare,.tetop{display:flex;align-items:center;justify-content:center}
 .peare a{line-height:39px;height:40px;width:40px;margin:5px;background:#fff;text-align:center;color:#838eb7}
 .peare a.pnow,.peare a:hover{background:#838eb7;color:#fff}
+.base a{line-height:36px;display:inline-block;width:70px;color:#838eb7;margin:0 5px;background:#f9f9f9}
+.base a.chk,.base a:hover{background:#838eb7;border:1px solid #fff;color:#fff;font-weight:900}
