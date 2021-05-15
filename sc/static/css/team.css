@@ -1,79 +1,36 @@
-.t{background:unset;padding: 150px 0 80px 0;}
-.tt{padding: 100px 0 30px 0;}
-.tt .b{margin: 0;}
-.four{display:flex;background:#6673a7;padding:25px 20px;}
+.t{background:unset;padding:150px 0 80px 0}
+.tt{padding:100px 0 30px 0}
+.tt .b{margin:0}
+.four{display:flex;background:#838eb7;padding:25px 20px}
 .four img{width:60px;height:60px;display:block;opacity:.85}
 .tmin{position:relative;width:calc(100% - 60px);padding-left:10px}
 .tmin h1{line-height:30px;color:rgba(255,255,255,0.9)}
 .tmin p{line-height:30px;font-size:13px;color:rgba(255,255,255,0.7)}
-.tmin span{position:absolute;right:-5px;top:-6px;line-height:30px;width:50px;text-align:center;font-size:12px;background:#e5eaff;color:#6673a7;font-weight:900}
-.four:hover{background:#e5eaff}
-.four:hover img{background:#6673a7;transform:scale(1.1);border-radius: 10px;padding: 5px;}
-.four:hover .tmin{padding-left:20px;}
-.four:hover .tmin h1,.four:hover .tmin p{color:#6673a7}
-.four:hover .tmin span{background:#6673a7;color:rgba(255,255,255,0.8)}
-.binf{margin: -15px;}
+.tmin span{position:absolute;right:-5px;top:-6px;line-height:30px;width:50px;text-align:center;font-size:12px;background:#eff1f6;color:#838eb7;font-weight:900}
+.four:hover{background:#eff1f6}
+.four:hover img{background:#838eb7;transform:scale(1.1);border-radius:10px;padding:5px}
+.four:hover .tmin{padding-left:20px}
+.four:hover .tmin h1,.four:hover .tmin p{color:#838eb7}
+.four:hover .tmin span{background:#838eb7;color:rgba(255,255,255,0.8)}
+.binf{margin:-15px}
 .pa{width:calc(25% - 30px);margin:15px;background:#fff}
-.pimg{width:100%;height: 157px;overflow:hidden;position:relative;}
+.pimg{width:100%;height:157px;overflow:hidden;position:relative}
 .pimg img{width:100%;height:100%;display:block}
 .pinf{padding:5px 5px 10px 5px}
 .pinf h2{color:#222;line-height:30px}
 .pinf p span{line-height:25px;font-size:13px;color:#999;display:inline-block;margin-right:10px}
-.pinf p span.pte{width:50px;text-align:center;background:#dce9fd;color:#6673a7;font-weight:900;font-size:12px}
+.pinf p span.pte{width:50px;text-align:center;background:#eff1f6;color:#838eb7;font-weight:900;font-size:12px}
 .pta img{width:22px;height:22px;display:inline-block;margin-bottom:-5px}
 .pa:hover .pimg img{transform:scale(1.1)}
-.tetop{background:#fff;padding:10px 15px;width: 100%;background: #838eb7;}
-.tetop img {
-    width: 70px;
-    height: 70px;
-    padding: 2px;
-}
-.base p {
-    line-height: 35px;
-    font-size: 26px;
-    color: #f9f9f9;
-    font-weight: 900;
-    height: 33px;
-}
-
-.base p.pdes {
-    line-height: 33px;
-    font-size: 14px;
-    color: #eee;
-    font-weight: normal;
-}
-
-.base p span {
-    line-height: 30px;
-    background: #f9f9f9;
-    padding: 2px 10px;
-    margin: 0 5px;
-    color: #838eb7;
-    position: relative;
-    transform: scale(0.8);
-    display: inline-block;
-    top: -4px;
-}
-
-.base {
-    padding: 0 20px;
-    width: 180px;
-}
-
-.pagex {
-    width: 70px;
-    margin: -7px;
-}
-
-.pagex p {
-    line-height: 26px;
-    margin: 7px 0;
-    background: #f9f9f9;
-    text-align: center;
-    font-size: 13px;
-    color: #838eb7;
-}
-.page,.peare{width: 100%;}
-.peare,.tetop{display:flex;align-items:center;justify-content:center;}
-.peare a{line-height:39px;height:40px;width:40px;margin:5px;background:#fff;text-align:center;color:#6673a7}
+.tetop{background:#fff;padding:10px 15px;width:100%;background:#838eb7}
+.tetop img{width:70px;height:70px;padding:2px}
+.base p{line-height:35px;font-size:26px;color:#f9f9f9;font-weight:900;height:33px}
+.base p.pdes{line-height:33px;font-size:14px;color:#eee;font-weight:normal}
+.base p span{line-height:30px;background:#f9f9f9;padding:2px 10px;margin:0 5px;color:#838eb7;position:relative;transform:scale(0.8);display:inline-block;top:-4px}
+.base{padding:0 20px;width:180px}
+.pagex{width:70px;margin:-7px}
+.pagex p{line-height:26px;margin:7px 0;background:#f9f9f9;text-align:center;font-size:13px;color:#838eb7}
+.page,.peare{width:100%}
+.peare,.tetop{display:flex;align-items:center;justify-content:center}
+.peare a{line-height:39px;height:40px;width:40px;margin:5px;background:#fff;text-align:center;color:#838eb7}
 .peare a.pnow,.peare a:hover{background:#838eb7;color:#fff}

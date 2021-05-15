@@ -1,0 +1,8 @@
+.fa{width:calc(50% - 20px);margin:10px;display:block;position:relative;background:#f9f9f9}
+.fa p{position:absolute;width:50px;line-height:50px;font-size:12px;text-align:center;font-weight:900;color:#6673a7;background:#e5eaff;right:0}
+.fa h2{text-align:center;padding:0 55px 0 10px;line-height:50px;font-weight:normal}
+.ltop{width:100%;line-height:30px;padding:5px;border-bottom:2px solid #6673a7;border-radius:0}
+.ltop h1{font-size:16px;color:#6673a7;position:relative;text-align:center}
+.tlink{display:flex;margin:15px -10px 40px -10px;flex-wrap:wrap}
+.tlink .fa{width:calc(16.6667% - 20px);background:#fff}
+.tag .b{margin:0}
