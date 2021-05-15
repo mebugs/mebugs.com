@@ -31,7 +31,7 @@
 .pimg{width:100%;height: 141.5px;overflow:hidden;position:relative;}
 .pimg img{width:100%;height:100%;display:block}
 .pinf{padding:5px 5px 10px 5px}
-.pinf h2{color:#222;line-height:30px}
+.pinf h2{color:#222;line-height: 22px;height: 50px;padding-top: 2px;white-space: unset;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .pinf p span{line-height:25px;font-size:13px;color:#999;display:inline-block;margin-right:10px}
 .pinf p span.pte{width:50px;text-align:center;background:#dce9fd;color:#6673a7;font-weight:900;font-size:12px}
 .pta img{width:22px;height:22px;display:inline-block;margin-bottom:-5px}
