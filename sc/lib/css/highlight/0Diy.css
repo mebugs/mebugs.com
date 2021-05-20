@@ -1,0 +1,92 @@
+/*
+Date: 24 Fev 2015
+Author: Pedro Oliveira <kanytu@gmail . com>
+*/
+
+.hljs {
+  color: #b8bfc6;
+  background: #333;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+.hljs * {
+	line-height:1.7;
+}
+.hljs-doctag {
+    color: #3bb9c5;
+}
+
+.hljs-params {
+    color: #39b93e;
+}
+
+.hljs-function {
+    color: #f7cb46;
+}
+.hljs-tag{
+  color:#997;
+}
+.hljs-attr {
+    color:#8d8df0;
+}
+.hljs-built_in {
+    color: #ccc;
+}
+.hljs-number,
+.hljs-literal{
+  color: #57ac57;
+}
+.hljs-symbol,
+.hljs-bullet {
+  color: #6897BB;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-deletion {
+  color: #C88FD0;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link {
+  color: #ffeb00;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #DA924A;
+}
+
+.hljs-meta {
+  color: #bbb529;
+}
+
+.hljs-string,
+.hljs-attribute,
+.hljs-addition {
+  color: #D26B6B;
+}
+
+.hljs-section,
+.hljs-title,
+.hljs-type {
+  color: #ffc66d;
+}
+
+.hljs-name{
+  color: #5bb74d;
+}
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #92e5f3;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
