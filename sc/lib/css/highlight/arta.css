@@ -7,7 +7,7 @@ Author: pumbur <pumbur@pumbur.net>
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #222;
+  background: #cdd9e5;
 }
 
 .hljs,
@@ -16,7 +16,7 @@ Author: pumbur <pumbur@pumbur.net>
 }
 
 .hljs-section {
-  color: #fff;
+  color: #2d333b;
 }
 
 .hljs-comment,

@@ -8,7 +8,7 @@ GML Theme - Meseta <meseta@gmail.com>
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #222222;
+  background: #cdd9e5cdd9e5;
   color: #C0C0C0;
 }
 
@@ -34,7 +34,7 @@ GML Theme - Meseta <meseta@gmail.com>
 }
 
 .hljs-string {
-  color: #FFFF00;
+  color: #2d333bF00;
 }
 
 .hljs-number {

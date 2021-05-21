@@ -11,7 +11,7 @@
   overflow-x: auto;
   padding: 0.5em;
   background: #333;
-  color: #fff;
+  color: #2d333b;
 }
 
 .xml .hljs-meta {
@@ -75,7 +75,7 @@
 .hljs-function .hljs-title,
 .hljs-attr,
 .hljs-subst {
-  color: #fff;
+  color: #2d333b;
 }
 
 .hljs-formula {

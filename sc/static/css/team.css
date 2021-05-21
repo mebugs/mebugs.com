@@ -1,12 +1,13 @@
 .t{background:unset;padding:150px 0 80px 0}
-.four{display:flex;background:#838eb7;padding:25px 20px}
+.four{display:flex;background: #2d333b;padding:25px 20px;border: 1px solid #444c56;}
 .four img{width:60px;height:60px;display:block;opacity:.85}
 .tmin{position:relative;width:calc(100% - 60px);padding-left:10px}
-.tmin h1{line-height:30px;color:rgba(255,255,255,0.9)}
-.tmin p{line-height:30px;font-size:13px;color:rgba(255,255,255,0.7)}
-.tmin span{position:absolute;right:-5px;top:-6px;line-height:30px;width:50px;text-align:center;font-size:12px;background:#eff1f6;color:#838eb7;font-weight:900}
-.four:hover{background:#eff1f6}
-.four:hover img{background:#838eb7;transform:scale(1.1);border-radius:10px;padding:5px}
+.tmin h1{line-height:30px;color: #cdd9e5;}
+.tmin p{line-height:30px;font-size:13px;}
+.tmin span{position:absolute;right:-5px;top:-6px;line-height:30px;width:50px;text-align:center;font-size:12px;font-weight:900;background: #636e7b;}
+.four:hover{background: #323941;border: 1px solid #768390;}
+.four:hover img{background:#22272e;transform:scale(1.1);border-radius:10px;padding:5px}
 .four:hover .tmin{padding-left:20px}
-.four:hover .tmin h1,.four:hover .tmin p{color:#838eb7}
-.four:hover .tmin span{background:#838eb7;color:rgba(255,255,255,0.8)}
+.four:hover .tmin h1,.four:hover .tmin p{color:#adbac7}
+.four:hover .tmin span{background:#22272e;}
+footer{background: #2d333b;}

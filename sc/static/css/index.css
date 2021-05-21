@@ -1,50 +1,50 @@
-.wb{margin-top:40px;background:#fff;padding:40px 0}
+.wb{margin-top:40px;background:#2d333b;padding:40px 0}
 .bn{width:100%;height:380px}
 .bni{display:block;width:100%;height:100%}
 .bn.swiper-container-horizontal>.swiper-pagination-bullets{bottom:10px;width:150px;left:unset;right:10px}
-.bn span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#838eb7}
+.bn span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#cdd9e5}
 .nl .binf{margin: -7px 0;width:100%;}
 .sl .binf,.tl .binf{margin: -7px -8px;width: 100%;}
 .tl .binf{width:400px}
-.fa{width:100%;margin: 7px 0;display:block;position:relative;background:#f9f9f9;}
-.sl .fa{background:#fff;margin: 7px 8px;}
+.fa{width:100%;margin: 6px 0;display:block;position:relative;}
+.sl .fa{margin: 7px 8px;}
 .tl .fa{width:calc(50% - 16px);}
 .cl .fa{width: calc(25% - 16px);}
 .fa h2{line-height:50px;padding:0 5px 0 60px;font-weight:normal}
 .sl .fa h2{padding: 0 55px 0 10px;}
 .tl .fa h2{text-align:center}
 .cl .fa h2{padding: 0 5px;}
-.fa p{position:absolute;width:50px;line-height:50px;font-size:12px;text-align:center;font-weight:900;color:#838eb7;background:#eff1f6}
+.fa p{position:absolute;width:50px;line-height:50px;font-size:12px;text-align:center;font-weight:900;color: #adbac7;background: #2d333b;}
 .sl .fa p{right:0}
 .timg{margin:-8px -10px}
 .tim{width:calc(50% - 20px);margin:8px 10px;height:116px;display:block}
 .tim img{width:100%;height:100%}
-.pa{width:calc(33.3333% - 20px);margin:10px;background:#fff}
+.pa{width:calc(33.3333% - 20px);margin:10px;}
 .pimg{width:100%;height: 141.5px;overflow:hidden;position:relative;}
 .pimg img{width:100%;height:100%;display:block}
 .pinf{padding:5px 5px 10px 5px}
-.pinf h2{color:#222;line-height: 22px;height: 50px;padding-top: 2px;white-space: unset;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
-.pinf p span{line-height:25px;font-size:13px;color:#999;display:inline-block;margin-right:10px}
-.pinf p span.pte{width:50px;text-align:center;background:#eff1f6;color:#838eb7;font-weight:900;font-size:12px}
+.pinf h2{color:#cdd9e5;line-height: 22px;height: 50px;padding-top: 2px;white-space: unset;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;font-weight: normal;}
+.pinf p span{line-height:25px;font-size:13px;color: #adbac7;display:inline-block;margin-right:10px;}
+.pinf p span.pte{width:50px;text-align:center;font-weight:900;font-size:12px;color: #adbac7;background: #636e7b;border-radius: 13px;}
 .pta img{width:22px;height:22px;display:inline-block;margin-bottom:-5px}
 .pa:hover .pimg img{transform:scale(1.1)}
-.me{background:#fff;padding:10px 5px}
+.me{background:#2d333b;padding:10px 5px}
 .avt{width:100%;display:flex;cursor: pointer;}
 .avtor{width:70px;height:70px;display:block;margin:5px;border-radius:35px}
 .ainfo{width:calc(100% - 110px);padding-left:8px}
-.ainfo h1{line-height:30px;font-size:17px;color:#333}
-.ainfo p{line-height:20px;font-size:12px;color:#888}
+.ainfo h1{line-height:30px;font-size:17px;color: #cdd9e5;}
+.ainfo p{line-height:20px;font-size:12px;}
 .amore{width:30px;height:80px}
 .amore img{width:30px;display:block;margin:25px 0;height:30px}
-.avt:hover{background:#eff1f6}
+.avt:hover{background: #22272e;}
 .conc{display:flex;width:100%;margin:5px}
-.conc a{height:55px;width:calc(20% - 10px);margin:0 5px;display:block;background:#838eb7}
-.conc a img{width:50px;height:50px;display:block;margin:3px auto}
-.conc a:hover{transform:scale(0.96);background:#eff1f6}
-.half .pa{width:calc(50% - 20px);background:#f9f9f9}
+.conc a{height:55px;width:calc(20% - 10px);margin:0 5px;opacity: 0.85;display:block;background: #22272e;}
+.conc a img{width:50px;height:50px;display:block;margin:3px auto;}
+.conc a:hover{transform: scale(0.8);background: #1c2025;}
+.half .pa{width:calc(50% - 20px);}
 .half .pimg{height:160px}
-.ltop{width:100%;line-height:30px;padding:5px;border-bottom:2px solid #838eb7;border-radius:0}
-.ltop h1{font-size:16px;color:#838eb7;position:relative}
+.ltop{width:100%;line-height:30px;padding:5px;border-bottom:2px solid #cdd9e5;border-radius:0}
+.ltop h1{font-size:16px;color:#cdd9e5;position:relative}
 .ltop h1 a{position:absolute;right:0;font-weight:normal;width:80px;text-align:right}
 .llink{padding:10px 0}
-.llink a{margin:5px;line-height:25px}
+.llink a{margin:5px;line-height: 30px;padding: 0 10px;display: inline-block;border: 1px solid #768390;background: #22272e;}

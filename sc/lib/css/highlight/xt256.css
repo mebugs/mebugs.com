@@ -48,20 +48,20 @@
 
 .hljs-selector-id,
 .hljs-quote {
-  color: #00ffff;
+  color: #002d333bf;
 }
 
 .hljs-template-variable,
 .hljs-variable,
 .hljs-title {
-  color: #00ffff;
+  color: #002d333bf;
   font-weight: bold;
 }
 
 .hljs-selector-class,
 .hljs-keyword,
 .hljs-symbol {
-  color: #fff000;
+  color: #2d333b000;
 }
 
 .hljs-string,
@@ -71,11 +71,11 @@
 
 .hljs-tag,
 .hljs-section {
-  color: #000fff;
+  color: #0002d333b;
 }
 
 .hljs-selector-tag {
-  color: #000fff;
+  color: #0002d333b;
   font-weight: bold;
 }
 
@@ -87,6 +87,6 @@
 }
 
 .hljs-meta {
-  color: #fff;
+  color: #2d333b;
   font-weight: bolder;
 }

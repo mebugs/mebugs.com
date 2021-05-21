@@ -9,7 +9,7 @@ grayscale style (c) MY Sun <simonmysun@gmail.com>
   overflow-x: auto;
   padding: 0.5em;
   color: #333;
-  background: #fff;
+  background: #2d333b;
 }
 
 .hljs-comment,
@@ -83,7 +83,7 @@ grayscale style (c) MY Sun <simonmysun@gmail.com>
 }
 
 .hljs-deletion {
-  color: #fff;
+  color: #2d333b;
   background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAYAAABS3WWCAAAAE0lEQVQIW2MMDQ39zzhz5kwIAQAyxweWgUHd1AAAAABJRU5ErkJggg==) repeat;
 }
 
