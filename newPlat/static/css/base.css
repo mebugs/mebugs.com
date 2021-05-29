@@ -1,0 +1,49 @@
+*{margin:0;padding:0;text-decoration:unset;border-radius:8px;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#444;font-size:15px;transition:all .4s ease;box-sizing:border-box}
+body::-webkit-scrollbar{width:15px;height:15px}
+body::-webkit-scrollbar-thumb{background-color:#b8ccea}
+body::-webkit-scrollbar-track{background-color:#90acd6}
+body{border-radius:0;background-color:#f5f9ff}
+header,footer,.r{width:100%;border-radius:0}
+header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0}
+.headerbg header{background-color:#fefeff;height:70px;padding:10px 0}
+.w{width:1230px;display:flex;flex-wrap:wrap;margin:0 auto}
+header .w{height:50px}
+header .w *{margin:0 15px}
+.logo{width:145px;background:url(/static/img/logo.png);background-repeat:no-repeat;position:relative;overflow:hidden}
+.logo:before{content:'';width:10px;height:200px;position:absolute;left:-100px;top:-50px;background:rgba(254,254,255,0.5);transform:rotate(302deg);transform-origin:center right;animation:logoroud 1.5s linear infinite alternate}
+@keyframes logoroud{0%{left:-100px;top:-50px}
+100%{left:240px;top:-100px}
+}
+.temp{width:50px;background:url(/static/img/bg_hd_tp.png);cursor:pointer}
+.menu{width:945px}
+.r,footer{overflow:hidden;padding:50px 0}
+.rt{overflow:hidden;background:url(/static/img/bg_top.png);background-color:#fefeff;background-position:0 0;background-size:101% auto;padding-top:120px;animation:topbgrd 16s linear infinite alternate;background-repeat:no-repeat;background-attachment:fixed}
+@keyframes topbgrd{0%{background-position:0 0;background-size:101% auto}
+50%{background-position:50% -100px;background-size:105% auto}
+100%{background-position:98% 0;background-size:110% auto}
+}
+.c{padding:0 15px;min-height:380px}
+.tb_15 .c{padding:15px}
+.c div{background:rgba(255,255,255,0.5);width:100%;height:100%}
+.c_1{width:8.3333%}
+.c_2{width:16.6666%}
+.c_3{width:25%}
+.c_4{width:33.3333%}
+.c_5{width:41.6666%}
+.c_6{width:50%}
+.c_7{width:58.3333%}
+.c_8{width:66.6666%}
+.c_9{width:75%}
+.c_10{width:83.3333%}
+.c_11{width:91.6666%}
+.c_12{width:100%}
+footer{background:#fefeff}
+body.dark{background-color:#22272e}
+body.dark::-webkit-scrollbar-thumb{background-color:#676767}
+body.dark::-webkit-scrollbar-track{background-color:#424242}
+.dark *{color:#adbac7}
+.dark.headerbg header{background:#2d333b}
+.dark .rt{background-color:#2d333b}
+.dark footer{background:#2d333b}
+.dark .logo,.dark .temp{background-position-y:-50px}
+.dark .logo:before{background:rgba(45,51,59,0.5)}
