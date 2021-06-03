@@ -15,7 +15,8 @@
 		<link rel="shortcut icon" href="">
 		<link rel="apple-touch-icon-precomposed" href="">
 		<link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-		
+		<link href="/static/css/index.css?v=1.0" rel="stylesheet" type="text/css" />
+		<link href="/static/lib/swiper/swiper-bundle.min.css?v=1.0" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<header>
@@ -28,7 +29,21 @@
 		<div class="r rt">
 			<div class="w tb_15">
 				<div class="c c_8">
-					<div></div>
+					<div class="swiper-container bann">
+						<div class="swiper-wrapper" >
+							<div class="swiper-slide">
+								<img src="/test/test1.jpg"/>
+							</div>
+							<div class="swiper-slide">
+								<img src="/test/test2.jpg"/>
+							</div>
+							<div class="swiper-slide">
+								<img src="/test/test3.jpg"/>
+							</div>
+						</div>
+						<!-- Add Pagination -->
+						<div class="swiper-pagination"></div>
+					</div>
 				</div>
 				<div class="c c_4">
 					<div></div>
@@ -93,5 +108,7 @@
 			<img src="/static/img/back_top.png"/>
 		</div>
 		<script src="/static/js/base.js?v=1.0"></script>
+		<script src="/static/lib/swiper/swiper-bundle.min.js?v=1.0"></script>
+		<script src="/static/js/index.js?v=1.0"></script>
 	</body>
 </html>
