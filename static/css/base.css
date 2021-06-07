@@ -7,7 +7,7 @@ body{border-radius:0;background-color:#f9f9f9}
 header,footer,.r{width:100%;border-radius:0}
 header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0}
 .headerbg header{background-color:#fefeff;height:70px;padding:10px 0}
-.w{width:1230px;display:flex;flex-wrap:wrap;margin:0 auto}
+.w{width:1230px;display:flex;flex-wrap:wrap;margin:0 auto;z-index:10;position:relative;}
 header .w{height:50px}
 header .w *{margin:0 15px}
 .logo{width:145px;background:url(/static/img/logo.png);background-repeat:no-repeat;position:relative;overflow:hidden}
@@ -18,11 +18,10 @@ header .w *{margin:0 15px}
 .temp{width:50px;background:url(/static/img/bg_hd_tp.png);cursor:pointer}
 .menu{width:945px}
 .r,footer{overflow:hidden;padding:50px 0}
-.rt{overflow:hidden;background:url(/static/img/bg_top.png);background-color:#fefeff;background-position:0 0;background-size:101% auto;padding-top:120px;animation:topbgrd 16s linear infinite alternate;background-repeat:no-repeat;background-attachment:fixed}
-@keyframes topbgrd{0%{background-position:0 0;background-size:101% auto}
-50%{background-position:50% -100px;background-size:105% auto}
-100%{background-position:98% 0;background-size:110% auto}
-}
+.rt{overflow:hidden;background-color:#fefeff;padding-top:120px;position:relative;}
+.rt canvas {position: absolute;top: 0;left: 0;width: 2000px;height: auto; }
+#canvas {z-index: 1;}
+#canvasbg {z-index: -10;filter: blur(3px);opacity: 0.6;}
 .c{padding:0 15px;min-height:380px}
 .tb_15 .c{padding:15px}
 .c_1{width:8.3333%}
