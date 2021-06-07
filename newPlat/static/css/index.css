@@ -1,9 +1,0 @@
-/* Index Page Style */
-/* banner 0.55 */
-.bann{width:100%;height:435px}
-.bann.swiper-container-horizontal>.swiper-pagination-bullets{bottom:10px;width:150px;left:unset;right:10px}
-.bann span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#444}
-.bann img{display:block;width:100%;height:100%}
-
-/*DARK*/
-.dark .bann span.swiper-pagination-bullet{background:#cdd9e5}
