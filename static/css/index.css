@@ -4,6 +4,15 @@
 .bann.swiper-container-horizontal>.swiper-pagination-bullets{bottom:10px;width:150px;left:unset;right:10px}
 .bann span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#444}
 .bann img{display:block;width:100%;height:100%}
-
+.mine{background:rgba(255,255,255,0.5);border:1px solid #bbb;height:435px;padding:5px}
+.meavt{display:flex;padding:5px}
+.avtor{display:block;width:90px;height:90px;border-radius:45px}
+.amore{width:40px}
+.ainfo{width:calc(100% - 140px);margin-left:10px}
+.ainfo h1{line-height:30px;margin-top:5px}
+.ainfo p{margin:5px 0;line-height:20px;font-size:12px}
+.mecon{display:flex;justify-content:center;margin:10px 0}
+.conn{width:60px;height:60px;margin:5px;background:#eee}
 /*DARK*/
 .dark .bann span.swiper-pagination-bullet{background:#cdd9e5}
+.dark  .mine {background: rgba(0,0,0,0.3);border: 1px solid #555;}
