@@ -11,7 +11,13 @@
 .ainfo h1{line-height:30px;margin-top:5px}
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
-.conn{width:60px;height:60px;margin:5px;opacity:0.9;background:#eee}
+.conn{width:60px;height:60px;margin:5px;opacity:0.9;background-image: url(../img/conn_icons.png);opacity: 0.8;}
+.cqq{}
+.cwx{background-position-x:60px ;}
+.cml{background-position-x:120px ;}
+.cge{background-position-x:180px ;}
+.cgb{background-position-x:240px ;}
+.conn:hover{background-position-y:60px;background-color: #444;}
 .mequc{display:flex;flex-wrap:wrap;}
 .mequci{width:50%;height:115px;padding:10px;}
 .mequci *{width:100%;height:100%;display:block;opacity:0.9;}
@@ -22,6 +28,7 @@
     height: 60px;
     position: relative;
     overflow: hidden;
+    margin: 10px;
 }
 
 .pt h1 {
@@ -31,9 +38,61 @@
     text-align: center;
     font-weight: normal;
 }
+.pm {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fefeff;
+}
 
+.pime {
+    position: relative;
+    width: 100%;
+    height: 245px;
+}
+
+.ptname {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    line-height: 30px;
+    padding: 0 10px;
+    background: #ddd;
+}
+
+.ptimg {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #444;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+}
+
+.bline {
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+}
+
+
+.pm a {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pimel {
+    width: 120px;
+    height: 78px;
+}
+
+.pinfr {
+    width: calc(100% - 120px);
+    padding: 5px;
+}
 .pt::before {content: "";position: absolute;bottom: 10px;left: -10px;width: 130px;height: 10px;background: linear-gradient(338deg, transparent,transparent 42%,#444,transparent 58%,transparent 100%),linear-gradient(23deg, transparent,transparent 42%,#444,transparent 58%,transparent );background-size: 20px 10px;background-repeat: repeat-x,repeat-x;}
 
 /*DARK*/
 .dark .bann span.swiper-pagination-bullet{background:#cdd9e5}
-.dark  .mine {background: rgba(0,0,0,0.3);border: 1px solid #555;}
+.dark .mine{background: rgba(0,0,0,0.3);border: 1px solid #555;}
+.dark .conn{background-position-y:60px;}
+.dark .conn:hover{background-position-y:0;background-color: #f9f9f9;}
