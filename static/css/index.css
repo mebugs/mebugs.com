@@ -42,55 +42,138 @@
     display: flex;
     flex-wrap: wrap;
     background: #fefeff;
+    padding: 5px;
 }
 
 .pime {
     position: relative;
     width: 100%;
-    height: 245px;
+    height: 240px;
+    overflow: hidden;
 }
 
 .ptname {
     position: absolute;
-    left: 10px;
-    top: 10px;
-    line-height: 30px;
-    padding: 0 10px;
-    background: #ddd;
+    right: 15px;
+    top: 15px;
+    line-height: 40px;
+    height: 40px;
+    width: 80px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-weight: 900;
+    text-align: center;
+    z-index: 10;
 }
 
 .ptimg {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 15px;
+    border-radius: 20px 0 0 20px;
+    right: 0;
     background: #444;
     width: 80px;
     height: 80px;
-    padding: 5px;
+    padding: 10px 5px 10px 15px;
+    opacity: 0.8;
 }
-
+.pinfb{padding: 0 5px;}
 .bline {
-    border-bottom: 1px solid #eee;
-    border-radius: 0;
+    border-bottom: 1px solid #eee!important;
 }
 
 
 .pm a {
     display: flex;
     flex-wrap: wrap;
+    border-radius: 0;
+    padding: 10px 0;
+    margin: 0 10px;
+    border-bottom: 1px solid #fefeff;
 }
 
 .pimel {
     width: 120px;
     height: 78px;
+    overflow: hidden;
+	position: relative;
 }
 
 .pinfr {
     width: calc(100% - 120px);
-    padding: 5px;
+    padding: 0 5px;
 }
 .pt::before {content: "";position: absolute;bottom: 10px;left: -10px;width: 130px;height: 10px;background: linear-gradient(338deg, transparent,transparent 42%,#444,transparent 58%,transparent 100%),linear-gradient(23deg, transparent,transparent 42%,#444,transparent 58%,transparent );background-size: 20px 10px;background-repeat: repeat-x,repeat-x;}
+.ptag {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 0;
+}
+.pitag {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    background: linear-gradient(rgba(0,0,0,0) , rgba(0,0,0,0.7));
+    width: 100%;
+    padding: 20px 10px 10px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    z-index: 10;
+}
+.pimel .ptname {
+    line-height: 30px;
+    height: 30px;
+    font-size: 12px;
+    width: 60px;
+    top: unset;
+    bottom: 9px;
+    right: 10px;
+}
 
+.ptag span {
+    line-height: 22px;
+    font-size: 12px;
+    background: #f9f9f9;
+    padding: 0 8px;
+    margin-right: 5px;
+    color: #666;
+    display: inline-block;
+    border-radius: 6px;
+}
+
+.pm a h2 {
+    height: 50px;
+    padding: 5px 0;
+    line-height: 20px;
+}
+
+.pdesc {
+    line-height: 20px;
+    font-size: 12px;
+    height:60px;
+    color: #666;
+    text-overflow: ellipsis;
+    white-space: unset;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.pm a:hover{
+    border-bottom: 1px solid #444!important;
+}
+.pm a:hover .pimg {
+    transform: scale(1.15);
+}
+.pm a:hover .pitag {height: 80px;padding: 35px 10px 10px;}
+
+.pm a:hover .ptname {height: 80px;line-height: 80px;border-radius: 40px;}
+
+.pm a:hover .pimel .ptname {
+    height: 60px;
+    line-height: 60px;
+}
 /*DARK*/
 .dark .bann span.swiper-pagination-bullet{background:#cdd9e5}
 .dark .mine{background: rgba(0,0,0,0.3);border: 1px solid #555;}
