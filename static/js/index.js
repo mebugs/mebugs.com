@@ -3,15 +3,14 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Page Init (ext IE)
 	// banner
 	swiper = new Swiper('.bann', {
-		effect : 'cube',
 	    autoplay: {
 	        disableOnInteraction: false,
 	        stopOnLastSlide: false,
-	        delay: 2000
+	        delay: 3000
 	    },
 		watchSlidesProgress: true,
 	    loop:true,
-		speed: 1000,
+		speed: 500,
 		grabCursor: true,
 	    pagination: {el: '.swiper-pagination'}
 	});

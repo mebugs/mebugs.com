@@ -2,16 +2,16 @@
 /* banner 0.55 */
 .bann{width:100%;height:435px}
 .bann.swiper-container-horizontal>.swiper-pagination-bullets{bottom:10px;width:150px;left:unset;right:10px}
-.bann span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#444}
-.mine{background:rgba(255,255,255,0.5);border:1px solid #bbb;height:435px;padding:5px}
+.bann span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#3FC1C9}
+.mine{background:#F5F5F5;height:435px;padding:5px}
 .meavt{display:flex;padding:7px 5px}
 .avtor{display:block;width:90px;height:90px;border-radius:45px}
 .amore{width:40px}
 .ainfo{width:calc(100% - 140px);margin-left:10px}
-.ainfo h1{line-height:30px;margin-top:5px}
+.ainfo h1{line-height:30px;margin-top:5px;}
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
-.conn{width:60px;height:60px;margin:5px;opacity:0.9;background-image: url(../img/conn_icons.png);opacity: 0.8;}
+.conn{width:60px;height:60px;margin:5px;background-image: url(../img/conn_icons.png);opacity: 0.8;}
 .cqq{}
 .cwx{background-position-x:60px ;}
 .cml{background-position-x:120px ;}
@@ -20,8 +20,11 @@
 .conn:hover{background-position-y:60px;background-color: #444;}
 .mequc{display:flex;flex-wrap:wrap;}
 .mequci{width:50%;height:115px;padding:10px;}
-.mequci *{width:100%;height:100%;display:block;opacity:0.9;}
-
+.mequci *{width:100%;height:100%;display:block;}
+.mequci a {
+    position: relative;
+    overflow: hidden;
+}
 .pe {}
 
 .pt {
@@ -38,11 +41,15 @@
     text-align: center;
     font-weight: normal;
 }
+.mr {
+    position: absolute;
+    right: 0;
+}
 .pm {
     display: flex;
     flex-wrap: wrap;
-    background: #fefeff;
-    padding: 5px;
+    background: #fefefe;
+    padding: 5px 5px 10px 5px;
 }
 
 .pime {
@@ -52,31 +59,6 @@
     overflow: hidden;
 }
 
-.ptname {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    line-height: 40px;
-    height: 40px;
-    width: 80px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    font-weight: 900;
-    text-align: center;
-    z-index: 10;
-}
-
-.ptimg {
-    position: absolute;
-    bottom: 15px;
-    border-radius: 20px 0 0 20px;
-    right: 0;
-    background: #444;
-    width: 80px;
-    height: 80px;
-    padding: 10px 5px 10px 15px;
-    opacity: 0.8;
-}
 .pinfb{padding: 0 5px;}
 .bline {
     border-bottom: 1px solid #eee!important;
@@ -86,67 +68,29 @@
 .pm a {
     display: flex;
     flex-wrap: wrap;
-    border-radius: 0;
+    
     padding: 10px 0;
     margin: 0 10px;
     border-bottom: 1px solid #fefeff;
 }
 
 .pimel {
-    width: 120px;
-    height: 78px;
+    width: 100px;
+    height: 65px;
     overflow: hidden;
-	position: relative;
+    position: relative;
 }
 
 .pinfr {
-    width: calc(100% - 120px);
-    padding: 0 5px;
+    width: calc(100% - 100px);
+    padding: 5px;
 }
-.pt::before {content: "";position: absolute;bottom: 10px;left: -10px;width: 130px;height: 10px;background: linear-gradient(338deg, transparent,transparent 42%,#444,transparent 58%,transparent 100%),linear-gradient(23deg, transparent,transparent 42%,#444,transparent 58%,transparent );background-size: 20px 10px;background-repeat: repeat-x,repeat-x;}
-.ptag {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    border-radius: 0;
-}
-.pitag {
-    position: absolute;
-    bottom: 0;
-    height: 60px;
-    background: linear-gradient(rgba(0,0,0,0) , rgba(0,0,0,0.7));
-    width: 100%;
-    padding: 20px 10px 10px;
-    line-height: 30px;
-    color: #fff;
-    font-size: 14px;
-    z-index: 10;
-}
-.pimel .ptname {
-    line-height: 30px;
-    height: 30px;
-    font-size: 12px;
-    width: 60px;
-    top: unset;
-    bottom: 9px;
-    right: 10px;
-}
-
-.ptag span {
-    line-height: 22px;
-    font-size: 12px;
-    background: #f9f9f9;
-    padding: 0 8px;
-    margin-right: 5px;
-    color: #666;
-    display: inline-block;
-    border-radius: 6px;
-}
+.pt::before {content: "";position: absolute;bottom: 10px;left: -10px;width: 130px;height: 10px;background: linear-gradient(338deg, transparent,transparent 42%,#FC5185,transparent 58%,transparent 100%),linear-gradient(23deg, transparent,transparent 42%,#3FC1C9,transparent 58%,transparent );background-size: 20px 10px;background-repeat: repeat-x,repeat-x;}
 
 .pm a h2 {
-    height: 50px;
+    height: 55px;
     padding: 5px 0;
-    line-height: 20px;
+    line-height: 22px;
 }
 
 .pdesc {
@@ -161,21 +105,16 @@
     -webkit-box-orient: vertical;
 }
 .pm a:hover{
-    border-bottom: 1px solid #444!important;
+    border-bottom: 1px solid #FC5185!important;
 }
-.pm a:hover .pimg {
-    transform: scale(1.15);
-}
-.pm a:hover .pitag {height: 80px;padding: 35px 10px 10px;}
 
-.pm a:hover .ptname {height: 80px;line-height: 80px;border-radius: 40px;}
+.pm a:hover .pitag {height: 60px;padding: 15px 10px;background: rgba(0,0,0,0.7);}
 
-.pm a:hover .pimel .ptname {
-    height: 60px;
-    line-height: 60px;
-}
+
+
 /*DARK*/
 .dark .bann span.swiper-pagination-bullet{background:#cdd9e5}
-.dark .mine{background: rgba(0,0,0,0.3);border: 1px solid #555;}
+.dark .mine{background: #22272e;}
 .dark .conn{background-position-y:60px;}
 .dark .conn:hover{background-position-y:0;background-color: #f9f9f9;}
+.dark .pm{background:#2d333b}
