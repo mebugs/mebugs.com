@@ -37,6 +37,8 @@ header .w *{margin:0 15px}
 .c_11{width:91.6666%}
 .c_12{width:100%}
 .m-10{margin:-10px;}
+.row{margin-bottom:60px;}
+.box{background: #fefefe;padding: 5px;border:1px solid #fefefe;}
 .pa_6 a{display:block;width: calc(50% - 20px);margin: 10px;}
 footer{background:#E8EAE6}
 .back_top {position: fixed;bottom: -80px;right: calc(50% - 680px);width: 60px;height: 60px;background: rgba(0,0,0,0.3);padding: 5px;cursor:pointer;}
