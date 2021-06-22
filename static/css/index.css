@@ -15,7 +15,7 @@
 .ainfo h1{line-height:30px;margin-top:5px;}
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
-.conn{width:60px;height:60px;margin:5px;background-image: url(../img/conn_icons.png);opacity: 0.8;}
+.conn{width:60px;height:60px;margin:5px;background-image: url(../img/conn_icons.png);}
 .cqq{}
 .cwx{background-position-x:60px ;}
 .cml{background-position-x:120px ;}
@@ -47,11 +47,6 @@
     position: absolute;
     right: 0;
 }
-.pm {
-    display: flex;
-    flex-wrap: wrap;
-    
-}
 
 .pime {
     position: relative;
@@ -61,18 +56,9 @@
 }
 
 .pinfb{padding: 0 5px;}
-.bline {
-    border-bottom: 1px solid #eee!important;
-}
 
-
-.pm a {
-    display: flex;
-    flex-wrap: wrap;   
-    padding: 10px 0;
-    margin: 0 10px;
-    border-bottom: 1px solid #fefeff;
-}
+.pm a{display: flex;
+    flex-wrap: wrap; }
 
 .pimel {
     width: 100px;
@@ -83,12 +69,11 @@
 
 .pinfr {
     width: calc(100% - 100px);
-    padding: 5px;
+    padding: 5px 0 5px 10px;
 }
 .pt::before {content: "";position: absolute;bottom: 10px;left: -10px;width: 130px;height: 10px;background: linear-gradient(338deg, transparent,transparent 42%,#FC5185,transparent 58%,transparent 100%),linear-gradient(23deg, transparent,transparent 42%,#3FC1C9,transparent 58%,transparent );background-size: 20px 10px;background-repeat: repeat-x,repeat-x;}
 
 .pm a h2 {
-    height: 55px;
     padding: 5px 0;
     line-height: 22px;
 }
@@ -104,14 +89,11 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
-.pm a:hover{
-    border-bottom: 1px solid #FC5185!important;
-}
 .fm{height:520px;}
 .fm .swiper-slide{
 	display: flex;
     flex-wrap: wrap;   }
-.fm a {
+.fm a,.fulla {
     position: relative;
     overflow: hidden;
 	display:block;
@@ -119,27 +101,25 @@
 	width:calc(50% - 20px);
 	margin:10px;
 }
-.pbline{
+h2.pbline{
     position: absolute;
     z-index: 10;
     bottom: 0;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     line-height: 25px;
     height: 100px;
-    padding: 40px 10px 10px;
-    color: #fff;
-    background-image: linear-gradient(transparent,black);
+    padding: 40px 10px 10px!important;
+	 background-image: linear-gradient(transparent,black);color: #cdd9e5;font-weight:900
 }
-a:hover .pbline {height: 130px;padding: 60px 10px 10px;}
+a:hover .pbline {height: 130px;padding: 60px 10px 10px!important;}
 
 
 
 /*DARK*/
 .dark .bann span.swiper-pagination-bullet{background:#cdd9e5}
-.dark .mine{background: #22272e;}
+.dark .mine{background: #22272e;border:1px solid #444;}
 .dark .conn{background-position-y:60px;}
 .dark .conn:hover{background-position-y:0;background-color: #f9f9f9;}
-.dark .pm{background:#2d333b}
+.dark .pm a h2{color:#ADBAC7}
+.dark .pdesc{color:#9BA5AF}
+.dark .fm .swiper-button-next, .dark .fm .swiper-button-prev {background: rgba(0,0,0,0.8);}
+.dark .fm .swiper-button-next:after, .dark .fm .swiper-button-prev:after{color: #fff;}

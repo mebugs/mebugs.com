@@ -14,7 +14,6 @@ header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0}
 header .w{height:50px}
 header .w *{margin:0 15px}
 .logo{width:145px;background:url(/static/img/logo.png);background-repeat:no-repeat;position:relative;overflow:hidden}
-.logo:before{content:'';width: 20px;height:200px;position:absolute;left:-100px;top:-50px;transform:rotate(302deg);background:rgba(232,234,230,0.5);transform-origin:center right;animation:logoroud 1.5s linear infinite alternate;}
 @keyframes logoroud{0%{left:-100px;top:-50px}
 100%{left:240px;top:-100px}
 }
@@ -39,12 +38,14 @@ header .w *{margin:0 15px}
 .m-10{margin:-10px;}
 .row{margin-bottom:60px;}
 .box{background: #fefefe;padding: 5px;border:1px solid #fefefe;}
+.pa_6{display: flex;flex-wrap: wrap;}
 .pa_6 a{display:block;width: calc(50% - 20px);margin: 10px;}
 footer{background:#E8EAE6}
 .back_top {position: fixed;bottom: -80px;right: calc(50% - 680px);width: 60px;height: 60px;background: rgba(0,0,0,0.3);padding: 5px;cursor:pointer;}
 .back_top img {display: block;width: 100%;height: 100%;opacity: 0.9;}
 .headerbg .back_top{bottom: 60px;}
 a:hover .scale {transform: scale(1.1);}
+a:hover h2{color: #FC5185;}
 /* Dark Mode */
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb{background-color:#676767}
@@ -54,6 +55,7 @@ body.dark::-webkit-scrollbar-track{background-color:#424242}
 .dark .rt{background-color:#2d333b}
 .dark footer{background:#2d333b}
 .dark .logo,.dark .temp{background-position-y:-50px;}
-.dark .logo:before{background:rgba(45,51,59,0.5)}
 .dark .back_top {background: rgba(255,255,255,0.3);}
 .dark .back_top img {opacity: 0.8;}
+.dark .box{background: #2d333b;border:1px solid #444;}
+.dark a:hover h2{color: #3FC1C9!important;}
