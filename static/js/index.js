@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	    pagination: {el: '.swiper-pagination',clickable:true}
 	});
 	// index fumer make for mobile , every slide use toe node
-	if(width < 800) {
+	if(width < 600) {
 		var fmList = document.querySelectorAll('.fm .swiper-slide a');
 		if(fmList && fmList.length > 0) {
 			var html = '<div class="swiper-wrapper" >';
