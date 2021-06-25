@@ -31,14 +31,14 @@
 .pime{position:relative;width:100%;height:240px;overflow:hidden}
 .pinfb{padding:0 5px}
 .lm{padding:9.5px 5px}
-.pm a,.lm a{display:flex;flex-wrap:wrap}
+.pm a,.lm a,.itm{display:flex;flex-wrap:wrap}
 .lm a{margin:5px 0}
 .pimel{width:100px;height:65px;overflow:hidden;position:relative}
 .lm .pimel{width:35px;height:35px;margin:15px 7.5px;background:#f5f5f5;color:#fc5185;border-radius:10px;line-height:34px;text-align:center}
 .lm .pimel.ltop{background:#fc5185;color:#f5f5f5}
 .pinfr{width:calc(100% - 100px);padding:5px 0 5px 10px}
 .lm .pinfr{width:calc(100% - 50px);padding:5px 8px}
-.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(338deg,transparent,transparent 42%,#fc5185,transparent 58%,transparent 100%),linear-gradient(23deg,transparent,transparent 42%,#3fc1c9,transparent 58%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
+.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background: linear-gradient(335deg,transparent,transparent 41%,#fc5185,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#3fc1c9,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x;}
 .box a h2{padding:5px 0;line-height:22px}
 .pdesc{line-height:20px;font-size:12px;height:60px;color:#999;text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
 .fm{height:520px}
@@ -46,13 +46,67 @@
 .fm a,.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
 h2.pbline{position:absolute;z-index:10;bottom:0;line-height:25px;height:100px;padding:40px 10px 10px!important;background-image:linear-gradient(transparent,black);color:#cdd9e5}
 a:hover .pbline{height:130px;padding:60px 10px 10px!important}
+.itm{padding: 7px;}
+.itm a{width:calc(25% - 10px);margin: 7px 5px;display:block;}
+.itm img,.itm svg{width: 65px;height: 65px;margin: 5px auto;display: block;padding:5px}
+.itm a h2{line-height:30px;text-align: center;}
+.itm svg path{fill: #444;}
+.itm a:hover img, .itm a:hover svg{padding:8px}
+.itm a:hover svg path{fill: #3fc1c9;}
+.iag{text-align:center;padding:10px}
+.iag .ags{height:100%;overflow:hidden;height:590px}
+.iag a{display:inline-block;line-height: 30px;border:1px solid #fc5185;padding: 0 15px;margin: 5px;border-radius:15px;font-size:14px;}
+.iag a:hover{color:#3fc1c9;border:1px solid #444}
+.pct h1 {margin: 0 auto;}
+.pct:before {width: 120px;left: calc(50% - 60px);}
+.lk {
+    text-align: center;
+}
+
+.lk a {
+    line-height: 25px;
+    padding: 5px 15px;
+    margin: 5px;
+    display: inline-block;
+    border: 1px solid #f5f5f5;
+    border-bottom: 1px solid #fc5185;
+    border-top: 1px solid #3fc1c9;
+	border-radius:10px
+}
+
+.lk a.lmr {
+	line-height: 30px;
+    border: 1px solid #444;
+    width: 120px;
+	margin:8px
+}
+
+.lk a:hover {
+    border-bottom: 1px solid #3fc1c9;
+    border-top: 1px solid #fc5185;
+    border-left: 1px solid #fc5185;
+    border-right: 1px solid #3fc1c9;
+    color: #fc5185;
+	background: #fefefe;
+}
 /*DARK*/
 .dark .bann span.swiper-pagination-bullet{background:#3fc1c9}
 .dark .mine{background:#22272e}
 .dark .conn{background-position-y:60px}
-.dark .pm a h2{color:#adbac7}
 .dark .pdesc{color:#818d98}
 .dark .fm .swiper-button-next,.dark .fm .swiper-button-prev{background:rgba(0,0,0,0.8)}
 .dark .fm .swiper-button-next:after,.dark .fm .swiper-button-prev:after{color:#3fc1c9}
 .dark .lm .pimel{background:#22272e;color:#3fc1c9}
 .dark .lm .pimel.ltop{background:#3fc1c9;color:#22272e}
+.dark .itm svg path{fill: #adbac7}
+.dark .itm a:hover svg path{fill: #fc5185;}
+.dark .iag a{border:1px solid #3fc1c9}
+.dark .iag a:hover{color:#fc5185;border:1px solid #adbac7}
+.dark .lk a{border: 1px solid #22272e;border-bottom: 1px solid #3fc1c9;border-top: 1px solid #fc5185}
+.dark .lk a.lmr{border: 1px solid #adbac7}
+.dark .lk a:hover{ border-bottom: 1px solid #fc5185;
+    border-top: 1px solid #3fc1c9;
+    border-left: 1px solid #3fc1c9;
+    border-right: 1px solid #fc5185;
+    color: #3fc1c9;
+	background: #2d333b;}
