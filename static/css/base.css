@@ -21,7 +21,7 @@ header .w *{margin:0 15px}
 .menu{width:945px}
 .r,footer{overflow:hidden;padding:50px 0}
 .rt{overflow:hidden;background-color:#e8eae6;padding-top:120px;position:relative}
-.c{padding:0 15px;min-height:380px}
+.c{padding:0 15px}
 .tb_15 .c{padding:15px}
 .c_1{width:8.3333%}
 .c_2{width:16.6666%}
@@ -48,8 +48,45 @@ footer{background:#e8eae6}
 .back_top img{display:block;width:100%;height:100%;opacity:.9}
 .headerbg .back_top{bottom:60px}
 a:hover .scale{transform:scale(1.1)}
-a:hover h2{color:#fc5185}
+a:hover h2,.ft p a:hover{color:#fc5185}
 .mr:hover{color:#3fc1c9}
+
+.ft p {
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.ft p a {
+    font-size: 15px;
+    color: #222;
+    font-weight: 900;
+}
+
+.ft h2 {
+    line-height: 40px;
+    font-weight: 900;
+    font-size: 16px;
+	color:#222;
+	display:inline-block;
+	padding:0 10px;
+	border-bottom:1px solid #444;
+	margin-bottom:5px
+}
+
+.ft h2 em {
+    margin: 0 5px;
+    font-size: 14px;
+    color: #666;
+    font-style: normal;
+}
+.fc{text-align: center;}
+
+.fr {
+    text-align: right;
+}
+.fr p{overflow:hidden;text-overflow: unset;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+.fr a {margin-left:5px}
+
 /* Dark Mode */
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb{background-color:#676767}
@@ -62,5 +99,8 @@ body.dark::-webkit-scrollbar-track{background-color:#424242}
 .dark .logo,.dark .temp{background-position-y:-50px}
 .dark .back_top img{opacity:.8}
 .dark .box{background:#2d333b}
-.dark a:hover h2{color:#3fc1c9}
+.dark a:hover h2,.dark .ft p a:hover{color:#3fc1c9}
 .dark .mr:hover{color:#fc5185}
+.dark .ft h2 {color:#eee;border-bottom:1px solid #adbac7}
+.dark .ft h2 em {color:#ddd}
+.dark .ft p a {color:#eee}
