@@ -1,5 +1,5 @@
 /* Base Style */
-*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#adbac7;font-size:15px;transition:all .35s ease;box-sizing:border-box}
+*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#adbac7;font-size:15px;box-sizing:border-box}
 img{display:block;width:100%;height:100%;filter: brightness(80%) contrast(80%);}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 h2{text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-weight:normal}
@@ -37,6 +37,7 @@ header .w *{margin:0 15px}
 .row{margin-bottom:45px}
 .c .row:last-child{margin-bottom:5px}
 .box{background:#2d333b;padding:5px}
+.box a h2,.pagee a h2{padding:5px 0;line-height:22px;height: 54px;}
 .pa_6,.pa_4{display:flex;flex-wrap:wrap}
 .pa_6 a,.pa_4 a{display:block;margin:10px}
 .pa_6 a{width:calc(50% - 20px)}
@@ -46,8 +47,8 @@ footer{background:#2d333b}
 .back_top img{display:block;width:100%;height:100%;opacity:.9}
 .headerbg .back_top{bottom:60px}
 a:hover .scale{transform:scale(1.1)}
-a:hover h2,footer a:hover,.menu a:hover{color:#3fc1c9}
-.mr:hover{color:#fc5185}
+a:hover h2,footer a:hover,.menu a:hover{color:#539bf5}
+.mr:hover{color:#347d39}
 footer a{font-size:15px;font-weight:900;display:inline-block;color: #c8d5e2;}
 .ft p{font-size:14px;line-height:25px}
 .ft h2{line-height:40px;font-weight:900;font-size:16px;color: #ddd;display:inline-block;padding:0 10px;border-bottom:1px solid #adbac7;margin-bottom:5px;}
@@ -59,6 +60,9 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color: #c8d5e2;}
 .fu{text-align:center;margin-top:40px}
 .fu p{line-height:30px}
 .fu em{margin:0 5px;font-size:14px;font-style:normal}
+.pime{width:100%;height:240px;overflow:hidden}
+.pinfb{padding:0 5px}
+.pdesc{line-height:20px;font-size:12px;height:60px;color: #8d9ead;text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 /* light Mode */
 body.light{background-color:#f5f5f5}
 body.light::-webkit-scrollbar-thumb{background-color:#424242}
@@ -72,8 +76,10 @@ body.light::-webkit-scrollbar-track{background-color:#676767}
 .light .logo,.light .temp{background-position-y:0px}
 .light .back_top img{opacity:.8}
 .light .box{background:#fefefe}
-.light a:hover h2,.light footer a:hover,.light .menu a:hover{color:#fc5185}
-.light .mr:hover{color:#3fc1c9}
+.light a:hover h2,.light footer a:hover,.light .menu a:hover{color:#347d39}
+.light .mr:hover{color:#539bf5}
 .light .ft h2 {color:#222;border-bottom:1px solid #444}
 .light .ft h2 em {color:#666}
 .light footer a {color:#222}
+.light .pdesc{color:#999}
+.trans *{transition:all .3s ease;}

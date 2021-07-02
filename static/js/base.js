@@ -3,9 +3,10 @@ var show = loc.getItem("show") ? loc.getItem("show") : "dark";
 var backTimer;
 var bodyNode = document.body;
 bodyNode.classList.add(show);
+setTimeout(function() {bodyNode.classList.add("trans");}, 100);
 window.addEventListener("scroll", function () {
 	let top = bodyNode.scrollTop || document.documentElement.scrollTop;
-	if(top > 150) {
+	if(top > 50) {
 		bodyNode.classList.add("headerbg");
 	} else {
 		bodyNode.classList.remove("headerbg");
