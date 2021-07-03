@@ -1,5 +1,5 @@
 var loc = window.localStorage;
-var show = loc.getItem("show") ? loc.getItem("show") : "dark";
+var show = loc.getItem("show") ? loc.getItem("show") : "light";
 var backTimer;
 var bodyNode = document.body;
 bodyNode.classList.add(show);

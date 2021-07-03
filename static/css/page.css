@@ -1,48 +1,18 @@
-.ql {
-    display: flex;
-    margin: 10px 0;
-}
-.qr{
-	justify-content: flex-end;
-}
-.ql a,.ql p {
-	margin:15px 0;
-    display: inline-block;
-    line-height: 40px;
-    padding: 0 25px;
-    border: 1px solid;
-    color: #e2f1ff;
-}
-.ql a {
-	margin-right:30px
-}
-.ql a.cp,.ql a:hover {color: #539bf5;background: #22272e;border: 1px solid;}
-
-.ql p {
-    display: inline-block;
-    margin-left: 30px;
-}
-
-.ql p {
-    background: #22272e;
-    border: 1px solid #22272e;
-    width: 130px;
-    text-align: center;
-}
-
-.pagee {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.pinfb{padding:10px;}
+.ql{display:flex;margin:10px 0}
+.qr{justify-content:flex-end}
+.ql a,.ql p{margin:15px 0;display:inline-block;line-height:40px;padding:0 25px;border:1px solid;color:#333;font-weight:900}
+.ql a{margin-right:30px}
+.ql a.cp,.ql a:hover{color:#ab3737;background:#f5f5f5;border:1px solid}
+.ql p{display:inline-block;margin-left:30px}
+.ql p{background:#f5f5f5;border:1px solid #f5f5f5;width:130px;text-align:center}
+.pagee{display:flex;flex-wrap:wrap}
+.pinfb{padding:10px}
 .peare{display:flex;align-items:center;justify-content:center;width:100%}
-.peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#2d333b}
-.peare a.pnow,.peare a:hover{background: #010101;color: #539bf5;}
-/* light */
-.light .ql a,.light .ql p {color:#333}
-.light .ql a.cp,.light .ql a:hover{background: #f5f5f5;color: #347d39;}
-.light .ql p {background: #f5f5f5;border: 1px solid #f5f5f5;}
-.light .pinfb{background:#fefefe}
-.light .peare a{background:#e8eae6}
-.light .peare a.pnow,.light .peare a:hover{background: #fefefe;color: #347d39;}
+.peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#e8eae6}
+.peare a.pnow,.peare a:hover{background:#fefefe;color:#ab3737}
+.dark .ql a,.dark .ql p{color:#e2f1ff}
+.dark .ql a.cp,.dark .ql a:hover{background:#22272e;color:#539bf5}
+.dark .ql p{background:#22272e;border:1px solid #22272e}
+.dark .pinfb{background:#2d333b}
+.dark .peare a{background:#2d333b}
+.dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#347d39}

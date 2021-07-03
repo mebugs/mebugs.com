@@ -1,13 +1,11 @@
-/* Index Page Style */
-/* banner 0.55 */
 .bann{width:100%;height:435px}
 .bann.swiper-container-horizontal>.swiper-pagination-bullets{bottom:10px;width:150px;left:unset;right:10px}
-.bann span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#539bf5}
-.fm .swiper-button-next,.fm .swiper-button-prev{background:rgba(0,0,0,0.8);width:50px;height:50px;margin-top:-25px}
+.bann span.swiper-pagination-bullet{width:25px;height:10px;border-radius:4px;background:#ab3737}
+.fm .swiper-button-next,.fm .swiper-button-prev{background:rgba(255,255,255,0.8);width:50px;height:50px;margin-top:-25px}
 .fm .swiper-button-next{right:0}
 .fm .swiper-button-prev{left:0}
-.fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#539bf5}
-.mine{background:#22272e;height:435px;padding:5px}
+.fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#ab3737}
+.mine{background:#f5f5f5;height:435px;padding:5px}
 .meavt{display:flex;padding:7px 5px}
 .avtor{display:block;width:90px;height:90px;border-radius:45px}
 .amore{width:40px}
@@ -15,7 +13,7 @@
 .ainfo h1{line-height:30px;margin-top:5px}
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
-.conn{width:60px;height:60px;margin:5px;background-image:url(../img/conn_icons.png);background-position-y:60px}
+.conn{width:60px;height:60px;margin:5px;background-image:url(../img/conn_icons.png)}
 .cwx{background-position-x:60px}
 .cml{background-position-x:120px}
 .cge{background-position-x:180px}
@@ -32,45 +30,43 @@
 .pm a,.lm a,.itm{display:flex;flex-wrap:wrap}
 .lm a{margin:5px 0}
 .pimel{width:100px;height:65px;overflow:hidden;position:relative}
-.lm .pimel{width:35px;height:35px;margin:15px 7.5px;background: #22272e;color:#539bf5;border-radius:10px;line-height:34px;text-align:center;}
-.lm .pimel.ltop{background:#539bf5;color:#22272e}
+.lm .pimel{width:35px;height:35px;margin:15px 7.5px;background:#f5f5f5;color:#ab3737;border-radius:10px;line-height:34px;text-align:center}
+.lm .pimel.ltop{background:#ab3737;color:#f5f5f5}
 .pinfr{width:calc(100% - 100px);padding:5px 0 5px 10px}
 .lm .pinfr{width:calc(100% - 50px);padding:5px 8px}
-.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#347d39,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#539bf5,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
+.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#ab3737,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#539bf5,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
 .fm{height:520px}
 .fm .swiper-slide{display:flex;flex-wrap:wrap}
 .fm a,.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
-h2.pbline{position:absolute;z-index:10;bottom:0;line-height:25px;height: 100px!important;padding:40px 10px 10px!important;background-image:linear-gradient(transparent,black);color:#cdd9e5;}
-a:hover .pbline{height: 150px!important;padding: 80px 10px 10px!important;}
-.itm{}
+h2.pbline{position:absolute;z-index:10;bottom:0;line-height:25px;height:100px!important;padding:40px 10px 10px!important;background-image:linear-gradient(transparent,#f5f5f5);color:#000}
+a:hover .pbline{height:150px!important;padding:80px 10px 10px!important}
 .itm a{width:calc(25% - 10px);margin:7px 5px;display:block}
-.itm img,.itm svg{width: 60px;height: 60px;margin: 8px auto;display:block;padding:5px;}
-.itm a h2{line-height: 40px;text-align:center;height: 40px;padding: 0;}
+.itm img,.itm svg{width:60px;height:60px;margin:8px auto;display:block;padding:5px}
+.itm a h2{line-height:40px;text-align:center;height:40px;padding:0}
 .itm a:hover img,.itm a:hover svg{padding:8px}
-.itm a:hover svg path{fill:#347d39}
+.itm a:hover svg path{fill:#539bf5}
 .iag{text-align:center;padding:10px}
 .iag .ags{height:100%;overflow:hidden;height:590px}
-.iag a{display:inline-block;line-height:30px;border:1px solid #539bf5;padding:0 15px;margin:5px;border-radius:15px;font-size:14px}
-.iag a:hover{color:#347d39;border:1px solid #347d39}
+.iag a{display:inline-block;line-height:30px;border:1px solid #ab3737;padding:0 15px;margin:5px;border-radius:15px;font-size:14px}
+.iag a:hover{color:#539bf5;border:1px solid #539bf5}
 .pct h1{margin:0 auto}
 .pct:before{width:120px;left:calc(50% - 60px)}
 .lk{text-align:center}
-.lk a{line-height:25px;padding:5px 15px;margin:5px;display:inline-block;border:1px solid #22272e;border-bottom:1px solid #539bf5;border-top:1px solid #347d39}
-.lk a.lmr{line-height:30px;border:1px solid #adbac7;width:120px;margin:8px}
-.lk a:hover{border-bottom:1px solid #347d39;border-top:1px solid #539bf5;border-left:1px solid #539bf5;border-right:1px solid #347d39;color:#539bf5;background:#2d333b}
-/* light */
-.light .bann span.swiper-pagination-bullet{background:#539bf5}
-.light .mine{background:#f5f5f5}
-.light .conn{background-position-y:0px}
-.light .fm .swiper-button-next,.light .fm .swiper-button-prev{background:rgba(255,255,255,0.8)}
-.light .fm .swiper-button-next:after,.light .fm .swiper-button-prev:after{color:#347d39}
-.light .lm .pimel{background: #f5f5f5;color:#347d39;}
-.light .lm .pimel.ltop{background:#347d39;color:#f5f5f5}
-.light .itm svg path{fill:#444}
-.light h2.pbline{background-image: linear-gradient(transparent,whitesmoke);color: #000;}
-.light .itm a:hover svg path{fill:#539bf5}
-.light .iag a{border:1px solid #347d39}
-.light .iag a:hover{color:#539bf5;border:1px solid #539bf5}
-.light .lk a{border:1px solid #f5f5f5;border-bottom:1px solid #347d39;border-top:1px solid #539bf5}
-.light .lk a.lmr{border:1px solid #444}
-.light .lk a:hover{border-bottom:1px solid #539bf5;border-top:1px solid #347d39;border-left:1px solid #347d39;border-right:1px solid #539bf5;color:#347d39;background:#fefefe}
+.lk a{line-height:25px;padding:5px 15px;margin:5px;display:inline-block;border:1px solid #f5f5f5;border-bottom:1px solid #ab3737;border-top:1px solid #539bf5}
+.lk a.lmr{line-height:30px;border:1px solid #444;width:120px;margin:8px}
+.lk a:hover{border-bottom:1px solid #539bf5;border-top:1px solid #ab3737;border-left:1px solid #ab3737;border-right:1px solid #539bf5;color:#ab3737;background:#fefefe}
+.dark .bann span.swiper-pagination-bullet{background:#539bf5}
+.dark .mine{background:#22272e}
+.dark .conn{background-position-y:60px}
+.dark .fm .swiper-button-next,.dark .fm .swiper-button-prev{background:rgba(0,0,0,0.8)}
+.dark .fm .swiper-button-next:after,.dark .fm .swiper-button-prev:after{color:#539bf5}
+.dark .lm .pimel{background:#22272e;color:#539bf5}
+.dark .lm .pimel.ltop{background:#539bf5;color:#22272e}
+.dark .itm svg path{fill:#adbac7}
+.dark h2.pbline{background-image:linear-gradient(transparent,#22272e);color:#e2f1ff}
+.dark .itm a:hover svg path{fill:#ab3737}
+.dark .iag a{border:1px solid #539bf5}
+.dark .iag a:hover{color:#ab3737;border:1px solid #ab3737}
+.dark .lk a{border:1px solid #22272e;border-bottom:1px solid #539bf5;border-top:1px solid #ab3737}
+.dark .lk a.lmr{border:1px solid #adbac7}
+.dark .lk a:hover{border-bottom:1px solid #ab3737;border-top:1px solid #539bf5;border-left:1px solid #539bf5;border-right:1px solid #ab3737;color:#539bf5;background:#2d333b}
