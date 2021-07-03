@@ -44,7 +44,6 @@ header .w *{margin:0 15px}
 .pa_4 a{width:calc(33.3333% - 20px)}
 footer{background:#e8eae6}
 .back_top{position:fixed;bottom:-80px;right:calc(50% - 680px);width:60px;height:60px;background:rgba(0,0,0,0.5);padding:5px;cursor:pointer}
-.back_top img{display:block;width:100%;height:100%;}
 .headerbg .back_top{bottom:60px}
 a:hover .scale{transform:scale(1.1)}
 a:hover h2,footer a:hover,.menu a:hover,.menu a.mck{color:#ab3737}
@@ -80,4 +79,4 @@ body.dark::-webkit-scrollbar-track{background-color:#424242}
 .dark .ft h2 {color:#ddd;border-bottom:1px solid #adbac7}
 .dark footer a {color:#c8d5e2}
 .dark .pdesc{color:#8d9ead}
-.trans,.trans *{transition:all .3s ease;}
+.trans,.trans *{transition:all .4s ease;}
