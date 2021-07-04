@@ -13,6 +13,7 @@
 .tage .tmin span{top:10px;right:10px;width:50px;font-size:13px}
 .tage .tmin h1{font-size:15px;width:calc(100% - 60px);line-height:35px}
 .tage .tmin p{padding-left:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.peare.pearb a{width: 200px}
 .dark .teami{background:#2d333b}
 .dark .tmin p{color:#8d9ead}
 .dark .tmin span{background:#22272e;color:#adbac7}
