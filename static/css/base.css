@@ -62,6 +62,13 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color: #222;}
 .pime{width:100%;height:240px;overflow:hidden}
 .pinfb{padding:0 5px}
 .pdesc{line-height:20px;font-size:12px;height:60px;color: #999;text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pt{height:60px;position:relative;overflow:hidden;margin:10px}
+.pt h1{line-height:35px;font-size:23px;width:120px;text-align:center;font-weight:normal}
+.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#ab3737,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#539bf5,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
+.pct h1{margin:0 auto}
+.pct:before{width:120px;left:calc(50% - 60px)}
+.itm a:hover svg path,.teame a:hover svg path{fill:#539bf5}
+.itm a:hover img,.itm a:hover svg,.teame a:hover img,.teame a:hover svg{padding:8px}
 /* dark Mode */
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb{background-color:#676767}
@@ -79,4 +86,6 @@ body.dark::-webkit-scrollbar-track{background-color:#424242}
 .dark .ft h2 {color:#ddd;border-bottom:1px solid #adbac7}
 .dark footer a {color:#c8d5e2}
 .dark .pdesc{color:#8d9ead}
+.dark .itm svg path,.dark .teame svg path{fill:#adbac7}
+.dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#ab3737}
 .trans,.trans *{transition:all .4s ease;}

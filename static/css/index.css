@@ -23,8 +23,6 @@
 .mequci{width:50%;height:115px;padding:10px}
 .mequci *{width:100%;height:100%;display:block}
 .mequci a{position:relative;overflow:hidden}
-.pt{height:60px;position:relative;overflow:hidden;margin:10px}
-.pt h1{line-height:35px;font-size:23px;width:120px;text-align:center;font-weight:normal}
 .mr{position:absolute;right:0}
 .lm{padding:9.5px 5px}
 .pm a,.lm a,.itm{display:flex;flex-wrap:wrap}
@@ -34,7 +32,6 @@
 .lm .pimel.ltop{background:#ab3737;color:#f5f5f5}
 .pinfr{width:calc(100% - 100px);padding:5px 0 5px 10px}
 .lm .pinfr{width:calc(100% - 50px);padding:5px 8px}
-.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#ab3737,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#539bf5,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
 .fm{height:520px}
 .fm .swiper-slide{display:flex;flex-wrap:wrap}
 .fm a,.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
@@ -43,14 +40,10 @@ a:hover .pbline{height:150px!important;padding:80px 10px 10px!important}
 .itm a{width:calc(25% - 10px);margin:7px 5px;display:block}
 .itm img,.itm svg{width:60px;height:60px;margin:8px auto;display:block;padding:5px}
 .itm a h2{line-height:40px;text-align:center;height:40px;padding:0}
-.itm a:hover img,.itm a:hover svg{padding:8px}
-.itm a:hover svg path{fill:#539bf5}
 .iag{text-align:center;padding:10px}
 .iag .ags{height:100%;overflow:hidden;height:590px}
 .iag a{display:inline-block;line-height:30px;border:1px solid #ab3737;padding:0 15px;margin:5px;border-radius:15px;font-size:14px}
 .iag a:hover{color:#539bf5;border:1px solid #539bf5}
-.pct h1{margin:0 auto}
-.pct:before{width:120px;left:calc(50% - 60px)}
 .lk{text-align:center}
 .lk a{line-height:25px;padding:5px 15px;margin:5px;display:inline-block;border:1px solid #f5f5f5;border-bottom:1px solid #ab3737;border-top:1px solid #539bf5}
 .lk a.lmr{line-height:30px;border:1px solid #444;width:120px;margin:8px}
@@ -62,9 +55,7 @@ a:hover .pbline{height:150px!important;padding:80px 10px 10px!important}
 .dark .fm .swiper-button-next:after,.dark .fm .swiper-button-prev:after{color:#539bf5}
 .dark .lm .pimel{background:#22272e;color:#539bf5}
 .dark .lm .pimel.ltop{background:#539bf5;color:#22272e}
-.dark .itm svg path{fill:#adbac7}
 .dark h2.pbline{background-image:linear-gradient(transparent,#22272e);color:#e2f1ff}
-.dark .itm a:hover svg path{fill:#ab3737}
 .dark .iag a{border:1px solid #539bf5}
 .dark .iag a:hover{color:#ab3737;border:1px solid #ab3737}
 .dark .lk a{border:1px solid #22272e;border-bottom:1px solid #539bf5;border-top:1px solid #ab3737}
