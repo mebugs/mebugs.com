@@ -36,3 +36,13 @@ function backTop() {
 		}
 	},50);
 }
+// WaitForSVGInjectInit
+function initSvg(obj) {
+	try{
+	    SVGInject(obj);
+	}catch(e){
+	    setTimeout(function(){
+			initSvg(obj);
+		},200)
+	}
+}

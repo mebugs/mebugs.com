@@ -1,0 +1,21 @@
+.pt{margin:16px 0}
+.teami{display:flex;background:#e8eae6;padding:30px 15px}
+.teami img,.teami svg{width:70px;height:70px;padding:5px}
+.tmin{width:calc(100% - 70px);padding:5px;position:relative}
+.tmin span{position:absolute;right:0;top:-10px;width:70px;text-align:center;line-height:30px;background:#f5f5f5;color:#ab3737;font-weight:900}
+.tmin h1{line-height:30px;font-size:18px}
+.tmin p{line-height:30px;font-size:14px;color:#666}
+.teame a:hover .tmin span{background:#ab3737;color:#f5f5f5}
+.teame a:hover .tmin{padding-left:20px}
+.teame a:hover .tmin h1{color:#ab3737}
+.teame{margin:50px auto}
+.tage .tmin{width:100%;background:#e8eae6;padding:10px}
+.tage .tmin span{top:10px;right:10px;width:50px;font-size:13px}
+.tage .tmin h1{font-size:15px;width:calc(100% - 60px);line-height:35px}
+.tage .tmin p{padding-left:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dark .teami{background:#2d333b}
+.dark .tmin p{color:#8d9ead}
+.dark .tmin span{background:#22272e;color:#adbac7}
+.dark .teame a:hover .tmin span{background:#539bf5;color:#22272e}
+.dark .teame a:hover .tmin h1{color:#539bf5}
+.dark .tage .tmin{background:#2d333b}
