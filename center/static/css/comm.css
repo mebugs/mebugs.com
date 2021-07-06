@@ -1,0 +1,7 @@
+*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#cdd9e5;font-size:14px;transition:all .3s ease;box-sizing:border-box}
+html,body{border-radius:0;background-color:#22272e}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background-color:#6673a7}
+::-webkit-scrollbar-track{background-color:#2d333b}
+h1,h2,h3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
