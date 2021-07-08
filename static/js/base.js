@@ -29,12 +29,12 @@ function backTop() {
 	clearInterval(backTimer);
 	let startRun = bodyNode.scrollTop || document.documentElement.scrollTop;
 	backTimer = setInterval(function () {
-		startRun = Math.floor(startRun - (startRun * 0.2));
+		startRun = Math.floor(startRun - (startRun * 0.05));
 		window.scrollTo(0,startRun);
 		if(Math.floor(startRun) === 0) {
 			clearInterval(backTimer);
 		}
-	},50);
+	},10);
 }
 // WaitForSVGInjectInit
 function initSvg(obj) {

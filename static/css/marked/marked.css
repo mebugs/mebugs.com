@@ -1,1 +1,64 @@
 /* Edit Post And Code Style */
+.mark * {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+.mark p {
+    line-height: 2;
+    text-indent: 16px;
+}
+
+.mark {
+    padding: 15px;
+    background: #fefefe;
+}
+
+.mark h1,.mark h2,.mark h3 {
+    line-height: 2.5;
+    font-weight: 900;
+    position: relative;
+    padding-left: 16px;
+}
+
+.mark h1 {
+    font-size: 20px;
+}
+
+.mark h2 {
+    font-size: 18px;
+}
+
+.mark h3 {
+    font-size: 17px;
+}
+
+.mark img {
+    margin: 10px 16px;
+    border: 1px dotted #444;
+    max-width: calc(100% - 32px);
+}
+
+.mark h1:after,.mark h2:after,.mark h3:after {content: "";position: absolute;width: 6px;height: 20px;background: #444;left: 0;top: 17px;border-radius: 3px;}
+.mark h1:after{}
+.mark h2:after {
+    height: 16px;
+    width: 5px;
+    top: 14px;
+}
+.mark h3:after {
+    width: 4px;
+    height: 12px;
+    top: 16px;
+}
+
+.mark ol,.mark ul {
+    margin: 5px;
+    padding-left: 30px;
+}
+
+.mark ol li,.mark ul li {
+    padding-left: 10px;
+    line-height: 1.5;
+}

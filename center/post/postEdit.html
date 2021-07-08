@@ -17,18 +17,18 @@
 		<div class="input" :class="{'full':hideView}">
 			<textarea id="md" placeholder="请输入Markdown代码" v-model="md"></textarea>
 		</div>
-		<div id="html" class="output" :class="{'hide':hideView}"  v-html="html"></div>
+		<div id="html" class="output mark" :class="{'hide':hideView}"  v-html="html"></div>
 		<div class="pmenus" :class="{'showMenu':showMenu}">
-			<div v-if="mtree[0]">
+			<div class="menue" v-if="mtree[0]">
 				<ul>
 					<li v-for="l1 in mtree">
-						<a class="pl1" :href="'#menu_'+l1.id">{{ l1.text }}</a>
+						<a class="pl1" :href="'javascript:runTo(\'menu_'+l1.id+'\')'">{{ l1.text }}</a>
 						<ul v-if="l1.child[0]">
 							<li v-for="l2 in l1.child">
-								<a class="pl2" :href="'#menu_'+l2.id">{{ l2.text }}</a>
+								<a class="pl2" :href="'javascript:runTo(\'menu_'+l2.id+'\')'">{{ l2.text }}</a>
 								<ul v-if="l2.child[0]">
 									<li v-for="l3 in l2.child">
-										<a class="pl3" :href="'#menu_'+l3.id">{{ l3.text }}</a>
+										<a class="pl3" :href="'javascript:runTo(\'menu_'+l3.id+'\')'">{{ l3.text }}</a>
 									</li>	
 								</ul>
 							</li>	
