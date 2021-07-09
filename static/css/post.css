@@ -7,7 +7,7 @@
     width: 278px;
 	transition:unset;
     height: calc(100vh - 130px);
-    background: #fefefe;
+    background: #f9f9f9;
     padding: 20px 15px 20px 30px;
 	overflow-y:auto;
 	display: flex;

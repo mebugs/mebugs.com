@@ -6,7 +6,7 @@ h2{text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-cla
 body::-webkit-scrollbar,.menue::-webkit-scrollbar{width:12px;height:12px}
 body::-webkit-scrollbar-thumb,.menue::-webkit-scrollbar-thumb{background-color:#424242}
 body::-webkit-scrollbar-track,.menue::-webkit-scrollbar-track{background-color:#676767}
-body{background-color:#f5f5f5}
+body{background-color:#f0f0f0}
 header,footer,.r{width:100%}
 header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0}
 .headerbg header{background-color:#fefefe;height:70px;padding:10px 0}
@@ -37,7 +37,7 @@ header .w *{margin:0 15px}
 .m-10{margin:-10px}
 .row{margin-bottom:45px}
 .c .row:last-child{margin-bottom:5px}
-.box{background:#fefefe;padding:5px}
+.box{background: #f9f9f9;padding:5px;}
 .box a h2,.pagee a h2{padding:5px 0;line-height:22px;height: 54px;}
 .pa_6,.pa_4{display:flex;flex-wrap:wrap}
 .pa_6 a,.pa_4 a{display:block;margin:10px}
@@ -72,19 +72,19 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color: #222;}
 .itm a:hover img,.itm a:hover svg,.teame a:hover img,.teame a:hover svg{padding:8px}
 .peare{display:flex;align-items:center;justify-content:center;width:100%}
 .peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#e8eae6}
-.peare a.pnow,.peare a:hover{background:#fefefe;color:#ab3737}
+.peare a.pnow,.peare a:hover{background:#f9f9f9;color:#ab3737}
 /* dark Mode */
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb,body.dark .menue::-webkit-scrollbar-thumb{background-color:#676767}
 body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track{background-color:#424242}
 .dark *{color:#adbac7}
-.dark img{filter: brightness(80%) contrast(80%);}
+.dark img{filter: brightness(90%) contrast(90%);}
 .dark.headerbg header{background:#010101}
 .dark .menu a{color:#e2f1ff}
 .dark .rt{background-color:#2d333b}
 .dark footer{background:#2d333b}
 .dark .logo,.dark .temp{background-position-y: -50px;}
-.dark .box{background:#2d333b}
+.dark .box{background: #2d333b;}
 .dark a:hover h2,.dark footer a:hover,.dark .menu a:hover,.dark .menu a.mck,.dark .menue a:hover{color:#539bf5}
 .dark .mr:hover{color:#ab3737}
 .dark .ft h2 {color:#ddd;border-bottom:1px solid #adbac7}

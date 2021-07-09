@@ -63,10 +63,12 @@ function setShow() {
 function backTop() {
 	clearInterval(backTimer);
 	let startRun = bodyNode.scrollTop || document.documentElement.scrollTop;
+	let backOnce = Math.floor(startRun * 0.02);
 	backTimer = setInterval(function () {
-		startRun = Math.floor(startRun - (startRun * 0.05));
+		startRun = Math.floor(startRun - backOnce);
 		window.scrollTo(0,startRun);
-		if(Math.floor(startRun) === 0) {
+		if(Math.floor(startRun) <= 0) {
+			window.scrollTo(0,0);
 			clearInterval(backTimer);
 		}
 	},10);

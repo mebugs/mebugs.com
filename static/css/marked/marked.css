@@ -12,7 +12,7 @@
 
 .mark {
     padding: 15px;
-    background: #fefefe;
+    background: #f9f9f9;
 }
 
 .mark h1,.mark h2,.mark h3 {
@@ -62,3 +62,10 @@
     padding-left: 10px;
     line-height: 1.5;
 }
+.dark .mark,.dark .menue{
+    background: #2d333b;
+}
+.dark .mark h1:after,.dark .mark h2:after, .dark .mark h3:after{
+    background: #adbac7;
+}
+.dark .mark img{border: 1px dotted #adbac7;}
