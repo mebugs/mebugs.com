@@ -17,8 +17,5 @@ function runTo(id) {
 			window.scrollTo(0,runHeight);
 			clearInterval(runTimer);
 		}
-		console.log("FLAG"+runBig)
-		console.log("TO"+runHeight)
-		console.log("NOW"+runNow)
 	},10);
 }

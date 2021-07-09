@@ -19,7 +19,7 @@
 		</div>
 		<div id="html" class="output mark" :class="{'hide':hideView}"  v-html="html"></div>
 		<div class="pmenus" :class="{'showMenu':showMenu}">
-			<div class="menue" v-if="mtree[0]">
+			<div class="menue" id="menue" v-if="mtree[0]">
 				<ul>
 					<li v-for="l1 in mtree">
 						<a class="pl1" :href="'javascript:runTo(\'menu_'+l1.id+'\')'">{{ l1.text }}</a>
