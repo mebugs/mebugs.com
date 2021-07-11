@@ -1,44 +1,9 @@
-.prel {
-	position: relative;
-}
-.menue {
-    position: relative;
-    top: 0;
-    width: 278px;
-	transition:unset;
-    height: calc(100vh - 130px);
-    background: #f9f9f9;
-    padding: 20px 15px 20px 30px;
-	overflow-y:auto;
-	display: flex;
-	align-items: center;
-}
-.menue ul{
-	margin: auto 0;
-width: 100%;
-}
-.menus .menue {
-    position: fixed;
-    top: 100px;
-}
-.menue li {
-    line-height: 25px;
-}
-
-.menue li a {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.menue li ul {margin-left: 5px;}
-
-.menue li ul ul {
-    margin-left: 5px;
-}
-.menus.menuse .menue {
-    position: absolute;
-    bottom: 15px;
-    top: unset;
-}
+.prel{position:relative}
+.menue{position:relative;top:0;width:278px;transition:unset;height:calc(100vh - 130px);background:#f9f9f9;padding:20px 15px 20px 30px;overflow-y:auto;display:flex;align-items:center}
+.menue ul{margin:auto 0;width:100%}
+.menus .menue{position:fixed;top:100px}
+.menue li{line-height:25px}
+.menue li a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.menue li ul{margin-left:5px}
+.menue li ul ul{margin-left:5px}
+.menus.menuse .menue{position:absolute;bottom:15px;top:unset}
