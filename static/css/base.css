@@ -2,7 +2,7 @@
 *{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#444;font-size:15px;box-sizing:border-box}
 img{display:block;width:100%;height:100%;}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-h2{text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-weight:normal}
+h2{text-overflow:ellipsis;white-space: nowrap;width: 100%;overflow: hidden;font-weight:normal;}
 body::-webkit-scrollbar,.menue::-webkit-scrollbar{width:12px;height:12px}
 body::-webkit-scrollbar-thumb,.menue::-webkit-scrollbar-thumb{background-color:#424242}
 body::-webkit-scrollbar-track,.menue::-webkit-scrollbar-track{background-color:#676767}
@@ -38,7 +38,7 @@ header .w *{margin:0 15px}
 .row{margin-bottom:45px}
 .c .row:last-child{margin-bottom:5px}
 .box{background: #f9f9f9;padding:5px;}
-.box a h2,.pagee a h2{padding:5px 0;line-height:22px;height: 54px;}
+.box a h2,.pagee a h2{padding:5px 0;line-height: 25px;}
 .pa_6,.pa_4{display:flex;flex-wrap:wrap}
 .pa_6 a,.pa_4 a{display:block;margin:10px}
 .pa_6 a{width:calc(50% - 20px)}
@@ -48,6 +48,7 @@ footer{background:#e8eae6}
 .headerbg .back_top{bottom:60px}
 a:hover .scale{transform:scale(1.1)}
 a:hover h2,footer a:hover,.menu a:hover,.menu a.mck,.menue a:hover{color:#ab3737}
+a:hover .pdesc{color:#444}
 .mr:hover{color:#539bf5}
 footer a{font-size:15px;font-weight:900;display:inline-block;color: #222;}
 .ft p{font-size:14px;line-height:25px}
@@ -61,14 +62,14 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color: #222;}
 .fu p{line-height:30px}
 .fu em{margin:0 5px;font-size:14px;font-style:normal}
 .pime{width:100%;height:240px;overflow:hidden}
-.pinfb{padding:0 5px}
+.pinfb{padding:0 5px;width: 100%;}
 .pdesc{line-height:20px;font-size:12px;height:60px;color: #999;text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pt{height:60px;position:relative;overflow:hidden;margin:10px}
 .pt h1{line-height:35px;font-size:23px;width:120px;text-align:center;font-weight:normal}
 .pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#ab3737,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#539bf5,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
 .pct h1{margin:0 auto}
 .pct:before{width:120px;left:calc(50% - 60px)}
-.itm a:hover svg path,.teame a:hover svg path{fill:#539bf5}
+.itm a:hover svg path,.teame a:hover svg path{fill: #ab3737;}
 .itm a:hover img,.itm a:hover svg,.teame a:hover img,.teame a:hover svg{padding:8px}
 .peare{display:flex;align-items:center;justify-content:center;width:100%}
 .peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#e8eae6}
@@ -90,6 +91,7 @@ body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track{bac
 .dark .ft h2 {color:#ddd;border-bottom:1px solid #adbac7}
 .dark footer a {color:#c8d5e2}
 .dark .pdesc{color:#8d9ead}
+.dark a:hover .pdesc{color:#adbac7}
 .dark .itm svg path,.dark .teame svg path{fill:#adbac7}
 .dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#ab3737}
 .trans,.trans *{transition:all .4s ease;}
