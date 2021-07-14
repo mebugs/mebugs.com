@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	    autoplay: {
 	        disableOnInteraction: false,
 	        stopOnLastSlide: false,
-	        delay: 6000
+	        delay: 5000
 	    },
 		speed: 900,
 		navigation: {nextEl: '.swiper-button-next',prevEl:'.swiper-button-prev'}

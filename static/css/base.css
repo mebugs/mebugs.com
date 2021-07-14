@@ -74,6 +74,26 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color: #222;}
 .peare{display:flex;align-items:center;justify-content:center;width:100%}
 .peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#e8eae6}
 .peare a.pnow,.peare a:hover{background:#f9f9f9;color:#ab3737}
+.pm a,.lm a,.itm{display:flex;flex-wrap:wrap}
+.lm a{margin:5px 0}
+.pimel{width:100px;height:65px;overflow:hidden;position:relative}
+.lm .pimel{width:35px;height:35px;margin: 14.5px 7.5px;background:#f0f0f0;color:#ab3737;border-radius:10px;line-height:34px;text-align:center;}
+.lm .pimel.ltop{background:#ab3737;color:#f0f0f0}
+.pinfr{width:calc(100% - 100px);padding-left: 7px;}
+.pm a .pinfr h2{
+    padding: 2.5px 0;
+}
+.pinfr .pdesc,.pbline  .pdesc{
+    line-height: 17px;
+    -webkit-line-clamp: 2;
+    height: 35px;
+}
+.mr{position:absolute;right:0}
+
+.mequc{display:flex;flex-wrap:wrap}
+.mequci{width:50%;height:115px;padding:10px}
+.mequci *{width:100%;height:100%;display:block}
+.mequci a{position:relative;overflow:hidden}
 /* dark Mode */
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb,body.dark .menue::-webkit-scrollbar-thumb{background-color:#676767}
@@ -93,7 +113,7 @@ body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track{bac
 .dark .pdesc{color:#8d9ead}
 .dark a:hover .pdesc{color:#adbac7}
 .dark .itm svg path,.dark .teame svg path{fill:#adbac7}
-.dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#ab3737}
+.dark .itm a:hover svg path,.dark .teame a:hover svg path{fill: #539bf5;}
 .trans,.trans *{transition:all .4s ease;}
 .dark .peare a{background:#2d333b}
 .dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#539bf5}
