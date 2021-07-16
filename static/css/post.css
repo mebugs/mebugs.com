@@ -179,9 +179,14 @@
 }
 
 .comp h1 a {
-    font-size: 13px;
+    font-size: 12px;
     color: #ab3737;
     margin: 0 5px;
+    line-height:22px;
+    padding:0 10px;
+    border:1px solid;
+    display:inline-block;
+    border-radius:12px;
 }
 .comp h1 a:hover{color:#539bf5;}
 .comp p {
@@ -191,6 +196,7 @@
     line-height: 1.5;
     border-radius: 6px;
     margin-top: 5px;
+    font-size:14px;
 }
 
 .comp p:after {content: "";position: absolute;display: block;left: 10px;top: -8px;width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #f0f0f0;}
@@ -203,6 +209,23 @@
 }
 .comml ul ul li .comp {
     width: 100%;
+}
+.pst .pt h1 {
+    width: 100%;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.pst .pdest {
+    background: #f0f0f0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.dark .pst .pdest {
+    background: #22272e;
 }
 .dark .nipt input,.dark .ctxe textarea {
     background: #010101;
@@ -217,3 +240,31 @@
 }
 .dark .navt p,.dark .sendc a{background: #539bf5;}
 .dark .navt p:hover,.dark .sendc a:hover{background: #ab3737;}
+.dark .comp h1 {
+    color: #adbac7;
+}
+
+.dark .comp h1 b,.dark .comp h1 a {
+    color: #539bf5;
+}
+
+.dark .comp h1 a:hover {
+    color: #ab3737;
+}
+
+.dark .comp p {
+    color: #adbac7;
+    background: #22272e;
+}
+
+.dark .comp p:after {
+    border-bottom: 10px solid #22272e;
+}
+
+.dark .comml li {
+    border-bottom: 1px solid #010101;
+}
+
+.dark .comml ul ul li {
+    border: 0;
+}
