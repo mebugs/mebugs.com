@@ -23,10 +23,7 @@
 .pbline  .pdesc{
     color: #444;
 }
-.lm .pinfr{width:calc(100% - 50px);padding: 5px 0;}
-.lm .pinfr h2{
-    line-height: 44px;
-}
+
 .fm{height:520px}
 .fm .swiper-slide{display:flex;flex-wrap:wrap}
 .fm a,.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
@@ -40,17 +37,17 @@ a:hover .pbline{height: 110px!important;padding: 20px 10px!important;background:
 .iag .ags{height:100%;overflow:hidden;height:590px}
 .iag a{display:inline-block;line-height:30px;border: 1px solid;padding:0 15px;margin:5px;font-size:14px;}
 .iag a:hover,.iag a:hover svg path{color: #bd3737;}
-.lk{text-align:center}
-.lk a{line-height:25px;padding:5px 15px;margin:5px;display:inline-block;border: 1px solid;}
-.lk a.lmr{line-height:30px;border: 1px solid #ab3737;width:120px;margin:8px;background: #f9f9f9;}
-.lk a:hover{color:#ab3737;background:#f9f9f9;}
+.lk,.lk .lmr{text-align:center;display: flex;flex-wrap: wrap;justify-content: center;}
+.lk a{line-height:25px;padding:5px 15px;margin:10px;display:inline-block;border: 1px solid;width: calc(12.5% - 20px);}
+.lk .lmr{width:100%}
+.lk .lmr a{line-height:30px;border: 1px solid #ab3737;width:120px;margin:8px;background: #f9f9f9;}
+.lk a:hover{color:#ab3737;background: #f0f0f0;}
 .dark .bann span.swiper-pagination-bullet{background:#539bf5}
 .dark .mine{background:#22272e}
 .dark .conn{background-position-y:60px}
 .dark .fm .swiper-button-next,.dark .fm .swiper-button-prev{background:rgba(0,0,0,0.8)}
 .dark .fm .swiper-button-next:after,.dark .fm .swiper-button-prev:after{color:#539bf5}
-.dark .lm .pimel{background:#22272e;color:#539bf5}
-.dark .lm .pimel.ltop{background:#539bf5;color:#22272e}
+
 .dark .pbline{background: rgba(34,39,46,0.7);}
 .dark a:hover .pbline{
     background: rgba(34,39,46,0.9);
@@ -60,5 +57,5 @@ a:hover .pbline{height: 110px!important;padding: 20px 10px!important;background:
 .dark .iag a{}
 .dark .iag a svg path{color: #adbac7;}
 .dark .lk a{}
-.dark .lk a.lmr{background: #2d333b;border: 1px solid #319bf5;}
-.dark .lk a:hover{color:#539bf5;background:#2d333b;}
+.dark .lk .lmr a{background: #2d333b;border: 1px solid #319bf5;}
+.dark .lk a:hover{color:#539bf5;background: #22272e;}

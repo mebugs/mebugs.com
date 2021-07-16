@@ -4,10 +4,12 @@ var backTimer;
 var bodyNode = document.body;
 bodyNode.classList.add(show);
 setTimeout(function() {bodyNode.classList.add("trans");}, 100);
-var mHeight = document.getElementById("menue") ? document.getElementById("menue").getBoundingClientRect().top - 90 : false;
-var mEnd = mHeight ? getMendHeight() : false;
 var cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 var sTop = 0;
+
+var mHeight = document.getElementById("menue") ? document.getElementById("menue").getBoundingClientRect().top - 90 : false;
+var mRHeight = mHeight ? document.getElementById("rhot").getBoundingClientRect().top : false;
+var mEnd = mHeight ? getMendHeight() : false;
 window.addEventListener("scroll", function () {
 	sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
 	if(sTop > 50) {
@@ -26,6 +28,13 @@ window.addEventListener("scroll", function () {
 		} else {
 			bodyNode.classList.remove("menus");
 		}
+    if(mRHeight) {
+      if(sTop > mRHeight)  {
+        bodyNode.classList.add("rfix");
+      } else {
+        bodyNode.classList.remove("rfix");
+      }
+    }
 	}
 })
 // update 20 since five sc
@@ -37,14 +46,15 @@ function getMendHeight() {
 		mEnd = doGetMendHeight();
 		upF ++;
 		console.log(mEnd);
-		if(upF > 20) {
+		if(upF > 200) {
 			clearInterval(upTimer);
 		}
-	},3000);
+	},50);
 	return doGetMendHeight();
 }
 function doGetMendHeight() {
 	var endH = document.getElementById("mother").getBoundingClientRect().top + sTop;
+  mRHeight = document.getElementById("rhot").getBoundingClientRect().top + sTop;
 	return endH - cH;
 }
 // set show light or dark

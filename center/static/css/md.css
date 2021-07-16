@@ -7,3 +7,9 @@ textarea#md{width:100%;height:100%;resize:none;outline:0;border:2px solid #6673a
 .pmenus{position:absolute;width:500px;height: calc(100% - 65px);background: #22272e;top: 50px;right: -500px;opacity:0;overflow:auto;border-left: 2px solid #6673a7;}
 .showMenu{right: 0;opacity:1;}
 .tools button{line-height:40px;border:0;outline:0;margin:0 5px;padding:0 15px;background:#6673a7;color: #eee;cursor:pointer;}
+.menue ul{width:100%}
+.menus ul{margin:auto 0;}
+.menue li{line-height:25px}
+.menue li a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.menue li ul{margin-left:5px}
+.menue li ul ul{margin-left:5px}
