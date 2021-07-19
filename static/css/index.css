@@ -5,7 +5,7 @@
 .fm .swiper-button-next{right:0}
 .fm .swiper-button-prev{left:0}
 .fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#ab3737}
-.mine{background: #f9f9f9;height:435px;padding:5px;}
+.mine{background:#f9f9f9;height:435px;padding:5px}
 .meavt{display:flex;padding:7px 5px}
 .avtor{display:block;width:90px;height:90px;border-radius:45px}
 .amore{width:40px}
@@ -19,43 +19,34 @@
 .cge{background-position-x:180px}
 .cgb{background-position-x:240px}
 .conn:hover{transform:scale(0.9);opacity:.8}
-
-.pbline  .pdesc{
-    color: #444;
-}
-
+.pbline .pdesc{color:#444}
 .fm{height:520px}
 .fm .swiper-slide{display:flex;flex-wrap:wrap}
 .fm a,.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
-.pbline{position:absolute;z-index:10;bottom:0;height: 90px!important;padding: 10px;background: rgba(240,240,240,0.7);width: 100%;}
+.pbline{position:absolute;z-index:10;bottom:0;height:90px!important;padding:10px;background:rgba(240,240,240,0.7);width:100%}
 .pbline h2{color:#000}
-a:hover .pbline{height: 110px!important;padding: 20px 10px!important;background: rgba(240,240,240,0.9);}
+a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rgba(240,240,240,0.9)}
 .itm a{width:calc(25% - 10px);margin:7px 5px;display:block}
 .itm img,.itm svg{width:60px;height:60px;margin:8px auto;display:block;padding:5px}
 .itm a h2{line-height:40px;text-align:center;height:40px;padding:0}
 .iag{text-align:center;padding:10px}
 .iag .ags{height:100%;overflow:hidden;height:590px}
-.iag a{display:inline-block;line-height:30px;border: 1px solid;padding:0 15px;margin:5px;font-size:14px;}
-.iag a:hover,.iag a:hover svg path{color: #bd3737;}
-.lk,.lk .lmr{text-align:center;display: flex;flex-wrap: wrap;justify-content: center;}
-.lk a{line-height:25px;padding:5px 15px;margin:10px;display:inline-block;border: 1px solid;width: calc(12.5% - 20px);}
+.iag a{display:inline-block;line-height:30px;border:1px solid;padding:0 15px;margin:5px;font-size:14px}
+.iag a:hover,.iag a:hover svg path{color:#bd3737}
+.lk,.lk .lmr{text-align:center;display:flex;flex-wrap:wrap;justify-content:center}
+.lk a{line-height:25px;padding:5px 15px;margin:10px;display:inline-block;border:1px solid;width:calc(12.5% - 20px)}
 .lk .lmr{width:100%}
-.lk .lmr a{line-height:30px;border: 1px solid #ab3737;width:120px;margin:8px;background: #f9f9f9;}
-.lk a:hover{color:#ab3737;background: #f0f0f0;}
+.lk .lmr a{line-height:30px;border:1px solid #ab3737;width:120px;margin:8px;background:#f9f9f9}
+.lk a:hover{color:#ab3737;background:#f0f0f0}
 .dark .bann span.swiper-pagination-bullet{background:#539bf5}
 .dark .mine{background:#22272e}
 .dark .conn{background-position-y:60px}
 .dark .fm .swiper-button-next,.dark .fm .swiper-button-prev{background:rgba(0,0,0,0.8)}
 .dark .fm .swiper-button-next:after,.dark .fm .swiper-button-prev:after{color:#539bf5}
-
-.dark .pbline{background: rgba(34,39,46,0.7);}
-.dark a:hover .pbline{
-    background: rgba(34,39,46,0.9);
-}
-.dark .pbline h2{color:#e2f1ff;}
+.dark .pbline{background:rgba(34,39,46,0.7)}
+.dark a:hover .pbline{background:rgba(34,39,46,0.9)}
+.dark .pbline h2{color:#e2f1ff}
 .dark .pbline .pdesc{color:#adbac7}
-.dark .iag a{}
-.dark .iag a svg path{color: #adbac7;}
-.dark .lk a{}
-.dark .lk .lmr a{background: #2d333b;border: 1px solid #319bf5;}
-.dark .lk a:hover{color:#539bf5;background: #22272e;}
+.dark .iag a svg path{color:#adbac7}
+.dark .lk .lmr a{background:#2d333b;border:1px solid #319bf5}
+.dark .lk a:hover{color:#539bf5;background:#22272e}

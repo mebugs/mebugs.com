@@ -1,456 +1,484 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="renderer" content="webkit">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<!-- <meta name="referrer" content="no-referrer"/> -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<title></title>
-		<meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<link rel="icon" href="">
-		<link rel="shortcut icon" href="">
-		<link rel="apple-touch-icon-precomposed" href="">
-		<link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-		<link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
-		<link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" />
-	</head>
-	<body>
-		<header>
-			<div class="w">
-				<div class="logo"></div>
-				<div class="menu">
-					<a href="/">首页</a>
-					<a href="/posts/new_1.html">文章</a>
-					<a href="/category">分类</a>
-					<a href="/tags">标签</a>
-					<a class="mck" href="/other/about.html">关于</a>
-					<a href="/other/link.html">友链</a>
-					<a href="/other/msg.html">留言</a>
-					<a href="/other/map.html">地图</a>
-				</div>
-				<div class="temp" onclick="setShow()"></div>
-			</div>
-		</header>
-		<div class="r rt">
-			<div class="w tb_15">
-				<div class="c c_12 pst">
-					<div class="pt pct">
-						<h1>关于米虫丨本站丨一些寄语</h1>
-					</div>
-					<div class="pdest">
-						关于米虫的个人经历，本站的起源，域名的由来与意义。大致介绍构建本站的整体方案。个人过往经历的感悟，一些想法与体会，与君分享，与君共勉，希望您有所收获！
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="r">
-			<div class="w tb_15">
-				<div class="c c_3 prel">
-					<div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">关于本站</a> <ul><li><a href="javascript:runTo('menu_2')" class="pl2">域名与站名</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl2">本站构建技术栈</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">关于本站内容</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl2">早期博客剪影</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_6')" class="pl1">关于个人</a> <ul><li><a href="javascript:runTo('menu_7')" class="pl2">个人经历概述</a> <!----></li><li><a href="javascript:runTo('menu_8')" class="pl2">一些寄语</a> <!----></li></ul></li></ul></div>				
-				</div>
-				<div class="c c_9">
-          <div class="mban">
-            <img src="/test/test7.jpg"/>
-          </div>
-					<div id="html" class="output mark"><h1 id="menu_1">关于本站</h1><h2 id="menu_2">域名与站名</h2><p>本站是一本个人修炼手册，用于记录个人学习历程、整理问题处理经验、分享工作心得体会、自我充电进步提升！</p>
-					<p>Me：我。</p>
-					<p>Bug：虫、程序漏洞、问题。</p>
-					<p>S：复数。</p>
-					<p>MeBugS：我的与我所遇到的问题。</p>
-					<p>域名的意义与本站的核心思想完全符合，这就是本站域名的由来。</p>
-					<p>至于站名为啥叫米虫？总不能叫【我的问题】吧。</p>
-					<p>某种意义上的谐音，就叫米虫了。</p>
-					<p>个人还是比较羡慕米虫这种生物，成为一个米虫，是我人生的终极目标！发一听...</p>
-					<h2 id="menu_3">本站构建技术栈</h2><p>本站是一个独立的个人博客，并没有提供太多社交属性的相关功能。</p>
-					<p>在早期，米虫折腾过很多开源的建站程序，如：Wordpress、Dedecms、Discuz！、Typecho、PhpWind、Ecshop等。</p>
-					<p>这其过程中个人从非 IT 行业人士到转行进入 IT 行业，某种意义上转行 IT 也是对 WEB 应用充满了浓烈的兴趣。</p>
-					<p>在不断折腾下，从一无所知开始自学HTML、CSS、JS到能够快速编写静态网页，基于开源程序使用过或自行修改过不少网站模板，也会扒一些国外的代码研究。</p>
-					<p>但是无论是多精简和轻便的开源程序始终对于个人而言会存在冗余的功能，在初期访问速度很快，一旦数据量增多之后执行效率就大打折扣。</p>
-					<p>于是米虫萌生了放弃使用开源建站程序的念头，因此本站并未使用任何开源建站程序。</p>
-					<p>本站服务端的构建基于 PHP 7.4，数据库使用 MySql 5.7，整体结构为前后端分离形式。</p>
-					<p>虽然服务端采用了 PHP，但实际所访问的页面都是静态 HTML，并不是简单的伪静态规则或者 Nginx 转发规则。</p>
-					<p>下图以发布文章举例：</p>
-					<p><img src="/static/upload/post/image-20210706160820868.jpg" alt="image-20210706160820868"></p>
-					<p>本站前端界面未采用任何UI框架包括 Jquery，JS 交互均采用原生的方式编写，CSS 尽量进行了公共抽离，减少冗余的代码。</p>
-					<p>本站前端的动画特效均使用 CSS3 特性完成，意味着对于 IE 9 以下的浏览器兼容性不佳。</p>
-					<p>本站前端实现了自适应，能够有好的支持平台和移动终端的访问。</p>
-					<p>本站前端采用 PHP 生成的静态 HTML 提供访问，网页关键信息均生成在 HTML 中确保 SEO 效果。</p>
-					<p>由于所有访问均为静态 HTML，不涉及服务端和数据库交互，这将具备更高的性能和更多的访问压力。</p>
-					<p>本站管理端引入了 LayUI、Jquery、Vue、Marked 等核心插件，由于管理端不对外开放，在细节性能等方面就相对粗犷。</p>
-					<p>这里也不再赘述。</p>
-					<h2 id="menu_4">关于本站内容</h2><p>米虫自认为有比较良好的工作学习习惯，在通信期间，米虫整理的 TD-SCDMA 入门到晋阶也给不少同行带来很大的帮助。</p>
-					<p>转行后，米虫有三四个笔记本已经写满了各种经验/教训/小结，小到 SQL 的语法格式，大到框架融合。</p>
-					<p>有时候自己寻找查询并不方便，于是这样的个人博客应运而生。</p>
-					<p>本站主要作用是米虫个人学习整理、经验小结的独立博客。</p>
-					<p>内容主要涉猎于 IT 行业技术学习总结、问题整理记录、思考分析归纳。</p>
-					<p>目前主要包含 Java、Go、Python、PHP 四门编程语言。</p>
-					<p>包含数据库、服务端运维、前端、架构、数据、网络、移动端、分布式的等多个维度。</p>
-					<p>此外包含个人的一些开源项目、在线案例分享、工具教程和分享等。</p>
-					<p>具体您可以查看分类中心，希望您能有所收获。</p>
-					<h2 id="menu_5">早期博客剪影</h2><p>早期的博客有很多没留下痕迹，少许还能复原，留个记忆。</p>
-					<p><img src="/static/upload/post/image-20210706162258076.jpg" alt="image-20210706162258076"></p>
-					<p><img src="/static/upload/post/image-20210706162328570.jpg" alt="image-20210706162328570"></p>
-					<p><img src="/static/upload/post/image-20210706164102833.jpg" alt="image-20210706164102833"></p>
-					<p><img src="/static/upload/post/image-20210706164133954.jpg" alt="image-20210706164133954"></p>
-					<p><img src="/static/upload/post/image-20210706164153047.jpg" alt="image-20210706164153047"></p>
-					<p><img src="/static/upload/post/image-20210706164214954.jpg" alt="image-20210706164214954"></p>
-					<p><img src="/static/upload/post/image-20210706164241882.jpg" alt="image-20210706164241882"></p>
-					<p><img src="/static/upload/post/image-20210706164306008.jpg" alt="image-20210706164306008"></p>
-					<h1 id="menu_6">关于个人</h1><h2 id="menu_7">个人经历概述</h2><p>米虫，一个九流大专院校毕业的普通学生，所学专业移动通信技术，既不是学生会干部，也不是学霸。</p>
-					<p>大二那年一家国营通信服务公司到学校搞校企合作顺带招人，老师让我们这些对于未来感到迷茫的小伙伴们也去感受一下。</p>
-					<p>机缘巧合之下，米虫被选去体验实习两个月，勤恳、积极、主动的工作学习态度受到上级的认可后来被提前录用。</p>
-					<p>于是米虫放荡不羁的大学生活被提前终止，并走上了通信网络优化这条不归路。</p>
-					<p>对于比较看重毕业生就业率的大专院校而言，通通绿灯，后续的课程我都没有参与，当然学费还是要正常缴。</p>
-					<p>由于工作性质原因，接下来的 4 年米虫跑遍了大江南北，在 28 个城市驻留工作，短则两个月，长则一年。</p>
-					<p>每年除了年会可有可无的在公司总部冒个泡之外，一年 365 天有 360 天在外出差。</p>
-					<p>这听起来是个很不错的差事，薪水也足够丰厚，但实际上出差工作与外出旅游完全是两个不同的概念。</p>
-					<p>2014 年，亲人濒临故去，连夜从内蒙古包头做飞机赶往上海，深夜抵达上海市接到撒手人寰的噩耗时，那种撕心裂肺的痛楚令我无法忘怀。</p>
-					<p>于是个人开始谋求改变，从远途出差申请调动到江浙沪一代，接收降薪降维，工作和未来变得一片迷茫。</p>
-					<p>2015 年，我申请到家乡工作，被派往邻县，薪水已经折半，工作性质更是降维到无法忍受的地步，我做出了人生中最重要的决定。</p>
-					<p>跳出舒适圈，重头再来，凭借兴趣选择一条全新的道路，这里也要非常感谢父母的鼓励与支持。</p>
-					<p>工资再次大幅度缩水，甚至不到原本的四分之一，面对全新的事物，很艰难，但始终有股力量在支撑着我不断前进。</p>
-					<p>时光如水，恍然优势多年，从萌新到一个九流程序员，说难似乎也没有那么难。</p>
-					<p>安居一城的米虫不再彷徨，不再东奔西走，爱上一个人，拥有一个家，还有个可爱的闺女，简单的生活，平凡的人生。</p>
-					<p>此前的种种，偶尔会想起，无论有快乐还是悲伤总是慢慢被藏起，埋在记忆的深处。</p>
-					<p>无论未来怎么样，我始终坚信：</p>
-					<p>一切都是最好的选择！</p>
-					<h2 id="menu_8">一些寄语</h2><p>分享米虫的经历给大家，是希望大家都能找到自己的路，一时的迷茫不要灰心，总有拨云见日的时候。</p>
-					<ol>
-					<li>给自己一个目标，正确认知自我，努力拼，才会赢。</li>
-					<li>如果年轻不能让自己满意，那余生只会为遗憾而懊悔。</li>
-					</ol>
-					<p>正确认知自己的兴趣，让工作与兴趣做更好的融合，你会更加快乐！</p>
-					<ul>
-					<li>愿你可以寻找到适合自己的路！</li>
-					<li>愿你可以寻找到适合自己的人！</li>
-					<li>愿你往后余生，每天快乐幸福！</li>
-					</ul>
-					<p>本站如果能让您有所收获，亦我所愿！</p>
-					<p>感谢您的阅读！</p>
-					</div>
-				</div>
-				<div class="c c_9">
-					<div id="mother">
-						<div class="row">
-							<div class="pt">
-								<h1>发表观点</h1>
-							</div>
-							<div class="box">
-								<div class="comme">
-									<div class="namee">
-										<div class="navt" onclick="chooseAvt()">
-											<img src="/test/test6.jpg" />
-											<p>选择头像</p>
-										</div>
-										<div class="nxinfo">
-										<div class="nipt">
-											<p>昵称</p>
-											<input id="name" type="text" placeholder="*必填,请输入您的昵称">
-										</div>
-										<div class="nipt">
-											<p>邮箱</p>
-											<input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱">
-										</div>
-										<div class="nipt">
-											<p>QQ</p>
-											<input id="qq" type="text" placeholder="选填,请输入您的联系QQ">
-										</div>
-										<div class="nipt">
-											<p>网址</p>
-											<input id="url" type="text" placeholder="选填,请输入您的个人主页地址">
-										</div>
-										</div>
-									</div>
-									<div class="ctxe">
-										<textarea name="coms" placeholder="*必填,请输入您的精彩观点"></textarea>
-									</div>
-									<div class="sendc">
-										<a href="javascript:sendComms(10,1,0)">提交观点</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="commi">
-								<p>当前累计<b>1000</b>条观点！一起看看吧！</p>
-							</div>
-							<div class="box">
-								<div class="comml">
-									<ul id="commea">
-                    <li>
-                      <div class="comli">
-                        <img src="/test/test6.jpg">
-                        <div class="comp">
-                          <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendComms(10,2,11)">评论TA</a></h1>
-                          <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                        </div>
-                      </div>
-                      <ul>
-                        <li>
-                          <div class="comli">
-                            <div class="comp"><!-- 2级评论 -->
-                              <h1><b>德玛西亚</b>丨2020-11-11 评论本楼丨<a href="javascript:sendComms(10,3,12)">回复TA</a></h1>
-                              <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="comli">
-                            <div class="comp"><!-- 3级回复 -->
-                              <h1><b>木梁先生</b>丨2020-11-11 回复<b>德玛西亚</b>丨<a href="javascript:sendComms(10,3,14)">回复TA</a></h1>
-                              <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <div class="comli">
-                        <img src="/test/test6.jpg">
-                        <div class="comp">
-                          <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendComms(10,2,11)">评论TA</a></h1>
-                          <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="comli">
-                        <img src="/test/test6.jpg">
-                        <div class="comp">
-                          <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendComms(10,2,11)">评论TA</a></h1>
-                          <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                        </div>
-                      </div>
-                      <ul>
-                        <li>
-                          <div class="comli">
-                            <div class="comp"><!-- 2级评论 -->
-                              <h1><b>德玛西亚</b>丨2020-11-11 评论本楼丨<a href="javascript:sendComms(10,3,12)">回复TA</a></h1>
-                              <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="comli">
-                            <div class="comp"><!-- 2级评论 -->
-                              <h1><b>陆先生</b>丨2020-11-11 评论本楼丨<a href="javascript:sendComms(10,3,12)">回复TA</a></h1>
-                              <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="comli">
-                            <div class="comp"><!-- 3级回复 -->
-                              <h1><b>木梁先生</b>丨2020-11-11 回复<b>德玛西亚</b>丨<a href="javascript:sendComms(10,3,14)">回复TA</a></h1>
-                              <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-								</div>
-                <div class="comore">
-                  <a id="comodoo" href="javascript:moreComs(10)">更多观点</a>
-                  <p id="comolod">加载中...</p>
-                  <p id="comonul">已经到底啦~.~</p>
-                </div>
-							</div>
-						</div>
-            <div class="row"></div>
-					</div>
-					  <div class="row">
-						<div class="box">
-							<div class="mequc indimg"><!-- 首页四张图 -->
-								<div class="mequci">
-								 <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-								</div> 
-								<div class="mequci"> 
-								 <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-								</div> 
-								<div class="mequci"> 
-								 <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-								</div> 
-								<div class="mequci"> 
-								 <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-								</div> 
-							</div>
-						</div>
-					</div>	
-            <div class="row">
-							<div class="pt">
-								<h1>新鲜发布</h1>
-								<a class="mr" href="/posts/new_1.html">More&gt;</a> 
-							</div>
-							<div class="box pm pa_6">
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test2.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test4.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href="">
-							  <div class="pimel">
-							   <img class="scale" src="/test/test5.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test6.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							  <a href="">
-							   <div class="pimel">
-							    <img class="scale" src="/test/test8.jpg" />
-							   </div> 
-							   <div class="pinfr"> 
-							    <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							    <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							   </div> </a> 
-							  <a href=""> 
-							   <div class="pimel">
-							    <img class="scale" src="/test/test9.jpg" />
-							   </div> 
-							   <div class="pinfr"> 
-							    <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							    <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							   </div> </a> 
-							</div>
-						</div>
-						<div class="row">
-							<div class="pt">
-								<h1>近期热门</h1>
-								<a class="mr" href="/posts/up_1.html">More&gt;</a> 
-							</div>
-							<div class="box pm pa_6">
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test2.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test4.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href="">
-							  <div class="pimel">
-							   <img class="scale" src="/test/test5.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test6.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							  <a href="">
-							   <div class="pimel">
-							    <img class="scale" src="/test/test8.jpg" />
-							   </div> 
-							   <div class="pinfr"> 
-							    <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							    <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							   </div> </a> 
-							  <a href=""> 
-							   <div class="pimel">
-							    <img class="scale" src="/test/test9.jpg" />
-							   </div> 
-							   <div class="pinfr"> 
-							    <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							    <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							   </div> </a> 
-							</div>
-						</div>
-						<div class="row">
-							<div class="pt">
-								<h1>随便看看</h1>
-								<a class="mr" href="/posts/rand_1.html">More&gt;</a>
-							</div>
-							<div class="box pm pa_6">
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test2.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test4.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href="">
-							  <div class="pimel">
-							   <img class="scale" src="/test/test5.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							 <a href=""> 
-							  <div class="pimel">
-							   <img class="scale" src="/test/test6.jpg" />
-							  </div> 
-							  <div class="pinfr"> 
-							   <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							   <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							  </div> </a> 
-							  <a href="">
-							   <div class="pimel">
-							    <img class="scale" src="/test/test8.jpg" />
-							   </div> 
-							   <div class="pinfr"> 
-							    <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							    <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							   </div> </a> 
-							  <a href=""> 
-							   <div class="pimel">
-							    <img class="scale" src="/test/test9.jpg" />
-							   </div> 
-							   <div class="pinfr"> 
-							    <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-							    <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-							   </div> </a> 
-							</div>
-						</div>
-					</div>
-				<div class="c c_3 prer">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title></title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="" /> 
+  <link rel="icon" href="" /> 
+  <link rel="shortcut icon" href="" /> 
+  <link rel="apple-touch-icon-precomposed" href="" /> 
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+ </head> 
+ <body> 
+  <header> 
+   <div class="w"> 
+    <div class="logo"></div> 
+    <div class="menu"> 
+     <a href="/">首页</a> 
+     <a href="/posts/new_1.html">文章</a> 
+     <a href="/category">分类</a> 
+     <a href="/tags">标签</a> 
+     <a class="mck" href="/other/about.html">关于</a> 
+     <a href="/other/link.html">友链</a> 
+     <a href="/other/msg.html">留言</a> 
+     <a href="/other/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div> 
+   </div> 
+  </header> 
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct"> 
+      <h1>关于米虫丨本站丨一些寄语</h1> 
+     </div> 
+     <div class="pdest">
+       关于米虫的个人经历，本站的起源，域名的由来与意义。大致介绍构建本站的整体方案。个人过往经历的感悟，一些想法与体会，与君分享，与君共勉，希望您有所收获！ 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue">
+      <ul>
+       <li><a href="javascript:runTo('menu_1')" class="pl1">关于本站</a> 
+        <ul>
+         <li><a href="javascript:runTo('menu_2')" class="pl2">域名与站名</a> 
+          <!----></li>
+         <li><a href="javascript:runTo('menu_3')" class="pl2">本站构建技术栈</a> 
+          <!----></li>
+         <li><a href="javascript:runTo('menu_4')" class="pl2">关于本站内容</a> 
+          <!----></li>
+         <li><a href="javascript:runTo('menu_5')" class="pl2">早期博客剪影</a> 
+          <!----></li>
+        </ul></li>
+       <li><a href="javascript:runTo('menu_6')" class="pl1">关于个人</a> 
+        <ul>
+         <li><a href="javascript:runTo('menu_7')" class="pl2">个人经历概述</a> 
+          <!----></li>
+         <li><a href="javascript:runTo('menu_8')" class="pl2">一些寄语</a> 
+          <!----></li>
+        </ul></li>
+      </ul>
+     </div> 
+    </div> 
+    <div class="c c_9"> 
+     <div class="mban"> 
+      <img src="/test/test7.jpg" /> 
+     </div> 
+     <div id="html" class="output mark">
+      <h1 id="menu_1">关于本站</h1>
+      <h2 id="menu_2">域名与站名</h2>
+      <p>本站是一本个人修炼手册，用于记录个人学习历程、整理问题处理经验、分享工作心得体会、自我充电进步提升！</p> 
+      <p>Me：我。</p> 
+      <p>Bug：虫、程序漏洞、问题。</p> 
+      <p>S：复数。</p> 
+      <p>MeBugS：我的与我所遇到的问题。</p> 
+      <p>域名的意义与本站的核心思想完全符合，这就是本站域名的由来。</p> 
+      <p>至于站名为啥叫米虫？总不能叫【我的问题】吧。</p> 
+      <p>某种意义上的谐音，就叫米虫了。</p> 
+      <p>个人还是比较羡慕米虫这种生物，成为一个米虫，是我人生的终极目标！发一听...</p> 
+      <h2 id="menu_3">本站构建技术栈</h2>
+      <p>本站是一个独立的个人博客，并没有提供太多社交属性的相关功能。</p> 
+      <p>在早期，米虫折腾过很多开源的建站程序，如：Wordpress、Dedecms、Discuz！、Typecho、PhpWind、Ecshop等。</p> 
+      <p>这其过程中个人从非 IT 行业人士到转行进入 IT 行业，某种意义上转行 IT 也是对 WEB 应用充满了浓烈的兴趣。</p> 
+      <p>在不断折腾下，从一无所知开始自学HTML、CSS、JS到能够快速编写静态网页，基于开源程序使用过或自行修改过不少网站模板，也会扒一些国外的代码研究。</p> 
+      <p>但是无论是多精简和轻便的开源程序始终对于个人而言会存在冗余的功能，在初期访问速度很快，一旦数据量增多之后执行效率就大打折扣。</p> 
+      <p>于是米虫萌生了放弃使用开源建站程序的念头，因此本站并未使用任何开源建站程序。</p> 
+      <p>本站服务端的构建基于 PHP 7.4，数据库使用 MySql 5.7，整体结构为前后端分离形式。</p> 
+      <p>虽然服务端采用了 PHP，但实际所访问的页面都是静态 HTML，并不是简单的伪静态规则或者 Nginx 转发规则。</p> 
+      <p>下图以发布文章举例：</p> 
+      <p><img src="/static/upload/post/image-20210706160820868.jpg" alt="image-20210706160820868" /></p> 
+      <p>本站前端界面未采用任何UI框架包括 Jquery，JS 交互均采用原生的方式编写，CSS 尽量进行了公共抽离，减少冗余的代码。</p> 
+      <p>本站前端的动画特效均使用 CSS3 特性完成，意味着对于 IE 9 以下的浏览器兼容性不佳。</p> 
+      <p>本站前端实现了自适应，能够有好的支持平台和移动终端的访问。</p> 
+      <p>本站前端采用 PHP 生成的静态 HTML 提供访问，网页关键信息均生成在 HTML 中确保 SEO 效果。</p> 
+      <p>由于所有访问均为静态 HTML，不涉及服务端和数据库交互，这将具备更高的性能和更多的访问压力。</p> 
+      <p>本站管理端引入了 LayUI、Jquery、Vue、Marked 等核心插件，由于管理端不对外开放，在细节性能等方面就相对粗犷。</p> 
+      <p>这里也不再赘述。</p> 
+      <h2 id="menu_4">关于本站内容</h2>
+      <p>米虫自认为有比较良好的工作学习习惯，在通信期间，米虫整理的 TD-SCDMA 入门到晋阶也给不少同行带来很大的帮助。</p> 
+      <p>转行后，米虫有三四个笔记本已经写满了各种经验/教训/小结，小到 SQL 的语法格式，大到框架融合。</p> 
+      <p>有时候自己寻找查询并不方便，于是这样的个人博客应运而生。</p> 
+      <p>本站主要作用是米虫个人学习整理、经验小结的独立博客。</p> 
+      <p>内容主要涉猎于 IT 行业技术学习总结、问题整理记录、思考分析归纳。</p> 
+      <p>目前主要包含 Java、Go、Python、PHP 四门编程语言。</p> 
+      <p>包含数据库、服务端运维、前端、架构、数据、网络、移动端、分布式的等多个维度。</p> 
+      <p>此外包含个人的一些开源项目、在线案例分享、工具教程和分享等。</p> 
+      <p>具体您可以查看分类中心，希望您能有所收获。</p> 
+      <h2 id="menu_5">早期博客剪影</h2>
+      <p>早期的博客有很多没留下痕迹，少许还能复原，留个记忆。</p> 
+      <p><img src="/static/upload/post/image-20210706162258076.jpg" alt="image-20210706162258076" /></p> 
+      <p><img src="/static/upload/post/image-20210706162328570.jpg" alt="image-20210706162328570" /></p> 
+      <p><img src="/static/upload/post/image-20210706164102833.jpg" alt="image-20210706164102833" /></p> 
+      <p><img src="/static/upload/post/image-20210706164133954.jpg" alt="image-20210706164133954" /></p> 
+      <p><img src="/static/upload/post/image-20210706164153047.jpg" alt="image-20210706164153047" /></p> 
+      <p><img src="/static/upload/post/image-20210706164214954.jpg" alt="image-20210706164214954" /></p> 
+      <p><img src="/static/upload/post/image-20210706164241882.jpg" alt="image-20210706164241882" /></p> 
+      <p><img src="/static/upload/post/image-20210706164306008.jpg" alt="image-20210706164306008" /></p> 
+      <h1 id="menu_6">关于个人</h1>
+      <h2 id="menu_7">个人经历概述</h2>
+      <p>米虫，一个九流大专院校毕业的普通学生，所学专业移动通信技术，既不是学生会干部，也不是学霸。</p> 
+      <p>大二那年一家国营通信服务公司到学校搞校企合作顺带招人，老师让我们这些对于未来感到迷茫的小伙伴们也去感受一下。</p> 
+      <p>机缘巧合之下，米虫被选去体验实习两个月，勤恳、积极、主动的工作学习态度受到上级的认可后来被提前录用。</p> 
+      <p>于是米虫放荡不羁的大学生活被提前终止，并走上了通信网络优化这条不归路。</p> 
+      <p>对于比较看重毕业生就业率的大专院校而言，通通绿灯，后续的课程我都没有参与，当然学费还是要正常缴。</p> 
+      <p>由于工作性质原因，接下来的 4 年米虫跑遍了大江南北，在 28 个城市驻留工作，短则两个月，长则一年。</p> 
+      <p>每年除了年会可有可无的在公司总部冒个泡之外，一年 365 天有 360 天在外出差。</p> 
+      <p>这听起来是个很不错的差事，薪水也足够丰厚，但实际上出差工作与外出旅游完全是两个不同的概念。</p> 
+      <p>2014 年，亲人濒临故去，连夜从内蒙古包头做飞机赶往上海，深夜抵达上海市接到撒手人寰的噩耗时，那种撕心裂肺的痛楚令我无法忘怀。</p> 
+      <p>于是个人开始谋求改变，从远途出差申请调动到江浙沪一代，接收降薪降维，工作和未来变得一片迷茫。</p> 
+      <p>2015 年，我申请到家乡工作，被派往邻县，薪水已经折半，工作性质更是降维到无法忍受的地步，我做出了人生中最重要的决定。</p> 
+      <p>跳出舒适圈，重头再来，凭借兴趣选择一条全新的道路，这里也要非常感谢父母的鼓励与支持。</p> 
+      <p>工资再次大幅度缩水，甚至不到原本的四分之一，面对全新的事物，很艰难，但始终有股力量在支撑着我不断前进。</p> 
+      <p>时光如水，恍然优势多年，从萌新到一个九流程序员，说难似乎也没有那么难。</p> 
+      <p>安居一城的米虫不再彷徨，不再东奔西走，爱上一个人，拥有一个家，还有个可爱的闺女，简单的生活，平凡的人生。</p> 
+      <p>此前的种种，偶尔会想起，无论有快乐还是悲伤总是慢慢被藏起，埋在记忆的深处。</p> 
+      <p>无论未来怎么样，我始终坚信：</p> 
+      <p>一切都是最好的选择！</p> 
+      <h2 id="menu_8">一些寄语</h2>
+      <p>分享米虫的经历给大家，是希望大家都能找到自己的路，一时的迷茫不要灰心，总有拨云见日的时候。</p> 
+      <ol> 
+       <li>给自己一个目标，正确认知自我，努力拼，才会赢。</li> 
+       <li>如果年轻不能让自己满意，那余生只会为遗憾而懊悔。</li> 
+      </ol> 
+      <p>正确认知自己的兴趣，让工作与兴趣做更好的融合，你会更加快乐！</p> 
+      <ul> 
+       <li>愿你可以寻找到适合自己的路！</li> 
+       <li>愿你可以寻找到适合自己的人！</li> 
+       <li>愿你往后余生，每天快乐幸福！</li> 
+      </ul> 
+      <p>本站如果能让您有所收获，亦我所愿！</p> 
+      <p>感谢您的阅读！</p> 
+     </div> 
+    </div> 
+    <div class="c c_9"> 
+     <div id="mother"> 
+      <div class="row"> 
+       <div class="pt"> 
+        <h1>发表观点</h1> 
+       </div> 
+       <div class="box"> 
+        <div class="comme"> 
+         <div class="namee"> 
+          <div class="navt" onclick="chooseAvt()"> 
+           <img src="/test/test6.jpg" /> 
+           <p>选择头像</p> 
+          </div> 
+          <div class="nxinfo"> 
+           <div class="nipt"> 
+            <p>昵称</p> 
+            <input id="name" type="text" placeholder="*必填,请输入您的昵称" /> 
+           </div> 
+           <div class="nipt"> 
+            <p>邮箱</p> 
+            <input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+           </div> 
+           <div class="nipt"> 
+            <p>QQ</p> 
+            <input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+           </div> 
+           <div class="nipt"> 
+            <p>网址</p> 
+            <input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="ctxe"> 
+          <textarea name="coms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+         </div> 
+         <div class="sendc"> 
+          <a href="javascript:sendComms(10,1,0)">提交观点</a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row"> 
+       <div class="commi"> 
+        <p>当前累计<b>1000</b>条观点！一起看看吧！</p> 
+       </div> 
+       <div class="box"> 
+        <div class="comml"> 
+         <ul id="commea"> 
+          <li> 
+           <div class="comli"> 
+            <img src="/test/test6.jpg" /> 
+            <div class="comp"> 
+             <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendComms(10,2,11)">评论TA</a></h1> 
+             <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+            </div> 
+           </div> 
+           <ul> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 2级评论 --> 
+               <h1><b>德玛西亚</b>丨2020-11-11 评论本楼丨<a href="javascript:sendComms(10,3,12)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 3级回复 --> 
+               <h1><b>木梁先生</b>丨2020-11-11 回复<b>德玛西亚</b>丨<a href="javascript:sendComms(10,3,14)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+           </ul> </li> 
+          <li> 
+           <div class="comli"> 
+            <img src="/test/test6.jpg" /> 
+            <div class="comp"> 
+             <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendComms(10,2,11)">评论TA</a></h1> 
+             <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+            </div> 
+           </div> </li> 
+          <li> 
+           <div class="comli"> 
+            <img src="/test/test6.jpg" /> 
+            <div class="comp"> 
+             <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendComms(10,2,11)">评论TA</a></h1> 
+             <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+            </div> 
+           </div> 
+           <ul> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 2级评论 --> 
+               <h1><b>德玛西亚</b>丨2020-11-11 评论本楼丨<a href="javascript:sendComms(10,3,12)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 2级评论 --> 
+               <h1><b>陆先生</b>丨2020-11-11 评论本楼丨<a href="javascript:sendComms(10,3,12)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 3级回复 --> 
+               <h1><b>木梁先生</b>丨2020-11-11 回复<b>德玛西亚</b>丨<a href="javascript:sendComms(10,3,14)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+        <div class="comore"> 
+         <a id="comodoo" href="javascript:moreComs(10)">更多观点</a> 
+         <p id="comolod">加载中...</p> 
+         <p id="comonul">已经到底啦~.~</p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row"></div> 
+     </div> 
+     <div class="row"> 
+      <div class="box"> 
+       <div class="mequc indimg">
+        <!-- 首页四张图 --> 
+        <div class="mequci"> 
+         <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
+        </div> 
+        <div class="mequci"> 
+         <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
+        </div> 
+        <div class="mequci"> 
+         <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
+        </div> 
+        <div class="mequci"> 
+         <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="pt"> 
+       <h1>新鲜发布</h1> 
+       <a class="mr" href="/posts/new_1.html">More&gt;</a> 
+      </div> 
+      <div class="box pm pa_6"> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test2.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test4.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test5.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test6.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test8.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test9.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="pt"> 
+       <h1>近期热门</h1> 
+       <a class="mr" href="/posts/up_1.html">More&gt;</a> 
+      </div> 
+      <div class="box pm pa_6"> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test2.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test4.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test5.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test6.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test8.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test9.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="pt"> 
+       <h1>随便看看</h1> 
+       <a class="mr" href="/posts/rand_1.html">More&gt;</a> 
+      </div> 
+      <div class="box pm pa_6"> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test2.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test4.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test5.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test6.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test8.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+       <a href=""> 
+        <div class="pimel"> 
+         <img class="scale" src="/test/test9.jpg" /> 
+        </div> 
+        <div class="pinfr"> 
+         <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
+         <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+        </div> </a> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="c c_3 prer"> 
      <div class="row"> 
       <div class="pt"> 
        <h1>全站热门</h1> 
@@ -459,164 +487,114 @@
       <div class="box lm rhot" id="rhot"> 
        <a href=""> 
         <div class="pimel ltop">
-         1
+          1 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel ltop">
-         2
+          2 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel ltop">
-         3
+          3 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         4
+          4 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         5
+          5 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         6
+          6 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         7
+          7 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         8
+          8 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         9
+          9 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
        <a href=""> 
         <div class="pimel">
-         10
+          10 
         </div> 
         <div class="pinfr"> 
          <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
         </div> </a> 
       </div> 
      </div> 
-				</div>
-							
-        </div>
-				
-      </div>
-		</div>
-		<footer>
-			<div class="w">
-				<div class="c c_4">
-					<div class="ft fl">
-						<h2>排序分类</h2>
-						<p>
-							<a href="/posts/best_1.html">好文荐读</a>
-							<a href="/posts/hot_1.html">全站热门</a>
-							<a href="/posts/new_1.html">最新发布</a>
-							<a href="/posts/up_1.html">近期飙升</a>
-							<a href="/posts/rand_1.html">随机排序</a>
-							<a href="/teams/team_java_1.html">JAVA</a>
-							<a href="/teams/team_go_1.html">Golang</a>
-							<a href="/teams/team_py_1.html">Python</a>
-							<a href="/teams/team_php_1.html">PHP</a>
-							<a href="/teams/team_linux_1.html">Linux</a>
-							<a href="/teams/team_web_1.html">WEB</a>
-							<a href="/teams/team_db_1.html">数据库</a>
-							<a href="/teams/team_app_1.html">移动端</a>
-							<a href="/teams/team_dist_1.html">分布式</a>
-							<a href="/teams/team_build_1.html">架构</a>
-							<a href="/teams/team_serv_1.html">运维</a>
-							<a href="/teams/team_data_1.html">数据</a>
-							<a href="/teams/team_net_1.html">网络</a>
-							<a href="/teams/team_open_1.html">开源</a>
-							<a href="/teams/team_case_1.html">实例</a>
-							<a href="/teams/team_share_1.html">分享</a></p>
-					</div>
-				</div>
-				<div class="c c_4">
-					<div class="ft fc">
-						<h2>特别说明</h2>
-						<p>本站内容由个人原创、收集或整理，如涉及侵权请联系删除</p>
-						<p>您可自由转发，但本站不提供有效性、可用性和准确性保证</p>
-						<p>本站不提供免费技术支持，不推荐您使用代码或案例商业化</p>
-					</div>
-				</div>
-				<div class="c c_4">
-					<div class="ft fr">
-						<h2>热点标签</h2>
-						<p>
-							<a href="/tags/tag_java_1.html">Java</a>
-							<a href="/tags/tag_java_1.html">Golang</a>
-							<a href="/tags/tag_java_1.html">Python</a>
-							<a href="/tags/tag_java_1.html">PHP</a>
-							<a href="/tags/tag_java_1.html">Linux</a>
-							<a href="/tags/tag_java_1.html">WEB</a>
-							<a href="/tags/tag_java_1.html">数据库</a>
-							<a href="/tags/tag_java_1.html">移动端</a>
-							<a href="/tags/tag_java_1.html">分布式</a>
-							<a href="/tags/tag_java_1.html">运维</a>
-							<a href="/tags/tag_java_1.html">数据</a>
-							<a href="/tags/tag_java_1.html">网络</a>
-							<a href="/tags/tag_java_1.html">开源</a>
-							<a href="/tags/tag_java_1.html">实例</a>
-							<a href="/tags/tag_java_1.html">分享</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-							<a href="/tags/tag_java_1.html">TAG1</a>
-						</p>
-					</div>
-				</div>
-				<div class="c c_12">
-					<div class="fu">
-						<p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨  <a href="https://beian.miit.gov.cn/">苏ICP备20039109号</a>丨 做一个有理想的米虫</p>
-						<p><a href="/other/about.html">关于</a> 丨 <a href="/other/msg.html">留言</a> 丨 <a href="/other/link.html">友链</a> 丨 <a href="/other/map.html">地图</a></p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<div class="back_top" onclick="backTop()">
-			<img src="/static/img/back_top.png"/>
-		</div>
-		<script src="/static/js/base.js?v=1.0"></script>
-		<script src="/static/js/post.js?v=1.0"></script>
-		<script src="/static/js/mark.js?v=1.0"></script>
-	</body>
+    </div> 
+   </div> 
+  </div>  
+  <footer> 
+   <div class="w"> 
+    <div class="c c_4"> 
+     <div class="ft fl"> 
+      <h2>排序分类</h2> 
+      <p> <a href="/posts/best_1.html">好文荐读</a> <a href="/posts/hot_1.html">全站热门</a> <a href="/posts/new_1.html">最新发布</a> <a href="/posts/up_1.html">近期飙升</a> <a href="/posts/rand_1.html">随机排序</a> <a href="/teams/team_java_1.html">JAVA</a> <a href="/teams/team_go_1.html">Golang</a> <a href="/teams/team_py_1.html">Python</a> <a href="/teams/team_php_1.html">PHP</a> <a href="/teams/team_linux_1.html">Linux</a> <a href="/teams/team_web_1.html">WEB</a> <a href="/teams/team_db_1.html">数据库</a> <a href="/teams/team_app_1.html">移动端</a> <a href="/teams/team_dist_1.html">分布式</a> <a href="/teams/team_build_1.html">架构</a> <a href="/teams/team_serv_1.html">运维</a> <a href="/teams/team_data_1.html">数据</a> <a href="/teams/team_net_1.html">网络</a> <a href="/teams/team_open_1.html">开源</a> <a href="/teams/team_case_1.html">实例</a> <a href="/teams/team_share_1.html">分享</a></p> 
+     </div> 
+    </div> 
+    <div class="c c_4"> 
+     <div class="ft fc"> 
+      <h2>特别说明</h2> 
+      <p>本站内容由个人原创、收集或整理，如涉及侵权请联系删除</p> 
+      <p>您可自由转发，但本站不提供有效性、可用性和准确性保证</p> 
+      <p>本站不提供免费技术支持，不推荐您使用代码或案例商业化</p> 
+     </div> 
+    </div> 
+    <div class="c c_4"> 
+     <div class="ft fr"> 
+      <h2>热点标签</h2> 
+      <p> <a href="/tags/tag_java_1.html">Java</a> <a href="/tags/tag_java_1.html">Golang</a> <a href="/tags/tag_java_1.html">Python</a> <a href="/tags/tag_java_1.html">PHP</a> <a href="/tags/tag_java_1.html">Linux</a> <a href="/tags/tag_java_1.html">WEB</a> <a href="/tags/tag_java_1.html">数据库</a> <a href="/tags/tag_java_1.html">移动端</a> <a href="/tags/tag_java_1.html">分布式</a> <a href="/tags/tag_java_1.html">运维</a> <a href="/tags/tag_java_1.html">数据</a> <a href="/tags/tag_java_1.html">网络</a> <a href="/tags/tag_java_1.html">开源</a> <a href="/tags/tag_java_1.html">实例</a> <a href="/tags/tag_java_1.html">分享</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> <a href="/tags/tag_java_1.html">TAG1</a> </p> 
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/other/about.html">关于</a> 丨 <a href="/other/msg.html">留言</a> 丨 <a href="/other/link.html">友链</a> 丨 <a href="/other/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> 
+   <img src="/static/img/back_top.png" /> 
+  </div> 
+  <script src="/static/js/base.js?v=1.0"></script> 
+  <script src="/static/js/post.js?v=1.0"></script> 
+  <script src="/static/js/mark.js?v=1.0"></script>   
+ </body>
 </html>

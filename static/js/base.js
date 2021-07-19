@@ -45,8 +45,7 @@ function getMendHeight() {
 	upTimer = setInterval(function () {
 		mEnd = doGetMendHeight();
 		upF ++;
-		console.log(mEnd);
-		if(upF > 200) {
+		if(upF > 200 || sTop > mRHeight) {
 			clearInterval(upTimer);
 		}
 	},50);
