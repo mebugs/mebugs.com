@@ -98,7 +98,20 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color: #222;}
 .mequci{width:50%;height:115px;padding:10px}
 .mequci *{width:100%;height:100%;display:block}
 .mequci a{position:relative;overflow:hidden}
+.pst .pt h1 {
+    width: 100%;
+    line-height: 1;
+    font-weight: 900;
+}
 
+.pst .pdest {
+    background: #f0f0f0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+}
+.pst .pdest a{margin:5px;color:#ab3737;font-weight:900}
 /* dark Mode */
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb,body.dark .menue::-webkit-scrollbar-thumb{background-color:#676767}
@@ -124,3 +137,7 @@ body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track{bac
 .dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#539bf5}
 .dark .lm .pimel{background:#22272e;color:#539bf5}
 .dark .lm .pimel.ltop{background:#539bf5;color:#22272e}
+.dark .pst .pdest {
+    background: #22272e;
+}
+.dark .pst .pdest a{margin:5px;color:#539bf5}

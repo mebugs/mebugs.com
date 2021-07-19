@@ -210,23 +210,18 @@
 .comml ul ul li .comp {
     width: 100%;
 }
-.pst .pt h1 {
-    width: 100%;
-    line-height: 1;
+
+.comore {
+    text-align: center;
+    line-height: 30px;
+    padding-bottom: 10px;
+}
+
+.comore a {
+    color: #ab3737;
     font-weight: 900;
 }
 
-.pst .pdest {
-    background: #f0f0f0;
-    padding: 10px;
-    font-size: 14px;
-    text-align: center;
-    line-height: 1.5;
-}
-
-.dark .pst .pdest {
-    background: #22272e;
-}
 .dark .nipt input,.dark .ctxe textarea {
     background: #010101;
     color: #fff;
@@ -244,7 +239,7 @@
     color: #adbac7;
 }
 
-.dark .comp h1 b,.dark .comp h1 a {
+.dark .comp h1 b,.dark .comp h1 a,.dark .comore a  {
     color: #539bf5;
 }
 
