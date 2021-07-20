@@ -5,11 +5,16 @@ var bodyNode = document.body;
 bodyNode.classList.add(show);
 setTimeout(function() {bodyNode.classList.add("trans");}, 100);
 var cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+var cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var sTop = 0;
-
-var mHeight = document.getElementById("menue") ? document.getElementById("menue").getBoundingClientRect().top - 90 : false;
-var mRHeight = mHeight ? document.getElementById("rhot").getBoundingClientRect().top : false;
-var mEnd = mHeight ? getMendHeight() : false;
+var mHeight = false;
+var mRHeight = false;
+var mEnd = false;
+if(cW > 1200) {
+  mHeight = document.getElementById("menue") ? document.getElementById("menue").getBoundingClientRect().top - 90 + sTop : false;
+  mRHeight = mHeight ? document.getElementById("rhot").getBoundingClientRect().top : false;
+  mEnd = mHeight ? getMendHeight() : false;
+}
 window.addEventListener("scroll", function () {
 	sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
 	if(sTop > 50) {
@@ -17,7 +22,7 @@ window.addEventListener("scroll", function () {
 	} else {
 		bodyNode.classList.remove("headerbg");
 	}
-	if(mHeight) {
+	if(mHeight && cW > 1200) {
 		if(sTop > mHeight)  {
 			bodyNode.classList.add("menus");
 			if(sTop > mEnd) {
