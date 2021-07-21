@@ -15,7 +15,7 @@
   <link rel="shortcut icon" href="" /> 
   <link rel="apple-touch-icon-precomposed" href="" /> 
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="/static/css/team.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/friend.css?v=1.0" rel="stylesheet" type="text/css" /> 
  </head> 
  <body> 
   <header> 
@@ -40,8 +40,14 @@
      <div class="pt pct"> 
       <h1>友链申请</h1> 
      </div> 
-     <div class="pdest">
-      欢迎新伙伴来到本页面，请您依照下方表单提示提交友链信息。
+     <div class="pdest srm">
+      欢迎新伙伴来到本页面，请您依照下方表单提示提交友链信息。<br>
+      当您在本页面提交申请后，1-2个工作日内完成处理，请优先添加本站为友情链接。<br>
+      申请首页友链需要贵站在首页位置添加本站为友情链接。<br>
+      原则上对申请站点无太多要求，原创类、独立博客类、资源类、教程类站点优先。<br>
+      原则上不关注PR或搜索引擎收录，贵站需要至少保持月更，如您长期无更新（三个月）可能会撤销链接。<br>
+      本站可能不定期访问友站，如您的站点已关闭或停止运营，本站撤链将不另行通知。<br>
+      本站拒绝以下类型站点申请：采集站、聚合站、涉嫌诈骗或非法类信息站、伪原创，拒绝理由将回复在内容下。
      </div> 
     </div> 
    </div> 
@@ -49,17 +55,36 @@
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_12 mkf">
-      <p class="srm">
-        当您在本页面提交申请后，1-2个工作日内完成处理，请优先添加本站为友情链接。<br>
-        申请首页友链需要贵站在首页位置添加本站为友情链接。<br>
-        原则上对申请站点无太多要求，原创类、独立博客类、资源类、教程类站点优先。<br>
-        原则上不关注PR或搜索引擎收录，贵站需要至少保持月更，如您长期无更新（三个月）可能会撤销链接。<br>
-        本站可能不定期访问友站，如您的站点已关闭或停止运营，本站撤链将不另行通知。<br>
-        本站拒绝以下类型站点申请：采集站、聚合站、涉嫌诈骗或非法类信息站、伪原创，拒绝理由将回复在内容下。
-      </p>
-      <div class="">
-        
+      <div class="box fform">
+        <div class="fline">
+          <select name="ffix" id="ffix">
+            <option value ="http://" selected="selected">http://</option>
+            <option value ="https://">https://</option>
+          </select>
+          <input name="furl" id="furl" placeholder="*必填,请输入贵站的网站">
+        </div>
+        <div class="fline">
+          <p><a href="javascript:getInfo()">快速采集</a>←输入地址后点击【快速采集】自动获取站点信息填入下方表单，您可自行修改。</p>
+        </div>
+        <div class="fline">
+          <span>站点名称</span><input name="fname" id="fname" type="text" placeholder="*必填,请输入贵站的名称,建议12字以内">
+        </div>
+        <div class="fline">
+          <span>站点描述</span><input name="fdesc" id="fdesc" type="text" placeholder="*必填,请输入贵站的简介,建议50字以内">
+        </div>
+        <div class="fline">
+          <span class="ico">站点图标</span>
+          <div class="fimg" onclick="chooseFimg()">
+            <img src="/test/test3.jpg"/> 
+            <p>自行上传</p> 
+          </div>
+          <a class="rsend" href="javascript:sendInfo()">提交申请</a>
+          <input name="fuimg" id="fuimg" type="hidden">
+        </div>
       </div>
+    </div>
+    <div class="c c_12">
+      <!-- 处理记录 -->
     </div>
    </div> 
   </div> 
@@ -96,6 +121,7 @@
   <div class="back_top" onclick="backTop()"> 
    <img src="/static/img/back_top.png" /> 
   </div> 
-  <script src="/static/js/base.js?v=1.0"></script>   
+  <script src="/static/js/base.js?v=1.0"></script>
+  <script src="/static/js/friend.js?v=1.0"></script>  
  </body>
 </html>

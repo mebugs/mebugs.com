@@ -46,9 +46,9 @@ footer{background:#e8eae6}
 .back_top{position:fixed;bottom:-80px;right:calc(50% - 680px);width:60px;height:60px;background:rgba(0,0,0,0.5);padding:5px;cursor:pointer}
 .headerbg .back_top{bottom:60px}
 a:hover .scale{transform:scale(1.1)}
-a:hover h2,footer a:hover,.menu a:hover,.menu a.mck,.menue a:hover{color:#ab3737}
+a:hover h2,footer a:hover,.menu a:hover,.menu a.mck,.menue a:hover{color:#ca7979}
 a:hover .pdesc{color:#444}
-.mr:hover{color:#539bf5}
+.mr:hover{color:#477bbb}
 footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .ft p{font-size:14px;line-height:25px}
 .ft h2{line-height:40px;font-weight:900;font-size:16px;color:#666;display:inline-block;padding:0 10px;border-bottom:1px solid #444;margin-bottom:5px}
@@ -65,19 +65,19 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .pdesc{line-height:20px;font-size:12px;height:60px;color:#999;text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pt{height:60px;position:relative;overflow:hidden;margin:16px}
 .pt h1{line-height:35px;font-size:23px;width:120px;text-align:center;font-weight:normal}
-.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#ab3737,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#539bf5,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
+.pt::before{content:"";position:absolute;bottom:10px;left:-10px;width:130px;height:10px;background:linear-gradient(335deg,transparent,transparent 41%,#ca7979,transparent 59%,transparent 100%),linear-gradient(24deg,transparent,transparent 41%,#477bbb,transparent 59%,transparent);background-size:20px 10px;background-repeat:repeat-x,repeat-x}
 .pct h1{margin:0 auto}
 .pct:before{width:120px;left:calc(50% - 60px)}
-.itm a:hover svg path,.teame a:hover svg path{fill:#ab3737}
+.itm a:hover svg path,.teame a:hover svg path{fill:#ca7979}
 .itm a:hover img,.itm a:hover svg,.teame a:hover img,.teame a:hover svg{padding:8px}
 .peare{display:flex;align-items:center;justify-content:center;width:100%}
 .peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#e8eae6}
-.peare a.pnow,.peare a:hover{background:#f9f9f9;color:#ab3737}
+.peare a.pnow,.peare a:hover{background:#f9f9f9;color:#ca7979}
 .pm a,.lm a,.itm{display:flex;flex-wrap:wrap}
 .lm a{margin:5px 0}
 .pimel{width:100px;height:65px;overflow:hidden;position:relative}
-.lm .pimel{width:35px;height:35px;margin:14.5px 7.5px;background:#f0f0f0;color:#ab3737;border-radius:10px;line-height:34px;text-align:center}
-.lm .pimel.ltop{background:#ab3737;color:#f0f0f0}
+.lm .pimel{width:35px;height:35px;margin:14.5px 7.5px;background:#f0f0f0;color:#ca7979;border-radius:10px;line-height:34px;text-align:center}
+.lm .pimel.ltop{background:#ca7979;color:#f0f0f0}
 .lm .pinfr{width:calc(100% - 50px);padding:5px 0}
 .lm .pinfr h2{line-height:44px}
 .pinfr{width:calc(100% - 100px);padding-left:7px}
@@ -90,7 +90,9 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .mequci a{position:relative;overflow:hidden}
 .pst .pt h1{width:100%;line-height:1;font-weight:900}
 .pst .pdest{background:#f0f0f0;padding:10px;font-size:14px;text-align:center;line-height:1.5}
-.pst .pdest a{margin:5px;color:#ab3737;font-weight:900}
+.pst .pdest a{margin:5px;color:#ca7979;font-weight:900}
+input,textarea{border:0;outline:0;border-bottom:1px solid #ca7979;background:#fefefe}
+input:focus,textarea:focus{border-bottom:1px solid #477bbb;background:#f5f5f5}
 body.dark{background-color:#22272e}
 body.dark::-webkit-scrollbar-thumb,body.dark .menue::-webkit-scrollbar-thumb{background-color:#676767}
 body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track{background-color:#424242}
@@ -102,18 +104,20 @@ body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track{bac
 .dark footer{background:#2d333b}
 .dark .logo,.dark .temp{background-position-y:-50px}
 .dark .box{background:#2d333b}
-.dark a:hover h2,.dark footer a:hover,.dark .menu a:hover,.dark .menu a.mck,.dark .menue a:hover{color:#539bf5}
-.dark .mr:hover{color:#ab3737}
+.dark a:hover h2,.dark footer a:hover,.dark .menu a:hover,.dark .menu a.mck,.dark .menue a:hover{color:#477bbb}
+.dark .mr:hover{color:#ca7979}
 .dark .ft h2{color:#ddd;border-bottom:1px solid #adbac7}
 .dark footer a{color:#c8d5e2}
 .dark .pdesc{color:#8d9ead}
 .dark a:hover .pdesc{color:#adbac7}
 .dark .itm svg path,.dark .teame svg path{fill:#adbac7}
-.dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#539bf5}
+.dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#477bbb}
 .trans,.trans *{transition:all .4s ease}
 .dark .peare a{background:#2d333b}
-.dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#539bf5}
-.dark .lm .pimel{background:#22272e;color:#539bf5}
-.dark .lm .pimel.ltop{background:#539bf5;color:#22272e}
+.dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#477bbb}
+.dark .lm .pimel{background:#22272e;color:#477bbb}
+.dark .lm .pimel.ltop{background:#477bbb;color:#22272e}
 .dark .pst .pdest{background:#22272e}
-.dark .pst .pdest a{margin:5px;color:#539bf5}
+.dark .pst .pdest a{margin:5px;color:#477bbb}
+.dark input,.dark textarea{background:#010101;color:#fff;border-bottom:1px solid #477bbb}
+.dark input:focus,.dark textarea:focus{border-bottom:1px solid #477bbb;border-bottom:1px solid #ca7979;background:#1a1e23}
