@@ -36,7 +36,7 @@ a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rg
 .lk,.lk .lmr{text-align:center;display:flex;flex-wrap:wrap;justify-content:center}
 .lk a{line-height:25px;padding:5px 15px;margin:10px;display:inline-block;border:1px solid;width:calc(12.5% - 20px)}
 .lk .lmr{width:100%}
-.lk .lmr a{line-height:30px;border:1px solid #ca7979;width:120px;margin:8px;background:#f9f9f9}
+.lk .lmr a{line-height:30px;border:1px solid #ca7979;width:120px;margin:8px;background: #ca7979;color: #f0f0f0;}
 .lk a:hover{color:#ca7979;background:#f0f0f0}
 .dark .bann span.swiper-pagination-bullet{background:#477bbb}
 .dark .mine{background:#22272e}
@@ -48,6 +48,6 @@ a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rg
 .dark .pbline h2{color:#e2f1ff}
 .dark .pbline .pdesc{color:#adbac7}
 .dark .iag a svg path{color:#adbac7}
-.dark .lk .lmr a{background:#2d333b;border:1px solid #319bf5}
+.dark .lk .lmr a{background: #477bbb;border:1px solid #477bbb;}
 .dark .lk a:hover{color:#477bbb;background:#22272e}
 .dark .iag a:hover,.dark .iag a:hover svg path{color:#477bbb}
