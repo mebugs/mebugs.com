@@ -74,11 +74,11 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .peare a{line-height:39px;height:40px;width:40px;margin:5px;text-align:center;background:#e8eae6}
 .peare a.pnow,.peare a:hover{background:#f9f9f9;color:#ca7979}
 .pm a,.lm a,.itm{display:flex;flex-wrap:wrap}
-.lm a{margin:5px 0}
+.lm a{margin: 0;}
 .pimel{width:100px;height:65px;overflow:hidden;position:relative}
-.lm .pimel{width:35px;height:35px;margin:14.5px 7.5px;background:#f0f0f0;color:#ca7979;border-radius:10px;line-height:34px;text-align:center}
+.lm .pimel{width:35px;height:35px;margin: 12.5px 7.5px;background:#f0f0f0;color:#ca7979;border-radius:10px;line-height:34px;text-align:center;}
 .lm .pimel.ltop{background:#ca7979;color:#f0f0f0}
-.lm .pinfr{width:calc(100% - 50px);padding:5px 0}
+.lm .pinfr{width:calc(100% - 50px);padding: 3px 0;}
 .lm .pinfr h2{line-height:44px}
 .pinfr{width:calc(100% - 100px);padding-left:7px}
 .pm a .pinfr h2{padding:2.5px 0}
