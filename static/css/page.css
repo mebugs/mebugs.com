@@ -2,12 +2,12 @@
 .qr{justify-content:flex-end}
 .ql a,.ql p{margin:15px 0;display:inline-block;line-height:40px;padding:0 25px;border:1px solid;color:#333;font-weight:900}
 .ql a{margin-right:30px}
-.ql a.cp,.ql a:hover{background: #ca7979;border:1px solid;color: #f0f0f0;}
+.ql a.cp,.ql a:hover{background: #ca7979;border:1px solid #ca7979;}
 .ql p{display:inline-block;margin-left:30px}
 .ql p{background:#f0f0f0;border:1px solid #f0f0f0;width:130px;text-align:center}
 .pagee{display:flex;flex-wrap:wrap}
 .pinfb{padding:10px;background: #f9f9f9;}
 .dark .ql a,.dark .ql p{color:#e2f1ff}
-.dark .ql a.cp,.dark .ql a:hover{background: #477bbb;color: #22272e;}
+.dark .ql a.cp,.dark .ql a:hover{background: #477bbb;border:1px solid #477bbb;}
 .dark .ql p{background:#22272e;border:1px solid #22272e}
 .dark .pinfb{background:#2d333b}

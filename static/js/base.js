@@ -6,13 +6,13 @@ bodyNode.classList.add(show);
 setTimeout(function() {bodyNode.classList.add("trans");}, 100);
 var cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 var cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-var sTop = 0;
+var sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
 var mHeight = false;
 var mRHeight = false;
 var mEnd = false;
 if(cW > 1200) {
   mHeight = document.getElementById("menue") ? document.getElementById("menue").getBoundingClientRect().top - 90 + sTop : false;
-  mRHeight = mHeight ? document.getElementById("rhot").getBoundingClientRect().top : false;
+  mRHeight = mHeight ? document.getElementById("rhot").getBoundingClientRect().top + sTop : false;
   mEnd = mHeight ? getMendHeight() : false;
 }
 window.addEventListener("scroll", function () {

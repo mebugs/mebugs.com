@@ -74,6 +74,7 @@ new Vue({
 		},
 		doView() { // 显示隐藏预览
 		this.hideView = !this.hideView
+    console.log($("#html").prop("outerHTML"));
 		},
 		doMenu() { // 显示隐藏目录
 		this.showMenu = !this.showMenu

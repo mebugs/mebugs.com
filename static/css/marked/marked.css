@@ -11,6 +11,19 @@
 .mark h3:after{width:4px;height:12px;top:16px}
 .mark ol,.mark ul{margin:5px;padding-left:30px}
 .mark ol li,.mark ul li{padding-left:10px;line-height:1.5}
+pre{margin:5px;padding:10px;background:#f2f2f2;overflow-x:auto;display:block}
+pre *{line-height:1.7;color:#000}
+.hljs-comment{color:#af5b07}
+.hljs-built_in{color:#068}
+.hljs-property{color:#00c}
+.hljs-regexp{color:#ab0f2b}
+.dark pre{background:#222}
+.dark pre *{color:#ddd}
+.dark .hljs-comment{color:#da924a}
+.dark .hljs-built_in{color:#028fbd}
+.dark .hljs-property{color:#7575e4}
+.dark .hljs-regexp{color:#d6183a}
+.dark .dark pre{background:#222}
 .dark .mark,.dark .menue{background:#2d333b}
 .dark .mark h1:after,.dark .mark h2:after,.dark .mark h3:after{background:#adbac7}
 .dark .mark img{border:1px dotted #adbac7}

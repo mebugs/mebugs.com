@@ -1,0 +1,46 @@
+<html><head>
+	<meta charset="utf-8">
+	<title>Marked in the browser</title>
+</head>
+<body class="dark">
+	<link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
+	<link href="/center/static/css/md.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/marked/marked.css" rel="stylesheet" type="text/css">
+	<div id="content"><div class="tools"><button type="button">图片上传</button> <button type="button">关闭预览</button> <button type="button">隐藏目录</button></div> <div class="input"><textarea id="md" placeholder="请输入Markdown代码"></textarea></div> <div id="html" class="output mark"><h1 id="menu_1">多环境方案</h1><p>SpringBoot 中可以通过 spring.profiles.active 属性来指定引入特定的配置文件。</p>
+<p>用于满足不同场景不同环境中生效不同的配置，如下图所示：</p>
+<p><img src="/static/upload/post/image-20210604161809953.jpg" alt="image-20210604161809953"></p>
+<p>其中 spring.profiles.active 配置为 dev 时，工程启动会加载 application-dev.yml 配置文件中的配置项。</p>
+<p>这种加载模式可以说非常赞，让我会想起以前打包发布用 shell 脚本替换配置文件值的痛苦日子了。</p>
+<p>虽然通过修改 spring.profiles.active 的方式可以实现不同配置文件的生效，依旧不够。</p>
+<p>比如： test 测试环境有很多，且不同环境配置值不相同，这里 spring.profiles.active 配置为 test 依旧无法满足要求。</p>
+<p>于是，理解 SpringBoot 配置文件生效优先级就很有必要。</p>
+<h1 id="menu_2">配置文件生效优先级</h1><p>我们一般都会将配置文件放置在类路径 src/main/resources 目录下，但实际上这个路径的配置文件优先级最低。</p>
+<p>SpringBoot 读取配置时，高优先级覆盖低优先级的同名参数，不同名参数则互补取并集。</p>
+<p>实际配置文件优先级顺序如下：</p>
+<ol>
+<li>项目根目录 /config/ 如果 jar 包发布，则是 jar 包所在路径 + config/</li>
+<li>项目根目录 / 如果 jar 包发布，则是 jar 包所在路径</li>
+<li>类路径 src/main/resources/config/</li>
+<li>类路径 src/main/resources/</li>
+</ol>
+<p>依照这个优先级顺序，我们可以在实际应用中实现高度自定的配置效果。</p>
+<p>比如在部署 jar 包的时候，将同名配置文件直接放在 jar 包所在路径下，各个环境中仅维护自己特有的配置项。</p>
+<h1 id="menu_3">引入外部配置项或文件</h1><p>配置生效优先级除了常规的文件路径之外，命令参数则是最高优先级。</p>
+<p>通过命令参数修改配置项的值，可以实现同包启动不同配置。</p>
+<p>比如：代码库中 spring.profiles.active = dev 不想每次打包改来改去，希望通过自动化脚本实现配置生效。</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># 直接在执行命令后面增加配置项并指定值（不同环境的启动参数不同即可）</span>
+<span class="hljs-comment"># 可以配置多个配置项，空格分隔即可</span>
+java -jar meals.jar --spring.profiles.active=<span class="hljs-built_in">test</span>
+</code></pre>
+<p>如果环境上的配置文件放在特定的位置，也可以直接指定配置文件进行生效。</p>
+<p>这种情况多见于流水线批量生产环境。</p>
+<pre><code class="hljs language-bash">java -jar meals.<span class="hljs-property">jar</span> --spring.<span class="hljs-property">config</span>.<span class="hljs-property">location</span>=<span class="hljs-regexp">/comm/</span>config/application.<span class="hljs-property">yml</span>
+</code></pre>
+</div> <div class="pmenus showMenu"><div id="menue" class="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">多环境方案</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">配置文件生效优先级</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl1">引入外部配置项或文件</a> <!----></li></ul></div></div></div>
+	<script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
+	<script src="/static/lib/marked/marked.min.js"></script>
+	<script src="/static/lib/marked/highlight.min.js"></script>
+	<script src="/static/lib/vue/vue.min.js"></script>
+	<script src="/center/static/js/postEdit.js"></script>
+
+</body></html>
