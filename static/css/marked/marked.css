@@ -5,19 +5,62 @@
 .mark h1{font-size:20px}
 .mark h2{font-size:18px}
 .mark h3{font-size:17px}
-.mark img{margin:10px 16px;border:1px dotted #444;max-width:calc(100% - 32px)}
+.mark img{margin:10px 16px;max-width:calc(100% - 32px);border: 1px solid #eee;}
 .mark h1:after,.mark h2:after,.mark h3:after{content:"";position:absolute;width:6px;height:20px;background:#444;left:0;top:17px;border-radius:3px}
 .mark h2:after{height:16px;width:5px;top:14px}
 .mark h3:after{width:4px;height:12px;top:16px}
 .mark ol,.mark ul{margin:5px;padding-left:30px}
 .mark ol li,.mark ul li{padding-left:10px;line-height:1.5}
-pre{margin:5px;padding:10px;background:#f2f2f2;overflow-x:auto;display:block}
+pre{margin:5px;padding: 10px 15px;background: #fefefe;overflow-x:auto;display:block;border: 1px solid #eee;}
 pre *{line-height:1.7;color:#000}
 .hljs-comment{color:#af5b07}
 .hljs-built_in{color:#068}
 .hljs-property{color:#00c}
 .hljs-regexp{color:#ab0f2b}
-.dark pre{background:#222}
+.pfro {
+    padding: 15px;
+    background: #fefefe;
+    line-height: 36px;
+}
+
+.pfro p span {
+    width: 70px;
+}
+
+.pfro p {
+    display: flex;
+    margin: 5px 0;
+}
+
+.pfro p a {
+    line-height: 30px;
+    display: inline-block;
+    font-size: 13px;
+    padding: 0 10px;
+    background: #f0f0f0;
+    height: 30px;
+    margin: 3px;
+    border-radius: 6px;
+}
+
+.pfro p a:hover {
+    background: #f9f9f9;
+    color: #ca7979;
+}
+
+.dark .pfro {
+    background: #010101;
+}
+
+.dark .pfro p a {
+    background: #22272e;
+}
+
+.dark .pfro p a:hover {
+    background: #2d333b;
+    color: #477bbb;
+}
+.dark pre{background:#222;border: 1px solid #555;}
 .dark pre *{color:#ddd}
 .dark .hljs-comment{color:#da924a}
 .dark .hljs-built_in{color:#028fbd}
@@ -26,4 +69,4 @@ pre *{line-height:1.7;color:#000}
 .dark .dark pre{background:#222}
 .dark .mark,.dark .menue{background:#2d333b}
 .dark .mark h1:after,.dark .mark h2:after,.dark .mark h3:after{background:#adbac7}
-.dark .mark img{border:1px dotted #adbac7}
+.dark .mark img{border: 1px solid #555;}
