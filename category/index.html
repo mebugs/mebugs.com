@@ -16,6 +16,18 @@
   <link rel="apple-touch-icon-precomposed" href="" /> 
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <link href="/static/css/team.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript">
+    // WaitForSVGInjectInit
+    function initSvg(obj) {
+    	try{
+    	    SVGInject(obj);
+    	}catch(e){
+    	    setTimeout(function(){
+    			initSvg(obj);
+    		},200)
+    	}
+    }
+  </script>
  </head> 
  <body> 
   <header> 
@@ -45,7 +57,7 @@
   </div> 
   <div class="r"> 
    <div class="w tb_15 teame"> 
-    <a href="/quck/team_java_1.html" class="c c_3">
+    <a href="/category/java_1.html" class="c c_3">
      <div class="teami"> 
       <img onload="initSvg(this)" src="/static/img/team/java.svg" /> 
       <div class="tmin">

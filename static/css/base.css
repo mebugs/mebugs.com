@@ -110,7 +110,7 @@ body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track,bod
 .dark footer a{color:#c8d5e2}
 .dark .pdesc{color:#8d9ead}
 .dark a:hover .pdesc{color:#adbac7}
-.dark .itm svg path,.dark .teame svg path{fill:#adbac7}
+.dark .itm svg path,.dark .teame svg path,.dark .ql svg path{fill:#adbac7}
 .dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#477bbb}
 .trans,.trans *{transition:all .4s ease}
 .dark .peare a{background:#2d333b}

@@ -5,6 +5,27 @@
 .ql a.cp,.ql a:hover{background: #ca7979;border:1px solid #ca7979;}
 .ql p{display:inline-block;margin-left:30px}
 .ql p{background:#f0f0f0;border:1px solid #f0f0f0;width:130px;text-align:center}
+.ql img,.ql svg {
+    height: 40px;
+    width: 40px;
+    margin: 15px 0;
+}
+
+.ql .tmin * {
+    display: inline-block;
+    margin: 15px 0;
+}
+
+.ql .tmin p {
+    width: auto;
+    font-weight: normal;
+}
+
+.ql .tmin h1 {line-height: 40px;margin: 15px 20px;font-size: 20px;}
+.ql .tmin.tamin h1{margin-left:0;}
+.ql .tmin {
+    display: flex;
+}
 .pagee{display:flex;flex-wrap:wrap}
 .pinfb{padding:10px;background: #f9f9f9;}
 .dark .ql a,.dark .ql p{color:#e2f1ff}

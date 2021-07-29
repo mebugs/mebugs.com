@@ -16,18 +16,6 @@
   <link rel="apple-touch-icon-precomposed" href="" /> 
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <link href="/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <script type="text/javascript">
-    // WaitForSVGInjectInit
-    function initSvg(obj) {
-    	try{
-    	    SVGInject(obj);
-    	}catch(e){
-    	    setTimeout(function(){
-    			initSvg(obj);
-    		},200)
-    	}
-    }
-  </script>
  </head> 
  <body> 
   <header> 
@@ -49,10 +37,9 @@
   <div class="r rt"> 
    <div class="w tb_15"> 
     <div class="c c_6"> 
-     <div class="ql"> 
-       <img onload="initSvg(this)" src="/static/img/team/java.svg" /> 
-       <div class="tmin">
-         <h1>JAVA</h1><p>世间万事万物皆对象</p> 
+     <div class="ql">
+       <div class="tmin tamin">
+         <h1>SpringBoot</h1><p>Spring家族聚合脚手架</p> 
        </div>
      </div> 
     </div> 
@@ -250,7 +237,6 @@
   <div class="back_top" onclick="backTop()"> 
    <img src="/static/img/back_top.png" /> 
   </div> 
-  <script src="/static/js/base.js?v=1.0"></script> 
-  <script src="/static/lib/svg/svg-inject.min.js?v=1.0"></script>     
+  <script src="/static/js/base.js?v=1.0"></script>   
  </body>
 </html>

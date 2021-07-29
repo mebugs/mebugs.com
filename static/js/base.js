@@ -87,13 +87,3 @@ function backTop() {
 		}
 	},10);
 }
-// WaitForSVGInjectInit
-function initSvg(obj) {
-	try{
-	    SVGInject(obj);
-	}catch(e){
-	    setTimeout(function(){
-			initSvg(obj);
-		},200)
-	}
-}
