@@ -1,6 +1,9 @@
 var avtNos = 10;
 var localUserStr = window.localStorage.getItem("localUser");
 var localUser;
+var crTip = document.getElementById("rwork");
+var crMet = document.getElementById("repMethod");
+var rzz = document.getElementById("rzz");
 if(localUserStr) {
   localUser = JSON.parse(localUserStr);
 }else{
@@ -10,6 +13,7 @@ if(localUser.avt == "") {
   localUser.avt = "/static/upload/avtor/"+randomAvt()+".jpg";
   document.getElementById("avt").src = localUser.avt;
 }
+initUserInput();
 function chooseAvt() {
 	
 }
@@ -20,12 +24,70 @@ function setAvt(no) {
 function randomAvt() {
   return 1;//Math.floor(Math.random()*avtNos+1);
 }
+// CommsReplay
+function sendCommsR(pid, level, fid) {
+  crTip.innerText = "评论楼层";
+  crMet.href = "javascript:sendComms("+pid+","+level+","+fid+")";
+  initUserInput();
+  opnComms();
+}
+// CommsReplayReplay
+function sendCommsRr(pid, level, fid) {
+  crTip.innerText = "回复评论";
+  crMet.href = "javascript:sendComms("+pid+","+level+","+fid+")";
+  initUserInput();
+  opnComms();
+}
+// show replay
+function opnComms() {
+  rzz.style.display = "block";
+  setTimeout(function() {
+    bodyNode.classList.add("replay");
+  }, 100);
+}
+// close Replay
+function clsComms() {
+  bodyNode.classList.remove("replay");
+  setTimeout(function() {
+    rzz.style.display = "none";
+  }, 500);
+}
 // PostID Level 123 ParentID
 function sendComms(pid, level, fid) {
   // validate
-  
-  // cache
-  var userCache = JSON.stringify(localUser);
-  window.localStorage.setItem("localUser",userCache);
-  // send comms
+  var coms = "";
+  if(level == 1) {
+    localUser.name = document.getElementById("name").value;
+    localUser.email = document.getElementById("email").value;
+    localUser.qq = document.getElementById("qq").value;
+    localUser.url = document.getElementById("url").value;
+    coms = document.getElementById("coms").value;
+  } else {
+    localUser.name = document.getElementById("rname").value;
+    localUser.email = document.getElementById("remail").value;
+    localUser.qq = document.getElementById("rqq").value;
+    localUser.url = document.getElementById("rurl").value;
+    coms = document.getElementById("rcoms").value;
+  }
+  var commObj = localUser;
+  commObj.coms = coms;
+  if (commObj.coms && commObj.name) {
+    // cache
+    var userCache = JSON.stringify(localUser);
+    window.localStorage.setItem("localUser",userCache);
+    // send comms
+  } else {
+    alert("昵称和评论内容为必填项，请补充后再提交")
+  }
+}
+// initinput Base Info
+function initUserInput() {
+  document.getElementById("name").value = localUser.name;
+  document.getElementById("rname").value = localUser.name;
+  document.getElementById("email").value = localUser.email;
+  document.getElementById("remail").value = localUser.email;
+  document.getElementById("qq").value = localUser.qq;
+  document.getElementById("rqq").value = localUser.qq;
+  document.getElementById("url").value = localUser.url;
+  document.getElementById("rurl").value = localUser.url;
 }
