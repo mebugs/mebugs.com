@@ -1,9 +1,11 @@
-var avtNos = 10;
+var avtNos = 12;
 var localUserStr = window.localStorage.getItem("localUser");
 var localUser;
 var crTip = document.getElementById("rwork");
 var crMet = document.getElementById("repMethod");
 var rzz = document.getElementById("rzz");
+var cavt = document.getElementById("cavt");
+var myavt = document.getElementById("avt");
 if(localUserStr) {
   localUser = JSON.parse(localUserStr);
 }else{
@@ -11,18 +13,32 @@ if(localUserStr) {
 }
 if(localUser.avt == "") {
   localUser.avt = "/static/upload/avtor/"+randomAvt()+".jpg";
-  document.getElementById("avt").src = localUser.avt;
 }
+myavt.src = localUser.avt;
 initUserInput();
 function chooseAvt() {
-	
+	cavt.style.display = "block";
+	setTimeout(function() {
+	  bodyNode.classList.add("cavts");
+	}, 100);
 }
-function setAvt(no) {
+function setAvt(node,no) {
+  var allAvt = document.querySelectorAll(".avts img");
+  for(var i=0; i < allAvt.length; i++) {
+    allAvt[i].classList.remove("checkd");
+  }
+  node.classList.add("checkd");
 	localUser.avt = "/static/upload/avtor/"+no+".jpg";
-	document.getElementById("avt").src = localUser.avt;
+	myavt.src = localUser.avt;
+}
+function clsAvt() {
+  bodyNode.classList.remove("cavts");
+  setTimeout(function() {
+    cavt.style.display = "none";
+  }, 500);
 }
 function randomAvt() {
-  return 1;//Math.floor(Math.random()*avtNos+1);
+  return Math.floor(Math.random()*avtNos+1);
 }
 // CommsReplay
 function sendCommsR(pid, level, fid) {

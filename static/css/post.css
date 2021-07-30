@@ -26,7 +26,7 @@
     display:none;
     opacity:0;
 }
-.replay .rzz {
+.replay .rzz,.cavts .rzz {
   opacity:1;
 }
 .rea {
@@ -39,6 +39,34 @@
 }
 .replay .rea{
   top: calc(50vh - 190px);
+}
+.cave{
+  
+width: 550px;
+  
+left: calc(50vw - 275px);
+  
+height: 530px;
+}
+.cavts .cave{
+  
+top: calc(50vh - 265px);
+}
+.avts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.avts img {
+    width: 120px;
+    height: 120px;
+    margin: 5px;
+    border: 5px solid #f9f9f9;
+    cursor: pointer;
+}
+
+.avts img.checkd {
+    border-color: #ca7979;
 }
 .reat h1 {
     line-height: 40px;
