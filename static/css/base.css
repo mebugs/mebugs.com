@@ -121,3 +121,4 @@ body.dark::-webkit-scrollbar-track,body.dark .menue::-webkit-scrollbar-track,bod
 .dark .pst .pdest a{margin:5px;color:#477bbb}
 .dark input,.dark textarea{background:#010101;color:#fff;border-bottom:1px solid #477bbb}
 .dark input:focus,.dark textarea:focus{border-bottom:1px solid #477bbb;border-bottom:1px solid #ca7979;background:#1a1e23}
+.mobim{display:none}

@@ -73,6 +73,15 @@ function setShow() {
 	loc.setItem("show",show);
 	bodyNode.classList.add(show);
 }
+var mbm = false;
+function setMbm() {
+  mbm = !mbm;
+  if(mbm) {
+    bodyNode.classList.add("opmenu");
+  }else{
+    bodyNode.classList.remove("opmenu");
+  }
+}
 // back top 
 function backTop() {
 	clearInterval(backTimer);
