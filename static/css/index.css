@@ -7,9 +7,9 @@
 .fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#ca7979}
 .mine{background:#f9f9f9;height:435px;padding:5px}
 .meavt{display:flex;padding:7px 5px}
-.avtor{display:block;width:90px;height:90px;border-radius:45px}
+.avtor{display:block;width:90px;height:90px;padding: 5px;border-radius:45px;}
 .amore{width:40px}
-.ainfo{width:calc(100% - 140px);margin-left:10px}
+.ainfo{width: calc(100% - 100px);margin-left:10px;}
 .ainfo h1{line-height:30px;margin-top:5px}
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
