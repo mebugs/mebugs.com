@@ -1,14 +1,14 @@
 .plist a.shid{width:0;margin:0}
 .scback{text-align:center;line-height:60px;height:0;background:#e8eae6;margin:0;overflow:hidden}
 .scback b{margin:5px;color:#ce8585}
-.qsc a,.scback a{line-height:36px;display:inline-block;background:#ca7979;min-width:80px;color:#f0f0f0;text-align:center}
-.qsc a:hover,.scback a:hover{background:#477bbb}
+.qsc a,.scback a{line-height:36px;display:inline-block;background:#c56161;min-width:80px;color:#f0f0f0;text-align:center}
+.qsc a:hover,.scback a:hover{background:#3675c3}
 .qsc a{line-height:40px;width:200px}
 .qsc{display:flex;padding:10px}
 .qsc input{padding:0 15px;width:calc(100% - 200px)}
 .plist a{background:#f0f0f0}
 .plist a h2{margin:5px 10px;padding-left:3px}
 .msch .scback{height:60px;margin:10px}
-.dark .qsc a,.dark .scback a{background:#477bbb}
+.dark .qsc a,.dark .scback a{background:#3675c3}
 .dark .scback{background:#010101}
 .dark .plist a{background:#22272e}

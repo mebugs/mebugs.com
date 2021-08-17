@@ -20,20 +20,14 @@ pre *{line-height:1.7;color:#000}
 .pfro{padding:15px;background:#fefefe;line-height:36px}
 .pfro p span{width:70px}
 .pfro p{display:flex;margin:5px 0}
+.pfro p b.pta {font-weight: normal;width: calc(100% - 70px)}
 .pfro p a{line-height:30px;display:inline-block;font-size:13px;padding:0 10px;background:#f0f0f0;height:30px;margin:3px;border-radius:6px}
-.pfro p a:hover{background:#f9f9f9;color:#ca7979}
-.mark a {
-    color: #ca7979;
-    border-bottom: 2px solid;
-    padding: 5px;
-    line-height: 30px;
-    font-weight: 900;
-    text-align: center;
-}
-.dark .mark a {color:#477bbb}
+.pfro p a:hover{background:#f9f9f9;color:#c56161}
+.mark a{color:#c56161;border-bottom:2px solid;padding:5px;line-height:30px;font-weight:900;text-align:center}
+.dark .mark a{color:#3675c3}
 .dark .pfro{background:#010101}
 .dark .pfro p a{background:#22272e}
-.dark .pfro p a:hover{background:#2d333b;color:#477bbb}
+.dark .pfro p a:hover{background:#2d333b;color:#3675c3}
 .dark pre{background:#222;border:1px solid #555}
 .dark pre *{color:#ddd}
 .dark .hljs-comment{color:#da924a}

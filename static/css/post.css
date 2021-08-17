@@ -24,9 +24,10 @@
 .cavts .cave{top:calc(50vh - 265px)}
 .avts{display:flex;flex-wrap:wrap}
 .avts img{width:120px;height:120px;margin:5px;border:5px solid #f9f9f9;cursor:pointer}
-.avts img.checkd{border-color:#ca7979}
+.avts img.checkd{border-color:#c56161}
 .reat h1{line-height:40px;text-align:center;font-size:18px;background:#e8eae6;margin:10px 8px}
 .rea .nxinfo{width:100%}
 .sendc a.rcls{width:120px;background:#444}
-.dark .reat h1{background: #010101}
+.dark .reat h1{background: #1a1e23;}
 .dark .avts img{border: 5px solid #2d333b}
+.dark .avts img.checkd{border-color:#3675c3}

@@ -5,12 +5,12 @@
 .nipt p{font-size:13px;font-weight:900;line-height:24px}
 .nipt input,.ctxe textarea{width:100%;font-size:14px}
 .nipt input{line-height:34px;padding:0 5px}
-.navt p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#ca7979;font-size:13px}
+.navt p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#c56161;font-size:13px}
 .ctxe{margin:10px}
 .ctxe textarea{resize:none;height:90px;line-height:25px;padding:5px}
 .sendc{margin:10px;text-align:right}
-.sendc a{display:inline-block;line-height:35px;width:200px;background:#ca7979;text-align:center;color:#f0f0f0}
-.navt p:hover,.sendc a:hover{background:#477bbb}
+.sendc a{display:inline-block;line-height:35px;width:200px;background:#c56161;text-align:center;color:#f0f0f0}
+.navt p:hover,.sendc a:hover{background:#3675c3}
 .commi p{padding:5px;line-height:40px}
 .comml{padding:5px}
 .comml .comli{display:flex}
@@ -18,20 +18,20 @@
 .comml li{list-style:none;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #e8eae6}
 .comp{width:calc(100% - 60px);padding-left:10px}
 .comp h1{line-height:30px;color:#888;font-size:13px;font-weight:normal}
-.comp h1 b{display:inline-block;max-width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height:1;margin:0 5px;color:#ca7979}
-.comp h1 a{font-size:12px;color:#ca7979;margin:0 5px;line-height:22px;padding:0 10px;border:1px solid;display:inline-block;border-radius:12px}
-.comp h1 a:hover{color:#477bbb}
+.comp h1 b{display:inline-block;max-width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height:1;margin:0 5px;color:#c56161}
+.comp h1 a{font-size:12px;color:#c56161;margin:0 5px;line-height:22px;padding:0 10px;border:1px solid;display:inline-block;border-radius:12px}
+.comp h1 a:hover{color:#3675c3}
 .comp p{position:relative;padding:10px;background:#f0f0f0;line-height:1.5;border-radius:6px;margin-top:5px;font-size:14px}
 .comp p:after{content:"";position:absolute;display:block;left:10px;top:-8px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid #f0f0f0}
 .comml ul ul li{border:0;padding:0;margin:10px 0 10px 20px}
 .comml ul ul li .comp{width:100%}
 .comore{text-align:center;line-height:30px;padding-bottom:10px}
-.comore a{color:#ca7979;font-weight:900}
-.dark .navt p,.dark .sendc a{background:#477bbb}
-.dark .navt p:hover,.dark .sendc a:hover{background:#ca7979}
+.comore a{color:#c56161;font-weight:900}
+.dark .navt p,.dark .sendc a{background:#3675c3}
+.dark .navt p:hover,.dark .sendc a:hover{background:#c56161}
 .dark .comp h1{color:#adbac7}
-.dark .comp h1 b,.dark .comp h1 a,.dark .comore a{color:#477bbb}
-.dark .comp h1 a:hover{color:#ca7979}
+.dark .comp h1 b,.dark .comp h1 a,.dark .comore a{color:#3675c3}
+.dark .comp h1 a:hover{color:#c56161}
 .dark .comp p{color:#adbac7;background:#22272e}
 .dark .comp p:after{border-bottom:10px solid #22272e}
 .dark .comml li{border-bottom:1px solid #010101}

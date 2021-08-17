@@ -14,10 +14,11 @@
   <link rel="icon" href="" /> 
   <link rel="shortcut icon" href="" /> 
   <link rel="apple-touch-icon-precomposed" href="" /> 
-  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
  </head> 
  <body> 
   <header> 
@@ -34,6 +35,7 @@
      <a href="/other/map.html">地图</a> 
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div>  
+    <div class="pomenu" id="pomenu" onclick="doPmenu(true)">打开目录</div>
    </div> 
   </header> 
   <div class="r rt"> 
@@ -61,15 +63,19 @@
       <div class="pfro">
         <p>
           <span>所属分类</span>
-          <a href="/category/java_1.html">Java</a>
+          <b class="pta">
+            <a href="/category/java_1.html">Java</a>
+          </b>
         </p>
         <p>
           <span>相关标签</span>
-          <a href="/tags/springboot_1.html">SpringBoot</a>
-          <a href="/tags/springboot_1.html">配置文件</a>
-          <a href="/tags/springboot_1.html">优先级</a>
-          <a href="/tags/springboot_1.html">环境</a>
-          <a href="/tags/springboot_1.html">配置项</a>
+          <b class="pta">
+            <a href="/tags/springboot_1.html">SpringBoot</a>
+            <a href="/tags/springboot_1.html">配置文件</a>
+            <a href="/tags/springboot_1.html">优先级</a>
+            <a href="/tags/springboot_1.html">环境</a>
+            <a href="/tags/springboot_1.html">配置项</a>
+          </b>
         </p>
       </div>
      </div> 
