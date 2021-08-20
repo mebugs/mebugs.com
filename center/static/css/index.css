@@ -1,0 +1,50 @@
+.fl {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.leare {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.lmenu {
+    width: 100px;
+    background: #22272e;
+    overflow: hidden;
+}
+
+.lmenu p {
+    width: 90%;
+    margin: 25px 10%;
+    text-align: center;
+    height: 50px;
+    box-shadow: 0 0 15px #888;
+    border-radius: 10px 0 0 10px;
+}
+
+.lmenu p a {
+    line-height: 50px;
+    display: block;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.lmenu p.mck {
+    background: #f0f0f0;
+    box-shadow: 0 0 15px #f0f0f0;
+}
+
+.lmenu p.mck a {
+    color: #22272e;
+}
+
+.lmenu p.mred {
+    background: #22434a;
+}
