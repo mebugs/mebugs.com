@@ -10,6 +10,8 @@
     width: 100vw;
     height: 100vh;
     display: none;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
     top: 0;
     left: 0;
 }
@@ -21,11 +23,11 @@
 }
 
 .lmenu p {
-    width: 90%;
-    margin: 25px 10%;
+    width: 80%;
+    margin: 25px 20%;
     text-align: center;
     height: 50px;
-    box-shadow: 0 0 15px #888;
+    box-shadow: 0 0 5px #607d8b;
     border-radius: 10px 0 0 10px;
 }
 
@@ -34,11 +36,14 @@
     display: block;
     font-weight: 900;
     font-size: 18px;
+    color: #f0f0f0;
 }
 
 .lmenu p.mck {
     background: #f0f0f0;
-    box-shadow: 0 0 15px #f0f0f0;
+    box-shadow: 0 0 10px #f0f0f0;
+    width: 95%;
+    margin: 25px 5%;
 }
 
 .lmenu p.mck a {
@@ -46,5 +51,80 @@
 }
 
 .lmenu p.mred {
-    background: #22434a;
+    background: #607d8b;
+}
+.lright {
+    width: calc(100% - 100px);
+}
+.showLogin .leare {
+    opacity: 1;
+}
+iframe#content {
+    border: 0;
+}
+.login {
+    width: 400px;
+    height: 300px;
+    background: #22272e;
+    position: absolute;
+    left: calc(50% - 200px);
+    top: calc(50% - 150px);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px #000;
+    opacity: 0;
+}
+.showLogin .login {
+  top: calc(50% - 200px);
+  opacity: 1;
+}
+.line {
+    margin: 25px;
+    text-align: center;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.line h1 {
+    font-size: 20px;
+    color: #f0f0f0;
+}
+
+.line p {
+    width: 80px;
+    font-size: 16px;
+    height: 35px;
+    font-weight: 900;
+    border-right: 2px solid #22272e;
+    background: #f0f0f0;
+    color: #22272e;
+}
+
+.line input {
+    width: calc(100% - 80px);
+    line-height: 35px;
+    border: 0;
+    outline: 0;
+    background: #f0f0f0;
+    padding: 0 5px;
+    color: #22272e;
+}
+
+button {
+    outline: 0;
+    border: 0;
+    width: 200px;
+    line-height: 40px;
+    background: #fff;
+}
+.line button {
+    border-radius: 10px;
+    background: #607d8b;
+    font-weight: 900;
+    font-size: 18px;
+    color: #f0f0f0;
 }
