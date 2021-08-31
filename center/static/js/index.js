@@ -1,4 +1,5 @@
 var mindex = 0;
+var urlArray = ["main.html","post/postList.html"];
 function toMenu(index) {
   if(index == mindex) {
     return;
@@ -7,6 +8,7 @@ function toMenu(index) {
   $(".lmenu p").eq(index).addClass("mck");
   mindex = index;
   // 触发IFRAME变动
+  
 }
 
 function showLogin() {
