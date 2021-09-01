@@ -3,13 +3,34 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+    <link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
+    <link href="/center/static/css/child.css" rel="stylesheet" type="text/css">
+    <link href="/center/static/css/postList.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
     <div class="main" id="main" v-cloak v-if="utoken">
-     
+     <div class="hd">
+       <h1>文章管理</h1>
+     </div>
+     <div class="mc">
+       <div class="sc">
+         <input type="text" v-model="search.title" placeholder="文章标题(支持模糊)" />
+         <select v-model="search.category">
+           <option v-for="item in category" :value="item.id">{{item.name}}</option>
+         </select>
+         <select v-model="search.status">
+           <option v-for="item in status" :value="item.id">{{item.name}}</option>
+         </select>
+         <button type="button" class="btnblue">搜索</button>
+         <button type="button" class="btngray">重置</button>
+         <button type="button" class="btnred">添加新文章</button>
+       </div>
+     </div>
     </div>
     <script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
     <script src="/static/lib/vue/vue.min.js"></script>
+    <script src="/static/lib/vue/vue-axios.js"></script>
+    <script src="/static/lib/vue/axios.min.js"></script>
     <script src="/center/static/js/comm.js?v=1.0"></script>  
     <script src="/center/static/js/postList.js?v=1.0"></script>  
 	</body>

@@ -20,6 +20,7 @@
     width: 100px;
     background: #22272e;
     overflow: hidden;
+    padding-top: 25px;
 }
 
 .lmenu p {
@@ -27,8 +28,7 @@
     margin: 25px 20%;
     text-align: center;
     height: 50px;
-    box-shadow: 0 0 5px #607d8b;
-    border-radius: 10px 0 0 10px;
+    box-shadow: 0 0 2px #607d8b;
 }
 
 .lmenu p a {
@@ -41,9 +41,8 @@
 
 .lmenu p.mck {
     background: #f0f0f0;
-    box-shadow: 0 0 10px #f0f0f0;
-    width: 95%;
-    margin: 25px 5%;
+    width: 90%;
+    margin: 25px 10%;
 }
 
 .lmenu p.mck a {

@@ -8,7 +8,7 @@ function toMenu(index) {
   $(".lmenu p").eq(index).addClass("mck");
   mindex = index;
   // 触发IFRAME变动
-  
+  $("#content").attr("src",urlArray[index]);
 }
 
 function showLogin() {
