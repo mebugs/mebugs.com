@@ -1,0 +1,59 @@
+.hd {
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: #22272e;
+    padding: 0 15px;
+}
+
+.hd h1 {
+    line-height: 40px;
+    font-size: 18px;
+    color: #f0f0f0;
+}
+
+.mc {
+    padding: 50px 15px 15px;
+}
+
+.sc {
+    background: #fff;
+    padding: 15px;
+    display: flex;
+}
+
+.sc * {
+    outline: 0;
+    border: 1px solid #ddd;
+    height: 40px;
+    min-width: 200px;
+    padding: 0 10px;
+    margin-right: 15px;
+}
+
+button {
+    border: 0!important;
+    cursor: pointer;
+}
+
+.sc button {
+    min-width: unset;
+    font-weight: 900;
+    color: #f0f0f0;
+    padding: 0 30px;
+}
+
+button.btnblue {
+    background: #3790b9;
+}
+
+button.btngray {
+    background: #9e9e9e;
+}
+
+button.btnred {
+    background: #b93749;
+}
