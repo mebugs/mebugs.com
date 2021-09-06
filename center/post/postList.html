@@ -15,15 +15,28 @@
      <div class="mc">
        <div class="sc">
          <input type="text" v-model="search.title" placeholder="文章标题(支持模糊)" />
-         <select v-model="search.category">
+         <select v-model="search.cid">
            <option v-for="item in category" :value="item.id">{{item.name}}</option>
          </select>
          <select v-model="search.status">
            <option v-for="item in status" :value="item.id">{{item.name}}</option>
          </select>
-         <button type="button" class="btnblue">搜索</button>
-         <button type="button" class="btngray">重置</button>
-         <button type="button" class="btnred">添加新文章</button>
+         <button type="button" class="btnblue" @click="search">搜索</button>
+         <button type="button" class="btngray" @click="reset">重置</button>
+         <button type="button" class="btnred" @click="add">添加新文章</button>
+       </div>
+       <div class="sm">
+         <div class="slist">
+           <div class="slci" v-if="list[0]">
+             
+           </div>
+           <div class="slci" v-else>
+             
+           </div>
+         </div>
+         <div class="spage">
+           
+         </div>
        </div>
      </div>
     </div>
