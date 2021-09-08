@@ -34,6 +34,9 @@ var vue = new Vue({
       this.category.unshift({id:0,name:"请选择文章分类"})
     },
     add() {
+      window.location.href = "postEdit.html?id=0"
+    },
+    edit(id) {
       
     },
     search() {

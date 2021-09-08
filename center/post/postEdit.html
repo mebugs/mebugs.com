@@ -3,45 +3,96 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Marked in the browser</title>
+  <link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
+  <link href="/center/static/css/md.css" rel="stylesheet" type="text/css">
+  <link href="/static/css/marked/marked.css" rel="stylesheet" type="text/css">
+  <link href="/center/static/css/child.css" rel="stylesheet" type="text/css">
 </head>
-<body class="dark">
-	<link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
-	<link href="/center/static/css/md.css" rel="stylesheet" type="text/css">
-	<link href="/static/css/marked/marked.css" rel="stylesheet" type="text/css">
-	<div id="content">
-		<div class="tools">
-			<button type="button" @click="img()">图片上传</button>
-			<button type="button" @click="doView()">{{ hideView ? '打开预览' : '关闭预览' }}</button>
-			<button type="button" @click="doMenu()">{{ showMenu ? '隐藏目录' : '查看目录' }}</button>
-		</div>
-		<div class="input" :class="{'full':hideView}">
-			<textarea id="md" placeholder="请输入Markdown代码" v-model="md"></textarea>
-		</div>
-		<div id="html" class="output mark" :class="{'hide':hideView}"  v-html="html"></div>
-		<div class="pmenus" :class="{'showMenu':showMenu}">
-			<div class="menue" id="menue" v-if="mtree[0]">
-				<ul>
-					<li v-for="l1 in mtree">
-						<a class="pl1" :href="'javascript:runTo(\'menu_'+l1.id+'\')'">{{ l1.text }}</a>
-						<ul v-if="l1.child[0]">
-							<li v-for="l2 in l1.child">
-								<a class="pl2" :href="'javascript:runTo(\'menu_'+l2.id+'\')'">{{ l2.text }}</a>
-								<ul v-if="l2.child[0]">
-									<li v-for="l3 in l2.child">
-										<a class="pl3" :href="'javascript:runTo(\'menu_'+l3.id+'\')'">{{ l3.text }}</a>
-									</li>	
-								</ul>
-							</li>	
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<body>
+	<div class="main" id="main" v-cloak v-if="utoken">
+	 <div class="hd">
+	   <a href="javascript:history.go(-1);">‹</a><h1>{{hdTitle}}</h1>
+	 </div>
+   <div class="mc mcfx">
+     <div class="eel">
+       <div class="sm">
+         <div class="pli">
+           <input type="text" v-model="post.title" placeholder="请输入文章标题" />
+         </div>
+         <div class="pli plt">
+           <textarea placeholder="请输入文章简介" v-model="post.remark"></textarea>
+         </div>
+         <div id="content">
+         	<div class="tools">
+         		<button type="button" @click="img()">图片上传</button>
+         		<button type="button" @click="doView()">{{ hideView ? '打开预览' : '关闭预览' }}</button>
+         		<button type="button" @click="doMenu()">{{ showMenu ? '隐藏目录' : '查看目录' }}</button>
+         	</div>
+         	<div class="input" :class="{'full':hideView}">
+         		<textarea id="md" placeholder="请输入Markdown代码" v-model="md"></textarea>
+         	</div>
+         	<div id="html" class="output mark" :class="{'hide':hideView}" v-html="html"></div>
+         	<div class="pmenus" :class="{'showMenu':showMenu}">
+         		<div class="menue" id="menue" v-if="mtree[0]">
+         			<ul>
+         				<li v-for="l1 in mtree">
+         					<a class="pl1" :href="'javascript:runTo(\'menu_'+l1.id+'\')'">{{ l1.text }}</a>
+         					<ul v-if="l1.child[0]">
+         						<li v-for="l2 in l1.child">
+         							<a class="pl2" :href="'javascript:runTo(\'menu_'+l2.id+'\')'">{{ l2.text }}</a>
+         							<ul v-if="l2.child[0]">
+         								<li v-for="l3 in l2.child">
+         									<a class="pl3" :href="'javascript:runTo(\'menu_'+l3.id+'\')'">{{ l3.text }}</a>
+         								</li>	
+         							</ul>
+         						</li>	
+         					</ul>
+         				</li>
+         			</ul>
+         		</div>
+         	</div>
+         </div>
+       </div>
+     </div>
+     <div class="eer">
+      <div class="sm">
+        <label for="ibann" class="ibann">
+          <img :src="ibann"  v-if="ibann"/>
+          <span v-else>上传封面图片</span>
+        </label>
+        <input id="ibann" accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none;" @change="chooseIbann"/>
+        <div class="pli">
+          <input type="text" v-model="post.url" placeholder="请输入文章静态URL" />
+        </div>
+        <div class="pli">
+          <select v-model="post.cid">
+            <option v-for="item in category" :value="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="pli">
+          <select v-model="post.status">
+            <option v-for="item in status" :value="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="pli tageare">
+          标签
+        </div>
+        <div class="savebtn">
+          <button type="button" class="btnblue" @click="save">提交保存</button>
+        </div>
+      </div>
+     </div>
+   </div>
+   
+   
+
 	<script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
 	<script src="/static/lib/marked/marked.min.js"></script>
 	<script src="/static/lib/marked/highlight.min.js"></script>
 	<script src="/static/lib/vue/vue.min.js"></script>
+	<script src="/static/lib/vue/vue-axios.js"></script>
+	<script src="/static/lib/vue/axios.min.js"></script>
+	<script src="/center/static/js/comm.js?v=1.0"></script>  
 	<script src="/center/static/js/postEdit.js"></script>
 </body>
 </html>

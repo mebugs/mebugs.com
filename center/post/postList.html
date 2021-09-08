@@ -5,7 +5,6 @@
 		<title></title>
     <link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
     <link href="/center/static/css/child.css" rel="stylesheet" type="text/css">
-    <link href="/center/static/css/postList.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
     <div class="main" id="main" v-cloak v-if="utoken">
@@ -27,8 +26,23 @@
        </div>
        <div class="sm">
          <div class="slist">
-           <div class="slci" v-if="list[0]">
-             
+           <div class="slci" v-if="list[0]" v-for="item in list">
+             <div class="slbn">
+               <img :src="item.banner">
+             </div>
+             <div class="slti">
+               <h2>{{item.title}}</h2>
+               <p>{{item.remark}}</p>
+             </div>
+             <div class="slst">
+               <span>{{item.category}}分类</span>
+                <span v-if="item.status == 1" class="clgray">{{item.statusName}}</span>
+                <span v-if="item.status == 2" class="clblue">{{item.statusName}}</span>
+                <span v-if="item.status == 3" class="clred">{{item.statusName}}</span>
+             </div>
+             <div class="sldo">
+               <button type="button" class="btnblue" @click="edit(item.id)">编辑</button>
+             </div>
            </div>
            <div class="slci" v-else>
              

@@ -1,15 +1,15 @@
-div#content{margin:50px;background:#2d333b;padding:40px 5px 5px 5px;display:flex;overflow:hidden;position:relative}
-.input,.output{width: calc(50% - 20px);margin: 10px;height: calc(100vh - 180px);overflow-y:auto;}
-.full{width: calc(100% - 20px);}
-.hide{width:0;opacity:0;margin: 0;}
+div#content{padding: 30px 0 0;display:flex;position:relative;width: 100%;overflow: hidden;height: calc(100vh - 250px);margin-top: 15px;}
+.input,.output{width: 50%;margin: 0;height: calc(100vh - 281px);overflow-y:auto;}
+.full{width: 100%;}
+.hide{width:0;opacity:0;margin: 0;display: none;}
 .tools{position:absolute;right: -5px;top:0;}
-textarea#md{width:100%;height:100%;resize:none;outline:0;border:2px solid #6673a7;overflow-y:scroll;line-height:1.8;padding:5px;display:block;background: #22272e;color: #fff;}
-.pmenus{position:absolute;width:500px;height: calc(100% - 65px);background: #22272e;top: 50px;right: -500px;opacity:0;overflow:auto;border-left: 2px solid #6673a7;}
+textarea#md{width:100%;height:100%;resize:none;outline:0;border: 1px solid #ddd;overflow-y: auto;line-height:1.8;padding:5px;display:block;background: #fbfbfb;}
+.pmenus{position:absolute;width: 300px;height: calc(100% - 30px);background: #f0f0f0;top: 30px;right: -500px;opacity:0;overflow-y: auto;overflow-x: hidden;}
 .showMenu{right: 0;opacity:1;}
-.tools button{line-height:40px;border:0;outline:0;margin:0 5px;padding:0 15px;background:#6673a7;color: #eee;cursor:pointer;}
-.menue ul{width:100%}
+.tools button{line-height: 30px;border:0;outline:0;margin:0 5px;padding: 0 15px;background: #3790b9;color: #eee;cursor:pointer;font-weight: 900;font-size: 13px;}
+.menue ul{width:100%;padding-left: 30px;}
 .menus ul{margin:auto 0;}
-.menue li{line-height:25px}
+.menue li{line-height: 30px;}
 .menue li a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .menue li ul{margin-left:5px}
 .menue li ul ul{margin-left:5px}
