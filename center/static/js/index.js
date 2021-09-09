@@ -17,11 +17,30 @@ function showLogin() {
 }
 
 function login() {
-  // login sucess add token and add child token
-  $("body").removeClass("showLogin");
-  setTimeout(function(){ $(".leare").hide();},500);
-  loc.setItem("MTOKEN","A");
-  token = "A";
-  $("#content")[0].contentWindow.vue.utoken = "A";
+  var username = $("#username").val();
+  var password = $("#password").val();
+  if(username && password) {
+    $.ajax({
+      url: "/service/login.php",
+      data: {username:username,password:password},
+      dataType: "json",
+      success: function(res) {
+        if(res.code == 200) {
+          // login sucess add token and add child token
+          $("body").removeClass("showLogin");
+          setTimeout(function(){ $(".leare").hide();},500);
+          loc.setItem("MTOKEN",res.data);
+          token = res.data;
+          $("#content")[0].contentWindow.vue.utoken = res.data;
+        } else {
+          //登录失败
+        }
+      },
+      error: function(err) {
+        //系统异常
+      }
+    });
+  }
+  
 }
 

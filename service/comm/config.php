@@ -1,0 +1,12 @@
+<?php 
+//PHP基础配置文件
+//数据库配置文件
+//$dburl="localhost";
+//$dbuname="root";
+//$dbpwd="123456";
+//$dbname="mebugs_blog";
+//管理员登录
+$adminName="admin";
+$adminPwd="1qaz!QAZ";
+$adminToken="lzrgryryfdlyejdniusnafraaquykshn";
+?>

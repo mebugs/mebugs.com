@@ -75,7 +75,15 @@
           </select>
         </div>
         <div class="pli tageare">
-          标签
+          <input type="text" v-model="tagSc" placeholder="请输入标签名快速搜索" />
+          <div class="tagShow">
+            <div class="tse" v-if="tagShow[0]">
+              
+            </div>
+            <div class="tse" v-else><!-- ADD -->
+              
+            </div>
+          </div>
         </div>
         <div class="savebtn">
           <button type="button" class="btnblue" @click="save">提交保存</button>
