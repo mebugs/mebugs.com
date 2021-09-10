@@ -3,13 +3,17 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+    <link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
     <div class="main" id="main" v-cloak v-if="utoken">
-      <h1>WaitForBuild</h1>
+      <h1 onclick="PopUp('成功',0,1);">WaitForBuild</h1>
+      <h1 onclick="PopUp('失败',1,1);">WaitForBuild</h1>
+      <h1 onclick="PopUp('加载中...',2,1 );">WaitForBuild</h1>
     </div>
     <script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
     <script src="/static/lib/vue/vue.min.js"></script>
+    <script src="/static/js/popup.js"></script>  
     <script src="/center/static/js/comm.js?v=1.0"></script>  
     <script src="/center/static/js/main.js?v=1.0"></script>  
 	</body>

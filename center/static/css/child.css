@@ -241,8 +241,3 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 
 
-
-
-button:hover{
-  opacity: 0.85;
-}

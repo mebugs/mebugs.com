@@ -76,7 +76,7 @@ var vue = new Vue({
       this.category.unshift({id:0,name:"请选择文章分类"})
     },
     getAllTag() {
-      this_.tagList = [{id:1,name:"SpringBoot"},{id:2,name:"多线程"},{id:1,name:"SpringBoot"},{id:1,name:"SpringBoot"},{id:1,name:"SpringBoot"}]
+      this.tagList = [{id:1,name:"SpringBoot"},{id:2,name:"多线程"},{id:1,name:"SpringBoot"},{id:1,name:"SpringBoot"},{id:1,name:"SpringBoot"}]
     },
     chooseIbann(e) { // 上传封面图片
       let file = e.target.files[0]
