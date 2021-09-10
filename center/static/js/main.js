@@ -4,9 +4,6 @@ var vue = new Vue({
     utoken: null
 	},
   watch: {
-  	utoken(val,oldVal) { // 监听TOKEN
-      this.setToken(val);
-  	}
   },
 	mounted() {
     this.init();
@@ -20,6 +17,7 @@ var vue = new Vue({
       })
     },
     setToken() {
+      this.utoken = true;
       this.init()
     }
 	}

@@ -1,24 +1,20 @@
 var loc = window.localStorage;
-var token;
 // req from where
 function getToken(flag) {
+  var token = loc.getItem("MTOKEN");
   if(flag) {
     // child page
     if(parent && window.top != window.self) {
-      if(parent.getToken(false))
-      {
-        vue.utoken=parent.token;
+      if(token) {
+        vue.utoken = true;
         return true;
-      }else{
-        return false;
+      } else {
+        return parent.getToken(false);
       }
     }else{
-      alert("非法访问！");
       window.close();
       return false;
     }
-  }else{
-    token = loc.getItem("MTOKEN");
   }
   if(token) {
     return true;

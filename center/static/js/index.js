@@ -32,8 +32,7 @@ function login() {
           $("body").removeClass("showLogin");
           setTimeout(function(){ $(".leare").hide();},500);
           loc.setItem("MTOKEN",res.data);
-          token = res.data;
-          $("#content")[0].contentWindow.vue.utoken = res.data;
+          $("#content")[0].contentWindow.vue.setToken();
         } else {
           //登录失败
           PopUp(res.msg,1,1);

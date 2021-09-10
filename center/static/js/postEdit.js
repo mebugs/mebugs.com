@@ -25,9 +25,6 @@ var vue = new Vue({
 		showMenu: false
 	},
 	watch: {
-    utoken(val,oldVal) { // 监听TOKEN
-      this.setToken(val);
-    },
 		md(val,oldVal) { // 监听MD输入框
 		this.makeHtml()
 		},
@@ -69,6 +66,7 @@ var vue = new Vue({
       
     },
     setToken() {
+      this.utoken = true;
       this.init();
     },
     getCategory() {
@@ -76,7 +74,9 @@ var vue = new Vue({
       this.category.unshift({id:0,name:"请选择文章分类"})
     },
     getAllTag() {
-      this.tagList = [{id:1,name:"SpringBoot"},{id:2,name:"多线程"},{id:1,name:"SpringBoot"},{id:1,name:"SpringBoot"},{id:1,name:"SpringBoot"}]
+      AllTag().then(res => {
+        this.tagList = res.data;
+      });
     },
     chooseIbann(e) { // 上传封面图片
       let file = e.target.files[0]

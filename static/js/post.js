@@ -93,7 +93,7 @@ function sendComms(pid, level, fid) {
     window.localStorage.setItem("localUser",userCache);
     // send comms
   } else {
-    alert("昵称和评论内容为必填项，请补充后再提交")
+    PopUp("昵称与评论内容为必填项",1,1)
   }
 }
 // initinput Base Info
