@@ -1,7 +1,15 @@
-function AllTag() {
+function TagWork(data) {
   return axios({
     method: 'post',
     url: '/service/tag.php',
-    data: {api:'AllTag'}
+    data: data
+  })
+}
+
+function ImgWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/img.php',
+    data: data
   })
 }

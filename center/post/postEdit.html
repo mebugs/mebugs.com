@@ -75,13 +75,30 @@
           </select>
         </div>
         <div class="pli tageare">
-          <input type="text" v-model="tagSc" placeholder="请输入标签名快速搜索" />
-          <div class="tagShow">
+          <input type="text" v-model="tagSc" @keyup.enter="getScTag($event)" placeholder="请输入标签名[回车]快速搜索" />
+          <div class="tagShow tagfix" v-if="tagShowFlag">
             <div class="tse" v-if="tagShow[0]">
-              
+              <em @click="closeTag()">✘</em>
+              <span v-for="item in tagShow" @click="pushTag(item)">{{ item.name }}</span>
             </div>
             <div class="tse" v-else><!-- ADD -->
-              
+              <h5>标签不存在 | 新建标签</h5>
+              <div class="tade">标签名称：<input type="text" v-model="newTag.name" placeholder="请输入新标签名" /></div>
+              <div class="tade">静态地址：<input type="text" v-model="newTag.url" placeholder="请输入新标签静态地址" /></div>
+              <div class="tade">简短备注：<textarea placeholder="请输入新标签简短介绍" v-model="newTag.remark"></textarea></div>
+              <button type="button" class="btnblue" @click="addTag">新增标签</button>
+            </div>
+          </div>
+          <div class="tagShow">
+            <div class="tse" v-if="tagCheck[0]">
+              <span v-for="item in tagCheck">{{ item.name }}<b @click="removeTag(item.id)">✘</b></span>
+            </div>
+            <div class="tse" v-else><!-- ADD -->
+              <p>
+                在上方搜索框中搜索并添加标签
+                <br>
+                回车快速搜索筛选
+              </p>
             </div>
           </div>
         </div>
@@ -102,6 +119,7 @@
 	<script src="/static/lib/vue/axios.min.js"></script>
 	<script src="/center/static/js/comm.js?v=1.0"></script>  
   <script src="/center/static/js/api.js"></script>
+  <script src="/static/js/popup.js"></script>  
 	<script src="/center/static/js/postEdit.js"></script>
 </body>
 </html>

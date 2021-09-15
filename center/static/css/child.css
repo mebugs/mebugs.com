@@ -40,4 +40,89 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pli textarea{width:100%;resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb}
 .savebtn{margin-top:7px;width:100%}
 .savebtn button{display:block;line-height:40px;width:100%;font-weight:900;color:#fff}
-.tageare{height:calc(100vh - 515px);overflow-y:auto}
+.tageare{height:calc(100vh - 515px);overflow-y:auto;position: relative;}
+
+.tagShow {
+    height: calc(100vh - 570px);
+    overflow-y: auto;
+    margin-top: 15px;
+    border: 2px dotted #eee;
+    padding: 5px;
+}
+.tse {position: relative;}
+.tse p {line-height: 40px;text-align: center;color: #aaa;}
+.tse em{
+    position: absolute;
+    right: -8px;
+    top: -10px;
+    display: block;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background: #3790b9;
+    text-align: center;
+    font-style: normal;
+    cursor: pointer;
+    color: #f0f0f0;
+}
+.tagShow.tagfix {
+    position: absolute;
+    z-index: 11;
+    background: rgba(255,255,255,0.9);
+    border-color: #3790b9;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.tse button {
+    display: block;
+    line-height: 36px;
+    width: 80%;
+    font-weight: 900;
+    color: #fff;
+    margin: 5px 10%;
+}
+
+.tse h5 {
+    line-height: 40px;
+    text-align: center;
+    color: #3790b9;
+}
+
+.tade input {
+    line-height: 36px;
+    height: 36px;
+    margin: 5px 0;
+}
+
+.tade textarea {
+    margin: 5px 0;
+}
+
+.tse span {
+    line-height: 30px;
+    padding: 0 15px;
+    margin: 3px;
+    display: inline-block;
+    background: #f9f9f9;
+    border: 1px dotted #eee;
+    position: relative;
+    cursor: pointer;
+}
+
+.tse span b {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    display: block;
+    right: -5px;
+    top: -5px;
+    line-height: 15px;
+    font-size: 12px;
+    background: #3790b9;
+    text-align: center;
+    border-radius: 9px;
+    color: #f9f9f9;
+    cursor: pointer;
+}
