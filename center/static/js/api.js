@@ -13,3 +13,11 @@ function ImgWork(data) {
     data: data
   })
 }
+
+function PostWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/post.php',
+    data: data
+  })
+}

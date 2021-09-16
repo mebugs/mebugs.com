@@ -28,6 +28,7 @@
          		<button type="button" @click="doView()">{{ hideView ? '打开预览' : '关闭预览' }}</button>
          		<button type="button" @click="doMenu()">{{ showMenu ? '隐藏目录' : '查看目录' }}</button>
          	</div>
+          <input id="mdimg" accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none;" @change="chooseMdImg"/>
          	<div class="input" :class="{'full':hideView}">
          		<textarea id="md" placeholder="请输入Markdown代码" v-model="md"></textarea>
          	</div>

@@ -3,8 +3,12 @@ function UploadBaseArray($imgs) {
   $fileName = $imgs[0];
   $upPath = $_SERVER['DOCUMENT_ROOT'].'/static/upload/post/';
   $imgx = array();
-  array_push($imgx,$imgs[1],$imgs[2],$imgs[3]);
-
+  // 单图与多图
+  if(count($imgs) > 2) {
+    array_push($imgx,$imgs[1],$imgs[2],$imgs[3]);
+  } else {
+    array_push($imgx,$imgs[1]);
+  }
   for($i=0;$i<count($imgx);$i++)
   {
     if (strstr($imgx[$i],","))

@@ -18,6 +18,7 @@ var vue = new Vue({
     post: {},
     ibann: '',
     ibanns: [null,null,null,null],
+    mdRange: [0,0],
 		md: null,
 		html: '实时预览区',
 		index: 0,
@@ -72,16 +73,25 @@ var vue = new Vue({
         if(this.tagCheck.length < 1) {
           PopUp("至少需要选择一个标签",1,1);
           return;
-        }
+        } else {
+          // 填入标签清单
+          let tids = []
+          this.tagCheck.forEach(function(item) {
+            tids.push(item.id);
+          });
+          this.post.tids = tids;
+        }     
         if(!this.fileName) {
           PopUp("请上传题图",1,1);
           return;
+        } else {
+          this.post.banner = this.fileName;
         }
         if(this.ibanns[0] && this.ibanns[1].indexOf('data:image') > -1) {
           PopUp('正在上传题图...',2,1 );
           ImgWork({api:"Base64",imgs:this.ibanns}).then(res => {
             if(res.data) {
-              this.ibann = res.data;
+              this.ibann = res.data+'?v='+Math.ceil(Math.random()*100);
               this.savePost();
             }
           })
@@ -291,7 +301,69 @@ var vue = new Vue({
 		this.showMenu = !this.showMenu
 		},
 		img(){
-		
-		}
+      // 提取光标位置
+      let mdN = document.getElementById("md");
+      let start,end = 0;
+      this.md =  this.md ? this.md : '';
+      if(mdN.selectionStart || mdN.selectionStart === '0') {
+        start = mdN.selectionStart;
+        end = mdN.selectionEnd;
+      } else {
+        start = this.md.length;
+        end = start;
+      }
+      this.mdRange = [start,end];
+      $("#mdimg").click();
+      // 向光标或选择位置插入一段内容
+      // let imgStr = "\n图片测试\n";
+      // let mdN = document.getElementById("md");
+      // this.md =  this.md ? this.md : '';
+      // // 不兼容IE
+      // if(mdN.selectionStart || mdN.selectionStart === '0') {
+      //   let start = mdN.selectionStart;
+      //   let end = mdN.selectionEnd;
+      //   let bef = this.md.substring(0,start);
+      //   let aft = this.md.substring(end,this.md.length);
+      //   this.md = bef + imgStr + aft;
+      //   mdN.focus();
+      //   // 光标重定位
+      //   mdN.selectionStart = start + imgStr.length;
+      //   mdN.selectionEnd = mdN.selectionStart;
+      // } else {
+      //   this.md += imgStr;
+      //   mdN.focus();
+      // }
+		},
+    chooseMdImg(e) {
+      let file = e.target.files[0]
+      //var file = document.getElementsById('ibann')[0].files[0];
+      if (window.FileReader && file) //读取文件
+      {
+        let fileName = file.name;
+        var this_ = this
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        //监听文件读取结束后事件
+        reader.onloadend = function(e)
+        {
+          // 原图
+          PopUp('正在上传图片...',2,1 );
+          ImgWork({api:"Base64",imgs:[fileName,e.target.result]}).then(res => {
+            if(res.data) {
+              PopUp(res.msg,0,1);
+              let mdN = document.getElementById("md");
+              let imgStr = "\n!["+res.data+"]("+res.data+")\n";
+              let bef = this_.md.substring(0,this_.mdRange[0]);
+              let aft = this_.md.substring(this_.mdRange[1],this_.md.length);
+              this_.md = bef + imgStr + aft;
+              mdN.focus();
+              // 光标重定位
+              mdN.selectionStart = this_.mdRange[0] + imgStr.length;
+              mdN.selectionEnd = mdN.selectionStart;
+            }
+          });
+        };
+      }
+    }
 	}
 })
