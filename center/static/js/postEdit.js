@@ -60,11 +60,24 @@ var vue = new Vue({
       var id = getUrlParam("id");
       if(id != 0) {
         this.hdTitle = "编辑文章"
+        PopUp('正在查询文章...',2,1 );
+        PostWork({api:"GetPost",id:id}).then(res => {
+          PopUp(res.msg,0,1);
+          this.post = res.data;
+          this.md = this.post.md;
+          this.ibann = "/static/upload/post/"+this.post.banner+'?v='+Math.ceil(Math.random()*100);
+        }).catch(function(err) {
+          setTimeout(function() {
+            history.go(-1);
+          },1000);
+        });
         this.md = "原文MARKDOWN文本"
         this.post = {id:id}
+        this.post.api = 'AddPost'
       } else {
         this.hdTitle = "新增文章"
         this.post = {id:0,cid:0,status:0}
+         this.post.api = 'ModPost'
       }
     },
     save() {
@@ -87,11 +100,16 @@ var vue = new Vue({
         } else {
           this.post.banner = this.fileName;
         }
+        // HTML md menus 
+        this.post.md = this.md
+        this.post.html = this.html
+        this.post.menu = $("#menue").html()
         if(this.ibanns[0] && this.ibanns[1].indexOf('data:image') > -1) {
           PopUp('正在上传题图...',2,1 );
           ImgWork({api:"Base64",imgs:this.ibanns}).then(res => {
             if(res.data) {
               this.ibann = res.data+'?v='+Math.ceil(Math.random()*100);
+              this.ibanns = [this.fileName,this.fileName,this.fileName]
               this.savePost();
             }
           })
@@ -102,8 +120,14 @@ var vue = new Vue({
         PopUp("请输入或选择相关内容",1,1);
       } 
     },
-    savePost() { // POST 赋值检查
-      PopUp('res.msg',0,1);
+    savePost() {
+      PopUp('正在提交文章...',2,1 );
+      PostWork(this.post).then(res => {
+        PopUp('提交成功',0,1);
+        setTimeout(function() {
+          history.go(-1);
+        },1000);
+      }) 
     },
     setToken() {
       this.utoken = true;
@@ -117,6 +141,10 @@ var vue = new Vue({
       TagWork({api:'AllTag'}).then(res => {
         this.tagList = res.data;
         this.tagShow = this.tagList;
+        if(this.post.tids) {
+          var this_ = this;
+          this.tagCheck = this.tagList.filter(function(item) { return  ;});
+        }
       });
     },
     getScTag(e) {
