@@ -47,8 +47,6 @@ var vue = new Vue({
       	if(getToken(true)){
           // 获取分类
           this_.getCategory();
-          // 获取标签
-          this_.getAllTag();
           // 获取文章信息
           this_.getPostInfo();
           // 初始化markdown
@@ -62,13 +60,15 @@ var vue = new Vue({
         this.hdTitle = "编辑文章"
         PopUp('正在查询文章...',2,1 );
         PostWork({api:"GetPost",id:id}).then(res => {
-          PopUp(res.msg,0,1);
+          PopUp('查询成功',0,1);
           this.post = res.data;
           this.md = this.post.md;
           this.ibann = "/static/upload/post/"+this.post.banner+'?v='+Math.ceil(Math.random()*100);
+          // 获取标签
+          this.getAllTag();    
         }).catch(function(err) {
           setTimeout(function() {
-            history.go(-1);
+             window.location.href = "postList.html";
           },1000);
         });
         this.md = "原文MARKDOWN文本"
@@ -77,7 +77,9 @@ var vue = new Vue({
       } else {
         this.hdTitle = "新增文章"
         this.post = {id:0,cid:0,status:0}
-         this.post.api = 'ModPost'
+        this.post.api = 'ModPost'
+        // 获取标签
+        this.getAllTag();    
       }
     },
     save() {
@@ -125,7 +127,7 @@ var vue = new Vue({
       PostWork(this.post).then(res => {
         PopUp('提交成功',0,1);
         setTimeout(function() {
-          history.go(-1);
+          window.location.href = "postList.html";
         },1000);
       }) 
     },
@@ -143,7 +145,7 @@ var vue = new Vue({
         this.tagShow = this.tagList;
         if(this.post.tids) {
           var this_ = this;
-          this.tagCheck = this.tagList.filter(function(item) { return  ;});
+          this.tagCheck = this.tagList.filter(function(item) { return this_.post.tids.includes(item.id);});
         }
       });
     },

@@ -54,7 +54,7 @@ function GetPost($conn,$id) {
   $query = mysqli_query($conn,$sql);
   $post = [];
   if($query) {
-    $post = mysqli_fetch_array($query,MYSQL_ASSOC);
+    $post = mysqli_fetch_array($query,MYSQLI_ASSOC);
   } else {
     return [false,'获取文章失败'];
   }
@@ -63,7 +63,7 @@ function GetPost($conn,$id) {
   $tquery = mysqli_query($conn,$tag);
   $tids = [];
   if($tquery) {
-    while($tid = mysqli_fetch_row($query)) {
+    while($tid = mysqli_fetch_row($tquery)) {
       array_push($tids,$tid[0]);
     }
   } else {
