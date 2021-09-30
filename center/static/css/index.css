@@ -15,5 +15,5 @@ iframe#content{border:0}
 .line h1{font-size:20px;color:#f0f0f0}
 .line p{width:80px;font-size:16px;height:35px;font-weight:900;border-right:2px solid #22272e;background:#f0f0f0;color:#22272e}
 .line input{width:calc(100% - 80px);line-height:35px;border:0;outline:0;background:#f0f0f0;padding:0 5px;color:#22272e}
-button{outline:0;border:0;width:200px;line-height:40px;background:#fff;cursor:pointer}
+button{outline:0;border:0;width:200px;line-height:40px;background:#feffff;cursor:pointer}
 .line button{border-radius:10px;background:#607d8b;font-weight:900;font-size:18px;color:#f0f0f0}

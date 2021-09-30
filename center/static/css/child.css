@@ -3,7 +3,7 @@
 .hd h1{line-height:40px;font-size:18px;color:#f0f0f0}
 .mc{padding:40px 0 00}
 .mcfx{display:flex}
-.sc,.sm{background:#fff;padding:15px;display:flex;margin:20px}
+.sc,.sm{background:#feffff;padding:15px;display:flex;margin:20px}
 input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding:0 10px;background:#fbfbfb}
 .sc *{margin-right:15px}
 button{border:0!important;cursor:pointer}
@@ -80,7 +80,7 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     line-height: 36px;
     width: 80%;
     font-weight: 900;
-    color: #fff;
+    color: #feffff;
     margin: 5px 10%;
 }
 
