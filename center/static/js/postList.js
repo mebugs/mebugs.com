@@ -35,7 +35,7 @@ var vue = new Vue({
       window.location.href = "postEdit.html?id=0"
     },
     edit(id) {
-      
+      window.location.href = "postEdit.html?id="+id
     },
     search() {
       this.getPage()

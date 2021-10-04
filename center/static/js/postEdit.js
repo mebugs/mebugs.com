@@ -11,9 +11,14 @@ var vue = new Vue({
     tagSc: null,
     tagList: [],
     tagShow: [],
+    tagShowFlag: false,
+    tagCheck: [],
+    newTag: {api:'AddTag',id:0,name:null,remark:null,url:null},
+    fileName: null,
     post: {},
     ibann: '',
-    ibanns: [],
+    ibanns: [null,null,null,null],
+    mdRange: [0,0],
 		md: null,
 		html: '实时预览区',
 		index: 0,
@@ -42,8 +47,6 @@ var vue = new Vue({
       	if(getToken(true)){
           // 获取分类
           this_.getCategory();
-          // 获取标签
-          this_.getAllTag();
           // 获取文章信息
           this_.getPostInfo();
           // 初始化markdown
@@ -55,15 +58,78 @@ var vue = new Vue({
       var id = getUrlParam("id");
       if(id != 0) {
         this.hdTitle = "编辑文章"
+        PopUp('正在查询文章...',2,1 );
+        PostWork({api:"GetPost",id:id}).then(res => {
+          PopUp('查询成功',0,1);
+          this.post = res.data;
+          this.md = this.post.md;
+          this.ibann = "/static/upload/post/"+this.post.banner+'?v='+Math.ceil(Math.random()*100);
+          // 获取标签
+          this.getAllTag();    
+        }).catch(function(err) {
+          setTimeout(function() {
+             window.location.href = "postList.html";
+          },1000);
+        });
         this.md = "原文MARKDOWN文本"
         this.post = {id:id}
+        this.post.api = 'AddPost'
       } else {
         this.hdTitle = "新增文章"
         this.post = {id:0,cid:0,status:0}
+        this.post.api = 'ModPost'
+        // 获取标签
+        this.getAllTag();    
       }
     },
     save() {
-      
+      // 数据检查和组装
+      if(this.post.title && this.post.remark && this.md && this.post.url && this.post.cid && this.post.status) {
+        if(this.tagCheck.length < 1) {
+          PopUp("至少需要选择一个标签",1,1);
+          return;
+        } else {
+          // 填入标签清单
+          let tids = []
+          this.tagCheck.forEach(function(item) {
+            tids.push(item.id);
+          });
+          this.post.tids = tids;
+        }     
+        if(!this.fileName) {
+          PopUp("请上传题图",1,1);
+          return;
+        } else {
+          this.post.banner = this.fileName;
+        }
+        // HTML md menus 
+        this.post.md = this.md
+        this.post.html = this.html
+        this.post.menu = $("#menue").html()
+        if(this.ibanns[0] && this.ibanns[1].indexOf('data:image') > -1) {
+          PopUp('正在上传题图...',2,1 );
+          ImgWork({api:"Base64",imgs:this.ibanns}).then(res => {
+            if(res.data) {
+              this.ibann = res.data+'?v='+Math.ceil(Math.random()*100);
+              this.ibanns = [this.fileName,this.fileName,this.fileName]
+              this.savePost();
+            }
+          })
+        } else {
+          this.savePost();
+        }
+      } else {
+        PopUp("请输入或选择相关内容",1,1);
+      } 
+    },
+    savePost() {
+      PopUp('正在提交文章...',2,1 );
+      PostWork(this.post).then(res => {
+        PopUp('提交成功',0,1);
+        setTimeout(function() {
+          window.location.href = "postList.html";
+        },1000);
+      }) 
     },
     setToken() {
       this.utoken = true;
@@ -74,16 +140,65 @@ var vue = new Vue({
       this.category.unshift({id:0,name:"请选择文章分类"})
     },
     getAllTag() {
-      AllTag().then(res => {
+      TagWork({api:'AllTag'}).then(res => {
         this.tagList = res.data;
+        this.tagShow = this.tagList;
+        if(this.post.tids) {
+          var this_ = this;
+          this.tagCheck = this.tagList.filter(function(item) { return this_.post.tids.includes(item.id);});
+        }
       });
+    },
+    getScTag(e) {
+      var val = e.target.value;
+      if(val) {
+        // 模糊大小写匹配
+        this.tagShow = this.tagList.filter(function(item) { return item.name.toLowerCase().indexOf(val.toLowerCase()) != -1 ;});
+      } else {
+        this.tagShow = this.tagList
+      }
+      this.newTag = {api:'AddTag',id:0,name:val,remark:null,url:null};
+      this.tagShowFlag = true;
+    },
+    pushTag(i) {
+      let have = this.tagCheck.filter(function(item) { return item.id == i.id ;});
+      if(have && have.length >0) {
+        PopUp("该标签已存在",1,1);
+      }else{
+        this.tagCheck.push(i);
+        this.tagShowFlag = false;
+        this.tagSc = null;
+        this.newTag = {api:'AddTag',id:0,name:null,remark:null,url:null};
+      }
+    },
+    removeTag(id) {
+      this.tagCheck = this.tagCheck.filter(function(item) { return item.id != id ;});
+    },
+    closeTag() {
+      this.tagShowFlag = false;
+    },
+    addTag() {
+      if(this.newTag.name && this.newTag.remark && this.newTag.url) {
+        PopUp('正在提交...',2,1 );
+        TagWork(this.newTag).then(res => {
+          PopUp(res.msg,0,1);
+          this.newTag.id = res.data;
+          this.tagList.push(this.newTag);
+          this.tagCheck.push(this.newTag);
+          this.tagShowFlag = false;
+          this.tagSc = null;
+          this.newTag = {api:'AddTag',id:0,name:null,remark:null,url:null};
+        });
+      }else{
+        PopUp("请输入全部内容后提交",1,1);
+      } 
     },
     chooseIbann(e) { // 上传封面图片
       let file = e.target.files[0]
       //var file = document.getElementsById('ibann')[0].files[0];
 			if (window.FileReader && file) //读取文件
 			{
-				this.fileName = file.name;
+				let fileName = file.name;
 				this.banners = [false,false,false];
 				var this_ = this
 				var reader = new FileReader();
@@ -93,8 +208,10 @@ var vue = new Vue({
 				{
           // 原图
           this_.ibanns = []
+          this_.fileName = this_.post.banner ? this_.post.banner : fileName;
+          this_.ibanns[0] = this_.fileName;
 					this_.ibann = e.target.result;
-          this_.ibanns.append(this_.ibann);
+          this_.ibanns[1] = this_.ibann;
 					this_.resizeBanner(e.target.result,file.type);//压缩图片
 				};
 			}      
@@ -125,10 +242,41 @@ var vue = new Vue({
 				ctx.drawImage(image, 0, 0, image.width, image.height)
 				// !!! 注意，image 没有加入到 dom之中
 				var blob = canvas.toDataURL(type)
-				this_.ibanns.append(blob);
+				this_.ibanns[2] = blob;
+        this_.resizeBanner100(blob,type)
 		  }
 		  image.src = url
 		},
+    resizeBanner100(url,type)//Banne图片100canvas压缩
+    {
+    	var this_ = this;
+    	// 创建一个 Image 对象
+      var image = new Image();
+      // 绑定 load 事件处理器，加载完成后执行
+      image.onload = function() {
+        // 获取 canvas DOM 对象
+        var canvas = document.createElement("canvas")
+        //生成首页展示图
+        if (image.width > 100) {
+          // 宽度等比例缩放 *=
+          image.height *= 100 / image.width
+          image.width = 100
+        }
+        // 获取 canvas的 2d 画布对象,
+        var ctx = canvas.getContext("2d")
+        // canvas清屏，并设置为上面宽高
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    		// 重置canvas宽高
+    		canvas.width = image.width
+    		canvas.height = image.height
+    		// 将图像绘制到canvas上
+    		ctx.drawImage(image, 0, 0, image.width, image.height)
+    		// !!! 注意，image 没有加入到 dom之中
+    		var blob = canvas.toDataURL(type)
+    		this_.ibanns[3] = blob;
+      }
+      image.src = url
+    },
     initMarkDown() {
       this.renderer = new marked.Renderer();
       var this_ = this;
@@ -183,7 +331,69 @@ var vue = new Vue({
 		this.showMenu = !this.showMenu
 		},
 		img(){
-		
-		}
+      // 提取光标位置
+      let mdN = document.getElementById("md");
+      let start,end = 0;
+      this.md =  this.md ? this.md : '';
+      if(mdN.selectionStart || mdN.selectionStart === '0') {
+        start = mdN.selectionStart;
+        end = mdN.selectionEnd;
+      } else {
+        start = this.md.length;
+        end = start;
+      }
+      this.mdRange = [start,end];
+      $("#mdimg").click();
+      // 向光标或选择位置插入一段内容
+      // let imgStr = "\n图片测试\n";
+      // let mdN = document.getElementById("md");
+      // this.md =  this.md ? this.md : '';
+      // // 不兼容IE
+      // if(mdN.selectionStart || mdN.selectionStart === '0') {
+      //   let start = mdN.selectionStart;
+      //   let end = mdN.selectionEnd;
+      //   let bef = this.md.substring(0,start);
+      //   let aft = this.md.substring(end,this.md.length);
+      //   this.md = bef + imgStr + aft;
+      //   mdN.focus();
+      //   // 光标重定位
+      //   mdN.selectionStart = start + imgStr.length;
+      //   mdN.selectionEnd = mdN.selectionStart;
+      // } else {
+      //   this.md += imgStr;
+      //   mdN.focus();
+      // }
+		},
+    chooseMdImg(e) {
+      let file = e.target.files[0]
+      //var file = document.getElementsById('ibann')[0].files[0];
+      if (window.FileReader && file) //读取文件
+      {
+        let fileName = file.name;
+        var this_ = this
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        //监听文件读取结束后事件
+        reader.onloadend = function(e)
+        {
+          // 原图
+          PopUp('正在上传图片...',2,1 );
+          ImgWork({api:"Base64",imgs:[fileName,e.target.result]}).then(res => {
+            if(res.data) {
+              PopUp(res.msg,0,1);
+              let mdN = document.getElementById("md");
+              let imgStr = "\n!["+res.data+"]("+res.data+")\n";
+              let bef = this_.md.substring(0,this_.mdRange[0]);
+              let aft = this_.md.substring(this_.mdRange[1],this_.md.length);
+              this_.md = bef + imgStr + aft;
+              mdN.focus();
+              // 光标重定位
+              mdN.selectionStart = this_.mdRange[0] + imgStr.length;
+              mdN.selectionEnd = mdN.selectionStart;
+            }
+          });
+        };
+      }
+    }
 	}
 })

@@ -1,20 +1,20 @@
-.pst .srm{background:#e8eae6;padding:15px;line-height:1.6;text-align:center;margin-bottom:40px}
+.pst .srm{background:#e3ebee;padding:15px;line-height:1.6;text-align:center;margin-bottom:40px}
 .fform{padding:15px}
 .fline{display:flex;margin:30px 15px}
 .fline *{line-height:40px;font-size:16px}
 .fline select,.fline select option{border:0}
-.fline select,.fline select option,.fline span{width:200px;text-align:center;font-weight:900;text-align-last:center;background:#e8eae6;padding:0 1%;margin:0;outline:0}
+.fline select,.fline select option,.fline span{width:200px;text-align:center;font-weight:900;text-align-last:center;background:#e3ebee;padding:0 1%;margin:0;outline:0}
 .fline input{width:calc(100% - 200px);padding:0 30px}
-.fline p{width:100%;font-size:15px;color:#c56161;font-weight:900}
-.fline a{line-height:40px;margin:10px;display:inline-block;width:250px;text-align:center;background:#c56161;color:#f0f0f0}
+.fline p{width:100%;font-size:15px;color:#5891ab;font-weight:900}
+.fline a{line-height:40px;margin:10px;display:inline-block;width:250px;text-align:center;background:#5891ab;color:#f0f0f0}
 .fline p a{width:200px;margin:0;margin-right:30px}
 .fimg{width:120px;height:120px;position:relative;cursor:pointer}
-.fimg p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#c56161;font-size:13px}
+.fimg p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#5891ab;font-size:13px}
 .fline span.ico{height:120px;line-height:120px}
 .fline a.rsend{margin:0;height:60px;line-height:60px;margin-top:auto;margin-left:auto;font-weight:900}
-.fline a:hover,.fimg p:hover{background:#3675c3}
-.dark .fline p{color:#3675c3}
-.dark .fline a{background:#3675c3}
+.fline a:hover,.fimg p:hover{background:#2d8cb7}
+.dark .fline p{color:#2d8cb7}
+.dark .fline a{background:#2d8cb7}
 .dark .fline select,.dark .fline select option,.dark .fline span{background:#22272e}
-.dark .fimg p{background:#3675c3;color:#f9f9f9}
-.dark .fline a:hover,.dark .fimg p:hover{background:#c56161}
+.dark .fimg p{background:#2d8cb7;color:#f9f9f9}
+.dark .fline a:hover,.dark .fimg p:hover{background:#5891ab}

@@ -5,27 +5,15 @@ include($_SERVER['DOCUMENT_ROOT'].'/service/comm/auth.php');
 //界面数据JSON对象接受
 $body = json_decode(file_get_contents("php://input"));
 $api = $body -> api;
-include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
-include($_SERVER['DOCUMENT_ROOT'].'/service/api/tag.php');
+include($_SERVER['DOCUMENT_ROOT'].'/service/api/img.php');
 $ret = [];
-if($api == "AllTag") {
-  $ret = GetTagList($conn);
-}
-if($api == "AddTag" || $api == "ModTag") {
-  $id = $body -> id;
-  $name = $body -> name;
-  $url = $body -> url;
-  $remark = $body -> remark;
-  if($api == "AddTag") {
-    $ret = AddTag($conn,$name,$url,$remark);
-  } else if($api == "ModTag") {
-    $ret = ModTag($conn,$id,$name,$url,$remark);
-  } 
+if($api == "Base64") {
+  $imgs = $body -> imgs;
+  $ret = UploadBaseArray($imgs);
 }
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '操作成功':$ret[1];
 $data = $ret[0] ? $ret[1]: null;
-mysqli_close($conn);
 echo json_encode(['code' => $code,'msg' => $msg ,'data' => $data]);
 exit;
 ?>

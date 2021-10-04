@@ -6,21 +6,13 @@ include($_SERVER['DOCUMENT_ROOT'].'/service/comm/auth.php');
 $body = json_decode(file_get_contents("php://input"));
 $api = $body -> api;
 include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
-include($_SERVER['DOCUMENT_ROOT'].'/service/api/tag.php');
+include($_SERVER['DOCUMENT_ROOT'].'/service/api/post.php');
 $ret = [];
-if($api == "AllTag") {
-  $ret = GetTagList($conn);
+if($api == "AddPost" || $api == "ModPost") {
+  $ret = UpsertPost($conn,$body);
 }
-if($api == "AddTag" || $api == "ModTag") {
-  $id = $body -> id;
-  $name = $body -> name;
-  $url = $body -> url;
-  $remark = $body -> remark;
-  if($api == "AddTag") {
-    $ret = AddTag($conn,$name,$url,$remark);
-  } else if($api == "ModTag") {
-    $ret = ModTag($conn,$id,$name,$url,$remark);
-  } 
+if($api == "GetPost") {
+  $ret = GetPost($conn,$body -> id);
 }
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '操作成功':$ret[1];
