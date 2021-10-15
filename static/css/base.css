@@ -1,4 +1,4 @@
-*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#444;font-size:15px;box-sizing:border-box}
+*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color: #333;font-size:15px;box-sizing:border-box;}
 img{display:block;width:100%;height:100%}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 h2{width:100%;font-weight: normal;}
@@ -43,8 +43,9 @@ header .w *{margin:0 15px}
 .pa_6 a{width:calc(50% - 20px)}
 .pa_4 a{width:calc(33.3333% - 20px)}
 footer{background: #e3ebee;}
-.back_top{position:fixed;bottom:-80px;right:calc(50% - 680px);width:60px;height:60px;background: #e3ebee;padding:5px;cursor:pointer;}
-.headerbg .back_top{bottom:60px}
+.back_top{position:fixed;bottom: 10px;right: -70px;width:60px;height:60px;background: #e3ebee;padding: 8px;cursor:pointer;z-index: 100;border-radius: 30px;transform: rotate(90deg);}
+.headerbg .back_top{right: calc(50% - 680px);transform: rotate(
+0deg);}
 a:hover .scale{transform:scale(1.1)}
 a:hover h2,footer a:hover,.menu a:hover,.menu a.mck,.menue a:hover{color:#5891ab}
 a:hover .pdesc{color:#444}
@@ -95,7 +96,7 @@ input,textarea{border:0;outline:0;border-bottom: 1px solid #f2f7f8;background: #
 input:focus,textarea:focus{border-bottom:1px solid #2d8cb7;background: #f2f7f8;}
 body.dark{background-color:#22272e}
 .dark *{color:#adbac7}
-.dark .back_top{background: #223d4a;}
+.dark .back_top{background: #2d333b;}
 .dark img{filter:brightness(90%) contrast(90%)}
 .dark.headerbg header{background:#010101;box-shadow: 1px 1px 2px #223d4a;}
 .dark .menu a{color:#e2f1ff}
@@ -111,7 +112,7 @@ body.dark{background-color:#22272e}
 .dark a:hover .pdesc{color:#adbac7}
 .dark .itm svg path,.dark .teame svg path,.dark .ql svg path{fill:#adbac7}
 .dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#2d8cb7}
-.trans,.trans *{transition:all .4s ease}
+.trans,.trans *{transition:all .5s ease}
 .dark .peare a{background:#2d333b}
 .dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#2d8cb7}
 .dark .lm .pimel{background:#22272e;color:#2d8cb7}

@@ -2,7 +2,7 @@ var vue = new Vue({
 	el: '#main',
 	data: {
     utoken: null,
-    search: {title:null,cid:0,status:0,size:10,page:1,pages:0},
+    search: {title:null,cid:0,status:0,size:10,page:1,pages:0,api:'ListPost'},
     category: [],
     status: [{id:0,name:"请选择文章状态"},{id:1,name:"草稿"},{id:2,name:"发布"},{id:3,name:"下线"}],
     list: []
@@ -41,7 +41,7 @@ var vue = new Vue({
       this.getPage()
     },
     reset() {
-      this.search = {title:null,cid:0,status:0,size:10,page:1,pages:0}
+      this.search = {title:null,cid:0,status:0,size:10,page:1,pages:0,api:'ListPost'}
     },
     getPage() {
       this.search.pages = 10

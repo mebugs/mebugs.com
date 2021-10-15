@@ -45,7 +45,7 @@ function UpsertPost($conn,$body) {
     return [false,'文章标签更新失败'];
   }
   mysqli_autocommit($conn,TRUE);
-  return [false,$id];
+  return [true,$id];
   // 更新TAG交给定时任务
 }
 

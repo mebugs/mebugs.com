@@ -64,20 +64,19 @@ var vue = new Vue({
           this.post = res.data;
           this.md = this.post.md;
           this.ibann = "/static/upload/post/"+this.post.banner+'?v='+Math.ceil(Math.random()*100);
+          this.fileName = this.post.banner
+          this.post.api = 'ModPost'
           // 获取标签
           this.getAllTag();    
         }).catch(function(err) {
           setTimeout(function() {
              window.location.href = "postList.html";
-          },1000);
+          },1500);
         });
-        this.md = "原文MARKDOWN文本"
-        this.post = {id:id}
-        this.post.api = 'AddPost'
       } else {
         this.hdTitle = "新增文章"
         this.post = {id:0,cid:0,status:0}
-        this.post.api = 'ModPost'
+        this.post.api = 'AddPost'
         // 获取标签
         this.getAllTag();    
       }
@@ -128,7 +127,7 @@ var vue = new Vue({
         PopUp('提交成功',0,1);
         setTimeout(function() {
           window.location.href = "postList.html";
-        },1000);
+        },1500);
       }) 
     },
     setToken() {
