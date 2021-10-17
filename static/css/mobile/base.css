@@ -1,5 +1,5 @@
 .w{width:100%}
-.menu{position:fixed;width:100vw;right:-100vw;top:90px;margin:0!important;height:calc(100vh - 90px);background:#e3ebee;padding:30px}
+.menu{position:fixed;width:100vw;right:-100vw;top: 70px;margin:0!important;height: calc(100vh - 70px);background:#e3ebee;padding:30px;}
 header .w *{margin:0 10px}
 .mobim{display:block;width:55px;height:50px;margin:0!important;padding:10px}
 .mobim ul{display:block;width:100%;height:100%;margin:0;list-style:none}
@@ -15,7 +15,7 @@ header .w *{margin:0 10px}
 .temp{margin-left:auto!important}
 .opmenu .menu{right:0}
 .menu a{width:100%;text-align:center;margin:0;padding:0}
-.opmenu.headerbg .menu{top:70px;background:#fefefe;height:calc(100vh - 70px)}
+.opmenu.headerbg .menu{background:#fefefe;}
 .dark .menu{background:#2d333b}
 .opmenu.headerbg.dark .menu{background:#010101}
 .c{width:100%;padding:10px!important}
@@ -82,23 +82,6 @@ header .w *{margin:0 10px}
 .msch .scback{font-size:12px;line-height:40px;height:auto;padding:5px}
 .mine {height: auto}
 .headerbg .back_top{right: 10px;}
-.pomenu .mmenu{
-    margin: 0;
-    padding: 0;
-    width: 50px;
-    font-size: 12px;
-    line-height: 20px;
-    height: 50px;
-    padding: 5px 10px;
-    background: #e3ebee;
-    opacity: 0.9;
-    border-radius: 25px;
-    color: #333;
-    transform: rotate(
--90deg);
-}
-.dark .pomenu .mmenu{background: #2d333b;color: #e2f1ff;}
-.headerbg .pomenu .mmenu{
-    transform: rotate(0deg);
-}
-.dark
+.pomenu .mmenu{margin: 0;padding: 0;width: 50px;font-size: 12px;line-height: 20px;height: 50px;padding: 5px 10px;background: #5891ab;opacity: 0.75;border-radius: 25px;color: #fff; transform: rotate(-90deg);}
+.dark .pomenu .mmenu{background: #2d8cb7;color: #e2f1ff;}
+.headerbg .pomenu .mmenu{transform: rotate(0deg);}
