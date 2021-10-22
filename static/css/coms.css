@@ -29,6 +29,7 @@
 .comore a{color:#5891ab;font-weight:900}
 .dark .navt p,.dark .sendc a{background:#2d8cb7}
 .dark .navt p:hover,.dark .sendc a:hover{background:#5891ab}
+.dark .sendc a.rcls{background:#1a1e23}
 .dark .comp h1{color:#adbac7}
 .dark .comp h1 b,.dark .comp h1 a,.dark .comore a{color:#2d8cb7;}
 .dark .comp h1 a:hover{color: #2d333b;background: #010101;}

@@ -30,6 +30,7 @@ function setAvt(node,no) {
   node.classList.add("checkd");
 	localUser.avt = "/static/upload/avtor/"+no+".jpg";
 	myavt.src = localUser.avt;
+  clsAvt();
 }
 function clsAvt() {
   bodyNode.classList.remove("cavts");

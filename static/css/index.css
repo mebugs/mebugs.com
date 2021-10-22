@@ -20,12 +20,11 @@
 .cgb{background-position-x:240px}
 .conn:hover{transform:scale(0.9);opacity:.8}
 .pbline .pdesc{color:#444}
-.fm{height:520px}
-.fm .swiper-slide{display:flex;flex-wrap:wrap}
-.fm a,.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
+.fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}
 .pbline{position:absolute;z-index:10;bottom:0;height:90px!important;padding:10px;background:rgba(240,240,240,0.7);width:100%}
 .pbline h2{color:#000}
 a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rgba(240,240,240,0.9)}
+.box.itm {padding: 2.5px 5px;}
 .itm a{width:calc(25% - 10px);margin:7px 5px;display:block}
 .itm img,.itm svg{width:60px;height:60px;margin:8px auto;display:block;padding:5px}
 .itm a h2{line-height:40px;text-align:center;height:40px;padding:0;font-weight: 900;}

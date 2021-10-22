@@ -55,11 +55,24 @@ header .w *{margin:0 10px}
 .comp p{font-size:13px}
 .mequci{width:50%!important;height:30vw!important}
 .rhot{width:100%;height:auto;max-height:unset}
-.rhot a .pinfr h2{font-size:13px;line-height:35px}
+.rhot .pinfr{
+    width: calc(100% - 35px);
+    margin-left: 5px;
+    padding: 5px 0;
+}
+.rhot .pimel{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 5px 0;
+}
+.rhot a .pinfr h2{font-size: 15px;line-height: 30px;}
 .cave,.rea{width:90vw;left:5vw;height:400px}
 .cavts .cave{top:5vh}
 .avts{height:calc(100% - 110px);margin-bottom:15px;overflow-y:auto}
-.avts img{width:calc(30vw - 20px);height:calc(30vw - 20px);margin:5px;border-width:3px}
+.avts img{width: calc(33.33% - 10px);height:calc(30vw - 20px);margin:5px;border-width:3px;}
 .replay .rea{top:calc(50vh - 200px)}
 .rea .nxinfo .nipt{margin:5px 8px}
 .rea .ctxe{margin:10px 8px}
