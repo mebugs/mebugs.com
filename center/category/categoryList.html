@@ -9,36 +9,17 @@
 	<body>
     <div class="main" id="main" v-cloak v-if="utoken">
      <div class="hd">
-       <h1>文章管理</h1>
+       <h1>分类管理</h1>
      </div>
      <div class="mc">
        <div class="sc">
-         <input type="text" v-model="search.title" placeholder="文章标题(支持模糊)" />
-         <select v-model="search.cid">
-           <option v-for="item in category" :value="item.id">{{item.name}}</option>
-         </select>
-         <select v-model="search.status">
-           <option v-for="item in status" :value="item.id">{{item.name}}</option>
-         </select>
-         <button type="button" class="btnblue" @click="query">搜索</button>
-         <button type="button" class="btngray" @click="reset">重置</button>
-         <button type="button" class="btnred" @click="add">添加新文章</button>
+         <button type="button" class="btnred" @click="add">添加新分类</button>
        </div>
        <div class="sm">
-         <div class="slist" v-if="list[0]" >
+         <div class="slist" v-if="list[0]">
            <div class="slci" v-for="item in list">
-             <div class="slbn">
-               <img :src="'/static/upload/post/'+item.banner">
-             </div>
-             <div class="slti">
-               <h2>{{item.title}}</h2>
-               <p>{{item.remark}}</p>
-             </div>
-             <div class="slst">
-               <span>{{item.category}}分类</span>
-                <span v-if="item.status == 1" class="clgray">{{statusNames[item.status]}}</span>
-                <span v-if="item.status == 2" class="clblue">{{statusNames[item.status]}}</span>
-                <span v-if="item.status == 3" class="clred">{{statusNames[item.status]}}</span>
+             <div class="alcat">
+               
              </div>
              <div class="sldo">
                <button type="button" class="btnblue" @click="edit(item.id)">编辑</button>

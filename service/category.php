@@ -6,17 +6,13 @@ include($_SERVER['DOCUMENT_ROOT'].'/service/comm/auth.php');
 $body = json_decode(file_get_contents("php://input"));
 $api = $body -> api;
 include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
-include($_SERVER['DOCUMENT_ROOT'].'/service/api/post.php');
+include($_SERVER['DOCUMENT_ROOT'].'/service/api/category.php');
 $ret = [];
-if($api == "AddPost" || $api == "ModPost") {
-  $ret = UpsertPost($conn,$body);
+if($api == "ListCategory") {
+  $ret = ListCategory($conn);
 }
-if($api == "GetPost") {
-  $ret = GetPost($conn,$body -> id);
-}
-if($api == "ListPost") {
-  $query = [ 'title' => $body -> title,'cid' => $body -> cid,'status' => $body -> status,'size' => $body -> size,'page' => $body -> page ];
-  $ret = ListPost($conn,$query);
+if($api == "AddCategory" || $api == "ModCategory") {
+  $ret = UpsertCategory($conn,$body);
 }
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '操作成功':$ret[1];

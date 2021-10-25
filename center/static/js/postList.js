@@ -5,6 +5,7 @@ var vue = new Vue({
     search: {title:null,cid:0,status:0,size:10,page:1,pages:0,api:'ListPost'},
     category: [],
     status: [{id:0,name:"请选择文章状态"},{id:1,name:"草稿"},{id:2,name:"发布"},{id:3,name:"下线"}],
+    statusNames: ['', '草稿', '发布', '下线'],
     list: []
 	},
   watch: {
@@ -28,8 +29,12 @@ var vue = new Vue({
       this.init();
     },
     getCategory() {
-      this.category = [{id:1,name:"java"},{id:2,name:"go"}]
-      this.category.unshift({id:0,name:"请选择文章分类"})
+      CategoryWork({api:"ListCategory"}).then(res => {
+        this.category = res.data;
+        this.category.unshift({id:0,name:"请选择文章分类"})
+      }).catch(function(err) {
+        PopUp('分类查询失败',1,1);
+      });  
     },
     add() {
       window.location.href = "postEdit.html?id=0"
@@ -37,26 +42,28 @@ var vue = new Vue({
     edit(id) {
       window.location.href = "postEdit.html?id="+id
     },
-    search() {
+    toPage(n) {
+      if(this.search.page == n) {
+        return
+      }
+      this.search.page = n
+      this.getPage()
+    },
+    query() {
       this.getPage()
     },
     reset() {
       this.search = {title:null,cid:0,status:0,size:10,page:1,pages:0,api:'ListPost'}
     },
     getPage() {
-      this.search.pages = 10
-      this.list = [
-        {id:1,title:"测试标题1测试标题1测试标题1",banner:"/test/test1.jpg",remark:"测试标题1测试标题1测试标题1",cid:1,status:1,category:"Java",statusName:"草稿"},
-        {id:2,title:"测试标题22啥打法是否该222",banner:"/test/test3.jpg",remark:"测试标题2321rreq3w4东风风光32sd试标题1",cid:1,status:2,category:"Go",statusName:"发布"},
-        {id:3,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:4,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:5,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:6,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:7,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:8,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:9,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-        {id:10,title:"测试标题开发看电视了坚实的22222",banner:"/test/test9.jpg",remark:"测试标题2321rreq3w大幅度发鬼地方432sd试标题1",cid:2,status:3,category:"Go",statusName:"下线"},
-      ]
+      PopUp('正在查询...',2,1 );
+      PostWork(this.search).then(res => {
+        PopUp('查询成功',0,1);
+        this.list =  res.data.list;
+        this.search.pages = res.data.pages;
+      }).catch(function(err) {
+        PopUp('查询失败',1,1);
+      });
     }
 	}
 })

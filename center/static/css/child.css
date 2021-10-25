@@ -6,6 +6,23 @@
 .sc,.sm{background:#feffff;padding:15px;display:flex;margin:20px}
 input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding:0 10px;background:#fbfbfb}
 .sc *{margin-right:15px}
+.spage {
+    margin: 15px;
+    display: flex;
+}
+
+.spi {
+    margin: 5px;
+    width: 36px;
+    line-height: 36px;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.spi.ck {
+    background: #ddd;
+}
 button{border:0!important;cursor:pointer}
 .sc button{min-width:unset;font-weight:900;height:40px;color:#f0f0f0;padding:0 30px}
 button.btnblue{background:#3790b9}

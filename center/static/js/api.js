@@ -21,3 +21,11 @@ function PostWork(data) {
     data: data
   })
 }
+
+function CategoryWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/category.php',
+    data: data
+  })
+}
