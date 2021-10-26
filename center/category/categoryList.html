@@ -13,16 +13,20 @@
      </div>
      <div class="mc">
        <div class="sc">
+         <button type="button" class="btnblue" @click="query">刷新</button>
          <button type="button" class="btnred" @click="add">添加新分类</button>
        </div>
        <div class="sm">
          <div class="slist" v-if="list[0]">
-           <div class="slci" v-for="item in list">
+           <div class="slci alca" v-for="item in list">
              <div class="alcat">
-               
+               <p>分类名称：<span>{{item.name}}</span></p>
+               <p>静态地址：<span>{{item.url}}</span></p>
+               <p>分类简介：<span>{{item.remark}}</span></p>
+               <p>分类图标：<span><img :src="item.icon" /></span></p>
              </div>
              <div class="sldo">
-               <button type="button" class="btnblue" @click="edit(item.id)">编辑</button>
+               <button type="button" class="btnblue" @click="edit(item)">编辑</button>
              </div>
            </div>
          </div>
@@ -30,31 +34,18 @@
             <p class="nuli">暂未检索到相关内容</p>
          </div>
        </div>
-       <div class="spage" v-if="search.pages <= 7">
-         <div v-for="n in search.pages" class="spi" :class="{'ck':search.page == n}" @click="toPage(n)">{{n}}</div>
-       </div>
-       <div class="spage" v-if="search.pages > 7 && search.page <5">
-         <div v-for="n in 5" class="spi" :class="{'ck':search.page == n}" @click="toPage(n)">{{n}}</div>
-         <div class="spi" @click="toPage(6)">...</div>
-         <div class="spi" @click="toPage(search.pages)">{{search.pages}}</div>
-       </div>
-       <div class="spage" v-if="search.pages > 7 && search.page >=5 && search.page <= search.pages - 4">
-         <div class="spi" @click="toPage(1)">1</div>
-         <div class="spi" @click="toPage(search.page-2)">...</div>
-         <div class="spi" @click="toPage(search.page-1)">{{search.page-1}}</div>
-         <div class="spi ck" @click="toPage(search.page)">{{search.page}}</div>
-         <div class="spi" @click="toPage(search.page+1)">{{search.page+1}}</div>
-         <div class="spi" @click="toPage(search.page+2)">...</div>
-         <div class="spi" @click="toPage(search.pages)">{{search.pages}}</div>
-       </div>
-       <div class="spage" v-if="search.pages > 7 && search.page >=5 && search.page > search.pages - 4">
-         <div class="spi" @click="toPage(1)">1</div>
-         <div class="spi" @click="toPage(search.pages - 5)">...</div>
-         <div class="spi" :class="{'ck':search.page == search.pages - 4}" @click="toPage(search.pages - 4)">{{search.pages-4}}</div>
-         <div class="spi" :class="{'ck':search.page == search.pages - 3}" @click="toPage(search.pages - 3)">{{search.pages-3}}</div>
-         <div class="spi" :class="{'ck':search.page == search.pages - 2}" @click="toPage(search.pages - 2)">{{search.pages-2}}</div>
-         <div class="spi" :class="{'ck':search.page == search.pages - 1}" @click="toPage(search.pages - 1)">{{search.pages-1}}</div>
-         <div class="spi" :class="{'ck':search.page == search.pages}" @click="toPage(search.pages)">{{search.pages}}</div>
+     </div>
+     <div class="pope">
+       <div class="tage">
+         <div class="tse">
+           <h5>{{title}}</h5>
+           <div class="tade">分类名称：<input type="text" v-model="item.name" placeholder="请输入分类名称" /></div>
+           <div class="tade">静态地址：<input type="text" v-model="item.url" placeholder="请输入分类静态地址" /></div>
+           <div class="tade">分类图标：<input type="text" v-model="item.icon" placeholder="请输入分类图标地址" /></div>
+           <div class="tade">分类简介：<textarea placeholder="请输入分类简介" v-model="item.remark"></textarea></div>
+           <button type="button" class="btnblue" @click="save">保存分类</button>
+           <button type="button" class="btngray" @click="clsPop">取消</button>
+         </div>
        </div>
      </div>
     </div>
@@ -65,6 +56,6 @@
     <script src="/center/static/js/comm.js?v=1.0"></script> 
      <script src="/center/static/js/api.js"></script>
      <script src="/static/js/popup.js"></script>  
-    <script src="/center/static/js/postList.js?v=1.0"></script>  
+    <script src="/center/static/js/categoryList.js?v=1.0"></script>  
 	</body>
 </html>

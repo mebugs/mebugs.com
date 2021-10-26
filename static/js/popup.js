@@ -32,6 +32,8 @@ function PopUp(text,type,time) {
     topWin.document.body.appendChild(cssEle);
     popHave = true;
   }
+  // 先移除弹出效果
+  topWin.document.body.classList.remove("showPop");
   setTimeout(function(){
     // 显示弹层
     topWin.document.getElementById("popeare").style.display = "block";

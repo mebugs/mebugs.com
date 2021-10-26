@@ -84,7 +84,7 @@ function ListPost($conn,$q) {
     $where = $where . " AND m.status = " . $q['status'];
   }
   if ($q['title'] != "") {
-    $where = $where . " AND m.title like %" . $q['title'] . "%";
+    $where = $where . " AND m.title like '%" . $q['title'] . "%'";
   }
   $ctSql = $ctSql . $where;
   $size = $q['size'];

@@ -34,10 +34,10 @@ button.btnred{background:#b93749}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .slci{display:flex;width:calc(50% - 10px);margin:5px 5px 0 5px;padding:5px 5px 10px 5px;border-bottom:1px solid #eee}
 .slci:hover{border-bottom:1px solid #000}
-.slist{display:flex;flex-wrap:wrap}
+.slist{display:flex;flex-wrap:wrap;width: 100%;}
 .slbn{width:140px;height:90px;overflow:hidden}
 .slbn img{width:100%;height:100%;display:block}
-.sldo{width:70px}
+.sldo{width:70px;}
 .sldo button{height:70px;width:100%;margin:10px 0;font-weight:900;color:#f0f0f0}
 .slst{width:100px;text-align:center}
 .slst span{line-height:30px;margin:10px auto;background:#ddd;width:90px;display:block;font-size:14px;font-weight:900}
@@ -142,4 +142,99 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     border-radius: 9px;
     color: #f9f9f9;
     cursor: pointer;
+}
+
+.pope {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    display:none;
+}
+
+.tage {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    padding: 15px;
+    background: #fff;
+    left: calc(50% - 250px);
+    top: calc(50% - 200px);
+    transform: scale(0.8);
+}
+
+.popup .pope {
+    opacity: 1;
+}
+.popup .tage{
+    transform: scale(1);
+}
+.alcat {
+    width: 100%;
+}
+
+.alca .sldo {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.alca {
+    position: relative;
+}
+
+.alca .sldo button {
+    height: 36px;
+    margin: 0;
+}
+
+.alcat p {
+    line-height: 25px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.alcat p span {
+    width: calc(100% - 70px);
+    padding-left: 5px;
+    color: #222;
+}
+
+.alcat p span img {
+    width: 60px;
+    height: 60px;
+    background: #f0f0f0;
+    border: 0;
+}
+
+.tage textarea {
+    width: calc(100% - 75px);
+    resize: none;
+    border: 1px solid #ddd;
+    height: 60px;
+    line-height: 30px;
+    padding: 0 10px;
+    background: #fbfbfb;
+}
+.tage .tade {
+    display: flex;
+    align-items: center;
+}
+
+.tage input {
+    width: calc(100% - 75px);
+}
+
+.tage .tse h5 {
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.tage .tse button {
+    margin-top: 15px;
 }

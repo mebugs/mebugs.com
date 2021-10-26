@@ -11,7 +11,7 @@ $ret = [];
 if($api == "ListCategory") {
   $ret = ListCategory($conn);
 }
-if($api == "AddCategory" || $api == "ModCategory") {
+if($api == "UpsertCategory") {
   $ret = UpsertCategory($conn,$body);
 }
 $code = $ret[0] ? 200 : 100;
