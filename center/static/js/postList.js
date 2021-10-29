@@ -2,7 +2,7 @@ var vue = new Vue({
 	el: '#main',
 	data: {
     utoken: null,
-    search: {title:null,cid:0,status:0,size:10,page:1,pages:0,api:'ListPost'},
+    search: {title:null,cid:0,status:0,size:15,page:1,pages:0,api:'ListPost'},
     category: [],
     status: [{id:0,name:"请选择文章状态"},{id:1,name:"草稿"},{id:2,name:"发布"},{id:3,name:"下线"}],
     statusNames: ['', '草稿', '发布', '下线'],

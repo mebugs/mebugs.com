@@ -2,7 +2,8 @@ var vue = new Vue({
 	el: '#main',
 	data: {
     utoken: null,
-    item: {id:0,api:'UpsertCategory'},
+    search: {name:null,size:30,page:1,pages:0,api:'PageTag'},
+    item: {id:0,api:'UpsertTag'},
     list: [],
     title: ''
 	},
@@ -25,14 +26,14 @@ var vue = new Vue({
       this.init();
     },
     add() {
-      this.item = {id:0,api:'UpsertCategory'}
-      this.title = '新增分类'
+      this.item = {id:0,api:'AddTag'}
+      this.title = '新增标签'
       this.opPop()
     },
     edit(item) {
       this.item = item
-      this.item.api = 'UpsertCategory'
-      this.title = '编辑分类'
+      this.item.api = 'ModTag'
+      this.title = '编辑标签'
       this.opPop()
     },
     opPop() {
@@ -49,7 +50,7 @@ var vue = new Vue({
     },
     save() {
       PopUp('正在提交...',2,1 );
-      CategoryWork(this.item).then(res => {
+      TagWork(this.item).then(res => {
         PopUp('更新成功',0,1);
         this.clsPop()
         this.getPage()
@@ -67,11 +68,19 @@ var vue = new Vue({
     query() {
       this.getPage()
     },
+    toPage(n) {
+      if(this.search.page == n) {
+        return
+      }
+      this.search.page = n
+      this.getPage()
+    },
     getPage() {
       PopUp('正在查询...',2,1 );
-      CategoryWork({api:'ListCategory'}).then(res => {
+      TagWork(this.search).then(res => {
         PopUp('查询成功',0,1);
-        this.list =  res.data;
+        this.list =  res.data.list;
+        this.search.pages = res.data.pages;
       }).catch(function(err) {
         PopUp('查询失败',1,1);
       });

@@ -11,6 +11,10 @@ $ret = [];
 if($api == "AllTag") {
   $ret = GetTagList($conn);
 }
+if($api == "PageTag") {
+  $query = [ 'name' => $body -> name,'size' => $body -> size,'page' => $body -> page ];
+  $ret = GetTagPage($conn,$query);
+}
 if($api == "AddTag" || $api == "ModTag") {
   $id = $body -> id;
   $name = $body -> name;

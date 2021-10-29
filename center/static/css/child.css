@@ -208,6 +208,9 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     width: calc(100% - 70px);
     padding-left: 5px;
     color: #222;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .alcat p span img {
@@ -241,4 +244,11 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 .tage .tse button {
     margin-top: 15px;
+}
+
+.slci.tlag {
+    width: calc(20% - 10px);
+}
+.tlag .alcat {
+    width: 100%;
 }

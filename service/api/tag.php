@@ -28,6 +28,30 @@ function AddTag($conn,$name,$url,$remark) {
 }
 
 function ModTag($conn,$id,$name,$url,$remark) {
-  
+  $sql = "UPDATE `tag` SET `name` = '$name', `url` = '$url', `remark` = '$remark'WHERE `id` = ".$id;
+  $query = mysqli_query($conn,$sql);
+  if($query) {
+    return [true,$id];
+  }
+  return [false,'数据更新失败'];
+}
+
+function GetTagPage($conn,$q) {
+  $ctSql = "SELECT count(id) FROM `tag` m WHERE 1=1";
+  $qrSql = "SELECT m.* FROM `tag` m WHERE 1=1";
+  $where = "";
+  if ($q['name'] != "") {
+    $where = $where . " AND m.name like '%" . $q['name'] . "%'";
+  }
+  $ctSql = $ctSql . $where;
+  $size = $q['size'];
+  $qrSql = $qrSql . $where . " ORDER BY `id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
+  $pageData = [];
+  $numAry = mysqli_fetch_array(mysqli_query($conn,$ctSql));
+  $total = $numAry[0];
+  $pageData['pages'] = ceil($total/$size);
+  $query = mysqli_query($conn,$qrSql);
+  $pageData['list'] = mysqli_fetch_all($query,MYSQLI_ASSOC);
+  return [true,$pageData];
 }
 ?>
