@@ -69,15 +69,14 @@ header .w *{margin:0 10px}
     margin: 5px 0;
 }
 .rhot a .pinfr h2{font-size: 15px;line-height: 30px;}
-.cave,.rea{width:90vw;left:5vw;height:400px}
-.cavts .cave{top:5vh}
+.cave,.rea{width:90vw;left:5vw;height:400px;}
 .avts{height:calc(100% - 110px);margin-bottom:15px;overflow-y:auto}
 .avts img{width: calc(33.33% - 10px);height:calc(30vw - 20px);margin:5px;border-width:3px;}
-.replay .rea{top:calc(50vh - 200px)}
+.rea{top:calc(50vh - 200px)}
 .rea .nxinfo .nipt{margin:5px 8px}
 .rea .ctxe{margin:10px 8px}
 .sendc a{width:45%}
-.cave{height:90vh}
+.cave{height:90vh;top: 5vh;}
 .ql .tmin p {width: 100%;margin: 5px 15px}
 .ql .tmin {display: flex;flex-wrap: wrap}
 .ql .tmin h1 {width: 100%;text-align: center;line-height: 1;margin: 10px}

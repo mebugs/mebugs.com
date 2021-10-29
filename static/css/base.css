@@ -112,7 +112,7 @@ body.dark{background-color:#22272e}
 .dark a:hover .pdesc{color:#adbac7}
 .dark .itm svg path,.dark .teame svg path,.dark .ql svg path{fill:#adbac7}
 .dark .itm a:hover svg path,.dark .teame a:hover svg path{fill:#2d8cb7}
-.trans,.trans *{transition:all .5s ease}
+.trans,.trans *{transition:all .4s ease}
 .dark .peare a{background:#2d333b}
 .dark .peare a.pnow,.dark .peare a:hover{background:#010101;color:#2d8cb7}
 .dark .lm .pimel{background:#22272e;color:#2d8cb7}

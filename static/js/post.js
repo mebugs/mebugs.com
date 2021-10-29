@@ -36,7 +36,7 @@ function clsAvt() {
   bodyNode.classList.remove("cavts");
   setTimeout(function() {
     cavt.style.display = "none";
-  }, 500);
+  }, 400);
 }
 function randomAvt() {
   return Math.floor(Math.random()*avtNos+1);
@@ -67,7 +67,7 @@ function clsComms() {
   bodyNode.classList.remove("replay");
   setTimeout(function() {
     rzz.style.display = "none";
-  }, 500);
+  }, 400);
 }
 // PostID Level 123 ParentID
 function sendComms(pid, level, fid) {
