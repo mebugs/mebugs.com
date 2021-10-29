@@ -32,7 +32,7 @@ button.btnred{background:#b93749}
 .clgray{color:#111}
 .clred{color:#b93749}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.slci{display:flex;width:calc(50% - 10px);margin:5px 5px 0 5px;padding:5px 5px 10px 5px;border-bottom:1px solid #eee}
+.slci{display:flex;width: calc(33.33% - 10px);margin:5px 5px 0 5px;padding:5px 5px 10px 5px;border-bottom:1px solid #eee;}
 .slci:hover{border-bottom:1px solid #000}
 .slist{display:flex;flex-wrap:wrap;width: 100%;}
 .slbn{width:140px;height:90px;overflow:hidden}
@@ -174,16 +174,21 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     transform: scale(1);
 }
 .alcat {
-    width: 100%;
+    width: calc(100% - 70px);
 }
-
+.alicon {
+    width: 65px;
+    height: 65px;
+    margin: 5px 5px 5px 0;
+}
 .alca .sldo {
     position: absolute;
     right: 5px;
-    bottom: 5px;
+    top: 5px;
 }
 
 .alca {
+    width: calc(25% - 10px);
     position: relative;
 }
 
@@ -206,9 +211,8 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 }
 
 .alcat p span img {
-    width: 60px;
-    height: 60px;
-    background: #f0f0f0;
+    width: 30px;
+    height: 30px;
     border: 0;
 }
 

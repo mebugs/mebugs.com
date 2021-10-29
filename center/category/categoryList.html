@@ -19,11 +19,13 @@
        <div class="sm">
          <div class="slist" v-if="list[0]">
            <div class="slci alca" v-for="item in list">
+             <div class="alicon">
+               <img :src="item.icon" />
+             </div>
              <div class="alcat">
                <p>分类名称：<span>{{item.name}}</span></p>
                <p>静态地址：<span>{{item.url}}</span></p>
                <p>分类简介：<span>{{item.remark}}</span></p>
-               <p>分类图标：<span><img :src="item.icon" /></span></p>
              </div>
              <div class="sldo">
                <button type="button" class="btnblue" @click="edit(item)">编辑</button>

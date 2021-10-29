@@ -52,6 +52,7 @@ var vue = new Vue({
       CategoryWork(this.item).then(res => {
         PopUp('更新成功',0,1);
         this.clsPop()
+        this.getPage()
       }).catch(function(err) {
         PopUp('更新失败',1,1);
       });
