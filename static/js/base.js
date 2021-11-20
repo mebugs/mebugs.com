@@ -4,6 +4,7 @@ var backTimer;
 var bodyNode = document.body;
 bodyNode.classList.add(show);
 setTimeout(function() {bodyNode.classList.add("trans");}, 100);
+ready(hideLoader)
 var cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 var cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
@@ -125,4 +126,26 @@ function backTop() {
 			clearInterval(backTimer);
 		}
 	},10);
+}
+
+function hideLoader() {
+  bodyNode.classList.add("hideLoader");
+  var loader = document.getElementById("loader");
+  setTimeout(function() {loader.style.display = 'none';}, 600);
+}
+
+function ready(fn){
+  if(document.addEventListener){
+    document.addEventListener('DOMContentLoaded',function(){
+      document.removeEventListener('DOMContentLoaded',arguments.callee);
+      fn();
+    });
+  }else if(document.attachEvent){
+    document.attachEvent('onreadystatechange',function(){
+      if(document.readystate=='complete'){
+        document.dispatchEvent('onreadystatechange',arguments.callee);
+        fn();
+      }
+    })
+  }
 }

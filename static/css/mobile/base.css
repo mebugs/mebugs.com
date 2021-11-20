@@ -93,7 +93,7 @@ header .w *{margin:0 10px}
 .plist a h2{font-size:14px}
 .msch .scback{font-size:12px;line-height:40px;height:auto;padding:5px}
 .mine {height: auto}
-.headerbg .back_top{right: 10px;}
+.back_top{right: 10px;}
 .pomenu .mmenu{margin: 0;padding: 0;width: 50px;font-size: 12px;line-height: 20px;height: 50px;padding: 5px 10px;background: #5891ab;opacity: 0.75;border-radius: 25px;color: #fff; transform: rotate(-90deg);}
 .dark .pomenu .mmenu{background: #2d8cb7;color: #e2f1ff;}
 .headerbg .pomenu .mmenu{transform: rotate(0deg);}
