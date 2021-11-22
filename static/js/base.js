@@ -129,9 +129,9 @@ function backTop() {
 }
 
 function hideLoader() {
-  bodyNode.classList.add("hideLoader");
+  setTimeout(function() { bodyNode.classList.add("hideLoader");}, 1000);
   var loader = document.getElementById("loader");
-  setTimeout(function() {loader.style.display = 'none';}, 600);
+  setTimeout(function() {loader.style.display = 'none';}, 1600);
 }
 
 function ready(fn){

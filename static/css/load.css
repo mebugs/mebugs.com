@@ -7,7 +7,7 @@
     background: #e3ebee;
 }
 .hideLoader .load{
-  transform: scale(0.7);
+  transform: scale(1.5);
 }
 .load{position:absolute;top:calc(50vh - 30px);left:calc(50vw - 30px);
   width:60px;
