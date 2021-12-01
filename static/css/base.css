@@ -5,7 +5,7 @@ h2{width:100%;font-weight: normal;}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{background-color:#aaa}
 ::-webkit-scrollbar-track{background-color:#666}
-body{background-color:#f9fbfb}
+body{background-color: #e3ebee;}
 header,footer,.r{width:100%}
 header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0;}
 .headerbg header{background-color:#fefefe;height:70px;padding:10px 0;box-shadow: 1px 1px 2px #e3ebee;}
@@ -16,8 +16,9 @@ header .w *{margin:0 15px}
 .temp{width:50px;margin-left:0!important;background-image:url(/static/img/bg_hd_tp.png);cursor:pointer}
 .menu{width:960px;text-align:right}
 .menu a{line-height:50px;font-size:18px;font-weight:900;margin:0;margin-left:15px;padding:0 10px;display:inline-block;color:#333}
-.r,footer{overflow:hidden;padding:50px 0}
-.rt{overflow:hidden;background-color: #e3ebee;padding-top:120px;position:relative;}
+.r,footer{overflow:hidden;padding:50px 0;background: #f9fbfb;position: relative;top: 50px;}
+.hideLoader .r, .hideLoader footer,.hideLoader .mine{top:0}
+.rt{overflow:hidden;background-color: #e3ebee;padding-top:120px;position:relative;top: 0;}
 .c{padding:0 15px}
 .tb_15 .c{padding:15px;}
 .c_1{width:8.3333%}
@@ -94,13 +95,14 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .pst .pdest a{margin:5px;color:#5891ab;font-weight:900}
 input,textarea{border:0;outline:0;border-bottom: 1px solid #f2f7f8;background: #f9fbfb;}
 input:focus,textarea:focus{border-bottom:1px solid #2d8cb7;background: #f2f7f8;}
-body.dark{background-color:#22272e}
+body.dark{background-color:#2d333b}
 .dark *{color:#adbac7}
 .dark .back_top{background: #2d8cb7;}
 .dark img{filter:brightness(90%) contrast(90%)}
 .dark.headerbg header{background:#010101;box-shadow: 1px 1px 2px #2d333b;}
 .dark .menu a{color:#e2f1ff}
-.dark .rt{background-color: #2d333b;}
+.dark .r.rt{background-color: #2d333b;}
+.dark .r{background-color: #22272e;}
 .dark footer{background: #2d333b;}
 .dark .logo,.dark .temp{background-position-y:-50px}
 .dark .box{background:#2d333b;box-shadow: 1px 1px 2px #222;}

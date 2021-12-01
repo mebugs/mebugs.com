@@ -93,6 +93,20 @@ function sendComms(pid, level, fid) {
     var userCache = JSON.stringify(localUser);
     window.localStorage.setItem("localUser",userCache);
     // send comms
+    commObj.pid = pid
+    commObj.fid = fid
+    commObj.level = level
+    commObj.timestamp=new Date().getTime()
+    $.ajax({
+      url:"/service/commsOpen.php",
+      type:"POST",
+      dataType:'json',
+      contentType:'application/json;charset=UTF-8',
+      data:JSON.stringify(commObj),
+      success:function(data, status){
+        console.log(data);
+      }
+    })
   } else {
     PopUp("昵称与评论内容为必填项",1,1)
   }
