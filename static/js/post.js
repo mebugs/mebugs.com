@@ -89,6 +89,7 @@ function sendComms(pid, level, fid) {
   var commObj = localUser;
   commObj.coms = coms;
   if (commObj.coms && commObj.name) {
+    PopUp("提交中...",2,1)
     // cache
     var userCache = JSON.stringify(localUser);
     window.localStorage.setItem("localUser",userCache);
@@ -104,8 +105,22 @@ function sendComms(pid, level, fid) {
       contentType:'application/json;charset=UTF-8',
       data:JSON.stringify(commObj),
       success:function(data, status){
-        console.log(data);
-      }
+        if(data.code == 200 ) {
+          PopUp(data.msg,0,1);
+          var coms = "";
+          if(level == 1) {
+            document.getElementById("coms").value = "";
+          } else {
+            document.getElementById("rcoms").value = "";
+            clsComms();
+          }
+        }else{
+          PopUp(data.msg,1,1);
+        }
+      },
+      error:function(req,data, err){
+        PopUp("请求错误",1,1);
+      },
     })
   } else {
     PopUp("昵称与评论内容为必填项",1,1)

@@ -19,7 +19,7 @@ function openCheckErr($body,$type) {
     $levelC = $body -> level;
     $nameC = $body -> name;
     $comsC = $body -> coms;
-    if ( $levelC >3 ||  $levelC<1) {
+    if ( $levelC >2 ||  $levelC<1) {
       return true;
     }
     if ( $nameC == "" || $comsC == "") {

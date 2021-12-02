@@ -7,10 +7,12 @@ if (openCheckErr($body,1)) {
   exit;
 }
 include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
-mysqli_close($conn);
-$code = 200;
-$msg = "提交成功！";
+include($_SERVER['DOCUMENT_ROOT'].'/service/api/comms.php');
 // 添加评论
+$ret = AddComms($conn,$body);
+$code = $ret[0] ? 200 : 100;
+$msg = $ret[0] ? '提交成功!待审核~.~':$ret[1];
+mysqli_close($conn);
 echo json_encode(['code' => $code,'msg' => $msg ]);
 exit;
 ?>
