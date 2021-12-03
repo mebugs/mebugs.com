@@ -5,11 +5,12 @@
 .fm .swiper-button-next{right:0}
 .fm .swiper-button-prev{left:0}
 .fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#5891ab}
-.mine{background: #feffff;height:435px;padding:5px;position: relative;top: 50px;}
+.mine{background:#feffff;height:435px;padding:5px;position:relative;top:50px}
+.hideLoader .mine{top:0}
 .meavt{display:flex;padding:7px 5px}
-.avtor{display:block;width:90px;height:90px;padding: 5px;border-radius:45px;}
+.avtor{display:block;width:90px;height:90px;padding:5px;border-radius:45px}
 .amore{width:40px}
-.ainfo{width: calc(100% - 100px);margin-left:10px;}
+.ainfo{width:calc(100% - 100px);margin-left:10px}
 .ainfo h1{line-height:30px;margin-top:5px}
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
@@ -24,21 +25,20 @@
 .pbline{position:absolute;z-index:10;bottom:0;height:90px!important;padding:10px;background:rgba(240,240,240,0.7);width:100%}
 .pbline h2{color:#000}
 a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rgba(240,240,240,0.9)}
-.box.itm {padding: 2.5px 5px;}
+.box.itm{padding:2.5px 5px}
 .itm a{width:calc(25% - 10px);margin:7px 5px;display:block}
 .itm img,.itm svg{width:60px;height:60px;margin:8px auto;display:block;padding:5px}
-.itm a h2{line-height:40px;text-align:center;height:40px;padding:0;font-weight: 900;}
+.itm a h2{line-height:40px;text-align:center;height:40px;padding:0;font-weight:900}
 .iag{text-align:center;padding:10px}
 .iag .ags{height:100%;overflow:hidden;height:590px}
 .iag a{display:inline-block;line-height:30px;border:1px solid;padding:0 15px;margin:5px;font-size:14px}
 .iag a:hover,.iag a:hover svg path{color:#5891ab}
 .lk,.lk .lmr{text-align:center;display:flex;flex-wrap:wrap;justify-content:center}
-.lk a{line-height:25px;padding:5px 15px;margin:10px;display:inline-block;border:1px solid;width:calc(12.5% - 20px)}
-.lk .lmr{width:100%}
-.lk .lmr a{line-height:30px;border:1px solid #5891ab;width:120px;margin:8px;background: #5891ab;color: #f0f0f0;}
-.lk a:hover{color:#5891ab;background: #e3ebee;}
+.lk a{line-height:25px;padding:5px 15px;margin:5px;display:inline-block}
+.lk .lmr a{background:#5891ab;color:#f0f0f0}
+.lk a:hover{color:#5891ab;background:#e3ebee}
 .dark .bann span.swiper-pagination-bullet{background:#2d8cb7}
-.dark .mine{background: #22272e;}
+.dark .mine{background:#22272e}
 .dark .conn{background-position-y:60px}
 .dark .fm .swiper-button-next,.dark .fm .swiper-button-prev{background:rgba(0,0,0,0.8)}
 .dark .fm .swiper-button-next:after,.dark .fm .swiper-button-prev:after{color:#2d8cb7}
@@ -47,6 +47,6 @@ a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rg
 .dark .pbline h2{color:#e2f1ff}
 .dark .pbline .pdesc{color:#adbac7}
 .dark .iag a svg path{color:#adbac7}
-.dark .lk .lmr a{background: #2d8cb7;border:1px solid #2d8cb7;}
-.dark .lk a:hover{color:#2d8cb7;background:#22272e}
+.dark .lk .lmr a{background:#5891ab}
+.dark .lk a:hover{color:#2d8cb7;background:#2d333b}
 .dark .iag a:hover,.dark .iag a:hover svg path{color:#2d8cb7}

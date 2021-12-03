@@ -98,19 +98,16 @@ function doPmenu(down) {
     mbpm = !mbpm;
     if(mbpm) {
       bodyNode.classList.add("oppmenu");
-      pomenu.innerText="关闭目录";
       if(mbm) {
         mbm = !mbm;
         bodyNode.classList.remove("opmenu");
       }
     }else{
       bodyNode.classList.remove("oppmenu");
-      pomenu.innerText="打开目录";
     }
   }else{
     mbpm = false;
     bodyNode.classList.remove("oppmenu");
-    pomenu.innerText="打开目录";
   }
 }
 // back top 

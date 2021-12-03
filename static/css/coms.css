@@ -20,9 +20,9 @@
 .comp h1{line-height:30px;color:#888;font-size:13px;font-weight:normal}
 .comp h1 b{display:inline-block;max-width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height:1;margin:0 5px;color:#5891ab}
 .comp h1 a{font-size:12px;color:#5891ab;margin:0 5px;line-height:22px;padding:0 10px;border:1px solid;display:inline-block;border-radius:12px}
-.comp h1 a:hover{color: #feffff;background: #e3ebee;}
-.comp p{position:relative;padding:10px;background: #f2f7f8;line-height:1.5;border-radius:6px;margin-top:5px;font-size:14px;}
-.comp p:after{content:"";position:absolute;display:block;left:10px;top:-8px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom: 10px solid #f2f7f8;}
+.comp h1 a:hover{color:#feffff;background:#e3ebee}
+.comp p{position:relative;padding:10px;background:#f2f7f8;line-height:1.5;border-radius:6px;margin-top:5px;font-size:14px}
+.comp p:after{content:"";position:absolute;display:block;left:10px;top:-8px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid #f2f7f8}
 .comml ul ul li{border:0;padding:0;margin:10px 0 10px 20px}
 .comml ul ul li .comp{width:100%}
 .comore{text-align:center;line-height:30px;padding-bottom:10px}
@@ -31,8 +31,8 @@
 .dark .navt p:hover,.dark .sendc a:hover{background:#5891ab}
 .dark .sendc a.rcls{background:#1a1e23}
 .dark .comp h1{color:#adbac7}
-.dark .comp h1 b,.dark .comp h1 a,.dark .comore a{color:#2d8cb7;}
-.dark .comp h1 a:hover{color: #2d333b;background: #010101;}
+.dark .comp h1 b,.dark .comp h1 a,.dark .comore a{color:#2d8cb7}
+.dark .comp h1 a:hover{color:#2d333b;background:#010101}
 .dark .comp p{color:#adbac7;background:#22272e}
 .dark .comp p:after{border-bottom:10px solid #22272e}
 .dark .comml li{border-bottom:1px solid #010101}

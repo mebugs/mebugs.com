@@ -1,6 +1,6 @@
 .mark *{width:auto;height:auto;max-width:100%}
 .mark p{line-height:2;text-indent:16px}
-.mark{padding:15px;background: #feffff;box-shadow: 1px 1px 2px #e3ebee;}
+.mark{padding:15px;background: #fdfdfd;}
 .mark h1,.mark h2,.mark h3{line-height:2.5;font-weight:900;position:relative;padding-left:16px}
 .mark h1{font-size:20px}
 .mark h2{font-size:18px}
@@ -35,6 +35,6 @@ pre *{line-height:1.7;color:#000}
 .dark .hljs-property{color:#7575e4}
 .dark .hljs-regexp{color:#d6183a}
 .dark .dark pre{background:#222}
-.dark .mark,.dark .menue{background:#2d333b;box-shadow: unset;}
+.dark .mark,.dark .menue{background: #1c2128;box-shadow: unset;}
 .dark .mark h1:after,.dark .mark h2:after,.dark .mark h3:after{background:#adbac7}
 .dark .mark img{border:1px solid #555}
