@@ -24,6 +24,10 @@ window.addEventListener("scroll", function () {
 	if(sTop > 50) {
 		bodyNode.classList.add("headerbg");
 	} else {
+		// 回到顶部关闭目录
+		if(cW < 1200 && pomenu) {
+		  doPmenu(false);
+		}
 		bodyNode.classList.remove("headerbg");
 	}
 	if(mHeight && cW > 1200) {
@@ -37,13 +41,13 @@ window.addEventListener("scroll", function () {
 		} else {
 			bodyNode.classList.remove("menus");
 		}
-    if(mRHeight) {
-      if(sTop > mRHeight)  {
-        bodyNode.classList.add("rfix");
-      } else {
-        bodyNode.classList.remove("rfix");
-      }
-    }
+		if(mRHeight) {
+		  if(sTop > mRHeight)  {
+			bodyNode.classList.add("rfix");
+		  } else {
+			bodyNode.classList.remove("rfix");
+		  }
+		}
 	}
   // 滑动关闭目录
   if(cW < 1200 && pomenu) {

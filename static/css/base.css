@@ -37,7 +37,7 @@ header .w *{margin:0 15px}
 .m-10{margin:-10px}
 .row{margin-bottom:45px}
 .c .row:last-child{margin-bottom:5px}
-.box{background:#fdfdfd;padding:5px;}
+.box{background:#fdfdfd;padding:5px}
 .box a h2,.pagee a h2{padding:5px 0;line-height:22px}
 .pa_6,.pa_4{display:flex;flex-wrap:wrap}
 .pa_6 a,.pa_4 a{display:block;margin:10px}
@@ -45,7 +45,7 @@ header .w *{margin:0 15px}
 .pa_4 a{width:calc(33.3333% - 20px)}
 footer{background:#e3ebee}
 .back_top{position:fixed;bottom:-80px;right:calc(50% - 680px);width:60px;height:60px;background:#5891ab;padding:8px;cursor:pointer;z-index:100;border-radius:30px;opacity:0;transform:rotate(270deg)}
-.headerbg .back_top{bottom:10px;transform:rotate(0deg);opacity:.75}
+.headerbg .back_top{bottom:10px;transform:rotate(0deg);opacity:.75;background-image:url(/static/img/back_top.png);background-repeat:no-repeat;background-color:#444}
 a:hover{background:#f8f8f8}
 a:hover .scale{transform:scale(1.1)}
 a:hover h2,footer a:hover,.menu a:hover,.menu a.mck,.menue a:hover{color:#5891ab}
@@ -93,13 +93,13 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .pst .pt h1{width:100%;line-height:1.5;font-weight:900}
 .pst .pdest{background:#f9fbfb;padding:10px;font-size:14px;text-align:center;line-height:1.5}
 .pst .pdest a{margin:5px;color:#5891ab;font-weight:900}
-input,textarea{border:0;outline:0;border-bottom: 1px solid #e3ebee;background:#f9fbfb;}
+input,textarea{border:0;outline:0;border-bottom:1px solid #e3ebee;background:#f9fbfb}
 input:focus,textarea:focus{border-bottom:1px solid #2d8cb7;background:#f2f7f8}
 body.dark{background-color:#1c2128}
 .dark::-webkit-scrollbar-thumb{background-color:#111}
 .dark::-webkit-scrollbar-track{background-color:#2d333b}
 .dark *{color:#adbac7}
-.dark .back_top{background:#2d8cb7}
+.dark .back_top{background-color:#ddefff;background-position-y:-60px}
 .dark img{filter:brightness(90%) contrast(90%)}
 .dark.headerbg header{background:#2d333b}
 .dark .menu a{color:#e2f1ff}
@@ -107,7 +107,7 @@ body.dark{background-color:#1c2128}
 .dark .r{background-color:#22272e}
 .dark footer{background:#2d333b}
 .dark .logo,.dark .temp{background-position-y:-50px}
-.dark .box{background: #1c2128;}
+.dark .box{background:#1c2128}
 .dark a:hover h2,.dark footer a:hover,.dark .menu a:hover,.dark .menu a.mck,.dark .menue a:hover{color:#5891ab}
 .dark a:hover{background:#2d333b}
 .dark .mr:hover{color:#5891ab}
