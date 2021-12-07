@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+    <link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
+    <link href="/center/static/css/child.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+    <div class="main" id="main" v-cloak v-if="utoken">
+     <div class="hd">
+       <h1>评论管理</h1>
+     </div>
+     <div class="mc">
+       <div class="sc">
+         <button type="button" class="btnblue" @click="query">刷新</button>
+       </div>
+       <div class="sm">
+         <div class="slist" v-if="list[0]">
+           <div class="comli" v-for="item in list">
+             <div class="lavt">
+               <img class="cmavt" :src="item.avt"/>
+               <p>{{status[item.status]}}</p>
+
+             </div> 
+             <div class="cminf">
+               <h1><span>{{ item.name }}</span> 于 <em>{{ item.send_time }}</em> 在 <b><a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></b> 一文发表评论</h1>
+               <p class="icoms">{{ item.coms }}</p>
+               <div class="fcoms" v-if="item.fid!=0">
+                 <p>本条评论为楼层回复，原评论摘要：</p>
+                 <p><span>{{ item.fname }}</span><em>{{ item.fcoms }}</em></p>
+               </div>
+             </div>
+             <button type="button" class="btnblue" @click="edit(item)">编辑</button>
+           </div>
+         </div>
+         <div class="slist" v-else>
+            <p class="nuli">暂未检索到相关内容</p>
+         </div>
+       </div>
+       <div class="spage" v-if="search.pages <= 7">
+         <div v-for="n in search.pages" class="spi" :class="{'ck':search.page == n}" @click="toPage(n)">{{n}}</div>
+       </div>
+       <div class="spage" v-if="search.pages > 7 && search.page <5">
+         <div v-for="n in 5" class="spi" :class="{'ck':search.page == n}" @click="toPage(n)">{{n}}</div>
+         <div class="spi" @click="toPage(6)">...</div>
+         <div class="spi" @click="toPage(search.pages)">{{search.pages}}</div>
+       </div>
+       <div class="spage" v-if="search.pages > 7 && search.page >=5 && search.page <= search.pages - 4">
+         <div class="spi" @click="toPage(1)">1</div>
+         <div class="spi" @click="toPage(search.page-2)">...</div>
+         <div class="spi" @click="toPage(search.page-1)">{{search.page-1}}</div>
+         <div class="spi ck" @click="toPage(search.page)">{{search.page}}</div>
+         <div class="spi" @click="toPage(search.page+1)">{{search.page+1}}</div>
+         <div class="spi" @click="toPage(search.page+2)">...</div>
+         <div class="spi" @click="toPage(search.pages)">{{search.pages}}</div>
+       </div>
+       <div class="spage" v-if="search.pages > 7 && search.page >=5 && search.page > search.pages - 4">
+         <div class="spi" @click="toPage(1)">1</div>
+         <div class="spi" @click="toPage(search.pages - 5)">...</div>
+         <div class="spi" :class="{'ck':search.page == search.pages - 4}" @click="toPage(search.pages - 4)">{{search.pages-4}}</div>
+         <div class="spi" :class="{'ck':search.page == search.pages - 3}" @click="toPage(search.pages - 3)">{{search.pages-3}}</div>
+         <div class="spi" :class="{'ck':search.page == search.pages - 2}" @click="toPage(search.pages - 2)">{{search.pages-2}}</div>
+         <div class="spi" :class="{'ck':search.page == search.pages - 1}" @click="toPage(search.pages - 1)">{{search.pages-1}}</div>
+         <div class="spi" :class="{'ck':search.page == search.pages}" @click="toPage(search.pages)">{{search.pages}}</div>
+       </div>
+     </div>
+     <div class="pope">
+       <div class="tage">
+         <div class="tse">
+           <h5>编辑评论</h5>
+           <div class="tade">标签名称：<input type="text" v-model="item.name" placeholder="请输入标签名称" /></div>
+           <div class="tade">标签地址：<input type="text" v-model="item.url" placeholder="请输入标签静态地址" /></div>
+           <div class="tade">标签简介：<textarea placeholder="请输入标签简介" v-model="item.remark"></textarea></div>
+           <button type="button" class="btnblue" @click="save">保存标签</button>
+           <button type="button" class="btngray" @click="clsPop">取消</button>
+         </div>
+       </div>
+     </div>
+    </div>
+    <script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
+    <script src="/static/lib/vue/vue.min.js"></script>
+    <script src="/static/lib/vue/vue-axios.js"></script>
+    <script src="/static/lib/vue/axios.min.js"></script>
+    <script src="/center/static/js/comm.js?v=1.0"></script> 
+     <script src="/center/static/js/api.js"></script>
+     <script src="/static/js/popup.js"></script>  
+    <script src="/center/static/js/comms.js?v=1.0"></script>  
+	</body>
+</html>

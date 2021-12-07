@@ -50,7 +50,7 @@ function UpsertPost($conn,$body) {
 }
 
 function GetPost($conn,$id) {
-  $sql = "SELECT * FROM `post_main` m LEFT JOIN `post_info` i ON m.id = i.pid WHERE m.id =".$id;
+  $sql = "SELECT * FROM `post_main` m LEFT JOIN `post_info` i ON m.id = i.pid WHERE m.id > 100 AND m.id =".$id;
   $query = mysqli_query($conn,$sql);
   $post = [];
   if($query) {
@@ -74,8 +74,8 @@ function GetPost($conn,$id) {
 }
 
 function ListPost($conn,$q) {
-  $ctSql = "SELECT count(id) FROM `post_main` m WHERE 1=1";
-  $qrSql = "SELECT m.*,c.name AS category FROM `post_main` m LEFT JOIN `category` c ON c.id = m.cid WHERE 1=1";
+  $ctSql = "SELECT count(id) FROM `post_main` m WHERE m.id > 100";
+  $qrSql = "SELECT m.*,c.name AS category FROM `post_main` m LEFT JOIN `category` c ON c.id = m.cid WHERE m.id > 100";
   $where = "";
   if ($q['cid'] != 0) {
     $where = $where . " AND m.cid = " . $q['cid'];

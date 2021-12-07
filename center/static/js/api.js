@@ -29,3 +29,11 @@ function CategoryWork(data) {
     data: data
   })
 }
+
+function CommsWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/comms.php',
+    data: data
+  })
+}

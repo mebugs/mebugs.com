@@ -18,6 +18,22 @@ function AddComms($conn,$body) {
   return [false,'评论提交失败'];
 }
 
+// 获取评论管理员分页（级联文章）
+function GetCommsPageManage($conn,$q) {
+  $ctSql = "SELECT count(id) FROM `comms` s";
+  $qrSql = "SELECT s.*,m.title,m.url AS purl,p.`name` AS fname,p.`coms` AS fcoms FROM `comms` s LEFT JOIN `post_main` m ON m.id = s.pid LEFT JOIN `comms` p ON p.fid = s.id";
+  $where = "";
+  $ctSql = $ctSql . $where;
+  $size = $q['size'];
+  $qrSql = $qrSql . $where . " ORDER BY s.`status`,s.`id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
+  $pageData = [];
+  $numAry = mysqli_fetch_array(mysqli_query($conn,$ctSql));
+  $total = $numAry[0];
+  $pageData['pages'] = ceil($total/$size);
+  $query = mysqli_query($conn,$qrSql);
+  $pageData['list'] = mysqli_fetch_all($query,MYSQLI_ASSOC);
+  return [true,$pageData];
+}
 
 
 function GetAllTag($conn) {
@@ -48,22 +64,5 @@ function ModTag($conn,$id,$name,$url,$remark) {
   return [false,'数据更新失败'];
 }
 
-function GetTagPage($conn,$q) {
-  $ctSql = "SELECT count(id) FROM `tag` m WHERE 1=1";
-  $qrSql = "SELECT m.* FROM `tag` m WHERE 1=1";
-  $where = "";
-  if ($q['name'] != "") {
-    $where = $where . " AND m.name like '%" . $q['name'] . "%'";
-  }
-  $ctSql = $ctSql . $where;
-  $size = $q['size'];
-  $qrSql = $qrSql . $where . " ORDER BY `id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
-  $pageData = [];
-  $numAry = mysqli_fetch_array(mysqli_query($conn,$ctSql));
-  $total = $numAry[0];
-  $pageData['pages'] = ceil($total/$size);
-  $query = mysqli_query($conn,$qrSql);
-  $pageData['list'] = mysqli_fetch_all($query,MYSQLI_ASSOC);
-  return [true,$pageData];
-}
+
 ?>
