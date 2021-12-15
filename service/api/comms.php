@@ -1,5 +1,5 @@
 <?php
-function AddComms($conn,$body) {
+function AddComms($conn,$body,$status,$admin) {
   $name = $body -> name;$name = str_replace('\'','\'\'',$name);
   $email = $body -> email;$email = str_replace('\'','\'\'',$email);
   $qq = $body -> qq;$qq = str_replace('\'','\'\'',$qq);
@@ -9,7 +9,7 @@ function AddComms($conn,$body) {
   $fid = $body -> fid;
   $level = $body -> level;
   $coms = $body -> coms;$coms = str_replace('\'','\'\'',$coms);
-  $sql = "INSERT INTO `comms`(`name`, `email`, `qq`, `url`, `avt`, `pid`, `fid`, `level`, `coms`, `send_time`) VALUES ('$name', '$email', '$qq', '$url', '$avt', '$pid', '$fid', '$level', '$coms', now())";
+  $sql = "INSERT INTO `comms`(`name`, `email`, `qq`, `url`, `avt`, `pid`, `fid`, `level`, `coms`, `send_time`, `status`, `admin`) VALUES ('$name', '$email', '$qq', '$url', '$avt', '$pid', '$fid', '$level', '$coms', now(), '$status', '$admin')";
   $query = mysqli_query($conn,$sql);
   if($query) {
     $id = mysqli_insert_id($conn);
@@ -21,11 +21,11 @@ function AddComms($conn,$body) {
 // 获取评论管理员分页（级联文章）
 function GetCommsPageManage($conn,$q) {
   $ctSql = "SELECT count(id) FROM `comms` s";
-  $qrSql = "SELECT s.*,m.title,m.url AS purl,p.`name` AS fname,p.`coms` AS fcoms FROM `comms` s LEFT JOIN `post_main` m ON m.id = s.pid LEFT JOIN `comms` p ON p.fid = s.id";
+  $qrSql = "SELECT s.*,m.title,m.url AS purl,p.`name` AS fname,p.`coms` AS fcoms FROM `comms` s LEFT JOIN `post_main` m ON m.id = s.pid LEFT JOIN `comms` p ON s.fid = p.id";
   $where = "";
   $ctSql = $ctSql . $where;
   $size = $q['size'];
-  $qrSql = $qrSql . $where . " ORDER BY s.`status`,s.`id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
+  $qrSql = $qrSql . $where . " ORDER BY s.`status`,s.`admin`,s.`id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
   $pageData = [];
   $numAry = mysqli_fetch_array(mysqli_query($conn,$ctSql));
   $total = $numAry[0];
@@ -35,34 +35,28 @@ function GetCommsPageManage($conn,$q) {
   return [true,$pageData];
 }
 
-
-function GetAllTag($conn) {
-  return GetTagList($conn);
-}
-
-function GetTagList($conn,$page=0,$size=0) {
-  $sql = "SELECT * FROM `tag` ORDER BY num DESC";
-  // 分页查询请求
-  if($page!=0){
-    $sql = $sql." LIMIT ".($page-1)*$size.",".$size;
+// 更新审核评论
+function ModCommsPageManage($conn,$update) {
+  $sql = "";
+  if($update['status'] == 9) {
+    $sql = $sql."DELETE FROM `comms` WHERE `id` = ".$update['id'];
+  } else {
+    $sql = $sql."UPDATE `comms` SET `name` = '".$update['name']."', `email` = '".$update['email']."',`qq` = '".$update['qq']."',`url` = '".$update['url']."',`coms` = '".$update['coms']."',`status` = '".$update['status']."' WHERE `id` = ".$update['id'];
   }
   $query = mysqli_query($conn,$sql);
-  if($query)
-  {
-  	return [true,mysqli_fetch_all($query,MYSQLI_ASSOC)];
+  if($query) {
+    return [true,$update['id']];
   }
-  return [false,'数据查询失败'];
+  return [false,'数据更新失败'];
 }
 
-
-function ModTag($conn,$id,$name,$url,$remark) {
-  $sql = "UPDATE `tag` SET `name` = '$name', `url` = '$url', `remark` = '$remark'WHERE `id` = ".$id;
+function UpdateCommsStatus($conn,$id,$status) {
+  $sql = "UPDATE `comms` SET `status` = '$status' WHERE `id` = ".$id;
   $query = mysqli_query($conn,$sql);
   if($query) {
     return [true,$id];
   }
   return [false,'数据更新失败'];
 }
-
 
 ?>

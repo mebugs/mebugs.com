@@ -6,38 +6,18 @@
 .sc,.sm{background:#feffff;padding:15px;display:flex;margin:20px}
 input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding:0 10px;background:#fbfbfb}
 .sc *{margin-right:15px}
-.spage {
-    margin: 15px;
-    display: flex;
-}
-
-.spi {
-    margin: 5px;
-    width: 36px;
-    line-height: 36px;
-    background: #fff;
-    text-align: center;
-    cursor: pointer;
-}
-
-.spi.ck {
-    background: #ddd;
-}
+.spage{margin:15px;display:flex}
+.spi{margin:5px;width:36px;line-height:36px;background:#fff;text-align:center;cursor:pointer}
+.spi.ck{background:#ddd}
 button{border:0!important;cursor:pointer}
 .sc button{min-width:unset;font-weight:900;height:40px;color:#f0f0f0;padding:0 30px}
-button.btnblue{background:#3790b9;}
-button.btngray{background:#9e9e9e}
-button.btnred{background:#b93749}
-.clblue{color:#3790b9}
-.clgray{color:#111}
-.clred{color:#b93749}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.slci{display:flex;width: calc(33.33% - 10px);margin:5px 5px 0 5px;padding:5px 5px 10px 5px;border-bottom:1px solid #eee;}
+.slci{display:flex;width:calc(33.33% - 10px);margin:5px 5px 0 5px;padding:5px 5px 10px 5px;border-bottom:1px solid #eee}
 .slci:hover{border-bottom:1px solid #000}
-.slist{display:flex;flex-wrap:wrap;width: 100%;}
+.slist{display:flex;flex-wrap:wrap;width:100%}
 .slbn{width:140px;height:90px;overflow:hidden}
 .slbn img{width:100%;height:100%;display:block}
-.sldo{width:70px;}
+.sldo{width:70px}
 .sldo button{height:70px;width:100%;margin:10px 0;font-weight:900;color:#f0f0f0}
 .slst{width:100px;text-align:center}
 .slst span{line-height:30px;margin:10px auto;background:#ddd;width:90px;display:block;font-size:14px;font-weight:900}
@@ -57,310 +37,67 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pli textarea{width:100%;resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb}
 .savebtn{margin-top:7px;width:100%}
 .savebtn button{display:block;line-height:40px;width:100%;font-weight:900;color:#fff}
-.tageare{height:calc(100vh - 515px);overflow-y:auto;position: relative;}
-
-.tagShow {
-    height: calc(100vh - 570px);
-    overflow-y: auto;
-    margin-top: 15px;
-    border: 2px dotted #eee;
-    padding: 5px;
-}
-.tse {position: relative;}
-.tse p {line-height: 40px;text-align: center;color: #aaa;}
-.tse em{
-    position: absolute;
-    right: -8px;
-    top: -10px;
-    display: block;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    background: #3790b9;
-    text-align: center;
-    font-style: normal;
-    cursor: pointer;
-    color: #f0f0f0;
-}
-.tagShow.tagfix {
-    position: absolute;
-    z-index: 11;
-    background: rgba(255,255,255,0.9);
-    border-color: #3790b9;
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.tse button {
-    display: block;
-    line-height: 36px;
-    width: 80%;
-    font-weight: 900;
-    color: #feffff;
-    margin: 5px 10%;
-}
-
-.tse h5 {
-    line-height: 40px;
-    text-align: center;
-    color: #3790b9;
-}
-
-.tade input {
-    line-height: 36px;
-    height: 36px;
-    margin: 5px 0;
-}
-
-.tade textarea {
-    margin: 5px 0;
-}
-
-.tse span {
-    line-height: 30px;
-    padding: 0 15px;
-    margin: 3px;
-    display: inline-block;
-    background: #f9f9f9;
-    border: 1px dotted #eee;
-    position: relative;
-    cursor: pointer;
-}
-
-.tse span b {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    display: block;
-    right: -5px;
-    top: -5px;
-    line-height: 15px;
-    font-size: 12px;
-    background: #3790b9;
-    text-align: center;
-    border-radius: 9px;
-    color: #f9f9f9;
-    cursor: pointer;
-}
-
-.pope {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    background: rgba(0,0,0,0.5);
-    opacity: 0;
-    display:none;
-}
-
-.tage {
-    position: absolute;
-    width: 500px;
-    height: 400px;
-    padding: 15px;
-    background: #fff;
-    left: calc(50% - 250px);
-    top: calc(50% - 200px);
-    transform: scale(0.8);
-}
-
-.popup .pope {
-    opacity: 1;
-}
-.popup .tage{
-    transform: scale(1);
-}
-.alcat {
-    width: calc(100% - 70px);
-}
-.alicon {
-    width: 65px;
-    height: 65px;
-    margin: 5px 5px 5px 0;
-}
-.alicon img{
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.alca .sldo {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-}
-
-.alca {
-    width: calc(25% - 10px);
-    position: relative;
-}
-
-.alca .sldo button {
-    height: 36px;
-    margin: 0;
-}
-
-.alcat p {
-    line-height: 25px;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-}
-
-.alcat p span {
-    width: calc(100% - 70px);
-    padding-left: 5px;
-    color: #222;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.alcat p span img {
-    width: 30px;
-    height: 30px;
-    border: 0;
-}
-
-.tage textarea {
-    width: calc(100% - 75px);
-    resize: none;
-    border: 1px solid #ddd;
-    height: 60px;
-    line-height: 30px;
-    padding: 0 10px;
-    background: #fbfbfb;
-}
-.tage .tade {
-    display: flex;
-    align-items: center;
-}
-
-.tage input {
-    width: calc(100% - 75px);
-}
-
-.tage .tse h5 {
-    line-height: 50px;
-    font-size: 20px;
-}
-
-.tage .tse button {
-    margin-top: 15px;
-}
-
-.slci.tlag {
-    width: calc(20% - 10px);
-}
-.tlag .alcat {
-    width: 100%;
-}
-.comli {
-    width: 100%;
-    display: flex;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 8px;
-    margin-bottom: 5px;
-    position: relative;
-}
-
-.lavt {
-    width: 80px;
-}
-
-img.cmavt {
-    width: 60px;
-    margin: 0 10px;
-    border-radius: 30px;
-}
-
-.lavt * {
-    text-align: center;
-    line-height: 20px;
-}
-
-.lavt p {
-    font-weight: 900;
-    color: #3790b9;
-}
-
-.comli button.btnblue {
-    display: block;
-    width: 100%;
-    color: #fff;
-    position: absolute;
-    right: 0;
-    top: 0;
-    line-height: 25px;
-    width: 100px;
-}
-
-.cminf {
-    width: calc(100% - 90px);
-    margin-left: 10px;
-}
-
-.cminf * {
-    font-style: normal;
-    line-height: 25px;
-    font-weight: normal;
-    font-size: 15px;
-}
-
-.cminf h1 span {
-    color: #607d8b;
-    font-weight: 900;
-}
-
-.cminf h1 em {
-    color: #999;
-}
-
-.cminf h1 b a {
-    font-weight: 900;
-    color: #3790b9;
-    padding: 0 5px;
-    border-bottom: 1px solid;
-}
-
-.cminf p {
-    width: 100%;
-    padding: 5px 10px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    margin-top: 5px;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-    overflow:hidden;
-}
-
-.fcoms {
-    border: 1px dotted #aaa;
-    margin-top: 5px;
-    padding: 5px;
-    border-radius: 4px;
-}
-
-.fcoms * {
-    font-size: 12px;
-    color: #666;
-    font-style: italic;
-}
-
-.fcoms p span {
-    font-weight: 900;
-    margin-right: 10px;
-}
-
-.fcoms p em {
-    font-style: normal;
-}
-
-.fcoms p:nth-child(1) {
-    background: unset;
-    line-height: 1;
-    padding: 3px 0;
-    margin: 0;
-}
+.tageare{height:calc(100vh - 515px);overflow-y:auto;position:relative}
+.tagShow{height:calc(100vh - 570px);overflow-y:auto;margin-top:15px;border:2px dotted #eee;padding:5px}
+.tse{position:relative}
+.tse p{line-height:40px;text-align:center;color:#aaa}
+.tse em{position:absolute;right:-8px;top:-10px;display:block;line-height:30px;width:30px;height:30px;border-radius:15px;background:#3790b9;text-align:center;font-style:normal;cursor:pointer;color:#f0f0f0}
+.tagShow.tagfix{position:absolute;z-index:11;background:rgba(255,255,255,0.9);border-color:#3790b9;width:100%;overflow-x:hidden}
+.tse button{display:block;line-height:36px;width:80%;font-weight:900;color:#feffff;margin:5px 10%}
+.tse h5{line-height:40px;text-align:center;color:#3790b9}
+.tade input{line-height:36px;height:36px;margin:5px 0}
+.tade textarea{margin:5px 0}
+.tse span{line-height:30px;padding:0 15px;margin:3px;display:inline-block;background:#f9f9f9;border:1px dotted #eee;position:relative;cursor:pointer}
+.tse span b{position:absolute;width:18px;height:18px;display:block;right:-5px;top:-5px;line-height:15px;font-size:12px;background:#3790b9;text-align:center;border-radius:9px;color:#f9f9f9;cursor:pointer}
+.pope{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background:rgba(0,0,0,0.5);opacity:0;display:none}
+.tage{position:absolute;width:500px;height:400px;padding:15px;background:#fff;left:calc(50% - 250px);top:calc(50% - 200px);transform:scale(0.8)}
+.popup .pope{opacity:1}
+.popup .tage{transform:scale(1)}
+.alcat{width:calc(100% - 70px)}
+.alicon{width:65px;height:65px;margin:5px 5px 5px 0}
+.alicon img{display:block;width:100%;height:100%}
+.alca .sldo{position:absolute;right:5px;top:5px}
+.alca{width:calc(25% - 10px);position:relative}
+.alca .sldo button{height:36px;margin:0}
+.alcat p{line-height:25px;font-size:13px;display:flex;align-items:center}
+.alcat p span{width:calc(100% - 70px);padding-left:5px;color:#222;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.alcat p span img{width:30px;height:30px;border:0}
+.tage textarea{width:calc(100% - 75px);resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb}
+.tage .tade{display:flex;align-items:center}
+.tage input{width:calc(100% - 75px)}
+.tage .tse h5{line-height:50px;font-size:20px}
+.tage .tse button{margin-top:15px}
+.slci.tlag{width:calc(20% - 10px)}
+.tlag .alcat{width:100%}
+.comli{width:calc(50% - 10px);display:flex;border-bottom:1px solid #ddd;padding-bottom:40px;margin-bottom:5px;position:relative}
+.lavt{width:70px}
+img.cmavt{width:60px;margin:0 5px;border-radius:30px;box-shadow:1px 2px 3px #aaa}
+.lavt *{text-align:center;line-height:20px}
+.lavt p{font-weight:900;line-height:30px}
+.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right:5px;bottom:5px;line-height:28px;width:100px}
+.cminf{width:calc(100% - 70px);margin-left:10px}
+.cminf *{font-style:normal;line-height:25px;font-weight:normal;font-size:12px}
+.cminf h1 span{color:#607d8b;font-weight:900}
+.cminf h1 em{color:#999}
+.cminf h1 b a{font-weight:900;color:#3790b9;padding:0 5px;border-bottom:1px solid}
+.cminf p{width:100%;padding:5px 10px;background:#f9f9f9;border-radius:4px;margin-top:5px;overflow:hidden;line-height:20px;font-size:13px}
+.fcoms{border:1px dotted #aaa;margin-top:5px;padding:5px}
+.fcoms *{font-size:12px;color:#666;font-style:italic}
+.fcoms p span{font-weight:900;margin-right:10px}
+.fcoms p em{font-style:normal}
+.fcoms p:nth-child(1){background:unset;line-height:1;padding:2px;margin:0;font-size:12px}
+button.btnblue.bl2{right:120px}
+.tage.comme{width:800px;min-height:300px;height:auto;left:calc(50% - 400px);top:100px}
+.tade a{line-height:25px;padding:0 5px;border-bottom:1px solid;color:#3790b9;font-weight:900}
+.tage.comme .tse button{display:inline-block;width:30%;margin:15px 1.5%;float:left}
+.popb .tage.comme .tse button{width:46%;margin:15px 2%}
+.tade .fcoms{width:calc(100% - 75px);padding:2px 5px}
+.tade .fcoms p{text-align:left;line-height:20px;color:#666;font-style:normal}
+button.btnblue{background:#3790b9}
+button.btngray{background:#9e9e9e}
+button.btnred{background:#b93749}
+button.btnblack{background:#333}
+.clblue{color:#3790b9}
+.clgray{color:#111}
+.clgreen{color:#009688}
+.clred{color:#b93749}

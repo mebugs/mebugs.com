@@ -9,7 +9,7 @@ if (openCheckErr($body,1)) {
 include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
 include($_SERVER['DOCUMENT_ROOT'].'/service/api/comms.php');
 // 添加评论
-$ret = AddComms($conn,$body);
+$ret = AddComms($conn,$body,0,0);
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '提交成功!待审核~.~':$ret[1];
 mysqli_close($conn);

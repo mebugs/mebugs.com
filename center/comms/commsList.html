@@ -17,10 +17,10 @@
        </div>
        <div class="sm">
          <div class="slist" v-if="list[0]">
-           <div class="comli" v-for="item in list">
+           <div class="slci comli" v-for="item in list">
              <div class="lavt">
                <img class="cmavt" :src="item.avt"/>
-               <p>{{status[item.status]}}</p>
+               <p :class="statusCss[item.status]">{{status[item.status]}}</p>
 
              </div> 
              <div class="cminf">
@@ -31,7 +31,8 @@
                  <p><span>{{ item.fname }}</span><em>{{ item.fcoms }}</em></p>
                </div>
              </div>
-             <button type="button" class="btnblue" @click="edit(item)">编辑</button>
+             <button type="button" class="btnblue" @click="edit(item)">审核</button>
+             <button type="button" class="btnblue bl2" @click="reback(item)">回复</button>
            </div>
          </div>
          <div class="slist" v-else>
@@ -65,14 +66,39 @@
          <div class="spi" :class="{'ck':search.page == search.pages}" @click="toPage(search.pages)">{{search.pages}}</div>
        </div>
      </div>
-     <div class="pope">
-       <div class="tage">
+     <div class="pope popd">
+       <div class="tage comme">
          <div class="tse">
            <h5>编辑评论</h5>
-           <div class="tade">标签名称：<input type="text" v-model="item.name" placeholder="请输入标签名称" /></div>
-           <div class="tade">标签地址：<input type="text" v-model="item.url" placeholder="请输入标签静态地址" /></div>
-           <div class="tade">标签简介：<textarea placeholder="请输入标签简介" v-model="item.remark"></textarea></div>
-           <button type="button" class="btnblue" @click="save">保存标签</button>
+           <div class="tade">原文链接：<a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></div>
+           <div class="tade">用户昵称：<input type="text" v-model="item.name" /></div>
+           <div class="tade">用户邮箱：<input type="text" v-model="item.email" /></div>
+           <div class="tade">用户扣扣：<input type="text" v-model="item.qq" /></div>
+           <div class="tade">用户网址：<input type="text" v-model="item.url" /></div>
+           <div class="tade">评论内容：<textarea placeholder="" v-model="item.coms"></textarea></div>
+           <div class="tade">原评摘要：
+           <div class="fcoms" v-if="item.fid!=0">
+                 <p>{{ item.fname }} {{ item.fcoms }} </p>
+               </div>
+           </div>
+           <button type="button" class="btnblue" @click="save(1)">审核通过</button>
+           <button type="button" class="btnred" @click="save(9)">删除</button>
+           <button type="button" class="btngray" @click="clsPop">取消</button>
+         </div>
+       </div>
+     </div>
+     <div class="pope popb">
+       <div class="tage comme">
+         <div class="tse">
+           <h5>回复评论</h5>
+           <div class="tade">原文链接：<a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></div>
+           <div class="tade">用户昵称：<div class="fcoms"><p>{{ item.name }}</p></div></div>
+           <div class="tade">用户邮箱：<div class="fcoms"><p>{{ item.email }}</p></div></div>
+           <div class="tade">用户扣扣：<div class="fcoms"><p>{{ item.qq }}</p></div></div>
+           <div class="tade">用户网址：<div class="fcoms"><p>{{ item.url }}</p></div></div>
+           <div class="tade">评论内容：<div class="fcoms"><p>{{ item.coms }}</p></div></div>
+           <div class="tade">回复内容：<textarea placeholder="" v-model="ritem.coms"></textarea></div>
+           <button type="button" class="btnblue" @click="replay()">确认</button>
            <button type="button" class="btngray" @click="clsPop">取消</button>
          </div>
        </div>

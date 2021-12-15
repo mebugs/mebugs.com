@@ -12,7 +12,17 @@ if($api == "PageComms") {
   $query = [ 'size' => $body -> size,'page' => $body -> page ];
   $ret = GetCommsPageManage($conn,$query);
 }
-
+if($api == "ModComms") {
+  $update = [ 'id' => $body -> id,'name' => $body -> name,'email' => $body -> email,'qq' => $body -> qq,'url' => $body -> url,'coms' => $body -> coms,'status' => $body -> status ];
+  $ret = ModCommsPageManage($conn,$update);
+}
+if($api == "AdminReplayComms") {
+  // 添加回复评论
+  $ret = AddComms($conn,$body,2,1);
+  if($ret[0]) { // 更新回复评论状态
+    $ret = UpdateCommsStatus($conn,$body -> fid,2);
+  }
+}
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '操作成功':$ret[1];
 $data = $ret[0] ? $ret[1]: null;

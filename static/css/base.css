@@ -46,7 +46,7 @@ header .w *{margin:0 15px}
 footer{background:#e3ebee}
 .back_top{position:fixed;bottom:-80px;right:calc(50% - 680px);width:60px;height:60px;background:#5891ab;padding:8px;cursor:pointer;z-index:100;border-radius:30px;opacity:0;transform:rotate(270deg)}
 .headerbg .back_top{bottom:10px;transform:rotate(0deg);opacity:.75;background-image:url(/static/img/back_top.png);background-repeat:no-repeat;background-color:#444}
-a:hover{background:#f8f8f8}
+a:hover{background-color:#f8f8f8}
 a:hover .scale{transform:scale(1.1)}
 a:hover h2,footer a:hover,.menu a:hover,.menu a.mck,.menue a:hover{color:#5891ab}
 a:hover .pdesc{color:#444}
