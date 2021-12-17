@@ -8,7 +8,7 @@
 .fline p{width:100%;font-size:15px;color:#5891ab;font-weight:900}
 .fline a{line-height:40px;margin:10px;display:inline-block;width:250px;text-align:center;background:#5891ab;color:#f0f0f0}
 .fline p a{width:200px;margin:0;margin-right:30px}
-.fimg{width:120px;height:120px;position:relative;cursor:pointer}
+.fimg{width:120px;height:120px;position:relative;cursor:pointer;margin-left: 30px;}
 .fimg p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#5891ab;font-size:13px}
 .fline span.ico{height:120px;line-height:120px}
 .fline a.rsend{margin:0;height:60px;line-height:60px;margin-top:auto;margin-left:auto;font-weight:900}

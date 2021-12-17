@@ -107,7 +107,7 @@ var vue = new Vue({
         this.post.menu = $("#menue").html()
         if(this.ibanns[0] && this.ibanns[1].indexOf('data:image') > -1) {
           PopUp('正在上传题图...',2,1 );
-          ImgWork({api:"Base64",imgs:this.ibanns}).then(res => {
+          ImgWork({api:"Base64Banner",imgs:this.ibanns}).then(res => {
             if(res.data) {
               this.ibann = res.data+'?v='+Math.ceil(Math.random()*100);
               this.ibanns = [this.fileName,this.fileName,this.fileName]
@@ -158,6 +158,7 @@ var vue = new Vue({
       }
       this.newTag = {api:'AddTag',id:0,name:val,remark:null,url:null};
       this.tagShowFlag = true;
+      this.$forceUpdate()
     },
     pushTag(i) {
       let have = this.tagCheck.filter(function(item) { return item.id == i.id ;});
@@ -197,7 +198,7 @@ var vue = new Vue({
       //var file = document.getElementsById('ibann')[0].files[0];
 			if (window.FileReader && file) //读取文件
 			{
-				let fileName = file.name;
+				let fileName = new Date().getTime()+Math.ceil(Math.random()*(999-99)+100) + file.name.substring(file.name.lastIndexOf('.'));
 				this.banners = [false,false,false];
 				var this_ = this
 				var reader = new FileReader();
@@ -368,7 +369,7 @@ var vue = new Vue({
       //var file = document.getElementsById('ibann')[0].files[0];
       if (window.FileReader && file) //读取文件
       {
-        let fileName = file.name;
+        let fileName = new Date().getTime()+Math.ceil(Math.random()*(999-99)+100) + file.name.substring(file.name.lastIndexOf('.'));
         var this_ = this
         var reader = new FileReader();
         reader.readAsDataURL(file);

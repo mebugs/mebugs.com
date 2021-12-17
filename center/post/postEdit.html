@@ -76,7 +76,7 @@
           </select>
         </div>
         <div class="pli tageare">
-          <input type="text" v-model="tagSc" @keyup.enter="getScTag($event)" placeholder="请输入标签名[回车]快速搜索" />
+          <input type="text" v-model="tagSc" @keyup.enter="getScTag($event)" @focus="getScTag($event)" @change="getScTag($event)" placeholder="请输入标签名快速搜索" />
           <div class="tagShow tagfix" v-if="tagShowFlag">
             <div class="tse" v-if="tagShow[0]">
               <em @click="closeTag()">✘</em>

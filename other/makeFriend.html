@@ -75,12 +75,12 @@
         </div>
         <div class="fline">
           <span class="ico">站点图标</span>
-          <div class="fimg" onclick="chooseFimg()">
+          <div class="fimg" onclick="chooseImg('fuimg')">
             <img id="ficon" src="/static/img/icon.png" onerror="javascript:this.src='/static/img/icon.png'" /> 
             <p>自行上传</p> 
           </div>
           <a class="rsend" href="javascript:sendInfo()">提交申请</a>
-          <input name="fuimg" id="fuimg" type="hidden">
+          <input name="fuimg" id="fuimg"  accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none;" onchange="loadImg(this,'ficon')">
         </div>
       </div>
     </div>
@@ -124,7 +124,8 @@
   </div> 
   <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
   <script src="/static/js/base.js?v=1.0"></script> 
-  <script src="/static/js/popup.js?v=1.0"></script>  
+  <script src="/static/js/popup.js?v=1.0"></script> 
+   <script src="/static/js/upload.js?v=1.0"></script> 
   <script src="/static/js/friend.js?v=1.0"></script>  
  </body>
 </html>

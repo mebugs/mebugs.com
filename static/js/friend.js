@@ -51,6 +51,21 @@ function getInfo(){
   })
 }
 
+// 发送数据
+function sendInfo() {
+  var srcUrl = document.getElementById("ficon").src;
+  var srcImg = false;
+  if(srcUrl && srcUrl.indexOf('data:image') > -1) {
+    debugger
+    srcImg = uploadImg()
+    if(!srcImg) {
+      return;
+    }
+    debugger
+    friend.ficon = srcImg;
+    document.getElementById("ficon").src = friend.ficon;
+  }
+}
 
 // 同步输入框数据
 function getFriend() {

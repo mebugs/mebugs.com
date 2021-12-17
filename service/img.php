@@ -11,6 +11,10 @@ if($api == "Base64") {
   $imgs = $body -> imgs;
   $ret = UploadBaseArray($imgs);
 }
+if($api == "Base64Banner") {
+  $imgs = $body -> imgs;
+  $ret = UploadBaseArray($imgs,"banner/");
+}
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '操作成功':$ret[1];
 $data = $ret[0] ? $ret[1]: null;

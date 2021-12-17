@@ -1,7 +1,8 @@
 <?php
-function UploadBaseArray($imgs) {
+// 默认上传到Post
+function UploadBaseArray($imgs,$path="post/") {
   $fileName = $imgs[0];
-  $upPath = $_SERVER['DOCUMENT_ROOT'].'/static/upload/post/';
+  $upPath = $_SERVER['DOCUMENT_ROOT'].'/static/upload/'.$path;
   $imgx = array();
   // 单图与多图
   if(count($imgs) > 2) {
@@ -27,6 +28,6 @@ function UploadBaseArray($imgs) {
     }
     file_put_contents($upPathName, base64_decode($imgx[$i]));
   }
-  return [true,'/static/upload/post/' . $fileName];
+  return [true,'/static/upload/'. $path . $fileName];
 }
 ?>

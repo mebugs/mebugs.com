@@ -33,6 +33,10 @@ function openCheckErr($body,$type) {
        return true;
     }
   }
+  // 图片检查
+  if ( $type == 3 ) {
+    
+  }
   return false;
 }
 ?>
