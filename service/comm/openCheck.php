@@ -26,6 +26,13 @@ function openCheckErr($body,$type) {
        return true;
     }
   }
+  // 站点检查非法
+  if ( $type == 2 ) {
+    $furl = $body -> furl;
+    if ( $furl == "") {
+       return true;
+    }
+  }
   return false;
 }
 ?>

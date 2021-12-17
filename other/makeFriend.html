@@ -76,7 +76,7 @@
         <div class="fline">
           <span class="ico">站点图标</span>
           <div class="fimg" onclick="chooseFimg()">
-            <img src="/test/test3.jpg"/> 
+            <img id="ficon" src="/static/img/icon.png" onerror="javascript:this.src='/static/img/icon.png'" /> 
             <p>自行上传</p> 
           </div>
           <a class="rsend" href="javascript:sendInfo()">提交申请</a>
@@ -122,8 +122,9 @@
   <div class="back_top" onclick="backTop()"> 
    <img src="/static/img/back_top.png" /> 
   </div> 
-  <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script> 
-  <script src="/static/js/base.js?v=1.0"></script>
+  <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+  <script src="/static/js/popup.js?v=1.0"></script>  
   <script src="/static/js/friend.js?v=1.0"></script>  
  </body>
 </html>
