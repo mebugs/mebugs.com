@@ -1,12 +1,13 @@
 .fl{display:flex;width:100vw;height:100vh;overflow:hidden}
 .leare{position:fixed;width:100vw;height:100vh;display:none;background:rgba(0,0,0,0.5);opacity:0;top:0;left:0}
-.lmenu{width:100px;background:#22272e;overflow:hidden;padding-top:25px}
-.lmenu p{width:80%;margin:25px 20%;text-align:center;height:50px;box-shadow:0 0 2px #607d8b}
-.lmenu p a{line-height:50px;display:block;font-weight:900;font-size:18px;color:#f0f0f0}
-.lmenu p.mck{background:#f0f0f0;width:90%;margin:25px 10%}
-.lmenu p.mck a{color:#22272e}
+.lmenu{width: 60px;background: #fff;overflow:hidden;padding-top:25px;}
+.lmenu p{width: 50px;margin: 20px 5px;text-align:center;height:50px;border: 2px solid #f0f0f0;border-radius: 25px;background: #f0f0f0;}
+.lmenu p a{line-height: 46px;display:block;font-weight:900;color: #22272e;}
+.lmenu p.mck{background:#f0f0f0;width: 70px;margin: 20px 0;border-radius: 30px 0 0 30px;}
+.lmenu p.mck a{color:#22272e;}
 .lmenu p.mred{background:#607d8b}
-.lright{width:calc(100% - 100px)}
+.lmenu p.mred a{color: #f0f0f0;}
+.lright{width: calc(100% - 60px);}
 .showLogin .leare{opacity:1}
 iframe#content{border:0}
 .login{width:400px;height:300px;background:#22272e;position:absolute;left:calc(50% - 200px);top:calc(50% - 150px);border-radius:10px;padding:10px;box-shadow:0 0 10px #000;opacity:0}
