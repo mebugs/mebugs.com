@@ -13,8 +13,12 @@ include($_SERVER['DOCUMENT_ROOT'].'/service/api/firend.php');
 if($api == "CheckFirend") {
   $ret = CheckFirend($body -> furl);
 }
+// 提交友链申请
+if($api == "AddFirend") {
+  $ret = AddFirend($conn,$body);
+}
 $code = $ret[0] ? 200 : 100;
-$msg = $ret[0] ? '读取成功':$ret[1];
+$msg = $ret[0] ? '处理成功':$ret[1];
 $data = $ret[1] ? $ret[1]:null;
 mysqli_close($conn);
 echo json_encode(['code' => $code,'msg' => $msg, 'data' => $data ]);

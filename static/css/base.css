@@ -1,4 +1,4 @@
-*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#333;font-size:15px;box-sizing:border-box}
+*{margin:0;padding:0;text-decoration:unset;font-family:'Microsoft YaHei','SimHei',-apple-system,BlinkMacSystemFont;color:#333;font-size:15px;box-sizing:border-box;border-radius: 8px}
 img{display:block;width:100%;height:100%}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 h2{width:100%;font-weight:normal}
@@ -53,7 +53,7 @@ a:hover .pdesc{color:#444}
 .mr:hover{color:#2d8cb7}
 footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .ft p{font-size:14px;line-height:25px}
-.ft h2{line-height:40px;font-weight:900;font-size:16px;color:#222;display:inline-block;padding:0 10px;border-bottom:1px solid #222;margin-bottom:5px}
+.ft h2{line-height:40px;font-weight:900;text-align: center;font-size:16px;color:#222;display:inline-block;padding:0 10px;border-bottom:1px solid #222;margin-bottom:5px;}
 .fc{text-align:center}
 .fr{text-align:right}
 .fr p,.fl p{overflow:hidden;text-overflow:unset;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}

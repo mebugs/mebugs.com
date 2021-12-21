@@ -25,7 +25,6 @@ header .w *{margin:0 10px}
 .fm{height:120vw!important}
 .fm a,.fulla{height:55vw!important;width:calc(100% - 20px)!important}
 .lk a{width:calc(50% - 20px)!important}
-.ft h2{text-align:center}
 .fr p,.fl p{text-align:center}
 .ql a{margin:8px;padding:0 10px}
 .ql{justify-content:center!important;flex-wrap:wrap}
@@ -71,7 +70,7 @@ header .w *{margin:0 10px}
 .ql .tmin h1{width:100%;text-align:center;line-height:1;margin:10px}
 .ql .tmin{width:100%}
 .fline select,.fline select option,.fline span{font-size:13px;width:80px}
-.fline input{width:calc(100% - 80px);font-size:13px;padding:0 5px}
+.fline input,.fline textarea{width:calc(100% - 80px);font-size:13px;padding:0 5px}
 .fline{margin:15px 0;flex-wrap:wrap}
 .box.fform{padding:10px}
 .fline p a{margin:0 auto;display:block;line-height:36px}

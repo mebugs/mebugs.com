@@ -72,7 +72,21 @@ function readHtml($url) {
       return false;
   } else {
       return $code;
+  }    
+}
+
+// 提交友链
+function AddFirend($conn,$body) {
+  // 截取字符
+  $fname = mb_substr($body -> fname,0,128,'UTF-8');
+  $fdesc = mb_substr($body -> fdesc,0,128,'UTF-8');
+  $furl = $body -> furl;
+  $ficon = $body -> ficon;
+  $sql = "INSERT INTO `friend`(`furl`, `fname`, `fdesc`, `ficon`, `status`) VALUES ('$furl', '$fname', '$fdesc', '$ficon', 0)";
+  $query = mysqli_query($conn,$sql);
+  if(!$query) {
+    return [false,'友链提交失败'];
   }
-      
+  return [true,'友链提交成功'];
 }
 ?>
