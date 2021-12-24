@@ -9,38 +9,20 @@
 	<body>
     <div class="main" id="main" v-cloak v-if="utoken">
      <div class="hd">
-       <h1>文章管理</h1>
+       <h1>友链管理</h1>
      </div>
      <div class="mc">
        <div class="sc">
-         <input type="text" v-model="search.title" placeholder="文章标题(支持模糊)" />
-         <select v-model="search.cid">
-           <option v-for="item in category" :value="item.id">{{item.name}}</option>
-         </select>
-         <select v-model="search.status">
-           <option v-for="item in status" :value="item.id">{{item.name}}</option>
-         </select>
-         <button type="button" class="btnblue" @click="query">搜索</button>
-         <button type="button" class="btngray" @click="reset">重置</button>
-         <button type="button" class="btnred" @click="add">添加新文章</button>
+         <button type="button" class="btnblue" @click="query">刷新</button>
        </div>
        <div class="sm">
-         <div class="slist" v-if="list[0]" >
-           <div class="slci" v-for="item in list">
-             <div class="slbn">
-               <img :src="'/static/upload/post/'+item.banner">
+         <div class="slist" v-if="list[0]">
+           <div class="slci frili" v-for="item in list">
+             <img class="ficon" :src="item.ficon" />
+             <div class="fsite">
+               <h1>{{ item.fname }} · <a target="_blank" :href="item.furl">{{ item.furl }}</a></h1>
+               <p>{{ item.fdesc }}</p>
              </div>
-             <div class="slti">
-               <h2>
-               {{item.title}}
-               <span>{{item.category}}</span>
-               <span v-if="item.status == 1" class="clgray">{{statusNames[item.status]}}</span>
-               <span v-if="item.status == 2" class="clblue">{{statusNames[item.status]}}</span>
-               <span v-if="item.status == 3" class="clred">{{statusNames[item.status]}}</span>
-               </h2>
-               <p>{{item.remark}}</p>
-             </div>
-             <button type="button" class="do btnblue" @click="edit(item.id)">编辑</button>
            </div>
          </div>
          <div class="slist" v-else>
@@ -74,6 +56,27 @@
          <div class="spi" :class="{'ck':search.page == search.pages}" @click="toPage(search.pages)">{{search.pages}}</div>
        </div>
      </div>
+     <div class="pope popd">
+       <div class="tage comme">
+         <div class="tse">
+           <h5>编辑评论</h5>
+           <div class="tade">原文链接：<a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></div>
+           <div class="tade">用户昵称：<input type="text" v-model="item.name" /></div>
+           <div class="tade">用户邮箱：<input type="text" v-model="item.email" /></div>
+           <div class="tade">用户扣扣：<input type="text" v-model="item.qq" /></div>
+           <div class="tade">用户网址：<input type="text" v-model="item.url" /></div>
+           <div class="tade">评论内容：<textarea placeholder="" v-model="item.coms"></textarea></div>
+           <div class="tade">原评摘要：
+           <div class="fcoms" v-if="item.fid!=0">
+                 <p>{{ item.fname }} {{ item.fcoms }} </p>
+               </div>
+           </div>
+           <button type="button" class="btnblue" @click="save(1)">审核通过</button>
+           <button type="button" class="btnred" @click="save(9)">删除</button>
+           <button type="button" class="btngray" @click="clsPop">取消</button>
+         </div>
+       </div>
+     </div>
     </div>
     <script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
     <script src="/static/lib/vue/vue.min.js"></script>
@@ -82,6 +85,6 @@
     <script src="/center/static/js/comm.js?v=1.0"></script> 
      <script src="/center/static/js/api.js"></script>
      <script src="/static/js/popup.js"></script>  
-    <script src="/center/static/js/postList.js?v=1.0"></script>  
+    <script src="/center/static/js/firends.js?v=1.0"></script>  
 	</body>
 </html>

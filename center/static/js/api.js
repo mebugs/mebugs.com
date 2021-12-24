@@ -37,3 +37,11 @@ function CommsWork(data) {
     data: data
   })
 }
+
+function FirendWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/firend.php',
+    data: data
+  })
+}

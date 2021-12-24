@@ -2,10 +2,12 @@ var vue = new Vue({
 	el: '#main',
 	data: {
     utoken: null,
-    search: {name:null,size:24,page:1,pages:0,api:'PageTag'},
-    item: {id:0,api:'UpsertTag'},
+    search: {size:8,page:1,pages:0,api:'PageFirends'},
+    item: {},
     list: [],
-    title: ''
+    status: ['未审核','已通过'],
+    statusCss:['clred','clgreen'],
+    ritem: {}
 	},
   watch: {
   },
@@ -25,19 +27,22 @@ var vue = new Vue({
       this.utoken = true;
       this.init();
     },
-    add() {
-      this.item = {id:0,api:'AddTag'}
-      this.title = '新增标签'
-      this.opPop()
-    },
     edit(item) {
       this.item = item
-      this.item.api = 'ModTag'
-      this.title = '编辑标签'
+      this.item.api = 'ModComms'
+      this.opPop(1)
+    },
+    reback(item) { // 打开回复
+      if(item.status < 1) {
+        PopUp('审批后回复',1,1);
+        return
+      }
+      this.item = item
+      this.ritem = {api:'AdminReplayComms',name:'米虫',email:'iam@qiantaoyuan.cn',qq:'7431346',url:'http://www.mebugs.com',avt:'/static/img/me_avator.jpg',pid:item.pid,fid:item.id,level:2,coms:''}
       this.opPop()
     },
     opPop() {
-      $(".pope").show();
+      $(".popd").show(); 
       setTimeout(function() {
         $("body").addClass("popup");
       },50)
@@ -45,12 +50,13 @@ var vue = new Vue({
     clsPop() {
       $("body").removeClass("popup");
       setTimeout(function() {
-        $(".pope").hide();
+        $(".popd").hide();
       },500)
     },
-    save() {
+    save(status) {
+      this.item.status = status
       PopUp('正在提交...',2,1 );
-      TagWork(this.item).then(res => {
+      CommsWork(this.item).then(res => {
         PopUp('更新成功',0,1);
         this.clsPop()
         this.getPage()
@@ -77,7 +83,7 @@ var vue = new Vue({
     },
     getPage() {
       PopUp('正在查询...',2,1 );
-      TagWork(this.search).then(res => {
+      FirendWork(this.search).then(res => {
         PopUp('查询成功',0,1);
         this.list =  res.data.list;
         this.search.pages = res.data.pages;

@@ -1,9 +1,9 @@
 .hd{width:100%;height:40px;position:fixed;left:0;top:0;z-index:10;background: #ffffff;padding:0 15px;display:flex;}
 .hd a{width: 30px;height: 30px;margin: 5px;display:block;color: #22272e;line-height: 22px;font-size: 40px;padding-left: 7px;border-radius: 15px;background: #f0f0f0;}
 .hd h1{line-height: 30px;font-size: 15px;margin: 5px 0;color: #22272e;background: #f0f0f0;padding: 0 15px;border-radius: 15px;}
-.mc{padding:40px 0 00}
+.mc{padding: 40px 0 0 0;}
 .mcfx{display:flex}
-.sc,.sm{background:#feffff;padding:15px;display:flex;margin:20px;border-radius: 10px;}
+.sc{background:#feffff;padding:15px;display:flex;margin:20px;border-radius: 10px;}
 input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding:0 10px;background:#fbfbfb;border-radius: 10px;}
 .sc *{margin-right:15px;border-radius: 10px;}
 .spage{margin:15px;display:flex}
@@ -12,33 +12,32 @@ input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding
 button{border:0!important;cursor:pointer;border-radius: 10px;}
 .sc button{min-width:unset;font-weight:900;height:40px;color:#f0f0f0;padding:0 30px;}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.slci{display:flex;width:calc(33.33% - 10px);margin:5px 5px 0 5px;padding:5px 5px 10px 5px;border-bottom:1px solid #eee}
-.slci:hover{border-bottom:1px solid #000}
+.slci{display:flex;width: calc(100% - 30px);margin: 5px 20px;padding: 10px;background: #feffff;border-radius: 10px;border-bottom: 2px solid #ddd;flex-wrap: wrap;overflow: hidden;}
+.slci:hover{border-bottom: 2px solid #a1c4d5;}
 .slist{display:flex;flex-wrap:wrap;width:100%}
-.slbn{width:140px;height:90px;overflow:hidden}
+.slbn{width: 75px;height: 50px;overflow:hidden;}
 .slbn img{width:100%;height:100%;display:block;border-radius: 10px;}
-.sldo{width:70px}
-.sldo button{height:70px;width:100%;margin:10px 0;font-weight:900;color:#f0f0f0}
+.sldo{width: 50px;}
 .slst{width:100px;text-align:center}
 .slst span{line-height:30px;margin:10px auto;background:#ddd;width:90px;display:block;font-size:14px;font-weight:900;border-radius: 10px;}
-.slti{width:calc(100% - 310px);padding:0 10px}
-.slti h2{line-height:30px;font-size:15px}
-.slti p{line-height:20px;font-size:13px;height:60px;color:#999;text-overflow:ellipsis;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.eel{width:calc(100% - 300px);height:calc(100vh - 40px);overflow-y:auto}
+.slti{width: calc(100% - 125px);padding-left: 10px;}
+.slti h2{line-height: 26px;font-size: 18px;display: flex;}
+.slti p{line-height: 24px;font-size: 13px;color: #888;text-overflow:ellipsis;white-space: nowrap;overflow:hidden;}
+.eel{width: calc(100% - 250px);height: calc(100vh - 60px);overflow-y:auto;}
 .eel .sm,.eer .sm{flex-wrap:wrap}
-.eer{width:300px}
+.eer{width: 240px;margin-left: 10px;}
 .ibann *{width:100%;display:block;height:100%;border-radius: 10px;}
-.ibann span{line-height:168px;text-align:center;font-size:20px;border:2px dotted #ddd;color:#ccc;font-weight:900;border-radius: 10px;}
-.ibann{display:block;width:100%;height:170px;margin-bottom:7px;}
+.ibann span{line-height:168px;text-align:center;font-size:20px;border:2px dotted #ddd;color:#ccc;background: #fff;font-weight:900;border-radius: 10px;}
+.ibann{display:block;width:100%;height: 160px;margin-bottom:7px;}
 .pli input,.pli select{width:100%;display:block}
 .pli{width:100%}
-.eer .pli{margin:7px 0}
+.eer .pli{margin: 10px 0;}
 .pli.plt{margin-top:15px}
 .pli textarea{width:100%;resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb;border-radius: 10px;}
 .savebtn{margin-top:7px;width:100%}
 .savebtn button{display:block;line-height:40px;width:100%;font-weight:900;color:#fff}
-.tageare{height:calc(100vh - 515px);overflow-y:auto;position:relative}
-.tagShow{height:calc(100vh - 570px);overflow-y:auto;margin-top:15px;border:2px dotted #eee;padding:5px;border-radius: 10px;}
+.tageare{height: calc(100vh - 450px);overflow-y:auto;position:relative;}
+.tagShow{height: calc(100vh - 490px);overflow-y:auto;padding:5px;border-radius: 10px;background: #fff;border: 1px solid #ddd;}
 .tse{position:relative}
 .tse p{line-height:40px;text-align:center;color:#aaa}
 .tse em{position:absolute;right:-8px;top:-10px;display:block;line-height:30px;width:30px;height:30px;border-radius:15px;background:#3790b9;text-align:center;font-style:normal;cursor:pointer;color:#f0f0f0}
@@ -47,7 +46,7 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tse h5{line-height:40px;text-align:center;color:#3790b9}
 .tade input{line-height:36px;height:36px;margin:5px 0}
 .tade textarea{margin:5px 0}
-.tse span{line-height:30px;padding:0 15px;margin:3px;display:inline-block;background:#f9f9f9;border:1px dotted #eee;position:relative;cursor:pointer}
+.tse span{line-height:30px;padding:0 15px;margin:3px;display:inline-block;background: #f0f0f0;position:relative;cursor:pointer;font-size: 13px;border-radius: 15px;}
 .tse span b{position:absolute;width:18px;height:18px;display:block;right:-5px;top:-5px;line-height:15px;font-size:12px;background:#3790b9;text-align:center;border-radius:9px;color:#f9f9f9;cursor:pointer}
 .pope{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background:rgba(0,0,0,0.5);opacity:0;display:none}
 .tage{position:absolute;width:500px;height:400px;padding:15px;background:#fff;left:calc(50% - 250px);top:calc(50% - 200px);transform:scale(0.8)}
@@ -56,9 +55,8 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .alcat{width:calc(100% - 70px)}
 .alicon{width:65px;height:65px;margin:5px 5px 5px 0}
 .alicon img{display:block;width:100%;height:100%}
-.alca .sldo{position:absolute;right:5px;top:5px}
-.alca{width:calc(25% - 10px);position:relative}
-.alca .sldo button{height:36px;margin:0}
+.alca .sldo{position:absolute;right: 10px;top: 0;}
+.alca{width: calc(25% - 40px);position:relative;}
 .alcat p{line-height:25px;font-size:13px;display:flex;align-items:center}
 .alcat p span{width:calc(100% - 70px);padding-left:5px;color:#222;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .alcat p span img{width:30px;height:30px;border:0}
@@ -96,11 +94,37 @@ button.btnblue.bl2{right:120px}
 .input, .output,textarea#md{
     border-radius: 10px;
 }
-button.btnblue{background:#3790b9}
+.slti h2 span {
+    line-height: 18px;
+    font-weight: normal;
+    font-size: 12px;
+    height: 20px;
+    margin: 3px 0 3px 10px;
+    border: 1px solid #888;
+    color: #666;
+    border-radius: 8px;
+    text-align: center;
+    padding: 0 6px;
+}
+.slci .do {
+    width: 40px;
+    height: 36px;
+    line-height: 36px;
+    margin: 14px 0 0 10px;
+    font-size: 13px;
+}
+.mcfx.pe {
+    padding: 60px 20px 0px 20px;
+}
+
+.pe input, .pe select, .pe textarea {
+    background: #fff;
+}
+button.btnblue{background:#3790b9;color: #f0f0f0;}
 button.btngray{background:#9e9e9e}
 button.btnred{background:#b93749}
 button.btnblack{background:#333}
-.clblue{color:#3790b9}
-.clgray{color:#111}
-.clgreen{color:#009688}
-.clred{color:#b93749}
+.clblue{color:#3790b9!important}
+.clgray{color:#111!important}
+.clgreen{color:#009688!important}
+.clred{color:#b93749!important}

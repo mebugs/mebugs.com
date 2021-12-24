@@ -89,4 +89,21 @@ function AddFirend($conn,$body) {
   }
   return [true,'友链提交成功'];
 }
+
+// 获取友链管理员分页（级联文章）
+function GetFirendsPageManage($conn,$q) {
+  $ctSql = "SELECT count(id) FROM `friend` f";
+  $qrSql = "SELECT * FROM `friend` f WHERE f.`status` < 2";
+  $where = "";
+  $ctSql = $ctSql . $where;
+  $size = $q['size'];
+  $qrSql = $qrSql . $where . " ORDER BY f.`status`,f.`id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
+  $pageData = [];
+  $numAry = mysqli_fetch_array(mysqli_query($conn,$ctSql));
+  $total = $numAry[0];
+  $pageData['pages'] = ceil($total/$size);
+  $query = mysqli_query($conn,$qrSql);
+  $pageData['list'] = mysqli_fetch_all($query,MYSQLI_ASSOC);
+  return [true,$pageData];
+}
 ?>
