@@ -16,9 +16,9 @@ header .w *{margin:0 15px}
 .temp{width:50px;margin-left:0!important;background-image:url(/static/img/bg_hd_tp.png);cursor:pointer}
 .menu{width:960px;text-align:right}
 .menu a{line-height:50px;font-size:18px;font-weight:900;margin:0;margin-left:15px;padding:0 10px;display:inline-block;color:#333}
-.r,footer{overflow:hidden;padding:50px 0;background:#f9fbfb;position:relative;top:50px}
-.hideLoader .r,.hideLoader footer,.hideLoader .mine{top:0}
-.rt{overflow:hidden;background-color:#e3ebee;padding-top:120px;position:relative;top:0}
+.r,footer{overflow:hidden;padding:50px 0;background:#f9fbfb;position:relative;top:50px;}
+.hideLoader .r, .hideLoader footer{top:0;}
+.rt{overflow:hidden;background-color:#e3ebee;padding-top:120px;position:relative;top: 0;}
 .c{padding:0 15px}
 .tb_15 .c{padding:15px}
 .c_1{width:8.3333%}
@@ -128,3 +128,7 @@ body.dark{background-color:#1c2128}
 .dark input:focus,.dark textarea:focus{border-bottom:1px solid #2d8cb7;border-bottom:1px solid #5891ab;background:#010101}
 .mobim{display:none}
 .pomenu{display:none}
+.rtl,.rtr{position: relative;}
+.rtl{right:50px}
+.rtr{right:-50px}
+.hideLoader .rtl,.hideLoader .rtr{right:0}

@@ -5,8 +5,7 @@
 .fm .swiper-button-next{right:0}
 .fm .swiper-button-prev{left:0}
 .fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#5891ab}
-.mine{background:#feffff;height:435px;padding:5px;position:relative;top:50px}
-.hideLoader .mine{top:0}
+.mine{background:#feffff;height:435px;padding:5px;}
 .meavt{display:flex;padding:7px 5px}
 .avtor{display:block;width:90px;height:90px;padding:5px;border-radius:45px}
 .amore{width:40px}
