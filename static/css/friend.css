@@ -17,6 +17,6 @@
 .fline textarea {width: calc(100% - 200px);padding: 5px 30px;resize: none;height: 90px;line-height: 25px}
 .dark .fline p{color:#2d8cb7}
 .dark .fline a{background:#2d8cb7}
-.dark .fline select,.dark .fline select option,.dark .fline span{background:#22272e}
+.dark .fline select,.dark .fline select option,.dark .fline span{background:#222b35}
 .dark .fimg p{background:#2d8cb7;color:#f9f9f9}
 .dark .fline a:hover,.dark .fimg p:hover{background:#5891ab}

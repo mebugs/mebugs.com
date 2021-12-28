@@ -2,7 +2,7 @@ var vue = new Vue({
 	el: '#main',
 	data: {
     utoken: null,
-    search: {size:8,page:1,pages:0,api:'PageComms'},
+    search: {size:5,page:1,pages:0,api:'PageComms'},
     item: {},
     list: [],
     status: ['未审核','已通过','已回复'],

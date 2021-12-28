@@ -1,6 +1,6 @@
 .hd{width:100%;height:40px;position:fixed;left:0;top:0;z-index:10;background: #ffffff;padding:0 15px;display:flex;}
-.hd a{width: 30px;height: 30px;margin: 5px;display:block;color: #22272e;line-height: 22px;font-size: 40px;padding-left: 7px;border-radius: 15px;background: #f0f0f0;}
-.hd h1{line-height: 30px;font-size: 15px;margin: 5px 0;color: #22272e;background: #f0f0f0;padding: 0 15px;border-radius: 15px;}
+.hd a{width: 30px;height: 30px;margin: 5px;display:block;color: #222b35;line-height: 22px;font-size: 40px;padding-left: 7px;border-radius: 15px;background: #f0f0f0;}
+.hd h1{line-height: 30px;font-size: 15px;margin: 5px 0;color: #222b35;background: #f0f0f0;padding: 0 15px;border-radius: 15px;}
 .mc{padding: 40px 0 0 0;}
 .mcfx{display:flex}
 .sc{background:#feffff;padding:15px;display:flex;margin:20px;border-radius: 10px;}
@@ -65,23 +65,26 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tage input{width:calc(100% - 75px)}
 .tage .tse h5{line-height:50px;font-size:20px}
 .tage .tse button{margin-top:15px}
-.slci.tlag{width:calc(20% - 10px)}
 .tlag .alcat{width:100%}
-.comli{width:calc(50% - 10px);display:flex;border-bottom:1px solid #ddd;padding-bottom:40px;margin-bottom:5px;position:relative}
-.lavt{width:70px}
-img.cmavt{width:60px;margin:0 5px;border-radius:30px;box-shadow:1px 2px 3px #aaa}
+.comli{display:flex;position:relative;}
+.lavt{width: 45px;}
+img.cmavt{width: 40px;height: 40px;margin:0 5px;border-radius: 20px;}
 .lavt *{text-align:center;line-height:20px}
-.lavt p{font-weight:900;line-height:30px}
-.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right:5px;bottom:5px;line-height:28px;width:100px}
-.cminf{width:calc(100% - 70px);margin-left:10px}
-.cminf *{font-style:normal;line-height:25px;font-weight:normal;font-size:12px}
-.cminf h1 span{color:#607d8b;font-weight:900}
-.cminf h1 em{color:#999}
-.cminf h1 b a{font-weight:900;color:#3790b9;padding:0 5px;border-bottom:1px solid}
-.cminf p{width:100%;padding:5px 10px;background:#f9f9f9;border-radius:4px;margin-top:5px;overflow:hidden;line-height:20px;font-size:13px}
-.fcoms{border:1px dotted #aaa;margin-top:5px;padding:5px;border-radius: 10px;}
-.fcoms *{font-size:12px;color:#666;font-style:italic}
-.fcoms p span{font-weight:900;margin-right:10px}
+.lavt p{font-weight:900;line-height:30px;font-size: 12px;}
+.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right: 10px;top: 10px;line-height:28px;width:100px;}
+.cminf{width: calc(100% - 55px);margin-left:10px;}
+.cminf *{font-style:normal;line-height: 20px;font-weight:normal;font-size:12px;}
+.cminf h1{display: flex;align-items: center}
+.cminf h1 span{color:#607d8b;font-weight:900;font-size: 13px;}
+.cminf h1 em{color:#999;margin-left:5px}
+.cminf h1 b{width: 40px;
+    color: #444;
+    font-weight: 900;}
+.cminf h1 a{font-weight:900;color: #607d8b;padding: 2px 10px;border: 1px solid;line-height: 1.6;margin-top: 5px;border-radius: 10px;}
+.cminf p{width: calc(100% - 40px);padding:5px 10px;background:#f9f9f9;overflow:hidden;line-height:20px;font-size:13px;border-radius: 10px;}
+.fcoms,.coms,.acoms{margin-top:5px;display: flex;align-items: center;}
+.fcoms *{font-size:12px;color:#666;font-style: normal;}
+.fcoms p span{font-weight:900;}
 .fcoms p em{font-style:normal}
 .fcoms p:nth-child(1){background:unset;line-height:1;padding:2px;margin:0;font-size:12px}
 button.btnblue.bl2{right:120px}
@@ -128,3 +131,8 @@ button.btnblack{background:#333}
 .clgray{color:#111!important}
 .clgreen{color:#009688!important}
 .clred{color:#b93749!important}
+.fcoms b, .coms b, .acoms b {
+    width: 40px;
+    color: #444;
+    font-weight: 900;
+}

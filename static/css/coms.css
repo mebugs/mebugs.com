@@ -33,7 +33,7 @@
 .dark .comp h1{color:#adbac7}
 .dark .comp h1 b,.dark .comp h1 a,.dark .comore a{color:#2d8cb7}
 .dark .comp h1 a:hover{color:#2d333b;background:#010101}
-.dark .comp p{color:#adbac7;background:#22272e}
-.dark .comp p:after{border-bottom:10px solid #22272e}
+.dark .comp p{color:#adbac7;background:#222b35}
+.dark .comp p:after{border-bottom:10px solid #222b35}
 .dark .comml li{border-bottom:1px solid #010101}
 .dark .comml ul ul li{border:0}

@@ -21,18 +21,22 @@
              <div class="lavt">
                <img class="cmavt" :src="item.avt"/>
                <p :class="statusCss[item.status]">{{status[item.status]}}</p>
-
              </div> 
              <div class="cminf">
-               <h1><span>{{ item.name }}</span> 于 <em>{{ item.send_time }}</em> 在 <b><a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></b> 一文发表评论</h1>
-               <p class="icoms">{{ item.coms }}</p>
+               <h1><span>{{ item.name }}</span>  <em>{{ item.send_time }}</em></h1>
+               <h1><b>原文：</b><a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></h1>
                <div class="fcoms" v-if="item.fid!=0">
-                 <p>本条评论为楼层回复，原评论摘要：</p>
-                 <p><span>{{ item.fname }}</span><em>{{ item.fcoms }}</em></p>
+                <b>原评：</b><p><span>{{ item.fname }}</span>:<em>{{ item.fcoms }}</em></p>
+               </div>
+               <div class="coms">
+                <b>内容：</b><p class="icoms">{{ item.coms }}</p>
+               </div>
+               <div class="acoms" v-if="item.aid != 0">
+                <b>回复：</b><p><span>{{ item.acoms }}</span></p>
                </div>
              </div>
-             <button type="button" class="btnblue" @click="edit(item)">审核</button>
-             <button type="button" class="btnblue bl2" @click="reback(item)">回复</button>
+             <button type="button" v-if="item.status != 2" class="btnblue" @click="reback(item)">回复</button>
+             <button type="button" v-if="item.status == 0" class="btnblue bl2" @click="edit(item)">审核</button>
            </div>
          </div>
          <div class="slist" v-else>

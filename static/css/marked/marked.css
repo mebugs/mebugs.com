@@ -11,13 +11,13 @@
 .mark h3:after{width:4px;height:12px;top:16px}
 .mark ol,.mark ul{margin:5px;padding-left:30px}
 .mark ol li,.mark ul li{padding-left:10px;line-height:1.5}
-pre{margin:5px;padding:10px 15px;background: #f9fbfb;overflow-x:auto;display:block;border: 1px solid #f2f7f8;}
+pre{margin:5px;padding:10px 15px;background: #f3f6f8;overflow-x:auto;display:block;border: 1px solid #e3ebee;}
 pre *{line-height:1.7;color:#000}
 .hljs-comment{color:#af5b07}
 .hljs-built_in{color:#068}
 .hljs-property{color:#00c}
 .hljs-regexp{color:#ab0f2b}
-.pfro{padding:15px;background: #f2f7f8;line-height:36px;}
+.pfro{padding:15px;background: #e3ebee;line-height:36px;}
 .pfro p span{width:70px}
 .pfro p{display:flex;margin:5px 0}
 .pfro p b.pta {font-weight: normal;width: calc(100% - 70px)}
@@ -25,10 +25,10 @@ pre *{line-height:1.7;color:#000}
 .pfro p a:hover{background: #f9fbfb;color:#5891ab;}
 .mark a{color:#5891ab;border-bottom:2px solid;padding:5px;line-height:30px;font-weight:900;text-align:center}
 .dark .mark a{color:#2d8cb7}
-.dark .pfro{background:#010101}
+.dark .pfro{background: #2d333b;}
 .dark .pfro p a{background:#22272e}
 .dark .pfro p a:hover{background:#2d333b;color:#2d8cb7}
-.dark pre{background:#222;border:1px solid #555}
+.dark pre{background: #111316;border: 1px solid #222b35;}
 .dark pre *{color:#ddd}
 .dark .hljs-comment{color:#da924a}
 .dark .hljs-built_in{color:#028fbd}
