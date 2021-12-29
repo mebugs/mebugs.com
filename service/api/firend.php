@@ -93,7 +93,7 @@ function AddFirend($conn,$body) {
 // 获取友链管理员分页（级联文章）
 function GetFirendsPageManage($conn,$q) {
   $ctSql = "SELECT count(id) FROM `friend` f";
-  $qrSql = "SELECT * FROM `friend` f WHERE f.`status` < 2";
+  $qrSql = "SELECT * FROM `friend` f";
   $where = "";
   $ctSql = $ctSql . $where;
   $size = $q['size'];
@@ -105,5 +105,15 @@ function GetFirendsPageManage($conn,$q) {
   $query = mysqli_query($conn,$qrSql);
   $pageData['list'] = mysqli_fetch_all($query,MYSQLI_ASSOC);
   return [true,$pageData];
+}
+
+// 更新友链
+function ModFirendsManage($conn,$update) {
+  $sql = "UPDATE `friend` SET `furl` = '".$update['furl']."', `fname` = '".$update['fname']."', `fdesc` = '".$update['fdesc']."', `ficon` = '".$update['ficon']."', `status` = '".$update['status']."', `reson` = '".$update['reson']."' WHERE `id` = ".$update['id'];
+  $query = mysqli_query($conn,$sql);
+  if($query) {
+    return [true,$update['id']];
+  }
+  return [false,'数据更新失败'];
 }
 ?>

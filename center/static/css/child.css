@@ -123,6 +123,27 @@ button.btnblue.bl2{right:120px}
 .pe input, .pe select, .pe textarea {
     background: #fff;
 }
+.fcoms b, .coms b, .acoms b {
+    width: 40px;
+    color: #444;
+    font-weight: 900;
+}
+.slti h2 a {
+    color: #3790b9;
+    line-height: 26px;
+    padding: 0 5px;
+    margin-left: 5px;
+    border-bottom: 1px solid;
+}
+
+.frili .slbn {
+    width: 50px;
+    border-radius: 25px;
+}
+
+.frili .slti {
+    width: calc(100% - 105px);
+}
 button.btnblue{background:#3790b9;color: #f0f0f0;}
 button.btngray{background:#9e9e9e}
 button.btnred{background:#b93749}
@@ -131,8 +152,3 @@ button.btnblack{background:#333}
 .clgray{color:#111!important}
 .clgreen{color:#009688!important}
 .clred{color:#b93749!important}
-.fcoms b, .coms b, .acoms b {
-    width: 40px;
-    color: #444;
-    font-weight: 900;
-}

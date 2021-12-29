@@ -18,11 +18,18 @@
        <div class="sm">
          <div class="slist" v-if="list[0]">
            <div class="slci frili" v-for="item in list">
-             <img class="ficon" :src="item.ficon" />
-             <div class="fsite">
-               <h1>{{ item.fname }} · <a target="_blank" :href="item.furl">{{ item.furl }}</a></h1>
+             <div class="slbn">
+               <img :src="item.ficon" />
+             </div>
+             <div class="slti">
+               <h2>{{ item.fname }} · <a target="_blank" :href="item.furl">{{ item.furl }}</a>  
+               <span v-if="item.status == 0" class="clgray">{{statusNames[item.status]}}</span>
+               <span v-if="item.status == 1" class="clblue">{{statusNames[item.status]}}</span>
+               <span v-if="item.status == 2" class="clred">{{statusNames[item.status]}}</span>
+                </h2>
                <p>{{ item.fdesc }}</p>
              </div>
+             <button type="button" v-if="item.status == 0" class="do btnblue" @click="edit(item)">审核</button>
            </div>
          </div>
          <div class="slist" v-else>
@@ -59,20 +66,14 @@
      <div class="pope popd">
        <div class="tage comme">
          <div class="tse">
-           <h5>编辑评论</h5>
-           <div class="tade">原文链接：<a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></div>
-           <div class="tade">用户昵称：<input type="text" v-model="item.name" /></div>
-           <div class="tade">用户邮箱：<input type="text" v-model="item.email" /></div>
-           <div class="tade">用户扣扣：<input type="text" v-model="item.qq" /></div>
-           <div class="tade">用户网址：<input type="text" v-model="item.url" /></div>
-           <div class="tade">评论内容：<textarea placeholder="" v-model="item.coms"></textarea></div>
-           <div class="tade">原评摘要：
-           <div class="fcoms" v-if="item.fid!=0">
-                 <p>{{ item.fname }} {{ item.fcoms }} </p>
-               </div>
-           </div>
+           <h5>编辑友链</h5>
+           <div class="tade">站点链接：<a target="_blank" :href="item.furl">{{ item.furl }}</a></div>
+           <div class="tade">站点名称：<input type="text" v-model="item.fname" /></div>
+           <div class="tade">站点图标：<input type="text" v-model="item.ficon" /></div>
+           <div class="tade">站点简介：<textarea placeholder="" v-model="item.fdesc"></textarea></div>
+           <div class="tade">驳回原因：<input type="text" v-model="item.reson" /></div>
            <button type="button" class="btnblue" @click="save(1)">审核通过</button>
-           <button type="button" class="btnred" @click="save(9)">删除</button>
+           <button type="button" class="btnred" @click="save(2)">审核驳回</button>
            <button type="button" class="btngray" @click="clsPop">取消</button>
          </div>
        </div>

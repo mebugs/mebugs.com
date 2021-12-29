@@ -5,9 +5,8 @@ var vue = new Vue({
     search: {size:8,page:1,pages:0,api:'PageFirends'},
     item: {},
     list: [],
-    status: ['未审核','已通过'],
-    statusCss:['clred','clgreen'],
-    ritem: {}
+    statusNames : ['未审核','已通过','已驳回'],
+    statusCss:['clred','clgreen','clgray']
 	},
   watch: {
   },
@@ -29,16 +28,7 @@ var vue = new Vue({
     },
     edit(item) {
       this.item = item
-      this.item.api = 'ModComms'
-      this.opPop(1)
-    },
-    reback(item) { // 打开回复
-      if(item.status < 1) {
-        PopUp('审批后回复',1,1);
-        return
-      }
-      this.item = item
-      this.ritem = {api:'AdminReplayComms',name:'米虫',email:'iam@qiantaoyuan.cn',qq:'7431346',url:'http://www.mebugs.com',avt:'/static/img/me_avator.jpg',pid:item.pid,fid:item.id,level:2,coms:''}
+      this.item.api = 'ModFirend'
       this.opPop()
     },
     opPop() {
@@ -56,7 +46,7 @@ var vue = new Vue({
     save(status) {
       this.item.status = status
       PopUp('正在提交...',2,1 );
-      CommsWork(this.item).then(res => {
+      FirendWork(this.item).then(res => {
         PopUp('更新成功',0,1);
         this.clsPop()
         this.getPage()

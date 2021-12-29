@@ -12,9 +12,9 @@ if($api == "PageFirends") {
   $query = [ 'size' => $body -> size,'page' => $body -> page ];
   $ret = GetFirendsPageManage($conn,$query);
 }
-if($api == "ModComms") {
-  $update = [ 'id' => $body -> id,'name' => $body -> name,'email' => $body -> email,'qq' => $body -> qq,'url' => $body -> url,'coms' => $body -> coms,'status' => $body -> status ];
-  $ret = ModCommsPageManage($conn,$update);
+if($api == "ModFirend") {
+  $update = [ 'id' => $body -> id,'furl' => $body -> furl,'fname' => $body -> fname,'ficon' => $body -> ficon,'fdesc' => $body -> fdesc,'reson' => $body -> reson,'status' => $body -> status ];
+  $ret = ModFirendsManage($conn,$update);
 }
 if($api == "AdminReplayComms") {
   // 添加回复评论
