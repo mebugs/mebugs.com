@@ -5,8 +5,8 @@ var vue = new Vue({
     search: {size:5,page:1,pages:0,api:'PageComms'},
     item: {},
     list: [],
-    status: ['未审核','已通过','已回复'],
-    statusCss:['clred','clgreen','clblue'],
+    status: ['未审核','已通过','已回复','已删除'],
+    statusCss:['clred','clgreen','clblue','clred'],
     ritem: {}
 	},
   watch: {

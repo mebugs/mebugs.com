@@ -4,17 +4,62 @@
 		<meta charset="utf-8">
 		<title></title>
     <link href="/center/static/css/comm.css" rel="stylesheet" type="text/css">
+    <link href="/center/static/css/child.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
     <div class="main" id="main" v-cloak v-if="utoken">
-      <h1 onclick="PopUp('成功',0,1);">WaitForBuild</h1>
-      <h1 onclick="PopUp('失败',1,1);">WaitForBuild</h1>
-      <h1 onclick="PopUp('加载中...',2,1 );">WaitForBuild</h1>
+      <div class="hd">
+        <h1>管理中心</h1>
+      </div>
+      <div v-if="loading" class="loading" ><div class="loadline"></div></div>
+      <div v-else class="mc">
+        <div class="sm">
+          <div class="cle l_f" onclick="parent.toMenu(1)">
+            <h1>文章总量</h1>
+            <h2>{{ list[0] }}</h2>
+          </div>
+          <div class="cle l_f" onclick="parent.toMenu(2)">
+            <h1>分类总量</h1>
+            <h2>{{ list[1] }}</h2>
+          </div>
+          <div class="cle l_f" onclick="parent.toMenu(3)">
+            <h1>标签总量</h1>
+            <h2>{{ list[2] }}</h2>
+          </div>
+          <div class="cle l_f" onclick="parent.toMenu(4)">
+            <h1>评论总量</h1>
+            <h2>{{ list[3] }}</h2>
+          </div>
+          <div class="cle l_f" onclick="parent.toMenu(5)">
+            <h1>友链总量</h1>
+            <h2>{{ list[4] }}</h2>
+          </div>
+          <div class="fle">
+            <h1>待处理事宜</h1>
+            <div class="fline"></div>
+          </div>
+          <div class="cle l_t" onclick="parent.toMenu(1)">
+            <h1>未发布文章</h1>
+            <h2>{{ list[5] }}</h2>
+          </div>
+          <div class="cle l_t" onclick="parent.toMenu(4)">
+            <h1>待审核评论</h1>
+            <h2>{{ list[6] }}</h2>
+          </div>
+          <div class="cle l_t" onclick="parent.toMenu(5)">
+            <h1>待审核友链</h1>
+            <h2>{{ list[7] }}</h2>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="/static/lib/jquery/jquery-3.6.0.min.js"></script>
     <script src="/static/lib/vue/vue.min.js"></script>
-    <script src="/static/js/popup.js"></script>  
-    <script src="/center/static/js/comm.js?v=1.0"></script>  
+    <script src="/static/lib/vue/vue-axios.js"></script>
+    <script src="/static/lib/vue/axios.min.js"></script>
+    <script src="/center/static/js/comm.js?v=1.0"></script> 
+     <script src="/center/static/js/api.js"></script>
+     <script src="/static/js/popup.js"></script>  
     <script src="/center/static/js/main.js?v=1.0"></script>  
 	</body>
 </html>

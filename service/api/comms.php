@@ -38,8 +38,8 @@ function GetCommsPageManage($conn,$q) {
 // 更新审核评论
 function ModCommsPageManage($conn,$update) {
   $sql = "";
-  if($update['status'] == 9) {
-    $sql = $sql."DELETE FROM `comms` WHERE `id` = ".$update['id'];
+  if($update['status'] == 3) {
+    $sql = $sql."UPDATE `comms` SET `status` = '".$update['status']."' WHERE `id` = ".$update['id'];
   } else {
     $sql = $sql."UPDATE `comms` SET `name` = '".$update['name']."', `email` = '".$update['email']."',`qq` = '".$update['qq']."',`url` = '".$update['url']."',`coms` = '".$update['coms']."',`status` = '".$update['status']."' WHERE `id` = ".$update['id'];
   }

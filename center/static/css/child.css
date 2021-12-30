@@ -70,8 +70,8 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lavt{width: 45px;}
 img.cmavt{width: 40px;height: 40px;margin:0 5px;border-radius: 20px;}
 .lavt *{text-align:center;line-height:20px}
-.lavt p{font-weight:900;line-height:30px;font-size: 12px;}
-.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right: 10px;top: 10px;line-height:28px;width:100px;}
+.lavt p{line-height: 18px;font-size: 12px;border: 1px solid;border-radius: 10px;}
+.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right: 10px;top: 10px;line-height: 32px;width: 80px;}
 .cminf{width: calc(100% - 55px);margin-left:10px;}
 .cminf *{font-style:normal;line-height: 20px;font-weight:normal;font-size:12px;}
 .cminf h1{display: flex;align-items: center}
@@ -143,6 +143,96 @@ button.btnblue.bl2{right:120px}
 
 .frili .slti {
     width: calc(100% - 105px);
+}
+
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background-color: #f0f0f0;
+}
+
+.loadline {
+    position: absolute;
+    width: 200px;
+    height: 10px;
+    top: calc(50vh - 5px);
+    left: calc(50% - 100px);
+    border-radius: 5px;
+    animation: round 1s linear infinite normal;
+}
+
+@keyframes round{
+    0%{
+    opacity: 1;
+    background: #fff;
+    box-shadow: 0 0 20px 10px #fff;
+}
+50%{opacity: 0.5;transform: scale(1.2);background: #607d8b;box-shadow: 0 0 20px 40px #fff;}
+100%{opacity: 1;background: #fff;box-shadow: 0 0 20px 10px #fff;}
+}
+.sm {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.cle {
+    background: #fff;
+    margin: 60px 20px;
+    padding: 60px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.l_f {
+    width: calc(20% - 40px);
+}
+
+.cle h1 {
+    line-height: 40px;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+}
+
+.cle h2 {
+    line-height: 40px;
+    font-size: 26px;
+    text-align: center;
+    color: #607d8b;
+}
+
+.fle {
+    width: calc(100% - 40px);
+    margin: 40px 20px 0px 20px;
+    position: relative;
+    height: 40px;
+}
+
+.fle h1 {
+    line-height: 40px;
+    text-align: center;
+    position: absolute;
+    font-size: 20px;
+    width: 120px;
+    left: calc(50% - 60px);
+    top: 0;
+    z-index: 10;
+    background: #f0f0f0;
+    color: #607d8b;
+}
+
+.l_t {
+    width: calc(33.33% - 40px);
+}
+
+.fline {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    border-bottom: 2px solid #607d8b;
 }
 button.btnblue{background:#3790b9;color: #f0f0f0;}
 button.btngray{background:#9e9e9e}

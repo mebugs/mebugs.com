@@ -35,8 +35,8 @@
                 <b>回复：</b><p><span>{{ item.acoms }}</span></p>
                </div>
              </div>
-             <button type="button" v-if="item.status != 2" class="btnblue" @click="reback(item)">回复</button>
-             <button type="button" v-if="item.status == 0" class="btnblue bl2" @click="edit(item)">审核</button>
+             <button type="button" v-if="item.status == 1" class="btnblue" @click="reback(item)">回复</button>
+             <button type="button" v-if="item.status == 0" class="btnblue" @click="edit(item)">审核</button>
            </div>
          </div>
          <div class="slist" v-else>
@@ -86,7 +86,7 @@
                </div>
            </div>
            <button type="button" class="btnblue" @click="save(1)">审核通过</button>
-           <button type="button" class="btnred" @click="save(9)">删除</button>
+           <button type="button" class="btnred" @click="save(3)">删除</button>
            <button type="button" class="btngray" @click="clsPop">取消</button>
          </div>
        </div>

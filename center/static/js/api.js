@@ -45,3 +45,10 @@ function FirendWork(data) {
     data: data
   })
 }
+
+function IndexWork() {
+  return axios({
+    method: 'post',
+    url: '/service/manage.php'
+  })
+}
