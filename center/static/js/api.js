@@ -52,3 +52,18 @@ function IndexWork() {
     url: '/service/manage.php'
   })
 }
+
+function SystemWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/system.php',
+    data: data
+  })
+}
+
+function RunTask() {
+  return axios({
+    method: 'post',
+    url: '/service/runtask.php'
+  })
+}

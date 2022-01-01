@@ -5,21 +5,27 @@
 //$path = $_SERVER['DOCUMENT_ROOT']."/service/comm/config.php";
 function getConfig($key, $file="./comm/config.php", $type="string") 
 { 
-	
+  $res = ["",""];
 	if ($type=="int") 
 	{ 
 		$str = file_get_contents($file); 
 		$config = preg_match("/" . $key . "=(.*);/", $str, $res); 
+    if($res==null) {
+      $res = ["",0];
+    }
 		Return $res[1]; 
 	} 
 	else 
 	{ 
 		$str = file_get_contents($file); 
 		$config = preg_match("/" . $key . "=\"(.*)\";/", $str, $res); 
-		if($res[1]==null) 
+		if($res==null) 
 		{ 
       $config = preg_match("/" . $key . "='(.*)';/", $str, $res); 
 		} 
+    if($res==null) {
+      $res =  ["",""];
+    }
 		Return $res[1]; 
 	} 
 } 

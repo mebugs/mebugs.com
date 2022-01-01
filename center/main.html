@@ -50,6 +50,40 @@
             <h1>待审核友链</h1>
             <h2>{{ list[7] }}</h2>
           </div>
+          <div class="cle l_t ss" v-if="sysSet">
+            <h3>系统设置</h3>
+            <div class="svi" v-if="sysView">
+              <div class="ssli">
+                <span>加速配置：</span>
+                <p>{{ sysSet.cdnUrl  }}</p>
+              </div>
+              <div class="ssli">
+                <span>自动任务：</span>
+                <p>{{ sysSet.taskTime  }}</p>
+              </div>
+              <div class="ssli">
+                <span>任务状态：</span>
+                <p>{{ sysSet.taskStatus==0?'未启动':'启动'  }}</p>
+              </div>
+              <div class="ssli">
+                <span>上次执行：</span>
+                <p>{{ sysSet.taskLastRun  }}</p>
+              </div>
+              <button type="button" class="btnblue" @click="toSave">编辑</button>
+            </div>
+            <div class="sed" v-else>
+              <div class="ssli">
+                <span>加速配置：</span>
+                <input type="text" v-model="sysSet.cdnUrl" placeholder="请输入加速域名" />
+              </div>
+              <div class="ssli">
+                <span>自动任务：</span>
+                <input type="number" v-model="sysSet.taskTime" placeholder="请输入每日自动任务启动时0-24" />
+              </div>
+              <button type="button" v-if="sysSet.taskStatus == 0" class="btnblue btnred abs" @click="runTask">启动任务</button>
+              <button type="button" class="btnblue" @click="save">保存</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
