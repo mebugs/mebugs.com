@@ -3,7 +3,6 @@
 $cdnUrl="s";
 //定时任务配置
 $taskTime=22;//22点启动任务
-$taskToken="ulilcvvtlszrpsxgutmbybxthgmbalyg";
-$taskLastRun="2021-11-11 22:00:11";
+$taskLastRun="2022-01-05 07:25:46";
 $taskStatus=0;
 ?>
