@@ -7,9 +7,9 @@ function makeFileTask($cdnUrl,$today) {
   // 创建siteMap数组
   $siteMaps = [];
   // 生成首页 lv1
-  
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeIndex.php');
   // 生成文章详情页
-  
+  $indexUrl = makeIndex($cdnUrl,$baseUrl,$conn);
   // 生成指定Page页（0-999）预留页
   
   // 生成文章列表页
@@ -23,5 +23,7 @@ function makeFileTask($cdnUrl,$today) {
   // 生成标签列表页
   
   // 生成SiteMap
+  
+  mysqli_close($conn);
 }
 ?>

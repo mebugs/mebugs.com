@@ -26,6 +26,7 @@
                <span v-if="item.status == 0" class="clgray">{{statusNames[item.status]}}</span>
                <span v-if="item.status == 1" class="clblue">{{statusNames[item.status]}}</span>
                <span v-if="item.status == 2" class="clred">{{statusNames[item.status]}}</span>
+               <span>{{ item.findex == 0 ? '普链' : '首链' }}</span>
                 </h2>
                <p>{{ item.fdesc }}</p>
              </div>
@@ -70,6 +71,12 @@
            <div class="tade">站点链接：<a target="_blank" :href="item.furl">{{ item.furl }}</a></div>
            <div class="tade">站点名称：<input type="text" v-model="item.fname" /></div>
            <div class="tade">站点图标：<input type="text" v-model="item.ficon" /></div>
+           <div class="tade">友链类型：
+           <select v-model="item.findex">
+            <option :value ="0">仅申请友链</option>
+            <option :value ="1">同时申请首页友链</option>
+           </select>
+           </div>
            <div class="tade">站点简介：<textarea placeholder="" v-model="item.fdesc"></textarea></div>
            <div class="tade">驳回原因：<input type="text" v-model="item.reson" /></div>
            <button type="button" class="btnblue" @click="save(1)">审核通过</button>

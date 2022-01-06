@@ -51,7 +51,7 @@
      <a <?php if($pageType == "index") { ?> class="mck" <?php } ?> href="/">首页</a> 
      <a href="/posts/new_1.html">文章</a> 
      <a href="/category">分类</a> 
-     <a href="/tags">标签</a> 
+     <a href="/tag">标签</a> 
      <a href="/page/about.html">关于</a> 
      <a href="/page/link.html">友链</a> 
      <a href="/page/msg.html">留言</a> 

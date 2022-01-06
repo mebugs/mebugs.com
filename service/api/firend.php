@@ -82,7 +82,8 @@ function AddFirend($conn,$body) {
   $fdesc = mb_substr($body -> fdesc,0,128,'UTF-8');
   $furl = $body -> furl;
   $ficon = $body -> ficon;
-  $sql = "INSERT INTO `friend`(`furl`, `fname`, `fdesc`, `ficon`, `status`) VALUES ('$furl', '$fname', '$fdesc', '$ficon', 0)";
+  $findex = $body -> findex;
+  $sql = "INSERT INTO `friend`(`furl`, `fname`, `fdesc`, `ficon`, `status`, `findex`) VALUES ('$furl', '$fname', '$fdesc', '$ficon', 0, '$findex')";
   $query = mysqli_query($conn,$sql);
   if(!$query) {
     return [false,'友链提交失败'];
@@ -109,7 +110,7 @@ function GetFirendsPageManage($conn,$q) {
 
 // 更新友链
 function ModFirendsManage($conn,$update) {
-  $sql = "UPDATE `friend` SET `furl` = '".$update['furl']."', `fname` = '".$update['fname']."', `fdesc` = '".$update['fdesc']."', `ficon` = '".$update['ficon']."', `status` = '".$update['status']."', `reson` = '".$update['reson']."' WHERE `id` = ".$update['id'];
+  $sql = "UPDATE `friend` SET `furl` = '".$update['furl']."', `fname` = '".$update['fname']."', `fdesc` = '".$update['fdesc']."', `ficon` = '".$update['ficon']."', `status` = '".$update['status']."', `reson` = '".$update['reson']."', `findex` = '".$update['findex']."' WHERE `id` = ".$update['id'];
   $query = mysqli_query($conn,$sql);
   if($query) {
     return [true,$update['id']];

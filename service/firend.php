@@ -13,7 +13,7 @@ if($api == "PageFirends") {
   $ret = GetFirendsPageManage($conn,$query);
 }
 if($api == "ModFirend") {
-  $update = [ 'id' => $body -> id,'furl' => $body -> furl,'fname' => $body -> fname,'ficon' => $body -> ficon,'fdesc' => $body -> fdesc,'reson' => $body -> reson,'status' => $body -> status ];
+  $update = [ 'id' => $body -> id,'furl' => $body -> furl,'fname' => $body -> fname,'ficon' => $body -> ficon,'fdesc' => $body -> fdesc,'reson' => $body -> reson,'status' => $body -> status, 'findex' => $body -> findex ];
   $ret = ModFirendsManage($conn,$update);
 }
 if($api == "AdminReplayComms") {

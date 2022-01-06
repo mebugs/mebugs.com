@@ -56,7 +56,7 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .ft h2{line-height:40px;font-weight:900;text-align: center;font-size:16px;color:#222;display:inline-block;padding:0 10px;border-bottom:1px solid #222;margin-bottom:5px;}
 .fc{text-align:center}
 .fr{text-align:right}
-.fr p,.fl p{overflow:hidden;text-overflow:unset;white-space:unset;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.fr p,.fl p{overflow:hidden;text-overflow:unset;white-space:unset;display:-webkit-box;-webkit-line-clamp: 2;-webkit-box-orient:vertical;}
 .fr a{margin-left:5px}
 .fl a{margin-right:5px}
 .fu{text-align:center;margin-top:40px}
@@ -109,7 +109,7 @@ body.dark{background-color:#1c2128}
 .dark .logo,.dark .temp{background-position-y:-50px}
 .dark .box{background:#1c2128}
 .dark a:hover h2,.dark footer a:hover,.dark .menu a:hover,.dark .menu a.mck,.dark .menue a:hover{color:#5891ab}
-.dark a:hover{background: #222b35;}
+.dark a:hover{background-color: #222b35;}
 .dark .mr:hover{color:#5891ab}
 .dark .ft h2{color:#ddd;border-bottom:1px solid #adbac7}
 .dark footer a{color:#c8d5e2}
@@ -132,3 +132,71 @@ body.dark{background-color:#1c2128}
 .rtl{right:50px}
 .rtr{right:-50px}
 .hideLoader .rtl,.hideLoader .rtr{right:0;opacity: 1;}
+
+
+.authors {
+    background: #fdfdfd;
+    padding: 10px;
+}
+.dark .authors{
+    
+background: #1c2128;
+}
+.mea {
+    display: flex;
+    padding: 7px 5px;
+}
+
+.meavt {
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.meainfo {
+    width: calc(100% - 110px);
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.meconn {
+    display: flex;
+    justify-content: left;
+    margin: 5px 0 0 0;
+}
+.conn{width:60px;height:60px;margin: 5px 10px 5px 0;background-image:url(../img/conn_icons.png);}
+.cwx{background-position-x:60px}
+.cml{background-position-x:120px}
+.cge{background-position-x:180px}
+.cgb{background-position-x:240px}
+.conn:hover{transform:scale(0.9);opacity:.8}
+.meainfo h1,.meainfo p {
+    display: inline-block;
+    line-height: 30px;
+    font-size: 16px;
+}
+.meainfo h1{
+    width: 40px;
+}
+
+.meainfo p {
+    width: calc(100% - 40px);
+    font-size: 15px;
+}
+
+.mecpr {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mecpr p {
+    width: calc(50% - 10px);
+    margin: 5px;
+    text-align: center;
+    border: 1px dotted #5891ab;
+    line-height: 25px;
+    font-size: 13px;
+}
+.dark .conn{background-position-y:60px}

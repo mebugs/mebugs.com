@@ -75,6 +75,11 @@
             <option v-for="item in status" :value="item.id">{{item.name}}</option>
           </select>
         </div>
+        <div class="pli">
+          <select v-model="post.openComms">
+            <option v-for="item in openCommss" :value="item.id">{{item.name}}</option>
+          </select>
+        </div>
         <div class="pli tageare">
           <input type="text" v-model="tagSc" @keyup.enter="getScTag($event)" @focus="getScTag($event)" @change="getScTag($event)" placeholder="请输入标签名快速搜索" />
           <div class="tagShow tagfix" v-if="tagShowFlag">

@@ -30,8 +30,8 @@ header .w *{margin:0 10px}
 .ql{justify-content:center!important;flex-wrap:wrap}
 .ql p{margin:auto}
 .pime{height:60vw}
-.ft p{font-size:13px}
-.fl a{margin:0 3px;font-size:14px}
+.ft p{font-size: 13px;-webkit-line-clamp: 3;}
+.fl a,.fr a{margin:0 3px;font-size: 13px;}
 .prel .menue{position:fixed;width:100vw;left:-100vw;top:70px;height:calc(100vh - 70px);background:#fefefe;z-index:120}
 .dark .prel .menue{background:#2d333b}
 .oppmenu .menue{left:0}
@@ -70,7 +70,7 @@ header .w *{margin:0 10px}
 .ql .tmin h1{width:100%;text-align:center;line-height:1;margin:10px}
 .ql .tmin{width:100%}
 .fline select,.fline select option,.fline span{font-size:13px;width:80px}
-.fline input,.fline textarea{width:calc(100% - 80px);font-size:13px;padding:0 5px}
+.fline input, .fline textarea,.fline .rsel{width:calc(100% - 80px);font-size:13px;padding:0 5px}
 .fline{margin:15px 0;flex-wrap:wrap}
 .box.fform{padding:10px}
 .fline p a{margin:0 auto;display:block;line-height:36px}
@@ -93,3 +93,38 @@ header .w *{margin:0 10px}
 .mmenu ul li{margin:0;display:block}
 .dark .mmenu ul li:nth-child(1),.dark .mmenu ul li:nth-child(3){color:#e2f1ff}
 .dark .mmenu ul li:nth-child(2){background:#e2f1ff}
+.meainfo h1 {
+    width: 100%;
+}
+
+.meainfo p {
+    width: 100%;
+    font-size: 12px;
+}
+
+.meainfo {padding-bottom: 70px;}
+
+.authors {
+    padding: 7px 5px;
+}
+
+.mea {
+    padding: 0;
+    position: relative;
+}
+
+.meconn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.mecpr p {
+    width: calc(100% - 10px);
+    font-size: 12px;
+}
+
+.conn {
+    margin: 5px;
+}

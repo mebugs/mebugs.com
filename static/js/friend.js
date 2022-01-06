@@ -3,7 +3,8 @@ var friend = {
   furl:"",
   fname:"",
   fdesc:"",
-  ficon:"" 
+  ficon:"",
+  findex: 0
 }
 
 function getInfo(){
@@ -114,6 +115,7 @@ function getFriend() {
   friend.furl = document.getElementById("ffix").value + friend.iurl;
   friend.fname = document.getElementById("fname").value;
   friend.fdesc = document.getElementById("fdesc").value;
+  friend.findex = document.getElementById("findex").value;
 }
 
 // 根据对象加载内容

@@ -6,7 +6,7 @@
 .fm .swiper-button-prev{left:0}
 .fm .swiper-button-next:after,.fm .swiper-button-prev:after{font-size:30px;color:#5891ab}
 .mine{background:#feffff;height:435px;padding:5px;}
-.meavt{display:flex;padding:7px 5px}
+.meavt{display:flex;padding:7px 5px;width: 100%;border-radius: 8px;}
 .avtor{display:block;width:90px;height:90px;padding:5px;border-radius:45px}
 .amore{width:40px}
 .ainfo{width:calc(100% - 100px);margin-left:10px}

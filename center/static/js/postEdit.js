@@ -7,6 +7,7 @@ var vue = new Vue({
     utoken: null,
     category: [],
     status: [{id:0,name:"请选择文章状态"},{id:1,name:"草稿"},{id:2,name:"发布"},{id:3,name:"下线"}],
+    openCommss: [{id:0,name:"开放"},{id:1,name:"关闭"}],
     hdTitle: '',
     tagSc: null,
     tagList: [],

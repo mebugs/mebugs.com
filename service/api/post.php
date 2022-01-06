@@ -7,8 +7,9 @@ function UpsertPost($conn,$body) {
   $remark = $body -> remark;
   $cid = $body -> cid;
   $status = $body -> status;
+  $openComms = $body -> openComms;
   if ($id == "0") {
-    $sql = "INSERT INTO `post_main`(`title`, `url`, `banner`, `remark`, `cid`, `status`) VALUES ('$title', '$url', '$banner', '$remark', '$cid', '$status')";
+    $sql = "INSERT INTO `post_main`(`title`, `url`, `banner`, `remark`, `cid`, `status`, `openComms`) VALUES ('$title', '$url', '$banner', '$remark', '$cid', '$status', '$openComms')";
     $query = mysqli_query($conn,$sql);
     if($query) {
       $id = mysqli_insert_id($conn);
@@ -16,7 +17,7 @@ function UpsertPost($conn,$body) {
       return [false,'文章主表添加失败'];
     }
   } else {
-    $sql = "UPDATE `post_main` SET `title` = '$title', `url` = '$url', `banner` = '$banner', `remark` = '$remark', `cid` = '$cid', `status` = '$status' WHERE `id` = '$id'";
+    $sql = "UPDATE `post_main` SET `title` = '$title', `url` = '$url', `banner` = '$banner', `remark` = '$remark', `cid` = '$cid', `status` = '$status', `openComms` = '$openComms' WHERE `id` = '$id'";
     $query = mysqli_query($conn,$sql);
     if(!$query) {
       return [false,'文章主表更新失败'];

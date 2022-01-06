@@ -1,5 +1,5 @@
-div#content{padding: 30px 0 0;display:flex;position:relative;width: 100%;overflow: hidden;height: calc(100vh - 210px);margin-top: 15px;}
-.input,.output{width: 50%;margin: 0;height: calc(100vh - 245px);overflow-y:auto;overflow-x: hidden;}
+div#content{padding: 30px 0 0;display:flex;position:relative;width: 100%;overflow: hidden;height: calc(100vh - 220px);margin-top: 15px;}
+.input,.output{width: 50%;margin: 0;height: calc(100vh - 250px);overflow-y:auto;overflow-x: hidden;}
 .full{width: 100%;}
 .hide{width:0;opacity:0;margin: 0;display: none;}
 .tools{position:absolute;right: -5px;top:0;}

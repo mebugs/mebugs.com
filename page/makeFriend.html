@@ -75,6 +75,13 @@
           <textarea name="fdesc" id="fdesc" type="text" placeholder="*必填,最高128字(超出提交会被截取)" maxlength="128"></textarea>
         </div>
         <div class="fline">
+          <span>友链类型</span>
+          <select class="rsel" name="findex" id="findex">
+            <option value ="0" selected="selected">仅申请友链</option>
+            <option value ="1">同时申请首页友链</option>
+          </select>
+        </div>
+        <div class="fline">
           <span class="ico">站点图标</span>
           <div class="fimg" onclick="chooseImg('fuimg')">
             <img id="ficon" src="/static/img/icon.png" onerror="javascript:this.src='/static/img/icon.png'" /> 

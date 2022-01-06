@@ -36,8 +36,8 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pli textarea{width:100%;resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb;border-radius: 10px;}
 .savebtn{margin-top:7px;width:100%}
 .savebtn button{display:block;line-height:40px;width:100%;font-weight:900;color:#fff}
-.tageare{height: calc(100vh - 450px);overflow-y:auto;position:relative;}
-.tagShow{height: calc(100vh - 490px);overflow-y:auto;padding:5px;border-radius: 10px;background: #fff;border: 1px solid #ddd;}
+.tageare{height: calc(100vh - 560px);overflow-y:auto;position:relative;}
+.tagShow{height: calc(100vh - 600px);overflow-y:auto;padding:5px;border-radius: 10px;background: #fff;border: 1px solid #ddd;}
 .tse{position:relative}
 .tse p{line-height:40px;text-align:center;color:#aaa}
 .tse em{position:absolute;right:-8px;top:-10px;display:block;line-height:30px;width:30px;height:30px;border-radius:15px;background:#3790b9;text-align:center;font-style:normal;cursor:pointer;color:#f0f0f0}
@@ -62,7 +62,7 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .alcat p span img{width:30px;height:30px;border:0}
 .tage textarea{width:calc(100% - 75px);resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb}
 .tage .tade{display:flex;align-items:center}
-.tage input{width:calc(100% - 75px)}
+.tage input,.tage select{width:calc(100% - 75px)}
 .tage .tse h5{line-height:50px;font-size:20px}
 .tage .tse button{margin-top:15px}
 .tlag .alcat{width:100%}
