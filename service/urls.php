@@ -5,23 +5,21 @@ include($_SERVER['DOCUMENT_ROOT'].'/service/comm/auth.php');
 //界面数据JSON对象接受
 $body = json_decode(file_get_contents("php://input"));
 $api = $body -> api;
-include($_SERVER['DOCUMENT_ROOT'].'/service/api/img.php');
+include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
+include($_SERVER['DOCUMENT_ROOT'].'/service/api/urls.php');
 $ret = [];
-if($api == "Base64") {
-  $imgs = $body -> imgs;
-  $ret = UploadBaseArray($imgs);
+if($api == "PageUrls") {
+  $query = ['size' => $body -> size,'page' => $body -> page ];
+  $ret = GetUrlsPage($conn,$query);
 }
-if($api == "Base64Banner") {
-  $imgs = $body -> imgs;
-  $ret = UploadBaseArray($imgs,"banner/");
-}
-if($api == "Base64Urls") {
-  $imgs = $body -> imgs;
-  $ret = UploadBaseArray($imgs,"urls/");
+if($api == "UpsertUrls") {
+  $urls = ['id' => $body -> id,'type' => $body -> type ,'img' => $body -> img,'url' => $body -> url,'sorts' => $body -> sorts,'status' => $body -> status];
+  $ret = UpsertUrls($conn,$urls);
 }
 $code = $ret[0] ? 200 : 100;
 $msg = $ret[0] ? '操作成功':$ret[1];
 $data = $ret[0] ? $ret[1]: null;
+mysqli_close($conn);
 echo json_encode(['code' => $code,'msg' => $msg ,'data' => $data]);
 exit;
 ?>

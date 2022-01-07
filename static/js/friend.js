@@ -67,7 +67,7 @@ function sendInfo() {
     PopUp("请输入站点简介",1,1);
     return;
   }
-  friend.fname = cutstr(friend.fname,32)
+  friend.fname = cutstr(friend.fname,16)
   friend.fdesc = cutstr(friend.fdesc,128)
   var srcUrl = document.getElementById("ficon").src;
   var srcImg = false;

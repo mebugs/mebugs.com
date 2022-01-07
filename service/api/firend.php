@@ -78,7 +78,7 @@ function readHtml($url) {
 // 提交友链
 function AddFirend($conn,$body) {
   // 截取字符
-  $fname = mb_substr($body -> fname,0,128,'UTF-8');
+  $fname = mb_substr($body -> fname,0,16,'UTF-8');
   $fdesc = mb_substr($body -> fdesc,0,128,'UTF-8');
   $furl = $body -> furl;
   $ficon = $body -> ficon;

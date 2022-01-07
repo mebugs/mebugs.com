@@ -1,5 +1,5 @@
 var mindex = 0;
-var urlArray = ["main.html","post/postList.html","category/categoryList.html","tag/tagList.html","comms/commsList.html","firend/firendList.html"];
+var urlArray = ["main.html","urls/urlList.html","post/postList.html","category/categoryList.html","tag/tagList.html","comms/commsList.html","firend/firendList.html"];
 function toMenu(index) {
   if(index == mindex) {
     return;

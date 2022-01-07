@@ -297,6 +297,62 @@ button.btnblue.bl2{right:120px}
 button.btnblue.abs {
     bottom: 35px;
 }
+
+.urls .slci {
+    width: calc(25% - 30px);
+    position: relative;
+    margin: 15px;
+}
+
+.urls .alcat {
+    width: 100%;
+}
+
+.urls .alcat p img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.urls .alcat p {
+    line-height: 2;
+    padding: 2px;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.urls .alcat p span {width: 60px;line-height: 20px;font-size: 12px;text-align: center;border: 1px solid;display: inline-block;margin-right: 10px;padding: 0;border-radius: 10px;}
+
+.urls .sldo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.urls .slci .do {
+    height: 30px;
+    line-height: 30px;
+}
+
+.urls .ibann {
+    width: calc(100% - 75px);
+    padding: 1px;
+    margin: 5px 0;
+}
+
+.urls .tage {
+    height: 530px;
+    top: calc(50% - 265px);
+}
+.urls .tse span {
+    margin: 0;
+    border-radius: 10px;
+    line-height: 150px;
+    font-size: 20px;
+}
 button.btnblue{background:#3790b9;color: #f0f0f0;}
 button.btngray{background:#9e9e9e}
 button.btnred{background:#b93749}

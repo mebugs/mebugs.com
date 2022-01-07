@@ -34,7 +34,7 @@ sleep(2);
 //在关闭连接后，继续运行php脚本
 ignore_user_abort(true);
 set_time_limit(0); 
-//继续运行的代码
+// 继续运行的代码
 // 启动定询任务
 include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/runtask.php');
 autoRun();

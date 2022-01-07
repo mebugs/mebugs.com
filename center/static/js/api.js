@@ -6,6 +6,14 @@ function TagWork(data) {
   })
 }
 
+function UrlsWork(data) {
+  return axios({
+    method: 'post',
+    url: '/service/urls.php',
+    data: data
+  })
+}
+
 function ImgWork(data) {
   return axios({
     method: 'post',

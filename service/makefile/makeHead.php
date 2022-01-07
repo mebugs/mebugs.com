@@ -16,15 +16,10 @@
   <link rel="apple-touch-icon-precomposed" href="<?php echo $cdnUrl; ?>/static/img/icon.png" /> 
   <link href="<?php echo $cdnUrl; ?>/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="<?php echo $cdnUrl; ?>/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-  <?php if($pageType == "index") { ?>
-  <link href="<?php echo $cdnUrl; ?>/static/css/index.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="<?php echo $cdnUrl; ?>/static/lib/swiper/swiper-bundle.min.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <?php } ?>
-  
-  
+  <?php if($pageType == "index") { ?><link href="<?php echo $cdnUrl; ?>/static/css/index.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="<?php echo $cdnUrl; ?>/static/lib/swiper/swiper-bundle.min.css?v=1.0" rel="stylesheet" type="text/css" /><?php } ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
-  <?php if($pageType == "index") { ?>
-  <script type="text/javascript">
+  <?php if($pageType == "index") { ?><script type="text/javascript">
     // WaitForSVGInjectInit
     function initSvg(obj) {
     	try{
@@ -35,8 +30,7 @@
     		},200)
     	}
     }
-  </script>
-  <?php } ?>
+  </script><?php } ?>
  </head> 
  <body> 
  <div class="loader" id="loader">
@@ -48,7 +42,7 @@
    <div class="w"> 
     <a class="logo" href="/"></a> 
     <div class="menu"> 
-     <a <?php if($pageType == "index") { ?> class="mck" <?php } ?> href="/">首页</a> 
+     <a <?php if($pageType == "index") { ?>class="mck"<?php } ?> href="/">首页</a> 
      <a href="/posts/new_1.html">文章</a> 
      <a href="/category">分类</a> 
      <a href="/tag">标签</a> 

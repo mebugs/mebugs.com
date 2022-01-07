@@ -183,7 +183,7 @@ $hi = 1;
 ?>
       <div class="box lm"> 
       <?php while($hot = mysqli_fetch_assoc($hots)){ ?>
-      <a href="/post/<?php echo $up['url']; ?>.html">  
+      <a href="/post/<?php echo $hot['url']; ?>.html">  
         <div class="pimel ltop"><?php echo $hi; ?></div> 
         <div class="pinfr"> 
          <h2><?php echo $hot['title']; ?></h2> 
@@ -200,13 +200,13 @@ $hi = 1;
       </div> 
 <?php 
 // 查询分类
-$teamSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY view DESC LIMIT 10";
+$teamSql = "SELECT * FROM `category` ORDER BY sorts";
 $teams = mysqli_query($conn,$teamSql);
 ?>
       <div class="box itm"> 
       <?php while($team = mysqli_fetch_assoc($teams)){ ?>
       <a href="/category/<?php echo $team['url']; ?>_1.html"> 
-        <img src="<?php echo $cdnUrl.$up['icon']; ?>" onload="initSvg(this)" /> 
+        <img src="<?php echo $cdnUrl.$team['icon']; ?>" onload="initSvg(this)" /> 
         <h2><?php echo $team['name']; ?></h2>
       </a>
       <?php } ?>
@@ -273,7 +273,7 @@ $friends = mysqli_query($conn,$friendSql);
 ?>
       <div class="box lk"> 
       <?php while($friend = mysqli_fetch_assoc($friends)){ ?>
-      <a href="<?php echo $rand['furl']; ?>" target="_blank"><?php echo $rand['fname']; ?></a> 
+      <a href="<?php echo $friend['furl']; ?>" target="_blank"><?php echo $friend['fname']; ?></a> 
       <?php } ?>
       <div class="lmr"> 
         <a href="/page/link.html">更多友链</a> 

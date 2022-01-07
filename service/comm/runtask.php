@@ -8,7 +8,6 @@ function autoRun() {
   // 扫描间隔
   $time = 10;
   do {
-
     $taskStatus = getConfig("taskStatus","./comm/system.php","int");
     $taskTime = getConfig("taskTime","./comm/system.php","int");
     $taskLastRun = getConfig("taskLastRun","./comm/system.php","string");
