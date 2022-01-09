@@ -180,7 +180,7 @@ button.btnblue.bl2{right:120px}
 
 .cle {
     background: #fff;
-    margin: 60px 20px;
+    margin: 20px;
     padding: 60px 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -206,7 +206,7 @@ button.btnblue.bl2{right:120px}
 
 .fle {
     width: calc(100% - 40px);
-    margin: 40px 20px 0px 20px;
+    margin: 20px 20px 0px 20px;
     position: relative;
     height: 40px;
 }
@@ -225,7 +225,10 @@ button.btnblue.bl2{right:120px}
 }
 
 .l_t {
-    width: calc(25% - 40px);
+    width: calc(50% - 40px);
+}
+.l_r {
+     width: calc(33.33% - 40px);
 }
 
 .fline {
@@ -283,7 +286,7 @@ button.btnblue.bl2{right:120px}
 }
 
 .svi,.sed {
-    height: 170px;
+    height: 200px;
     position: relative;
 }
 

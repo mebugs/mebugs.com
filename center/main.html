@@ -38,15 +38,15 @@
             <h1>待处理事宜</h1>
             <div class="fline"></div>
           </div>
-          <div class="cle l_t" onclick="parent.toMenu(1)">
+          <div class="cle l_r" onclick="parent.toMenu(1)">
             <h1>未发布文章</h1>
             <h2>{{ list[5] }}</h2>
           </div>
-          <div class="cle l_t" onclick="parent.toMenu(4)">
+          <div class="cle l_r" onclick="parent.toMenu(4)">
             <h1>待审核评论</h1>
             <h2>{{ list[6] }}</h2>
           </div>
-          <div class="cle l_t" onclick="parent.toMenu(5)">
+          <div class="cle l_r" onclick="parent.toMenu(5)">
             <h1>待审核友链</h1>
             <h2>{{ list[7] }}</h2>
           </div>
@@ -69,7 +69,7 @@
                 <span>上次执行：</span>
                 <p>{{ sysSet.taskLastRun  }}</p>
               </div>
-              <button type="button" class="btnblue" @click="toSave">编辑</button>
+              <button type="button" v-if="urlView" class="btnblue" @click="toSave(false)">编辑</button>
             </div>
             <div class="sed" v-else>
               <div class="ssli">
@@ -81,6 +81,47 @@
                 <input type="number" v-model="sysSet.taskTime" placeholder="请输入每日自动任务启动时0-24" />
               </div>
               <button type="button" v-if="sysSet.taskStatus == 0" class="btnblue btnred abs" @click="runTask">启动任务</button>
+              <button type="button" class="btnblue" @click="save">保存</button>
+            </div>
+          </div>
+          <div class="cle l_t ss" v-if="sysSet">
+            <h3>社媒设置</h3>
+            <div class="svi" v-if="urlView">
+              <div class="ssli">
+                <span>QQ：</span>
+                <p>{{ sysSet.qqUrl  }}</p>
+              </div>
+              <div class="ssli">
+                <span>GitHub：</span>
+                <p>{{ sysSet.githubUrl  }}</p>
+              </div>
+              <div class="ssli">
+                <span>Gitee：</span>
+                <p>{{ sysSet.giteeUrl  }}</p>
+              </div>
+              <div class="ssli">
+                <span>EMail：</span>
+                <p>{{ sysSet.emailUrl  }}</p>
+              </div>
+              <button type="button" v-if="sysView" class="btnblue" @click="toSave(true)">编辑</button>
+            </div>
+            <div class="sed" v-else>
+              <div class="ssli">
+                <span>QQ：</span>
+                <input type="text" v-model="sysSet.qqUrl" placeholder="请输入QQ链接" />
+              </div>
+              <div class="ssli">
+                <span>GitHub：</span>
+                <input type="text" v-model="sysSet.githubUrl" placeholder="请输入GitHub链接" />
+              </div>
+              <div class="ssli">
+                <span>Gitee：</span>
+                <input type="text" v-model="sysSet.giteeUrl" placeholder="请输入Gitee链接" />
+              </div>
+              <div class="ssli">
+                <span>EMail：</span>
+                <input type="text" v-model="sysSet.emailUrl" placeholder="请输入EMail链接" />
+              </div>
               <button type="button" class="btnblue" @click="save">保存</button>
             </div>
           </div>

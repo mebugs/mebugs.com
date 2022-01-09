@@ -5,7 +5,9 @@ var vue = new Vue({
     loading: true,
     list: [],
     sysSet: {},
-    sysView: true
+    sysView: true,
+    urlSet: false,
+    urlView: true
 	},
   watch: {
   },
@@ -44,8 +46,13 @@ var vue = new Vue({
         PopUp('数据获取失败',1,1);
       });  
     },
-    toSave() {
-      this.sysView = false
+    toSave(flag) {
+      this.urlSet = flag
+      if(flag) {
+        this.urlView = false
+      } else {
+        this.sysView = false
+      }
     },
     runTask() {
       PopUp('正在提交...',2,1 );
@@ -62,7 +69,11 @@ var vue = new Vue({
       this.sysSet.api = 'SetConf'
       SystemWork(this.sysSet).then(res => {
         PopUp('更新成功',0,1);
-        this.sysView = true
+       if(this.urlSet) {
+         this.urlView = true
+       } else {
+         this.sysView = true;
+       }
         this.getConfig()
       }).catch(function(err) {
         PopUp('更新失败',1,1);
