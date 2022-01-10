@@ -1,6 +1,6 @@
 <?php 
 //生成INDEX页面代码 CDN切换 数据库对象
-function makeIndex($cdnUrl,$baseUrl,$conn) {
+function makeIndex($smliImgs,$cdnUrl,$baseUrl,$conns,$conn) {
 	// 启动缓存输出 采用模版形式无需缓冲区
 	ob_start();
   // 目标文件
@@ -18,15 +18,14 @@ function makeIndex($cdnUrl,$baseUrl,$conn) {
     <div class="c c_8 c_bn"> 
      <div class="swiper-container bann rtl"> 
       <div class="swiper-wrapper"> 
-       <div class="swiper-slide"> 
-        <a href=""><img src="/test/test1.jpg" /></a> 
-       </div> 
-       <div class="swiper-slide"> 
-        <a href=""><img src="/test/test2.jpg" /></a> 
-       </div> 
-       <div class="swiper-slide"> 
-        <a href=""><img src="/test/test3.jpg" /></a> 
-       </div> 
+      <?php
+        // 首页Banner配置
+        $bnerSql = "SELECT * FROM `urls` WHERE `status` = 1 AND `type` = 'banner' ORDER BY `sorts`";
+        $bners = mysqli_query($conn,$bnerSql);
+        while($bner = mysqli_fetch_assoc($bners)){
+          echo '<div class="swiper-slide"<a href=">'.$bner['url'].'"><img src="'.$cdnUrl.$bner['img'].'" /></a></div>';
+        }
+      ?> 
       </div> 
       <!-- Add Pagination --> 
       <div class="swiper-pagination"></div> 
@@ -43,25 +42,15 @@ function makeIndex($cdnUrl,$baseUrl,$conn) {
         </div> 
        </div> </a> 
       <div class="mecon"> 
-       <a href="" class="conn cqq"></a> 
-       <a href="" class="conn cwx"></a> 
-       <a href="" class="conn cml"></a> 
-       <a href="" class="conn cge"></a> 
-       <a href="" class="conn cgb"></a> 
+       <a href="<?php echo $conns['qqUrl']; ?>" class="conn cqq"></a> 
+       <a href="<?php echo $conns['emailUrl']; ?>" class="conn cml"></a> 
+       <a href="<?php echo $conns['giteeUrl']; ?>" class="conn cge"></a> 
+       <a href="<?php echo $conns['githubUrl']; ?>" class="conn cgb"></a> 
       </div> 
       <div class="mequc"> 
-       <div class="mequci"> 
-        <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-       </div> 
-       <div class="mequci"> 
-        <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-       </div> 
-       <div class="mequci"> 
-        <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-       </div> 
-       <div class="mequci"> 
-        <a href=""><img class="scale" src="/test/test1.jpg" /></a> 
-       </div> 
+      <?php foreach ($smliImgs as $smliImg) {
+        echo '<div class="mequci"><a href="'.$smliImg['url'].'"><img class="scale" src="'.$cdnUrl.$smliImg['img'].'" /></a></div> ';
+      } ?>
       </div> 
      </div> 
     </div> 

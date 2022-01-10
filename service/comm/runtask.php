@@ -12,6 +12,12 @@ function autoRun() {
     $taskTime = getConfig("taskTime","./comm/system.php","int");
     $taskLastRun = getConfig("taskLastRun","./comm/system.php","string");
     $cdnUrl = getConfig("cdnUrl","./comm/system.php","string");
+    $conns = [
+      'qqUrl' => getConfig("qqUrl","./comm/system.php","string"),
+      'githubUrl' => getConfig("githubUrl","./comm/system.php","string"),
+      'giteeUrl' => getConfig("giteeUrl","./comm/system.php","string"),
+      'emailUrl' => getConfig("emailUrl","./comm/system.php","string")
+    ];
     if($taskStatus == 0) {
       $runStatus = false;
     } else {
@@ -24,7 +30,7 @@ function autoRun() {
       if($lastRunDay != $today) {
         $hour = substr($time_str,11,2);
         if($hour >= $taskTime) { // 执行今天的任务
-          makeFileTask($cdnUrl,$today);// 处理全局文件生成
+          makeFileTask($cdnUrl,$today,$conns);// 处理全局文件生成
           setConfig("taskLastRun",$time_str,"./comm/system.php","string");// 更新执行时间
         }
       }
