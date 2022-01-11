@@ -24,7 +24,7 @@ header .w *{margin:0 10px}
 .pa_6 a,.pa_4 a{width:calc(100% - 20px)}
 .fm{height:120vw!important}
 .fm a,.fulla{height:55vw!important;width:calc(100% - 20px)!important}
-.lk a{width:calc(50% - 20px)!important}
+.lk a{width: auto;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .fr p,.fl p{text-align:center}
 .ql a{margin:8px;padding:0 10px}
 .ql{justify-content:center!important;flex-wrap:wrap}

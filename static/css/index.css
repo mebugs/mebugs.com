@@ -14,10 +14,6 @@
 .ainfo p{margin:5px 0;line-height:20px;font-size:12px}
 .mecon{display:flex;justify-content:center;margin:10px 0}
 .conn{width:60px;height:60px;margin:5px;background-image:url(../img/conn_icons.png)}
-.cwx{background-position-x:60px}
-.cml{background-position-x:120px}
-.cge{background-position-x:180px}
-.cgb{background-position-x:240px}
 .conn:hover{transform:scale(0.9);opacity:.8}
 .pbline .pdesc{color:#444}
 .fulla{position:relative;overflow:hidden;display:block;height:240px;width:calc(50% - 20px);margin:10px}

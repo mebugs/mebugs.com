@@ -167,10 +167,10 @@ background: #1c2128;
     margin: 5px 0 0 0;
 }
 .conn{width:60px;height:60px;margin: 5px 10px 5px 0;background-image:url(../img/conn_icons.png);}
-.cwx{background-position-x:60px}
-.cml{background-position-x:120px}
-.cge{background-position-x:180px}
-.cgb{background-position-x:240px}
+.cwx{background-position-x:-60px}
+.cml{background-position-x:-120px}
+.cge{background-position-x:-180px}
+.cgb{background-position-x:-240px}
 .conn:hover{transform:scale(0.9);opacity:.8}
 .meainfo h1,.meainfo p {
     display: inline-block;
