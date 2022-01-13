@@ -8,7 +8,7 @@ function GetIndexData($conn) {
   $commsCount = "SELECT count(id) FROM `comms`";
   $friendCount = "SELECT count(id) FROM `friend`";
   // 草稿
-  $postDOCount = "SELECT count(id) FROM `post_main` WHERE status != 2";
+  $postDOCount = "SELECT count(id) FROM `post_main` WHERE status != 1";
   // 待审核评论
   $commsDOCount = "SELECT count(id) FROM `comms` WHERE status = 0";
   // 待审核友链

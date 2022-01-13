@@ -37,15 +37,17 @@ function UpsertPost($conn,$body) {
   // 更新文章标签
   $tids = $body ->tids;
   mysqli_query($conn,"DELETE FROM `post_tag` WHERE pid=".$id);
-  // 关闭自动提交
-  mysqli_autocommit($conn,FALSE);
-  foreach($tids as $tid) {
-    mysqli_query($conn,"INSERT INTO `post_tag`(`pid`, `tid`) VALUES ('$id','$tid')");
+  if ($tids != null && count($tids) >0) {
+    // 关闭自动提交
+    mysqli_autocommit($conn,FALSE);
+    foreach($tids as $tid) {
+      mysqli_query($conn,"INSERT INTO `post_tag`(`pid`, `tid`) VALUES ('$id','$tid')");
+    }
+    if(!mysqli_commit($conn)) {
+      return [false,'文章标签更新失败'];
+    }
+    mysqli_autocommit($conn,TRUE);
   }
-  if(!mysqli_commit($conn)) {
-    return [false,'文章标签更新失败'];
-  }
-  mysqli_autocommit($conn,TRUE);
   return [true,$id];
   // 更新TAG交给定时任务
 }

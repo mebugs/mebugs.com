@@ -1,17 +1,42 @@
 <?php 
 //生成INDEX页面代码 CDN切换 数据库对象
-function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
-	// 启动缓存输出 采用模版形式无需缓冲区
-	ob_start();
-  // 目标文件
-  $file_sc = $_SERVER['DOCUMENT_ROOT']."/index.html";
-  // siteMap生成对象
+function makePosts($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
+  // 查询全部启用文章以id正序  < 999 写入page目录
   $backUrls = [];
-  $title = "米虫 - 做一个有理想的米虫，全栈程序员，乐观主义者，坚信一切都是最好的安排！ - www.mebugs.com";
-  $description = "程序员米虫的个人修炼手册，做一个有理想的米虫，乐观主义者，坚信一切都是最好的安排！技术学习笔记、经验教训小结、工作心得体会、自我充电提升！希望您也能有所收获！";
-  $pageType = "index";//页面类型首页
-  include(__DIR__.'/makeHead.php'); 
+  // 两个不同目录
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  $pageBase = "/page/";
+  $postBase = "/post/";
+  // 查询全部开放文章
+  $postSql = "SELECT * FROM `post_main` m WHERE m.`status` > 0";
+  $posts = mysqli_query($conn,$postSql);
+  while($post = mysqli_fetch_assoc($bners)){
+    $postPageUrl = $postBase.$post['url'].".html";
+    if($post['id'] < 999) {
+      $postPageUrl = $pageBase.$post['url'].".html";
+    }
+    makePost($post,$postPageUrl,$smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn)
+    array_push($backUrls,["loc" => $baseUrl.$postPageUrl, "priority" => 1])
+  }
+  
+} 
+
+function makePost($post,$postPageUrl,$smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
+  // 启动缓存输出 采用模版形式无需缓冲区
+  ob_start();
+  // 目标文件
+  $file_sc = $_SERVER['DOCUMENT_ROOT'].$postPageUrl;
+  $title = $post['title']." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
+  $description = $post['remark']." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
+  $pageType = "post";//页面类型文章页
+  if($post['id'] < 1000) {
+     $pageType = $post['url']; // 固定的定制URL页 如 about msg
+  }
+  include(__DIR__.'/makeHead.php');
+  
 ?>
+
+<?php }?>
   <!-- index top -->
   <div class="r rt"> 
    <div class="w tb_15"> 

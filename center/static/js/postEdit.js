@@ -6,7 +6,7 @@ var vue = new Vue({
 	data: {
     utoken: null,
     category: [],
-    status: [{id:0,name:"请选择文章状态"},{id:1,name:"草稿"},{id:2,name:"发布"},{id:3,name:"下线"}],
+    status: [{id:0,name:"草稿"},{id:1,name:"发布"},{id:2,name:"隐藏"}],
     openCommss: [{id:0,name:"开放"},{id:1,name:"关闭"}],
     hdTitle: '',
     tagSc: null,
@@ -64,7 +64,7 @@ var vue = new Vue({
           PopUp('查询成功',0,1);
           this.post = res.data;
           this.md = this.post.md;
-          this.ibann = "/static/upload/post/"+this.post.banner+'?v='+Math.ceil(Math.random()*100);
+          this.ibann = "/static/upload/banner/"+this.post.banner+'?v='+Math.ceil(Math.random()*100);
           this.fileName = this.post.banner
           this.post.api = 'ModPost'
           // 获取标签
@@ -86,8 +86,8 @@ var vue = new Vue({
       // 数据检查和组装
       if(this.post.title && this.post.remark && this.md && this.post.url && this.post.cid && this.post.status) {
         if(this.tagCheck.length < 1) {
-          PopUp("至少需要选择一个标签",1,1);
-          return;
+          // PopUp("至少需要选择一个标签",1,1);
+          // return;
         } else {
           // 填入标签清单
           let tids = []
@@ -136,8 +136,13 @@ var vue = new Vue({
       this.init();
     },
     getCategory() {
-      this.category = [{id:1,name:"java"},{id:2,name:"go"}]
-      this.category.unshift({id:0,name:"请选择文章分类"})
+      CategoryWork({api:'ListCategory'}).then(res => {
+        this.category =  res.data;
+        this.category.unshift({id:0,name:"请选择文章分类"})
+      }).catch(function(err) {
+        PopUp('分组查询失败',1,1);
+      });
+      
     },
     getAllTag() {
       TagWork({api:'AllTag'}).then(res => {
