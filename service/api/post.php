@@ -35,7 +35,7 @@ function UpsertPost($conn,$body) {
      return [false,'文章信息更新失败'];
   }
   // 更新文章标签
-  $tids = $body ->tids;
+  $tids = $body -> tids;
   mysqli_query($conn,"DELETE FROM `post_tag` WHERE pid=".$id);
   if ($tids != null && count($tids) >0) {
     // 关闭自动提交

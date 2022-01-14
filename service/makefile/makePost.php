@@ -29,13 +29,105 @@ function makePost($post,$postPageUrl,$smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$
   $title = $post['title']." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
   $description = $post['remark']." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
   $pageType = "post";//页面类型文章页
+  $pageSubType = "post";
   if($post['id'] < 1000) {
-     $pageType = $post['url']; // 固定的定制URL页 如 about msg
+     $pageSubType = $post['url']; // 固定的定制URL页 如 about msg
   }
   include(__DIR__.'/makeHead.php');
-  
 ?>
-
+  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1><?php echo $post['title']; ?></h1> 
+     </div> 
+     <div class="pdest rtr"><?php echo $post['remark']; ?></div> 
+    </div> 
+   </div> 
+  </div> 
+<?php 
+$postInfoSql = "SELECT * FROM `post_info` WHERE pid = ".$post['id'];
+$postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
+?>
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><?php echo $cdnUrl."/static/upload/banner/".$post['banner']; ?></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="<?php echo $postInfo['menu']; ?>" /> 
+      <?php if($post['id'] > 999) { ?>
+      <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta">
+            <a href="/category/java_1.html">Java</a>
+          </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta">
+            <a href="/tags/springboot_1.html">SpringBoot</a>
+            <a href="/tags/springboot_1.html">配置文件</a>
+            <a href="/tags/springboot_1.html">优先级</a>
+            <a href="/tags/springboot_1.html">环境</a>
+            <a href="/tags/springboot_1.html">配置项</a>
+          </b>
+        </p>
+      </div>
+      <?php }?>
+     </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><?php echo $postInfo['html']; ?></div>
+    </div>
+    <div class="c c_9" id="mother"> 
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="<?php echo $conns['qqUrl']; ?>" class="conn cqq"></a>
+             <a href="<?php echo $conns['emailUrl']; ?>" class="conn cml"></a> 
+             <a href="<?php echo $conns['giteeUrl']; ?>" class="conn cge"></a> 
+             <a href="<?php echo $conns['githubUrl']; ?>" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+     <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p>选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a href="javascript:sendComms(<?php echo $post['id']; ?>,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     
 <?php }?>
   <!-- index top -->
   <div class="r rt"> 

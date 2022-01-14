@@ -88,6 +88,7 @@ var vue = new Vue({
         if(this.tagCheck.length < 1) {
           // PopUp("至少需要选择一个标签",1,1);
           // return;
+          this.post.tids = [];
         } else {
           // 填入标签清单
           let tids = []
