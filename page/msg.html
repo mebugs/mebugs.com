@@ -16,9 +16,10 @@
   <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
   <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-    <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" />   <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+    <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
    </head> 
  <body> 
  <div class="loader" id="loader">
@@ -40,7 +41,8 @@
      <a  href="/page/map.html">地图</a> 
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
-   </div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
   </header>  <!-- POST TOP -->
   <div class="r rt"> 
    <div class="w tb_15"> 
@@ -55,12 +57,12 @@
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue">/static/upload/banner/1642156318557.jpg</div> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">审核说明</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">留言须知</a> <!----></li></ul></div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="<ul><li><a href="javascript:runTo('menu_1')" class="pl1">审核说明</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">留言须知</a> <!----></li></ul>" /> 
+      <img src="/static/upload/banner/1642156318557.jpg" /> 
            </div>
      <!-- post content -->
      <div id="html" class="output mark"><h1 id="menu_1">审核说明</h1><p>为了保证本站文明，您提交的评论需要经过人工审核后方会展示。</p>

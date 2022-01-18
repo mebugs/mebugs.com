@@ -16,9 +16,10 @@
   <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
   <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-    <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" />   <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+    <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
    </head> 
  <body> 
  <div class="loader" id="loader">
@@ -40,7 +41,8 @@
      <a  href="/page/map.html">地图</a> 
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
-   </div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
   </header>  <!-- POST TOP -->
   <div class="r rt"> 
    <div class="w tb_15"> 
@@ -55,12 +57,12 @@
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue">/static/upload/banner/1642035882963.jpg</div> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">关于本站</a> <ul><li><a href="javascript:runTo('menu_2')" class="pl2">域名与站名</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl2">本站构建技术栈</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">关于本站内容</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_5')" class="pl1">早期博客剪影</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl1">关于个人</a> <ul><li><a href="javascript:runTo('menu_7')" class="pl2">个人经历概述</a> <!----></li><li><a href="javascript:runTo('menu_8')" class="pl2">一些寄语</a> <!----></li></ul></li></ul></div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="<ul><li><a href="javascript:runTo('menu_1')" class="pl1">关于本站</a> <ul><li><a href="javascript:runTo('menu_2')" class="pl2">域名与站名</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl2">本站构建技术栈</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">关于本站内容</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_5')" class="pl1">早期博客剪影</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl1">关于个人</a> <ul><li><a href="javascript:runTo('menu_7')" class="pl2">个人经历概述</a> <!----></li><li><a href="javascript:runTo('menu_8')" class="pl2">一些寄语</a> <!----></li></ul></li></ul>" /> 
+      <img src="/static/upload/banner/1642035882963.jpg" /> 
            </div>
      <!-- post content -->
      <div id="html" class="output mark"><h1 id="menu_1">关于本站</h1><h2 id="menu_2">域名与站名</h2><p>本站是一本个人修炼手册，用于记录个人学习历程、整理问题处理经验、分享工作心得体会、自我充电进步提升！</p>

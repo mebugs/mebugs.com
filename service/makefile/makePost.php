@@ -52,29 +52,29 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue"><?php echo $cdnUrl."/static/upload/banner/".$post['banner']; ?></div> 
+     <div class="menue" id="menue"><?php echo $postInfo['menu']; ?></div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="<?php echo $postInfo['menu']; ?>" /> 
-      <?php if($post['id'] > 999) { ?>
+      <img src="<?php echo $cdnUrl."/static/upload/banner/".$post['banner']; ?>" /> 
+      <?php 
+      if($post['id'] > 999) {
+        // 读取分类名
+        $postTeamSql = "SELECT * FROM `category` WHERE id =".$post['cid'];
+        $postTeam = mysqli_fetch_assoc(mysqli_query($conn,$postTeamSql));
+        // 读取tage集
+        $postTagsSql = "SELECT t.* FROM `post_tag` pt LEFT JOIN `tag` t ON t.id = pt.tid WHERE pt.pid = ".$post['id'];
+        $postTags = mysqli_query($conn,$postTagsSql)
+      ?>
       <div class="pfro">
         <p>
           <span>所属分类</span>
-          <b class="pta">
-            <a href="/category/java_1.html">Java</a>
-          </b>
+          <b class="pta"><?php echo '<a href="/category/'.$postTeam['url'].'_1.html">'.$postTeam['name'].'</a>';  ?> </b>
         </p>
         <p>
           <span>相关标签</span>
-          <b class="pta">
-            <a href="/tags/springboot_1.html">SpringBoot</a>
-            <a href="/tags/springboot_1.html">配置文件</a>
-            <a href="/tags/springboot_1.html">优先级</a>
-            <a href="/tags/springboot_1.html">环境</a>
-            <a href="/tags/springboot_1.html">配置项</a>
-          </b>
+          <b class="pta"><?php while($postTag = mysqli_fetch_assoc($postTags)){ echo '<a href="/tags/'.$postTag['url'].'_1.html">'.$postTag['url'].'</a>'; } ?></b>
         </p>
       </div>
       <?php }?>

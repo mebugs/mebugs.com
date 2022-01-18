@@ -15,7 +15,6 @@ var mbpm = false;
 var pomenu =  document.getElementById("pomenu");
 if(cW > 1200) {
   mHeight = document.getElementById("menue") ? document.getElementById("menue").getBoundingClientRect().top - 90 + sTop : false;
-  mRHeight = mHeight ? document.getElementById("rhot").getBoundingClientRect().top + sTop : false;
   mEnd = mHeight ? getMendHeight() : false;
 }
 window.addEventListener("scroll", function () {

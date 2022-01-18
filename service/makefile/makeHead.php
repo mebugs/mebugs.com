@@ -16,11 +16,15 @@
   <link rel="apple-touch-icon-precomposed" href="<?php echo $cdnUrl; ?>/static/img/icon.png" /> 
   <link href="<?php echo $cdnUrl; ?>/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="<?php echo $cdnUrl; ?>/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-  <?php if($pageType == "index") { ?><link href="<?php echo $cdnUrl; ?>/static/css/index.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="<?php echo $cdnUrl; ?>/static/lib/swiper/swiper-bundle.min.css?v=1.0" rel="stylesheet" type="text/css" /><?php } ?>
-  <?php if($pageType == "post") { ?><link href="<?php echo $cdnUrl; ?>/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <?php if($pageType == "index") { ?>
+  <link href="<?php echo $cdnUrl; ?>/static/css/index.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="<?php echo $cdnUrl; ?>/static/lib/swiper/swiper-bundle.min.css?v=1.0" rel="stylesheet" type="text/css" />
+  <?php } ?>
+  <?php if($pageType == "post") { ?>
+  <link href="<?php echo $cdnUrl; ?>/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="<?php echo $cdnUrl; ?>/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="<?php echo $cdnUrl; ?>/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> <?php } ?>
+  <link href="<?php echo $cdnUrl; ?>/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <?php } ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
   <?php if($pageType == "index") { ?><script type="text/javascript">
     // WaitForSVGInjectInit
@@ -55,5 +59,8 @@
      <a <?php if($pageType == "map") { ?>class="mck"<?php } ?> href="/page/map.html">地图</a> 
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+    <?php if($pageType == "post") { ?>
+    <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+    <?php } ?>
    </div> 
   </header>
