@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
   <!-- <meta name="referrer" content="no-referrer"/> --> 
   <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <title>米虫的留言板 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <title>JAVA实例化对象的五种方式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
   <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
-  <meta name="description" content="这里是米虫的留言板，如果您有什么建议或疑问，请在这里留言！推荐您留下邮箱，该信息不会外泄，当我回复时会通过邮件知会您！ - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="description" content="面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
   <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
   <link rel="icon" href="/static/img/icon.png" /> 
   <link rel="shortcut icon" href="/static/img/icon.png" /> 
@@ -31,12 +31,12 @@
     <a class="logo" href="/"></a> 
     <div class="menu"> 
      <a  href="/">首页</a> 
-     <a  href="/posts/new_1.html">文章</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
      <a  href="/category">分类</a> 
      <a  href="/tag">标签</a> 
      <a  href="/page/about.html">关于</a> 
      <a  href="/page/link.html">友链</a> 
-     <a class="mck" href="/page/msg.html">留言</a> 
+     <a  href="/page/msg.html">留言</a> 
      <a  href="/page/map.html">地图</a> 
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
@@ -46,41 +46,96 @@
    <div class="w tb_15"> 
     <div class="c c_12 pst"> 
      <div class="pt pct rtl"> 
-      <h1>米虫的留言板</h1> 
+      <h1>JAVA实例化对象的五种方式</h1> 
      </div> 
-     <div class="pdest rtr">这里是米虫的留言板，如果您有什么建议或疑问，请在这里留言！推荐您留下邮箱，该信息不会外泄，当我回复时会通过邮件知会您！</div> 
+     <div class="pdest rtr">面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式</div> 
     </div> 
    </div> 
   </div> 
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue">/static/upload/banner/1642156318557.jpg</div> 
+     <div class="menue" id="menue">/static/upload/banner/1642463972831.jpg</div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="<ul><li><a href="javascript:runTo('menu_1')" class="pl1">审核说明</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">留言须知</a> <!----></li></ul>" /> 
+      <img src="<ul><li><a href="javascript:runTo('menu_1')" class="pl1">前言</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">相关实例</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">new关键字</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">Class类的newInstance()</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl2">Constructor类的newInstance()</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl2">clone()</a> <!----></li><li><a href="javascript:runTo('menu_7')" class="pl2">deserialization</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_8')" class="pl1">其他说明</a> <ul><li><a href="javascript:runTo('menu_9')" class="pl2">反射方法</a> <!----></li><li><a href="javascript:runTo('menu_10')" class="pl2">Constructor类的获得</a> <!----></li></ul></li></ul>" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta">
+            <a href="/category/java_1.html">Java</a>
+          </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta">
+            <a href="/tags/springboot_1.html">SpringBoot</a>
+            <a href="/tags/springboot_1.html">配置文件</a>
+            <a href="/tags/springboot_1.html">优先级</a>
+            <a href="/tags/springboot_1.html">环境</a>
+            <a href="/tags/springboot_1.html">配置项</a>
+          </b>
+        </p>
+      </div>
            </div>
      <!-- post content -->
-     <div id="html" class="output mark"><h1 id="menu_1">审核说明</h1><p>为了保证本站文明，您提交的评论需要经过人工审核后方会展示。</p>
-<p>一般来说正常发表意见、建议、讨论均可审核通过。</p>
-<p>博主会认真阅读所有留言，审核并及时回复。</p>
-<p>如您提交了邮箱，可能会受到回复提醒（本站不会对外公布您的邮箱地址）。</p>
-<p>本站可提交您的链接（并且可展示在评论列表上），如果网站不合规，审核时可能会移除您提交的网站链接。</p>
-<p>共建文明网络环境，你我一起努力！</p>
-<h1 id="menu_2">留言须知</h1><p>请阅读以下留下须知，如您的留言违规，将会被审核拒绝（审核拒绝的留言不再另行通知）。</p>
-<p>本站建立了黑名单机制，如果您多次违规，相关邮箱、网址会被加入黑名单列表。</p>
-<p>黑名单将自动阻断留言请求，无法发现留言的提交。</p>
-<hr/>
-<p>╔ 请勿提交散播或制造任何与事实不符的言论。</p>
-<p>╠ 请勿因观点或立场发表嘲笑、讽刺、漫骂等人身攻击言论。</p>
-<p>╠ 请勿提交违反国家法律法规的内容。</p>
-<p>╠ 请勿提交恶意广告。</p>
-<p>╠ 请勿提交含露骨性描写、不含蓄的文字内容。</p>
-<p>╠ 请勿提交政治、种族、肤色、性取向、宗教、民族、地域歧视内容。</p>
-<p>╚ 请勿提交重复内容。</p>
-<hr/>
+     <div id="html" class="output mark"><h1 id="menu_1">前言</h1><p>最为JAVA开发者，无时无刻不在与JAVA对象打交道。<br/>我们在日常工作中常常将创建（实例化）对象的任务交给依赖框架，如Spring。<br/>但依旧需要了解JAVA实例化对象的比较常见的一些形式，他们分别是：</p>
+<ol>
+<li>使用<strong>new</strong>关键字（构造函数会被调用）</li>
+<li>使用<strong>Class</strong>类的newInstance()（构造函数会被调用）</li>
+<li>使用<strong>Constructor</strong>类的newInstance()（构造函数会被调用）</li>
+<li>使用<strong>clone</strong>方法（无构造函数调用）</li>
+<li>使用<strong>deserialization</strong>（无构造函数调用）</li>
+</ol>
+<h1 id="menu_2">相关实例</h1><h2 id="menu_3">new关键字</h2><p>最通用、常见、普遍、简单的实例化方式，默认调用无参构造，支持调用有参构造。</p>
+<pre><code class="hljs language-java"><span class="hljs-operator">/</span><span class="hljs-operator">/</span>无参构造创建对象
+<span class="hljs-keyword">User</span> <span class="hljs-keyword">default</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>();
+<span class="hljs-operator">/</span><span class="hljs-operator">/</span>有参构造创建对象 有参构造的入参与自定义的构造函数一致
+<span class="hljs-keyword">User</span> tom <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>(&quot;mebugs&quot;,&quot;man&quot;);
+</code></pre>
+<h2 id="menu_4">Class类的newInstance()</h2><p>使用反射的Class类的newInstance()来实例化对象，newInstance()方法将调用无参构造方法去实例化一个对象。</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//方法将调用类的无参构造</span>
+<span class="hljs-type">User</span> <span class="hljs-variable">classIns</span> <span class="hljs-operator">=</span> User.class.newInstance();
+</code></pre>
+<h2 id="menu_5">Constructor类的newInstance()</h2><p>使用反射的Constructor类的newInstance()方法，与Class类中的newInstance()方法相似。</p>
+<p>Constructor类的newInstance()方法我们能够调用有参构造函数和私有构造函数。</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//默认调用形式</span>
+<span class="hljs-type">User</span> <span class="hljs-variable">consIns</span> <span class="hljs-operator">=</span> User.class.getConstructor().newInstance();
+<span class="hljs-comment">//调用有参构造</span>
+<span class="hljs-type">User</span> <span class="hljs-variable">consInsTom</span> <span class="hljs-operator">=</span> User.class.getConstructor().newInstance(<span class="hljs-string">&quot;mebugs&quot;</span>,<span class="hljs-string">&quot;man&quot;</span>);
+<span class="hljs-comment">//调用私有无参构造</span>
+<span class="hljs-type">User</span> <span class="hljs-variable">consInsPrive</span> <span class="hljs-operator">=</span> User.class.getDeclaredConstructor().newInstance();
+</code></pre>
+<h2 id="menu_6">clone()</h2><p>调用对象的clone()方法时，JVM都会为我们创建一个新对象，并将前一个对象的所有内容复制到其中。</p>
+<p>使用clone()方法创建对象不会调用任何构造函数，但对象的类需要实现Cloneable接口并定义clone()方法。</p>
+<p>clone()方法是比较有争议的话题，确实有它的缺点，但其是创建任何对象副本的最流行和最简单的方法。</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//默认调用形式</span>
+<span class="hljs-type">User</span> <span class="hljs-variable">jack</span> <span class="hljs-operator">=</span> tom.clone();
+</code></pre>
+<h2 id="menu_7">deserialization</h2><p>使用反序列化创建对象的前提是已经进行序列化操作。</p>
+<p>当进行序列化和反序列化对象时，JVM会为我们创建了一个独立的对象。</p>
+<p>在反序列化过程中，JVM不使用任何构造函数来创建对象，需要在类中实现Serializable接口。</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//序列化</span>
+<span class="hljs-type">User</span> <span class="hljs-variable">tom</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<span class="hljs-string">&quot;mebugs&quot;</span>,<span class="hljs-string">&quot;man&quot;</span>);
+<span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;com.mebugs&quot;</span>));
+out.writeObject(tom);
+out.close();
+<span class="hljs-comment">//反序列化</span>
+<span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;com.mebugs&quot;</span>));
+<span class="hljs-type">User</span> <span class="hljs-variable">tomBack</span> <span class="hljs-operator">=</span> (User) in.readObject();
+in.close();
+</code></pre>
+<h1 id="menu_8">其他说明</h1><h2 id="menu_9">反射方法</h2><p>Class类的newInstance()方法和Constructor类的newInstance()方法都被称为创建对象的反射方法。</p>
+<p>实际上，Class类的newInstance()方法内部使用Constructor类的newInstance()方法。</p>
+<p>这就是为什么后者更受欢迎，并且也被Spring、Hibernate等不同的经典框架所使用的原因。</p>
+<h2 id="menu_10">Constructor类的获得</h2><p>上文中我们提到getConstructor()和getDeclaredConstructor()来获取Constructor类。</p>
+<ul>
+<li>getDeclaredConstructor()返回指定参数类型、所有声明的（包括private）构造函数</li>
+<li>getConstructor()返回指定参数类型、具有public访问权限的构造函数</li>
+</ul>
+<p>因此getConstructor()是getDeclaredConstructor()的子集。</p>
 </div>
      <!-- author -->
      <div class="row">
@@ -123,7 +178,7 @@
          </div> 
         </div> 
         <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
-        <div class="sendc"><a href="javascript:sendComms(2,1,0)">提交观点</a></div> 
+        <div class="sendc"><a href="javascript:sendComms(1000,1,0)">提交观点</a></div> 
        </div>
       </div> 
      </div>
@@ -136,6 +191,8 @@
                </div> 
       </div> 
      </div>
+          <!-- like post -->
+     
          </div>
     <!-- more post new hot rand -->
     <div class="c c_4">

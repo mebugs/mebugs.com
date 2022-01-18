@@ -10,12 +10,6 @@
 .menue li ul ul{margin-left:5px}
 .menus.menuse .menue{position:absolute;bottom:15px;align-items:flex-end}
 .indimg .mequci{width:25%;height:135px}
-.rhot .pimel{width:20px;height:20px;margin:10px 0;line-height:20px;font-size:12px}
-.rhot .pinfr{width:calc(100% - 20px);padding-left:5px}
-.rhot a .pinfr h2{padding:0;line-height:30px;font-size:12px}
-.rhot a{margin:5px 5px 5px 7px}
-.rhot{width:278px;position:relative;top:0;max-height: calc(100vh - 420px);overflow-y:hidden;}
-.rfix .rhot{position:fixed;top:90px}
 .rzz{width:100vw;height:100vh;background:rgba(0,0,0,0.4);position:fixed;z-index:101;top:0;display:none;opacity:0}
 .replay .rzz,.cavts .rzz{opacity:1}
 .rea{width:750px;padding:15px;height:380px;position:absolute;left:calc(50vw - 375px);top:calc(50vh - 190px);transform:scale(0.8);transition:all .3s cubic-bezier(0,0.35,0.73,1.64)}

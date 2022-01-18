@@ -3,12 +3,22 @@
 function makeFileTask($cdnUrl,$today,$conns) {
   // 初始化连接
   include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
+  // 初始化统计
+  initStatics($conn);
   $baseUrl = "http://www.mebugs.com";
   // 创建siteMap数组
   $siteMaps = [];
   // 查询smallImgs
   $smliSql = "SELECT * FROM `urls` WHERE `status` = 1 AND `type` = 'smaller' ORDER BY `sorts`";
   $smliImgs = mysqli_fetch_all(mysqli_query($conn,$smliSql),MYSQLI_ASSOC);
+  // 查询页面底部推送数据
+  $newPostSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY id DESC LIMIT 10";
+  $newPosts = mysqli_fetch_all(mysqli_query($conn,$newPostSql),MYSQLI_ASSOC);
+  $hotPostSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY monthView DESC LIMIT 10";
+  $hotPosts = mysqli_fetch_all(mysqli_query($conn,$hotPostSql),MYSQLI_ASSOC);
+  $radPostSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY randno DESC LIMIT 10";
+  $radPosts = mysqli_fetch_all(mysqli_query($conn,$radPostSql),MYSQLI_ASSOC);
+  $doPosts = ["new" => $newPosts,"hot" => $hotPosts,"rad" => $radPosts];
   // 查询足部数据
   $fteamSql = "SELECT * FROM `category` ORDER BY num DESC";
   $fteams = mysqli_fetch_all(mysqli_query($conn,$fteamSql),MYSQLI_ASSOC);
@@ -21,7 +31,7 @@ function makeFileTask($cdnUrl,$today,$conns) {
   // 生成文章详情页
   // 生成指定Page页（0-999）预留页
   include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makePost.php');
-  $postUrls = makePosts($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn);
+  $postUrls = makePosts($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn,$doPosts);
   // 生成文章列表页
   
   // 生成分类页
@@ -37,14 +47,19 @@ function makeFileTask($cdnUrl,$today,$conns) {
   mysqli_close($conn);
 }
 
+// 初始化统计
+function initStatics($conn) {
+  
+}
+
 // 测试代码
 include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/doConfig.php');
-$cdnUrl = getConfig("cdnUrl","./comm/system.php","string");
+$cdnUrl = getConfig("cdnUrl","../comm/system.php","string");
     $conns = [
-      'qqUrl' => getConfig("qqUrl","./comm/system.php","string"),
-      'githubUrl' => getConfig("githubUrl","./comm/system.php","string"),
-      'giteeUrl' => getConfig("giteeUrl","./comm/system.php","string"),
-      'emailUrl' => getConfig("emailUrl","./comm/system.php","string")
+      'qqUrl' => getConfig("qqUrl","../comm/system.php","string"),
+      'githubUrl' => getConfig("githubUrl","../comm/system.php","string"),
+      'giteeUrl' => getConfig("giteeUrl","../comm/system.php","string"),
+      'emailUrl' => getConfig("emailUrl","../comm/system.php","string")
     ];
 // 当前时间
       ini_set('date.timezone', 'Asia/Shanghai');

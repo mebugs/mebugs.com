@@ -9,7 +9,6 @@ var cH = window.innerHeight || document.documentElement.clientHeight || document
 var cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
 var mHeight = false;
-var mRHeight = false;
 var mEnd = false;
 var mbm = false;
 var mbpm = false;
@@ -41,13 +40,6 @@ window.addEventListener("scroll", function () {
 		} else {
 			bodyNode.classList.remove("menus");
 		}
-		if(mRHeight) {
-		  if(sTop > mRHeight)  {
-			bodyNode.classList.add("rfix");
-		  } else {
-			bodyNode.classList.remove("rfix");
-		  }
-		}
 	}
   // 滑动关闭目录
   if(cW < 1200 && pomenu) {
@@ -62,7 +54,7 @@ function getMendHeight() {
 	upTimer = setInterval(function () {
 		mEnd = doGetMendHeight();
 		upF ++;
-		if(upF > 200 || sTop > mRHeight) {
+		if(upF > 20) {
 			clearInterval(upTimer);
 		}
 	},50);
@@ -70,8 +62,7 @@ function getMendHeight() {
 }
 function doGetMendHeight() {
 	var endH = document.getElementById("mother").getBoundingClientRect().top + sTop;
-  mRHeight = document.getElementById("rhot").getBoundingClientRect().top + sTop;
-	return endH - cH;
+  return endH - cH;
 }
 // set show light or dark
 function setShow() {

@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
   <!-- <meta name="referrer" content="no-referrer"/> --> 
   <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <title>米虫的留言板 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <title>交互式脚本expect脚本实现自动化 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
   <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
-  <meta name="description" content="这里是米虫的留言板，如果您有什么建议或疑问，请在这里留言！推荐您留下邮箱，该信息不会外泄，当我回复时会通过邮件知会您！ - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="description" content="expect脚本由一系列expect-send对组成，等待输出中输出特定的字符，通常是一个提示符，然后发送特定的响应，特别适用于需要批量手动输入命令的自动化操作改造 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
   <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
   <link rel="icon" href="/static/img/icon.png" /> 
   <link rel="shortcut icon" href="/static/img/icon.png" /> 
@@ -31,12 +31,12 @@
     <a class="logo" href="/"></a> 
     <div class="menu"> 
      <a  href="/">首页</a> 
-     <a  href="/posts/new_1.html">文章</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
      <a  href="/category">分类</a> 
      <a  href="/tag">标签</a> 
      <a  href="/page/about.html">关于</a> 
      <a  href="/page/link.html">友链</a> 
-     <a class="mck" href="/page/msg.html">留言</a> 
+     <a  href="/page/msg.html">留言</a> 
      <a  href="/page/map.html">地图</a> 
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
@@ -46,41 +46,104 @@
    <div class="w tb_15"> 
     <div class="c c_12 pst"> 
      <div class="pt pct rtl"> 
-      <h1>米虫的留言板</h1> 
+      <h1>交互式脚本expect脚本实现自动化</h1> 
      </div> 
-     <div class="pdest rtr">这里是米虫的留言板，如果您有什么建议或疑问，请在这里留言！推荐您留下邮箱，该信息不会外泄，当我回复时会通过邮件知会您！</div> 
+     <div class="pdest rtr">expect脚本由一系列expect-send对组成，等待输出中输出特定的字符，通常是一个提示符，然后发送特定的响应，特别适用于需要批量手动输入命令的自动化操作改造</div> 
     </div> 
    </div> 
   </div> 
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue">/static/upload/banner/1642156318557.jpg</div> 
+     <div class="menue" id="menue">/static/upload/banner/1642465194118.jpg</div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="<ul><li><a href="javascript:runTo('menu_1')" class="pl1">审核说明</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">留言须知</a> <!----></li></ul>" /> 
+      <img src="<ul><li><a href="javascript:runTo('menu_1')" class="pl1">expect</a> <ul><li><a href="javascript:runTo('menu_2')" class="pl2">编写方式</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_3')" class="pl1">书写习惯</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl1">脚本实例</a> <ul><li><a href="javascript:runTo('menu_5')" class="pl2">shell脚本调用exp文件</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl2">远程上传一键密码更新脚本</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_7')" class="pl1">补充优化</a> <!----></li></ul>" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta">
+            <a href="/category/java_1.html">Java</a>
+          </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta">
+            <a href="/tags/springboot_1.html">SpringBoot</a>
+            <a href="/tags/springboot_1.html">配置文件</a>
+            <a href="/tags/springboot_1.html">优先级</a>
+            <a href="/tags/springboot_1.html">环境</a>
+            <a href="/tags/springboot_1.html">配置项</a>
+          </b>
+        </p>
+      </div>
            </div>
      <!-- post content -->
-     <div id="html" class="output mark"><h1 id="menu_1">审核说明</h1><p>为了保证本站文明，您提交的评论需要经过人工审核后方会展示。</p>
-<p>一般来说正常发表意见、建议、讨论均可审核通过。</p>
-<p>博主会认真阅读所有留言，审核并及时回复。</p>
-<p>如您提交了邮箱，可能会受到回复提醒（本站不会对外公布您的邮箱地址）。</p>
-<p>本站可提交您的链接（并且可展示在评论列表上），如果网站不合规，审核时可能会移除您提交的网站链接。</p>
-<p>共建文明网络环境，你我一起努力！</p>
-<h1 id="menu_2">留言须知</h1><p>请阅读以下留下须知，如您的留言违规，将会被审核拒绝（审核拒绝的留言不再另行通知）。</p>
-<p>本站建立了黑名单机制，如果您多次违规，相关邮箱、网址会被加入黑名单列表。</p>
-<p>黑名单将自动阻断留言请求，无法发现留言的提交。</p>
-<hr/>
-<p>╔ 请勿提交散播或制造任何与事实不符的言论。</p>
-<p>╠ 请勿因观点或立场发表嘲笑、讽刺、漫骂等人身攻击言论。</p>
-<p>╠ 请勿提交违反国家法律法规的内容。</p>
-<p>╠ 请勿提交恶意广告。</p>
-<p>╠ 请勿提交含露骨性描写、不含蓄的文字内容。</p>
-<p>╠ 请勿提交政治、种族、肤色、性取向、宗教、民族、地域歧视内容。</p>
-<p>╚ 请勿提交重复内容。</p>
-<hr/>
+     <div id="html" class="output mark"><h1 id="menu_1">expect</h1><p>expect是一种可以用于交互式操作的脚本，来完成比如频繁远程登录&amp;远程下载&amp;定时日志提取等操作。</p>
+<p>expect脚本由一系列expect-send对组成。</p>
+<p>expect等待输出中输出特定的字符，通常是一个提示符，然后发送特定的响应。</p>
+<p>使用expect脚本前需要检查一下环境中是否有expect，直接输入:expect 检查</p>
+<pre><code class="hljs language-shell">expect1.1&gt;
+</code></pre>
+<h2 id="menu_2">编写方式</h2><p>梳理正常执行某些操作所需要的命令、步骤、顺序、以及可能产生分支判断。</p>
+<p>将命令逐一添加到脚本中，通过控制台反馈内容来判定走向哪个分支。</p>
+<h1 id="menu_3">书写习惯</h1><p>Linux中exp脚本有两种主流书写样式：</p>
+<ol>
+<li>直接写在sh中</li>
+<li>独立写在exp文件</li>
+</ol>
+<p>个人推荐直接exp文件格式脚本，避免出现不同sh版本间的兼容问题。</p>
+<p>两种方式的实际书写风格一致。</p>
+<h1 id="menu_4">脚本实例</h1><h2 id="menu_5">shell脚本调用exp文件</h2><p>exp脚本可以在shell脚本中调用</p>
+<pre><code class="hljs language-shell">./sendResetPwd.exp <span class="hljs-variable">${</span>ip} <span class="hljs-variable">${</span>pwd}
+</code></pre>
+<h2 id="menu_6">远程上传一键密码更新脚本</h2><p>如果我们有多个环境需要一键更新密码的时候：</p>
+<ol>
+<li>在一个操作环境上配置好所有远程环境的账号密码（可以从文件读取）</li>
+<li>循环调用本实例exp脚本完成全部改密脚本的上传</li>
+<li>建立一个类似的exp脚本主要通过ssh远程执行resetPsw.sh</li>
+</ol>
+<p>以下实现远程上传一个一键改密Shell脚本（resetPsw.sh)）作为示例&amp;说明：</p>
+<p>(实例中的中文注释是为了方便阅读，实际linux环境中不建议出现中文字符）</p>
+<pre><code class="hljs language-shell"><span class="hljs-comment">#指定头文件</span>
+<span class="hljs-comment">#!/usr/bin/expect</span>
+<span class="hljs-comment">#接受脚本入参 IP和需要修改后的密码</span>
+<span class="hljs-built_in">set</span>  reip       [lindex <span class="hljs-variable">$argv</span> 0]
+<span class="hljs-built_in">set</span>  rootpsw    [lindex <span class="hljs-variable">$argv</span> 1]
+<span class="hljs-comment">#上传一键改密脚本至远程服务器</span>
+<span class="hljs-comment">#实际需要进行捕获的命令（scp -r resetPsw.sh root@${reip}:./），开始捕获</span>
+spawn scp -r resetPsw.sh root@<span class="hljs-variable">${reip}</span>:./
+<span class="hljs-comment">#设定循环flag</span>
+<span class="hljs-built_in">set</span> <span class="hljs-keyword">done</span> 0 
+<span class="hljs-comment">#设置超时时间30s</span>
+<span class="hljs-built_in">set</span> timeout 30 
+    <span class="hljs-comment">#循环捕获入口</span>
+    <span class="hljs-keyword">while</span> {!<span class="hljs-variable">$done</span>} { 
+        expect {
+            <span class="hljs-comment">#捕获写到Password的字符串</span>
+            <span class="hljs-string">&quot;Password*&quot;</span>  
+            <span class="hljs-comment">#输入传入的root密码</span>
+            {send <span class="hljs-string">&quot;<span class="hljs-variable">${rootpsw}</span>r&quot;</span>} 
+            <span class="hljs-comment">#捕获出现失败的字符串</span>
+            <span class="hljs-string">&quot;*failures*&quot;</span> 
+            <span class="hljs-comment">#直接退出，返回1</span>
+            {<span class="hljs-built_in">exit</span> 1} 
+            <span class="hljs-comment">#捕获到上传成功</span>
+            <span class="hljs-string">&quot;resetPsw*&quot;</span> 
+            <span class="hljs-comment">#停止循环</span>
+            {<span class="hljs-built_in">set</span> <span class="hljs-keyword">done</span> 1} 
+            <span class="hljs-comment">#超时场景</span>
+            Timeout  
+            {<span class="hljs-built_in">exit</span> 1}
+        }
+}
+<span class="hljs-comment">#正常退出 异常退出1已在上方退出</span>
+<span class="hljs-built_in">exit</span> 0   
+</code></pre>
+<h1 id="menu_7">补充优化</h1><p>类似这种远程批量行为，为了避免脚本执行异常，建议互相添加白名单实现免密访问，无需配置密码文件，可以大大提交执行效率。</p>
+<p>同理，互相添加白名单也可以通过expect实现，远程互相拷贝公钥。</p>
 </div>
      <!-- author -->
      <div class="row">
@@ -123,7 +186,7 @@
          </div> 
         </div> 
         <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
-        <div class="sendc"><a href="javascript:sendComms(2,1,0)">提交观点</a></div> 
+        <div class="sendc"><a href="javascript:sendComms(1001,1,0)">提交观点</a></div> 
        </div>
       </div> 
      </div>
@@ -136,6 +199,8 @@
                </div> 
       </div> 
      </div>
+          <!-- like post -->
+     
          </div>
     <!-- more post new hot rand -->
     <div class="c c_4">

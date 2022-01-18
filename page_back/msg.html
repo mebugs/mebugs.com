@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title></title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="" /> 
+  <link rel="icon" href="" /> 
+  <link rel="shortcut icon" href="" /> 
+  <link rel="apple-touch-icon-precomposed" href="" /> 
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+ </head> 
+ <body> 
+  <header> 
+   <div class="w"> 
+    <div class="logo"></div> 
+    <div class="menu"> 
+     <a href="/">首页</a> 
+     <a href="/posts/new_1.html">文章</a> 
+     <a href="/category">分类</a> 
+     <a href="/tags">标签</a> 
+     <a href="/page/about.html">关于</a> 
+     <a href="/page/link.html">友链</a> 
+     <a class="mck" href="/page/msg.html">留言</a> 
+     <a href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div>  
+   </div> 
+  </header> 
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>米虫的留言板</h1> 
+     </div> 
+     <div class="pdest rtr">
+       如果您有什么建议或疑问，请在这里留言！推荐您留下邮箱，该信息不会外泄，当我回复时会通过邮件知会您！ 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15">
+     <div class="c c_12">
+       <div class="row">
+       <div class="box">
+        <div class="comme">
+          <div class="namee"> 
+           <div class="navt" onclick="chooseAvt()"> 
+            <img id="avt" src="/static/upload/avtor/1.jpg" /> 
+            <p>选择头像</p> 
+           </div> 
+           <div class="nxinfo"> 
+            <div class="nipt"> 
+             <p>昵称</p> 
+             <input id="name" type="text" placeholder="*必填,请输入您的昵称" /> 
+            </div> 
+            <div class="nipt"> 
+             <p>邮箱</p> 
+             <input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+            </div> 
+            <div class="nipt"> 
+             <p>QQ</p> 
+             <input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+            </div> 
+            <div class="nipt"> 
+             <p>网址</p> 
+             <input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="ctxe"> 
+           <textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+          </div> 
+          <div class="sendc"> 
+           <a href="javascript:sendComms(2,1,0)">提交观点</a> 
+          </div> 
+         </div> 
+        </div>  
+       </div>
+       <div class="row">
+       <div class="box">
+        <div class="comml">
+         <ul id="commea"> 
+          <li> 
+           <div class="comli"> 
+            <img src="/test/test6.jpg" /> 
+            <div class="comp"> 
+             <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendCommsR(2,2,11)">评论TA</a></h1> 
+             <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+            </div> 
+           </div> 
+           <ul> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 2级评论 --> 
+               <h1><b>德玛西亚</b>丨2020-11-11 评论本楼丨<a href="javascript:sendCommsRr(2,3,12)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 3级回复 --> 
+               <h1><b>木梁先生</b>丨2020-11-11 回复<b>德玛西亚</b>丨<a href="javascript:sendCommsRr(2,3,14)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+           </ul> </li> 
+          <li> 
+           <div class="comli"> 
+            <img src="/test/test6.jpg" /> 
+            <div class="comp"> 
+             <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendCommsR(2,2,11)">评论TA</a></h1> 
+             <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+            </div> 
+           </div> </li> 
+          <li> 
+           <div class="comli"> 
+            <img src="/test/test6.jpg" /> 
+            <div class="comp"> 
+             <h1><b>木梁先生</b>丨2020-11-11 发表观点丨<a href="javascript:sendCommsR(2,2,11)">评论TA</a></h1> 
+             <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+            </div> 
+           </div> 
+           <ul> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 2级评论 --> 
+               <h1><b>德玛西亚</b>丨2020-11-11 评论本楼丨<a href="javascript:sendCommsRr(2,3,12)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 2级评论 --> 
+               <h1><b>陆先生</b>丨2020-11-11 评论本楼丨<a href="javascript:sendCommsRr(2,3,12)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+            <li> 
+             <div class="comli"> 
+              <div class="comp">
+               <!-- 3级回复 --> 
+               <h1><b>木梁先生</b>丨2020-11-11 回复<b>德玛西亚</b>丨<a href="javascript:sendCommsRr(2,3,14)">回复TA</a></h1> 
+               <p>这个非常有趣的想法！我想发表我的独家观点！来吧小伙计！这个非常有趣的想法！我想发表我的独家观点！</p> 
+              </div> 
+             </div> </li> 
+           </ul> </li> 
+         </ul> 
+        </div> 
+        <div class="comore"> 
+         <a id="comodoo" href="javascript:moreComs(10)">更多观点</a> 
+         <p id="comolod">加载中...</p> 
+         <p id="comonul">已经到底啦~.~</p> 
+        </div> 
+       </div> 
+       </div>
+     </div>
+   </div>
+  </div>
+  <footer>
+     <div class="w"> 
+      <div class="c c_4"> 
+       <div class="ft fl"> 
+        <h2>排序分类</h2> 
+        <p> <a href="/posts/best_1.html">好文荐读</a> <a href="/posts/hot_1.html">全站热门</a> <a href="/posts/new_1.html">最新发布</a> <a href="/posts/up_1.html">近期飙升</a> <a href="/posts/rand_1.html">随机排序</a> <a href="/category/java_1.html">JAVA</a> <a href="/category/go_1.html">Golang</a> <a href="/category/py_1.html">Python</a> <a href="/category/php_1.html">PHP</a> <a href="/category/linux_1.html">Linux</a> <a href="/category/web_1.html">WEB</a> <a href="/category/db_1.html">数据库</a> <a href="/category/app_1.html">移动端</a> <a href="/category/dist_1.html">分布式</a> <a href="/category/build_1.html">架构</a> <a href="/category/serv_1.html">运维</a> <a href="/category/data_1.html">数据</a> <a href="/category/net_1.html">网络</a> <a href="/category/open_1.html">开源</a> <a href="/category/case_1.html">实例</a> <a href="/category/share_1.html">分享</a></p> 
+       </div> 
+      </div> 
+      <div class="c c_4"> 
+       <div class="ft fc"> 
+        <h2>特别说明</h2> 
+        <p>本站内容由个人原创、收集或整理，如涉及侵权请联系删除</p> 
+        <p>您可自由转发，但本站不提供有效性、可用性和准确性保证</p> 
+        <p>本站不提供免费技术支持，不推荐您使用代码或案例商业化</p> 
+       </div> 
+      </div> 
+      <div class="c c_4"> 
+       <div class="ft fr"> 
+        <h2>热点标签</h2> 
+        <p> <a href="/tags/springboot_1.html">Java</a> <a href="/tags/springboot_1.html">Golang</a> <a href="/tags/springboot_1.html">Python</a> <a href="/tags/springboot_1.html">PHP</a> <a href="/tags/springboot_1.html">Linux</a> <a href="/tags/springboot_1.html">WEB</a> <a href="/tags/springboot_1.html">数据库</a> <a href="/tags/springboot_1.html">移动端</a> <a href="/tags/springboot_1.html">分布式</a> <a href="/tags/springboot_1.html">运维</a> <a href="/tags/springboot_1.html">数据</a> <a href="/tags/springboot_1.html">网络</a> <a href="/tags/springboot_1.html">开源</a> <a href="/tags/springboot_1.html">实例</a> <a href="/tags/springboot_1.html">分享</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> </p>
+       </div> 
+      </div> 
+      <div class="c c_12"> 
+       <div class="fu"> 
+        <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+        <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+       </div> 
+      </div> 
+     </div> 
+    </footer> 
+    <div class="back_top" onclick="backTop()"> 
+     <img src="/static/img/back_top.png" /> 
+    </div> 
+    <div class="rzz" id="cavt">
+      <div class="rea cave box">
+        <div class="reat">
+          <h1>选择个人头像</h1>
+        </div>
+        <div class="avts">
+          <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+          <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+          <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+          <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+          <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+          <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+          <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+          <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+          <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+          <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+          <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+          <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+        </div>
+        <div class="sendc"> 
+          <a class="rcls" href="javascript:clsAvt()">关闭</a>
+       </div> 
+      </div>
+    </div>
+    <div class="rzz" id="rzz">
+      <div class="rea box">
+        <div class="reat">
+          <h1 id="rwork"></h1>
+        </div>
+        <div class="comme">
+         <div class="namee">  
+          <div class="nxinfo"> 
+           <div class="nipt"> 
+            <p>昵称</p> 
+            <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+           </div> 
+           <div class="nipt"> 
+            <p>邮箱</p> 
+            <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+           </div> 
+           <div class="nipt"> 
+            <p>QQ</p> 
+            <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+           </div> 
+           <div class="nipt"> 
+            <p>网址</p> 
+            <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="ctxe"> 
+          <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+         </div> 
+         <div class="sendc"> 
+          <a class="rcls" href="javascript:clsComms()">取消</a> 
+          <a id="repMethod" href="#">提交观点</a> 
+         </div> 
+        </div> 
+      </div>
+    </div>
+    <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script> 
+    <script src="/static/js/base.js?v=1.0"></script>
+    <script src="/static/js/popup.js?v=1.0"></script>  
+    <script src="/static/js/post.js?v=1.0"></script>  
+   </body>
+  </html>

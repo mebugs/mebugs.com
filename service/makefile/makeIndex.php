@@ -283,7 +283,7 @@ $friends = mysqli_query($conn,$friendSql);
 	file_put_contents($file_sc,$content);
 	//擦除缓冲区并关闭
 	ob_end_clean();
-  array_push($backUrls,["loc" => $baseUrl, "priority" => 1])
+  array_push($backUrls,["loc" => $baseUrl, "priority" => 1]);
   return $backUrls;
 } 
 ?>
