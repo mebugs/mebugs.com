@@ -33,7 +33,7 @@
     </div> 
    </div> 
   </footer> 
-  <div class="back_top" onclick="backTop()"> 
+  <div class="back_top" onclick="backTop()"> </div> 
   <?php if($pageType == "post" && $post != null && $post["openComms"] == 0) { // 列表页POST对象预置为null?> 
   <div class="rzz" id="cavt">
     <div class="rea cave box">

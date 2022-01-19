@@ -162,6 +162,41 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
             <p><?php echo $commNew["coms"]; ?></p> 
            </div> 
           </div>
+          <?php
+          // 二级评论数量
+          $lvTwoCounts = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` = 1 AND c.`level` > 1 AND c.fid = ".$commNew["id"]))[0];
+          ?>
+          <?php if($lvTwoCounts > 0) {?>
+          <!-- 二三级评论 -->
+          <ul>
+            <?php
+            // 查询二三级评论列表
+            $lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` = 1 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` = 1) tt ORDER BY tt.id";
+            $lvTTs = mysqli_query($conn,$lvTTSql);
+            ?>
+            <?php while($lvTT = mysqli_fetch_assoc($lvTTs)){ ?>
+            <li>
+             <div class="comli"> 
+              <div class="comp">
+               <h1>
+                 <b><a target="_blank" href="<?php echo $lvTT["url"]; ?>"><?php echo $lvTT["name"]; ?></a></b>
+                 <?php 
+                 echo "丨".$lvTT["send_time"];
+                 if($lvTT["fid"] == $commNew["id"]) { 
+                   echo ' 评论本楼丨';
+                 }else{
+                   echo ' 回复<b><a target="_blank" href="'.$lvTT["pUrl"].'">'.$lvTT["pName"].'</a></b>丨';
+                 }
+                 ?>
+                 <a href="javascript:sendCommsR(<?php echo $post['id']; ?>,3,<?php echo $lvTT["id"]; ?>)">回复TA</a></h1> 
+               </h1> 
+               <p><?php echo $lvTT["coms"]; ?></p> 
+              </div> 
+             </div>
+            </li>
+            <?php }?>
+          </ul>
+          <?php }?>
          </li>
          <?php }?>
         </ul>
