@@ -128,7 +128,57 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
       </div> 
      </div>
      <!-- comms eare -->
-     
+     <div class="row">
+      <div class="commi">
+      <?php
+      $commsCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` = 1 AND c.pid = ".$post["id"]))[0];
+      if($commsCount == 0) {
+        echo '<p>当前还没有观点发布，欢迎您留下足迹！</p>';
+      } else {
+        echo '<p>当前累计<b>'.$commsCount.'</b>条观点！一起看看吧！</p>';
+        echo '<div class="ckOrder"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>';
+      }
+      // 查询pageCount
+      $pageCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` = 1 AND c.`level` = 1 AND c.pid = ".$post["id"]))[0];
+      ?>
+      </div>
+      <?php if($commsCount > 0) { ?>
+      <div class="box">
+       <div class="comml">
+        <ul id="commea">
+        <?php
+        // 以及评论 查询倒序
+        $commNews = mysqli_query($conn,"SELECT * FROM `comms` c WHERE c.`status` = 1 AND c.`level` = 1 AND c.pid = ".$post["id"]." ORDER BY id DESC"); ?>
+         <?php while($commNew = mysqli_fetch_assoc($commNews)){ ?>
+         <li>
+          <div class="comli"> 
+           <img src="<?php echo $commNew["avt"]; ?>"/> 
+           <div class="comp"> 
+            <h1>
+             <b><a target="_blank" href="<?php echo $commNew["url"]; ?>"><?php echo $commNew["name"]; ?></a></b>
+             <?php echo "丨".$commNew["send_time"]." 发表观点丨"; ?>
+             <a href="javascript:sendCommsR(<?php echo $post['id']; ?>,2,<?php echo $commNew["id"]; ?>)">评论TA</a>
+            </h1> 
+            <p><?php echo $commNew["coms"]; ?></p> 
+           </div> 
+          </div>
+         </li>
+         <?php }?>
+        </ul>
+       </div>
+       <div class="comore">
+        <?php 
+        if($commsCount > 0) { 
+          echo '<a id="comodoo" href="javascript:moreComs()">更多观点</a>';
+        }else{
+          echo '<p id="comonul">已经到底啦~.~</p>';
+        } 
+        ?>
+        <p id="comolod">加载中...</p>
+       </div>
+      </div>
+      <?php }?>
+     </div> 
      <?php }?>
      <!-- sml imgs -->
      <div class="row">

@@ -84,9 +84,9 @@
 <li>使用<strong>deserialization</strong>（无构造函数调用）</li>
 </ol>
 <h1 id="menu_2">相关实例</h1><h2 id="menu_3">new关键字</h2><p>最通用、常见、普遍、简单的实例化方式，默认调用无参构造，支持调用有参构造。</p>
-<pre><code class="hljs language-java"><span class="hljs-operator">/</span><span class="hljs-operator">/</span>无参构造创建对象
-<span class="hljs-keyword">User</span> <span class="hljs-keyword">default</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>();
-<span class="hljs-operator">/</span><span class="hljs-operator">/</span>有参构造创建对象 有参构造的入参与自定义的构造函数一致
+<pre><code class="hljs language-java"><span class="hljs-comment">/**无参构造创建对象*/</span>
+<span class="hljs-keyword">User</span> jack<span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>();
+<span class="hljs-comment">/**有参构造创建对象 有参构造的入参与自定义的构造函数一致*/</span>
 <span class="hljs-keyword">User</span> tom <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>(&quot;mebugs&quot;,&quot;man&quot;);
 </code></pre>
 <h2 id="menu_4">Class类的newInstance()</h2><p>使用反射的Class类的newInstance()来实例化对象，newInstance()方法将调用无参构造方法去实例化一个对象。</p>
@@ -177,7 +177,10 @@ in.close();
       </div> 
      </div>
      <!-- comms eare -->
-     
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
           <!-- sml imgs -->
      <div class="row">
       <div class="box"> 

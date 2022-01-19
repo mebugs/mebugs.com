@@ -137,3 +137,20 @@ function initUserInput() {
   document.getElementById("url").value = localUser.url;
   document.getElementById("rurl").value = localUser.url;
 }
+// order排序查询
+var page = 2; // 默认第二页
+var pages = 1; // 总页数存在查看更多会返回新的pages
+var order = "desc";// 默认倒序
+function toCommsOrder(flag) {
+  // 切换排序需要清空显示区域的元素
+  $("#commea").empty();
+  page = 1;
+  order = flag?"desc":"asc";
+  // 查询分页数据
+}
+function moreComs() {
+  
+}
+function getCommsList() {
+  
+}

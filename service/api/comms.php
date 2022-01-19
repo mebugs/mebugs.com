@@ -4,6 +4,9 @@ function AddComms($conn,$body,$status,$admin) {
   $email = $body -> email;$email = str_replace('\'','\'\'',$email);
   $qq = $body -> qq;$qq = str_replace('\'','\'\'',$qq);
   $url = $body -> url;$url = str_replace('\'','\'\'',$url);
+  if($url == "") {
+    $url = "/";
+  }
   $avt = $body -> avt;$avt = str_replace('\'','\'\'',$avt);
   $pid = $body -> pid;
   $fid = $body -> fid;
