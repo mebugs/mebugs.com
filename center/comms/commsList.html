@@ -24,7 +24,9 @@
              </div> 
              <div class="cminf">
                <h1><span>{{ item.name }}</span>  <em>{{ item.send_time }}</em></h1>
-               <h1><b>原文：</b><a target="_blank" :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></h1>
+               <h1><b>原文：</b>
+               <a target="_blank" v-if="item.pid < 1000" :href="'/page/'+item.purl+'.html'">{{ item.title }}</a>
+               <a target="_blank" v-else :href="'/post/'+item.purl+'.html'">{{ item.title }}</a></h1>
                <div class="fcoms" v-if="item.fid!=0">
                 <b>原评：</b><p><span>{{ item.fname }}</span>:<em>{{ item.fcoms }}</em></p>
                </div>

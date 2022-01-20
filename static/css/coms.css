@@ -11,7 +11,39 @@
 .sendc{margin:10px;text-align:right}
 .sendc a{display:inline-block;line-height:35px;width:200px;background:#5891ab;text-align:center;color:#f0f0f0}
 .navt p:hover,.sendc a:hover{background:#2d8cb7}
-.commi p{padding:5px;line-height:40px}
+.commi {
+    background: #fdfdfd;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.commi p{text-align: center;font-size: 16px;margin-bottom: 10px;}
+.ckOrder {
+    width: 160px;
+    margin-left: calc(50% - 80px);
+    display: flex;
+    overflow: hidden;
+    border: 2px solid #5891ab;
+}
+
+.ckOrder span {
+    cursor: pointer;
+    width: 50%;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    color: #fdfdfd;
+    border-radius: 0;
+    background: #5891ab;
+}
+
+.ckOrder span.cko {
+    background: #f3f6f8;
+    color: #5891ab;
+}
+
+.ckOrder span:hover {
+    opacity: 0.5;
+}
 .comml{padding:5px}
 .comml .comli{display:flex}
 .comml .comli img{width:60px;height:60px;border-radius:30px}
@@ -37,3 +69,26 @@
 .dark .comp p:after{border-bottom:10px solid #222b35}
 .dark .comml li{border-bottom:1px solid #010101}
 .dark .comml ul ul li{border:0}
+.dark .ckOrder {
+    border: 2px solid #2d8cb7;
+}
+
+.dark .ckOrder span {
+    background: #2d8cb7;
+    color:#1c2128;
+}
+
+.dark .ckOrder span.cko {
+    background: #222b35;
+    color: #2d8cb7;
+}
+.dark .commi {
+    background:#1c2128;
+}
+p#comolod {
+    animation: bigsmal 1s linear infinite normal;
+}
+
+@keyframes bigsmal{
+50%{transform: scale(1.2);}
+}

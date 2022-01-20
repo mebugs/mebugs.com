@@ -144,9 +144,16 @@ var order = "desc";// 默认倒序
 function toCommsOrder(flag) {
   // 切换排序需要清空显示区域的元素
   $("#commea").empty();
+  $(".cko").removeClass("cko");
+  if(flag) {
+    $(".ckOrder").children("span").eq(0).addClass("cko");
+  }else{
+    $(".ckOrder").children("span").eq(1).addClass("cko");
+  }
   page = 1;
   order = flag?"desc":"asc";
   // 查询分页数据
+  
 }
 function moreComs() {
   

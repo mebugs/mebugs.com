@@ -131,7 +131,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
      <div class="row">
       <div class="commi">
       <?php
-      $commsCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` = 1 AND c.pid = ".$post["id"]))[0];
+      $commsCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` > 0 AND c.pid = ".$post["id"]))[0];
       if($commsCount == 0) {
         echo '<p>当前还没有观点发布，欢迎您留下足迹！</p>';
       } else {
@@ -139,7 +139,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
         echo '<div class="ckOrder"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>';
       }
       // 查询pageCount
-      $pageCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` = 1 AND c.`level` = 1 AND c.pid = ".$post["id"]))[0];
+      $pageCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` > 0 AND c.`level` = 1 AND c.pid = ".$post["id"]))[0];
       ?>
       </div>
       <?php if($commsCount > 0) { ?>
@@ -148,7 +148,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
         <ul id="commea">
         <?php
         // 以及评论 查询倒序
-        $commNews = mysqli_query($conn,"SELECT * FROM `comms` c WHERE c.`status` = 1 AND c.`level` = 1 AND c.pid = ".$post["id"]." ORDER BY id DESC"); ?>
+        $commNews = mysqli_query($conn,"SELECT * FROM `comms` c WHERE c.`status` > 0 AND c.`level` = 1 AND c.pid = ".$post["id"]." ORDER BY id DESC"); ?>
          <?php while($commNew = mysqli_fetch_assoc($commNews)){ ?>
          <li>
           <div class="comli"> 
@@ -164,14 +164,14 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
           </div>
           <?php
           // 二级评论数量
-          $lvTwoCounts = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` = 1 AND c.`level` > 1 AND c.fid = ".$commNew["id"]))[0];
+          $lvTwoCounts = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` > 0 AND c.`level` > 1 AND c.fid = ".$commNew["id"]))[0];
           ?>
           <?php if($lvTwoCounts > 0) {?>
           <!-- 二三级评论 -->
           <ul>
             <?php
             // 查询二三级评论列表
-            $lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` = 1 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` = 1) tt ORDER BY tt.id";
+            $lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` > 0) tt ORDER BY tt.id";
             $lvTTs = mysqli_query($conn,$lvTTSql);
             ?>
             <?php while($lvTT = mysqli_fetch_assoc($lvTTs)){ ?>
