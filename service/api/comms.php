@@ -62,4 +62,31 @@ function UpdateCommsStatus($conn,$id,$status) {
   return [false,'数据更新失败'];
 }
 
+// 查询评论分页
+function PageComms($conn,$body) {
+  $pid = $body -> pid;
+  $order = $body -> order;
+  $page = $body -> page;
+  $size = 5;
+  $ctSql = "SELECT count(id) FROM `comms` c WHERE c.`status` > 0 AND c.`level` = 1 AND c.pid = ".$pid;
+  $qrSql = "SELECT * FROM `comms` c WHERE c.`status` > 0 AND c.`level` = 1 AND c.pid = ".$pid." ORDER BY id ".$order." LIMIT ".($page-1)*$size.",".$size;
+  $total = mysqli_fetch_array(mysqli_query($conn,$ctSql))[0];
+  $pages = ceil($total/$size);
+  $date = ['pages' => $pages];
+  if($pages < $page) {
+    $date['list'] = [];
+    return [true,$date];
+  }
+  $list = [];
+  $commNews = mysqli_query($conn,$qrSql);
+  while($commNew = mysqli_fetch_assoc($commNews)){
+    // 查询二级
+    $lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` > 0) tt ORDER BY tt.id";
+    $lvTTs = mysqli_fetch_all(mysqli_query($conn,$lvTTSql),MYSQLI_ASSOC);
+    $commNew['child'] = $lvTTs;
+    array_push($list,$commNew);
+  }
+  $date['list'] = $list;
+  return [true,$date];
+}
 ?>

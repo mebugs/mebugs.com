@@ -97,6 +97,15 @@
   </div>
   <?php } ?>
   </div> 
+  <script type="text/javascript">
+    <?php 
+    if($pageType == "post" && $post != null){
+      echo "var pid = ".$post["id"].";";
+    }else{
+      echo "var pid = 0;";
+    }
+    ?>
+  </script>
   <script src="/static/js/base.js?v=1.0"></script> 
   <?php if($pageType == "index") { ?>
   <script src="/static/lib/svg/svg-inject.min.js?v=1.0"></script>

@@ -203,13 +203,13 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
        </div>
        <div class="comore">
         <?php 
-        if($commsCount > 0) { 
-          echo '<a id="comodoo" href="javascript:moreComs()">更多观点</a>';
+        if($pageCount > 5) { 
+          echo '<a id="comodoo" href="javascript:moreComs()">更多观点</a><p id="comonul" style="display:none;">已经到底啦~.~</p>';
         }else{
-          echo '<p id="comonul">已经到底啦~.~</p>';
+          echo '<a id="comodoo" style="display:none;" href="javascript:moreComs()">更多观点</a><p id="comonul">已经到底啦~.~</p>';
         } 
         ?>
-        <p id="comolod">加载中...</p>
+        <p id="comolod" style="display:none;">加载中...</p>
        </div>
       </div>
       <?php }?>

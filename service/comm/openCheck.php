@@ -37,6 +37,10 @@ function openCheckErr($body,$type) {
   if ( $type == 3 ) {
     
   }
+  // 评价加载
+  if ( $type == 4 ) {
+    
+  }
   return false;
 }
 ?>

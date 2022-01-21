@@ -138,7 +138,7 @@ function initUserInput() {
   document.getElementById("rurl").value = localUser.url;
 }
 // order排序查询
-var page = 2; // 默认第二页
+var page = 1; // 默认第二页
 var pages = 1; // 总页数存在查看更多会返回新的pages
 var order = "desc";// 默认倒序
 function toCommsOrder(flag) {
@@ -150,14 +150,71 @@ function toCommsOrder(flag) {
   }else{
     $(".ckOrder").children("span").eq(1).addClass("cko");
   }
+  $("#comodoo").hide();
+  $("#comonul").hide();
   page = 1;
   order = flag?"desc":"asc";
   // 查询分页数据
-  
+  getCommsList();
 }
 function moreComs() {
-  
+  page++;
+  $("#comodoo").hide();
+  $("#comonul").hide();
+  // 查询分页数据
+  getCommsList();
 }
 function getCommsList() {
+  var pageQuery = {
+    page : page,
+    order: order,
+    pid : pid,
+    timestamp : new Date().getTime()
+  }
+  $("#comolod").show();
+  $.ajax({
+    url:"/service/commsQueryOpen.php",
+    type:"POST",
+    dataType:'json',
+    contentType:'application/json;charset=UTF-8',
+    data:JSON.stringify(pageQuery),
+    success:function(data, status){
+      $("#comolod").hide();
+      if(data.code == 200 ) {
+        pages =  data.data.pages;
+        if(pages < page) {
+          PopUp("没有更多数据啦",1,1);
+        }else if(pages == page) {
+          $("#comonul").show();
+        }else{
+          $("#comodoo").show();
+        }
+        var list = data.data.list;
+        if(list != null && list.length > 0) {
+          var html = "";
+          list.forEach(i=>{
+            var liHtml = '<li> <div class="comli"> <img src="'+i.avt+'"/><div class="comp"><h1><b><a target="_blank" href="'+i.url+'">'+i.name+'</a></b>丨'+i.send_time+' 发表观点丨<a href="javascript:sendCommsR('+pid+',2,'+i.id+')">评论TA</a></h1><p>'+i.coms+'</p></div></div>';
+            if(i.child && i.child.length >0) {
+              var child = i.child;
+              liHtml += '<ul>';
+              list.forEach(i=>{
+                
+                });
+              liHtml += '</ul>';
+            }
+            liHtml += '</li>';
+            html += liHtml;
+          });
+          $("#commea").append(html);
+        }
+      }else{
+        PopUp(data.msg,1,1);
+      }
+    },
+    error:function(req,data, err){
+      $("#comolod").hide(400);
+      PopUp("请求错误",1,1);
+    },
+  })
   
 }
