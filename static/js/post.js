@@ -198,8 +198,14 @@ function getCommsList() {
               var child = i.child;
               liHtml += '<ul>';
               list.forEach(i=>{
-                
-                });
+                var cLiHtml = '<li> <div class="comli"> <div class="comp"> <h1> <b><a target="_blank" href="'+child.url+'">'+child.name+'</a></b>丨'+i.send_time;
+                if(child.fid == i.id) {
+                  cLiHtml += ' 评论本楼丨';
+                }else{
+                  cLiHtml += ' 回复<b><a target="_blank" href="'+child.pUrl+'">'+child.pName+'</a></b>丨';
+                }
+                cLiHtml += '<a href="javascript:sendCommsR('+pid+',3,'+child.id+')">回复TA</a></h1> </h1><p>'+child.coms+'</p> </div> </div> </li>';
+              });
               liHtml += '</ul>';
             }
             liHtml += '</li>';
