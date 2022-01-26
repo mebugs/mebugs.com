@@ -30,7 +30,7 @@ a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rg
 .iag a:hover,.iag a:hover svg path{color:#5891ab}
 .lk,.lk .lmr{text-align:center;display:flex;flex-wrap:wrap;justify-content:center}
 .lk a{line-height:25px;padding:5px 15px;margin:5px;display:inline-block}
-.lk .lmr a{background:#5891ab;color:#f0f0f0}
+.lk .lmr a{color:#f0f0f0;}
 .lk a:hover{color:#5891ab;background:#e3ebee}
 .dark .bann span.swiper-pagination-bullet{background:#2d8cb7}
 .dark .mine{background: #222b35;}
@@ -42,6 +42,5 @@ a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rg
 .dark .pbline h2{color:#e2f1ff}
 .dark .pbline .pdesc{color:#adbac7}
 .dark .iag a svg path{color:#adbac7}
-.dark .lk .lmr a{background:#5891ab}
 .dark .lk a:hover{color:#2d8cb7;background:#2d333b}
 .dark .iag a:hover,.dark .iag a:hover svg path{color:#2d8cb7}

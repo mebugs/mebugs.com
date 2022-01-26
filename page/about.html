@@ -172,7 +172,7 @@
       <div class="box"> 
        <div class="comme"> 
         <div class="namee"> 
-         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p>选择头像</p></div> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
          <div class="nxinfo"> 
           <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
           <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
@@ -181,15 +181,15 @@
          </div> 
         </div> 
         <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
-        <div class="sendc"><a href="javascript:sendComms(1,1,0)">提交观点</a></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1,1,0)">提交观点</a></div> 
        </div>
       </div> 
      </div>
      <!-- comms eare -->
      <div class="row">
       <div class="commi">
-      <p>当前累计<b>23</b>条观点！一起看看吧！</p><div class="ckOrder"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>      </div>
-            <div class="box">
+      <p>当前累计<b>23</b>条观点！一起看看吧！</p><div class="ckOrder bgl"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>      </div>
+            <div class="box commbox">
        <div class="comml">
         <ul id="commea">
                           <li>
@@ -438,6 +438,9 @@
        <div class="comore">
         <a id="comodoo" href="javascript:moreComs()">更多观点</a><p id="comonul" style="display:none;">已经到底啦~.~</p>        <p id="comolod" style="display:none;">加载中...</p>
        </div>
+       <div class="zdi">
+         <a class="bgl" href="javascript:showAll()">▼ 展开 ▼</a>
+       </div> 
       </div>
            </div> 
           <!-- sml imgs -->
@@ -452,14 +455,14 @@
     <div class="c c_4">
      <!-- new -->
      <div class="row"> 
-      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">More&gt;</a></div> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
             <div class="box lm"> 
               <a href="/post/expect.html">  
-        <div class="pimel ltop">1</div> 
+        <div class="pimel ltop bgl">1</div> 
         <div class="pinfr"><h2>交互式脚本expect脚本实现自动化</h2></div> 
        </a>
               <a href="/post/javaobj.html">  
-        <div class="pimel ltop">2</div> 
+        <div class="pimel ltop bgl">2</div> 
         <div class="pinfr"><h2>JAVA实例化对象的五种方式</h2></div> 
        </a>
              </div> 
@@ -468,14 +471,14 @@
     <div class="c c_4">
       <!-- new -->
       <div class="row"> 
-       <div class="pt"><h1>近期热门</h1><a class="mr" href="/posts/up_1.html">More&gt;</a></div> 
+       <div class="pt"><h1>近期热门</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
               <div class="box lm"> 
                 <a href="/post/javaobj.html">  
-         <div class="pimel ltop">1</div> 
+         <div class="pimel ltop bgl">1</div> 
          <div class="pinfr"><h2>JAVA实例化对象的五种方式</h2></div> 
         </a>
                 <a href="/post/expect.html">  
-         <div class="pimel ltop">2</div> 
+         <div class="pimel ltop bgl">2</div> 
          <div class="pinfr"><h2>交互式脚本expect脚本实现自动化</h2></div> 
         </a>
                </div> 
@@ -484,14 +487,14 @@
     <div class="c c_4">
       <!-- new -->
       <div class="row"> 
-       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">More&gt;</a></div> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
               <div class="box lm"> 
                 <a href="/post/expect.html">  
-         <div class="pimel ltop">1</div> 
+         <div class="pimel ltop bgl">1</div> 
          <div class="pinfr"><h2>交互式脚本expect脚本实现自动化</h2></div> 
         </a>
                 <a href="/post/javaobj.html">  
-         <div class="pimel ltop">2</div> 
+         <div class="pimel ltop bgl">2</div> 
          <div class="pinfr"><h2>JAVA实例化对象的五种方式</h2></div> 
         </a>
                </div> 

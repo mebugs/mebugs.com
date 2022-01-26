@@ -114,7 +114,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
       <div class="box"> 
        <div class="comme"> 
         <div class="namee"> 
-         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p>选择头像</p></div> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
          <div class="nxinfo"> 
           <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
           <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
@@ -123,7 +123,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
          </div> 
         </div> 
         <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
-        <div class="sendc"><a href="javascript:sendComms(<?php echo $post['id']; ?>,1,0)">提交观点</a></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(<?php echo $post['id']; ?>,1,0)">提交观点</a></div> 
        </div>
       </div> 
      </div>
@@ -136,14 +136,14 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
         echo '<p>当前还没有观点发布，欢迎您留下足迹！</p>';
       } else {
         echo '<p>当前累计<b>'.$commsCount.'</b>条观点！一起看看吧！</p>';
-        echo '<div class="ckOrder"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>';
+        echo '<div class="ckOrder bgl"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>';
       }
       // 查询pageCount
       $pageCount = mysqli_fetch_array(mysqli_query($conn,"SELECT count(id) FROM `comms` c WHERE c.`status` > 0 AND c.`level` = 1 AND c.pid = ".$post["id"]))[0];
       ?>
       </div>
       <?php if($commsCount > 0) { ?>
-      <div class="box">
+      <div class="box commbox">
        <div class="comml">
         <ul id="commea">
         <?php
@@ -212,6 +212,9 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
         ?>
         <p id="comolod" style="display:none;">加载中...</p>
        </div>
+       <div class="zdi">
+         <a class="bgl" href="javascript:showAll()">▼ 展开 ▼</a>
+       </div> 
       </div>
       <?php }?>
      </div> 
@@ -235,12 +238,12 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
     <div class="c c_4">
      <!-- new -->
      <div class="row"> 
-      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">More&gt;</a></div> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
       <?php $npi = 1; ?>
       <div class="box lm"> 
        <?php foreach ($doPosts['new'] as $newP) { ?>
        <a href="/post/<?php echo $newP['url']; ?>.html">  
-        <div class="pimel ltop"><?php echo $npi; ?></div> 
+        <div class="pimel ltop bgl"><?php echo $npi; ?></div> 
         <div class="pinfr"><h2><?php echo $newP['title']; ?></h2></div> 
        </a>
        <?php  $npi++; } ?>
@@ -250,12 +253,12 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
     <div class="c c_4">
       <!-- new -->
       <div class="row"> 
-       <div class="pt"><h1>近期热门</h1><a class="mr" href="/posts/up_1.html">More&gt;</a></div> 
+       <div class="pt"><h1>近期热门</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
        <?php $upi = 1; ?>
        <div class="box lm"> 
         <?php foreach ($doPosts['hot'] as $upP) { ?>
         <a href="/post/<?php echo $upP['url']; ?>.html">  
-         <div class="pimel ltop"><?php echo $upi; ?></div> 
+         <div class="pimel ltop bgl"><?php echo $upi; ?></div> 
          <div class="pinfr"><h2><?php echo $upP['title']; ?></h2></div> 
         </a>
         <?php  $upi++; } ?>
@@ -265,12 +268,12 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
     <div class="c c_4">
       <!-- new -->
       <div class="row"> 
-       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">More&gt;</a></div> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
        <?php $rpi = 1; ?>
        <div class="box lm"> 
         <?php foreach ($doPosts['new'] as $radP) { ?>
         <a href="/post/<?php echo $radP['url']; ?>.html">  
-         <div class="pimel ltop"><?php echo $rpi; ?></div> 
+         <div class="pimel ltop bgl"><?php echo $rpi; ?></div> 
          <div class="pinfr"><h2><?php echo $radP['title']; ?></h2></div> 
         </a>
         <?php  $rpi++; } ?>

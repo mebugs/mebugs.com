@@ -32,7 +32,7 @@
     	try{
     	    SVGInject(obj);
     	}catch(e){
-    	    setTimeout(function(){
+    	  setTimeout(function(){
     			initSvg(obj);
     		},200)
     	}

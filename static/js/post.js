@@ -225,3 +225,18 @@ function getCommsList() {
   })
   
 }
+
+function showAll() {
+  $(".commbox").removeClass("zdbox");
+}
+
+ready(makeZd);
+// 如果评论区长度高于400 默认启用折叠
+function makeZd() {
+  var commbox = $(".commbox");
+  if(commbox) {
+    if(commbox.height() > 400) {
+      commbox.addClass("zdbox");
+    }
+  }
+}

@@ -5,12 +5,12 @@
 .nipt p{font-size:13px;font-weight:900;line-height:24px}
 .nipt input,.ctxe textarea{width:100%;font-size:14px}
 .nipt input{line-height:34px;padding:0 5px}
-.navt p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#5891ab;font-size:13px}
+.navt p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;font-size:13px;}
 .ctxe{margin:10px}
 .ctxe textarea{resize:none;height:90px;line-height:25px;padding:5px}
 .sendc{margin:10px;text-align:right}
-.sendc a{display:inline-block;line-height:35px;width:200px;background:#5891ab;text-align:center;color:#f0f0f0}
-.navt p:hover,.sendc a:hover{background:#2d8cb7}
+.sendc a{display:inline-block;line-height:35px;width:200px;/* background:#5891ab; */text-align:center;color:#f0f0f0;font-size: 14px;}
+.navt p:hover,.sendc a:hover{font-size: 15px;}
 .commi {
     background: #fdfdfd;
     padding: 15px;
@@ -22,7 +22,7 @@
     margin-left: calc(50% - 80px);
     display: flex;
     overflow: hidden;
-    border: 2px solid #5891ab;
+    /* border: 2px solid #5891ab; */
 }
 
 .ckOrder span {
@@ -32,17 +32,19 @@
     line-height: 30px;
     text-align: center;
     color: #fdfdfd;
+    font-size: 14px;
     border-radius: 0;
-    background: #5891ab;
+    /* background: #5891ab; */
 }
 
 .ckOrder span.cko {
-    background: #f3f6f8;
+    background: rgba(255,255,255,0.9);
     color: #5891ab;
+    font-size: 15px;
 }
 
 .ckOrder span:hover {
-    opacity: 0.5;
+    font-size: 15px;
 }
 .comml{padding:5px}
 .comml .comli{display:flex}
@@ -59,7 +61,7 @@
 .comml ul ul li .comp{width:100%}
 .comore{text-align:center;line-height:30px;padding-bottom:10px}
 .comore a{color:#5891ab;font-weight:900}
-.dark .navt p,.dark .sendc a{background:#2d8cb7}
+.dark .navt p,.dark .sendc a{/* background:#2d8cb7 */}
 .dark .navt p:hover,.dark .sendc a:hover{background:#5891ab}
 .dark .sendc a.rcls{background:#1a1e23}
 .dark .comp h1{color:#adbac7}
@@ -70,11 +72,11 @@
 .dark .comml li{border-bottom:1px solid #010101}
 .dark .comml ul ul li{border:0}
 .dark .ckOrder {
-    border: 2px solid #2d8cb7;
+    /* border: 2px solid #2d8cb7; */
 }
 
 .dark .ckOrder span {
-    background: #2d8cb7;
+    /* background: #2d8cb7; */
     color:#1c2128;
 }
 
@@ -88,7 +90,37 @@
 p#comolod {
     animation: bigsmal 1s linear infinite normal;
 }
+.commbox {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+}
+.commbox.zdbox{
+  height: 400px;
+}
+.zdi {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0px;
+    width: 100%;
+    background-image: linear-gradient(transparent , #fdfdfd 75%);
+}
+.zdbox .zdi{height: 250px;}
 
+.zdi a {
+    line-height: 40px;
+    margin: 0 auto;
+    margin-top: 150px;
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+    color: #f3f6f8;
+    width: 100px;
+}
+.dark .zdi {background-image: linear-gradient(transparent , #1c2128 75%);}
+.dark .zdi a{/* color: #2d8cb7; */}
 @keyframes bigsmal{
 50%{transform: scale(1.2);}
 }

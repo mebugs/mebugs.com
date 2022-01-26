@@ -66,7 +66,7 @@ function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
      <div class="row"> 
       <div class="pt"> 
        <h1>好文荐读</h1> 
-       <a class="mr" href="/posts/best_1.html">More&gt;</a> 
+       <a class="mr" href="/posts/best_1.html">更多</a> 
       </div> 
 <?php 
 // 查询深度好文数据
@@ -97,7 +97,7 @@ $gi = 1;
      <div class="row"> 
       <div class="pt"> 
        <h1>新鲜发布</h1> 
-       <a class="mr" href="/posts/new_1.html">More&gt;</a> 
+       <a class="mr" href="/posts/new_1.html">更多</a> 
       </div> 
 <?php 
 // 查询最新数据
@@ -129,7 +129,7 @@ $ni = 1;
       <div class="pt"> 
        <!-- 30Day --> 
        <h1>近期热门</h1> 
-       <a class="mr" href="/posts/up_1.html">More&gt;</a> 
+       <a class="mr" href="/posts/up_1.html">更多</a> 
       </div> 
 <?php 
 // 查询最新数据
@@ -163,7 +163,7 @@ $ui = 1;
      <div class="row"> 
       <div class="pt"> 
        <h1>全站热门</h1> 
-       <a class="mr" href="/posts/hot_1.html">More&gt;</a> 
+       <a class="mr" href="/posts/hot_1.html">更多</a> 
       </div> 
 <?php 
 // 查询热门数据
@@ -174,7 +174,7 @@ $hi = 1;
       <div class="box lm"> 
       <?php while($hot = mysqli_fetch_assoc($hots)){ ?>
       <a href="/post/<?php echo $hot['url']; ?>.html">  
-        <div class="pimel ltop"><?php echo $hi; ?></div> 
+        <div class="pimel ltop bgl"><?php echo $hi; ?></div> 
         <div class="pinfr"> 
          <h2><?php echo $hot['title']; ?></h2> 
         </div> 
@@ -186,7 +186,7 @@ $hi = 1;
      <div class="row"> 
       <div class="pt"> 
        <h1>文章分类</h1> 
-       <a class="mr" href="/category">More&gt;</a> 
+       <a class="mr" href="/category">更多</a> 
       </div> 
 <?php 
 // 查询分类
@@ -205,7 +205,7 @@ $teams = mysqli_query($conn,$teamSql);
      <div class="row"> 
       <div class="pt"> 
        <h1>热门标签</h1> 
-       <a class="mr" href="/tags">More&gt;</a> 
+       <a class="mr" href="/tags">更多</a> 
       </div> 
 <?php 
 // 查询分类
@@ -225,7 +225,7 @@ $tags = mysqli_query($conn,$tagSql);
      <div class="row"> 
       <div class="pt"> 
        <h1>随便看看</h1> 
-       <a class="mr" href="/posts/rand_1.html">More&gt;</a> 
+       <a class="mr" href="/posts/rand_1.html">更多</a> 
       </div> 
 <?php 
 // 查询随机数据
@@ -266,8 +266,8 @@ $friends = mysqli_query($conn,$friendSql);
       <a href="<?php echo $friend['furl']; ?>" target="_blank"><?php echo $friend['fname']; ?></a> 
       <?php } ?>
       <div class="lmr"> 
-        <a href="/page/link.html">更多友链</a> 
-        <a href="/page/makeFriend.html">友链申请</a> 
+        <a class="bgl" href="/page/link.html">更多友链</a> 
+        <a class="bgl" href="/page/makeFriend.html">友链申请</a> 
       </div> 
       </div> 
      </div> 
