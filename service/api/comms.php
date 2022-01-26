@@ -11,14 +11,31 @@ function AddComms($conn,$body,$status,$admin) {
   $pid = $body -> pid;
   $fid = $body -> fid;
   $level = $body -> level;
+  $gid = $fid;
+  // 2级评论gid = fid 3级评论需要向上反查对应的1级
+  if($level == 3) {
+    $gid = GetGid($conn,$fid);
+  }
   $coms = $body -> coms;$coms = str_replace('\'','\'\'',$coms);
-  $sql = "INSERT INTO `comms`(`name`, `email`, `qq`, `url`, `avt`, `pid`, `fid`, `level`, `coms`, `send_time`, `status`, `admin`) VALUES ('$name', '$email', '$qq', '$url', '$avt', '$pid', '$fid', '$level', '$coms', now(), '$status', '$admin')";
+  $sql = "INSERT INTO `comms`(`name`, `email`, `qq`, `url`, `avt`, `pid`, `fid`, `level`, `coms`, `send_time`, `status`, `admin`,`gid`) VALUES ('$name', '$email', '$qq', '$url', '$avt', '$pid', '$fid', '$level', '$coms', now(), '$status', '$admin','$gid')";
   $query = mysqli_query($conn,$sql);
   if($query) {
     $id = mysqli_insert_id($conn);
     return [true,$id];
   }
   return [false,'评论提交失败'];
+}
+
+// 2级评论gid = fid 3级评论需要向上反查对应的2级
+function GetGid($conn,$fid) {
+  $ps = mysqli_fetch_assoc(mysqli_query($conn,"SELECT s.`fid`,s.`level` FROM `comms` s WHERE s.`id` = ".$fid));
+  if($ps != null) {
+    if($ps['level'] > 1) {
+      return GetGid($conn,$ps['fid']);
+    }else{
+      return $fid;
+    }
+  }
 }
 
 // 获取评论管理员分页（级联文章）
@@ -81,7 +98,8 @@ function PageComms($conn,$body) {
   $commNews = mysqli_query($conn,$qrSql);
   while($commNew = mysqli_fetch_assoc($commNews)){
     // 查询二级
-    $lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` > 0) tt ORDER BY tt.id";
+    //$lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` > 0) tt ORDER BY tt.id";
+    $lvTTSql = "SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.gid = ".$commNew["id"]." ORDER BY tc.id";
     $lvTTs = mysqli_fetch_all(mysqli_query($conn,$lvTTSql),MYSQLI_ASSOC);
     $commNew['child'] = $lvTTs;
     array_push($list,$commNew);

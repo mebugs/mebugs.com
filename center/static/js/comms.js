@@ -38,7 +38,7 @@ var vue = new Vue({
         return
       }
       this.item = item
-      this.ritem = {api:'AdminReplayComms',name:'米虫',email:'iam@qiantaoyuan.cn',qq:'7431346',url:'http://www.mebugs.com',avt:'/static/img/me_avator.jpg',pid:item.pid,fid:item.id,level:2,coms:''}
+      this.ritem = {api:'AdminReplayComms',name:'米虫',email:'iam@qiantaoyuan.cn',qq:'7431346',url:'http://www.mebugs.com',avt:'/static/img/me_avator.jpg',pid:item.pid,fid:item.id,level:3,coms:''}
       this.opPop(2)
     },
     replay() { // 发起回复

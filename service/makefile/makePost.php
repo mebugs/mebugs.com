@@ -171,7 +171,8 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
           <ul>
             <?php
             // 查询二三级评论列表
-            $lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` > 0) tt ORDER BY tt.id";
+            //$lvTTSql = "SELECT * FROM (SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.fid = ".$commNew["id"]." UNION ALL SELECT cs.`name` AS pName,cs.url AS pUrl,c.coms,c.id,c.name,c.url,c.avt,c.fid,c.send_time FROM `comms` c LEFT JOIN `comms` cs ON cs.id = c.fid WHERE c.fid IN (SELECT id FROM `comms` WHERE `status` = 1 AND fid = ".$commNew["id"].") AND c.`status` > 0) tt ORDER BY tt.id";
+            $lvTTSql = "SELECT ts.`name` AS pName,ts.url AS pUrl,tc.coms,tc.id,tc.name,tc.url,tc.avt,tc.fid,tc.send_time FROM `comms` tc LEFT JOIN `comms` ts ON ts.id = tc.fid WHERE tc.`status` > 0 AND tc.gid = ".$commNew["id"]." ORDER BY tc.id";
             $lvTTs = mysqli_query($conn,$lvTTSql);
             ?>
             <?php while($lvTT = mysqli_fetch_assoc($lvTTs)){ ?>
