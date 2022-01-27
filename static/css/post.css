@@ -9,7 +9,7 @@
 .menue li ul{margin-left:5px}
 .menue li ul ul{margin-left:5px}
 .menus.menuse .menue{position:absolute;bottom:15px;align-items:flex-end}
-.indimg .mequci{width:25%;height:135px}
+.indimg .mequci{width:25%;height: auto;}
 .rzz{width:100vw;height:100vh;background:rgba(0,0,0,0.4);position:fixed;z-index:101;top:0;display:none;opacity:0}
 .replay .rzz,.cavts .rzz,.shelp .rzz{opacity:1}
 .rea{width:750px;padding:15px;height:380px;position:absolute;left:calc(50vw - 375px);top:calc(50vh - 190px);transform:scale(0.8);transition:all .3s cubic-bezier(0,0.35,0.73,1.64)}

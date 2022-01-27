@@ -32,6 +32,7 @@ function makeFileTask($cdnUrl,$today,$conns) {
   // 生成指定Page页（0-999）预留页
   include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makePost.php');
   $postUrls = makePosts($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn,$doPosts);
+  $siteMaps = array_merge_recursive($siteMaps,$postUrls);
   // 生成文章列表页
   
   // 生成分类页
@@ -44,11 +45,19 @@ function makeFileTask($cdnUrl,$today,$conns) {
   
   // 生成SiteMap
   
+  echo json_encode($siteMaps);
   mysqli_close($conn);
 }
 
 // 初始化统计
 function initStatics($conn) {
+  // 统计分组开放数量
+  
+  // 统计标签开放数量
+  
+  // 随机生成排序值
+  
+  // 逢5对近期飙升压缩至10%
   
 }
 

@@ -231,7 +231,29 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
      </div>
      <?php if($post['id'] > 999) { ?>
      <!-- like post -->
-     
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <?php echo '<a class="mr" href="/category/'.$postTeam['url'].'_1.html">'.$postTeam['name'].'</a>';  ?>
+      </div> 
+      <div class="box pm pa_4"> 
+      <?php 
+        $likePostSql = "SELECT * FROM `post_main` WHERE `status` = 1 AND `cid` = ".$post['cid']." AND `id` != ".$post['id']." ORDER BY randno LIMIT 6";
+        $likePosts = mysqli_query($conn,$likePostSql);
+      ?>
+      <?php while($likePost = mysqli_fetch_assoc($likePosts)){ ?>
+      <a href="/post/<?php echo $likePost['url']; ?>.html"> 
+        <div class="pimel">
+          <img class="scale" src="<?php echo $cdnUrl."/static/upload/banner/100_".$likePost['banner']; ?>" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2><?php echo $likePost['title']; ?></h2> 
+         <p class="pdesc"><?php echo $likePost['remark']; ?></p> 
+        </div> 
+      </a> 
+      <?php } ?>
+      </div>
+     </div>
      <?php }?>
     </div>
     <!-- more post new hot rand -->
