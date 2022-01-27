@@ -110,7 +110,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
      <?php if($post["openComms"] == 0) { ?>
      <!-- comms form -->
      <div class="row">
-      <div class="pt"> <h1>发表观点</h1> </div> 
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
       <div class="box"> 
        <div class="comme"> 
         <div class="namee"> 

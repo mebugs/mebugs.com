@@ -159,7 +159,7 @@ in.close();
     <div class="c c_12" id="mother"> 
           <!-- comms form -->
      <div class="row">
-      <div class="pt"> <h1>发表观点</h1> </div> 
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
       <div class="box"> 
        <div class="comme"> 
         <div class="namee"> 
@@ -332,7 +332,7 @@ in.close();
       </div>
       <div class="sendc"> 
         <a class="rcls" href="javascript:clsAvt()">关闭</a>
-     </div> 
+      </div> 
     </div>
   </div>
   <div class="rzz" id="rzz">
@@ -366,9 +366,28 @@ in.close();
        </div> 
        <div class="sendc"> 
         <a class="rcls" href="javascript:clsComms()">取消</a> 
-        <a id="repMethod" href="#">回复观点</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
        </div> 
       </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
     </div>
   </div>
     </div> 

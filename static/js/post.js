@@ -6,6 +6,7 @@ var crMet = document.getElementById("repMethod");
 var rzz = document.getElementById("rzz");
 var cavt = document.getElementById("cavt");
 var myavt = document.getElementById("avt");
+var chelp = document.getElementById("chelp");
 if(localUserStr) {
   localUser = JSON.parse(localUserStr);
 }else{
@@ -239,4 +240,19 @@ function makeZd() {
       commbox.addClass("zdbox");
     }
   }
+}
+
+// 打开评论提示
+function helpComms() {
+  chelp.style.display = "block";
+  setTimeout(function() {
+    bodyNode.classList.add("shelp");
+  }, 100);
+}
+
+function clsHelpComms() {
+  bodyNode.classList.remove("shelp");
+  setTimeout(function() {
+    chelp.style.display = "none";
+  }, 400);
 }

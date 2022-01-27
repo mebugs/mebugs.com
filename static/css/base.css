@@ -87,7 +87,7 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .pinfr{width:calc(100% - 100px);padding-left:7px}
 .pm a .pinfr h2{padding:2.5px 0}
 .pinfr .pdesc,.pbline .pdesc{line-height:17px;-webkit-line-clamp:2;height:35px}
-.mr{position:absolute;right:0;line-height: 40px;top: 0;font-weight: 900;font-size: 13px;}
+.mr{position:absolute;right:0;line-height: 40px;top: 0;font-weight: 900;font-size: 13px;cursor: pointer;}
 .mequc{display:flex;flex-wrap:wrap}
 .mequci{width:50%;height:115px;padding:10px}
 .mequci *{width:100%;height:100%;display:block}
