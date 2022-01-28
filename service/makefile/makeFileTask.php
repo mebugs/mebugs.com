@@ -4,7 +4,7 @@ function makeFileTask($cdnUrl,$today,$conns) {
   // 初始化连接
   include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
   // 初始化统计
-  initStatics($conn);
+  initStatics($conn,$today);
   $baseUrl = "http://www.mebugs.com";
   // 创建siteMap数组
   $siteMaps = [];
@@ -50,15 +50,30 @@ function makeFileTask($cdnUrl,$today,$conns) {
 }
 
 // 初始化统计
-function initStatics($conn) {
+function initStatics($conn,$today) {
   // 统计分组开放数量
-  
+  mysqli_query($conn,"UPDATE `category` tm SET tm.num = (
+  	SELECT ptm.nums FROM (
+  		SELECT t.id,IFNULL(pt.nums,0) AS nums FROM `category` t
+  		LEFT JOIN (SELECT cid,count(id) AS nums FROM `post_main` WHERE status = 1 GROUP BY cid) AS pt ON t.id = pt.cid
+  	) ptm 
+  	WHERE ptm.id = tm.id
+  )");
   // 统计标签开放数量
-  
+  mysqli_query($conn,"UPDATE `tag` tm SET tm.num = (
+    SELECT ptm.nums FROM (
+      SELECT t.id,IFNULL(ptc.nums,0) AS nums FROM `tag` t
+      LEFT JOIN (SELECT tid,count(pid) AS nums FROM (SELECT pt.* FROM `post_tag` pt LEFT JOIN `post_main` m ON m.id = pt.pid WHERE m.`status` = 1) AS ptp GROUP BY tid) AS ptc ON t.id = ptc.tid
+	) ptm 
+    WHERE ptm.id = tm.id
+  )");
   // 随机生成排序值
-  
+  mysqli_query($conn,"update `post_main` set randno = floor(rand()*1000)");
   // 逢5对近期飙升压缩至10%
-  
+  $dayNo = substr($today,9,1);
+  if($dayNo == "5") {
+    mysqli_query($conn,"update `post_main` set monthView = floor(monthView/10)");
+  }
 }
 
 // 测试代码
