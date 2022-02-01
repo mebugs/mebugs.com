@@ -7,239 +7,124 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
   <!-- <meta name="referrer" content="no-referrer"/> --> 
   <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <title></title> 
+  <title>今日随选 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
   <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
-  <meta name="description" content="" /> 
-  <meta name="keywords" content="" /> 
-  <link rel="icon" href="" /> 
-  <link rel="shortcut icon" href="" /> 
-  <link rel="apple-touch-icon-precomposed" href="" /> 
+  <meta name="description" content="今日随选 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+  <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
-  <link href="/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
-  <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
- </head> 
+        <link href="/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
+    <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+   </head> 
  <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
   <header> 
    <div class="w"> 
-    <div class="logo"></div> 
+    <a class="logo" href="/"></a> 
     <div class="menu"> 
-     <a href="/">首页</a> 
+     <a  href="/">首页</a> 
      <a class="mck" href="/posts/new_1.html">文章</a> 
-     <a href="/category">分类</a> 
-     <a href="/tags">标签</a> 
-     <a href="/page/about.html">关于</a> 
-     <a href="/page/link.html">友链</a> 
-     <a href="/page/msg.html">留言</a> 
-     <a href="/page/map.html">地图</a> 
+     <a  href="/category">分类</a> 
+     <a  href="/tag">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
     </div> 
-    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div>  
-   </div> 
-  </header> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+       </div> 
+  </header>  <!-- posts top -->
   <div class="r rt"> 
    <div class="w tb_15"> 
     <div class="c c_6"> 
-     <div class="ql rtl">  
-      <a href="/posts/new_1.html">新鲜</a>
-      <a href="/posts/best_1.html">荐读</a> 
-      <a href="/posts/up_1.html">飙升</a>
-      <a href="/posts/hot_1.html">热门</a>
+     <div class="ql rtl"> 
+      <a href="/posts/new_1.html" >新鲜</a>
+      <a href="/posts/best_1.html" >荐读</a> 
+      <a href="/posts/up_1.html" >飙升</a>
+      <a href="/posts/hot_1.html" >热门</a>
       <a href="/posts/rand_1.html" class="cp">随选</a> 
      </div> 
     </div> 
     <div class="c c_6"> 
      <div class="ql qr rtr"> 
       <p>第 1 页</p> 
-      <p>总 20 页</p> 
+      <p>总 1 页</p> 
      </div> 
     </div> 
    </div> 
-  </div> 
-  <div class="r"> 
+  </div>
+  <!-- post records -->
+  <div class="r">
    <div class="w tb_15 pagee"> 
-    <a class="c c_4" href="/post/post_java.html"> 
+       	
+    <a class="c c_4" href="/post/expect.html">
      <div class="pime">
-      <img class="scale" src="/test/test3.jpg" />
+      <img class="scale" src="/static/upload/banner/400_1642465194118.jpg " />
      </div> 
      <div class="pinfb"> 
-      <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+      <h2>交互式脚本expect脚本实现自动化</h2>
+      <p class="pdesc">expect脚本由一系列expect-send对组成，等待输出中输出特定的字符，通常是一个提示符，然后发送特定的响应，特别适用于需要批量手动输入命令的自动化操作改造</p>  
      </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
+    	
+    <a class="c c_4" href="/post/javaobj.html">
      <div class="pime">
-      <img class="scale" src="/test/test5.jpg" />
+      <img class="scale" src="/static/upload/banner/400_1642463972831.jpg " />
      </div> 
      <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
+      <h2>JAVA实例化对象的五种方式</h2>
+      <p class="pdesc">面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式</p>  
      </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test1.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test2.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test9.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test6.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test4.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test6.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test9.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test8.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test3.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test5.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test1.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test4.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Elasticsearch的Java客户端由TransportClient改造为RestHighLevelClient</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <a class="c c_4" href="/post/post_java.html"> 
-     <div class="pime">
-      <img class="scale" src="/test/test7.jpg" />
-     </div> 
-     <div class="pinfb"> 
-      <h2>SpringBoot+MyBatis查询有结果但映射实体类为null</h2> 
-      <p class="pdesc">近期接到使用 RSA 对配置文件内容进行加解密的需求，由于个人对于加密算法这块不是很精通，所以一边查询资料一边实现，记录整个实现过程以及所遇到错误的原因与处理方案</p> 
-     </div> </a> 
-    <div class="c c_12"> 
-     <div class="peare"> 
-      <a href="">1</a> 
-      <a class="pnow" href="">2</a> 
-      <a href="">3</a> 
-      <a href="">4</a> 
-      <a href="">5</a> 
-      <a href="">...</a> 
-      <a href="">200</a> 
-     </div> 
-     <div class="peare"> 
-      <a href="">1</a> 
-      <a href="">...</a> 
-      <a href="">5</a> 
-      <a class="pnow" href="">6</a> 
-      <a href="">7</a> 
-      <a href="">...</a> 
-      <a href="">20</a> 
-     </div> 
-     <div class="peare"> 
-      <a href="">1</a> 
-      <a href="">...</a> 
-      <a href="">16</a> 
-      <a href="">17</a> 
-      <a href="">18</a> 
-      <a class="pnow" href="">19</a> 
-      <a href="">20</a> 
-     </div> 
-    </div> 
-   </div> 
-  </div> 
+        <!-- page controller -->
+    <div class="c c_12">
+     <div class="peare">
+      <a href="/posts/rand_1.html" class="pnow">1</a>     </div>
+    </div>
+   </div>
+  </div>
   <footer> 
    <div class="w"> 
-    <div class="c c_4"> 
+    <div class="c c_6"> 
      <div class="ft fl"> 
-      <h2>排序分类</h2> 
-      <p> <a href="/posts/best_1.html">好文荐读</a> <a href="/posts/hot_1.html">全站热门</a> <a href="/posts/new_1.html">最新发布</a> <a href="/posts/up_1.html">近期飙升</a> <a href="/posts/rand_1.html">随机排序</a> <a href="/category/java_1.html">JAVA</a> <a href="/category/go_1.html">Golang</a> <a href="/category/py_1.html">Python</a> <a href="/category/php_1.html">PHP</a> <a href="/category/linux_1.html">Linux</a> <a href="/category/web_1.html">WEB</a> <a href="/category/db_1.html">数据库</a> <a href="/category/app_1.html">移动端</a> <a href="/category/dist_1.html">分布式</a> <a href="/category/build_1.html">架构</a> <a href="/category/serv_1.html">运维</a> <a href="/category/data_1.html">数据</a> <a href="/category/net_1.html">网络</a> <a href="/category/open_1.html">开源</a> <a href="/category/case_1.html">实例</a> <a href="/category/share_1.html">分享</a></p> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/linux_1.html">Linux</a><a href="/category/go_1.html">Golang</a><a href="/category/py_1.html">Python</a><a href="/category/php_1.html">PHP</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/app_1.html">移动端</a><a href="/category/run_1.html">数据</a><a href="/category/net_1.html">网络</a><a href="/category/plat_1.html">架构</a><a href="/category/well_1.html">运维</a><a href="/category/open_1.html">开源</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a><a href="/category/tool_1.html">分享</a>      </p>
      </div> 
-    </div> 
-    <div class="c c_4"> 
-     <div class="ft fc"> 
-      <h2>特别说明</h2> 
-      <p>本站内容由个人原创、收集或整理，如涉及侵权请联系删除</p> 
-      <p>您可自由转发，但本站不提供有效性、可用性和准确性保证</p> 
-      <p>本站不提供免费技术支持，不推荐您使用代码或案例商业化</p> 
-     </div> 
-    </div> 
-    <div class="c c_4"> 
+    </div>
+    <div class="c c_6"> 
      <div class="ft fr"> 
-      <h2>热点标签</h2> 
-      <p> <a href="/tags/springboot_1.html">Java</a> <a href="/tags/springboot_1.html">Golang</a> <a href="/tags/springboot_1.html">Python</a> <a href="/tags/springboot_1.html">PHP</a> <a href="/tags/springboot_1.html">Linux</a> <a href="/tags/springboot_1.html">WEB</a> <a href="/tags/springboot_1.html">数据库</a> <a href="/tags/springboot_1.html">移动端</a> <a href="/tags/springboot_1.html">分布式</a> <a href="/tags/springboot_1.html">运维</a> <a href="/tags/springboot_1.html">数据</a> <a href="/tags/springboot_1.html">网络</a> <a href="/tags/springboot_1.html">开源</a> <a href="/tags/springboot_1.html">实例</a> <a href="/tags/springboot_1.html">分享</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> </p>
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/object_1.html">对象</a><a href="/tag/smake_1.html">实例化</a><a href="/tag/gnew_1.html">构造</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/seris_1.html">序列化</a><a href="/tag/autodo_1.html">自动化</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/expect_1.html">expect</a><a href="/tag/batch_1.html">批量</a><a href="/tag/mebugs_1.html">米虫</a>      </p>
      </div> 
     </div> 
     <div class="c c_12"> 
      <div class="fu"> 
-      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
       <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
      </div> 
     </div> 
    </div> 
   </footer> 
-  <div class="back_top" onclick="backTop()"> 
-   <img src="/static/img/back_top.png" /> 
-  </div> 
-  <script src="/static/js/base.js?v=1.0"></script>   
- </body>
+  <div class="back_top" onclick="backTop()"> </div> 
+    </div> 
+  <script type="text/javascript">
+    var pid = 0;  </script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+       </body>
 </html>

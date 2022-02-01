@@ -51,8 +51,8 @@
 .comml .comli img{width:60px;height:60px;border-radius:30px}
 .comml li{list-style:none;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #e3ebee}
 .comp{width:calc(100% - 60px);padding-left:10px}
-.comp h1{line-height:30px;color:#888;font-size:13px;font-weight:normal}
-.comp h1 b a{display:inline-block;max-width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height: 1;margin:0 5px;margin-bottom: -2px;color:#5891ab;font-size: 15px;border: unset;padding: unset;border-radius: unset;position: relative;}
+.comp h1{line-height:30px;color:#888;font-size:13px;font-weight:normal;}
+.comp h1 b a{display:inline-block;max-width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height: 18px;margin:0 5px;color:#5891ab;font-size: 15px;border: unset;padding: unset;border-radius: unset;position: relative;}
 .comp h1 a{font-size:12px;color:#5891ab;margin:0 5px;line-height:22px;padding:0 10px;border:1px solid;display:inline-block;border-radius:12px}
 .comp h1 a:hover{color:#feffff;background:#e3ebee}
 .comp p{position:relative;padding:10px;background:#f2f7f8;line-height:1.5;border-radius:6px;margin-top:5px;font-size:14px}

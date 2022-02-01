@@ -2,7 +2,9 @@
 .qr{justify-content:flex-end}
 .ql a,.ql p{margin:15px 0;display:inline-block;line-height:40px;padding:0 25px;border:1px solid;color:#333;font-weight:900}
 .ql a{margin-right:30px;background: #f9fbfb;color: #5891ab;border: 1px solid #f9fbfb;}
-.ql a.cp,.ql a:hover{background:#5891ab;border:1px solid #5891ab;color: #f2f7f8;}
+.ql a.cp,.ql a:hover{background:#5891ab;border: 1px solid transparent;color: #f2f7f8;background-image: linear-gradient( 
+45deg
+ , #2db787, #2d5bb7);}
 .ql p{display:inline-block;margin-left:30px}
 .ql p{background: #f9fbfb;border: 1px solid #f9fbfb;width:130px;text-align:center;}
 .ql img,.ql svg{height:40px;width:40px;margin:15px 0}
@@ -18,7 +20,9 @@
     border: 1px solid #222b35;
     background: #222b35;
 }
-.dark .ql a.cp,.dark .ql a:hover{background:#2d8cb7;border:1px solid #2d8cb7}
+.dark .ql a.cp,.dark .ql a:hover{background:#2d8cb7;background-image: linear-gradient( 
+45deg
+, #2d5bb7 , #2db787);}
 .dark .ql p{background:#222b35;border:1px solid #222b35}
 .dark .pinfb{background: #1c2128;}
-.pagee a:hover {background: unset;}
+.pagee a:hover {}

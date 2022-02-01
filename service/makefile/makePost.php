@@ -275,7 +275,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
     <div class="c c_4">
       <!-- new -->
       <div class="row"> 
-       <div class="pt"><h1>近期热门</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
        <?php $upi = 1; ?>
        <div class="box lm"> 
         <?php foreach ($doPosts['hot'] as $upP) { ?>

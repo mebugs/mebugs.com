@@ -25,6 +25,9 @@
   <link href="<?php echo $cdnUrl; ?>/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <link href="<?php echo $cdnUrl; ?>/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <?php } ?>
+  <?php if($pageType == "postList") { ?>
+  <link href="<?php echo $cdnUrl; ?>/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <?php } ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
   <?php if($pageType == "index") { ?><script type="text/javascript">
     // WaitForSVGInjectInit

@@ -34,7 +34,9 @@ function makeFileTask($cdnUrl,$today,$conns) {
   $postUrls = makePosts($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn,$doPosts);
   $siteMaps = array_merge_recursive($siteMaps,$postUrls);
   // 生成文章列表页
-  
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makePosts.php');
+  $listUrls = makePostLists($fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn);
+  $siteMaps = array_merge_recursive($siteMaps,$listUrls);
   // 生成分类页
   
   // 生成分类列表页

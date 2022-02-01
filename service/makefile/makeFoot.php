@@ -2,13 +2,15 @@
    <div class="w"> 
     <div class="c c_6"> 
      <div class="ft fl"> 
-      <h2>排序分类</h2> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
       <p>
         <a href="/posts/best_1.html">好文荐读</a>
         <a href="/posts/hot_1.html">全站热门</a>
         <a href="/posts/new_1.html">最新发布</a>
         <a href="/posts/up_1.html">近期飙升</a>
-        <a href="/posts/rand_1.html">随机排序</a>
+        <a href="/posts/rand_1.html">今日随选</a>
       <?php foreach ($fteams as $fteam) {
         echo '<a href="/category/'.$fteam['url'].'_1.html">'.$fteam['name'].'</a>';
       } ?>
@@ -17,7 +19,9 @@
     </div>
     <div class="c c_6"> 
      <div class="ft fr"> 
-      <h2>热点标签</h2> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
       <p> 
       <?php foreach ($ftags as $tag) {
         echo '<a href="/tag/'.$tag['url'].'_1.html">'.$tag['name'].'</a>';

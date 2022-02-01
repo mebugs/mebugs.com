@@ -24,7 +24,7 @@ function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
         $bnerSql = "SELECT * FROM `urls` WHERE `status` = 1 AND `type` = 'banner' ORDER BY `sorts`";
         $bners = mysqli_query($conn,$bnerSql);
         while($bner = mysqli_fetch_assoc($bners)){
-          echo '<div class="swiper-slide"<a href=">'.$bner['url'].'"><img src="'.$cdnUrl.$bner['img'].'" /></a></div>';
+          echo '<div class="swiper-slide"><a href="'.$bner['url'].'"><img src="'.$cdnUrl.$bner['img'].'" /></a></div>';
         }
       ?> 
       </div> 
@@ -127,8 +127,8 @@ $ni = 1;
      <!-- index ups -->
      <div class="row"> 
       <div class="pt"> 
-       <!-- 30Day --> 
-       <h1>近期热门</h1> 
+       <!-- 10Day --> 
+       <h1>近期飙升</h1> 
        <a class="mr" href="/posts/up_1.html">更多</a> 
       </div> 
 <?php 
