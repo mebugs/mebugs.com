@@ -57,8 +57,7 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .fc{text-align:center}
 .fr{text-align:right}
 .fr p,.fl p{overflow:hidden;text-overflow:unset;white-space:unset;display:-webkit-box;-webkit-line-clamp: 2;-webkit-box-orient:vertical;text-align: center;}
-.fr a{margin-left:5px}
-.fl a{margin: 0 2px;}
+.fr a,.fl a{padding:1px 3px;}
 .fu{text-align:center;margin-top:40px}
 .fu p{line-height:30px}
 .fu em{margin:0 5px;font-size:14px;font-style:normal}

@@ -1,6 +1,6 @@
 <?php 
 //生成INDEX页面代码 CDN切换 数据库对象
-function makePostLists($fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
+function makePostLists($fteams,$ftags,$cdnUrl,$baseUrl,$conn) {
   // 查询全部启用文章的数量用于构建分页
   $backUrls = [];
   // 查询全部开放文章
@@ -61,8 +61,8 @@ function makePostList($fteams,$ftags,$cdnUrl,$baseUrl,$conn,$querySql,$postType,
   $file_sc = $_SERVER['DOCUMENT_ROOT'].$postsUrl;
   // 启动缓存输出 采用模版形式无需缓冲区
   ob_start();
-  $title = $tit." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
-  $description = $tit." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
+  $title = "[".$tit."] - 第".$page."页"." - 米虫 - 做一个有理想的米虫 - www.mebugs.com";
+  $description = $tit." - 程序员米虫的个人修炼手册，做一个有理想的米虫，乐观主义者，坚信一切都是最好的安排！技术学习笔记、经验教训小结、工作心得体会、自我充电提升！希望您也能有所收获！";
   $pageType = "postList";//文章页
   $pageSubType = "post";//文章列表页
   include(__DIR__.'/makeHead.php');
@@ -103,53 +103,11 @@ function makePostList($fteams,$ftags,$cdnUrl,$baseUrl,$conn,$querySql,$postType,
       <p class="pdesc"><?php echo $list['remark']; ?></p>  
      </div> </a> 
     <?php } ?>
-    <!-- page controller -->
-    <div class="c c_12">
-     <div class="peare">
-      <?php 
-      if($pages <= 7) {
-        for($ro = 1;$ro <= $pages;$ro++) {
-          $riclass='';
-          if($ro == $page) {
-            $riclass='class="pnow"';
-          }
-          echo '<a href="/posts/'.$postType.'_'.$ro.'.html" '.$riclass.'>'.$ro.'</a>';
-        }
-      }
-      if($pages > 7 && $page < 5) {
-        for($ro = 1;$ro <= 5;$ro++) {
-          $riclass='';
-          if($ro == $page) {
-            $riclass='class="pnow"';
-          }
-          echo '<a href="/posts/'.$postType.'_'.$ro.'.html" '.$riclass.'>'.$ro.'</a>';
-        }
-        echo '<a href="/posts/'.$postType.'_6.html">...</a>';
-        echo '<a href="/posts/'.$postType.'_'.$pages.'.html">'.$pages.'</a>';
-      }
-      if($pages > 7 && $page >= 5 && $page <= $pages - 4) {
-        echo '<a href="/posts/'.$postType.'_1.html">1</a>';
-        echo '<a href="/posts/'.$postType.'_'.($page-2).'.html">...</a>';
-        echo '<a href="/posts/'.$postType.'_'.($page-1).'.html">'.($page-1).'</a>'; 
-        echo '<a href="/posts/'.$postType.'_'.$page.'.html" class="pnow">'.$page.'</a>'; 
-        echo '<a href="/posts/'.$postType.'_'.($page+1).'.html">'.($page+1).'</a>';
-        echo '<a href="/posts/'.$postType.'_'.($page+2).'.html">...</a>'; 
-        echo '<a href="/posts/'.$postType.'_'.$pages.'.html">'.$pages.'</a>';
-      }
-      if($pages > 7 && $page >= 5 && $page > $pages - 4) {
-        echo '<a href="/posts/'.$postType.'_1.html">1</a>';
-        echo '<a href="/posts/'.$postType.'_'.($page-5).'.html">...</a>';
-        for($ro = ($pages - 4);$ro <= $pages;$ro++) {
-          $riclass='';
-          if($ro == $page) {
-            $riclass='class="pnow"';
-          }
-          echo '<a href="/posts/'.$postType.'_'.$ro.'.html" '.$riclass.'>'.$ro.'</a>';
-        }
-      }
-      ?>
-     </div>
-    </div>
+    <?php
+     $pathDir="/posts";
+     $pathBe="/".$postType;
+     include(__DIR__.'/makePageHtml.php');
+    ?>
    </div>
   </div>
 <?php

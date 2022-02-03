@@ -35,15 +35,21 @@ function makeFileTask($cdnUrl,$today,$conns) {
   $siteMaps = array_merge_recursive($siteMaps,$postUrls);
   // 生成文章列表页
   include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makePosts.php');
-  $listUrls = makePostLists($fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn);
+  $listUrls = makePostLists($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
   $siteMaps = array_merge_recursive($siteMaps,$listUrls);
   // 生成分类页
-  
   // 生成分类列表页
-  
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeCategory.php');
+  $cateUrls = makeCategoryAndList($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
+  $siteMaps = array_merge_recursive($siteMaps,$cateUrls);
   // 生成标签页
-  
   // 生成标签列表页
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeTag.php');
+  $tagUrls = makeTagAndList($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
+  $siteMaps = array_merge_recursive($siteMaps,$tagUrls);
+  // 生成友链
+  
+  // 生成文章地图
   
   // 生成SiteMap
   

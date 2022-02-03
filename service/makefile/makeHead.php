@@ -28,8 +28,11 @@
   <?php if($pageType == "postList") { ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <?php } ?>
+  <?php if($pageType == "category" || $pageType == "tag") { ?>
+  <link href="<?php echo $cdnUrl; ?>/static/css/team.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <?php } ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
-  <?php if($pageType == "index") { ?><script type="text/javascript">
+  <?php if($pageType == "index" || $pageSubType == "category") { ?><script type="text/javascript">
     // WaitForSVGInjectInit
     function initSvg(obj) {
     	try{
@@ -54,8 +57,8 @@
     <div class="menu"> 
      <a <?php if($pageType == "index") { ?>class="mck"<?php } ?> href="/">首页</a> 
      <a <?php if($pageSubType == "post") { ?>class="mck"<?php } ?> href="/posts/new_1.html">文章</a> 
-     <a <?php if($pageSubType == "category") { ?>class="mck"<?php } ?> href="/category">分类</a> 
-     <a <?php if($pageSubType == "tag") { ?>class="mck"<?php } ?> href="/tag">标签</a> 
+     <a <?php if($pageSubType == "category") { ?>class="mck"<?php } ?> href="/category/list_1.html">分类</a> 
+     <a <?php if($pageSubType == "tag") { ?>class="mck"<?php } ?> href="/tag/list_1.html">标签</a> 
      <a <?php if($pageSubType == "about") { ?>class="mck"<?php } ?> href="/page/about.html">关于</a> 
      <a <?php if($pageType == "link") { ?>class="mck"<?php } ?> href="/page/link.html">友链</a> 
      <a <?php if($pageSubType == "msg") { ?>class="mck"<?php } ?> href="/page/msg.html">留言</a> 

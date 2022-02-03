@@ -186,7 +186,7 @@ $hi = 1;
      <div class="row"> 
       <div class="pt"> 
        <h1>文章分类</h1> 
-       <a class="mr" href="/category">更多</a> 
+       <a class="mr" href="/category/list_1.html">更多</a> 
       </div> 
 <?php 
 // 查询分类
@@ -205,7 +205,7 @@ $teams = mysqli_query($conn,$teamSql);
      <div class="row"> 
       <div class="pt"> 
        <h1>热门标签</h1> 
-       <a class="mr" href="/tags">更多</a> 
+       <a class="mr" href="/tag/list_1.html">更多</a> 
       </div> 
 <?php 
 // 查询分类
