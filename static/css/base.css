@@ -69,7 +69,7 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .pt::before{content:"";position:absolute;bottom: 18px;left: 90px;z-index: -1;width: calc(100% - 130px);height: 4px;border-radius: 2px;background-image: linear-gradient( 
 45deg
  , #2db787, #2d5bb7);}
-.pct h1{margin:0 auto;line-height: 1.5;}
+.pct h1{margin:0 auto;line-height: 1.5;text-align: center;}
 .pct:before{width:120px;left:calc(50% - 60px);bottom: 0;}
 .itm a:hover svg path,.teame a:hover svg path{fill:#5891ab}
 .itm a:hover img,.itm a:hover svg,.teame a:hover img,.teame a:hover svg{padding:8px}

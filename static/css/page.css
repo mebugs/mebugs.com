@@ -1,18 +1,18 @@
-.ql{display:flex;margin:10px 0}
+.ql{display:flex;margin:10px 0;height: 80px;justify-content: center;}
 .qr{justify-content:flex-end}
-.ql a,.ql p{margin:15px 0;display:inline-block;line-height:40px;padding:0 25px;border:1px solid;color:#333;font-weight:900}
+.ql a,.ql p{margin:15px 0;display:inline-block;line-height:40px;height: 42px;padding:0 25px;border:1px solid;color:#333;font-weight:900;}
 .ql a{margin-right:30px;background: #f9fbfb;color: #5891ab;border: 1px solid #f9fbfb;}
 .ql a.cp,.ql a:hover{background:#5891ab;border: 1px solid transparent;color: #f2f7f8;background-image: linear-gradient( 
 45deg
  , #2db787, #2d5bb7);}
 .ql p{display:inline-block;margin-left:30px}
 .ql p{background: #f9fbfb;border: 1px solid #f9fbfb;width:130px;text-align:center;}
-.ql img,.ql svg{height:40px;width:40px;margin:15px 0}
+.ql img,.ql svg{height:40px;width:40px;margin: 15px auto;}
 .ql .tmin *{display:inline-block;margin:15px 0}
-.ql .tmin p{width:auto;font-weight:normal}
+.ql .tmin p{width:auto;font-weight:normal;margin: 15px auto;margin-top: 0;}
 .ql .tmin h1{line-height:40px;margin:15px 20px;font-size:20px}
 .ql .tmin.tamin h1{margin-left:0}
-.ql .tmin{display:flex}
+.ql .tmin{display: flex;margin: 5px auto;}
 .pagee{display:flex;flex-wrap:wrap}
 .pinfb{padding:10px;background: #fdfdfd;}
 .dark .ql a,.dark .ql p{color:#e2f1ff}
@@ -25,4 +25,25 @@
 , #2d5bb7 , #2db787);}
 .dark .ql p{background:#222b35;border:1px solid #222b35}
 .dark .pinfb{background: #1c2128;}
+
+.qtag {
+    height: 150px;
+    display: block;
+}
+
+.timg {
+    display: flex;
+    margin: 0px auto;
+    width: 150px;
+}
+
+
+.timg img {}
+
+.timg h1 {
+    width: 70px;
+    text-align: center;
+    margin: 0 0 0 10px;
+    line-height: 70px;
+}
 .pagee a:hover {}

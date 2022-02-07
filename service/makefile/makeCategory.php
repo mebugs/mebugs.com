@@ -40,20 +40,25 @@ function makeCategoryList($fteams,$ftags,$cdnUrl,$baseUrl,$conn,$querySql,$team,
   <!-- team top -->
   <div class="r rt"> 
    <div class="w tb_15"> 
-    <div class="c c_6"> 
-     <div class="ql rtl"> 
-       <img onload="initSvg(this)" src="<?php echo $team["icon"]; ?>" /> 
+    <div class="c c_12"> 
+     <div class="ql qtag pt pct rtl">
+       <div class="timg">
+         <img onload="initSvg(this)" src="<?php echo $team["icon"]; ?>" /> 
+         <h1><?php echo $team["name"]; ?></h1>
+       </div>    
        <div class="tmin">
-         <h1><?php echo $team["name"]; ?></h1><p><?php echo $team["remark"]; ?></p> 
+         <p><?php echo $team["remark"]; ?></p> 
        </div>
      </div> 
     </div> 
+    <!--
     <div class="c c_6"> 
      <div class="ql qr rtr"> 
       <p>第 <?php echo $page; ?> 页</p>
       <p>总 <?php echo $pages; ?> 页</p> 
      </div> 
     </div> 
+    -->
    </div> 
   </div> 
   <!-- post records -->

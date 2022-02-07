@@ -70,8 +70,8 @@ function makePostList($fteams,$ftags,$cdnUrl,$baseUrl,$conn,$querySql,$postType,
   <!-- posts top -->
   <div class="r rt"> 
    <div class="w tb_15"> 
-    <div class="c c_6"> 
-     <div class="ql rtl"> 
+    <div class="c c_12"> 
+     <div class="ql pt pct rtl"> 
       <a href="/posts/new_1.html" <?php if($postType == "new") { echo 'class="cp"';} ?>>新鲜</a>
       <a href="/posts/best_1.html" <?php if($postType == "best") { echo 'class="cp"';} ?>>荐读</a> 
       <a href="/posts/up_1.html" <?php if($postType == "up") { echo 'class="cp"';} ?>>飙升</a>
@@ -79,12 +79,14 @@ function makePostList($fteams,$ftags,$cdnUrl,$baseUrl,$conn,$querySql,$postType,
       <a href="/posts/rand_1.html" <?php if($postType == "rand") { echo 'class="cp"';} ?>>随选</a> 
      </div> 
     </div> 
+    <!--
     <div class="c c_6"> 
      <div class="ql qr rtr"> 
       <p>第 <?php echo $page; ?> 页</p> 
       <p>总 <?php echo $pages; ?> 页</p> 
      </div> 
     </div> 
+    -->
    </div> 
   </div>
   <!-- post records -->

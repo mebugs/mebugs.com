@@ -26,8 +26,8 @@ header .w *{margin:0 10px}
 .fm a,.fulla{height:55vw!important;width:calc(100% - 20px)!important}
 .lk a{width: auto;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .fr p,.fl p{text-align:center}
-.ql a{margin:8px;padding:0 10px}
-.ql{justify-content:center!important;flex-wrap:wrap}
+.ql a{margin:8px;padding: 0 10px;}
+.ql{flex-wrap:wrap;}
 .ql p{margin:auto}
 .pime{height:60vw}
 .ft p{font-size: 13px;-webkit-line-clamp: 3;}

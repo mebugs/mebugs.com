@@ -21,6 +21,8 @@ pre *{line-height:1.7;color:#000}
 .pfro p a{line-height:30px;display:inline-block;font-size:13px;padding:0 10px;background: #feffff;height:30px;margin:3px;border-radius:6px;}
 .pfro p a:hover{background: #f9fbfb;color:#5891ab;}
 .mark a{color:#5891ab;border-bottom:2px solid;padding:5px;line-height:30px;font-weight:900;text-align:center}
+.dark pre::-webkit-scrollbar-thumb{background-color:#222}
+.dark pre::-webkit-scrollbar-track{background-color:#2d333b}
 .dark .mark a{color:#2d8cb7}
 .dark .pfro{background: #2d333b;}
 .dark .pfro p a{background:#22272e}

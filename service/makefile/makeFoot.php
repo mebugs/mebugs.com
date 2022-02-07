@@ -130,7 +130,7 @@
     ?>
   </script>
   <script src="/static/js/base.js?v=1.0"></script> 
-  <?php if($pageType == "index") { ?>
+  <?php if($pageType == "index" || $pageSubType == "category") { ?>
   <script src="/static/lib/svg/svg-inject.min.js?v=1.0"></script>
   <?php } ?>
   <?php if($pageType == "index") { ?>
