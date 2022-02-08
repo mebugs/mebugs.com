@@ -7,7 +7,7 @@ h2{width:100%;font-weight:normal}
 ::-webkit-scrollbar-track{background-color:#e3ebee}
 body{background-color:#e3ebee}
 header,footer,.r{width:100%}
-header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0}
+header{position:fixed;height:90px;top:0;z-index:100;padding:20px 0;border-radius: 0;}
 .headerbg header{background-color:#feffff;height:70px;padding:10px 0}
 .w{width:1230px;display:flex;flex-wrap:wrap;margin:0 auto;z-index:10;position:relative}
 header .w{height:50px}
@@ -16,7 +16,7 @@ header .w *{margin:0 15px}
 .temp{width:50px;margin-left:0!important;background-image:url(/static/img/bg_hd_tp.png);cursor:pointer}
 .menu{width:960px;text-align:right}
 .menu a{line-height:50px;font-size:18px;font-weight:900;margin:0;margin-left:15px;padding:0 10px;display:inline-block;color:#333}
-.r,footer{overflow:hidden;padding:50px 0;background: #f3f6f8;position:relative;top:50px;opacity: 0;}
+.r,footer{overflow:hidden;padding:50px 0;background: #f3f6f8;position:relative;top:50px;opacity: 0;border-radius: 0;}
 .hideLoader .r, .hideLoader footer{top:0;opacity: 1;}
 .rt{overflow:hidden;background-color:#e3ebee;padding-top:120px;position:relative;top: 0;}
 .c{padding:0 15px}

@@ -74,7 +74,7 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
         </p>
         <p>
           <span>相关标签</span>
-          <b class="pta"><?php while($postTag = mysqli_fetch_assoc($postTags)){ echo '<a href="/tags/'.$postTag['url'].'_1.html">'.$postTag['url'].'</a>'; } ?></b>
+          <b class="pta"><?php while($postTag = mysqli_fetch_assoc($postTags)){ echo '<a href="/tag/'.$postTag['url'].'_1.html">'.$postTag['name'].'</a>'; } ?></b>
         </p>
       </div>
       <?php }?>

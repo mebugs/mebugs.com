@@ -46,4 +46,8 @@
     margin: 0 0 0 10px;
     line-height: 70px;
 }
+.tnoimg h1 {
+    margin: 0;
+    width: 100%;
+}
 .pagee a:hover {}
