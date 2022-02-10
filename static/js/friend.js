@@ -69,6 +69,9 @@ function sendInfo() {
   }
   friend.fname = cutstr(friend.fname,16)
   friend.fdesc = cutstr(friend.fdesc,128)
+  friend.fdesc = friend.fdesc.replace(/\r\n/g,"")
+  friend.fdesc = friend.fdesc.replace(/\n/g,"")
+  friend.fdesc = friend.fdesc.replace("'","")
   var srcUrl = document.getElementById("ficon").src;
   var srcImg = false;
   if(srcUrl && srcUrl.indexOf('data:image') > -1) {

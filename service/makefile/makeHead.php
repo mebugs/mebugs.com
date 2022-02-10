@@ -28,7 +28,7 @@
   <?php if($pageType == "postList") { ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <?php } ?>
-  <?php if($pageType == "category" || $pageType == "tag") { ?>
+  <?php if($pageType == "category" || $pageType == "tag" || $pageType == "link") { ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/team.css?v=1.0" rel="stylesheet" type="text/css" /> 
   <?php } ?>
   <link href="<?php echo $cdnUrl; ?>/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 

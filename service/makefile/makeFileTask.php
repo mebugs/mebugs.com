@@ -48,7 +48,9 @@ function makeFileTask($cdnUrl,$today,$conns) {
   $tagUrls = makeTagAndList($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
   $siteMaps = array_merge_recursive($siteMaps,$tagUrls);
   // 生成友链
-  
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeFriend.php');
+  $friendUrls = makeFriends($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
+  $siteMaps = array_merge_recursive($siteMaps,$friendUrls);
   // 生成文章地图
   
   // 生成SiteMap

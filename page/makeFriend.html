@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title></title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="" /> 
+  <link rel="icon" href="" /> 
+  <link rel="shortcut icon" href="" /> 
+  <link rel="apple-touch-icon-precomposed" href="" /> 
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/friend.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+ </head> 
+ <body> 
+  <header> 
+   <div class="w"> 
+    <div class="logo"></div> 
+    <div class="menu"> 
+     <a href="/">首页</a> 
+     <a href="/posts/new_1.html">文章</a> 
+     <a href="/category">分类</a> 
+     <a href="/tags">标签</a> 
+     <a href="/page/about.html">关于</a> 
+     <a class="mck" href="/page/link.html">友链</a> 
+     <a href="/page/msg.html">留言</a> 
+     <a href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div>  
+   </div> 
+  </header> 
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>友链申请</h1> 
+     </div> 
+     <div class="pdest srm rtr">
+      欢迎新伙伴来到本页面，请您依照下方表单提示提交友链信息。<br>
+      当您在本页面提交申请后，1-2个工作日内完成处理，请优先添加本站为友情链接。<br>
+      申请首页友链需要贵站在首页位置添加本站为友情链接。<br>
+      原则上对申请站点无太多要求，原创类、独立博客类、资源类、教程类站点优先。<br>
+      原则上不关注PR或搜索引擎收录，贵站需要至少保持月更，如您长期无更新（三个月）可能会撤销链接。<br>
+      本站可能不定期访问友站，如您的站点已关闭或停止运营，本站撤链将不另行通知。<br>
+      本站拒绝以下类型站点申请：采集站、聚合站、涉嫌诈骗或非法类信息站、伪原创，拒绝理由将回复在内容下。
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 mkf">
+      <div class="box fform">
+        <div class="fline">
+          <select name="ffix" id="ffix">
+            <option value ="http://" selected="selected">http://</option>
+            <option value ="https://">https://</option>
+          </select>
+          <input name="furl" id="furl" placeholder="*必填,请在左侧选择访问协议">
+        </div>
+        <div class="fline">
+          <p><a href="javascript:getInfo()">快速采集</a>输入地址后点击【快速采集】自动获取站点信息，可修改。</p>
+        </div>
+        <div class="fline">
+          <span>站点名称</span><input name="fname" id="fname" type="text" placeholder="*必填,最高16字(超出提交会被截取)" maxlength="16"/>
+        </div>
+        <div class="fline">
+          <span class="desc">站点描述</span>
+          <textarea name="fdesc" id="fdesc" type="text" placeholder="*必填,最高128字(超出提交会被截取)" maxlength="128"></textarea>
+        </div>
+        <div class="fline">
+          <span>友链类型</span>
+          <select class="rsel" name="findex" id="findex">
+            <option value ="0" selected="selected">仅申请友链</option>
+            <option value ="1">同时申请首页友链</option>
+          </select>
+        </div>
+        <div class="fline">
+          <span class="ico">站点图标</span>
+          <div class="fimg" onclick="chooseImg('fuimg')">
+            <img id="ficon" src="/static/img/icon.png" onerror="javascript:this.src='/static/img/icon.png'" /> 
+            <p>自行上传</p> 
+          </div>
+          <a class="rsend" href="javascript:sendInfo()">提交申请</a>
+          <input name="fuimg" id="fuimg"  accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none;" onchange="loadImg(this,'ficon')">
+        </div>
+      </div>
+    </div>
+    <div class="c c_12">
+      <!-- 处理记录 -->
+    </div>
+   </div> 
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_4"> 
+     <div class="ft fl"> 
+      <h2>排序分类</h2> 
+      <p> <a href="/posts/best_1.html">好文荐读</a> <a href="/posts/hot_1.html">全站热门</a> <a href="/posts/new_1.html">最新发布</a> <a href="/posts/up_1.html">近期飙升</a> <a href="/posts/rand_1.html">随机排序</a> <a href="/category/java_1.html">JAVA</a> <a href="/category/go_1.html">Golang</a> <a href="/category/py_1.html">Python</a> <a href="/category/php_1.html">PHP</a> <a href="/category/linux_1.html">Linux</a> <a href="/category/web_1.html">WEB</a> <a href="/category/db_1.html">数据库</a> <a href="/category/app_1.html">移动端</a> <a href="/category/dist_1.html">分布式</a> <a href="/category/build_1.html">架构</a> <a href="/category/serv_1.html">运维</a> <a href="/category/data_1.html">数据</a> <a href="/category/net_1.html">网络</a> <a href="/category/open_1.html">开源</a> <a href="/category/case_1.html">实例</a> <a href="/category/share_1.html">分享</a></p> 
+     </div> 
+    </div> 
+    <div class="c c_4"> 
+     <div class="ft fc"> 
+      <h2>特别说明</h2> 
+      <p>本站内容由个人原创、收集或整理，如涉及侵权请联系删除</p> 
+      <p>您可自由转发，但本站不提供有效性、可用性和准确性保证</p> 
+      <p>本站不提供免费技术支持，不推荐您使用代码或案例商业化</p> 
+     </div> 
+    </div> 
+    <div class="c c_4"> 
+     <div class="ft fr"> 
+      <h2>热点标签</h2> 
+      <p> <a href="/tags/springboot_1.html">Java</a> <a href="/tags/springboot_1.html">Golang</a> <a href="/tags/springboot_1.html">Python</a> <a href="/tags/springboot_1.html">PHP</a> <a href="/tags/springboot_1.html">Linux</a> <a href="/tags/springboot_1.html">WEB</a> <a href="/tags/springboot_1.html">数据库</a> <a href="/tags/springboot_1.html">移动端</a> <a href="/tags/springboot_1.html">分布式</a> <a href="/tags/springboot_1.html">运维</a> <a href="/tags/springboot_1.html">数据</a> <a href="/tags/springboot_1.html">网络</a> <a href="/tags/springboot_1.html">开源</a> <a href="/tags/springboot_1.html">实例</a> <a href="/tags/springboot_1.html">分享</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> <a href="/tags/springboot_1.html">TAG1</a> </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> 
+   <img src="/static/img/back_top.png" /> 
+  </div> 
+  <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+  <script src="/static/js/popup.js?v=1.0"></script> 
+   <script src="/static/js/upload.js?v=1.0"></script> 
+  <script src="/static/js/friend.js?v=1.0"></script>  
+ </body>
+</html>

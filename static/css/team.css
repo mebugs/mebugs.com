@@ -23,3 +23,17 @@
 .dark .teame a:hover .tmin h1{color:#2d8cb7}
 .dark .tage .tmin{background:#1c2128}
 .teame a:hover{}
+
+.pst .pdest a {
+    display: block;
+    width: 120px;
+    line-height: 34px;
+    color: #fff;
+    margin: 5px auto;
+    margin-top: 10px;
+}
+.dark .pst .pdest a{
+    margin: 5px auto;
+    margin-top: 10px;
+    color: #1c2128;
+}
