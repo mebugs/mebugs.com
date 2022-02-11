@@ -31,3 +31,32 @@
     color: #feffff;
     border-bottom: 1px solid #444;
 }
+
+.sline {
+    padding: 10px;
+}
+.sline h2 {
+    line-height: 30px;
+    font-weight: 900;
+}
+
+
+
+.sline p {
+    line-height: 25px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.sline p span {
+    display: inline-block;
+    margin-right: 5px;
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+    background: #f3f6f8;
+}
+.dark .sline p span{
+    background: #222b35;
+}

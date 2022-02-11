@@ -129,3 +129,6 @@ header .w *{margin:0 10px}
 .conn {
     margin: 5px;
 }
+.sfr .c {
+    width: 50%;
+}

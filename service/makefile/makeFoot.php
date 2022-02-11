@@ -129,19 +129,28 @@
     }
     ?>
   </script>
-  <script src="/static/js/base.js?v=1.0"></script> 
+  <script src="<?php echo $cdnUrl; ?>/static/js/base.js?v=1.0"></script> 
   <?php if($pageType == "index" || $pageSubType == "category") { ?>
-  <script src="/static/lib/svg/svg-inject.min.js?v=1.0"></script>
+  <script src="<?php echo $cdnUrl; ?>/static/lib/svg/svg-inject.min.js?v=1.0"></script>
   <?php } ?>
   <?php if($pageType == "index") { ?>
-  <script src="/static/lib/swiper/swiper-bundle.min.js?v=1.0"></script> 
-  <script src="/static/js/index.js?v=1.0"></script>  
+  <script src="<?php echo $cdnUrl; ?>/static/lib/swiper/swiper-bundle.min.js?v=1.0"></script> 
+  <script src="<?php echo $cdnUrl; ?>/static/js/index.js?v=1.0"></script>  
   <?php } ?>
   <?php if($pageType == "post") { ?>
-   <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
-   <script src="/static/js/popup.js?v=1.0"></script>  
-   <script src="/static/js/post.js?v=1.0"></script> 
-   <script src="/static/js/mark.js?v=1.0"></script> 
+   <script src="<?php echo $cdnUrl; ?>/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="<?php echo $cdnUrl; ?>/static/js/popup.js?v=1.0"></script>  
+   <script src="<?php echo $cdnUrl; ?>/static/js/post.js?v=1.0"></script> 
+   <script src="<?php echo $cdnUrl; ?>/static/js/mark.js?v=1.0"></script> 
+  <?php } ?>
+  <?php if($pageSubType == "sendLink") { ?> 
+    <script src="<?php echo $cdnUrl; ?>/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+    <script src="<?php echo $cdnUrl; ?>/static/js/popup.js?v=1.0"></script> 
+    <script src="<?php echo $cdnUrl; ?>/static/js/upload.js?v=1.0"></script>
+    <script src="<?php echo $cdnUrl; ?>/static/js/friend.js?v=1.0"></script> 
+  <?php } ?>
+  <?php if($pageType == "map") { ?>
+    <script src="<?php echo $cdnUrl; ?>/static/js/map.js?v=1.0"></script> 
   <?php } ?>
  </body>
 </html>

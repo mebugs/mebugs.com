@@ -47,14 +47,18 @@ function makeFileTask($cdnUrl,$today,$conns) {
   include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeTag.php');
   $tagUrls = makeTagAndList($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
   $siteMaps = array_merge_recursive($siteMaps,$tagUrls);
-  // 生成友链
-  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeFriend.php');
+  // 生成其他页面
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makePages.php');
   $friendUrls = makeFriends($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
   $siteMaps = array_merge_recursive($siteMaps,$friendUrls);
-  // 生成文章地图
-  
+  $friendSendUrls = makeSendFriends($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
+  $siteMaps = array_merge_recursive($siteMaps,$friendSendUrls);
+  $mapUrls = makeMap($fteams,$ftags,$cdnUrl,$baseUrl,$conn);
+  $siteMaps = array_merge_recursive($siteMaps,$mapUrls);
   // 生成SiteMap
-  
+  include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeSiteMap.php');
+  makeSiteMap($siteMaps);
+  // 测试显示
   echo json_encode($siteMaps);
   mysqli_close($conn);
 }
