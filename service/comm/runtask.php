@@ -5,8 +5,8 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeFileTask.php');
 function autoRun() {
   //读取任务状态和启动时间以及最后执行时间
   $runStatus = true;
-  // 扫描间隔
-  $time = 10;
+  // 扫描间隔1000秒
+  $time = 1000;
   do {
     $taskStatus = getConfig("taskStatus","./comm/system.php","int");
     $taskTime = getConfig("taskTime","./comm/system.php","int");
@@ -36,8 +36,6 @@ function autoRun() {
       }
     }
     sleep($time);
-    // 测试代码(windows下CGI不生效)
-    $runStatus = false;
   } while ($runStatus);
 }
 

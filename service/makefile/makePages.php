@@ -135,7 +135,7 @@ function makeSendFriends($fteams,$ftags,$cdnUrl,$baseUrl,$conn){
       </div>
       <!-- 处理记录 -->
       <?php
-        $sql = "SELECT * FROM `friend` ORDER BY id DESC LIMIT 8";
+        $sql = "SELECT * FROM `friend` WHERE status > 0 ORDER BY id DESC LIMIT 8";
         $query = mysqli_query($conn,$sql);
       ?>
       
@@ -145,7 +145,7 @@ function makeSendFriends($fteams,$ftags,$cdnUrl,$baseUrl,$conn){
           <h2><?php echo $friend['fname']; ?></h2>
           <p>
             <span>
-              <?php if($friend['status']==0) { echo "待审核";}else if($friend['status']==1){echo "通过";}else{echo "拒绝";} ?>
+              <?php if($friend['status']==1){echo "通过";}else{echo "拒绝";} ?>
             </span>
             <?php echo $friend['reson']; ?>
           </p>

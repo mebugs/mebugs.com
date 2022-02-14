@@ -256,3 +256,22 @@ function clsHelpComms() {
     chelp.style.display = "none";
   }, 400);
 }
+
+if(pid > 999) {
+  addRead("c");
+  setInterval(function() {
+    addRead("g");
+  },300000);
+}
+
+function addRead(a) {
+  $.ajax({
+    url:"/service/addData.php",
+    type:"POST",
+    dataType:'json',
+    contentType:'application/json;charset=UTF-8',
+    data:JSON.stringify({pid:pid,api:a}),
+    success:function(data, status){},
+    error:function(req,data, err){},
+  })
+}
