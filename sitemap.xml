@@ -26,6 +26,26 @@
         <priority>1</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/post/jqwrit.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/diskgz.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/crontl.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/gradc.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/posts/new_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -62,6 +82,11 @@
     </url>
         <url>
         <loc>http://www.mebugs.com/category/linux_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/category/web_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -112,6 +137,56 @@
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/batch_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/jquery_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/method_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/bofm_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/disk_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/imgz_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/tasks_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/cron_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/timtt_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/css_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/grade_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>

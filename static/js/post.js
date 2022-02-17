@@ -261,7 +261,7 @@ if(pid > 999) {
   addRead("c");
   setInterval(function() {
     addRead("g");
-  },300000);
+  },200000);
 }
 
 function addRead(a) {

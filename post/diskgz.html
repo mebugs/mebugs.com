@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
   <!-- <meta name="referrer" content="no-referrer"/> --> 
   <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <title>JAVA实例化对象的五种方式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <title>关键：Linux系统磁盘挂载 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
   <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
-  <meta name="description" content="面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="description" content="Linux系统一般情况下启动默认只加载系统盘，支持其他磁盘自由热插拔，如果发现自己的某些目录找不见了的时候不要慌看看是不是没有设置开机启动自动加载挂载磁盘内容，另外要特别注意首次安装系统记得磁盘挂载操作 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
   <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
   <link rel="icon" href="/static/img/icon.png" /> 
   <link rel="shortcut icon" href="/static/img/icon.png" /> 
@@ -48,88 +48,112 @@
    <div class="w tb_15"> 
     <div class="c c_12 pst"> 
      <div class="pt pct rtl"> 
-      <h1>JAVA实例化对象的五种方式</h1> 
+      <h1>关键：Linux系统磁盘挂载</h1> 
      </div> 
-     <div class="pdest rtr">面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式</div> 
+     <div class="pdest rtr">Linux系统一般情况下启动默认只加载系统盘，支持其他磁盘自由热插拔，如果发现自己的某些目录找不见了的时候不要慌看看是不是没有设置开机启动自动加载挂载磁盘内容，另外要特别注意首次安装系统记得磁盘挂载操作</div> 
     </div> 
    </div> 
   </div> 
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">前言</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">相关实例</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">new关键字</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">Class类的newInstance()</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl2">Constructor类的newInstance()</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl2">clone()</a> <!----></li><li><a href="javascript:runTo('menu_7')" class="pl2">deserialization</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_8')" class="pl1">其他说明</a> <ul><li><a href="javascript:runTo('menu_9')" class="pl2">反射方法</a> <!----></li><li><a href="javascript:runTo('menu_10')" class="pl2">Constructor类的获得</a> <!----></li></ul></li></ul></div> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">磁盘挂载说明</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">实例说明</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">完整操作流程</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_4')" class="pl1">设置自动加载</a> <!----></li></ul></div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="/static/upload/banner/1642463972831.jpg" /> 
+      <img src="/static/upload/banner/1644888437645.jpg" /> 
             <div class="pfro">
         <p>
           <span>所属分类</span>
-          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+          <b class="pta"><a href="/category/linux_1.html">Linux</a> </b>
         </p>
         <p>
           <span>相关标签</span>
-          <b class="pta"><a href="/tag/object_1.html">对象</a><a href="/tag/smake_1.html">实例化</a><a href="/tag/gnew_1.html">构造</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/seris_1.html">序列化</a></b>
+          <b class="pta"><a href="/tag/disk_1.html">磁盘</a><a href="/tag/imgz_1.html">挂载</a></b>
         </p>
       </div>
            </div>
      <!-- post content -->
-     <div id="html" class="output mark"><h1 id="menu_1">前言</h1><p>最为JAVA开发者，无时无刻不在与JAVA对象打交道。<br/>我们在日常工作中常常将创建（实例化）对象的任务交给依赖框架，如Spring。<br/>但依旧需要了解JAVA实例化对象的比较常见的一些形式，他们分别是：</p>
-<ol>
-<li>使用<strong>new</strong>关键字（构造函数会被调用）</li>
-<li>使用<strong>Class</strong>类的newInstance()（构造函数会被调用）</li>
-<li>使用<strong>Constructor</strong>类的newInstance()（构造函数会被调用）</li>
-<li>使用<strong>clone</strong>方法（无构造函数调用）</li>
-<li>使用<strong>deserialization</strong>（无构造函数调用）</li>
-</ol>
-<h1 id="menu_2">相关实例</h1><h2 id="menu_3">new关键字</h2><p>最通用、常见、普遍、简单的实例化方式，默认调用无参构造，支持调用有参构造。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">/**无参构造创建对象*/</span>
-<span class="hljs-keyword">User</span> jack<span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>();
-<span class="hljs-comment">/**有参构造创建对象 有参构造的入参与自定义的构造函数一致*/</span>
-<span class="hljs-keyword">User</span> tom <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>(&quot;mebugs&quot;,&quot;man&quot;);
+     <div id="html" class="output mark"><h1 id="menu_1">磁盘挂载说明</h1><p>Linux系统下会比较习惯将大储存的磁盘挂载在/home路径下。</p>
+<p>那磁盘挂载到底是怎么回事呢？</p>
+<p>相信大家会经常接触Windows操作系统，里面会有C盘D盘或者更多。</p>
+<p>一般C盘是系统盘，大家常常会讲尽量不要再C盘安装太多东西，很多安全管家都有系统盘搬家工具。</p>
+<p>Linux系统实际也是区分系统盘和硬盘的，只不过首次启动的时候它并不会自己去加载磁盘。</p>
+<p>简单来说就是，只有C盘（系统盘），其他的暂时是看不到的。</p>
+<p>如果这个时候就开始安装软件的话，后期你会悲剧的发现硬盘根本不够用（因为一般系统盘不会特别大，40-50G左右）。</p>
+<p>一般系统盘是没有办法扩充，如果装完软件后再添加挂载极有可能会对现有的目录造成冲突。</p>
+<p>所以，首次拿到Linux环境，一定要先看下有没有挂载盘，先挂载起来，再愉快的玩耍。</p>
+<p>在Linux环境中的磁盘与Windows系统最大的差别就是可以自由挂载。</p>
+<p>可以将磁盘理解为即插即用的U盘或者移动硬盘，只不过每次拔插需要进行一定的配置才能使用。</p>
+<h1 id="menu_2">实例说明</h1><pre><code class="hljs language-bash"><span class="hljs-comment">#挂载之前如果对硬盘扩容了，系统是不识别新磁盘需要进行分区划分</span>
+fdisk /dev/sda
 </code></pre>
-<h2 id="menu_4">Class类的newInstance()</h2><p>使用反射的Class类的newInstance()来实例化对象，newInstance()方法将调用无参构造方法去实例化一个对象。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//方法将调用类的无参构造</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">classIns</span> <span class="hljs-operator">=</span> User.class.newInstance();
+<p>下文中是中文版的CentOS的操作提示：</p>
+<pre><code class="hljs language-bash">欢迎使用 fdisk (util<span class="hljs-operator">-</span>linux <span class="hljs-number">2.23</span><span class="hljs-number">.2</span>)。
+更改将停留在内存中，直到您决定将更改写入磁盘。
+使用写入命令前请三思。
+命令(输入 m 获取帮助)：m
+命令操作
+   a   toggle a bootable flag
+   b   edit bsd disklabel
+   c   toggle the dos compatibility flag
+   d   <span class="hljs-keyword">delete</span> a <span class="hljs-keyword">partition</span>
+   g   <span class="hljs-keyword">create</span> a <span class="hljs-keyword">new</span> <span class="hljs-keyword">empty</span> GPT <span class="hljs-keyword">partition</span> <span class="hljs-keyword">table</span>
+   G   <span class="hljs-keyword">create</span> an IRIX (SGI) <span class="hljs-keyword">partition</span> <span class="hljs-keyword">table</span>
+   l   list known <span class="hljs-keyword">partition</span> types
+   m   print this menu
+   n   <span class="hljs-keyword">add</span> a <span class="hljs-keyword">new</span> <span class="hljs-keyword">partition</span>
+   o   <span class="hljs-keyword">create</span> a <span class="hljs-keyword">new</span> <span class="hljs-keyword">empty</span> DOS <span class="hljs-keyword">partition</span> <span class="hljs-keyword">table</span>
+   p   print the <span class="hljs-keyword">partition</span> <span class="hljs-keyword">table</span>
+   q   quit <span class="hljs-keyword">without</span> saving changes
+   s   <span class="hljs-keyword">create</span> a <span class="hljs-keyword">new</span> <span class="hljs-keyword">empty</span> Sun disklabel
+   t   change a <span class="hljs-keyword">partition</span><span class="hljs-string">&#x27;s system id
+   u   change display/entry units
+   v   verify the partition table
+   w   write table to disk and exit
+   x   extra functionality (experts only)
+
+命令(输入 m 获取帮助)：n
+Partition type:
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended
+Select (default p): p
+分区号 (3,4，默认 3)：3
+起始 扇区 (167772160-419430399，默认为 167772160)：
+将使用默认值 167772160
+Last 扇区, +扇区 or +size{K,M,G} (167772160-419430399，默认为 419430399)：
+将使用默认值 419430399
+分区 3 已设置为 Linux 类型，大小设为 120 GiB</span>
 </code></pre>
-<h2 id="menu_5">Constructor类的newInstance()</h2><p>使用反射的Constructor类的newInstance()方法，与Class类中的newInstance()方法相似。</p>
-<p>Constructor类的newInstance()方法我们能够调用有参构造函数和私有构造函数。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//默认调用形式</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">consIns</span> <span class="hljs-operator">=</span> User.class.getConstructor().newInstance();
-<span class="hljs-comment">//调用有参构造</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">consInsTom</span> <span class="hljs-operator">=</span> User.class.getConstructor().newInstance(<span class="hljs-string">&quot;mebugs&quot;</span>,<span class="hljs-string">&quot;man&quot;</span>);
-<span class="hljs-comment">//调用私有无参构造</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">consInsPrive</span> <span class="hljs-operator">=</span> User.class.getDeclaredConstructor().newInstance();
+<h2 id="menu_3">完整操作流程</h2><pre><code class="hljs language-shell"><span class="hljs-comment">#检查所有磁盘分区</span>
+<span class="hljs-comment">#主要用于查新准备用来进行挂载的盘符</span>
+<span class="hljs-comment">#这里是/dev/xvde ：Disk /dev/xvde doesn&#x27;t contain a valid partition table</span>
+<span class="hljs-comment">#表示这个磁盘没有挂载</span>
+fdisk -l
+<span class="hljs-comment">#新建这个盘符的挂载（与上方盘符名一致）</span>
+fdisk /dev/xvde  
+<span class="hljs-comment">#按顺序执行</span>
+m
+n
+p
+<span class="hljs-number">1</span>
+回车
+回车
+p
+w
+<span class="hljs-comment">#完成挂载盘的对接</span>
+<span class="hljs-comment">#重启环境用于生效</span>
+reboot 
+<span class="hljs-comment">#挂载/dev/xvde盘</span>
+mkfs.ext3 /dev/xvde 
+<span class="hljs-comment">#为磁盘指定相应的目录</span>
+mount /dev/xvde /home 
+<span class="hljs-comment">#将挂载目录结构保存下来，之后如果重启时，可以自动加载挂载的磁盘</span>
+<span class="hljs-comment">#&gt;&gt;表示将&quot;/dev/xvde /home ext3 defaults 0 0&quot;追加写入搭配/etc/fstab文件</span>
+echo <span class="hljs-string">&quot;/dev/xvde /home ext3 defaults 0 0&quot;</span> &gt;&gt;<span class="hljs-regexp">/etc/fstab</span> 
 </code></pre>
-<h2 id="menu_6">clone()</h2><p>调用对象的clone()方法时，JVM都会为我们创建一个新对象，并将前一个对象的所有内容复制到其中。</p>
-<p>使用clone()方法创建对象不会调用任何构造函数，但对象的类需要实现Cloneable接口并定义clone()方法。</p>
-<p>clone()方法是比较有争议的话题，确实有它的缺点，但其是创建任何对象副本的最流行和最简单的方法。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//默认调用形式</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">jack</span> <span class="hljs-operator">=</span> tom.clone();
-</code></pre>
-<h2 id="menu_7">deserialization</h2><p>使用反序列化创建对象的前提是已经进行序列化操作。</p>
-<p>当进行序列化和反序列化对象时，JVM会为我们创建了一个独立的对象。</p>
-<p>在反序列化过程中，JVM不使用任何构造函数来创建对象，需要在类中实现Serializable接口。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//序列化</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">tom</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<span class="hljs-string">&quot;mebugs&quot;</span>,<span class="hljs-string">&quot;man&quot;</span>);
-<span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;com.mebugs&quot;</span>));
-out.writeObject(tom);
-out.close();
-<span class="hljs-comment">//反序列化</span>
-<span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;com.mebugs&quot;</span>));
-<span class="hljs-type">User</span> <span class="hljs-variable">tomBack</span> <span class="hljs-operator">=</span> (User) in.readObject();
-in.close();
-</code></pre>
-<h1 id="menu_8">其他说明</h1><h2 id="menu_9">反射方法</h2><p>Class类的newInstance()方法和Constructor类的newInstance()方法都被称为创建对象的反射方法。</p>
-<p>实际上，Class类的newInstance()方法内部使用Constructor类的newInstance()方法。</p>
-<p>这就是为什么后者更受欢迎，并且也被Spring、Hibernate等不同的经典框架所使用的原因。</p>
-<h2 id="menu_10">Constructor类的获得</h2><p>上文中我们提到getConstructor()和getDeclaredConstructor()来获取Constructor类。</p>
-<ul>
-<li>getDeclaredConstructor()返回指定参数类型、所有声明的（包括private）构造函数</li>
-<li>getConstructor()返回指定参数类型、具有public访问权限的构造函数</li>
-</ul>
-<p>因此getConstructor()是getDeclaredConstructor()的子集。</p>
+<h1 id="menu_4">设置自动加载</h1><p>务必将挂载配置写入**/etc/fstab**文件中，这样reboot（重启）系统后才能够自动加载挂载的磁盘进来。</p>
 </div>
      <!-- author -->
      <div class="row">
@@ -172,52 +196,14 @@ in.close();
          </div> 
         </div> 
         <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
-        <div class="sendc"><a class="bgl" href="javascript:sendComms(1000,1,0)">提交观点</a></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1003,1,0)">提交观点</a></div> 
        </div>
       </div> 
      </div>
      <!-- comms eare -->
      <div class="row">
       <div class="commi">
-      <p>当前累计<b>2</b>条观点！一起看看吧！</p><div class="ckOrder bgl"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>      </div>
-            <div class="box commbox">
-       <div class="comml">
-        <ul id="commea">
-                          <li>
-          <div class="comli"> 
-           <img src="/static/upload/avtor/3.jpg"/> 
-           <div class="comp"> 
-            <h1>
-             <b><a target="_blank" href="/">赛亚人</a></b>
-             丨2022-01-19 19:47:30 发表观点丨             <a href="javascript:sendCommsR(1000,2,14)">评论TA</a>
-            </h1> 
-            <p>赛亚人</p> 
-           </div> 
-          </div>
-                              <!-- 二三级评论 -->
-          <ul>
-                                    <li>
-             <div class="comli"> 
-              <div class="comp">
-               <h1>
-                 <b><a target="_blank" href="http://www.mebugs.com">米虫</a></b>
-                 丨2022-01-20 08:37:23 评论本楼丨                 <a href="javascript:sendCommsR(1000,3,17)">回复TA</a></h1> 
-               </h1> 
-               <p>MADMInh回复</p> 
-              </div> 
-             </div>
-            </li>
-                      </ul>
-                   </li>
-                 </ul>
-       </div>
-       <div class="comore">
-        <a id="comodoo" style="display:none;" href="javascript:moreComs()">更多观点</a><p id="comonul">已经到底啦~.~</p>        <p id="comolod" style="display:none;">加载中...</p>
-       </div>
-       <div class="zdi">
-         <a class="bgl" href="javascript:showAll()">▼ 展开 ▼</a>
-       </div> 
-      </div>
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
            </div> 
           <!-- sml imgs -->
      <div class="row">
@@ -230,9 +216,27 @@ in.close();
      <div class="row">
       <div class="pt"> 
        <h1>同类其他</h1>
-       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+       <a class="mr" href="/category/linux_1.html">Linux</a>      </div> 
       <div class="box pm pa_4"> 
-                  </div>
+                  <a href="/post/crontl.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1644890138387.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Crontab配置定时任务处理日常工作</h2> 
+         <p class="pdesc">Linux服务器测试环境或正式生产环境常常设计一些定时例行处理的操作，如日记备份转移清理等，利用Crontab+Shell脚本组合实现定期定时操作，确保不会应工作繁忙忘记任务导致环境异常</p> 
+        </div> 
+      </a> 
+            <a href="/post/expect.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1642465194118.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>交互式脚本expect脚本实现自动化</h2> 
+         <p class="pdesc">expect脚本由一系列expect-send对组成，等待输出中输出特定的字符，通常是一个提示符，然后发送特定的响应，特别适用于需要批量手动输入命令的自动化操作改造</p> 
+        </div> 
+      </a> 
+            </div>
      </div>
          </div>
     <!-- more post new hot rand -->
@@ -450,7 +454,7 @@ in.close();
   </div>
     </div> 
   <script type="text/javascript">
-    var pid = 1000;  </script>
+    var pid = 1003;  </script>
   <script src="/static/js/base.js?v=1.0"></script> 
          <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
    <script src="/static/js/popup.js?v=1.0"></script>  

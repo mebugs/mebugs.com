@@ -62,68 +62,37 @@ function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
    <div class="w tb_15"> 
     <!-- index main left -->
     <div class="c c_8"> 
-     <!-- index goods -->
-     <div class="row"> 
-      <div class="pt"> 
-       <h1>好文荐读</h1> 
-       <a class="mr" href="/posts/best_1.html">更多</a> 
-      </div> 
-<?php 
-// 查询深度好文数据
-$goodSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY depth DESC LIMIT 10";
-$goods = mysqli_query($conn,$goodSql);
-$gi = 1;
-?>
-      <div class="box pm pa_6"> 
-      <?php while($good = mysqli_fetch_assoc($goods)){ ?>	
-      <a <?php if($gi < 3) { ?> class="fulla" <?php } ?> href="/post/<?php echo $good['url']; ?>.html"> 
-        <?php if($gi >= 3) { ?> <div class="pimel"> <?php } ?>
-        <img class="scale" src="<?php 
-          if($gi < 3) {
-            echo $cdnUrl."/static/upload/banner/400_".$good['banner']; 
-          } else {
-            echo $cdnUrl."/static/upload/banner/100_".$good['banner']; 
-          } ?>" /> 
-        <?php if($gi >= 3) { ?> </div> <?php } ?>
-        <div class="<?php if($gi < 3) { echo "pbline"; } else { echo "pinfr"; } ?>"> 
-         <h2><?php echo $good['title']; ?></h2> 
-         <p class="pdesc"><?php echo $good['remark']; ?></p> 
-        </div> 
-      </a> 
-      <?php  $gi++; } ?>
-      </div> 
-     </div> 
-     <!-- index news -->
-     <div class="row"> 
-      <div class="pt"> 
-       <h1>新鲜发布</h1> 
-       <a class="mr" href="/posts/new_1.html">更多</a> 
-      </div> 
-<?php 
-// 查询最新数据
-$newSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY id DESC LIMIT 8";
-$news = mysqli_query($conn,$newSql);
-$ni = 1;
-?>
-      <div class="box pm pa_6"> 
-      <?php while($new = mysqli_fetch_assoc($news)){ ?>
-      <a <?php if($ni < 3) { ?> class="fulla" <?php } ?> href="/post/<?php echo $new['url']; ?>.html"> 
-        <?php if($ni >= 3) { ?> <div class="pimel"> <?php } ?>
-        <img class="scale" src="<?php 
-          if($ni < 3) {
-            echo $cdnUrl."/static/upload/banner/400_".$new['banner']; 
-          } else {
-            echo $cdnUrl."/static/upload/banner/100_".$new['banner']; 
-          } ?>" /> 
-        <?php if($ni >= 3) { ?> </div> <?php } ?>
-        <div class="<?php if($ni < 3) { echo "pbline"; } else { echo "pinfr"; } ?>"> 
-         <h2><?php echo $new['title']; ?></h2> 
-         <p class="pdesc"><?php echo $new['remark']; ?></p> 
-        </div> 
-      </a> 
-      <?php  $ni++; } ?>
-      </div> 
-     </div> 
+    <!-- index news -->
+         <div class="row"> 
+          <div class="pt"> 
+           <h1>新鲜发布</h1> 
+           <a class="mr" href="/posts/new_1.html">更多</a> 
+          </div> 
+    <?php 
+    // 查询最新数据
+    $newSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY id DESC LIMIT 8";
+    $news = mysqli_query($conn,$newSql);
+    $ni = 1;
+    ?>
+          <div class="box pm pa_6"> 
+          <?php while($new = mysqli_fetch_assoc($news)){ ?>
+          <a <?php if($ni < 3) { ?> class="fulla" <?php } ?> href="/post/<?php echo $new['url']; ?>.html"> 
+            <?php if($ni >= 3) { ?> <div class="pimel"> <?php } ?>
+            <img class="scale" src="<?php 
+              if($ni < 3) {
+                echo $cdnUrl."/static/upload/banner/400_".$new['banner']; 
+              } else {
+                echo $cdnUrl."/static/upload/banner/100_".$new['banner']; 
+              } ?>" /> 
+            <?php if($ni >= 3) { ?> </div> <?php } ?>
+            <div class="<?php if($ni < 3) { echo "pbline"; } else { echo "pinfr"; } ?>"> 
+             <h2><?php echo $new['title']; ?></h2> 
+             <p class="pdesc"><?php echo $new['remark']; ?></p> 
+            </div> 
+          </a> 
+          <?php  $ni++; } ?>
+          </div> 
+         </div> 
      <!-- index ups -->
      <div class="row"> 
       <div class="pt"> 
@@ -156,6 +125,38 @@ $ui = 1;
       <?php  $ui++; } ?>
       </div> 
      </div> 
+   <!-- index goods -->
+        <div class="row"> 
+         <div class="pt"> 
+          <h1>好文荐读</h1> 
+          <a class="mr" href="/posts/best_1.html">更多</a> 
+         </div> 
+   <?php 
+   // 查询深度好文数据
+   $goodSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY depth DESC LIMIT 10";
+   $goods = mysqli_query($conn,$goodSql);
+   $gi = 1;
+   ?>
+         <div class="box pm pa_6"> 
+         <?php while($good = mysqli_fetch_assoc($goods)){ ?>	
+         <a <?php if($gi < 3) { ?> class="fulla" <?php } ?> href="/post/<?php echo $good['url']; ?>.html"> 
+           <?php if($gi >= 3) { ?> <div class="pimel"> <?php } ?>
+           <img class="scale" src="<?php 
+             if($gi < 3) {
+               echo $cdnUrl."/static/upload/banner/400_".$good['banner']; 
+             } else {
+               echo $cdnUrl."/static/upload/banner/100_".$good['banner']; 
+             } ?>" /> 
+           <?php if($gi >= 3) { ?> </div> <?php } ?>
+           <div class="<?php if($gi < 3) { echo "pbline"; } else { echo "pinfr"; } ?>"> 
+            <h2><?php echo $good['title']; ?></h2> 
+            <p class="pdesc"><?php echo $good['remark']; ?></p> 
+           </div> 
+         </a> 
+         <?php  $gi++; } ?>
+         </div> 
+        </div> 
+        
     </div> 
     <!-- index main right -->
     <div class="c c_4"> 

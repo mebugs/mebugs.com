@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
   <!-- <meta name="referrer" content="no-referrer"/> --> 
   <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <title>[近期飙升] - 第1页 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <title>[JQuery]标签 - 第1页 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
   <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
-  <meta name="description" content="近期飙升 - 程序员米虫的个人修炼手册，做一个有理想的米虫，乐观主义者，坚信一切都是最好的安排！技术学习笔记、经验教训小结、工作心得体会、自我充电提升！希望您也能有所收获！" /> 
+  <meta name="description" content="JQuery标签 - 程序员米虫的个人修炼手册，做一个有理想的米虫，乐观主义者，坚信一切都是最好的安排！技术学习笔记、经验教训小结、工作心得体会、自我充电提升！希望您也能有所收获！" /> 
   <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
   <link rel="icon" href="/static/img/icon.png" /> 
   <link rel="shortcut icon" href="/static/img/icon.png" /> 
@@ -18,7 +18,18 @@
   <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
         <link href="/static/css/page.css?v=1.0" rel="stylesheet" type="text/css" /> 
           <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
-   </head> 
+  <script type="text/javascript">
+    // WaitForSVGInjectInit
+    function initSvg(obj) {
+    	try{
+    	    SVGInject(obj);
+    	}catch(e){
+    	  setTimeout(function(){
+    			initSvg(obj);
+    		},200)
+    	}
+    }
+  </script> </head> 
  <body> 
  <div class="loader" id="loader">
    <div class="load">
@@ -30,8 +41,8 @@
     <a class="logo" href="/"></a> 
     <div class="menu"> 
      <a  href="/">首页</a> 
-     <a class="mck" href="/posts/new_1.html">文章</a> 
-     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/posts/new_1.html">文章</a> 
+     <a class="mck" href="/category/list_1.html">分类</a> 
      <a  href="/tag/list_1.html">标签</a> 
      <a  href="/page/about.html">关于</a> 
      <a  href="/page/link.html">友链</a> 
@@ -40,50 +51,33 @@
     </div> 
     <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
        </div> 
-  </header>  <!-- posts top -->
+  </header>  <!-- team top -->
   <div class="r rt"> 
    <div class="w tb_15"> 
     <div class="c c_12"> 
-     <div class="ql pt pct rtl"> 
-      <a href="/posts/new_1.html" >新鲜</a>
-      <a href="/posts/best_1.html" >荐读</a> 
-      <a href="/posts/up_1.html" class="cp">飙升</a>
-      <a href="/posts/hot_1.html" >热门</a>
-      <a href="/posts/rand_1.html" >随选</a> 
+     <div class="ql qtag pt pct rtl">
+       <div class="timg tnoimg">
+         <h1>JQuery</h1>
+       </div>    
+       <div class="tmin">
+         <p>经典前端工具库</p> 
+       </div>
      </div> 
     </div> 
     <!--
     <div class="c c_6"> 
      <div class="ql qr rtr"> 
-      <p>第 1 页</p> 
+      <p>第 1 页</p>
       <p>总 1 页</p> 
      </div> 
     </div> 
     -->
    </div> 
-  </div>
+  </div> 
   <!-- post records -->
   <div class="r">
    <div class="w tb_15 pagee"> 
        	
-    <a class="c c_4" href="/post/javaobj.html">
-     <div class="pime">
-      <img class="scale" src="/static/upload/banner/400_1642463972831.jpg " />
-     </div> 
-     <div class="pinfb"> 
-      <h2>JAVA实例化对象的五种方式</h2>
-      <p class="pdesc">面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式</p>  
-     </div> </a> 
-    	
-    <a class="c c_4" href="/post/expect.html">
-     <div class="pime">
-      <img class="scale" src="/static/upload/banner/400_1642465194118.jpg " />
-     </div> 
-     <div class="pinfb"> 
-      <h2>交互式脚本expect脚本实现自动化</h2>
-      <p class="pdesc">expect脚本由一系列expect-send对组成，等待输出中输出特定的字符，通常是一个提示符，然后发送特定的响应，特别适用于需要批量手动输入命令的自动化操作改造</p>  
-     </div> </a> 
-    	
     <a class="c c_4" href="/post/jqwrit.html">
      <div class="pime">
       <img class="scale" src="/static/upload/banner/400_1644832168729.jpg " />
@@ -92,37 +86,10 @@
       <h2>Jquery中.attr()和.prop()方法</h2>
       <p class="pdesc">Jquery中使用attr()方法动态设置多选框被选中状态时不生效或需要操作多次方可生效的问题可通过prop()替代完成，当需要设置html原生属性时最好使用prop()方法来进行操作</p>  
      </div> </a> 
-    	
-    <a class="c c_4" href="/post/diskgz.html">
-     <div class="pime">
-      <img class="scale" src="/static/upload/banner/400_1644888437645.jpg " />
-     </div> 
-     <div class="pinfb"> 
-      <h2>关键：Linux系统磁盘挂载</h2>
-      <p class="pdesc">Linux系统一般情况下启动默认只加载系统盘，支持其他磁盘自由热插拔，如果发现自己的某些目录找不见了的时候不要慌看看是不是没有设置开机启动自动加载挂载磁盘内容，另外要特别注意首次安装系统记得磁盘挂载操作</p>  
-     </div> </a> 
-    	
-    <a class="c c_4" href="/post/crontl.html">
-     <div class="pime">
-      <img class="scale" src="/static/upload/banner/400_1644890138387.jpg " />
-     </div> 
-     <div class="pinfb"> 
-      <h2>Crontab配置定时任务处理日常工作</h2>
-      <p class="pdesc">Linux服务器测试环境或正式生产环境常常设计一些定时例行处理的操作，如日记备份转移清理等，利用Crontab+Shell脚本组合实现定期定时操作，确保不会应工作繁忙忘记任务导致环境异常</p>  
-     </div> </a> 
-    	
-    <a class="c c_4" href="/post/gradc.html">
-     <div class="pime">
-      <img class="scale" src="/static/upload/banner/400_1645013231825.jpg " />
-     </div> 
-     <div class="pinfb"> 
-      <h2>CSS3通过Gradients实现渐变背景色</h2>
-      <p class="pdesc">使用背景色渐变可以使得页面质感得到大幅度提升，CSS样式中通过gradients属性指定两个或多个颜色之间平滑过渡，由于颜色的渐变是由浏览器生成，因此不会出现不同分辨率下失真的情况。</p>  
-     </div> </a> 
             <!-- page common controller -->
     <div class="c c_12">
      <div class="peare">
-      <a href="/posts/up_1.html" class="pnow">1</a>     </div>
+      <a href="/tag/jquery_1.html" class="pnow">1</a>     </div>
     </div>   </div>
   </div>
   <footer> 
@@ -163,5 +130,6 @@
   <script type="text/javascript">
     var pid = 0;  </script>
   <script src="/static/js/base.js?v=1.0"></script> 
+    <script src="/static/lib/svg/svg-inject.min.js?v=1.0"></script>
            </body>
 </html>

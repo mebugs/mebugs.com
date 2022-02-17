@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
   <!-- <meta name="referrer" content="no-referrer"/> --> 
   <meta name="apple-mobile-web-app-capable" content="yes" /> 
-  <title>JAVA实例化对象的五种方式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <title>Jquery中.attr()和.prop()方法 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
   <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
-  <meta name="description" content="面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="description" content="Jquery中使用attr()方法动态设置多选框被选中状态时不生效或需要操作多次方可生效的问题可通过prop()替代完成，当需要设置html原生属性时最好使用prop()方法来进行操作 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
   <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
   <link rel="icon" href="/static/img/icon.png" /> 
   <link rel="shortcut icon" href="/static/img/icon.png" /> 
@@ -48,88 +48,75 @@
    <div class="w tb_15"> 
     <div class="c c_12 pst"> 
      <div class="pt pct rtl"> 
-      <h1>JAVA实例化对象的五种方式</h1> 
+      <h1>Jquery中.attr()和.prop()方法</h1> 
      </div> 
-     <div class="pdest rtr">面向对象的编程语言JAVA，万物皆为对象，工作中我们常常会将创建（实例化）对象的操作交给框架或者容器（如SpringIoC），但依旧需要了解JAVA实例化对象的多种方式</div> 
+     <div class="pdest rtr">Jquery中使用attr()方法动态设置多选框被选中状态时不生效或需要操作多次方可生效的问题可通过prop()替代完成，当需要设置html原生属性时最好使用prop()方法来进行操作</div> 
     </div> 
    </div> 
   </div> 
   <div class="r"> 
    <div class="w tb_15"> 
     <div class="c c_3 prel"> 
-     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">前言</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">相关实例</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">new关键字</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">Class类的newInstance()</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl2">Constructor类的newInstance()</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl2">clone()</a> <!----></li><li><a href="javascript:runTo('menu_7')" class="pl2">deserialization</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_8')" class="pl1">其他说明</a> <ul><li><a href="javascript:runTo('menu_9')" class="pl2">反射方法</a> <!----></li><li><a href="javascript:runTo('menu_10')" class="pl2">Constructor类的获得</a> <!----></li></ul></li></ul></div> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">问题说明</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">方法介绍</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">prop()方法</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">attr()方法</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl2">原因分析</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_6')" class="pl1">替换案例</a> <!----></li></ul></div> 
     </div> 
     <div class="c c_9">
      <!-- post banner info -->
      <div class="mban"> 
-      <img src="/static/upload/banner/1642463972831.jpg" /> 
+      <img src="/static/upload/banner/1644832168729.jpg" /> 
             <div class="pfro">
         <p>
           <span>所属分类</span>
-          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+          <b class="pta"><a href="/category/web_1.html">WEB</a> </b>
         </p>
         <p>
           <span>相关标签</span>
-          <b class="pta"><a href="/tag/object_1.html">对象</a><a href="/tag/smake_1.html">实例化</a><a href="/tag/gnew_1.html">构造</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/seris_1.html">序列化</a></b>
+          <b class="pta"><a href="/tag/jquery_1.html">JQuery</a><a href="/tag/method_1.html">方法</a><a href="/tag/bofm_1.html">原生</a></b>
         </p>
       </div>
            </div>
      <!-- post content -->
-     <div id="html" class="output mark"><h1 id="menu_1">前言</h1><p>最为JAVA开发者，无时无刻不在与JAVA对象打交道。<br/>我们在日常工作中常常将创建（实例化）对象的任务交给依赖框架，如Spring。<br/>但依旧需要了解JAVA实例化对象的比较常见的一些形式，他们分别是：</p>
-<ol>
-<li>使用<strong>new</strong>关键字（构造函数会被调用）</li>
-<li>使用<strong>Class</strong>类的newInstance()（构造函数会被调用）</li>
-<li>使用<strong>Constructor</strong>类的newInstance()（构造函数会被调用）</li>
-<li>使用<strong>clone</strong>方法（无构造函数调用）</li>
-<li>使用<strong>deserialization</strong>（无构造函数调用）</li>
-</ol>
-<h1 id="menu_2">相关实例</h1><h2 id="menu_3">new关键字</h2><p>最通用、常见、普遍、简单的实例化方式，默认调用无参构造，支持调用有参构造。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">/**无参构造创建对象*/</span>
-<span class="hljs-keyword">User</span> jack<span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>();
-<span class="hljs-comment">/**有参构造创建对象 有参构造的入参与自定义的构造函数一致*/</span>
-<span class="hljs-keyword">User</span> tom <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">User</span>(&quot;mebugs&quot;,&quot;man&quot;);
-</code></pre>
-<h2 id="menu_4">Class类的newInstance()</h2><p>使用反射的Class类的newInstance()来实例化对象，newInstance()方法将调用无参构造方法去实例化一个对象。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//方法将调用类的无参构造</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">classIns</span> <span class="hljs-operator">=</span> User.class.newInstance();
-</code></pre>
-<h2 id="menu_5">Constructor类的newInstance()</h2><p>使用反射的Constructor类的newInstance()方法，与Class类中的newInstance()方法相似。</p>
-<p>Constructor类的newInstance()方法我们能够调用有参构造函数和私有构造函数。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//默认调用形式</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">consIns</span> <span class="hljs-operator">=</span> User.class.getConstructor().newInstance();
-<span class="hljs-comment">//调用有参构造</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">consInsTom</span> <span class="hljs-operator">=</span> User.class.getConstructor().newInstance(<span class="hljs-string">&quot;mebugs&quot;</span>,<span class="hljs-string">&quot;man&quot;</span>);
-<span class="hljs-comment">//调用私有无参构造</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">consInsPrive</span> <span class="hljs-operator">=</span> User.class.getDeclaredConstructor().newInstance();
-</code></pre>
-<h2 id="menu_6">clone()</h2><p>调用对象的clone()方法时，JVM都会为我们创建一个新对象，并将前一个对象的所有内容复制到其中。</p>
-<p>使用clone()方法创建对象不会调用任何构造函数，但对象的类需要实现Cloneable接口并定义clone()方法。</p>
-<p>clone()方法是比较有争议的话题，确实有它的缺点，但其是创建任何对象副本的最流行和最简单的方法。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//默认调用形式</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">jack</span> <span class="hljs-operator">=</span> tom.clone();
-</code></pre>
-<h2 id="menu_7">deserialization</h2><p>使用反序列化创建对象的前提是已经进行序列化操作。</p>
-<p>当进行序列化和反序列化对象时，JVM会为我们创建了一个独立的对象。</p>
-<p>在反序列化过程中，JVM不使用任何构造函数来创建对象，需要在类中实现Serializable接口。</p>
-<pre><code class="hljs language-java"><span class="hljs-comment">//序列化</span>
-<span class="hljs-type">User</span> <span class="hljs-variable">tom</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<span class="hljs-string">&quot;mebugs&quot;</span>,<span class="hljs-string">&quot;man&quot;</span>);
-<span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;com.mebugs&quot;</span>));
-out.writeObject(tom);
-out.close();
-<span class="hljs-comment">//反序列化</span>
-<span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;com.mebugs&quot;</span>));
-<span class="hljs-type">User</span> <span class="hljs-variable">tomBack</span> <span class="hljs-operator">=</span> (User) in.readObject();
-in.close();
-</code></pre>
-<h1 id="menu_8">其他说明</h1><h2 id="menu_9">反射方法</h2><p>Class类的newInstance()方法和Constructor类的newInstance()方法都被称为创建对象的反射方法。</p>
-<p>实际上，Class类的newInstance()方法内部使用Constructor类的newInstance()方法。</p>
-<p>这就是为什么后者更受欢迎，并且也被Spring、Hibernate等不同的经典框架所使用的原因。</p>
-<h2 id="menu_10">Constructor类的获得</h2><p>上文中我们提到getConstructor()和getDeclaredConstructor()来获取Constructor类。</p>
+     <div id="html" class="output mark"><h1 id="menu_1">问题说明</h1><p>在前端界面中涉及到多个勾选框级联的时候，一开始采用Jquery常见的.attr()方法。</p>
+<p>实际开发自测过程中发现有时候无法生效，或需要多次触发才会生效。</p>
+<p>而在Jquery1.8官方文档中的举同样例子的时候使用的是.prop()方法。</p>
+<h1 id="menu_2">方法介绍</h1><h2 id="menu_3">prop()方法</h2><p>prop()方法：设置或返回被选元素的属性和值。</p>
 <ul>
-<li>getDeclaredConstructor()返回指定参数类型、所有声明的（包括private）构造函数</li>
-<li>getConstructor()返回指定参数类型、具有public访问权限的构造函数</li>
+<li>当该方法用于返回属性值，则返回第一个匹配元素的值</li>
+<li>当该方法用于设置属性值，则为匹配元素设置一个或多个属性/值对</li>
+<li>方法操作radio（checkbox）之类的控件，让其选中的时候，其控件选中的值也会随之改变，即既可以控制其选中，也能控制其取消选中</li>
 </ul>
-<p>因此getConstructor()是getDeclaredConstructor()的子集。</p>
+<h2 id="menu_4">attr()方法</h2><p>attr()方法：设置或返回被选元素的属性和值。</p>
+<ul>
+<li>当该方法用于返回属性值时，则返回第一个匹配元素的值</li>
+<li>当该方法用于设置属性值时，则为匹配元素集合设置一个或多个属性/值对</li>
+<li>方法操作adio（checkbox）之类的控件，让其选中的时候，其控件选中的值不会随之改变，即只能控制其选中，不能控制其取消选中</li>
+</ul>
+<h2 id="menu_5">原因分析</h2><p>从官方文档的描述来看，attr()应当也能够正常触发选择框的选中，实际应用发现有可能无效。</p>
+<ol>
+<li>添加属性名称该属性就会生效应该使用prop()</li>
+<li>特别是true,false两个属性使用prop()（如checked、selected、disabled等）</li>
+<li>其他则使用attr()如自定义的一些属性（如data-val等）</li>
+</ol>
+<h1 id="menu_6">替换案例</h1><pre><code class="hljs language-javascript"><span class="hljs-comment">//勾选</span>
+<span class="hljs-comment">//旧写法</span>
+$(<span class="hljs-string">&quot;#ID&quot;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-string">&quot;checked&quot;</span>);
+<span class="hljs-comment">//新写法</span>
+$(<span class="hljs-string">&quot;#ID&quot;</span>).<span class="hljs-title function_">prop</span>(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-string">&quot;true&quot;</span>);
+
+<span class="hljs-comment">//去勾选</span>
+<span class="hljs-comment">//旧写法</span>
+$(<span class="hljs-string">&quot;#ID&quot;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-literal">false</span>);
+<span class="hljs-comment">//新写法</span>
+$(<span class="hljs-string">&quot;#ID&quot;</span>).<span class="hljs-title function_">removeAttr</span>(<span class="hljs-string">&quot;checked&quot;</span>);
+
+<span class="hljs-comment">//获取checkbox的选中状态</span>
+<span class="hljs-comment">//旧写法</span>
+<span class="hljs-comment">//返回结果始终是undefined </span>
+$(<span class="hljs-string">&quot;.check&quot;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;checked&quot;</span>)
+<span class="hljs-comment">//新写法</span>
+<span class="hljs-comment">//这两个语法的任意一个均获取到是否选中的结果true/false </span>
+$(<span class="hljs-string">&quot;.check&quot;</span>).<span class="hljs-title function_">prop</span>(<span class="hljs-string">&quot;checked&quot;</span>)
+$(<span class="hljs-string">&quot;.check&quot;</span>).<span class="hljs-title function_">is</span>(<span class="hljs-string">&quot;:checked&quot;</span>)
+</code></pre>
 </div>
      <!-- author -->
      <div class="row">
@@ -172,52 +159,14 @@ in.close();
          </div> 
         </div> 
         <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
-        <div class="sendc"><a class="bgl" href="javascript:sendComms(1000,1,0)">提交观点</a></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1002,1,0)">提交观点</a></div> 
        </div>
       </div> 
      </div>
      <!-- comms eare -->
      <div class="row">
       <div class="commi">
-      <p>当前累计<b>2</b>条观点！一起看看吧！</p><div class="ckOrder bgl"><span class="cko" onclick="toCommsOrder(true)">最新</span><span onclick="toCommsOrder(false)">最早</span></div>      </div>
-            <div class="box commbox">
-       <div class="comml">
-        <ul id="commea">
-                          <li>
-          <div class="comli"> 
-           <img src="/static/upload/avtor/3.jpg"/> 
-           <div class="comp"> 
-            <h1>
-             <b><a target="_blank" href="/">赛亚人</a></b>
-             丨2022-01-19 19:47:30 发表观点丨             <a href="javascript:sendCommsR(1000,2,14)">评论TA</a>
-            </h1> 
-            <p>赛亚人</p> 
-           </div> 
-          </div>
-                              <!-- 二三级评论 -->
-          <ul>
-                                    <li>
-             <div class="comli"> 
-              <div class="comp">
-               <h1>
-                 <b><a target="_blank" href="http://www.mebugs.com">米虫</a></b>
-                 丨2022-01-20 08:37:23 评论本楼丨                 <a href="javascript:sendCommsR(1000,3,17)">回复TA</a></h1> 
-               </h1> 
-               <p>MADMInh回复</p> 
-              </div> 
-             </div>
-            </li>
-                      </ul>
-                   </li>
-                 </ul>
-       </div>
-       <div class="comore">
-        <a id="comodoo" style="display:none;" href="javascript:moreComs()">更多观点</a><p id="comonul">已经到底啦~.~</p>        <p id="comolod" style="display:none;">加载中...</p>
-       </div>
-       <div class="zdi">
-         <a class="bgl" href="javascript:showAll()">▼ 展开 ▼</a>
-       </div> 
-      </div>
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
            </div> 
           <!-- sml imgs -->
      <div class="row">
@@ -230,9 +179,18 @@ in.close();
      <div class="row">
       <div class="pt"> 
        <h1>同类其他</h1>
-       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+       <a class="mr" href="/category/web_1.html">WEB</a>      </div> 
       <div class="box pm pa_4"> 
-                  </div>
+                  <a href="/post/gradc.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645013231825.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>CSS3通过Gradients实现渐变背景色</h2> 
+         <p class="pdesc">使用背景色渐变可以使得页面质感得到大幅度提升，CSS样式中通过gradients属性指定两个或多个颜色之间平滑过渡，由于颜色的渐变是由浏览器生成，因此不会出现不同分辨率下失真的情况。</p> 
+        </div> 
+      </a> 
+            </div>
      </div>
          </div>
     <!-- more post new hot rand -->
@@ -450,7 +408,7 @@ in.close();
   </div>
     </div> 
   <script type="text/javascript">
-    var pid = 1000;  </script>
+    var pid = 1002;  </script>
   <script src="/static/js/base.js?v=1.0"></script> 
          <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
    <script src="/static/js/popup.js?v=1.0"></script>  

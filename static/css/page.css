@@ -1,7 +1,7 @@
 .ql{display:flex;margin:10px 0;height: 80px;justify-content: center;}
 .qr{justify-content:flex-end}
 .ql a,.ql p{margin:15px 0;display:inline-block;line-height:40px;height: 42px;padding:0 25px;border:1px solid;color:#333;font-weight:900;}
-.ql a{margin-right:30px;background: #f9fbfb;color: #5891ab;border: 1px solid #f9fbfb;}
+.ql a{margin: 15px;background: #f9fbfb;color: #5891ab;border: 1px solid #f9fbfb;}
 .ql a.cp,.ql a:hover{background:#5891ab;border: 1px solid transparent;color: #f2f7f8;background-image: linear-gradient( 
 45deg
  , #2db787, #2d5bb7);}

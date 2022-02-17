@@ -77,13 +77,13 @@ function GetPost($conn,$id) {
 }
 
 function ListPost($conn,$q) {
-  $ctSql = "SELECT count(id) FROM `post_main` m ";# WHERE m.id > 100
+  $ctSql = "SELECT count(id) FROM `post_main` m WHERE 1=1";# WHERE m.id > 100
   $qrSql = "SELECT m.*,c.name AS category FROM `post_main` m LEFT JOIN `category` c ON c.id = m.cid WHERE 1=1";// m.id > 100
   $where = "";
   if ($q['cid'] != 0) {
     $where = $where . " AND m.cid = " . $q['cid'];
   }
-  if ($q['status'] != 0) {
+  if ($q['status'] != -1) {
     $where = $where . " AND m.status = " . $q['status'];
   }
   if ($q['title'] != "") {
@@ -93,7 +93,7 @@ function ListPost($conn,$q) {
   $size = $q['size'];
   $qrSql = $qrSql . $where . " ORDER BY `id` DESC LIMIT ".($q['page']-1)*$size.",".$size;
   $pageData = [];
-  $numAry = mysqli_fetch_array(mysqli_query($conn,$ctSql));
+  $numAry = mysqli_fetch_row(mysqli_query($conn,$ctSql));
   $total = $numAry[0];
   $pageData['pages'] = ceil($total/$size);
   $query = mysqli_query($conn,$qrSql);
