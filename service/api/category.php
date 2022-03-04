@@ -24,7 +24,7 @@ function UpsertCategory($conn,$body) {
 }
 
 function ListCategory($conn) {
-  $sql = "SELECT * FROM `category`";
+  $sql = "SELECT * FROM `category` ORDER BY sorts";
   $query = mysqli_query($conn,$sql);
   $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
   return [true,$data];

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>maven管理JAVA项目pom.xml文件实例 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="maven是专门用于构建和管理Java相关项目的管理工具，提供了项目对象模型（POM）文件的新概念来管理项目的构建相关性和文档，其中pom.xml文件描述了maven项目的基本信息。 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+  <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+   </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>maven管理JAVA项目pom.xml文件实例</h1> 
+     </div> 
+     <div class="pdest rtr">maven是专门用于构建和管理Java相关项目的管理工具，提供了项目对象模型（POM）文件的新概念来管理项目的构建相关性和文档，其中pom.xml文件描述了maven项目的基本信息。</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">maven简介</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">pom.xml</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">实例解析</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_4')" class="pl1">补充说明</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="/static/upload/banner/1646007353909.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/confx_1.html">配置</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/pomsx_1.html">pom</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">maven简介</h1><p>maven是一个用于项目管理的综合工具。</p>
+<ol>
+<li>提供了开发人员构建一个完整的生命周期框架。</li>
+<li>可以自动完成项目的基础工具建设。</li>
+<li>应对多个开发团队环境时，可以设置按标准在非常短的时间里完成配置工作。</li>
+<li>让开发人员的工作更轻松，同时创建报表，检查，构建和测试自动化设置。</li>
+<li>最强大的功能就是能够自动下载项目依赖库，这也是最实用的地方。</li>
+<li>是专门用于构建和管理Java相关项目的管理工具。</li>
+</ol>
+<p>maven是意第绪语，依地语（犹太人使用的国际语），表示专家的意思。</p>
+<p>用maven管理Java 项目，你就是专家了，哈哈哈！</p>
+<h1 id="menu_2">pom.xml</h1><p>POM代表项目对象模型，是maven中工作的基本单位，是一个xml文件，始终保存在项目根目录中的pom.xml文件。</p>
+<p>建立一个maven项目，maven会检查你的pom.xml文件，以确定哪些依赖下载。</p>
+<p>首先，maven将从本地资源库获得maven的本地资源库依赖资源。</p>
+<p>如果没有找到，会从默认的maven中央存储库查找下载。</p>
+<p>因此，pom.xml是配置项目依赖关系的重要文件。</p>
+<h2 id="menu_3">实例解析</h2><p>取用一个单项目pom.xml并对其解释，便于理解其配置和运作方式。</p>
+<pre><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 指定当前POM模型的版本，对于maven2,maven3只能是4.0.0 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 项目编号，独一无二的。可以理解为父级package --&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.mebugs<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 项目名称，与项目编号组成唯一的项目标识 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mebugsWeb<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 项目的版本 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 项目产生的构件类型，例如jar、war，插件可以创建他们自己的构件类型 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>war<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- 项目名称，用来声明一个对用户而言比较友好的项目名称，文档使用 --&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Mebugs Maven Webapp<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- 项目主页的URL，maven产生的文档用。非必须 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.apache.org<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 项目的详细描述,文档用。非必须 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>A maven project for mebugs<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 常用的版本号统一设置 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 定义spring的版本 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">spring.version</span>&gt;</span>4.3.10.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">spring.version</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 定义jackson的版本 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">jackson.version</span>&gt;</span>2.9.3<span class="hljs-tag">&lt;/<span class="hljs-name">jackson.version</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 项目编码方式 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- jdk版本 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">jdk.version</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk.version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- 依赖列表 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 基础的依赖配置，版本号自行填写 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.17<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 依赖类型，可不写，默认类型是jar --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 依赖范围，可不写 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>compile<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 依赖配置，取用配置的版本 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-beans<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 取用上方提供的spring版本 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 依赖传递配置 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 依赖传递，用于解决版本冲突 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-logging<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-logging<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-logging<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-logging<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 外在依赖与取用 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.mebugsapi<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mebugsApi<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>system<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 比如用于自身提供的业务jar包 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">systemPath</span>&gt;</span>${project.basedir}/src/main/webapp/WEB-INF/lib/mebugsApi.jar<span class="hljs-tag">&lt;/<span class="hljs-name">systemPath</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 构建项目所需要的信息 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 产生的构件的文件名，默认值是${artifactId}-${version} --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">finalName</span>&gt;</span>mebugsWeb<span class="hljs-tag">&lt;/<span class="hljs-name">finalName</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 子项目可以引用的默认插件信息 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pluginManagement</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span> 
+            <span class="hljs-comment">&lt;!-- 添加插件，编译插件 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>${jdk.version}<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>${jdk.version}<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">showWarnings</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">showWarnings</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginManagement</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 描述项目相关的所有资源路径列表，例如：属性文件，这些资源被包含在最终的打包文件里。--&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>src/main/java<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span> 
+            <span class="hljs-comment">&lt;!-- 包含 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.xml<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>src/main/resources/<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span> 
+            <span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span>
+</code></pre>
+<h1 id="menu_4">补充说明</h1><p>其他想要依赖的包，对应的dependency，在这个网站找。</p>
+<p><a class="mlink" href="http://mvnrepository.com/" title="http://mvnrepository.com/" target="_blank">http://mvnrepository.com/</a></p>
+<p>可以再网站中一键生成dependency节点配置项。</p>
+<p>如下图中所示：</p>
+<p><img src="/static/upload/post/1646007151214.jpg" alt="/static/upload/post/1646007151214.jpg"/></p>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1029,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+      <div class="box pm pa_4"> 
+                  <a href="/post/smvcdata.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007019535.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>一文理解SpringMVC框架核心</h2> 
+         <p class="pdesc">SpringMVC框架是围绕DispatcherServlet（前端控制器）展开的，本文描述SpringMVC的优点、各个核心类（角色）作用，并说明用户请求数据到最终视图返回完整的数据传输过程</p> 
+        </div> 
+      </a> 
+            <a href="/post/webfiltergo.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646132013719.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>自定义filter过滤器拦截未登录（非法）请求</h2> 
+         <p class="pdesc">在JAVA的WEB工程中我们可以将JSP页面文件放在WEB-INFO中限制用户进行URL直接访问，但静态资源如js、css文件却是需要被外部直接访问的，直接对外暴露又不太安全，可以通过自定义过滤器处理</p> 
+        </div> 
+      </a> 
+            <a href="/post/springhome.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645786549085.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Spring、SpringMVC和SpringBoot</h2> 
+         <p class="pdesc">Spring就像一个大家族，里面包含了很多衍生产品，其中最为出名的就是SpringMVC和SpringBoot，那么这三者之间是什么关系呢？SpringMVC和SpringBoot又专门用来做什么呢？</p> 
+        </div> 
+      </a> 
+            <a href="/post/ecligit.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645146446122.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Eclipse中操作Git进行代码关联/拉取/推送</h2> 
+         <p class="pdesc">Eclipse可以直接通过GitRepositories直接创建本地项目与Git仓库关联，clone代码，同步、拉取以及推送代码，对于曾经经常使用SVN插件的小伙伴上手会相对容易。</p> 
+        </div> 
+      </a> 
+            <a href="/post/strustvalt.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007630828.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Struts2原生校验器以及自定义校验器</h2> 
+         <p class="pdesc">Struts2校验框架可以在request进Action之前对请求参数进行校验，非法则拦截返回，框架自带了不少常用校验器可以直接配置此外我们可以自定义一个校验器已满足自身的定制诉求</p> 
+        </div> 
+      </a> 
+            <a href="/post/getpramnoc.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646304508051.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>JAVA服务端GET请求URL中文参数乱码</h2> 
+         <p class="pdesc">公司的老WEB项目的内部链接跳转时使用了GET请求并且携带参数进行传递，在绝大多数情况没问题，但携带中文参数时后台获取的内容会出现乱码的问题（事实上我们并不建议用GET请求传递太多参数）</p> 
+        </div> 
+      </a> 
+            </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+              <a href="/post/flectdo.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+       </a>
+              <a href="/post/ctrfctmod.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+       </a>
+              <a href="/post/modehlh.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+       </a>
+              <a href="/post/bigdecit.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+       </a>
+              <a href="/post/getpramnoc.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+       </a>
+              <a href="/post/batbacksh.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+       </a>
+              <a href="/post/oraclelilog.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+       </a>
+              <a href="/post/httpclientapc.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/springhome.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>Spring、SpringMVC和SpringBoot</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/mavpomx.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>maven管理JAVA项目pom.xml文件实例</h2></div> 
+        </a>
+                <a href="/post/lodingin.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>Jquery+CSS3实现网页入场动画特效</h2></div> 
+        </a>
+                <a href="/post/jcheadh.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Jquery+CSS轻松实现导航动态显示隐藏</h2></div> 
+        </a>
+                <a href="/post/crontl.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>Crontab配置定时任务处理日常工作</h2></div> 
+        </a>
+                <a href="/post/bcomp.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Beyond Compare 4 无限试用方案</h2></div> 
+        </a>
+                <a href="/post/gitrediurl.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Windows版本的Redis（新版本的GitHub地址）</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/flectdo.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/modehlh.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+        </a>
+                <a href="/post/bigdecit.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/batbacksh.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/httpclientapc.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/well_1.html">运维</a><a href="/category/tool_1.html">工具</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/net_1.html">中间件</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/jquery_1.html">JQuery</a><a href="/tag/css_1.html">CSS</a><a href="/tag/method_1.html">方法</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/springmvc_1.html">SpringMVC</a><a href="/tag/struts_1.html">Struts</a><a href="/tag/geth_1.html">获取</a><a href="/tag/pyrunc_1.html">内存</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1029;  </script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+         <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="/static/js/popup.js?v=1.0"></script>  
+   <script src="/static/js/post.js?v=1.0"></script> 
+   <script src="/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

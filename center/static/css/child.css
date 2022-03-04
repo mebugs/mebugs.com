@@ -1,52 +1,52 @@
-.hd{width:100%;height:40px;position:fixed;left:0;top:0;z-index:10;background: #ffffff;padding:0 15px;display:flex;}
-.hd a{width: 30px;height: 30px;margin: 5px;display:block;color: #222b35;line-height: 22px;font-size: 40px;padding-left: 7px;border-radius: 15px;background: #f0f0f0;}
-.hd h1{line-height: 30px;font-size: 15px;margin: 5px 0;color: #222b35;background: #f0f0f0;padding: 0 15px;border-radius: 15px;}
-.mc{padding: 40px 0 0 0;}
+.hd{width:100%;height:40px;position:fixed;left:0;top:0;z-index:10;background:#fff;padding:0 15px;display:flex}
+.hd a{width:30px;height:30px;margin:5px;display:block;color:#222b35;line-height:22px;font-size:40px;padding-left:7px;border-radius:15px;background:#f0f0f0}
+.hd h1{line-height:30px;font-size:15px;margin:5px 0;color:#222b35;background:#f0f0f0;padding:0 15px;border-radius:15px}
+.mc{padding:40px 0 0 0}
 .mcfx{display:flex}
-.sc{background:#feffff;padding:15px;display:flex;margin:20px;border-radius: 10px;}
-input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding:0 10px;background:#fbfbfb;border-radius: 10px;}
-.sc *{margin-right:15px;border-radius: 10px;}
+.sc{background:#feffff;padding:15px;display:flex;margin:20px;border-radius:10px}
+input,select{outline:0;border:1px solid #ddd;height:40px;min-width:200px;padding:0 10px;background:#fbfbfb;border-radius:10px}
+.sc *{margin-right:15px;border-radius:10px}
 .spage{margin:15px;display:flex}
-.spi{margin:5px;width:36px;line-height:36px;background:#fff;text-align:center;cursor:pointer;border-radius: 18px;}
+.spi{margin:5px;width:36px;line-height:36px;background:#fff;text-align:center;cursor:pointer;border-radius:18px}
 .spi.ck{background:#ddd}
-button{border:0!important;cursor:pointer;border-radius: 10px;}
-.sc button{min-width:unset;font-weight:900;height:40px;color:#f0f0f0;padding:0 30px;}
+button{border:0!important;cursor:pointer;border-radius:10px}
+.sc button{min-width:unset;font-weight:900;height:40px;color:#f0f0f0;padding:0 30px}
 h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.slci{display:flex;width: calc(100% - 30px);margin: 5px 20px;padding: 10px;background: #feffff;border-radius: 10px;border-bottom: 2px solid #ddd;flex-wrap: wrap;overflow: hidden;}
-.slci:hover{border-bottom: 2px solid #a1c4d5;}
+.slci{display:flex;width:calc(100% - 30px);margin:5px 20px;padding:10px;background:#feffff;border-radius:10px;border-bottom:2px solid #ddd;flex-wrap:wrap;overflow:hidden}
+.slci:hover{border-bottom:2px solid #a1c4d5}
 .slist{display:flex;flex-wrap:wrap;width:100%}
-.slbn{width: 75px;height: 50px;overflow:hidden;}
-.slbn img{width:100%;height:100%;display:block;border-radius: 10px;}
-.sldo{width: 50px;}
+.slbn{width:75px;height:50px;overflow:hidden}
+.slbn img{width:100%;height:100%;display:block;border-radius:10px}
+.sldo{width:50px}
 .slst{width:100px;text-align:center}
-.slst span{line-height:30px;margin:10px auto;background:#ddd;width:90px;display:block;font-size:14px;font-weight:900;border-radius: 10px;}
-.slti{width: calc(100% - 125px);padding-left: 10px;}
-.slti h2{line-height: 26px;font-size: 18px;display: flex;}
-.slti p{line-height: 24px;font-size: 13px;color: #888;text-overflow:ellipsis;white-space: nowrap;overflow:hidden;}
-.eel{width: calc(100% - 250px);height: calc(100vh - 60px);overflow-y:auto;}
+.slst span{line-height:30px;margin:10px auto;background:#ddd;width:90px;display:block;font-size:14px;font-weight:900;border-radius:10px}
+.slti{width:calc(100% - 125px);padding-left:10px}
+.slti h2{line-height:26px;font-size:18px;display:flex}
+.slti p{line-height:24px;font-size:13px;color:#888;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.eel{width:calc(100% - 250px);height:calc(100vh - 60px);overflow-y:auto}
 .eel .sm,.eer .sm{flex-wrap:wrap}
-.eer{width: 240px;margin-left: 10px;}
-.ibann *{width:100%;display:block;height:100%;border-radius: 10px;}
-.ibann span{line-height: 128px;text-align:center;font-size:20px;border:2px dotted #ddd;color:#ccc;background: #fff;font-weight:900;border-radius: 10px;}
-.ibann{display:block;width:100%;height: 125px;margin-bottom:7px;}
+.eer{width:240px;margin-left:10px}
+.ibann *{width:100%;display:block;height:100%;border-radius:10px}
+.ibann span{line-height:128px;text-align:center;font-size:20px;border:2px dotted #ddd;color:#ccc;background:#fff;font-weight:900;border-radius:10px}
+.ibann{display:block;width:100%;height:125px;margin-bottom:7px}
 .pli input,.pli select{width:100%;display:block}
 .pli{width:100%}
-.eer .pli{margin: 10px 0;}
+.eer .pli{margin:10px 0}
 .pli.plt{margin-top:15px}
-.pli textarea{width:100%;resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb;border-radius: 10px;}
+.pli textarea{width:100%;resize:none;border:1px solid #ddd;height:60px;line-height:30px;padding:0 10px;background:#fbfbfb;border-radius:10px}
 .savebtn{margin-top:7px;width:100%}
 .savebtn button{display:block;line-height:40px;width:100%;font-weight:900;color:#fff}
-.tageare{height: calc(100vh - 525px);overflow-y:auto;position:relative;}
-.tagShow{height: calc(100vh - 565px);overflow-y:auto;padding:5px;border-radius: 10px;background: #fff;border: 1px solid #ddd;}
+.tageare{height:calc(100vh - 525px);overflow-y:auto;position:relative}
+.tagShow{height:calc(100vh - 565px);overflow-y:auto;padding:5px;border-radius:10px;background:#fff;border:1px solid #ddd}
 .tse{position:relative}
 .tse p{line-height:40px;text-align:center;color:#aaa}
 .tse em{position:absolute;right:-8px;top:-10px;display:block;line-height:30px;width:30px;height:30px;border-radius:15px;background:#3790b9;text-align:center;font-style:normal;cursor:pointer;color:#f0f0f0}
-.tagShow.tagfix{position:absolute;z-index:11;background:rgba(255,255,255,0.9);border-color: #ddd;width:100%;overflow-x:hidden;border-radius: 10px;}
+.tagShow.tagfix{position:absolute;z-index:11;background:rgba(255,255,255,0.9);border-color:#ddd;width:100%;overflow-x:hidden;border-radius:10px}
 .tse button{display:block;line-height:36px;width:80%;font-weight:900;color:#feffff;margin:5px 10%}
 .tse h5{line-height:40px;text-align:center;color:#3790b9}
 .tade input{line-height:36px;height:36px;margin:5px 0}
 .tade textarea{margin:5px 0}
-.tse span{line-height:30px;padding:0 15px;margin:3px;display:inline-block;background: #f0f0f0;position:relative;cursor:pointer;font-size: 13px;border-radius: 15px;}
+.tse span{line-height:30px;padding:0 15px;margin:3px;display:inline-block;background:#f0f0f0;position:relative;cursor:pointer;font-size:13px;border-radius:15px}
 .tse span b{position:absolute;width:18px;height:18px;display:block;right:-5px;top:-5px;line-height:15px;font-size:12px;background:#3790b9;text-align:center;border-radius:9px;color:#f9f9f9;cursor:pointer}
 .pope{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background:rgba(0,0,0,0.5);opacity:0;display:none}
 .tage{position:absolute;width:500px;height:400px;padding:15px;background:#fff;left:calc(50% - 250px);top:calc(50% - 200px);transform:scale(0.8)}
@@ -55,8 +55,8 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .alcat{width:calc(100% - 70px)}
 .alicon{width:65px;height:65px;margin:5px 5px 5px 0}
 .alicon img{display:block;width:100%;height:100%}
-.alca .sldo{position:absolute;right: 10px;top: 0;}
-.alca{width: calc(25% - 40px);position:relative;}
+.alca .sldo{position:absolute;right:10px;top:0}
+.alca{width:calc(25% - 40px);position:relative}
 .alcat p{line-height:25px;font-size:13px;display:flex;align-items:center}
 .alcat p span{width:calc(100% - 70px);padding-left:5px;color:#222;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .alcat p span img{width:30px;height:30px;border:0}
@@ -66,25 +66,23 @@ h1,h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tage .tse h5{line-height:50px;font-size:20px}
 .tage .tse button{margin-top:15px}
 .tlag .alcat{width:100%}
-.comli{display:flex;position:relative;}
-.lavt{width: 45px;}
-img.cmavt{width: 40px;height: 40px;margin:0 5px;border-radius: 20px;}
+.comli{display:flex;position:relative}
+.lavt{width:45px}
+img.cmavt{width:40px;height:40px;margin:0 5px;border-radius:20px}
 .lavt *{text-align:center;line-height:20px}
-.lavt p{line-height: 18px;font-size: 12px;border: 1px solid;border-radius: 10px;}
-.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right: 10px;top: 10px;line-height: 32px;width: 80px;}
-.cminf{width: calc(100% - 55px);margin-left:10px;}
-.cminf *{font-style:normal;line-height: 20px;font-weight:normal;font-size:12px;}
-.cminf h1{display: flex;align-items: center}
-.cminf h1 span{color:#607d8b;font-weight:900;font-size: 13px;}
+.lavt p{line-height:18px;font-size:12px;border:1px solid;border-radius:10px}
+.comli button.btnblue{display:block;width:100%;color:#fff;position:absolute;right:10px;top:10px;line-height:32px;width:80px}
+.cminf{width:calc(100% - 55px);margin-left:10px}
+.cminf *{font-style:normal;line-height:20px;font-weight:normal;font-size:12px}
+.cminf h1{display:flex;align-items:center}
+.cminf h1 span{color:#607d8b;font-weight:900;font-size:13px}
 .cminf h1 em{color:#999;margin-left:5px}
-.cminf h1 b{width: 40px;
-    color: #444;
-    font-weight: 900;}
-.cminf h1 a{font-weight:900;color: #607d8b;padding: 2px 10px;border: 1px solid;line-height: 1.6;margin-top: 5px;border-radius: 10px;}
-.cminf p{width: calc(100% - 40px);padding:5px 10px;background:#f9f9f9;overflow:hidden;line-height:20px;font-size:13px;border-radius: 10px;}
-.fcoms,.coms,.acoms{margin-top:5px;display: flex;align-items: center;}
-.fcoms *{font-size:12px;color:#666;font-style: normal;}
-.fcoms p span{font-weight:900;}
+.cminf h1 b{width:40px;color:#444;font-weight:900}
+.cminf h1 a{font-weight:900;color:#607d8b;padding:2px 10px;border:1px solid;line-height:1.6;margin-top:5px;border-radius:10px}
+.cminf p{width:calc(100% - 40px);padding:5px 10px;background:#f9f9f9;overflow:hidden;line-height:20px;font-size:13px;border-radius:10px}
+.fcoms,.coms,.acoms{margin-top:5px;display:flex;align-items:center}
+.fcoms *{font-size:12px;color:#666;font-style:normal}
+.fcoms p span{font-weight:900}
 .fcoms p em{font-style:normal}
 .fcoms p:nth-child(1){background:unset;line-height:1;padding:2px;margin:0;font-size:12px}
 button.btnblue.bl2{right:120px}
@@ -94,269 +92,52 @@ button.btnblue.bl2{right:120px}
 .popb .tage.comme .tse button{width:46%;margin:15px 2%}
 .tade .fcoms{width:calc(100% - 75px);padding:2px 5px}
 .tade .fcoms p{text-align:left;line-height:20px;color:#666;font-style:normal}
-.input, .output,textarea#md{
-    border-radius: 10px;
+.input,.output,textarea#md{border-radius:10px}
+.slti h2 span{line-height:18px;font-weight:normal;font-size:12px;height:20px;margin:3px 0 3px 10px;border:1px solid #888;color:#666;border-radius:8px;text-align:center;padding:0 6px}
+.slci .do{width:40px;height:36px;line-height:36px;margin:14px 0 0 10px;font-size:13px}
+.mcfx.pe{padding:60px 20px 0 20px}
+.pe input,.pe select,.pe textarea{background:#fff}
+.fcoms b,.coms b,.acoms b{width:40px;color:#444;font-weight:900}
+.slti h2 a{color:#3790b9;line-height:26px;padding:0 5px;margin-left:5px;border-bottom:1px solid}
+.frili .slbn{width:50px;border-radius:25px}
+.frili .slti{width:calc(100% - 105px)}
+.loading{position:fixed;width:100%;height:100vh;z-index:100;background-color:#f0f0f0}
+.loadline{position:absolute;width:200px;height:10px;top:calc(50vh - 5px);left:calc(50% - 100px);border-radius:5px;animation:round 1s linear infinite normal}
+@keyframes round{0%{opacity:1;background:#fff;box-shadow:0 0 20px 10px #fff}
+50%{opacity:.5;transform:scale(1.2);background:#607d8b;box-shadow:0 0 20px 40px #fff}
+100%{opacity:1;background:#fff;box-shadow:0 0 20px 10px #fff}
 }
-.slti h2 span {
-    line-height: 18px;
-    font-weight: normal;
-    font-size: 12px;
-    height: 20px;
-    margin: 3px 0 3px 10px;
-    border: 1px solid #888;
-    color: #666;
-    border-radius: 8px;
-    text-align: center;
-    padding: 0 6px;
-}
-.slci .do {
-    width: 40px;
-    height: 36px;
-    line-height: 36px;
-    margin: 14px 0 0 10px;
-    font-size: 13px;
-}
-.mcfx.pe {
-    padding: 60px 20px 0px 20px;
-}
-
-.pe input, .pe select, .pe textarea {
-    background: #fff;
-}
-.fcoms b, .coms b, .acoms b {
-    width: 40px;
-    color: #444;
-    font-weight: 900;
-}
-.slti h2 a {
-    color: #3790b9;
-    line-height: 26px;
-    padding: 0 5px;
-    margin-left: 5px;
-    border-bottom: 1px solid;
-}
-
-.frili .slbn {
-    width: 50px;
-    border-radius: 25px;
-}
-
-.frili .slti {
-    width: calc(100% - 105px);
-}
-
-.loading {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 100;
-    background-color: #f0f0f0;
-}
-
-.loadline {
-    position: absolute;
-    width: 200px;
-    height: 10px;
-    top: calc(50vh - 5px);
-    left: calc(50% - 100px);
-    border-radius: 5px;
-    animation: round 1s linear infinite normal;
-}
-
-@keyframes round{
-    0%{
-    opacity: 1;
-    background: #fff;
-    box-shadow: 0 0 20px 10px #fff;
-}
-50%{opacity: 0.5;transform: scale(1.2);background: #607d8b;box-shadow: 0 0 20px 40px #fff;}
-100%{opacity: 1;background: #fff;box-shadow: 0 0 20px 10px #fff;}
-}
-.sm {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.cle {
-    background: #fff;
-    margin: 20px;
-    padding: 60px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.l_f {
-    width: calc(20% - 40px);
-}
-
-.cle h1 {
-    line-height: 40px;
-    font-size: 18px;
-    color: #666;
-    text-align: center;
-}
-
-.cle h2 {
-    line-height: 40px;
-    font-size: 26px;
-    text-align: center;
-    color: #607d8b;
-}
-
-.fle {
-    width: calc(100% - 40px);
-    margin: 20px 20px 0px 20px;
-    position: relative;
-    height: 40px;
-}
-
-.fle h1 {
-    line-height: 40px;
-    text-align: center;
-    position: absolute;
-    font-size: 20px;
-    width: 120px;
-    left: calc(50% - 60px);
-    top: 0;
-    z-index: 10;
-    background: #f0f0f0;
-    color: #607d8b;
-}
-
-.l_t {
-    width: calc(50% - 40px);
-}
-.l_r {
-     width: calc(33.33% - 40px);
-}
-
-.fline {
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    border-bottom: 2px solid #607d8b;
-}
-
-.l_t.ss {
-    position: relative;
-    padding: 50px 20px 20px 20px;
-}
-
-.l_t.ss h3 {
-    position: absolute;
-    top: 0;
-    line-height: 30px;
-    width: 100px;
-    text-align: center;
-    left: calc(50% - 50px);
-    background: #f0f0f0;
-    border-radius: 0 0 10px 10px;
-    color: #3790b9;
-}
-
-.ssli {
-    display: flex;
-    margin: 5px 0;
-    align-items: center;
-}
-
-.ssli span {
-    width: 75px;
-}
-
-.ssli p,.ssli input {
-    line-height: 28px;
-    height: 30px;
-    padding: 0 5px;
-    font-size: 13px;
-    border: 1px solid #aaa;
-    border-radius: 10px;
-    width: calc(100% - 75px);
-    min-width: unset;
-    
-}
-.ssli input{
-  height: 36px;
-  line-height: 34px;
-}
-
-.ssli p {
-    background: #f0f0f0;
-}
-
-.svi,.sed {
-    height: 210px;
-    position: relative;
-}
-
-.svi button,.sed button {
-    width: 40%;
-    position: absolute;
-    line-height: 28px;
-    bottom: 0;
-    right: 0;
-}
-button.btnblue.abs {
-    bottom: 35px;
-}
-
-.urls .slci {
-    width: calc(25% - 30px);
-    position: relative;
-    margin: 15px;
-}
-
-.urls .alcat {
-    width: 100%;
-}
-
-.urls .alcat p img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.urls .alcat p {
-    line-height: 2;
-    padding: 2px;
-    width: 100%;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.urls .alcat p span {width: 60px;line-height: 20px;font-size: 12px;text-align: center;border: 1px solid;display: inline-block;margin-right: 10px;padding: 0;border-radius: 10px;}
-
-.urls .sldo {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
-.urls .slci .do {
-    height: 30px;
-    line-height: 30px;
-}
-
-.urls .ibann {
-    width: calc(100% - 75px);
-    padding: 1px;
-    margin: 5px 0;
-}
-
-.urls .tage {
-    height: 530px;
-    top: calc(50% - 265px);
-}
-.urls .tse span {
-    margin: 0;
-    border-radius: 10px;
-    line-height: 150px;
-    font-size: 20px;
-}
-button.btnblue{background:#3790b9;color: #f0f0f0;}
+.sm{display:flex;flex-wrap:wrap;padding:10px}
+.cle{background:#fff;margin:20px;padding:60px 20px;border-radius:10px;cursor:pointer}
+.l_f{width:calc(20% - 40px)}
+.cle h1{line-height:40px;font-size:18px;color:#666;text-align:center}
+.cle h2{line-height:40px;font-size:26px;text-align:center;color:#607d8b}
+.fle{width:calc(100% - 40px);margin:20px 20px 0 20px;position:relative;height:40px}
+.fle h1{line-height:40px;text-align:center;position:absolute;font-size:20px;width:120px;left:calc(50% - 60px);top:0;z-index:10;background:#f0f0f0;color:#607d8b}
+.l_t{width:calc(50% - 40px)}
+.l_r{width:calc(33.33% - 40px)}
+.fline{position:absolute;width:100%;bottom:20px;border-bottom:2px solid #607d8b}
+.l_t.ss{position:relative;padding:50px 20px 20px 20px}
+.l_t.ss h3{position:absolute;top:0;line-height:30px;width:100px;text-align:center;left:calc(50% - 50px);background:#f0f0f0;border-radius:0 0 10px 10px;color:#3790b9}
+.ssli{display:flex;margin:5px 0;align-items:center}
+.ssli span{width:75px}
+.ssli p,.ssli input{line-height:28px;height:30px;padding:0 5px;font-size:13px;border:1px solid #aaa;border-radius:10px;width:calc(100% - 75px);min-width:unset}
+.ssli input{height:36px;line-height:34px}
+.ssli p{background:#f0f0f0}
+.svi,.sed{height:210px;position:relative}
+.svi button,.sed button{width:40%;position:absolute;line-height:28px;bottom:0;right:0}
+button.btnblue.abs{bottom:35px}
+.urls .slci{width:calc(25% - 30px);position:relative;margin:15px}
+.urls .alcat{width:100%}
+.urls .alcat p img{width:100%;height:auto;display:block}
+.urls .alcat p{line-height:2;padding:2px;width:100%;overflow:hidden;display:block;text-overflow:ellipsis;white-space:nowrap}
+.urls .alcat p span{width:60px;line-height:20px;font-size:12px;text-align:center;border:1px solid;display:inline-block;margin-right:10px;padding:0;border-radius:10px}
+.urls .sldo{position:absolute;bottom:10px;right:10px}
+.urls .slci .do{height:30px;line-height:30px}
+.urls .ibann{width:calc(100% - 75px);padding:1px;margin:5px 0}
+.urls .tage{height:530px;top:calc(50% - 265px)}
+.urls .tse span{margin:0;border-radius:10px;line-height:150px;font-size:20px}
+button.btnblue{background:#3790b9;color:#f0f0f0}
 button.btngray{background:#9e9e9e}
 button.btnred{background:#b93749}
 button.btnblack{background:#333}

@@ -70,7 +70,7 @@ function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
           </div> 
     <?php 
     // 查询最新数据
-    $newSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY id DESC LIMIT 8";
+    $newSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY id DESC LIMIT 10";
     $news = mysqli_query($conn,$newSql);
     $ni = 1;
     ?>
@@ -102,7 +102,7 @@ function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
       </div> 
 <?php 
 // 查询最新数据
-$upSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY monthView DESC LIMIT 10";
+$upSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY monthView DESC LIMIT 8";
 $ups = mysqli_query($conn,$upSql);
 $ui = 1;
 ?>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>Struts2 + Spring框架融合配置 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="Struts2框架以WebWork优秀的设计思想为核心，吸收了 Struts框架的部分优点，提供了一个更加整洁的MVC设计模式实现的Web应用程序框架，本文主要是与Spring整合关键配置和实例 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+  <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+   </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>Struts2 + Spring框架融合配置</h1> 
+     </div> 
+     <div class="pdest rtr">Struts2框架以WebWork优秀的设计思想为核心，吸收了 Struts框架的部分优点，提供了一个更加整洁的MVC设计模式实现的Web应用程序框架，本文主要是与Spring整合关键配置和实例</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">MVC框架</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">整合配置</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl1">自定义配置文件</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl1">Action类结构</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl1">小结</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="/static/upload/banner/1646008181748.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/spring_1.html">Spring</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/struts_1.html">Struts</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">MVC框架</h1><p>MVC全名是Model View Controller，表示采用了MVC涉及模式的框架。 </p>
+<p>是模型(model)－视图(view)－控制器(controller)的缩写。    </p>
+<p>使用业务逻辑、数据、界面显示分离的方法组织代码，业务逻辑聚集到一个部件里面。</p>
+<p>当改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。</p>
+<h1 id="menu_2">整合配置</h1><p>位于WEB应用的web.xml中配置Struts2核心Filter。</p>
+<p>Struts2框架与SpringMVC最大的区别在于转发通过过滤器，SpringMVC使用Servlet。</p>
+<pre><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 配置Struts2核心Filter的名字 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>struts2<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 注意：一定是org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter --&gt;</span>
+    <span class="hljs-comment">&lt;!-- 不是org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter --&gt;</span>
+    <span class="hljs-comment">&lt;!-- 也不是org.apache.struts2.dispatcher.Filterdispatcher --&gt;</span>
+    <span class="hljs-comment">&lt;!-- struts的版本不同，导致jar包目录的改变，写错了，会报找不到类的错误 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 多个Strust配置文件用,号隔开 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>config<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>struts-default.xml,conf/mebugs.struts.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 扩展struts2的ConfigurationProvider接口，在web.xml中配置自定义的加载类 --&gt;</span>
+        <span class="hljs-comment">&lt;!-- 自定义扫描所有的Strust配置文件，实际应用中可以不配置 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>configProviders<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>com.mebugs.MyConfigProviders<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>struts2<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>*.action<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span>
+</code></pre>
+<h1 id="menu_3">自定义配置文件</h1><p>如上文中我们使用的mebugs.struts.xml实例，以及几类比较常见的配置内容。</p>
+<pre><code class="hljs language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">struts</span> <span class="hljs-keyword">PUBLIC</span> 
+    <span class="hljs-string">&quot;-//Apache Software Foundation//DTD Struts Configuration 2.0//EN&quot;</span> 
+    <span class="hljs-string">&quot;http://struts.apache.org/dtds/struts-2.0.dtd&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">struts</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- struts.devMode也就是struts的开发模式，默认值为false，改为true就是以后一旦就改这个文件中的配置就不用去重启tomcat --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">constant</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;struts.devMode&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;false&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">package</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;mebugsServices&quot;</span> <span class="hljs-attr">extends</span>=<span class="hljs-string">&quot;struts-default&quot;</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Action --&gt;</span>
+        <span class="hljs-comment">&lt;!-- 一般情况下，**这个类也要配置在Spring的bean配置文件**，用于类对象的维护 --&gt;</span>
+        <span class="hljs-comment">&lt;!-- **此处便是与Spring框架融合的地方，我们的bean依旧统一交给Spring的IOC容器来管理** --&gt;</span>
+        <span class="hljs-comment">&lt;!-- action name便是前端请求的地址 method则绑定对应的方法入口 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;createUser&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.mebugs.user.action.UserAction&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;createUser&quot;</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 以下内容均为选用 --&gt;</span>
+            <span class="hljs-comment">&lt;!-- 绑定一个拦截器/组 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">interceptor-ref</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;security&quot;</span> /&gt;</span>
+            <span class="hljs-comment">&lt;!-- 绑定一个需要传参的拦截器/组 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">interceptor-ref</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;runMode&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;target&quot;</span>&gt;</span>https<span class="hljs-tag">&lt;/<span class="hljs-name">param</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">interceptor-ref</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 特定的返回字符串标识 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;</span>/jsp/some.jsp<span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 特定的返回字符串标识，且指定为重定向 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;main&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;redirect&quot;</span>&gt;</span>main.action<span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">action</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">package</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">struts</span>&gt;</span>
+</code></pre>
+<h1 id="menu_4">Action类结构</h1><p>以上文配置的UserAction为例</p>
+<pre><code class="hljs language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserAction</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BASCAction</span>    {
+    <span class="hljs-comment">/*
+     * 序列号
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">373832410111011420L</span>;
+    <span class="hljs-comment">/*
+     * 日志
+    */</span>
+   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">DebugLog</span> <span class="hljs-variable">LOGGER</span> <span class="hljs-operator">=</span> LogFactory.getDebugLog(UserAction.class);
+   <span class="hljs-comment">/*
+    * 实体类，与视图交互的对象
+    */</span>
+   <span class="hljs-keyword">private</span> User user;
+   <span class="hljs-comment">/*
+    * Service层类注入
+    */</span>
+    <span class="hljs-keyword">private</span> UserServ userServ;
+    <span class="hljs-comment">/*
+     * 通过Bean配置中&lt;property name=&quot;user&quot; ref=&quot;user&quot;&gt;&lt;/property&gt; 进行关联
+     * Bean管理依旧交给Spring
+     */</span>
+    <span class="hljs-keyword">public</span> User <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> user;
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setUser</span><span class="hljs-params">(User user)</span> {
+        <span class="hljs-built_in">this</span>.user = user;
+    }
+    <span class="hljs-keyword">public</span> UserServ <span class="hljs-title function_">getUserServ</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> userServ;
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setUserServ</span><span class="hljs-params">(UserServ userServ)</span> {
+        <span class="hljs-built_in">this</span>.userServ = userServ;
+    }
+    <span class="hljs-comment">/*
+     * action中配置指定的方法
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">createUser</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// step1: 调用业务处理类 获取返回体</span>
+        <span class="hljs-comment">// 这个返回体结构是我们自定义的通用返回体，便于Jackson解析</span>
+        <span class="hljs-comment">// 其结构一个返回码一个返回描述</span>
+        <span class="hljs-type">ReturnDes</span> <span class="hljs-variable">returnDes</span> <span class="hljs-operator">=</span> userServ.createUser(user);
+        <span class="hljs-comment">// step2: 打印接口返回消息</span>
+        List&lt;Object&gt; rtn = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Object&gt;();
+        rtn.add(returnDes);
+        <span class="hljs-comment">// step3: 构造返回体，建议剥离为一个公共方法</span>
+        <span class="hljs-comment">// 此处引用了Jacson开源Jar工具包</span>
+        response.setCharacterEncoding(<span class="hljs-string">&quot;UTF-8&quot;</span>);
+        response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);
+        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">ObjectMapper</span> <span class="hljs-variable">mapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapper</span>();
+            <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> mapper.writeValueAsString(rtn);
+            out = response.getWriter();
+            out.print(json);
+        } <span class="hljs-keyword">catch</span>(JsonProcessingException e) {
+            LOGGER.error(e.toString(), e);
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+            LOGGER.error(e.toString(), e);
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != out) {
+                out.close();
+            }
+        }
+    } 
+}
+</code></pre>
+<h1 id="menu_5">小结</h1><p>在JAVA语言中新的WEB项目中，Struts2框架的身影也越来越少见。</p>
+<p>由于Struts2框架是一个存粹的控制层框架，Bean还需要交给Spring框架维护，增加很多的配置项。</p>
+<p>因此现在比较多见的依旧是Spring+SpringMVC的组合。</p>
+<p>尤其是注解方式配置面市后，使用其他控制层框架与Spring框架融合开发效率始终弱于Spring+SpringMVC。</p>
+<p>亲儿子毕竟是亲儿子<del>哈哈哈</del></p>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1031,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+      <div class="box pm pa_4"> 
+                  <a href="/post/smvcdata.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007019535.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>一文理解SpringMVC框架核心</h2> 
+         <p class="pdesc">SpringMVC框架是围绕DispatcherServlet（前端控制器）展开的，本文描述SpringMVC的优点、各个核心类（角色）作用，并说明用户请求数据到最终视图返回完整的数据传输过程</p> 
+        </div> 
+      </a> 
+            <a href="/post/webfiltergo.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646132013719.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>自定义filter过滤器拦截未登录（非法）请求</h2> 
+         <p class="pdesc">在JAVA的WEB工程中我们可以将JSP页面文件放在WEB-INFO中限制用户进行URL直接访问，但静态资源如js、css文件却是需要被外部直接访问的，直接对外暴露又不太安全，可以通过自定义过滤器处理</p> 
+        </div> 
+      </a> 
+            <a href="/post/springhome.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645786549085.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Spring、SpringMVC和SpringBoot</h2> 
+         <p class="pdesc">Spring就像一个大家族，里面包含了很多衍生产品，其中最为出名的就是SpringMVC和SpringBoot，那么这三者之间是什么关系呢？SpringMVC和SpringBoot又专门用来做什么呢？</p> 
+        </div> 
+      </a> 
+            <a href="/post/ecligit.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645146446122.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Eclipse中操作Git进行代码关联/拉取/推送</h2> 
+         <p class="pdesc">Eclipse可以直接通过GitRepositories直接创建本地项目与Git仓库关联，clone代码，同步、拉取以及推送代码，对于曾经经常使用SVN插件的小伙伴上手会相对容易。</p> 
+        </div> 
+      </a> 
+            <a href="/post/strustvalt.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007630828.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Struts2原生校验器以及自定义校验器</h2> 
+         <p class="pdesc">Struts2校验框架可以在request进Action之前对请求参数进行校验，非法则拦截返回，框架自带了不少常用校验器可以直接配置此外我们可以自定义一个校验器已满足自身的定制诉求</p> 
+        </div> 
+      </a> 
+            <a href="/post/getpramnoc.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646304508051.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>JAVA服务端GET请求URL中文参数乱码</h2> 
+         <p class="pdesc">公司的老WEB项目的内部链接跳转时使用了GET请求并且携带参数进行传递，在绝大多数情况没问题，但携带中文参数时后台获取的内容会出现乱码的问题（事实上我们并不建议用GET请求传递太多参数）</p> 
+        </div> 
+      </a> 
+            </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+              <a href="/post/flectdo.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+       </a>
+              <a href="/post/ctrfctmod.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+       </a>
+              <a href="/post/modehlh.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+       </a>
+              <a href="/post/bigdecit.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+       </a>
+              <a href="/post/getpramnoc.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+       </a>
+              <a href="/post/batbacksh.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+       </a>
+              <a href="/post/oraclelilog.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+       </a>
+              <a href="/post/httpclientapc.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/springhome.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>Spring、SpringMVC和SpringBoot</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/mavpomx.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>maven管理JAVA项目pom.xml文件实例</h2></div> 
+        </a>
+                <a href="/post/lodingin.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>Jquery+CSS3实现网页入场动画特效</h2></div> 
+        </a>
+                <a href="/post/jcheadh.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Jquery+CSS轻松实现导航动态显示隐藏</h2></div> 
+        </a>
+                <a href="/post/crontl.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>Crontab配置定时任务处理日常工作</h2></div> 
+        </a>
+                <a href="/post/bcomp.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Beyond Compare 4 无限试用方案</h2></div> 
+        </a>
+                <a href="/post/gitrediurl.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Windows版本的Redis（新版本的GitHub地址）</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/flectdo.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/modehlh.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+        </a>
+                <a href="/post/bigdecit.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/batbacksh.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/httpclientapc.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/well_1.html">运维</a><a href="/category/tool_1.html">工具</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/net_1.html">中间件</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/jquery_1.html">JQuery</a><a href="/tag/css_1.html">CSS</a><a href="/tag/method_1.html">方法</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/springmvc_1.html">SpringMVC</a><a href="/tag/struts_1.html">Struts</a><a href="/tag/geth_1.html">获取</a><a href="/tag/pyrunc_1.html">内存</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1031;  </script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+         <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="/static/js/popup.js?v=1.0"></script>  
+   <script src="/static/js/post.js?v=1.0"></script> 
+   <script src="/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

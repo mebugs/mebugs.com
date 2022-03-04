@@ -1,41 +1,5 @@
-.e404 h1 {
-    line-height: 200px;
-    font-size: 160px;
-    text-align: center;
-    width: 100%;
-    background-image: linear-gradient( 45deg , #2db787, #2d5bb7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.dark .e404 h1 {
-background-image: linear-gradient( 45deg, #2d5bb7 , #2db787);
- 
-}
-
-.e404 h2 {
-    line-height: 50px;
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-}
-
-.e404 h2 span {
-    width: 60px;
-    height: 60px;
-    display: inline-block;
-    line-height: 54px;
-    font-size: 30px;
-    background-image: linear-gradient( 
-45deg
- , #2db787, #2d5bb7);
-    color: #f3f6f8;
-    border-radius: 30px;
-}
-
-.dark .e404 h2 span {
-    background-image: linear-gradient( 
-45deg
-, #2d5bb7 , #2db787);
-    color: #222b35;
-}
+.e404 h1{line-height:200px;font-size:160px;text-align:center;width:100%;background-image:linear-gradient(45deg,#2db787,#2d5bb7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.dark .e404 h1{background-image:linear-gradient(45deg,#2d5bb7,#2db787)}
+.e404 h2{line-height:50px;width:100%;text-align:center;font-size:20px;font-weight:900}
+.e404 h2 span{width:60px;height:60px;display:inline-block;line-height:54px;font-size:30px;background-image:linear-gradient(45deg,#2db787,#2d5bb7);color:#f3f6f8;border-radius:30px}
+.dark .e404 h2 span{background-image:linear-gradient(45deg,#2d5bb7,#2db787);color:#222b35}

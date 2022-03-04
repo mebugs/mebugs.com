@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>JAVA设计模式之创建者模式中的三种工厂模式 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="工厂模式归属于设计模式中的创建者模式，其主要用途是为了让我们更加优雅的创建JAVA对象，常见的工厂模式主要分为简单工厂、工厂方法、抽象方法三种形式，具体使用中并不拘泥于形式。 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+  <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+   </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>JAVA设计模式之创建者模式中的三种工厂模式</h1> 
+     </div> 
+     <div class="pdest rtr">工厂模式归属于设计模式中的创建者模式，其主要用途是为了让我们更加优雅的创建JAVA对象，常见的工厂模式主要分为简单工厂、工厂方法、抽象方法三种形式，具体使用中并不拘泥于形式。</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">前言</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">模式介绍</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">简单工厂模式</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">工厂方法</a> <!----></li><li><a href="javascript:runTo('menu_5')" class="pl2">抽象工厂模式</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_6')" class="pl1">备注</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="/static/upload/banner/1646305217152.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/factory_1.html">工厂</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/model_1.html">模式</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">前言</h1><p>我们在实际写代码过程中往往不会过度强调在用哪种设计模式。</p>
+<p>但了解学习优秀的设计模式能够便于我们写出更为优质的代码。</p>
+<p>采用设计模式编写代码可以具备易用、拓展、清晰等多种特质。</p>
+<p>既便如此，在实际编写过程中，不能被设计模式所束缚，因地制宜才是最好的。</p>
+<p>本文主要讲述的是，创建者模式中的工厂模式。</p>
+<h1 id="menu_2">模式介绍</h1><p>创建者模式：为了用更加优雅的方式创建对象。</p>
+<p>工厂模式：字如其意，用于创建对象的中心，主要为了生产出需要的对象。</p>
+<h2 id="menu_3">简单工厂模式</h2><p>该模式使用的频次较少，简单来说就是你需要什么，我创建什么。 </p>
+<p>该设计模式主要为了将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。</p>
+<p>简单工厂方法是静态方法，可通过工厂类类名直接调用，只需要传入一个简单的参数即可，无须知道对象的创建细节。</p>
+<p>可以将参数保存在XML等格式的配置文件中，修改时无须修改任何Java源代码。</p>
+<p>但是，工厂类的职责相对过重，增加新的产品需要修改工厂类的判断逻辑，违背开闭原则。</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//产品接口</span>
+<span class="hljs-keyword">interface</span> Person{
+    <span class="hljs-built_in">void</span> <span class="hljs-title function_">create</span>();
+}
+<span class="hljs-comment">//产品实现类</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Man</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Person</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">String</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Create Man&quot;</span>;
+    }
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Woman</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Person</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">String</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Create Woman&quot;</span>;
+    }
+}
+<span class="hljs-comment">//工厂类</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PersonFactory</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title class_">Person</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> what</span>)
+    {
+        <span class="hljs-title class_">Person</span> person = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">switch</span> (what)
+        {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;M&quot;</span> :
+                person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Man</span>();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;W&quot;</span> :
+                person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Woman</span>();
+                <span class="hljs-keyword">break</span>;
+        }
+        <span class="hljs-keyword">return</span> person;
+    }
+}
+<span class="hljs-comment">//最终调用</span>
+<span class="hljs-title class_">Person</span> man = <span class="hljs-title class_">PersonFactory</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&quot;M&quot;</span>);
+<span class="hljs-title class_">Person</span> woman = <span class="hljs-title class_">PersonFactory</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&quot;W&quot;</span>);
+</code></pre>
+<p><strong>优点：</strong></p>
+<ul>
+<li>实现了对象创建和使用的分离</li>
+<li>一定程度上提高了系统的灵活性，对象使用者无需知晓创建对象的细节</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>工厂类集中了所有产品的创建逻辑，过度依赖工厂类，实际上提高了代码耦合度</li>
+<li>增加了系统的复杂度和理解难度</li>
+<li>系统扩展困难，添加新产品不得不修改工厂逻辑，重构频次过高</li>
+<li>使用静态工厂方法，工厂无法基于继承的等级结构，不能得到很好地扩展</li>
+</ul>
+<p><strong>场景：</strong></p>
+<ul>
+<li>少类型的对象创建，不会造成工厂方法中的业务逻辑太过复杂</li>
+<li>使用者不想过多关心对象创建细节，想快速达成对象创建</li>
+</ul>
+<h2 id="menu_4">工厂方法</h2><p>工厂方法模式(Factory Method Pattern)简称工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式。</p>
+<p>工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。</p>
+<p>工厂方法模式是简单工厂模式的进一步抽象和推广，保持了简单工厂模式的优点，并克服了它的缺点。</p>
+<p>核心工厂类不再负责所有产品的创建，而是将具体创建工作交给其子类去完成，允许系统在不修改工厂角色的情况下引进新产品。</p>
+<p>实际过程为：增加具体产品--&gt;增加具体工厂，符合开闭原则。</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//产品接口</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span>{
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">create</span><span class="hljs-params">()</span>;
+}
+<span class="hljs-comment">//产品实现类</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Man</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Person</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">create</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Create Man&quot;</span>;
+    }
+}
+<span class="hljs-comment">//以上与简单工厂一致</span>
+<span class="hljs-comment">//工厂方法父类（接口类）</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">PersonFactory</span> {
+    Person <span class="hljs-title function_">createPerson</span><span class="hljs-params">()</span>;
+}
+<span class="hljs-comment">//工厂方法子类（实现类）</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ManFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">PersonFactory</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Person <span class="hljs-title function_">createPerson</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Man</span>();
+    }
+}
+<span class="hljs-comment">//实际调用</span>
+<span class="hljs-type">PersonFactory</span> <span class="hljs-variable">manFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ManFactory</span>();
+<span class="hljs-type">Person</span> <span class="hljs-variable">man</span> <span class="hljs-operator">=</span> manFactory.createPerson();
+</code></pre>
+<p><strong>优点：</strong></p>
+<ul>
+<li>工厂方法用来创建客户所需要的产品，隐藏了哪种具体产品类将被实例化的细节</li>
+<li>自主选择需要使用的子类工厂，创建对象的细节封装在具体工厂内部</li>
+<li>在系统中加入新产品时，增加对应的子类（实现）工厂</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>一定程度上增加了系统的复杂度，会给系统带来一些额外的开销，增加了对应工厂类</li>
+<li>增加了系统的抽象性和理解难度</li>
+</ul>
+<p><strong>场景：</strong></p>
+<ul>
+<li>使用者只需要知道所对应的工厂即可创建对象</li>
+<li>较多的细分产品类适用于工厂方法创建</li>
+</ul>
+<h2 id="menu_5">抽象工厂模式</h2><p>抽象工厂模式(Abstract Factory Pattern)，提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类，抽象工厂模式又称为Kit模式。</p>
+<p>抽象工厂模式中存在着产品族和产品等级两大概念。</p>
+<p>产品族：同一个工厂生产的，位于不同产品等级结构中的一组产品，如下方代码的女人、女孩</p>
+<p>产品等级：产品等级结构即产品的继承结构，如下方代码的女性-&gt;女人，女性-&gt;女孩</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">//产品族 男性</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Male</span> {
+}
+<span class="hljs-comment">//男性产品等级下男人</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Man</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Male</span> {
+}
+<span class="hljs-comment">//男性产品等级下男孩</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Boy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Male</span> {
+}
+<span class="hljs-comment">//同理女性产品族</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Female</span> {
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Woman</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Female</span> {
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Girl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Female</span> {
+}
+<span class="hljs-comment">//抽象工厂</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">PersonFactory</span> {
+    <span class="hljs-keyword">public</span> Male <span class="hljs-title function_">createMale</span><span class="hljs-params">()</span>;
+    <span class="hljs-keyword">public</span> Female <span class="hljs-title function_">createFemale</span><span class="hljs-params">()</span>;
+}
+<span class="hljs-comment">//实现工厂 成年生产工厂</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AdultFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">PersonFactory</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Male <span class="hljs-title function_">createMale</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Man</span>();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Female <span class="hljs-title function_">createFemale</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Woman</span>();
+    }
+}
+<span class="hljs-comment">//实现工厂 幼年生产工厂</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ChildFactroy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">PersonFactory</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Male <span class="hljs-title function_">createMale</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Boy</span>();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Female <span class="hljs-title function_">createFemale</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Girl</span>();
+    }
+}
+<span class="hljs-comment">//最终调用</span>
+<span class="hljs-type">PersonFactory</span> <span class="hljs-variable">adultFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AdultFactory</span>();
+<span class="hljs-type">Male</span> <span class="hljs-variable">man</span> <span class="hljs-operator">=</span> adultFactory.createMale();
+<span class="hljs-type">Female</span> <span class="hljs-variable">woman</span> <span class="hljs-operator">=</span> adultFactory.createFemale();
+<span class="hljs-type">PersonFactory</span> <span class="hljs-variable">childFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChildFactroy</span>();
+<span class="hljs-type">Male</span> <span class="hljs-variable">boy</span> <span class="hljs-operator">=</span> childFactory.createMale();
+<span class="hljs-type">Female</span> <span class="hljs-variable">girl</span> <span class="hljs-operator">=</span> childFactory.createFemale();
+</code></pre>
+<p><strong>优点：</strong></p>
+<ul>
+<li>使用者无需知晓具体对象的生成</li>
+<li>产品族中的多个对象被设计成一起工作时，能够保证使用者只使用同一个产品族中的对象</li>
+<li>增加新的产品族很方便，无须修改已有系统，符合开闭原则</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>当增加新的产品等级，需大改，甚至修改抽象层代码，重构成本高，违背了开闭原则</li>
+</ul>
+<p><strong>场景：</strong></p>
+<ul>
+<li>系统不依赖于产品类实例如何被创建、组合和表达的细节</li>
+<li>系统中有多于一个的产品族，每次只使用其中某一产品族</li>
+<li>属于同一个产品族的产品将在一起使用时</li>
+<li>产品等级结构稳定，在设计完成之后不会向系统中增加新的产品等级结构或者删除已有的产品等级结构</li>
+</ul>
+<h1 id="menu_6">备注</h1><p>实际编写代码并不会局限于使用某一种设计模式。</p>
+<p>代码在不断优化升级重构过程中会出现模式的迁移情况。</p>
+<p>无论采用何种设计模式，编码时我们要考虑这些特质：</p>
+<ul>
+<li>逻辑清晰，模块划分合理</li>
+<li>可读性高</li>
+<li>健壮性高</li>
+<li>灵活，易扩展和易迁移。</li>
+</ul>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1057,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+      <div class="box pm pa_4"> 
+                  <a href="/post/smvcdata.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007019535.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>一文理解SpringMVC框架核心</h2> 
+         <p class="pdesc">SpringMVC框架是围绕DispatcherServlet（前端控制器）展开的，本文描述SpringMVC的优点、各个核心类（角色）作用，并说明用户请求数据到最终视图返回完整的数据传输过程</p> 
+        </div> 
+      </a> 
+            <a href="/post/webfiltergo.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646132013719.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>自定义filter过滤器拦截未登录（非法）请求</h2> 
+         <p class="pdesc">在JAVA的WEB工程中我们可以将JSP页面文件放在WEB-INFO中限制用户进行URL直接访问，但静态资源如js、css文件却是需要被外部直接访问的，直接对外暴露又不太安全，可以通过自定义过滤器处理</p> 
+        </div> 
+      </a> 
+            <a href="/post/springhome.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645786549085.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Spring、SpringMVC和SpringBoot</h2> 
+         <p class="pdesc">Spring就像一个大家族，里面包含了很多衍生产品，其中最为出名的就是SpringMVC和SpringBoot，那么这三者之间是什么关系呢？SpringMVC和SpringBoot又专门用来做什么呢？</p> 
+        </div> 
+      </a> 
+            <a href="/post/ecligit.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645146446122.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Eclipse中操作Git进行代码关联/拉取/推送</h2> 
+         <p class="pdesc">Eclipse可以直接通过GitRepositories直接创建本地项目与Git仓库关联，clone代码，同步、拉取以及推送代码，对于曾经经常使用SVN插件的小伙伴上手会相对容易。</p> 
+        </div> 
+      </a> 
+            <a href="/post/strustvalt.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007630828.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Struts2原生校验器以及自定义校验器</h2> 
+         <p class="pdesc">Struts2校验框架可以在request进Action之前对请求参数进行校验，非法则拦截返回，框架自带了不少常用校验器可以直接配置此外我们可以自定义一个校验器已满足自身的定制诉求</p> 
+        </div> 
+      </a> 
+            <a href="/post/getpramnoc.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646304508051.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>JAVA服务端GET请求URL中文参数乱码</h2> 
+         <p class="pdesc">公司的老WEB项目的内部链接跳转时使用了GET请求并且携带参数进行传递，在绝大多数情况没问题，但携带中文参数时后台获取的内容会出现乱码的问题（事实上我们并不建议用GET请求传递太多参数）</p> 
+        </div> 
+      </a> 
+            </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+              <a href="/post/flectdo.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+       </a>
+              <a href="/post/ctrfctmod.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+       </a>
+              <a href="/post/modehlh.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+       </a>
+              <a href="/post/bigdecit.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+       </a>
+              <a href="/post/getpramnoc.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+       </a>
+              <a href="/post/batbacksh.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+       </a>
+              <a href="/post/oraclelilog.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+       </a>
+              <a href="/post/httpclientapc.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/springhome.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>Spring、SpringMVC和SpringBoot</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/mavpomx.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>maven管理JAVA项目pom.xml文件实例</h2></div> 
+        </a>
+                <a href="/post/lodingin.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>Jquery+CSS3实现网页入场动画特效</h2></div> 
+        </a>
+                <a href="/post/jcheadh.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Jquery+CSS轻松实现导航动态显示隐藏</h2></div> 
+        </a>
+                <a href="/post/crontl.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>Crontab配置定时任务处理日常工作</h2></div> 
+        </a>
+                <a href="/post/bcomp.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Beyond Compare 4 无限试用方案</h2></div> 
+        </a>
+                <a href="/post/gitrediurl.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Windows版本的Redis（新版本的GitHub地址）</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/flectdo.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/modehlh.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+        </a>
+                <a href="/post/bigdecit.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/batbacksh.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/httpclientapc.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/well_1.html">运维</a><a href="/category/tool_1.html">工具</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/net_1.html">中间件</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/jquery_1.html">JQuery</a><a href="/tag/css_1.html">CSS</a><a href="/tag/method_1.html">方法</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/springmvc_1.html">SpringMVC</a><a href="/tag/struts_1.html">Struts</a><a href="/tag/geth_1.html">获取</a><a href="/tag/pyrunc_1.html">内存</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1057;  </script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+         <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="/static/js/popup.js?v=1.0"></script>  
+   <script src="/static/js/post.js?v=1.0"></script> 
+   <script src="/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

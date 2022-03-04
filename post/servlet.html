@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>Servlet生命周期及数据流转过程 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="Spring家族大行其道的今天，很多人可能未必还记得JAVA中原生Servlet对象的一些知识，实际上SpringMVC就是基于Servlet进行的封装，记录Servlet对象生命周期及数据流转过程 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+  <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+   </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>Servlet生命周期及数据流转过程</h1> 
+     </div> 
+     <div class="pdest rtr">Spring家族大行其道的今天，很多人可能未必还记得JAVA中原生Servlet对象的一些知识，实际上SpringMVC就是基于Servlet进行的封装，记录Servlet对象生命周期及数据流转过程</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">关于Servlet</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">关于生命周期</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">初始化阶段</a> <ul><li><a href="javascript:runTo('menu_4')" class="pl3">init()</a></li></ul></li><li><a href="javascript:runTo('menu_5')" class="pl2">运行时阶段</a> <ul><li><a href="javascript:runTo('menu_6')" class="pl3">service()</a></li></ul></li><li><a href="javascript:runTo('menu_7')" class="pl2">销毁阶段</a> <ul><li><a href="javascript:runTo('menu_8')" class="pl3">destroy()</a></li></ul></li></ul></li><li><a href="javascript:runTo('menu_9')" class="pl1">概述Servlet对象生命周期</a> <!----></li><li><a href="javascript:runTo('menu_10')" class="pl1">自定义Servlet注意事项</a> <!----></li><li><a href="javascript:runTo('menu_11')" class="pl1">Tomcat与Servlet是如何工作</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="/static/upload/banner/1645056985017.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/servlet_1.html">servlet</a><a href="/tag/lifed_1.html">生命周期</a><a href="/tag/iocxs_1.html">容器</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">关于Servlet</h1><p>JAVA Servlet 是运行在 Web 服务器或应用服务器上的程序。</p>
+<p>Servlet 是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</p>
+<p>Servlet 通常情况下与使用 CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到异曲同工的效果。</p>
+<p>但是相比于 CGI，Servlet 有以下几点优势：</p>
+<ul>
+<li>性能明显更好。</li>
+<li>在Web服务器的地址空间内执行，无需创建进程来处理每个客户端请求</li>
+<li>独立于平台的， JAVA编写的。</li>
+<li>安全可信的， 安全管理器执行了一系列限制，以保护服务器计算机上的资源</li>
+<li>JAVA类库的全部功能对 Servlet 来说都是可用的。</li>
+</ul>
+<h1 id="menu_2">关于生命周期</h1><p>一个Java对象从最初被创建，到最后被销毁，所经历的完整过程，认为是其的生命周期。</p>
+<p>生命周期大致分为三个阶段：初始化阶段、运行时阶段、销毁阶段。</p>
+<p>Servlet对象从最初的创建，方法的调用，以及对象的销毁，都是由web容器（Web Container）管理的（如Tomcat）。</p>
+<p>默认情况下，Servlet对象在web服务器启动阶段中不会被实例化，若需要启动时实例化，则需要特殊的配置（如：load-on-startup）</p>
+<h2 id="menu_3">初始化阶段</h2><ol>
+<li>Servlet容器会加载Servlet类，把它的.class文件中的数据加载到内存储中</li>
+<li>Servlet容器会创建ServletConfig对象，该对象包含了特点的Servlet的初始化配置信息</li>
+<li>Servlet容器创建Servlet对象，然后容器调用该对象的init(ServletConfig config) 方法</li>
+<li>每个Servlet对象都有一个与之关联的ServletConfig类对象，ServletConfig对象都会与当前Java web应用的ServletContext对象关联</li>
+<li>每个Servlet对象的init(ServletConfig config) 方法,在其生命周期内只会被调用一次</li>
+</ol>
+<h3 id="menu_4">init()</h3><ul>
+<li>Servlet的生命周期中，仅执行一次init()方法</li>
+<li>在服务器装入Servlet时执行的，负责初始化Servlet对象</li>
+<li>可以配置服务器，在启动服务器或客户机首次访问Servlet时装入Servlet</li>
+<li>无论多少客户访问Servlet，都不会重复执行init()</li>
+</ul>
+<h2 id="menu_5">运行时阶段</h2><ol>
+<li>Servlet容器接收到客户端要求访问特定的Servlet时，Servlet容器会针对该请求创建ServletRequest对象和ServletResponse对象</li>
+<li>调用相关的Servlet对象的service()方法，当一个请求被接收/处理，再通过ServletResponse对象将响应结果返回给客户端</li>
+<li>对应的ServletResponse对象和ServletRequest对象便会被Servlet容器销毁</li>
+</ol>
+<h3 id="menu_6">service()</h3><ul>
+<li>Servlet的核心，负责响应客户的请求</li>
+<li>当请求一个HttpServlet对象，该对象的Service()方法就要调用，而且传递给这个方法ServletRequest对象和ServletResponse对象作为参数</li>
+<li>HttpServlet中已存在Service()方法，默认的服务功能是调用与HTTP请求的方法相应的do功能</li>
+</ul>
+<h2 id="menu_7">销毁阶段</h2><ol>
+<li>当Java web应用被终止时，Servlet容器会调用所有Servlet对象的destroy()方法（释放Servlet对象所占用的资源）</li>
+<li>再销毁这些Servlet对象以及和它关联的ServletConfig对象</li>
+</ol>
+<h3 id="menu_8">destroy()</h3><ul>
+<li>仅执行一次，在服务器端停止且卸载Servlet时执行该方法</li>
+<li>Servlet对象退出生命周期时，负责释放占用的资源</li>
+<li>一个Servlet在运行service()方法时可能会产生其他的线程，因此需要确认在调用destroy()方法时，这些线程已经终止或完成</li>
+</ul>
+<h1 id="menu_9">概述Servlet对象生命周期</h1><ol>
+<li>用户在浏览器地址栏输入URL</li>
+<li>web容器截取请求路径（容器上下文中寻找请求路径）</li>
+<li>通过web.xml文件中的相关配置信息找到请求路径</li>
+<li>通过反射机制，调用servlet的无参构造方法完成servlet对象的实例化</li>
+<li>web容器调用servlet的init()方法完成初始化操作</li>
+<li>web容器调用servlet的service()方法提供服务</li>
+<li>找到对应的servlet对象</li>
+<li>web容器直接调用servlet的service()方法提供服务</li>
+<li>web容器关闭的时候、webapp重新部署的时候、servlet对象长时间无用户再次访问时，web容器会将该servlet对象销毁</li>
+<li>销毁前，web容器会调用servlet的destroy()方法，完成销毁之前的准备</li>
+</ol>
+<h1 id="menu_10">自定义Servlet注意事项</h1><p>当客户发送一个请求，Servlet是调用service()方法对请求进行响应的。</p>
+<p>通过源代码可见，service()方法中对请求的方式进行了匹配，选择调用doGet、doPost等这些方法。</p>
+<p>再进入对应的方法中调用逻辑层的方法，实现对客户的响应。</p>
+<p>在Servlet接口和GenericServlet中是没有doGet()、doPost()等这些方法的，HttpServlet中定义了这些方法，但是都是返回error信息。</p>
+<p>所以我们自定义Servlet的时候，<strong>都必须实现doGet()、doPost()等这些方法</strong>。</p>
+<p>自定义的Servlet都必须实现Servlet的接口，Servlet接口中定义了五个方法，其中比较重要的三个方法涉及到Servlet的生命周期，分别是上文提到的init(),service(),destroy()方法。</p>
+<ul>
+<li>GenericServlet是一个通用的，不特定于任何协议的Servlet,它实现了Servlet接口</li>
+<li>HttpServlet继承GenericServlet，因此HttpServlet也实现了Servlet接口</li>
+</ul>
+<p>所以一般自定义Servlet的时候只需要继承HttpServlet即可。</p>
+<p>Servlet接口和GenericServlet是不特定于任何协议的，而HttpServlet是特定于HTTP协议的类。</p>
+<p>所以HttpServlet中实现了service()方法，并将请求ServletRequest、ServletResponse强转为HttpRequest、HttpResponse。</p>
+<h1 id="menu_11">Tomcat与Servlet是如何工作</h1><p>与上方过程基本一致：</p>
+<ol>
+<li>Web Client向Servlet容器（Tomcat）发出Http请求</li>
+<li>Servlet容器接收Web Client的请求</li>
+<li>Servlet容器创建一个HttpRequest对象并将Web Client请求的信息封装到这个对象中</li>
+<li>Servlet容器创建一个HttpResponse对象</li>
+<li>Servlet容器调用HttpServlet对象的service方法，把HttpRequest对象与HttpResponse对象作为参数传给HttpServlet对象</li>
+<li>HttpServlet调用HttpRequest对象的有关方法（doGet()、doPost()等），获取Http请求信息</li>
+<li>HttpServlet调用HttpResponse对象的有关方法（doGet()、doPost()等），生成响应数据</li>
+<li>Servlet容器把HttpServlet的响应结果传给Web Client</li>
+</ol>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1007,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+      <div class="box pm pa_4"> 
+                  <a href="/post/smvcdata.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007019535.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>一文理解SpringMVC框架核心</h2> 
+         <p class="pdesc">SpringMVC框架是围绕DispatcherServlet（前端控制器）展开的，本文描述SpringMVC的优点、各个核心类（角色）作用，并说明用户请求数据到最终视图返回完整的数据传输过程</p> 
+        </div> 
+      </a> 
+            <a href="/post/webfiltergo.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646132013719.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>自定义filter过滤器拦截未登录（非法）请求</h2> 
+         <p class="pdesc">在JAVA的WEB工程中我们可以将JSP页面文件放在WEB-INFO中限制用户进行URL直接访问，但静态资源如js、css文件却是需要被外部直接访问的，直接对外暴露又不太安全，可以通过自定义过滤器处理</p> 
+        </div> 
+      </a> 
+            <a href="/post/springhome.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645786549085.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Spring、SpringMVC和SpringBoot</h2> 
+         <p class="pdesc">Spring就像一个大家族，里面包含了很多衍生产品，其中最为出名的就是SpringMVC和SpringBoot，那么这三者之间是什么关系呢？SpringMVC和SpringBoot又专门用来做什么呢？</p> 
+        </div> 
+      </a> 
+            <a href="/post/ecligit.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645146446122.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Eclipse中操作Git进行代码关联/拉取/推送</h2> 
+         <p class="pdesc">Eclipse可以直接通过GitRepositories直接创建本地项目与Git仓库关联，clone代码，同步、拉取以及推送代码，对于曾经经常使用SVN插件的小伙伴上手会相对容易。</p> 
+        </div> 
+      </a> 
+            <a href="/post/strustvalt.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007630828.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Struts2原生校验器以及自定义校验器</h2> 
+         <p class="pdesc">Struts2校验框架可以在request进Action之前对请求参数进行校验，非法则拦截返回，框架自带了不少常用校验器可以直接配置此外我们可以自定义一个校验器已满足自身的定制诉求</p> 
+        </div> 
+      </a> 
+            <a href="/post/getpramnoc.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646304508051.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>JAVA服务端GET请求URL中文参数乱码</h2> 
+         <p class="pdesc">公司的老WEB项目的内部链接跳转时使用了GET请求并且携带参数进行传递，在绝大多数情况没问题，但携带中文参数时后台获取的内容会出现乱码的问题（事实上我们并不建议用GET请求传递太多参数）</p> 
+        </div> 
+      </a> 
+            </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+              <a href="/post/flectdo.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+       </a>
+              <a href="/post/ctrfctmod.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+       </a>
+              <a href="/post/modehlh.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+       </a>
+              <a href="/post/bigdecit.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+       </a>
+              <a href="/post/getpramnoc.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+       </a>
+              <a href="/post/batbacksh.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+       </a>
+              <a href="/post/oraclelilog.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+       </a>
+              <a href="/post/httpclientapc.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/springhome.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>Spring、SpringMVC和SpringBoot</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/mavpomx.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>maven管理JAVA项目pom.xml文件实例</h2></div> 
+        </a>
+                <a href="/post/lodingin.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>Jquery+CSS3实现网页入场动画特效</h2></div> 
+        </a>
+                <a href="/post/jcheadh.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Jquery+CSS轻松实现导航动态显示隐藏</h2></div> 
+        </a>
+                <a href="/post/crontl.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>Crontab配置定时任务处理日常工作</h2></div> 
+        </a>
+                <a href="/post/bcomp.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Beyond Compare 4 无限试用方案</h2></div> 
+        </a>
+                <a href="/post/gitrediurl.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Windows版本的Redis（新版本的GitHub地址）</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/flectdo.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/modehlh.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+        </a>
+                <a href="/post/bigdecit.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/batbacksh.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/httpclientapc.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/well_1.html">运维</a><a href="/category/tool_1.html">工具</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/net_1.html">中间件</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/jquery_1.html">JQuery</a><a href="/tag/css_1.html">CSS</a><a href="/tag/method_1.html">方法</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/springmvc_1.html">SpringMVC</a><a href="/tag/struts_1.html">Struts</a><a href="/tag/geth_1.html">获取</a><a href="/tag/pyrunc_1.html">内存</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1007;  </script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+         <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="/static/js/popup.js?v=1.0"></script>  
+   <script src="/static/js/post.js?v=1.0"></script> 
+   <script src="/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

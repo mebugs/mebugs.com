@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>Spring、SpringMVC和SpringBoot - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="Spring就像一个大家族，里面包含了很多衍生产品，其中最为出名的就是SpringMVC和SpringBoot，那么这三者之间是什么关系呢？SpringMVC和SpringBoot又专门用来做什么呢？ - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+  <link href="/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+   </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>Spring、SpringMVC和SpringBoot</h1> 
+     </div> 
+     <div class="pdest rtr">Spring就像一个大家族，里面包含了很多衍生产品，其中最为出名的就是SpringMVC和SpringBoot，那么这三者之间是什么关系呢？SpringMVC和SpringBoot又专门用来做什么呢？</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">Spring</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">SpringMVC</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl1">SpringBoot</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl1">关系说明</a> <ul><li><a href="javascript:runTo('menu_5')" class="pl2">SpringMVC和Spring的关系</a> <!----></li><li><a href="javascript:runTo('menu_6')" class="pl2">Spring和SpringBoot的关系</a> <!----></li><li><a href="javascript:runTo('menu_7')" class="pl2">三者关系概述</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_8')" class="pl1">SpringBoot下的应用创建和部署</a> <!----></li><li><a href="javascript:runTo('menu_9')" class="pl1">一句话结论</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="/static/upload/banner/1645786549085.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/java_1.html">JAVA</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/spring_1.html">Spring</a><a href="/tag/springmvc_1.html">SpringMVC</a><a href="/tag/springboot_1.html">SpringBoot</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">Spring</h1><p>Spring是一个开源<strong>容器</strong>框架。</p>
+<p>可以接管web层，业务层，dao层，持久层的组件，并且可以配置各种bean,和维护bean与bean之间的关系。</p>
+<p>其核心就是控制反转(IOC)和面向切面(AOP)。</p>
+<p>简单的说就是一个分层的轻量级开源框架。</p>
+<h1 id="menu_2">SpringMVC</h1><p>SpringMVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。</p>
+<p>SpringMVC是Web层MVC框架，用于替代servlet（处理|响应请求，获取表单参数，表单校验等）。</p>
+<p>某种意义上来说SpringMVC可以相当于是Struts2加上Spring的整合。</p>
+<h1 id="menu_3">SpringBoot</h1><p>SpringBoot是一个微服务框架，延续了Spring框架的核心思想IOC和AOP，简化了应用的开发和部署。</p>
+<p>SpringBoot是为了简化Spring应用的创建、运行、调试、部署等而出现的，使用它可以做到专注于Spring应用的开发，而无需过多关注XML的配置。</p>
+<p>提供了一堆依赖打包，并已经按照使用习惯解决了依赖问题-&gt;习惯大于约定。</p>
+<p>SpringBoot的核心在于自动配置。</p>
+<h1 id="menu_4">关系说明</h1><h2 id="menu_5">SpringMVC和Spring的关系</h2><p>Spring为简化我们的开发工作，封装了一系列的开箱即用的组件功能模块。</p>
+<p>包括：Spring JDBC 、Spring MVC 、Spring Security、 Spring AOP 、Spring ORM 、Spring Test等。<br/>如下图：</p>
+<p><img src="/static/upload/post/1645786392786.jpg" alt="/static/upload/post/1645786392786.jpg"/></p>
+<p>因此：<br/>SpringMVC是属于SpringWeb里面的一个功能模块（SpringWebMVC）。</p>
+<p>专门用来开发SpringWeb项目的一种MVC模式的技术框架实现。</p>
+<h2 id="menu_6">Spring和SpringBoot的关系</h2><p>SpringBoot基本上是Spring框架的扩展，它消除了设置Spring应用程序所需的XML配置，为更快，更高效的开发生态系统铺平了道路。</p>
+<p>我们通过了解SpringBoot所具备的能力就很容易理解Spring和SpringBoot的关系。</p>
+<ol>
+<li>创建独立的spring应用。</li>
+<li>嵌入Tomcat, JettyUndertow 而且不需要部署他们</li>
+<li>提供的“starters” poms来简化Maven配置</li>
+<li>尽可能自动配置spring应用</li>
+<li>提供生产指标,健壮检查和外部化配置</li>
+<li>绝对没有代码生成和XML配置要求</li>
+</ol>
+<p>从功能角度来看，SpringBoot可以理解为一个可以一键发布的Spring应用。</p>
+<h2 id="menu_7">三者关系概述</h2><p>spring mvc &lt; spring &lt; springboot</p>
+<ul>
+<li>Spring包含了SpringMVC</li>
+<li>SpringBoot包含了Spring</li>
+<li>SpringBoot在Spring的基础上进行了增强</li>
+</ul>
+<h1 id="menu_8">SpringBoot下的应用创建和部署</h1><p>回忆一下在没有SpringBoot之前我们创建和发布一个应用需要做那些事情？</p>
+<ol>
+<li>pom.xml中引入Spring依赖</li>
+<li>pom.xml中引入第三方依赖，并通过配置文件与Spring整合（Bean管理）</li>
+<li>解决各类依赖冲突（尤其是第三方的依赖版本冲突）</li>
+<li>选择一个运行的容器（如：Tomcat，以下已Tomcat举例）</li>
+<li>在环境上安装好Tomcat容器</li>
+<li>配置Tomcat容器的server.xml（应用路径、端口等）</li>
+<li>通过maven编译打包（pom.xml需配置编译打包插件）</li>
+<li>将War包放到Tomcat容器指定路径</li>
+<li>启动Tomcat容器（bin/startup.sh）</li>
+</ol>
+<p>通过SpringBoot来创建应用我们需要做什么？</p>
+<ol>
+<li>pom.xml中引入SpringBoot的starter依赖</li>
+<li>pom.xml中引入第三方starter（无需整合和依赖冲突，starter已按照<strong>约定配置做好整合</strong>）</li>
+<li>通过maven编译打包（pom.xml仅需指定发布格式，如Jar包）</li>
+<li>将Jar包放到环境上</li>
+<li>java -jar xxx.jar（完成启动）</li>
+</ol>
+<h1 id="menu_9">一句话结论</h1><p>Spring包含了SpringMVC，SpringBoot是Spring的扩展，使开发，测试和部署更加方便。</p>
+<ul>
+<li>Spring 是一个核心引擎</li>
+<li>SpringMVC是基于核心引擎的一个MVC框架（用于Web开发）</li>
+<li>SpringBoot是基于核心引擎的一套快速开发整合包</li>
+</ul>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1025,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/java_1.html">JAVA</a>      </div> 
+      <div class="box pm pa_4"> 
+                  <a href="/post/smvcdata.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007019535.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>一文理解SpringMVC框架核心</h2> 
+         <p class="pdesc">SpringMVC框架是围绕DispatcherServlet（前端控制器）展开的，本文描述SpringMVC的优点、各个核心类（角色）作用，并说明用户请求数据到最终视图返回完整的数据传输过程</p> 
+        </div> 
+      </a> 
+            <a href="/post/webfiltergo.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646132013719.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>自定义filter过滤器拦截未登录（非法）请求</h2> 
+         <p class="pdesc">在JAVA的WEB工程中我们可以将JSP页面文件放在WEB-INFO中限制用户进行URL直接访问，但静态资源如js、css文件却是需要被外部直接访问的，直接对外暴露又不太安全，可以通过自定义过滤器处理</p> 
+        </div> 
+      </a> 
+            <a href="/post/ecligit.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645146446122.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Eclipse中操作Git进行代码关联/拉取/推送</h2> 
+         <p class="pdesc">Eclipse可以直接通过GitRepositories直接创建本地项目与Git仓库关联，clone代码，同步、拉取以及推送代码，对于曾经经常使用SVN插件的小伙伴上手会相对容易。</p> 
+        </div> 
+      </a> 
+            <a href="/post/strustvalt.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646007630828.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Struts2原生校验器以及自定义校验器</h2> 
+         <p class="pdesc">Struts2校验框架可以在request进Action之前对请求参数进行校验，非法则拦截返回，框架自带了不少常用校验器可以直接配置此外我们可以自定义一个校验器已满足自身的定制诉求</p> 
+        </div> 
+      </a> 
+            <a href="/post/getpramnoc.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1646304508051.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>JAVA服务端GET请求URL中文参数乱码</h2> 
+         <p class="pdesc">公司的老WEB项目的内部链接跳转时使用了GET请求并且携带参数进行传递，在绝大多数情况没问题，但携带中文参数时后台获取的内容会出现乱码的问题（事实上我们并不建议用GET请求传递太多参数）</p> 
+        </div> 
+      </a> 
+            <a href="/post/mavenscop.html"> 
+        <div class="pimel">
+          <img class="scale" src="/static/upload/banner/100_1645785410064.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Maven的pom配置文件的scope属性</h2> 
+         <p class="pdesc">scope属性主要用于控制依赖范围，主要分为编译、打包、运行、测试、依赖传递等各个常见，scope不同于optional提供了更多可选择的配置参数用于应对不同的依赖场景。</p> 
+        </div> 
+      </a> 
+            </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+              <a href="/post/flectdo.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+       </a>
+              <a href="/post/ctrfctmod.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+       </a>
+              <a href="/post/modehlh.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+       </a>
+              <a href="/post/bigdecit.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+       </a>
+              <a href="/post/getpramnoc.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+       </a>
+              <a href="/post/batbacksh.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+       </a>
+              <a href="/post/oraclelilog.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+       </a>
+              <a href="/post/httpclientapc.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/springhome.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>Spring、SpringMVC和SpringBoot</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/mavpomx.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>maven管理JAVA项目pom.xml文件实例</h2></div> 
+        </a>
+                <a href="/post/lodingin.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>Jquery+CSS3实现网页入场动画特效</h2></div> 
+        </a>
+                <a href="/post/jcheadh.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Jquery+CSS轻松实现导航动态显示隐藏</h2></div> 
+        </a>
+                <a href="/post/crontl.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>Crontab配置定时任务处理日常工作</h2></div> 
+        </a>
+                <a href="/post/bcomp.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Beyond Compare 4 无限试用方案</h2></div> 
+        </a>
+                <a href="/post/gitrediurl.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Windows版本的Redis（新版本的GitHub地址）</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/flectdo.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>JAVA语言中的反射机制的作用原理及使用</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/modehlh.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA单例模式中的饿汉模式与懒汉模式</h2></div> 
+        </a>
+                <a href="/post/bigdecit.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>BigDecimal类实现高精度符点运算</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/batbacksh.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>bat脚本的基本关键字介绍及脚本实例</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/httpclientapc.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>通过HttpClient实现服务端收发HTTP请求</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/well_1.html">运维</a><a href="/category/tool_1.html">工具</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/net_1.html">中间件</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/jquery_1.html">JQuery</a><a href="/tag/css_1.html">CSS</a><a href="/tag/method_1.html">方法</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/springmvc_1.html">SpringMVC</a><a href="/tag/struts_1.html">Struts</a><a href="/tag/geth_1.html">获取</a><a href="/tag/pyrunc_1.html">内存</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1025;  </script>
+  <script src="/static/js/base.js?v=1.0"></script> 
+         <script src="/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="/static/js/popup.js?v=1.0"></script>  
+   <script src="/static/js/post.js?v=1.0"></script> 
+   <script src="/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

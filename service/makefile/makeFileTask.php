@@ -90,19 +90,19 @@ function initStatics($conn,$today) {
   }
 }
 
-// 测试代码
-include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/doConfig.php');
-$cdnUrl = getConfig("cdnUrl","../comm/system.php","string");
-$conns = [
- 'qqUrl' => getConfig("qqUrl","../comm/system.php","string"),
- 'githubUrl' => getConfig("githubUrl","../comm/system.php","string"),
- 'giteeUrl' => getConfig("giteeUrl","../comm/system.php","string"),
- 'emailUrl' => getConfig("emailUrl","../comm/system.php","string")
-];
-// 当前时间
-ini_set('date.timezone', 'Asia/Shanghai');
-$time_str = date('Y-m-d H:i:s', time());
-$today = substr($time_str,0,10);
-makeFileTask($cdnUrl,$today,$conns);// 处理全局文件生成
-exit;
+// // 测试代码
+// include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/doConfig.php');
+// $cdnUrl = getConfig("cdnUrl","../comm/system.php","string");
+// $conns = [
+//  'qqUrl' => getConfig("qqUrl","../comm/system.php","string"),
+//  'githubUrl' => getConfig("githubUrl","../comm/system.php","string"),
+//  'giteeUrl' => getConfig("giteeUrl","../comm/system.php","string"),
+//  'emailUrl' => getConfig("emailUrl","../comm/system.php","string")
+// ];
+// // 当前时间
+// ini_set('date.timezone', 'Asia/Shanghai');
+// $time_str = date('Y-m-d H:i:s', time());
+// $today = substr($time_str,0,10);
+// makeFileTask($cdnUrl,$today,$conns);// 处理全局文件生成
+// exit;
 ?>

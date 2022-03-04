@@ -1,4 +1,4 @@
-.pst .srm{background: #f9fbfb;padding:15px;line-height:1.6;text-align:center;margin-bottom:40px;}
+.pst .srm{background:#f9fbfb;padding:15px;line-height:1.6;text-align:center;margin-bottom:40px}
 .fform{padding:15px}
 .fline{display:flex;margin:30px 15px}
 .fline *{line-height:40px;font-size:16px}
@@ -8,55 +8,22 @@
 .fline p{width:100%;font-size:15px;color:#5891ab;font-weight:900}
 .fline a{line-height:40px;margin:10px;display:inline-block;width:250px;text-align:center;background:#5891ab;color:#f0f0f0}
 .fline p a{width:200px;margin:0;margin-right:30px}
-.fimg{width:120px;height:120px;position:relative;cursor:pointer;margin-left: 30px;}
+.fimg{width:120px;height:120px;position:relative;cursor:pointer;margin-left:30px}
 .fimg p{position:absolute;bottom:5px;z-index:1;width:80px;text-align:center;line-height:28px;left:20px;color:#f9f9f9;background:#5891ab;font-size:13px}
 .fline span.ico{height:120px;line-height:120px}
 .fline span.desc{height:90px;line-height:90px}
 .fline a.rsend{margin:0;height:60px;line-height:60px;margin-top:auto;margin-left:auto;font-weight:900}
 .fline a:hover,.fimg p:hover{background:#2d8cb7}
-.fline textarea {width: calc(100% - 200px);padding: 5px 30px;resize: none;height: 90px;line-height: 25px}
-.fline .rsel {
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid #e3ebee;
-    background: #f9fbfb;
-}
+.fline textarea{width:calc(100% - 200px);padding:5px 30px;resize:none;height:90px;line-height:25px}
+.fline .rsel{border:0;outline:0;border-bottom:1px solid #e3ebee;background:#f9fbfb}
 .dark .fline p{color:#2d8cb7}
 .dark .fline a{background:#2d8cb7}
 .dark .fline select,.dark .fline select option,.dark .fline span{background:#222b35}
 .dark .fimg p{background:#2d8cb7;color:#f9f9f9}
 .dark .fline a:hover,.dark .fimg p:hover{background:#5891ab}
-.dark .fline .rsel {
-    background: #1a1e23;
-    color: #feffff;
-    border-bottom: 1px solid #444;
-}
-
-.sline {
-    padding: 10px;
-}
-.sline h2 {
-    line-height: 30px;
-    font-weight: 900;
-}
-
-
-
-.sline p {
-    line-height: 25px;
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-.sline p span {
-    display: inline-block;
-    margin-right: 5px;
-    width: 40px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 25px;
-    background: #f3f6f8;
-}
-.dark .sline p span{
-    background: #222b35;
-}
+.dark .fline .rsel{background:#1a1e23;color:#feffff;border-bottom:1px solid #444}
+.sline{padding:10px}
+.sline h2{line-height:30px;font-weight:900}
+.sline p{line-height:25px;font-size:12px;opacity:.8}
+.sline p span{display:inline-block;margin-right:5px;width:40px;text-align:center;font-size:14px;line-height:25px;background:#f3f6f8}
+.dark .sline p span{background:#222b35}
