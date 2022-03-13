@@ -22,3 +22,7 @@
 .timg{display:flex;margin:0 auto;width:150px}
 .timg h1{width:70px;text-align:center;margin:0 0 0 10px;line-height:70px}
 .tnoimg h1{margin:0;width:100%}
+.pagee a:hover{background:unset!important}
+.pime {border-radius: 8px 8px 0 0;}
+.pime img {border-radius: 0;}
+.pinfb {border-radius: 0 0 8px 8px;}

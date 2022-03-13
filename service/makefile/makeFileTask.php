@@ -2,7 +2,7 @@
 // 生成文件
 function makeFileTask($cdnUrl,$today,$conns) {
   // 初始化连接
-  include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
+  include($_SERVER['DOCUMENT_ROOT'].'/service/comm/connect.php');
   // 初始化统计
   initStatics($conn,$today);
   $baseUrl = "http://www.mebugs.com";
@@ -90,7 +90,7 @@ function initStatics($conn,$today) {
   }
 }
 
-// // 测试代码
+// 测试代码
 // include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/doConfig.php');
 // $cdnUrl = getConfig("cdnUrl","../comm/system.php","string");
 // $conns = [
@@ -103,6 +103,8 @@ function initStatics($conn,$today) {
 // ini_set('date.timezone', 'Asia/Shanghai');
 // $time_str = date('Y-m-d H:i:s', time());
 // $today = substr($time_str,0,10);
+// echo $time_str;
+// //setConfig("taskLastRun",$time_str,"../comm/system.php","string");// 更新执行时间
 // makeFileTask($cdnUrl,$today,$conns);// 处理全局文件生成
 // exit;
 ?>

@@ -90,10 +90,10 @@ $postInfo = mysqli_fetch_assoc(mysqli_query($conn,$postInfoSql));
             <h1>米虫</h1>
             <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
             <div class="meconn">
-             <a href="<?php echo $conns['qqUrl']; ?>" class="conn cqq"></a>
-             <a href="<?php echo $conns['emailUrl']; ?>" class="conn cml"></a> 
-             <a href="<?php echo $conns['giteeUrl']; ?>" class="conn cge"></a> 
-             <a href="<?php echo $conns['githubUrl']; ?>" class="conn cgb"></a>
+             <a href="<?php echo $conns['qqUrl']; ?>" target="_blank" class="conn cqq"></a>
+             <a href="<?php echo $conns['emailUrl']; ?>" target="_blank" class="conn cml"></a> 
+             <a href="<?php echo $conns['giteeUrl']; ?>" target="_blank" class="conn cge"></a> 
+             <a href="<?php echo $conns['githubUrl']; ?>" target="_blank" class="conn cgb"></a>
             </div> 
            </div> 
        </div>

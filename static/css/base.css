@@ -95,7 +95,7 @@ footer a{font-size:15px;font-weight:900;display:inline-block;color:#222}
 .mequci *{width:100%;height:100%;display:block}
 .mequci a{position:relative;overflow:hidden}
 .pst .pt h1{width:100%;font-weight:900;text-align:center}
-.pst .pdest{background:#f9fbfb;padding:10px;font-size:14px;text-align:center;line-height:1.5}
+.pst .pdest{background:#feffff;padding:10px;font-size:14px;text-align:center;line-height:1.5}
 .pst .pdest a{margin:5px;color:#5891ab;font-weight:900}
 input,textarea{border:0;outline:0;border-bottom:1px solid #e3ebee;background:#f9fbfb}
 input:focus,textarea:focus{border-bottom:1px solid #2d8cb7;background:#f2f7f8}

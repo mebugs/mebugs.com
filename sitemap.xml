@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset>
+<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
         <loc>http://www.mebugs.com</loc>
         <changefreq>daily</changefreq>
@@ -321,6 +320,46 @@
         <priority>1</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/post/mebugs.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/orajob.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/soapjvm.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/locklock.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/gointfc.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/endeco.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/bsonon.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/post/nvmnjs.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/posts/new_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -461,6 +500,11 @@
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/category/go_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/category/php_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -491,12 +535,27 @@
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/category/run_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/category/conn_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/category/well_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>http://www.mebugs.com/category/plat_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/category/security_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -511,12 +570,12 @@
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>http://www.mebugs.com/tag/list_1.html</loc>
+        <loc>http://www.mebugs.com/category/box_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>http://www.mebugs.com/tag/jquery_1.html</loc>
+        <loc>http://www.mebugs.com/tag/list_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -526,12 +585,17 @@
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>http://www.mebugs.com/tag/method_1.html</loc>
+        <loc>http://www.mebugs.com/tag/jquery_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/oracle_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/method_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -606,6 +670,11 @@
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/tag/tasks_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/tag/load_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -636,17 +705,27 @@
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>http://www.mebugs.com/tag/maven_1.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
         <loc>http://www.mebugs.com/tag/list_2.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/tag/morff_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/maven_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/tag/ift_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/vers_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -706,6 +785,16 @@
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/tag/api_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/type_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/tag/smake_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -746,7 +835,7 @@
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>http://www.mebugs.com/tag/tasks_1.html</loc>
+        <loc>http://www.mebugs.com/tag/list_3.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -767,11 +856,6 @@
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/tryuse_1.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
-        <loc>http://www.mebugs.com/tag/list_3.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -881,6 +965,11 @@
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/tag/list_4.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/tag/mybatis_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -897,11 +986,6 @@
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/chrome_1.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
-        <loc>http://www.mebugs.com/tag/list_4.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -936,11 +1020,6 @@
         <priority>0.8</priority>
     </url>
         <url>
-        <loc>http://www.mebugs.com/tag/morff_1.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
         <loc>http://www.mebugs.com/tag/depyl_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -957,11 +1036,6 @@
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/redis_1.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
-        <loc>http://www.mebugs.com/tag/vers_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1021,17 +1095,17 @@
         <priority>0.8</priority>
     </url>
         <url>
+        <loc>http://www.mebugs.com/tag/list_5.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
         <loc>http://www.mebugs.com/tag/wrongdo_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/atckgg_1.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
-        <loc>http://www.mebugs.com/tag/list_5.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1142,6 +1216,86 @@
     </url>
         <url>
         <loc>http://www.mebugs.com/tag/ftrs_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/blog_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/list_6.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/html_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/soap_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/jvm_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/lock_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/roudself_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/intfc_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/impls_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/encod_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/decod_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/enkey_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/datajg_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/bson_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/npm_1.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>http://www.mebugs.com/tag/nodejs_1.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>

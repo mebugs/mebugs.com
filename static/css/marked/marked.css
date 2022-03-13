@@ -13,7 +13,7 @@
 .mark ol li,.mark ul li{padding-left:10px;line-height:1.5}
 pre{margin:5px;padding:10px 15px;background:#f3f6f8;overflow-x:auto;display:block;border:1px solid #e3ebee}
 pre *{line-height:1.7;color:#000}
-.pfro{padding:15px;background:#e3ebee;line-height:36px}
+.pfro{padding:15px;background:#f3f6f8;line-height:36px}
 .pfro p span{width:70px}
 .pfro p{display:flex;margin:5px 0}
 .pfro p b.pta{font-weight:normal;width:calc(100% - 70px)}
@@ -23,13 +23,13 @@ pre *{line-height:1.7;color:#000}
 .dark pre::-webkit-scrollbar-thumb{background-color:#222}
 .dark pre::-webkit-scrollbar-track{background-color:#2d333b}
 .dark .mark a{color:#2d8cb7}
-.dark .pfro{background:#2d333b}
+.dark .pfro{background: #1c2128;}
 .dark .pfro p a{background:#22272e}
 .dark .pfro p a:hover{background:#2d333b;color:#2d8cb7}
-.dark pre{background:#111316;border:1px solid #222b35}
+.dark pre{background: #1c2128;border:1px solid #222b35;}
 .dark pre *{color:#ddd}
 .dark .dark pre{background:#222}
-.dark .mark,.dark .menue{background:#1c2128;box-shadow:unset}
+.dark .mark,.dark .menue{background: #2b3846;box-shadow:unset;}
 .dark .mark h1:after,.dark .mark h2:after,.dark .mark h3:after{background:#adbac7}
 .dark .mark img{border:1px solid #555}
 .hljs .hljs-comment{color:#af5b07}

@@ -50,6 +50,8 @@
     	}
     }
   </script><?php } ?>
+  <!-- 谷歌广告 -->
+  <script data-ad-client="ca-pub-2699978133125218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
  </head> 
  <body> 
  <div class="loader" id="loader">

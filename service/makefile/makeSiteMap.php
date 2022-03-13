@@ -5,9 +5,9 @@ function makeSiteMap($siteMaps) {
   ob_start();
   // 目标文件
   $file_sc = $_SERVER['DOCUMENT_ROOT']."/sitemap.xml";
+  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 ?>
-<?xml version="1.0" encoding="utf-8"?>
-<urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <?php foreach ($siteMaps as $site) { ?>
     <url>
         <loc><?php echo $site['loc']; ?></loc>

@@ -17,7 +17,7 @@
 .conn:hover{transform:scale(0.9);opacity:.8}
 .pbline .pdesc{color:#444}
 .fulla{position:relative;overflow:hidden;display:block;height: 220px;width:calc(50% - 20px);margin:10px;}
-.pbline{position:absolute;z-index:10;bottom:0;height:90px!important;padding:10px;background:rgba(240,240,240,0.7);width:100%}
+.pbline{position:absolute;z-index:10;bottom:0;height:90px!important;padding:10px;border-radius: 0;background:rgba(240,240,240,0.7);width:100%;}
 .pbline h2{color:#000}
 a:hover .pbline{height:110px!important;padding:20px 10px!important;background:rgba(240,240,240,0.9)}
 .box.itm{padding: 0 5px;}

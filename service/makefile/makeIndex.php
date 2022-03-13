@@ -43,10 +43,10 @@ function makeIndex($smliImgs,$fteams,$ftags,$cdnUrl,$baseUrl,$conns,$conn) {
         </div> 
        </div> </a> 
       <div class="mecon"> 
-       <a href="<?php echo $conns['qqUrl']; ?>" class="conn cqq"></a> 
-       <a href="<?php echo $conns['emailUrl']; ?>" class="conn cml"></a> 
-       <a href="<?php echo $conns['giteeUrl']; ?>" class="conn cge"></a> 
-       <a href="<?php echo $conns['githubUrl']; ?>" class="conn cgb"></a> 
+       <a href="<?php echo $conns['qqUrl']; ?>" target="_blank" class="conn cqq"></a> 
+       <a href="<?php echo $conns['emailUrl']; ?>" target="_blank" class="conn cml"></a> 
+       <a href="<?php echo $conns['giteeUrl']; ?>" target="_blank" class="conn cge"></a> 
+       <a href="<?php echo $conns['githubUrl']; ?>" target="_blank" class="conn cgb"></a> 
       </div> 
       <div class="mequc"> 
       <?php foreach ($smliImgs as $smliImg) {
@@ -230,7 +230,7 @@ $tags = mysqli_query($conn,$tagSql);
       </div> 
 <?php 
 // 查询随机数据
-$randSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY randno DESC LIMIT 10";
+$randSql = "SELECT * FROM `post_main` WHERE id > 999 AND `status` = 1 ORDER BY randno DESC LIMIT 15";
 $rands = mysqli_query($conn,$randSql);
 $ri = 1;
 ?>

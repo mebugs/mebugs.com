@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>Go中接口的设计与实现 - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="Go语言中的接口采用的是隐式实现，不需要去申明实现，只需要直接实现接口所定义的全部方法即可，同时区分了直接实现与指针实现两种形态，在实际使用时需要注意和关注 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="http://blog.mebugs.com/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="http://blog.mebugs.com/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="http://blog.mebugs.com/static/img/icon.png" /> 
+  <link href="http://blog.mebugs.com/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="http://blog.mebugs.com/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="http://blog.mebugs.com/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="http://blog.mebugs.com/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="http://blog.mebugs.com/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="http://blog.mebugs.com/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+    <!-- 谷歌广告 -->
+  <script data-ad-client="ca-pub-2699978133125218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>Go中接口的设计与实现</h1> 
+     </div> 
+     <div class="pdest rtr">Go语言中的接口采用的是隐式实现，不需要去申明实现，只需要直接实现接口所定义的全部方法即可，同时区分了直接实现与指针实现两种形态，在实际使用时需要注意和关注</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">接口</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">Go接口特点</a> <ul><li><a href="javascript:runTo('menu_3')" class="pl2">接口实现</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl2">指针实现</a> <ul><li><a href="javascript:runTo('menu_5')" class="pl3">x.(T)验证</a></li></ul></li></ul></li><li><a href="javascript:runTo('menu_6')" class="pl1">Go空接口</a> <ul><li><a href="javascript:runTo('menu_7')" class="pl2">Comma-ok断言</a> <!----></li><li><a href="javascript:runTo('menu_8')" class="pl2">Switch判断</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_9')" class="pl1">嵌套接口</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="http://blog.mebugs.com/static/upload/banner/1646786508414.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/go_1.html">Golang</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/intfc_1.html">接口</a><a href="/tag/type_1.html">类型</a><a href="/tag/impls_1.html">实现</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">接口</h1><p>接口是面向对象编程实现多态的基操。</p>
+<p>在绝大多数情况下，数据可能是不同类型，不同类型却可能存在着一个和多个共通点。</p>
+<p>这些共通点就是抽象的基础。</p>
+<p>接口的本质就是某一个抽象的共通点，实际类型可能是一对多（一个类型实现多个接口）或多对一（多种类型实现一个接口），这就是多态的体现。</p>
+<p>举个例子：</p>
+<ul>
+<li>老王和老张两个好兄弟是两个具体的类型，我们提取他们身上可能存在的共通点。</li>
+<li>他们都是人，那么在编程世界中，人是可以作为一个接口存在的。</li>
+<li>人都需要睡觉，所以睡觉可以作为一个接口方法存在。</li>
+<li>老王喜欢趴着睡，就相当于老王的睡觉方法的具体操作是趴着，相当于接口方法的实现。</li>
+<li>老张喜欢侧着睡，就相当于老张的睡觉方法的具体操作是侧着，相当于接口方法的实现。</li>
+</ul>
+<p>从编程的角度来看，如果调取人这个接口让其执行睡觉方法，最终结果就是老王趴着睡、老张侧着睡。</p>
+<p>所以，接口是什么？</p>
+<p>接口是一组包含方法名（入参、返回值）的未进行具体实现的方法集。</p>
+<p>判断一个类型是否实现了接口，就看该类型是否全部实现了接口所定义的方法。</p>
+<h1 id="menu_2">Go接口特点</h1><p>Go 语言中接口的独特之处在于隐式实现。</p>
+<p>具体的类型并不需要声明其实现了哪些接口，实现接口必须的方法即可完成接口的实现。</p>
+<p>我们先看看 Java 语言中如何实现一个接口：</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">// 接口</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">People</span> {
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">Sleep</span><span class="hljs-params">()</span>;
+}
+<span class="hljs-comment">// 实现（类需要显式申明实现接口）</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PeopleImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">People</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">Sleep</span><span class="hljs-params">()</span> {
+        System.out.println(<span class="hljs-string">&quot;睡了！&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+}
+</code></pre>
+<p>这里有一个关键字 implements，用来声明实现某接口。</p>
+<p>Java 中是类实现接口而不是具体类型。</p>
+<h2 id="menu_3">接口实现</h2><p>在 Go 中，不需要声明实现，只需要实现了接口的全部方法，便隐式的实现了接口。</p>
+<p>依旧上面那段逻辑，修改成 Go 语言形式去实现。</p>
+<pre><code class="hljs language-go"><span class="hljs-comment">// 接口</span>
+<span class="hljs-keyword">type</span> People <span class="hljs-keyword">interface</span> {
+    Sleep() <span class="hljs-keyword">bool</span>
+}
+
+<span class="hljs-comment">// 具体类型</span>
+<span class="hljs-keyword">type</span> Man <span class="hljs-keyword">struct</span> {
+    Name <span class="hljs-keyword">string</span>
+}
+
+<span class="hljs-comment">// 类型实现接口方法</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(man Man)</span> <span class="hljs-title">Sleep</span><span class="hljs-params">()</span> <span class="hljs-title">bool</span></span> {
+    fmt.Println(<span class="hljs-string">&quot;我是&quot;</span> + man.Name + <span class="hljs-string">&quot;！我睡了！&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>上文我们提到，在 Go 中只要实现了接口的全部方法就隐式的实现了接口。</p>
+<p>上述代码中，People 接口只有一个 Sleep() 方法，Man 类型实现了该方法，那 Man 类型是否实现了接口 People 呢？</p>
+<pre><code class="hljs language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// 定义一个接口对象</span>
+    <span class="hljs-keyword">var</span> p People
+    <span class="hljs-comment">// 定义个类型对象</span>
+    lw := Man{<span class="hljs-string">&quot;老王&quot;</span>}
+    <span class="hljs-comment">// 将类型赋给接口</span>
+    p = lw
+    <span class="hljs-comment">// 调用接口方法</span>
+    p.Sleep()
+}
+</code></pre>
+<p>输出结果如下：</p>
+<pre><code class="hljs language-bash">我是老王！我睡了！
+</code></pre>
+<h2 id="menu_4">指针实现</h2><p>Go 中接口实现并不仅仅是类型直接实现方法，还有指针实现形式。</p>
+<p>指针实现的方法尽可以通过指针调用，比如下方代码：</p>
+<pre><code class="hljs language-go"><span class="hljs-comment">// 具体类型</span>
+<span class="hljs-keyword">type</span> Women <span class="hljs-keyword">struct</span> {
+    Name <span class="hljs-keyword">string</span>
+}
+
+<span class="hljs-comment">// 类型实现接口方法</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(women *Women)</span> <span class="hljs-title">Sleep</span><span class="hljs-params">()</span> <span class="hljs-title">bool</span></span> {
+    fmt.Println(<span class="hljs-string">&quot;我是&quot;</span> + women.Name + <span class="hljs-string">&quot;！我睡了！&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// 定义一个接口对象</span>
+    <span class="hljs-keyword">var</span> p People
+    <span class="hljs-comment">// 定义个类型对象</span>
+    lw := Women{<span class="hljs-string">&quot;王阿姨&quot;</span>}
+    <span class="hljs-comment">// 将类型赋给接口</span>
+    <span class="hljs-comment">// 编译报错：Cannot use &#x27;lw&#x27; (type Women) as type People Type does not implement &#x27;People&#x27; as &#x27;Sleep&#x27; method has a pointer receiver </span>
+    <span class="hljs-comment">// 提示您 Women 类型并没有实现 People 接口</span>
+    p = lw
+     <span class="hljs-comment">// 将指针赋给接口对象，才能正确实现接口</span>
+    p = &amp;lw
+    <span class="hljs-comment">// 调用接口方法</span>
+    p.Sleep()
+}
+</code></pre>
+<h3 id="menu_5">x.(T)验证</h3><p>可以通过 x.(T) 的方式验证是否已实现，x 只适用于 interface 类型。</p>
+<pre><code class="hljs language-go"><span class="hljs-comment">// 检查实现</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">checkPeople</span><span class="hljs-params">(p <span class="hljs-keyword">interface</span>{})</span> <span class="hljs-title">bool</span></span> {
+    <span class="hljs-keyword">if</span> _, ok := p.(People); ok {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// 定义个类型对象</span>
+    lw := Man{<span class="hljs-string">&quot;老王&quot;</span>}
+    <span class="hljs-comment">// 判断检查结果</span>
+    <span class="hljs-keyword">if</span> checkPeople(lw) {
+        fmt.Println(lw.Name + <span class="hljs-string">&quot;是个人！&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        fmt.Println(lw.Name + <span class="hljs-string">&quot;不是人！&quot;</span>)
+    }
+}
+</code></pre>
+<p>输出结果如下：</p>
+<pre><code class="hljs language-bash">老王是个人！
+</code></pre>
+<h1 id="menu_6">Go空接口</h1><p>Go 中是可以定义空接口的，比如上文中 checkPeople 方法的入参就是空接口。</p>
+<p>因为空接口中不包含任何方法，就意味着任何类型都实现了空接口，所以可以利用空接口存储任意类型的数据。</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">func</span> <span class="hljs-title function_">main</span>() {
+    i :<span class="hljs-operator">=</span> <span class="hljs-number">1</span>
+    s :<span class="hljs-operator">=</span> <span class="hljs-string">&quot;string&quot;</span>
+    <span class="hljs-keyword">var</span> o interface{}
+    o <span class="hljs-operator">=</span> i
+    fmt.<span class="hljs-type">Printf</span>(<span class="hljs-string">&quot;O值：%v
+&quot;</span>, o)
+    o <span class="hljs-operator">=</span> s
+    fmt.<span class="hljs-type">Printf</span>(<span class="hljs-string">&quot;O值：%v
+&quot;</span>, o)
+}
+</code></pre>
+<p>输出结果如下：</p>
+<pre><code class="hljs language-bash">O值：<span class="hljs-number">1</span>
+O值：<span class="hljs-built_in">string</span>
+</code></pre>
+<p>既然空接口可以接受任意类型的数据，那自然会涉及到如何区分类型的需要。</p>
+<p>目前有两种方式去区分：断言、判断。</p>
+<h2 id="menu_7">Comma-ok断言</h2><p>相当于对上方 x.(T) 的多重判断。</p>
+<pre><code class="hljs language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">checkDataType</span><span class="hljs-params">(p <span class="hljs-keyword">interface</span>{})</span></span> {
+    <span class="hljs-comment">// 类型强转</span>
+    <span class="hljs-keyword">if</span> _,ok := p.(People); ok {
+        fmt.Println(<span class="hljs-string">&quot;TA是个人！&quot;</span>)
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> _,ok := p.(<span class="hljs-keyword">int</span>); ok {
+        fmt.Println(<span class="hljs-string">&quot;TA是个数字！&quot;</span>)
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> _,ok := p.(<span class="hljs-keyword">string</span>); ok {
+        fmt.Println(<span class="hljs-string">&quot;TA是个字符串儿！&quot;</span>)
+    }
+}
+</code></pre>
+<h2 id="menu_8">Switch判断</h2><p>将语法改成 switch 本质没什么区别。</p>
+<pre><code class="hljs language-go">func checkDataType(p <span class="hljs-class"><span class="hljs-keyword">interface</span></span>{}) {
+    <span class="hljs-comment">// 获取类型</span>
+    <span class="hljs-keyword">switch</span> v := p.(type) {
+    <span class="hljs-keyword">case</span> People:
+        fmt.Printf(<span class="hljs-string">&quot;TA是个人！%v
+&quot;</span>, v)
+    <span class="hljs-keyword">case</span> <span class="hljs-keyword">int</span>:
+        fmt.Printf(<span class="hljs-string">&quot;TA是个数字！%v
+&quot;</span>, v)
+    <span class="hljs-keyword">case</span> <span class="hljs-keyword">string</span>:
+        fmt.Printf(<span class="hljs-string">&quot;TA是个字符串儿！%v
+&quot;</span>, v)
+    }
+}
+</code></pre>
+<h1 id="menu_9">嵌套接口</h1><p>嵌套接口有点类似于继承的感觉，当方法很多的时候，我们新建的接口不一定需要写出所有的方法。</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">type</span> People <span class="hljs-keyword">interface</span> {
+    Sleep() <span class="hljs-keyword">bool</span>
+}
+
+<span class="hljs-keyword">type</span> WorkMan <span class="hljs-keyword">interface</span> {
+    GoWork() <span class="hljs-keyword">int</span>
+}
+
+<span class="hljs-comment">// 该接口直接嵌套其他接口形成新的接口</span>
+<span class="hljs-comment">// 表示该接口具备所嵌入接口的全部方法</span>
+<span class="hljs-keyword">type</span> Technician <span class="hljs-keyword">interface</span> {
+    People
+    WorkMan
+}
+</code></pre>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" target="_blank" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" target="_blank" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" target="_blank" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" target="_blank" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1065,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/go_1.html">Golang</a>      </div> 
+      <div class="box pm pa_4"> 
+                  </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/nvmnjs.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>nvm管理node.js和npm多版本切换</h2></div> 
+       </a>
+              <a href="/post/bsonon.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>BSON数据结构以及与JSON区别</h2></div> 
+       </a>
+              <a href="/post/endeco.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>可逆（对称和非对称）与不可逆加密算法</h2></div> 
+       </a>
+              <a href="/post/gointfc.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>Go中接口的设计与实现</h2></div> 
+       </a>
+              <a href="/post/locklock.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>计算机中的乐观锁与悲观锁</h2></div> 
+       </a>
+              <a href="/post/soapjvm.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>SoapUI启动报错The JVM could not be started</h2></div> 
+       </a>
+              <a href="/post/orajob.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>Orcale定时任务管理dbms_job</h2></div> 
+       </a>
+              <a href="/post/mebugs.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>20220304米虫博客全站改版</h2></div> 
+       </a>
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/mebugs.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>20220304米虫博客全站改版</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/sqlcashw.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>SQL通过CASE WHEN语句实现条件返回</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/nvmnjs.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>nvm管理node.js和npm多版本切换</h2></div> 
+        </a>
+                <a href="/post/bsonon.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>BSON数据结构以及与JSON区别</h2></div> 
+        </a>
+                <a href="/post/endeco.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>可逆（对称和非对称）与不可逆加密算法</h2></div> 
+        </a>
+                <a href="/post/gointfc.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>Go中接口的设计与实现</h2></div> 
+        </a>
+                <a href="/post/locklock.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>计算机中的乐观锁与悲观锁</h2></div> 
+        </a>
+                <a href="/post/soapjvm.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>SoapUI启动报错The JVM could not be started</h2></div> 
+        </a>
+                <a href="/post/orajob.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Orcale定时任务管理dbms_job</h2></div> 
+        </a>
+                <a href="/post/mebugs.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>20220304米虫博客全站改版</h2></div> 
+        </a>
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/tool_1.html">工具</a><a href="/category/well_1.html">运维</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/net_1.html">中间件</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/css_1.html">CSS</a><a href="/tag/jquery_1.html">JQuery</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/method_1.html">方法</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/tasks_1.html">任务</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/morff_1.html">高并发</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/vers_1.html">版本</a><a href="/tag/springmvc_1.html">SpringMVC</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1065;  </script>
+  <script src="http://blog.mebugs.com/static/js/base.js?v=1.0"></script> 
+         <script src="http://blog.mebugs.com/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="http://blog.mebugs.com/static/js/popup.js?v=1.0"></script>  
+   <script src="http://blog.mebugs.com/static/js/post.js?v=1.0"></script> 
+   <script src="http://blog.mebugs.com/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

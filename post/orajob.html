@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <!-- <meta name="referrer" content="no-referrer"/> --> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <title>Orcale定时任务管理dbms_job - 米虫 - 做一个有理想的米虫 - www.mebugs.com</title> 
+  <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> 
+  <meta name="description" content="在Oracle中创建、运行、维护定时任务，配合存储过程可以完成很多特定的业务诉求，dbms_job提供了使用的API功能便于我们实现更为细致的定时任务管理 - 米虫 - 做一个有理想的米虫 - www.mebugs.com" /> 
+  <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+  <link rel="icon" href="http://blog.mebugs.com/static/img/icon.png" /> 
+  <link rel="shortcut icon" href="http://blog.mebugs.com/static/img/icon.png" /> 
+  <link rel="apple-touch-icon-precomposed" href="http://blog.mebugs.com/static/img/icon.png" /> 
+  <link href="http://blog.mebugs.com/static/css/load.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="http://blog.mebugs.com/static/css/base.css?v=1.0" rel="stylesheet" type="text/css" />
+      <link href="http://blog.mebugs.com/static/css/post.css?v=1.0" rel="stylesheet" type="text/css" />
+  <link href="http://blog.mebugs.com/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" /> 
+  <link href="http://blog.mebugs.com/static/css/marked/marked.css?v=1.0" rel="stylesheet" type="text/css" /> 
+            <link href="http://blog.mebugs.com/static/css/mobile/base.css?v=1.0" rel="stylesheet" type="text/css" media="screen and (max-device-width:1200px)" /> 
+    <!-- 谷歌广告 -->
+  <script data-ad-client="ca-pub-2699978133125218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ </head> 
+ <body> 
+ <div class="loader" id="loader">
+   <div class="load">
+     <hr/><hr/><hr/><hr/>
+   </div>
+ </div>
+  <header> 
+   <div class="w"> 
+    <a class="logo" href="/"></a> 
+    <div class="menu"> 
+     <a  href="/">首页</a> 
+     <a class="mck" href="/posts/new_1.html">文章</a> 
+     <a  href="/category/list_1.html">分类</a> 
+     <a  href="/tag/list_1.html">标签</a> 
+     <a  href="/page/about.html">关于</a> 
+     <a  href="/page/link.html">友链</a> 
+     <a  href="/page/msg.html">留言</a> 
+     <a  href="/page/map.html">地图</a> 
+    </div> 
+    <div class="temp" onclick="setShow()"></div><div class="mobim" onclick="setMbm()"><ul><li></li><li></li><li></li></ul></div> 
+        <div class="pomenu" onclick="doPmenu(true)"><div class="mmenu" id="pomenu" ><ul><li>‹</li><li></li><li>›</li></ul></div></div>
+       </div> 
+  </header>  <!-- POST TOP -->
+  <div class="r rt"> 
+   <div class="w tb_15"> 
+    <div class="c c_12 pst"> 
+     <div class="pt pct rtl"> 
+      <h1>Orcale定时任务管理dbms_job</h1> 
+     </div> 
+     <div class="pdest rtr">在Oracle中创建、运行、维护定时任务，配合存储过程可以完成很多特定的业务诉求，dbms_job提供了使用的API功能便于我们实现更为细致的定时任务管理</div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="r"> 
+   <div class="w tb_15"> 
+    <div class="c c_3 prel"> 
+     <div class="menue" id="menue"><ul><li><a href="javascript:runTo('menu_1')" class="pl1">诉求</a> <!----></li><li><a href="javascript:runTo('menu_2')" class="pl1">存储过程</a> <!----></li><li><a href="javascript:runTo('menu_3')" class="pl1">定时任务</a> <!----></li><li><a href="javascript:runTo('menu_4')" class="pl1">常见管理语句</a> <ul><li><a href="javascript:runTo('menu_5')" class="pl2">API</a> <!----></li></ul></li><li><a href="javascript:runTo('menu_6')" class="pl1">小结</a> <!----></li></ul></div> 
+    </div> 
+    <div class="c c_9">
+     <!-- post banner info -->
+     <div class="mban"> 
+      <img src="http://blog.mebugs.com/static/upload/banner/1646639593043.jpg" /> 
+            <div class="pfro">
+        <p>
+          <span>所属分类</span>
+          <b class="pta"><a href="/category/db_1.html">数据库</a> </b>
+        </p>
+        <p>
+          <span>相关标签</span>
+          <b class="pta"><a href="/tag/tasks_1.html">任务</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/api_1.html">API</a></b>
+        </p>
+      </div>
+           </div>
+     <!-- post content -->
+     <div id="html" class="output mark"><h1 id="menu_1">诉求</h1><p>大型的项目中通常会有一张表用来记录操作日志，日志的不断生成，资源的占用越来越大。</p>
+<p>日志表的数据越来越多除了占用资源之外，对于后续的查询压力也会变大。</p>
+<p>我们需要实现一个定时清理，来保证数据库不被垃圾数据塞满。</p>
+<p>以上作为举例，作为定时任务实际上可以适用于很多业务场景。</p>
+<h1 id="menu_2">存储过程</h1><p>首先创建一个清理180天前操作日志的存储过程：</p>
+<pre><code class="hljs language-sql"><span class="hljs-comment">--删除操作日志存储过程</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> P_CLEARLOG
+<span class="hljs-keyword">as</span>   
+<span class="hljs-keyword">begin</span>       
+<span class="hljs-comment">--删除入库时间180天前的数据     </span>
+  <span class="hljs-keyword">DELETE</span> mebugs_operlog t <span class="hljs-keyword">WHERE</span> (sysdate <span class="hljs-operator">-</span> to_date(t.writetime,<span class="hljs-string">&#x27;yyyyMMddhh24miss&#x27;</span>)) <span class="hljs-operator">&gt;</span> <span class="hljs-number">180</span>; 
+<span class="hljs-keyword">end</span>;
+<span class="hljs-operator">/</span>
+</code></pre>
+<h1 id="menu_3">定时任务</h1><p>接着创建一个定时任务：</p>
+<pre><code class="hljs language-sql"><span class="hljs-comment">--建议一个定时任务，每天0点执行</span>
+<span class="hljs-comment">--declare定义了一个任务ID，创建的定时任务ID就是job_no</span>
+<span class="hljs-comment">--dbms_job.submit(任务ID,存储过程,下次执行,执行间隔); </span>
+<span class="hljs-keyword">declare</span> job_no number;  
+<span class="hljs-keyword">begin</span>  
+dbms_job.submit(job_no,<span class="hljs-string">&#x27;P_CLEARLOG;&#x27;</span>,sysdate,<span class="hljs-string">&#x27;TRUNC(SYSDATE + 1)&#x27;</span>);  
+<span class="hljs-keyword">commit</span>;  
+<span class="hljs-keyword">end</span>; 
+<span class="hljs-operator">/</span>
+</code></pre>
+<h1 id="menu_4">常见管理语句</h1><pre><code class="hljs language-sql"><span class="hljs-comment">--查询当前用户的JOB列表</span>
+<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> user_jobs;
+<span class="hljs-comment">--查询数据库所有的JOB列表(DBA权限)</span>
+<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> dba_jobs;
+<span class="hljs-comment">--执行定时任务(需要先查询上文的job_no是多少，比如：533)</span>
+<span class="hljs-keyword">begin</span>  
+dbms_job.run(<span class="hljs-number">533</span>);<span class="hljs-comment">--533为JOBID</span>
+<span class="hljs-keyword">end</span>; 
+<span class="hljs-operator">/</span>
+</code></pre>
+<h2 id="menu_5">API</h2><pre><code class="hljs language-sql"><span class="hljs-comment">--其他API(替换dbms_job.run(533);)</span>
+<span class="hljs-comment">--删除</span>
+dbms_job.<span class="hljs-built_in">remove</span>(<span class="hljs-number">533</span>);  
+<span class="hljs-comment">--停止</span>
+dbms_job.broken(<span class="hljs-number">533</span>, <span class="hljs-literal">true</span>, sysdate);
+<span class="hljs-comment">--修改存储过程</span>
+dbms_job.what(<span class="hljs-number">533</span>, <span class="hljs-string">&#x27;P_CLEARLOG_NEW&#x27;</span>);
+<span class="hljs-comment">--修改执行时间早六点</span>
+dbms_job.next_date(<span class="hljs-number">533</span>, <span class="hljs-string">&#x27;TRUNC(SYSDATE + 1)+6/24&#x27;</span>);
+<span class="hljs-comment">--修改执行间隔两天</span>
+dbms_job.interval(<span class="hljs-number">533</span>, <span class="hljs-string">&#x27;TRUNC(SYSDATE + 2)&#x27;</span>);
+</code></pre>
+<h1 id="menu_6">小结</h1><p>执行间隔&amp;下次执行，可以有多种时间组合。</p>
+<p>通过如：TRUNC、next_day、LAST_DAY、ADD_MONTHS等函数进行实现。</p>
+<p>此处不进行赘述。</p>
+</div>
+     <!-- author -->
+     <div class="row">
+      <div class="authors">
+       <div class="mea"> 
+        <img class="meavt" src="/static/img/me_avator.jpg" /> 
+        <div class="meainfo">
+            <h1>米虫</h1>
+            <p>做一个有理想的米虫，伪全栈程序猿，乐观主义者，坚信一切都是最好的安排！</p> 
+            <div class="meconn">
+             <a href="http://wpa.qq.com/msgrd?v=3&uin=7431346&site=qq&menu=yes" target="_blank" class="conn cqq"></a>
+             <a href="mailto:iam@qiantaoyuan.com" target="_blank" class="conn cml"></a> 
+             <a href="https://gitee.com/mebugs" target="_blank" class="conn cge"></a> 
+             <a href="https://github.com/mebugs" target="_blank" class="conn cgb"></a>
+            </div> 
+           </div> 
+       </div>
+       <div class="mecpr">
+        <p>本站由个人原创、收集或整理，如涉及侵权请联系删除</p>
+        <p>本站内容支持转发，希望贵方携带转载信息和原文链接</p>
+        <p>本站具有时效性，不提供有效、可用和准确等相关保证</p>
+        <p>本站不提供免费技术支持，暂不推荐您使用案例商业化</p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="c c_12" id="mother"> 
+          <!-- comms form -->
+     <div class="row">
+      <div class="pt"> <h1>发表观点</h1> <a class="mr" href="javascript:helpComms()">提示</a> </div> 
+      <div class="box"> 
+       <div class="comme"> 
+        <div class="namee"> 
+         <div class="navt" onclick="chooseAvt()"><img id="avt" src="/static/upload/avtor/1.jpg" /><p class="bgl">选择头像</p></div> 
+         <div class="nxinfo"> 
+          <div class="nipt"><p>昵称</p><input id="name" type="text" placeholder="*必填,请输入您的昵称" /></div> 
+          <div class="nipt"><p>邮箱</p><input id="email" type="text" placeholder="推荐选填,请输入您的电子邮箱" /></div> 
+          <div class="nipt"><p>QQ</p><input id="qq" type="text" placeholder="选填,请输入您的联系QQ" /></div> 
+          <div class="nipt"><p>网址</p><input id="url" type="text" placeholder="选填,请输入您的个人主页地址" /></div> 
+         </div> 
+        </div> 
+        <div class="ctxe"><textarea id="coms" name="coms" placeholder="*必填,请输入您的精彩观点"></textarea></div> 
+        <div class="sendc"><a class="bgl" href="javascript:sendComms(1062,1,0)">提交观点</a></div> 
+       </div>
+      </div> 
+     </div>
+     <!-- comms eare -->
+     <div class="row">
+      <div class="commi">
+      <p>当前还没有观点发布，欢迎您留下足迹！</p>      </div>
+           </div> 
+          <!-- sml imgs -->
+     <div class="row">
+      <div class="box"> 
+       <div class="mequc indimg">
+        <div class="mequci"><a href="/category/open_1.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264859337.png" /></a></div> <div class="mequci"><a href="/page/msg.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264883629.jpg" /></a></div> <div class="mequci"><a href="/page/link.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264902496.jpg" /></a></div> <div class="mequci"><a href="/page/map.html"><img class="scale" src="http://blog.mebugs.com/static/upload/urls/1643264913873.jpg" /></a></div>        </div> 
+      </div> 
+     </div>
+          <!-- like post -->
+     <div class="row">
+      <div class="pt"> 
+       <h1>同类其他</h1>
+       <a class="mr" href="/category/db_1.html">数据库</a>      </div> 
+      <div class="box pm pa_4"> 
+                  <a href="/post/mysqlinux.html"> 
+        <div class="pimel">
+          <img class="scale" src="http://blog.mebugs.com/static/upload/banner/100_1645666327141.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>MySql数据库设置表名大小写不敏感</h2> 
+         <p class="pdesc">MySql数据库在Linux系统下默认数据库名与表名严格区分大小写，一般情况下我们创建表名习惯使用全小写，如果遇到某些从Windows服务器迁移过来的数据库可能需要设置大小写不敏感</p> 
+        </div> 
+      </a> 
+            <a href="/post/orascri.html"> 
+        <div class="pimel">
+          <img class="scale" src="http://blog.mebugs.com/static/upload/banner/100_1645492060246.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Oracle数据库基础实用维护命令集</h2> 
+         <p class="pdesc">Linux系统下的Oracle数据库实用常用的维护命令整理，本文内容偏向运维，主要包含：基础启动重启、表空间维护、数据库角色与用户维护、字符集配置等，并给出各类场景的实例语句</p> 
+        </div> 
+      </a> 
+            <a href="/post/delqbsql.html"> 
+        <div class="pimel">
+          <img class="scale" src="http://blog.mebugs.com/static/upload/banner/100_1646024156414.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>SQL语句中DELETE、TRUNCATE和DROP的区别</h2> 
+         <p class="pdesc">当我们需要清理或删除某张表或数据的时候，通常会有采取DELETE、TRUNCATE、DROP的任意一种形式的SQL语句，他们之间作用的对象不同所产生的效果也各不相同，包括执行结果和效率</p> 
+        </div> 
+      </a> 
+            <a href="/post/sqlcashw.html"> 
+        <div class="pimel">
+          <img class="scale" src="http://blog.mebugs.com/static/upload/banner/100_1645785805640.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>SQL通过CASE WHEN语句实现条件返回</h2> 
+         <p class="pdesc">通过CASE WHEN语句进行设置不同的条件格式匹配后返回指定的值，能够在不修改源表数据的前提下查询展示出我们需要的信息，CASE WHEN语句的语法语义以及实际使用案例。</p> 
+        </div> 
+      </a> 
+            <a href="/post/oraclelilog.html"> 
+        <div class="pimel">
+          <img class="scale" src="http://blog.mebugs.com/static/upload/banner/100_1646304079649.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Linux下Oracle数据库配置日志目录及统一迁移</h2> 
+         <p class="pdesc">很多运维人员习惯采用默认安装的方式安装Oracle数据库，而Oracle日志默认放置在/opt目录下，绝大多数Linux环境的大磁盘往往挂载在/home，因此经常会出现磁盘空间不足的情况，采用本文配置可指定并迁移日志</p> 
+        </div> 
+      </a> 
+            <a href="/post/odeluser.html"> 
+        <div class="pimel">
+          <img class="scale" src="http://blog.mebugs.com/static/upload/banner/100_1646131799732.jpg" /> 
+        </div>
+        <div class="pinfr"> 
+         <h2>Oracle数据库删除用户时提示用户存在连接</h2> 
+         <p class="pdesc">在开发或测试的Oracle数据库中，为了模拟真实环境的首次安装，我们常常会不断的创建和删除数据库用户，有时候在删除数据库用户的时候会遇到提示用户存在连接，如何处理？</p> 
+        </div> 
+      </a> 
+            </div>
+     </div>
+         </div>
+    <!-- more post new hot rand -->
+    <div class="c c_4">
+     <!-- new -->
+     <div class="row"> 
+      <div class="pt"><h1>新鲜发布</h1><a class="mr" href="/posts/new_1.html">更多</a></div> 
+            <div class="box lm"> 
+              <a href="/post/nvmnjs.html">  
+        <div class="pimel ltop bgl">1</div> 
+        <div class="pinfr"><h2>nvm管理node.js和npm多版本切换</h2></div> 
+       </a>
+              <a href="/post/bsonon.html">  
+        <div class="pimel ltop bgl">2</div> 
+        <div class="pinfr"><h2>BSON数据结构以及与JSON区别</h2></div> 
+       </a>
+              <a href="/post/endeco.html">  
+        <div class="pimel ltop bgl">3</div> 
+        <div class="pinfr"><h2>可逆（对称和非对称）与不可逆加密算法</h2></div> 
+       </a>
+              <a href="/post/gointfc.html">  
+        <div class="pimel ltop bgl">4</div> 
+        <div class="pinfr"><h2>Go中接口的设计与实现</h2></div> 
+       </a>
+              <a href="/post/locklock.html">  
+        <div class="pimel ltop bgl">5</div> 
+        <div class="pinfr"><h2>计算机中的乐观锁与悲观锁</h2></div> 
+       </a>
+              <a href="/post/soapjvm.html">  
+        <div class="pimel ltop bgl">6</div> 
+        <div class="pinfr"><h2>SoapUI启动报错The JVM could not be started</h2></div> 
+       </a>
+              <a href="/post/orajob.html">  
+        <div class="pimel ltop bgl">7</div> 
+        <div class="pinfr"><h2>Orcale定时任务管理dbms_job</h2></div> 
+       </a>
+              <a href="/post/mebugs.html">  
+        <div class="pimel ltop bgl">8</div> 
+        <div class="pinfr"><h2>20220304米虫博客全站改版</h2></div> 
+       </a>
+              <a href="/post/meals.html">  
+        <div class="pimel ltop bgl">9</div> 
+        <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+       </a>
+              <a href="/post/meal.html">  
+        <div class="pimel ltop bgl">10</div> 
+        <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+       </a>
+             </div> 
+     </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>近期飙升</h1><a class="mr" href="/posts/up_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/mebugs.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>20220304米虫博客全站改版</h2></div> 
+        </a>
+                <a href="/post/smvcdata.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>一文理解SpringMVC框架核心</h2></div> 
+        </a>
+                <a href="/post/holdgbean.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>SpringContextHolder工具类自由获取Bean</h2></div> 
+        </a>
+                <a href="/post/slideres.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>侧边栏下滑即将越过时动态固顶与上滑恢复</h2></div> 
+        </a>
+                <a href="/post/ctrfctmod.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>JAVA设计模式之创建者模式中的三种工厂模式</h2></div> 
+        </a>
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/oraclelilog.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Linux下Oracle数据库配置日志目录及统一迁移</h2></div> 
+        </a>
+                <a href="/post/getpramnoc.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>JAVA服务端GET请求URL中文参数乱码</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+                <a href="/post/sqlcashw.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>SQL通过CASE WHEN语句实现条件返回</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+    <div class="c c_4">
+      <!-- new -->
+      <div class="row"> 
+       <div class="pt"><h1>随便看看</h1><a class="mr" href="/posts/rand_1.html">更多</a></div> 
+              <div class="box lm"> 
+                <a href="/post/nvmnjs.html">  
+         <div class="pimel ltop bgl">1</div> 
+         <div class="pinfr"><h2>nvm管理node.js和npm多版本切换</h2></div> 
+        </a>
+                <a href="/post/bsonon.html">  
+         <div class="pimel ltop bgl">2</div> 
+         <div class="pinfr"><h2>BSON数据结构以及与JSON区别</h2></div> 
+        </a>
+                <a href="/post/endeco.html">  
+         <div class="pimel ltop bgl">3</div> 
+         <div class="pinfr"><h2>可逆（对称和非对称）与不可逆加密算法</h2></div> 
+        </a>
+                <a href="/post/gointfc.html">  
+         <div class="pimel ltop bgl">4</div> 
+         <div class="pinfr"><h2>Go中接口的设计与实现</h2></div> 
+        </a>
+                <a href="/post/locklock.html">  
+         <div class="pimel ltop bgl">5</div> 
+         <div class="pinfr"><h2>计算机中的乐观锁与悲观锁</h2></div> 
+        </a>
+                <a href="/post/soapjvm.html">  
+         <div class="pimel ltop bgl">6</div> 
+         <div class="pinfr"><h2>SoapUI启动报错The JVM could not be started</h2></div> 
+        </a>
+                <a href="/post/orajob.html">  
+         <div class="pimel ltop bgl">7</div> 
+         <div class="pinfr"><h2>Orcale定时任务管理dbms_job</h2></div> 
+        </a>
+                <a href="/post/mebugs.html">  
+         <div class="pimel ltop bgl">8</div> 
+         <div class="pinfr"><h2>20220304米虫博客全站改版</h2></div> 
+        </a>
+                <a href="/post/meals.html">  
+         <div class="pimel ltop bgl">9</div> 
+         <div class="pinfr"><h2>MealS（干饭人）用户角色权限集增强版脚手架</h2></div> 
+        </a>
+                <a href="/post/meal.html">  
+         <div class="pimel ltop bgl">10</div> 
+         <div class="pinfr"><h2>Meal（一顿饭）基础用户权限管理脚手架</h2></div> 
+        </a>
+               </div> 
+      </div>  
+    </div>
+   </div>
+  </div> 
+  <footer> 
+   <div class="w"> 
+    <div class="c c_6"> 
+     <div class="ft fl"> 
+      <div class="pt pct">
+       <h1>快捷分类</h1> 
+      </div>
+      <p>
+        <a href="/posts/best_1.html">好文荐读</a>
+        <a href="/posts/hot_1.html">全站热门</a>
+        <a href="/posts/new_1.html">最新发布</a>
+        <a href="/posts/up_1.html">近期飙升</a>
+        <a href="/posts/rand_1.html">今日随选</a>
+      <a href="/category/java_1.html">JAVA</a><a href="/category/web_1.html">WEB</a><a href="/category/db_1.html">数据库</a><a href="/category/linux_1.html">Linux</a><a href="/category/tool_1.html">工具</a><a href="/category/well_1.html">运维</a><a href="/category/php_1.html">PHP</a><a href="/category/app_1.html">移动端</a><a href="/category/plat_1.html">架构</a><a href="/category/open_1.html">开源</a><a href="/category/go_1.html">Golang</a><a href="/category/conn_1.html">概念</a><a href="/category/run_1.html">数据</a><a href="/category/net_1.html">中间件</a><a href="/category/security_1.html">安全</a><a href="/category/box_1.html">杂谈</a>      </p>
+     </div> 
+    </div>
+    <div class="c c_6"> 
+     <div class="ft fr"> 
+      <div class="pt pct">
+       <h1>热点标签</h1> 
+      </div>
+      <p> 
+      <a href="/tag/css_1.html">CSS</a><a href="/tag/jquery_1.html">JQuery</a><a href="/tag/oracle_1.html">Oracle</a><a href="/tag/method_1.html">方法</a><a href="/tag/dismod_1.html">设计</a><a href="/tag/factory_1.html">工厂</a><a href="/tag/scripts_1.html">脚本</a><a href="/tag/confx_1.html">配置</a><a href="/tag/sql_1.html">SQL</a><a href="/tag/conn_1.html">连接</a><a href="/tag/windows_1.html">Windows</a><a href="/tag/spring_1.html">Spring</a><a href="/tag/springboot_1.html">SpringBoot</a><a href="/tag/mvc_1.html">MVC</a><a href="/tag/request_1.html">请求</a><a href="/tag/git_1.html">Git</a><a href="/tag/object_1.html">对象</a><a href="/tag/disk_1.html">磁盘</a><a href="/tag/tasks_1.html">任务</a><a href="/tag/load_1.html">加载</a><a href="/tag/password_1.html">密码</a><a href="/tag/header_1.html">导航</a><a href="/tag/log_1.html">日志</a><a href="/tag/datas_1.html">数据</a><a href="/tag/crete_1.html">创建</a><a href="/tag/morff_1.html">高并发</a><a href="/tag/maven_1.html">Maven</a><a href="/tag/ift_1.html">条件</a><a href="/tag/vers_1.html">版本</a><a href="/tag/springmvc_1.html">SpringMVC</a>      </p>
+     </div> 
+    </div> 
+    <div class="c c_12"> 
+     <div class="fu"> 
+      <p>米虫<em>[独立博客]</em> 丨 <a href="/">www.mebugs.com</a> 丨 <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a>丨 做一个有理想的米虫</p> 
+      <p><a href="/page/about.html">关于</a> 丨 <a href="/page/msg.html">留言</a> 丨 <a href="/page/link.html">友链</a> 丨 <a href="/page/map.html">地图</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div class="back_top" onclick="backTop()"> </div> 
+   
+  <div class="rzz" id="cavt">
+    <div class="rea cave box">
+      <div class="reat">
+        <h1>选择个人头像</h1>
+      </div>
+      <div class="avts">
+        <img src="/static/upload/avtor/1.jpg" onclick="setAvt(this,1)" />
+        <img src="/static/upload/avtor/2.jpg" onclick="setAvt(this,2)" />
+        <img src="/static/upload/avtor/3.jpg" onclick="setAvt(this,3)" />
+        <img src="/static/upload/avtor/4.jpg" onclick="setAvt(this,4)" />
+        <img src="/static/upload/avtor/5.jpg" onclick="setAvt(this,5)" />
+        <img src="/static/upload/avtor/6.jpg" onclick="setAvt(this,6)" />
+        <img src="/static/upload/avtor/7.jpg" onclick="setAvt(this,7)" />
+        <img src="/static/upload/avtor/8.jpg" onclick="setAvt(this,8)" />
+        <img src="/static/upload/avtor/9.jpg" onclick="setAvt(this,9)" />
+        <img src="/static/upload/avtor/10.jpg" onclick="setAvt(this,10)" />
+        <img src="/static/upload/avtor/11.jpg" onclick="setAvt(this,11)" />
+        <img src="/static/upload/avtor/12.jpg" onclick="setAvt(this,12)" />
+      </div>
+      <div class="sendc"> 
+        <a class="rcls" href="javascript:clsAvt()">关闭</a>
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="rzz">
+    <div class="rea box">
+      <div class="reat">
+        <h1 id="rwork"></h1>
+      </div>
+      <div class="comme">
+       <div class="namee">  
+        <div class="nxinfo"> 
+         <div class="nipt"> 
+          <p>昵称</p> 
+          <input id="rname" type="text" placeholder="*必填,请输入您的昵称" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>邮箱</p> 
+          <input id="remail" type="text" placeholder="推荐选填,请输入您的电子邮箱" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>QQ</p> 
+          <input id="rqq" type="text" placeholder="选填,请输入您的联系QQ" /> 
+         </div> 
+         <div class="nipt"> 
+          <p>网址</p> 
+          <input id="rurl" type="text" placeholder="选填,请输入您的个人主页地址" /> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="ctxe"> 
+        <textarea id="rcoms" name="rcoms" placeholder="*必填,请输入您的精彩观点"></textarea> 
+       </div> 
+       <div class="sendc"> 
+        <a class="rcls" href="javascript:clsComms()">取消</a> 
+        <a id="repMethod" class="bgl" href="#">回复观点</a> 
+       </div> 
+      </div> 
+    </div>
+  </div>
+  <div class="rzz" id="chelp">
+    <div class="rea box chelp">
+      <div class="reat">
+        <h1>评论提示</h1>
+      </div>
+      <div class="helpe">
+        <ul>
+          <li>头像：系统为您提供了12个头像自由选择，初次打开随机为你选择一个</li>
+          <li>邮箱：可选提交邮箱，该信息不会外泄，或将上线管理员回复邮件通知</li>
+          <li>网址：可选提交网址，评论区该地址将以外链的形式展示在您的昵称上</li>
+          <li>记忆：浏览器将记忆您已选择或填写过得信息，下次评论无需重复输入</li>
+          <li>审核：提供一个和谐友善的评论环境，本站所有评论需要经过人工审核</li>
+        </ul>
+      </div>
+      <div class="sendc">
+       <a class="bgl" href="javascript:clsHelpComms()">了解</a> 
+      </div>
+    </div>
+  </div>
+    </div> 
+  <script type="text/javascript">
+    var pid = 1062;  </script>
+  <script src="http://blog.mebugs.com/static/js/base.js?v=1.0"></script> 
+         <script src="http://blog.mebugs.com/static/lib/jquery/jquery-3.6.0.min.js?v=1.0"></script>
+   <script src="http://blog.mebugs.com/static/js/popup.js?v=1.0"></script>  
+   <script src="http://blog.mebugs.com/static/js/post.js?v=1.0"></script> 
+   <script src="http://blog.mebugs.com/static/js/mark.js?v=1.0"></script> 
+       </body>
+</html>

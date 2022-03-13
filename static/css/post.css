@@ -1,12 +1,12 @@
 .prel{position:relative}
-.menue{position:relative;bottom:0;width:278px;height:calc(100vh - 130px);background:#feffff;padding:30px 15px 30px 35px;overflow-y:auto;display:flex;align-items:flex-start}
-.menue ul{width:100%}
+.menue{position:relative;bottom:0;width:278px;height:calc(100vh - 130px);background:#feffff;padding: 30px 15px 30px 15px;overflow-y:auto;display:flex;align-items:flex-start;}
+.menue ul{width:100%;list-style-type: none;}
 .menus .menue{position:fixed;bottom:30px;align-items:center}
 .menus ul{margin:auto 0}
 .menuse ul{margin:unset}
-.menue li{line-height:30px}
+.menue li{line-height:30px;position: relative;padding-left: 5px;}
 .menue li a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;padding:0 8px}
-.menue li ul{margin-left:5px}
+.menue li ul{margin-left:5px;}
 .menue li ul ul{margin-left:5px}
 .menus.menuse .menue{position:absolute;bottom:15px;align-items:flex-end}
 .indimg .mequci{width:25%;height:auto}
@@ -28,3 +28,4 @@
 .helpe ul{padding-left:30px;line-height:25px}
 .chelp{width:520px;height:260px;left:calc(50vw - 260px);top:calc(50vh - 130px)}
 .helpe ul li{font-size:14px}
+.menue li:after{content: "";position: absolute;width: 4px;border-radius: 2px;height: 10px;left: 0;top: 10px;background-image: linear-gradient(0,#2db787,#2d5bb7);}

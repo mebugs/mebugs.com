@@ -1,6 +1,6 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/service/comm/doConfig.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeFileTask.php');
+include($_SERVER['DOCUMENT_ROOT'].'/service/makefile/makeFileTask.php');
 // 启动定询任务
 function autoRun() {
   //读取任务状态和启动时间以及最后执行时间
@@ -8,15 +8,18 @@ function autoRun() {
   // 扫描间隔3210秒
   $time = 3210;
   do {
-    $taskStatus = getConfig("taskStatus","./comm/system.php","int");
-    $taskTime = getConfig("taskTime","./comm/system.php","int");
-    $taskLastRun = getConfig("taskLastRun","./comm/system.php","string");
-    $cdnUrl = getConfig("cdnUrl","./comm/system.php","string");
+//  // 测试代码
+//  for($i=0;$i<3;$i++) {
+//   // 测试代码
+    $taskStatus = getConfig("taskStatus",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","int");
+    $taskTime = getConfig("taskTime",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","int");
+    $taskLastRun = getConfig("taskLastRun",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string");
+    $cdnUrl = getConfig("cdnUrl",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string");
     $conns = [
-      'qqUrl' => getConfig("qqUrl","./comm/system.php","string"),
-      'githubUrl' => getConfig("githubUrl","./comm/system.php","string"),
-      'giteeUrl' => getConfig("giteeUrl","./comm/system.php","string"),
-      'emailUrl' => getConfig("emailUrl","./comm/system.php","string")
+      'qqUrl' => getConfig("qqUrl",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string"),
+      'githubUrl' => getConfig("githubUrl",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string"),
+      'giteeUrl' => getConfig("giteeUrl",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string"),
+      'emailUrl' => getConfig("emailUrl",$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string")
     ];
     if($taskStatus == 0) {
       $runStatus = false;
@@ -31,12 +34,20 @@ function autoRun() {
         $hour = substr($time_str,11,2);
         if($hour >= $taskTime) { // 执行今天的任务
           makeFileTask($cdnUrl,$today,$conns);// 处理全局文件生成
-          setConfig("taskLastRun",$time_str,"./comm/system.php","string");// 更新执行时间
+          //echo $time_str;
+          setConfig("taskLastRun",$time_str,$_SERVER['DOCUMENT_ROOT']."/service/comm/system.php","string");// 更新执行时间
         }
       }
     }
+    
+//     // 测试代码
+//  }
+//  //  测试代码
+    
     sleep($time);
   } while ($runStatus);
 }
 
+// //测试代码
+// autoRun();
 ?>
