@@ -1,11 +1,29 @@
 var bodyNode = document.body;
-var sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
+var runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
 var loc = window.localStorage;
 var the = loc.getItem("the") ? loc.getItem("the") : "light";
+var hi = document.getElementById("hi");
+var hih = 900;
 bodyNode.classList.add(the);
 setTimeout(function() {bodyNode.classList.add("trans");}, 100);
 ready(initIn)
 window.addEventListener("scroll", function () {
+  runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+  if(!hi) {
+    hi = document.getElementById("hi");
+  }
+  // offsetTop(上级元素)   // runNode.getBoundingClientRect().top + runNow
+  hih = hi.offsetTop;
+  if (runNow > hih) {
+    bodyNode.classList.add("hs");
+  }else{
+    if (runNow > 90) {
+      bodyNode.classList.add("hh");
+    }else{
+      bodyNode.classList.remove("hh");
+    }
+    bodyNode.classList.remove("hs");
+  }
 	// sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
 	// if(sTop > 280) {
 	// 	bodyNode.classList.add("sh");

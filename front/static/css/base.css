@@ -2,13 +2,20 @@
 body{background:#f4f4f4;position:relative}
 .trans,.trans *{transition:all .4s ease}
 h1,h2,.ttit p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:normal}
-header{height:70px;position:absolute;width:100%;padding:0 30px}
+header{height:70px;position:fixed;width:100%;z-index:900;padding:0 30px;top:0;overflow:hidden}
 img{width:100%;height:100%;display:block}
 button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .h{display:flex;position:relative;height:70px}
-.logo{background:url(/static/img/logo.png) no-repeat;height:50px;width:112px;position:absolute;margin:10px 0}
+.hh header{opacity:0;height:0}
+.hs header{opacity:1;background:#f4f4f4;height:50px}
+.hs .h{height:50px}
+.hs .logo{margin:5px 0;height:40px;background-size:auto 80px}
+.hs .menu a{margin:0 5px}
+.hs .the{margin:7px 0}
+.hs .menu a:hover{color:#f4f4f4}
+.logo{background:url(/static/img/logo.png) no-repeat;height:50px;width:112px;position:absolute;margin:10px 0;background-size:auto 100px}
 .menu{width:480px;text-align:center;display:flex;margin:0 auto}
-.menu a{display:inline-block;width:50px;height:50px;line-height:50px;margin:10px 5px;border-radius:25px;font-weight:900}
+.menu a{display:inline-block;width:50px;height:50px;line-height:50px;margin:10px 5px;font-weight:900}
 .menu a:hover{background:#1c2135;color:#4e7ca1}
 .the{position:absolute;right:0;height:34px;margin:18px 0;width:68px;display:flex;justify-content:space-around;overflow:hidden}
 .the img{width:30px;height:30px;margin:2px;display:inline-block;z-index:2;cursor:pointer}
@@ -52,7 +59,7 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .pi{overflow:hidden}
 .pn{height:72px;overflow:hidden}
 .pn h1{line-height:25px;height:50px;white-space:unset;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn p{height:22px;display:flex}
+.pn p{height:22px;display:flex;overflow:hidden}
 .pn p span{line-height:24px;font-size:12px;color:#888;margin-right:5px}
 .pn p em{margin:2px 1px 1px -4px}
 .pmt{margin-top:5px}
@@ -62,6 +69,7 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .pln{width:calc(100% - 120px);padding-left:10px}
 .p:hover h1{color:#4e7ca1;margin:10px 0}
 .p:hover .pll{height:40px;margin:16px 4px 16px 1px;border-radius:2px;background:#4e7ca1}
+.p:hover .pde button{color:#4e7ca1}
 .pim{height:225px}
 .pwm{height:165px}
 .pim span{position:absolute;z-index:1;bottom:10px;left:10px;line-height:24px;font-size:12px;background:#fafafa;color:#4e7ca1;padding:0 10px}
@@ -80,9 +88,14 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .ge{margin:10px 0;background:rgba(78,124,161,0.1);overflow:hidden;position:relative}
 .gegg{position:absolute;width:100%;height:auto;top:0;z-index:100}
 .gi1{width:100%;height:225px}
+.pnm{width:325px;height:195px}
+.pni{width:calc(100% - 325px);padding-left:15px}
 body.dark{background:#22272e}
 .dark *{color:#d8cdb0}
 .dark img{filter:brightness(85%) contrast(100%)}
+.dark.hs header{background:#22272e}
+.dark.hs .logo{background-position-y:-40px}
+.dark.hs .menu a:hover{color:#22272e}
 .dark .top{background:#273f52}
 .dark .logo{background-position-y:-50px}
 .dark .menu a:hover{color:#273f52;background:#bbb4a2}
@@ -101,4 +114,3 @@ body.dark{background:#22272e}
 .dark .pta span{background:#353f4c}
 .dark .pde p{color:#888}
 .dark .pll{background:#353f4c}
-.pde button:hover{color:#4e7ca1}
