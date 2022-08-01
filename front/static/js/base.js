@@ -17,7 +17,7 @@ window.addEventListener("scroll", function () {
   if (runNow > hih) {
     bodyNode.classList.add("hs");
   }else{
-    if (runNow > 90) {
+    if (runNow > 10) {
       bodyNode.classList.add("hh");
     }else{
       bodyNode.classList.remove("hh");

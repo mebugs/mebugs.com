@@ -49,6 +49,14 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .btop h1{line-height:3;font-size:17px;font-weight:900}
 .btop .l,.btop .f{position:absolute;bottom:0;z-index:1;background:#e4eaf1;height:3px;width:100%}
 .btop .f{z-index:2;width:33px;background:#4e7ca1}
+.btop .btm {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #888;
+}
 .i{width:20px;height:20px;background:url(/static/img/icons.png);background-size:auto 100%}
 .ihot{background-position-x:0}
 .iup{background-position-x:-20px}
@@ -90,6 +98,13 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .gi1{width:100%;height:225px}
 .pnm{width:325px;height:195px}
 .pni{width:calc(100% - 325px);padding-left:15px}
+.tai,.tag{background:#f4f4f4;width:100%;padding:15px 15px 5px 15px;line-height:20px;position:relative;height:60px;cursor:pointer;overflow:hidden}
+.tag{padding:5px 15px;height:36px;line-height:26px}
+.tai p{font-size:12px;line-height:24px;transform:scale(0.9);transform-origin:0 0;color:#888}
+.tai span,.tag span{position:absolute;display:block;width:50px;line-height:60px;top:0;right:15px;text-align:right;color:#888;font-size:13px}
+.tag span{line-height:36px}
+.tai:hover{line-height:60px;color:#4e7ca1;padding:0px 15px}
+.tag:hover{color:#4e7ca1}
 body.dark{background:#22272e}
 .dark *{color:#d8cdb0}
 .dark img{filter:brightness(85%) contrast(100%)}
@@ -114,3 +129,4 @@ body.dark{background:#22272e}
 .dark .pta span{background:#353f4c}
 .dark .pde p{color:#888}
 .dark .pll{background:#353f4c}
+.dark .tai,.dark .tag{background:#22272e}
