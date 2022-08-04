@@ -1,20 +1,33 @@
+// body元素
 var bodyNode = document.body;
+// 当前执行高度
 var runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+// 屏幕宽高
+var cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+var cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+// 浏览器存储
 var loc = window.localStorage;
+// 暗黑模式按钮
 var the = loc.getItem("the") ? loc.getItem("the") : "light";
-var hi = document.getElementById("hi");
-var hih = 900;
+// 主元素占位(顶部和底部)
+var ht = document.getElementById("ht");
+var hth = 900;
+var hb = document.getElementById("hb");
+var hbh = 1900;
+// 浮动盒子
+var gebox = document.getElementById("gebox");
+var geboxh = 0;
+// 记忆风格模式
 bodyNode.classList.add(the);
+// 添加动画模式
 setTimeout(function() {bodyNode.classList.add("trans");}, 100);
+// 元素初始化
 ready(initIn)
+// 滚动行为
 window.addEventListener("scroll", function () {
   runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
-  if(!hi) {
-    hi = document.getElementById("hi");
-  }
-  // offsetTop(上级元素)   // runNode.getBoundingClientRect().top + runNow
-  hih = hi.offsetTop;
-  if (runNow > hih) {
+  // 导航动效
+  if (runNow > hth) {
     bodyNode.classList.add("hs");
   }else{
     if (runNow > 10) {
@@ -24,12 +37,23 @@ window.addEventListener("scroll", function () {
     }
     bodyNode.classList.remove("hs");
   }
-	// sTop = bodyNode.scrollTop || document.documentElement.scrollTop;
-	// if(sTop > 280) {
-	// 	bodyNode.classList.add("sh");
-	// } else {
-	// 	bodyNode.classList.remove("sh");
-	// }
+	if(cW > 1200) {
+    // 侧边动效
+    if(gebox) {
+      var nowRunBt = runNow+cH
+      if(nowRunBt > geboxh){
+        if(nowRunBt > hbh){
+          bodyNode.classList.remove("gef");
+          bodyNode.classList.add("geb");
+        }else{
+          bodyNode.classList.remove("geb");
+          bodyNode.classList.add("gef");
+        }
+      }else{
+        bodyNode.classList.remove("gef");
+      }
+    }
+  }
 });
 // 导航栏
 function doMenu() {
@@ -46,10 +70,44 @@ function theCheck(t) {
   the = t;
   bodyNode.classList.add(the);
 }
+
+// 初始化
+var inter = 0;
+var interRun;
 function initIn() {
-  // setTimeout(function() {bodyNode.classList.add("init");}, 200);
+  interRun = setInterval(function(){
+    // 初始化高度值
+    initH();
+    inter++;
+    if(inter > 4) {
+      clearInterval(interRun);
+    }
+  },300)
 }
 
+// 初始化高度值
+function initH() {
+  runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+  if(!ht || !hb) {
+    ht = document.getElementById("ht");
+    hb = document.getElementById("hb");
+  }
+  if(ht&&hb) {
+    // offsetTop(上级元素)
+    // runNode.getBoundingClientRect().top + runNow
+    hth = ht.offsetTop;
+    hbh = hb.offsetTop - 130;
+  }
+  // 如果有浮动侧边
+  if(!gebox){
+    gebox = document.getElementById("gebox");
+  }
+  if(gebox){
+    geboxh = gebox.getBoundingClientRect().bottom + runNow;
+  }
+}
+
+// 初始化钩子函数
 function ready(fn){
   if(document.addEventListener){
     document.addEventListener('DOMContentLoaded',function(){
@@ -65,3 +123,4 @@ function ready(fn){
     })
   }
 }
+

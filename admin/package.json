@@ -18,9 +18,12 @@
     "test:coverage": "echo \"no test:coverage specified,work in process\""
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.3.15",
     "axios": "^0.27.2",
+    "codemirror": "^5.65.7",
     "dayjs": "^1.10.6",
-    "echarts": "~5.1.2",
+    "echarts": "^5.3.3",
+    "highlight.js": "^11.6.0",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.11",
@@ -36,6 +39,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@types/codemirror": "^5.60.5",
     "@types/echarts": "^4.9.10",
     "@types/lodash": "^4.14.182",
     "@types/qs": "^6.9.7",
@@ -61,7 +65,7 @@
     "prettier": "^2.4.1",
     "stylelint": "~13.13.1",
     "stylelint-config-prettier": "~9.0.3",
-    "stylelint-less": "1.0.1",
+    "stylelint-less": "^1.0.6",
     "stylelint-order": "~4.1.0",
     "typescript": "~4.7.4",
     "vite": "^2.7.1",

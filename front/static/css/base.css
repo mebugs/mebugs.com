@@ -93,9 +93,7 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .hotin p{text-align:center;width:42px;font-size:18px;margin:4px 20px 0 0;background:#ddd;color:#999;line-height:42px;border-radius:25px}
 .hotl .hotin p{border-left:1px solid #ddd;border-radius:0;background:unset;font-weight:900;margin:4px 10px 0 10px;font-style:italic;font-size:24px}
 .hot:hover .hotin p{margin-top:15px}
-.ge{margin:10px 0;background:rgba(78,124,161,0.1);overflow:hidden;position:relative}
-.gegg{position:absolute;width:100%;height:auto;top:0;z-index:100}
-.gi1{width:100%;height:225px}
+
 .pnm{width:325px;height:195px}
 .pni{width:calc(100% - 325px);padding-left:15px}
 .tai,.tag{background:#f4f4f4;width:100%;padding:15px 15px 5px 15px;line-height:20px;position:relative;height:60px;cursor:pointer;overflow:hidden}
@@ -105,7 +103,37 @@ button{border:1px solid;outline:0;margin-top:5px;cursor:pointer}
 .tag span{line-height:36px}
 .tai:hover{line-height:60px;color:#4e7ca1;padding:0px 15px}
 .tag:hover{color:#4e7ca1}
-body.dark{background:#22272e}
+.page {
+    margin: 5px auto;
+    width: 280px;
+    align-items: center;
+    justify-content: center;
+}
+
+.page a {
+    width: 32px;
+    height: 34px;
+    border: 1px solid;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    margin: 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.page a.pac,.page a:hover {
+    background: #4e7ca1;
+    color: #fafafa;
+    border-color: #4e7ca1;
+}
+
+.page a.pam {
+    font-size: 24px;
+    line-height: 30px;
+}
+body.dark{background: #22272e;}
 .dark *{color:#d8cdb0}
 .dark img{filter:brightness(85%) contrast(100%)}
 .dark.hs header{background:#22272e}
@@ -119,7 +147,7 @@ body.dark{background:#22272e}
 .dark .ttit p{color:#aaa}
 .dark .ttit p.ttc{color:#d8cdb0}
 .dark .ttit p.ttc span{color:#fafafa}
-.dark .m{background:#1c2128}
+.dark .m{background: #181818;}
 .dark .btop .l{background:#353f4c}
 .dark .btop .f{background:#3d5c75}
 .dark .hotin p{background:#353f4c}
@@ -130,3 +158,121 @@ body.dark{background:#22272e}
 .dark .pde p{color:#888}
 .dark .pll{background:#353f4c}
 .dark .tai,.dark .tag{background:#22272e}
+.dark .page a {
+    color: #888;
+}
+
+.dark .page a.pac,.dark .page a:hover  {
+    background: #273f52;
+    color: #d8cdb0;
+    border-color: #273f52;
+}
+
+
+
+.ft {
+    margin-bottom: 60px;
+}
+
+.ftlogo {
+    background: url(/static/img/logoft.png) no-repeat;
+    width: 157px;
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+}
+
+.ftlink {
+    width: 100%;
+    margin: 10px;
+    line-height: 24px;
+    text-align: center;
+    color: #999;
+}
+
+.ftlink a {
+    line-height: 24px;
+    font-size: 14px;
+    display: inline-block;
+    margin: 0 1px;
+}
+
+.ftlink a.ftlm {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid;
+    line-height: 17px;
+    color: #888;
+}
+
+.ft a:hover,footer a:hover {
+    opacity: 0.5;
+}
+
+.ft .c {
+    display: block;
+}
+
+.ftban {
+    display: block;
+    text-align: center;
+}
+
+.ftcon {
+    display: flex;
+}
+
+footer {
+    background: #fafafa;
+    padding: 15px 0;
+}
+
+.ftl,.ftr {
+    display: block;
+    width: 100%;
+    line-height: 24px;
+    font-size: 14px;
+    color: #999;
+}
+
+.ftr {
+    text-align: right;
+}
+
+.ftr a {
+    font-size: 14px;
+}
+.dark .ftlogo {background-position-y: -70px;}
+
+.dark .ftlink {
+    color: #666;
+}
+
+.dark footer {
+    background: #181818;
+}
+
+.dark .ftl,.dark .ftr {
+    color: #666;
+}
+
+.ge{margin:10px 0;background:rgba(78,124,161,0.1);overflow:hidden;position:relative}
+.gegg{position:absolute;width:100%;height:auto;top:0;z-index:100}
+.gi1{width:100%;height:225px}
+.gi2 {
+    height: 373px;
+    width: 373px;
+}
+.gebox{
+  width: 373.29px;
+}
+.gef .gebox {
+    position: fixed;
+    bottom: 0;
+}
+.geb .geboxp{
+  align-self: flex-end;
+}
