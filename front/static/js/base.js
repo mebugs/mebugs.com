@@ -17,6 +17,8 @@ var hbh = 1900;
 // 浮动盒子
 var gebox = document.getElementById("gebox");
 var geboxh = 0;
+// 浮动盒子上方
+var get = document.getElementById("get");
 // 记忆风格模式
 bodyNode.classList.add(the);
 // 添加动画模式
@@ -24,7 +26,10 @@ setTimeout(function() {bodyNode.classList.add("trans");}, 100);
 // 元素初始化
 ready(initIn)
 // 滚动行为
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", function () {runScroll()});
+
+// 触发滚动变换
+function runScroll() {
   runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
   // 导航动效
   if (runNow > hth) {
@@ -37,7 +42,7 @@ window.addEventListener("scroll", function () {
     }
     bodyNode.classList.remove("hs");
   }
-	if(cW > 1200) {
+  if(cW > 1200) {
     // 侧边动效
     if(gebox) {
       var nowRunBt = runNow+cH
@@ -54,15 +59,8 @@ window.addEventListener("scroll", function () {
       }
     }
   }
-});
-// 导航栏
-function doMenu() {
-  if(bodyNode.classList.contains("om")){
-    bodyNode.classList.remove("om");
-  }else{
-    bodyNode.classList.add("om");
-  }
 }
+
 // 变色
 function theCheck(t) {
   bodyNode.classList.remove(the);
@@ -99,11 +97,15 @@ function initH() {
     hbh = hb.offsetTop - 130;
   }
   // 如果有浮动侧边
-  if(!gebox){
+  if(!gebox || !get){
     gebox = document.getElementById("gebox");
+    get = document.getElementById("get");
   }
-  if(gebox){
-    geboxh = gebox.getBoundingClientRect().bottom + runNow;
+  if(gebox && get){
+    var geth = get.getBoundingClientRect().bottom + runNow;
+    geboxh = geth + gebox.offsetHeight;
+    // 触发滚动变换
+    runScroll();
   }
 }
 
