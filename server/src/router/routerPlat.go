@@ -1,8 +1,8 @@
 package router
 
 import (
-	"server/src/handler"
-	"server/src/handler/platHandler"
+	"server/src/sevices/handler"
+	"server/src/sevices/handler/platHandler"
 )
 
 // 平台路由

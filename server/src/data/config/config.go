@@ -48,5 +48,5 @@ func ReadConfig() {
 			log.Printf("Error: %v \n", err)
 		}
 	}
-	log.Printf("Config Read: %v  \n", RunConfig)
+	log.Printf("Config Read Success .\n")
 }

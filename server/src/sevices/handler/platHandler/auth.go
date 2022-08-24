@@ -2,7 +2,7 @@ package platHandler
 
 import (
 	"net/http"
-	"server/src/resp"
+	"server/src/data/resp"
 )
 
 // 登陆授权
