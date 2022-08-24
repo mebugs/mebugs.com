@@ -1,9 +1,10 @@
 package router
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"regexp"
+	"server/src/resp"
 )
 
 // 路由对象
@@ -18,8 +19,8 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	for route, handler := range r.routers {
 		matched, err := regexp.MatchString(route, req.URL.Path)
 		if err != nil {
-			fmt.Errorf("Match Router Fail  %s", err.Error())
-			http.Error(w, "Router Err", 404)
+			log.Printf("Match Router Fail  %s", err.Error())
+			resp.RouterErr(w)
 			return
 		}
 		// 未匹配到数据
@@ -32,8 +33,8 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		break
 	}
 	if !find {
-		fmt.Errorf("Match Router Never Find  %s", req.URL.Path)
-		http.Error(w, "Router Err", 404)
+		log.Printf("Match Router Never Find  %s", req.URL.Path)
+		resp.RouterErr(w)
 	}
 }
 

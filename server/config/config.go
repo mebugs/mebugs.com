@@ -2,7 +2,7 @@ package config
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"os"
 	"runtime"
 	"strings"
@@ -45,8 +45,8 @@ func ReadConfig() {
 	for decoder.More() {
 		err := decoder.Decode(RunConfig)
 		if err != nil {
-			fmt.Println("Error:", err)
+			log.Printf("Error: %v \n", err)
 		}
 	}
-	fmt.Printf("Config Read: %+v  \n", RunConfig)
+	log.Printf("Config Read: %v  \n", RunConfig)
 }
