@@ -1,0 +1,17 @@
+.dark *,.dark .cnt i,.dark .cns i,.dark .cnc i{color:#eaeaea}
+.dark::-webkit-scrollbar-track{background:#010103}
+.dark .hmm,.dark .h,.dark .pf,.dark .e,.dark .f,.dark .cnt,.dark .cns,.dark .cnc{background:#010103}
+.dark .hmm a:hover,.dark .hmm a.hck,.dark .hmr:hover,.dark .e span,.dark .ftl a:hover,.dark .ftlbtn a,body.dark{background:#242424}
+.dark .hmi li,.dark .hmm a em,.dark .hmr em{background:#eaeaea}
+.dark .bni1{background-image:linear-gradient(to right,#bf4971,#44ad8b)}
+.dark .bni2{background-image:linear-gradient(to right,#44ad8b,#6c4cb2)}
+.dark .bni3{background-image:linear-gradient(to right,#6c4cb2,#3e9ca2)}
+.dark .bni4{background-image:linear-gradient(to right,#3e9ca2,#bf4971)}
+.dark .bnif h1,.dark .pit p span,.dark .g h1{background:rgba(0,0,0,0.2)}
+.dark .pde{color:#82868e}
+.dark .pl:hover .pde{color:#eaeaea;border-left:2px solid #eaeaea}
+.dark .hl,.dark .fto{background: url(/static/img/logo_dark.png);background-size: 100% 100%}
+.dark .mr{background:#010103;color:#d8cdb0}
+.dark .mr:hover{color:#010103;background:#d8cdb0}
+.dark .mr:hover i{color:#010103}
+.dark .m img{filter:brightness(80%)}

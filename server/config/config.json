@@ -3,7 +3,7 @@
     "Port": ":8088"
   },
   "MySQL": {
-    "Plat": "root:123456@tcp(localhost:3306)/plat",
+    "Platform": "root:123456@tcp(localhost:3306)/platform",
     "Blog": "root:123456@tcp(localhost:3306)/blog"
   }
 }

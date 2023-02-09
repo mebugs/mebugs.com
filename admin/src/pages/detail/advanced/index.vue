@@ -1,6 +1,6 @@
 <template>
   <div class="detail-advanced">
-    <t-card title="基本信息">
+    <t-card title="基本信息" :bordered="false">
       <div class="info-block">
         <div v-for="(item, index) in BASE_INFO_DATA" :key="index" class="info-item">
           <h1>{{ item.name }}</h1>
@@ -18,19 +18,19 @@
     </t-card>
 
     <!-- 发票进度 -->
-    <t-card title="发票进度" class="container-base-margin-top">
+    <t-card title="发票进度" class="container-base-margin-top" :bordered="false">
       <t-row justify="space-between">
         <t-steps :current="updateCurrent">
           <t-step-item title="申请提交" content="已于12月21日提交" />
           <t-step-item title="电子发票" content="预计1～3个工作日" />
           <t-step-item title="发票已邮寄" content="电子发票开出后7个工作日联系" />
-          <t-step-item title="完成" content />
+          <t-step-item title="完成" content="" />
         </t-steps>
       </t-row>
     </t-card>
 
     <!-- 产品目录 -->
-    <t-card title="产品目录" class="container-base-margin-top">
+    <t-card title="产品目录" class="container-base-margin-top" :bordered="false">
       <template #option>
         <t-radio-group default-value="dateVal">
           <t-radio-button value="dateVal"> 季度 </t-radio-button>
@@ -53,12 +53,13 @@
     </t-card>
 
     <!-- 产品采购明细 -->
-    <t-card title="产品采购明细" class="container-base-margin-top">
+    <t-card title="产品采购明细" class="container-base-margin-top" :bordered="false">
       <t-table
         :columns="columns"
         :data="data"
         :pagination="pagination"
         :hover="true"
+        :stripe="true"
         row-key="index"
         size="large"
         @sort-change="sortChange"
@@ -67,14 +68,21 @@
         <template #pdName="{ row }">
           <span>
             {{ row.pdName }}
-            <t-tag v-if="row.pdType" size="small">{{ row.pdType }}</t-tag>
+            <t-tag v-if="row.pdType" size="medium" style="margin-left: var(--td-comp-margin-s)">{{ row.pdType }}</t-tag>
           </span>
         </template>
 
         <template #purchaseNum="{ row }">
           <span>
             {{ row.purchaseNum }}
-            <t-tag v-if="row.purchaseNum > 50" theme="danger" variant="light" size="small">超预算</t-tag>
+            <t-tag
+              v-if="row.purchaseNum > 50"
+              theme="danger"
+              variant="light"
+              size="medium"
+              style="margin-left: var(--td-comp-margin-s)"
+              >超预算</t-tag
+            >
           </span>
         </template>
 

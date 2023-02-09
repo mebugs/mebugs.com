@@ -1,0 +1,156 @@
+// body元素
+var bodyNode = document.body;
+// 当前执行高度
+var runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+// 屏幕宽高
+var cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+var cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+// 浏览器存储
+var loc = window.localStorage;
+// Fix相关数据
+var fixFlag = false;
+var fixStart = 0;
+var fixEnd = 0;
+var fixBoxWidth = 0;
+var fixBoxHeight = 0;
+// DoMenu操作
+var menuFlag = false;
+// DoConn操作
+var connFlag = false;
+// 返回顶部定时器
+var backTimer = null;
+// 添加动画模式
+setTimeout(function() {bodyNode.classList.add("trans");}, 100);
+// 元素初始化
+ready(initIn)
+// 滚动行为
+window.addEventListener("scroll", function () {runScroll()});
+// 初始化函数
+function initIn() {
+  // 超出1200 可能启用固钉逻辑
+  let fixStartObj = document.getElementById("fixStart");
+  if(cW >= 1280) {
+    if(fixStartObj) {
+      fixFlag = true;
+      // 为FixBox定宽 取父级并减去padding*2*15px - 新样式无需
+      fixBoxWidth = document.getElementById("fixBoxParent").offsetWidth;
+      document.getElementById("fixBox").style.width = fixBoxWidth+"px";
+      fixStart = document.getElementById("fixStart").offsetTop;
+      fixEnd = document.getElementById("fixEnd").offsetTop;
+      fixBoxHeight = document.getElementById("fixBox").offsetHeight;
+    }
+  }else{
+    fixFlag = false;
+    if(fixStartObj) {
+        document.getElementById("fixBox").style.width = "100%";
+        bodyNode.classList.remove("fixEnd");
+        bodyNode.classList.remove("fixStart");
+    }
+  }
+}
+
+// 触发滚动变换
+function runScroll() {
+  runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+  // 导航动效
+  if (runNow > 10) {
+    bodyNode.classList.add("hs");
+  }else{
+    bodyNode.classList.remove("hs");
+  }
+  // 菜单复位
+  if (menuFlag) {
+    menuFlag = !menuFlag;
+    bodyNode.classList.remove("omenu");
+  }
+  // 联系复位
+  if (connFlag) {
+    connFlag = !connFlag;
+    bodyNode.classList.remove("oconn");
+  }
+  // 固钉距离计算
+  if(fixFlag) {
+    fixStart = document.getElementById("fixStart").offsetTop;
+    fixEnd = document.getElementById("fixEnd").offsetTop;
+    fixBoxHeight = document.getElementById("fixBox").offsetHeight;
+    if (runNow+cH > (fixStart+fixBoxHeight+15)){
+      if (runNow+cH < fixEnd - 15) { 
+        bodyNode.classList.remove("fixEnd");
+        bodyNode.classList.add("fixStart");
+      }else{
+        bodyNode.classList.remove("fixStart");
+        bodyNode.classList.add("fixEnd");
+      }
+    }else{
+      bodyNode.classList.remove("fixStart");
+    }
+  }
+}
+
+// 菜单函数
+function doMenu() {
+  if (menuFlag) {
+    bodyNode.classList.remove("omenu");
+  }else{
+    bodyNode.classList.add("omenu");
+  }
+  menuFlag = !menuFlag;
+}
+
+// 底部联系
+function doConn() {
+  if (connFlag) {
+    bodyNode.classList.remove("oconn");
+  }else{
+    bodyNode.classList.add("oconn");
+  }
+  connFlag = !connFlag;
+}
+
+// 返回顶部
+function doBackTop() {
+  clearInterval(backTimer);
+  let backNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+  backTimer = setInterval(function () {  
+    // 5%的步长
+    let mRunSince = Math.floor(backNow * 0.02)+4;
+    backNow = Math.floor(backNow - mRunSince);
+  	window.scrollTo(0,backNow);
+  	if(Math.floor(backNow) <= 0) {
+  		window.scrollTo(0,0);
+  		clearInterval(backTimer);
+  	}
+  },10);	
+}
+
+
+// 初始化钩子函数
+function ready(fn){
+  if(document.addEventListener){
+    document.addEventListener('DOMContentLoaded',function(){
+      document.removeEventListener('DOMContentLoaded',arguments.callee);
+      fn();
+    });
+  }else if(document.attachEvent){
+    document.attachEvent('onreadystatechange',function(){
+      if(document.readystate=='complete'){
+        document.dispatchEvent('onreadystatechange',arguments.callee);
+        fn();
+      }
+    })
+  }
+}
+
+// 重载界面
+function resize(){
+  // 当前执行高度
+  runNow = bodyNode.scrollTop || document.documentElement.scrollTop;
+  // 屏幕宽高
+  cH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  cW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  // 初始化方法
+  initIn();
+}
+
+// 自适应监听代码
+window.addEventListener("resize", function () {resize()});

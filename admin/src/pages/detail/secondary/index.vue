@@ -6,7 +6,7 @@
           <t-list v-if="msgDataList.length > 0" class="secondary-msg-list" :split="true">
             <t-list-item v-for="(item, index) in msgDataList" :key="index">
               <p :class="['content', { unread: item.status }]" @click="setReadStatus(item)">
-                <t-tag size="small" :theme="NOTIFICATION_TYPES[item.quality]" variant="light">
+                <t-tag size="medium" :theme="NOTIFICATION_TYPES[item.quality]" variant="light">
                   {{ item.type }}
                 </t-tag>
                 {{ item.content }}
@@ -60,7 +60,7 @@ export default {
 import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { NOTIFICATION_TYPES } from '@/constants';
-import { NotificationItem } from '@/types/interface';
+import type { NotificationItem } from '@/types/interface';
 import EmptyIcon from '@/assets/assets-empty.svg?component';
 import { useNotificationStore } from '@/store';
 

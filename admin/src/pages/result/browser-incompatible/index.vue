@@ -29,8 +29,6 @@ import Thumbnail from '@/components/thumbnail/index.vue';
 </script>
 
 <style lang="less" scoped>
-@import '@/style/variables.less';
-
 .result-slot-container {
   position: relative;
   display: flex;
@@ -38,19 +36,19 @@ import Thumbnail from '@/components/thumbnail/index.vue';
   align-items: center;
   justify-content: space-between;
   color: var(--td-text-color-secondary);
+  height: 80vh;
+  max-height: 240px;
 }
 
 .recommend-container {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  top: 175px;
-  padding: 24px 48px;
+  padding: var(--td-comp-paddingTB-xl) var(--td-comp-paddingLR-xxl);
   width: 640px;
   background: var(--td-bg-color-container);
-  box-shadow: 0px 1px 2px var(--td-shadow-1);
-  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: var(--td-radius-medium);
 }
 
 .recommend-browser {
@@ -61,16 +59,16 @@ import Thumbnail from '@/components/thumbnail/index.vue';
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
   }
 
   > div + div {
-    margin-left: 40px;
+    margin-left: var(--td-comp-margin-xxxl);
   }
 }
 
 .browser-icon {
-  width: 36.67px;
-  height: 36.67px;
+  width: var(--td-comp-size-xl);
+  height: var(--td-comp-size-xl);
+  margin-bottom: var(--td-comp-margin-s);
 }
 </style>

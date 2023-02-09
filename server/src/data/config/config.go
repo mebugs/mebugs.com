@@ -23,8 +23,8 @@ type Server struct {
 
 // MySQL数据配置组
 type MySQL struct {
-	Plat string // 授权平台
-	Blog string // 博客应用
+	Platform string // 授权平台
+	Blog     string // 博客应用
 }
 
 // 配置初始化

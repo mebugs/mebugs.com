@@ -1,0 +1,47 @@
+var page = [0,0,0,0]; // New Hot Up Good
+var run = true;
+// 废弃
+function more(index,size) {
+  document.getElementById("moreLoad_"+index).style.display = "block";
+  setTimeout(function() {
+    bodyNode.classList.add("getMore");
+  },50)
+   setTimeout(function() {
+     document.getElementById("more_"+index).style.display = "none";
+   },500);
+   setTimeout(function(){
+     document.getElementById("more_"+index).style.display = "block";
+   },2000);
+   setTimeout(function(){
+     bodyNode.classList.remove("getMore");
+   },2050);
+   setTimeout(function(){
+     document.getElementById("moreLoad_"+index).style.display = "none";
+   },2500);
+   if(run) {
+     run = false;
+     setTimeout(function(){
+       var pa = document.createElement('a');
+       pa.classList.add("c");
+       pa.classList.add("p");
+       pa.classList.add("px");
+       pa.setAttribute("href","/");
+       pa.innerHTML = '<div class="pm" style="background: #60c3dd;"><img src="/bn.png" /><div class="pi"><span><i>&#xF5F1;</i>Java</span><em><i>&#xF5F2;</i>SpringBoot</em></div><em class="pib"></em></div><div class="pn"><h1>SpringBoot从零开始：关于依赖注入的特性理解</h1><p><i>&#xF011;</i><span>2022-02-02</span><i>&#xF015;</i><span>1000</span><i>&#xF013;</i><span>1000</span></p><p class="pde">SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解</p><div class="pbt">前往查看<i>></i><b></b></div><em></em></div>';
+       document.getElementById("posts_"+index).appendChild(pa);
+       pa = document.createElement('a');
+       pa.classList.add("c");
+       pa.classList.add("p");
+       pa.classList.add("px");
+       pa.setAttribute("href","/");
+       pa.innerHTML = '<div class="pm" style="background: #1933dd;"><img src="/bn.png" /><div class="pi"><span><i>&#xF5F1;</i>Java</span><em><i>&#xF5F2;</i>SpringBoot</em></div><em class="pib"></em></div><div class="pn"><h1>SpringBoot从零开始：关于依赖注入的特性理解</h1><p><i>&#xF011;</i><span>2022-02-02</span><i>&#xF015;</i><span>1000</span><i>&#xF013;</i><span>1000</span></p><p class="pde">SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解SpringBoot从零开始：关于依赖注入的特性理解</p><div class="pbt">前往查看<i>></i><b></b></div><em></em></div>';
+       document.getElementById("posts_"+index).appendChild(pa);
+       document.getElementById("posts_"+index).appendChild(pa);
+       document.getElementById("posts_"+index).appendChild(pa);
+       document.getElementById("posts_"+index).appendChild(pa);
+       // 调整FixEnd
+       fixEnd = document.getElementById("fixEnd").offsetTop;
+     },1500);
+     // 响应后未true
+     run = true;
+   }
+}

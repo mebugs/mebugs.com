@@ -37,7 +37,7 @@
         </div>
       </div>
     </template>
-    <t-badge :count="unreadMsg.length" :offset="[12, 8]">
+    <t-badge :count="unreadMsg.length" :offset="[4, 4]">
       <t-button theme="default" shape="square" variant="text">
         <t-icon name="mail" />
       </t-button>
@@ -49,7 +49,7 @@
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useNotificationStore } from '@/store';
-import { NotificationItem } from '@/types/interface';
+import type { NotificationItem } from '@/types/interface';
 
 const router = useRouter();
 const store = useNotificationStore();
@@ -77,8 +77,6 @@ const goDetail = () => {
 </script>
 
 <style lang="less" scoped>
-@import '@/style/variables.less';
-
 .header-msg {
   width: 400px;
   height: 500px;
@@ -138,7 +136,7 @@ const goDetail = () => {
     overflow: hidden;
     width: 100%;
     padding: 16px 24px;
-    border-radius: @border-radius;
+    border-radius: var(--td-radius-default);
     font-size: 14px;
     color: var(--td-text-color-primary);
     line-height: 22px;
@@ -149,7 +147,7 @@ const goDetail = () => {
       background: var(--td-bg-color-container-hover);
 
       .msg-content {
-        color: var(--td-brand-color-8);
+        color: var(--td-brand-color);
       }
 
       .t-list-item__action {
@@ -189,17 +187,6 @@ const goDetail = () => {
       right: 24px;
       bottom: 16px;
       color: var(--td-text-color-secondary);
-    }
-  }
-}
-
-.t-button {
-  margin: 0 8px;
-
-  .t-icon {
-    font-size: 20px;
-    &.general {
-      margin-right: 16px;
     }
   }
 }

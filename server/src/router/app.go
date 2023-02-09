@@ -19,6 +19,6 @@ func newRouter() *Router {
 func init() {
 	// 注册中间件
 	Routers.Use(Auth) // 鉴权中间件
-	// 注册路由
-	PlatRouter()
+	// 注册路由 - 平台路由
+	PlatformRouter()
 }

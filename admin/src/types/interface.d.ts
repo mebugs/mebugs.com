@@ -1,9 +1,10 @@
-import { RouteRecordName } from 'vue-router';
+import { RouteRecordName, LocationQueryRaw } from 'vue-router';
 import STYLE_CONFIG from '@/config/style';
 
 export interface MenuRoute {
   path: string;
   title?: string;
+  name?: string;
   icon?:
     | string
     | {
@@ -36,11 +37,13 @@ export interface NotificationItem {
 
 export interface TRouterInfo {
   path: string;
+  query?: LocationQueryRaw;
   routeIdx?: number;
   title?: string;
   name?: RouteRecordName;
   isAlive?: boolean;
   isHome?: boolean;
+  meta?: any;
 }
 
 export interface TTabRouterType {

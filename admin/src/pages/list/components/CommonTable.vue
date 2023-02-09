@@ -1,17 +1,9 @@
 <template>
   <div class="list-common-table">
-    <t-form
-      ref="form"
-      :data="formData"
-      :label-width="80"
-      colon
-      :style="{ marginBottom: '8px' }"
-      @reset="onReset"
-      @submit="onSubmit"
-    >
+    <t-form ref="form" :data="formData" :label-width="80" colon @reset="onReset" @submit="onSubmit">
       <t-row>
         <t-col :span="10">
-          <t-row :gutter="[16, 24]">
+          <t-row :gutter="[24, 24]">
             <t-col :span="4">
               <t-form-item label="合同名称" name="name">
                 <t-input
@@ -58,7 +50,7 @@
         </t-col>
 
         <t-col :span="2" class="operation-container">
-          <t-button theme="primary" type="submit" :style="{ marginLeft: '8px' }"> 查询 </t-button>
+          <t-button theme="primary" type="submit" :style="{ marginLeft: 'var(--td-comp-margin-s)' }"> 查询 </t-button>
           <t-button type="reset" variant="base" theme="default"> 重置 </t-button>
         </t-col>
       </t-row>
@@ -73,7 +65,7 @@
         :hover="hover"
         :pagination="pagination"
         :loading="dataLoading"
-        :header-affixed-top="{ offsetTop, container: getContainer }"
+        :header-affixed-top="headerAffixedTop"
         @page-change="rehandlePageChange"
         @change="rehandleChange"
       >
@@ -114,7 +106,7 @@
 </template>
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { MessagePlugin } from 'tdesign-vue-next';
+import { MessagePlugin, PrimaryTableCol, TableRowData, PageInfo } from 'tdesign-vue-next';
 import Trend from '@/components/trend/index.vue';
 import { getList } from '@/api/list';
 import { useSettingStore } from '@/store';
@@ -130,44 +122,44 @@ import {
 
 const store = useSettingStore();
 
-const COLUMNS = [
+const COLUMNS: PrimaryTableCol<TableRowData>[] = [
   {
     title: '合同名称',
     fixed: 'left',
-    width: 200,
+    width: 280,
     ellipsis: true,
     align: 'left',
     colKey: 'name',
   },
-  { title: '合同状态', colKey: 'status', width: 200, cell: { col: 'status' } },
+  { title: '合同状态', colKey: 'status', width: 160 },
   {
     title: '合同编号',
-    width: 200,
+    width: 160,
     ellipsis: true,
     colKey: 'no',
   },
   {
     title: '合同类型',
-    width: 200,
+    width: 160,
     ellipsis: true,
     colKey: 'contractType',
   },
   {
     title: '合同收付类型',
-    width: 200,
+    width: 160,
     ellipsis: true,
     colKey: 'paymentType',
   },
   {
     title: '合同金额 (元)',
-    width: 200,
+    width: 160,
     ellipsis: true,
     colKey: 'amount',
   },
   {
     align: 'left',
     fixed: 'right',
-    width: 200,
+    width: 160,
     colKey: 'op',
     title: '操作',
   },
@@ -182,7 +174,7 @@ const searchForm = {
 
 const formData = ref({ ...searchForm });
 const rowKey = 'index';
-const verticalAlign = 'top';
+const verticalAlign = 'top' as const;
 const hover = true;
 
 const pagination = ref({
@@ -251,8 +243,8 @@ const onReset = (val) => {
 const onSubmit = (val) => {
   console.log(val);
 };
-const rehandlePageChange = (curr, pageInfo) => {
-  console.log('分页变化', curr, pageInfo);
+const rehandlePageChange = (pageInfo: PageInfo, newDataSource: TableRowData[]) => {
+  console.log('分页变化', pageInfo, newDataSource);
 };
 const rehandleChange = (changeParams, triggerAndData) => {
   console.log('统一Change', changeParams, triggerAndData);
@@ -261,24 +253,23 @@ const rehandleClickOp = ({ text, row }) => {
   console.log(text, row);
 };
 
-const offsetTop = computed(() => {
-  return store.isUseTabsRouter ? 48 : 0;
-});
-
-const getContainer = () => {
-  return document.querySelector(`.${prefix}-layout`);
-};
+const headerAffixedTop = computed(
+  () =>
+    ({
+      offsetTop: store.isUseTabsRouter ? 48 : 0,
+      container: `.${prefix}-layout`,
+    } as any), // TO BE FIXED
+);
 </script>
 
 <style lang="less" scoped>
-@import '@/style/variables.less';
 .list-common-table {
   background-color: var(--td-bg-color-container);
-  padding: 30px 32px;
-  border-radius: @border-radius;
+  padding: var(--td-comp-paddingTB-xxl) var(--td-comp-paddingLR-xxl);
+  border-radius: var(--td-radius-medium);
 
   .table-container {
-    margin-top: 30px;
+    margin-top: var(--td-comp-margin-xxl);
   }
 }
 
@@ -295,10 +286,6 @@ const getContainer = () => {
       display: flex;
       align-items: center;
     }
-    .t-icon {
-      margin-left: 4px;
-      transition: transform 0.3s ease;
-    }
   }
 }
 
@@ -308,7 +295,7 @@ const getContainer = () => {
   .trend-container {
     display: flex;
     align-items: center;
-    margin-left: 8px;
+    margin-left: var(--td-comp-margin-s);
   }
 }
 </style>

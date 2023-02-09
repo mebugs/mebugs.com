@@ -1,0 +1,126 @@
+@media screen and (min-width:390px){
+.pm .pif{height:146px}
+.pimf{height:60px}
+.pif .pimf h1{height:25px;-webkit-line-clamp:1}
+.phi h1{line-height: 30px;-webkit-line-clamp:1}
+}
+@media screen and (min-width:480px){
+/*PxBox*/
+.pim{width:75px;height:75px}
+.pif{height:75px;width:calc(100% - 75px)}
+.pif h1{height:25px;-webkit-line-clamp:1}
+.pprnx .pim,.pmr .pim{width:45px;height:45px}
+.pprnx .pif,.pmr .pif{height:45px;width:calc(100% - 45px)}
+.pprnx .pim span i{line-height:45px;font-size:22px}
+/*PxBox*/
+.avts img{width:calc(25% - 10px)}
+}
+@media screen and (min-width:768px){
+/*PxBox*/
+.pim{width:100px;height:100px}
+.pif{height:100px;width:calc(100% - 100px)}
+.pif h1{height:50px;-webkit-line-clamp:2}
+.pprnx .pim,.pmr .pim{width:70px;height:70px}
+.pprnx .pif,.pmr .pif{height:70px;width:calc(100% - 70px)}
+.pprnx .pim span i{line-height:70px;font-size:30px}
+/*PxBox*/
+.hhi{display:none}
+.hmm{position:relative;right:0;width:480px;padding:0;height:50px;display:flex;background:unset}
+.hmm a{width:50px;margin:0;margin-left:10px}
+.bann{height:260px}
+.bn{padding:30px 50px}
+.bne{width:50%}
+.c_p{width:calc(50% - 10px)}
+.pm .pim{height:24vw}
+.c_g{width:calc(25% - 10px)}
+.post .hlogo {left: 50px;}
+.phi{width:calc(100% - 40px);margin:20px;bottom:-20px}
+.pde.phe{margin:20px}
+.pbd,.pct,.pcm,.pcc{margin:20px}
+.post .conn{right:20px}
+.ct{max-width:900px;margin:auto}
+.comsCn{display:flex;flex-wrap:wrap;margin:0 -5px}
+.comsCn p{width:calc(50% - 10px);margin:5px}
+.avts img{width:calc(16.66% - 10px)}
+.avts{height:auto;max-height: unset;padding: 0 8%;}
+}
+@media screen and (min-width:900px){
+.pprnx .p{width:calc(50% - 20px);margin:10px}
+.pmr .p{width:calc(33.33% - 20px);margin:10px}
+.pprnx .pim{width:45px;height:45px}
+.pprnx .pif{height:45px;width:calc(100% - 45px)}
+.pprnx .pif h1{height:25px;-webkit-line-clamp:1}
+.pprnx .pim span i{line-height:45px;font-size:22px}
+.pmr .pif h1{height:50px;-webkit-line-clamp:2}
+}
+@media screen and (min-width:1024px){
+.bann{height:300px}
+.bne{height:240px}
+.bninf{margin-top:10px}
+.bne p{top:150px}
+.bne span{top:120px}
+.c_p{width:calc(33.33% - 10px)}
+.pm .pim{height:16vw}
+.c_e,.qkl a{width:25%;height:13vw}  
+.eim{height:13vw}
+.cata{padding-top: 100px;}
+.list{height:calc(100vh - 110px)}
+.post .m{/* padding-left:240px; */}
+.phi h1{font-size:18px}
+.comse,.comhe{border-radius:20px;padding:25px}
+.comse{width:900px;height:340px;left:calc(50% - 450px);bottom:calc(50% - 230px)}
+.ocoms .comse{bottom:calc(50% - 170px)}
+.comsIf{display:flex;flex-wrap:wrap}
+.comsAt{margin:0;margin-right:10px}
+.comsCn{width:calc(100% - 110px);padding:8px 0}
+.comsSe{float:right}
+.comsDe{float:right;margin-right:15px;line-height:45px}
+.avts{padding:0}
+.comhe{width:700px;left:calc(50% - 350px);height:380px;bottom:calc(50% - 250px)}
+.ocomh .comhe{bottom:calc(50% - 190px)}
+}
+@media screen and (min-width:1280px){
+.head{width:1220px}
+.m{width:1190px;margin:auto}
+.docata{display:none}
+.post .hlogo{position:relative;left:0}
+.bann,.qkl,.ekl,.ptm{margin:15px}
+.c_p{width:calc(33.33% - 20px);margin:10px}
+.c_g{width:calc(25% - 20px);margin:10px}
+.pm .pim{height:193px}
+.c_e,.eim,.qkl a{height: 145px;}
+.pif h1{font-size: 15px;}
+.conn{right:calc(50% - 635px)}
+.cata {width: 260px;left: 0;padding-left: 20px;}
+.post .head{width:calc(100% - 40px)}
+.post .m{padding-left:260px;width:100%}
+}
+@media screen and (min-width:1920px){
+/*PxBox*/
+.pim{width:75px;height:75px}
+.pif{height:75px;width:calc(100% - 75px)}
+.pif h1{height:25px;-webkit-line-clamp:1}
+/*PxBox*/
+.head{width:1530px}
+.m{width:1500px}
+.c_e,.eim,.qkl a{height:184px}
+.c_g{width:calc(12.5% - 20px)}
+.pm .pim{height:238px}
+.bne{height:300px}
+.bann{height:360px}
+.bne h1{top:66px}
+.bne p{top:180px}
+.bne span{top:155px}
+.qkl a{height:184px}
+.c_g{width:calc(12.5% - 20px)}
+.pm .pim{height:238px}
+.conn{right:calc(50% - 800px)}
+}
+@media screen and (min-width:2300px){
+.head{width:2070px}
+.m{width:2040px}
+.c_p{width:calc(25% - 20px)}
+.c_e,.eim,.qkl a{height:250px}
+.pm .pim{height:244px}
+.conn{right:calc(50% - 1070px)}
+}

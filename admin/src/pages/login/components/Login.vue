@@ -50,9 +50,17 @@
 
     <!-- 手机号登陆 -->
     <template v-else>
+      <t-form-item name="phone">
+        <t-input v-model="formData.phone" size="large" placeholder="请输入手机号码">
+          <template #prefix-icon>
+            <t-icon name="mobile" />
+          </template>
+        </t-input>
+      </t-form-item>
+
       <t-form-item class="verification-code" name="verifyCode">
         <t-input v-model="formData.verifyCode" size="large" placeholder="请输入验证码" />
-        <t-button variant="outline" :disabled="countDown > 0" @click="handleCounter">
+        <t-button variant="outline" :disabled="countDown > 0" @click="sendCode">
           {{ countDown == 0 ? '发送验证码' : `${countDown}秒后可重发` }}
         </t-button>
       </t-form-item>
@@ -72,9 +80,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import QrcodeVue from 'qrcode.vue';
 import { MessagePlugin } from 'tdesign-vue-next';
+import type { FormInstanceFunctions, FormRule } from 'tdesign-vue-next';
 import { useCounter } from '@/hooks';
 import { useUserStore } from '@/store';
 
@@ -88,7 +97,7 @@ const INITIAL_DATA = {
   checked: false,
 };
 
-const FORM_RULES = {
+const FORM_RULES: Record<string, FormRule[]> = {
   phone: [{ required: true, message: '手机号必填', type: 'error' }],
   account: [{ required: true, message: '账号必填', type: 'error' }],
   password: [{ required: true, message: '密码必填', type: 'error' }],
@@ -97,6 +106,7 @@ const FORM_RULES = {
 
 const type = ref('password');
 
+const form = ref<FormInstanceFunctions>();
 const formData = ref({ ...INITIAL_DATA });
 const showPsw = ref(false);
 
@@ -107,6 +117,18 @@ const switchType = (val: string) => {
 };
 
 const router = useRouter();
+const route = useRoute();
+
+/**
+ * 发送验证码
+ */
+const sendCode = () => {
+  form.value.validate({ fields: ['phone'] }).then((e) => {
+    if (e === true) {
+      handleCounter();
+    }
+  });
+};
 
 const onSubmit = async ({ validateResult }) => {
   if (validateResult === true) {
@@ -114,9 +136,9 @@ const onSubmit = async ({ validateResult }) => {
       await userStore.login(formData.value);
 
       MessagePlugin.success('登陆成功');
-      router.push({
-        path: '/dashboard/base',
-      });
+      const redirect = route.query.redirect as string;
+      const redirectUrl = redirect ? decodeURIComponent(redirect) : '/dashboard';
+      router.push(redirectUrl);
     } catch (e) {
       console.log(e);
       MessagePlugin.error(e.message);

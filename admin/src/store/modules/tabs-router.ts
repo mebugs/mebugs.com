@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { TRouterInfo, TTabRouterType } from '@/types/interface';
+import type { TRouterInfo, TTabRouterType } from '@/types/interface';
 import { store } from '@/store';
 
 const homeRoute: Array<TRouterInfo> = [
@@ -68,6 +68,7 @@ export const useTabsRouterStore = defineStore('tabsRouter', {
       newRoutes?.forEach((route: TRouterInfo) => this.appendTabRouterList(route));
     },
   },
+  persist: true,
 });
 
 export function getTabsRouterStore() {

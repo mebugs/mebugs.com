@@ -3,11 +3,11 @@
     <div class="form-step-container">
       <!-- 简单步骤条 -->
       <t-card :bordered="false">
-        <t-steps class="step-container" :current="activeForm" status="process">
-          <t-step-item title="提交开票申请" />
-          <t-step-item title="填写发票信息" />
-          <t-step-item title="确认邮寄地址" />
-          <t-step-item title="完成" />
+        <t-steps class="step-container" :current="1" status="process">
+          <t-step-item title="提交申请" content="已于12月21日提交" />
+          <t-step-item title="电子信息" content="预计1-3个工作日" />
+          <t-step-item title="发票已邮寄" content="电子发票开出后联系" />
+          <t-step-item title="完成申请" content="如有疑问联系客服" />
         </t-steps>
       </t-card>
 
@@ -149,7 +149,7 @@ export default {
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { ValidateResultContext } from 'tdesign-vue-next';
+import { SubmitContext, Data } from 'tdesign-vue-next';
 
 import {
   FORM_RULES,
@@ -179,7 +179,7 @@ const amount = computed(() => {
   return '--';
 });
 
-const onSubmit = (result: ValidateResultContext<FormData>, val: number) => {
+const onSubmit = (result: SubmitContext<Data>, val: number) => {
   if (result.validateResult === true) {
     activeForm.value = val;
   }

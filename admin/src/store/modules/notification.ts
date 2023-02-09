@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { NotificationItem } from '@/types/interface';
+import type { NotificationItem } from '@/types/interface';
 
 const msgData = [
   {
@@ -73,4 +73,5 @@ export const useNotificationStore = defineStore('notification', {
       this.msgData = data;
     },
   },
+  persist: true,
 });

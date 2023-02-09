@@ -1,6 +1,6 @@
 <template>
   <div>
-    <t-card class="list-card-container">
+    <t-card class="list-card-container" :bordered="false">
       <t-row justify="space-between">
         <div class="left-operation-container">
           <t-button @click="handleSetupContract"> 新建合同 </t-button>
@@ -10,7 +10,7 @@
         <div class="search-input">
           <t-input v-model="searchValue" placeholder="请输入你需要搜索的内容" clearable>
             <template #suffix-icon>
-              <search-icon size="20px" />
+              <search-icon size="16px" />
             </template>
           </t-input>
         </div>
@@ -24,7 +24,7 @@
         :pagination="pagination"
         :selected-row-keys="selectedRowKeys"
         :loading="dataLoading"
-        :header-affixed-top="{ offsetTop, container: getContainer }"
+        :header-affixed-top="headerAffixedTop"
         @page-change="rehandlePageChange"
         @change="rehandleChange"
         @select-change="rehandleSelectChange"
@@ -177,35 +177,42 @@ const handleClickDelete = (row: { rowIndex: any }) => {
   confirmVisible.value = true;
 };
 
-const offsetTop = computed(() => {
-  return store.isUseTabsRouter ? 48 : 0;
-});
-
-const getContainer = () => {
-  return document.querySelector(`.${prefix}-layout`);
-};
+const headerAffixedTop = computed(
+  () =>
+    ({
+      offsetTop: store.isUseTabsRouter ? 48 : 0,
+      container: `.${prefix}-layout`,
+    } as any),
+);
 </script>
 
 <style lang="less" scoped>
-@import '@/style/variables';
-
 .payment-col {
   display: flex;
 
   .trend-container {
     display: flex;
     align-items: center;
-    margin-left: 8px;
+    margin-left: var(--td-comp-margin-s);
+  }
+}
+
+.list-card-container {
+  padding: var(--td-comp-paddingTB-xxl) var(--td-comp-paddingLR-xxl);
+
+  :deep(.t-card__body) {
+    padding: 0;
   }
 }
 
 .left-operation-container {
-  padding: 6px 0;
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--td-comp-margin-xxl);
 
   .selected-count {
     display: inline-block;
-    margin-left: 8px;
+    margin-left: var(--td-comp-margin-l);
     color: var(--td-text-color-secondary);
   }
 }

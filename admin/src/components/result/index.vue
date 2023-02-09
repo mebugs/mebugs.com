@@ -44,8 +44,6 @@ const dynamicComponent = computed(() => {
 });
 </script>
 <style lang="less" scoped>
-@import '@/style/variables';
-
 .result {
   &-link {
     color: var(--td-brand-color);
@@ -76,7 +74,6 @@ const dynamicComponent = computed(() => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px;
   }
 
   &-bg-img {
@@ -86,18 +83,15 @@ const dynamicComponent = computed(() => {
 
   &-title {
     font-style: normal;
-    font-weight: 500;
-    margin-top: 8px;
+    margin-top: var(--td-comp-margin-l);
     color: var(--td-text-color-primary);
-    font-size: @font-size-xl;
-    line-height: @line-height-xl;
+    font: var(--td-font-title-large);
   }
 
   &-tip {
-    margin: 8px 0 32px;
-    font-size: @font-size-base;
+    margin: var(--td-comp-margin-s) 0 var(--td-comp-margin-xxxl);
+    font: var(--td-font-body-medium);
     color: var(--td-text-color-secondary);
-    line-height: @line-height-base;
   }
 }
 </style>

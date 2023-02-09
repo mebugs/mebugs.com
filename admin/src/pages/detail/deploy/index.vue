@@ -2,14 +2,14 @@
   <div class="detail-deploy">
     <t-row :gutter="16">
       <t-col :lg="6" :xs="12">
-        <t-card title="部署趋势">
+        <t-card title="部署趋势" :bordered="false">
           <div class="deploy-panel-left">
             <div id="monitorContainer" style="width: 100%; height: 265px" />
           </div>
         </t-card>
       </t-col>
       <t-col :lg="6" :xs="12">
-        <t-card title="告警情况">
+        <t-card title="告警情况" :bordered="false">
           <template #option>
             <t-radio-group default-value="dateVal" @change="onAlertChange">
               <t-radio-button value="dateVal"> 本周 </t-radio-button>
@@ -22,12 +22,13 @@
     </t-row>
 
     <!-- 项目列表 -->
-    <t-card title="项目列表" class="container-base-margin-top">
+    <t-card title="项目列表" class="container-base-margin-top" :bordered="false">
       <t-table
         :columns="columns"
         :data="data"
         :pagination="pagination"
         :hover="true"
+        :stripe="true"
         row-key="index"
         @sort-change="sortChange"
         @change="rehandleChange"
@@ -204,12 +205,25 @@ const deleteClickOp = (e) => {
 
 .detail-deploy {
   :deep(.t-card) {
-    padding: 8px;
+    padding: var(--td-comp-paddingTB-xxl) var(--td-comp-paddingLR-xxl);
+  }
+
+  :deep(.t-card__header) {
+    padding: 0;
+  }
+
+  :deep(.t-card__body) {
+    padding: 0;
+    margin-top: var(--td-comp-margin-xxl);
   }
 
   :deep(.t-card__title) {
-    font-size: 20px;
-    font-weight: 500;
+    font: var(--td-font-title-large);
+    font-weight: 400;
+  }
+
+  :deep(.t-text-ellipsis) {
+    width: auto;
   }
 }
 </style>

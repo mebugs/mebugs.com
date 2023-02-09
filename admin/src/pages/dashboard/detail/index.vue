@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-panel-detail">
-    <t-card title="本月采购申请情况" class="dashboard-detail-card">
+    <t-card title="本月采购申请情况" class="dashboard-detail-card" :bordered="false">
       <t-row :gutter="[16, 16]">
         <t-col v-for="(item, index) in PANE_LIST_DATA" :key="index" :xs="6" :xl="3">
           <t-card class="dashboard-list-card" :description="item.title">
@@ -18,18 +18,18 @@
     </t-card>
     <t-row :gutter="[16, 16]" class="row-margin">
       <t-col :xs="12" :xl="9">
-        <t-card class="dashboard-detail-card" title="采购商品申请趋势" subtitle="(件)">
+        <t-card class="dashboard-detail-card" title="采购商品申请趋势" subtitle="(件)" :bordered="false">
           <template #actions>
             <t-date-range-picker
               class="card-date-picker-container"
               :default-value="LAST_7_DAYS"
               theme="primary"
               mode="date"
-              style="width: 240px"
+              style="width: 248px"
               @change="onMaterialChange"
             />
           </template>
-          <div id="lineContainer" style="width: 100%; height: 410px" />
+          <div id="lineContainer" style="width: 100%; height: 412px" />
         </t-card>
       </t-col>
       <t-col :xs="12" :xl="3">
@@ -41,19 +41,19 @@
         />
       </t-col>
     </t-row>
-    <t-card :class="['dashboard-detail-card', 'row-margin']" title="采购商品满意度分布">
+    <t-card :class="['dashboard-detail-card', 'row-margin']" title="采购商品满意度分布" :bordered="false">
       <template #actions>
         <t-date-range-picker
           class="card-date-picker-container"
           :default-value="LAST_7_DAYS"
           theme="primary"
           mode="date"
-          style="display: inline-block; margin-right: 8px; width: 240px"
+          style="display: inline-block; margin-right: var(--td-comp-margin-s); width: 248px"
           @change="onSatisfyChange"
         />
         <t-button class="card-date-button"> 导出数据 </t-button>
       </template>
-      <div id="scatterContainer" style="width: 100%; height: 330px" />
+      <div id="scatterContainer" style="width: 100%; height: 434px" />
     </t-card>
   </div>
 </template>
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted, watch, computed } from 'vue';
+import { nextTick, onMounted, onUnmounted, watch, computed, onDeactivated } from 'vue';
 
 import * as echarts from 'echarts/core';
 import { GridComponent, TooltipComponent, LegendComponent } from 'echarts/components';
@@ -133,14 +133,19 @@ onUnmounted(() => {
   window.removeEventListener('resize', updateContainer);
 });
 
-watch(
+onDeactivated(() => {
+  storeModeWatch();
+  storeBrandThemeWatch();
+});
+
+const storeModeWatch = watch(
   () => store.mode,
   () => {
     renderCharts();
   },
 );
 
-watch(
+const storeBrandThemeWatch = watch(
   () => store.brandTheme,
   () => {
     changeChartsTheme([lineChart, scatterChart]);
@@ -158,19 +163,26 @@ const onMaterialChange = (value: string[]) => {
 </script>
 
 <style lang="less" scoped>
-@import '@/style/variables.less';
-
 .row-margin {
   margin-top: 16px;
 }
 
 // 统一增加8px;
 .dashboard-detail-card {
-  padding: 8px;
+  padding: var(--td-comp-paddingTB-xxl) var(--td-comp-paddingLR-xxl);
+
+  :deep(.t-card__header) {
+    padding: 0;
+  }
 
   :deep(.t-card__title) {
-    font-size: 20px;
-    font-weight: 500;
+    font: var(--td-font-title-large);
+    font-weight: 400;
+  }
+
+  :deep(.t-card__body) {
+    padding: 0;
+    margin-top: var(--td-comp-margin-xxl);
   }
 
   :deep(.t-card__actions) {
@@ -183,11 +195,10 @@ const onMaterialChange = (value: string[]) => {
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 170px;
-  padding: 8px;
+  padding: var(--td-comp-paddingTB-xl) var(--td-comp-paddingLR-xl);
 
-  :deep(.t-card__header) {
-    padding-bottom: 8px;
+  :deep(.t-card__description) {
+    margin: 0;
   }
 
   :deep(.t-card__body) {
@@ -195,6 +206,7 @@ const onMaterialChange = (value: string[]) => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: var(--td-comp-margin-s);
   }
 
   &.dark {
@@ -212,9 +224,10 @@ const onMaterialChange = (value: string[]) => {
   }
 
   &__number {
-    font-size: 36px;
-    line-height: 44px;
+    font: var(--td-font-headline-large);
+    font-weight: 400;
     color: var(--td-text-color-primary);
+    margin-bottom: var(--td-comp-margin-xxl);
   }
 
   &__text {
@@ -222,16 +235,18 @@ const onMaterialChange = (value: string[]) => {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font: var(--td-font-body-medium);
     color: var(--td-text-color-placeholder);
     text-align: left;
-    line-height: 18px;
 
+    .t-icon {
+      font-size: var(--td-comp-size-xxxs);
+    }
     &-left {
       display: flex;
 
       .icon {
-        margin: 0 8px;
+        margin: 0 var(--td-comp-margin-s);
       }
     }
   }
