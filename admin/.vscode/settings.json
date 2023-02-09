@@ -19,7 +19,7 @@
   },
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.words": ["tdesign", "tvision", "echarts", "nprogress", "commitlint", "stylelint", "pinia", "qrcode"]
 }

@@ -52,9 +52,10 @@
               <template #suffix><t-icon name="chevron-down" /></template>
             </t-button>
           </t-dropdown>
-          <t-tooltip placement="bottom" content="系统设置">
-            <t-button theme="default" shape="square" variant="text" @click="toggleSettingPanel">
-              <t-icon name="setting" />
+          <t-tooltip placement="bottom" content="视觉模式">
+            <t-button theme="default" shape="square" variant="text" @click="changeMode">
+              <icon v-if="theme == 'dark'" size="26px" name="darkMode" url="/static/svg/mode.js" />
+              <icon v-else name="lightMode" size="26px" url="/static/svg/mode.js" />
             </t-button>
           </t-tooltip>
         </div>
@@ -67,6 +68,7 @@
 import { computed } from 'vue';
 import type { PropType } from 'vue';
 import { useRouter } from 'vue-router';
+import { Icon } from 'tdesign-icons-vue-next';
 import { useSettingStore } from '@/store';
 import { getActive } from '@/router';
 import { prefix } from '@/config/global';
@@ -111,9 +113,11 @@ const props = defineProps({
 const router = useRouter();
 const settingStore = useSettingStore();
 
-const toggleSettingPanel = () => {
+// 切换视觉模式
+const changeMode = () => {
+  const modeNew = props.theme === 'light' ? 'dark' : 'light';
   settingStore.updateConfig({
-    showSettingPanel: true,
+    mode: modeNew,
   });
 };
 

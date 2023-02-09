@@ -7,9 +7,6 @@
         </span>
       </template>
       <menu-content :nav-data="menu" />
-      <template #operations>
-        <span class="version-container"> {{ !collapsed ? 'TDesign Starter' : '' }} {{ pgk.version }} </span>
-      </template>
     </t-menu>
     <div :class="`${prefix}-side-nav-placeholder${collapsed ? '-hidden' : ''}`"></div>
   </div>
@@ -23,7 +20,6 @@ import union from 'lodash/union';
 
 import { useSettingStore } from '@/store';
 import { prefix } from '@/config/global';
-import pgk from '../../../package.json';
 import type { MenuRoute } from '@/types/interface';
 import { getActive, getRoutesExpanded } from '@/router';
 

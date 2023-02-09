@@ -16,7 +16,7 @@
 
       <login v-if="type === 'login'" />
       <register v-else @register-success="switchType('login')" />
-      <tdesign-setting />
+      <!-- <tdesign-setting /> -->
     </div>
 
     <footer class="copyright">Copyright @ 2021-2022 Tencent. All Rights Reserved</footer>
@@ -33,7 +33,8 @@ import { ref } from 'vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import LoginHeader from './components/Header.vue';
-import TdesignSetting from '@/layouts/setting.vue';
+// 弃用官方面板
+// import TdesignSetting from '@/layouts/setting.vue';
 
 const type = ref('login');
 const switchType = (val: string) => {

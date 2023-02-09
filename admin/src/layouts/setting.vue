@@ -92,7 +92,7 @@
   </t-drawer>
 </template>
 <script setup lang="ts">
-import { ref, computed, onMounted, watchEffect } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { MessagePlugin } from 'tdesign-vue-next';
 import type { PopupVisibleChangeContext } from 'tdesign-vue-next';
 import { Color } from 'tvision-color';
@@ -210,9 +210,10 @@ const getThumbnailUrl = (name: string): string => {
   return `https://tdesign.gtimg.com/tdesign-pro/setting/${name}.png`;
 };
 
-watchEffect(() => {
-  if (formData.value.brandTheme) settingStore.updateConfig(formData.value);
-});
+// 启用Pannel的监听
+// watchEffect(() => {
+//   if (formData.value.brandTheme) settingStore.updateConfig(formData.value);
+// });
 </script>
 <style lang="less" scoped>
 .tdesign-setting {

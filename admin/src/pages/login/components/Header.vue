@@ -8,21 +8,25 @@
       <t-button theme="default" shape="square" variant="text" @click="navToHelper">
         <t-icon name="help-circle" class="icon" />
       </t-button>
-      <t-button theme="default" shape="square" variant="text" @click="toggleSettingPanel">
-        <t-icon name="setting" class="icon" />
+      <t-button theme="default" shape="square" variant="text" @click="changeMode">
+        <icon v-if="settingStore.displayMode == 'dark'" size="26px" name="darkMode" url="/static/svg/mode.js" />
+        <icon v-else size="26px" name="lightMode" url="/static/svg/mode.js" />
       </t-button>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { Icon } from 'tdesign-icons-vue-next';
 import LogoFullIcon from '@/assets/assets-logo-full.svg?component';
 import { useSettingStore } from '@/store';
 
 const settingStore = useSettingStore();
-const toggleSettingPanel = () => {
+// 切换视觉模式
+const changeMode = () => {
+  const modeNew = settingStore.displayMode === 'light' ? 'dark' : 'light';
   settingStore.updateConfig({
-    showSettingPanel: true,
+    mode: modeNew,
   });
 };
 
@@ -37,7 +41,7 @@ const navToHelper = () => {
 
 <style lang="less" scoped>
 .login-header {
-  padding: 0 24px;
+  padding: 12px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
