@@ -1,11 +1,18 @@
 <template>
-  <router-view :class="[mode]" />
+  <t-config-provider :global-config="globalConfig">
+    <router-view :class="[mode]" />
+  </t-config-provider>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
+import { Icon } from 'tdesign-icons-vue-next';
 import STYLE_CONFIG from '@/config/style';
 import { useSettingStore } from '@/store';
-
+// 创建全区配置
+const globalConfig = {
+  icon: Icon,
+};
+// 用户设置配置读取
 const store = useSettingStore();
 
 const mode = computed(() => {

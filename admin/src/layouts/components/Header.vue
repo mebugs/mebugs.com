@@ -2,10 +2,7 @@
   <div :class="layoutCls">
     <t-head-menu :class="menuCls" :theme="menuTheme" expand-type="popup" :value="active">
       <template #logo>
-        <span v-if="showLogo" class="header-logo-container" @click="handleNav('/dashboard/base')">
-          <logo-full class="t-logo" />
-        </span>
-        <div v-else class="header-operate-left">
+        <div class="header-operate-left">
           <t-button theme="default" shape="square" variant="text" @click="changeCollapsed">
             <t-icon class="collapsed-icon" name="view-list" />
           </t-button>
@@ -72,7 +69,6 @@ import { Icon } from 'tdesign-icons-vue-next';
 import { useSettingStore } from '@/store';
 import { getActive } from '@/router';
 import { prefix } from '@/config/global';
-import LogoFull from '@/assets/assets-logo-full.svg?component';
 import type { MenuRoute } from '@/types/interface';
 
 import Notice from './Notice.vue';
@@ -219,26 +215,6 @@ const navToHelper = () => {
   align-items: normal;
   line-height: 0;
   padding-left: var(--td-comp-margin-xl);
-}
-
-.header-logo-container {
-  width: 184px;
-  height: 26px;
-  display: flex;
-  margin-left: 24px;
-  color: var(--td-text-color-primary);
-
-  .t-logo {
-    width: 100%;
-    height: 100%;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .header-user-account {

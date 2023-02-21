@@ -1,6 +1,8 @@
 {
   "Server": {
-    "Port": ":8088"
+    "Port": ":8000",
+    "LogLevel": "debug",
+    "LogRoot": 2
   },
   "MySQL": {
     "Platform": "root:123456@tcp(localhost:3306)/platform",

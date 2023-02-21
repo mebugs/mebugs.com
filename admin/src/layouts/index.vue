@@ -1,15 +1,16 @@
 <template>
   <div>
-    <template v-if="setting.layout.value === 'side'">
-      <t-layout key="side" :class="mainLayoutCls">
-        <t-aside><layout-side-nav /></t-aside>
-        <t-layout>
-          <t-header><layout-header /></t-header>
-          <t-content><layout-content /></t-content>
-        </t-layout>
+    <!-- <template> -->
+    <t-layout key="side" :class="mainLayoutCls">
+      <t-aside><layout-side-nav /></t-aside>
+      <t-layout>
+        <t-header><layout-header /></t-header>
+        <t-content><layout-content /></t-content>
       </t-layout>
-    </template>
-
+    </t-layout>
+    <!-- </template> -->
+    <!-- Clear Other Show Mode -->
+    <!--
     <template v-else>
       <t-layout key="no-side">
         <t-header><layout-header /> </t-header>
@@ -18,14 +19,14 @@
           <layout-content />
         </t-layout>
       </t-layout>
-    </template>
+    </template> -->
     <!-- <setting-com /> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, onMounted, watch } from 'vue';
-import { storeToRefs } from 'pinia';
+// import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 import { useSettingStore, useTabsRouterStore } from '@/store';
 // 弃用风格面板
@@ -41,7 +42,7 @@ import '@/style/layout.less';
 const route = useRoute();
 const settingStore = useSettingStore();
 const tabsRouterStore = useTabsRouterStore();
-const setting = storeToRefs(settingStore);
+// const setting = storeToRefs(settingStore);
 
 const mainLayoutCls = computed(() => [
   {

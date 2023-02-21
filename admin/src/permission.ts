@@ -9,75 +9,63 @@ import { PAGE_NOT_FOUND_ROUTE } from '@/utils/route/constant';
 
 NProgress.configure({ showSpinner: false });
 
+// 白名单定制在外部
+const whiteListRouters = ['/login'];
+
 router.beforeEach(async (to, from, next) => {
   NProgress.start();
-
-  const permissionStore = getPermissionStore();
-  const { whiteListRouters } = permissionStore;
-
-  const userStore = getUserStore();
-  const { token } = userStore;
-  if (token) {
-    if (to.path === '/login') {
-      next();
-      return;
-    }
-
-    const { asyncRoutes } = permissionStore;
-
-    if (asyncRoutes && asyncRoutes.length === 0) {
-      const routeList = await permissionStore.buildAsyncRoutes();
-      routeList.forEach((item: RouteRecordRaw) => {
-        router.addRoute(item);
-      });
-
-      if (to.name === PAGE_NOT_FOUND_ROUTE.name) {
-        // 动态添加路由后，此处应当重定向到fullPath，否则会加载404页面内容
-        next({ path: to.fullPath, replace: true, query: to.query });
-      } else {
-        const redirect = decodeURIComponent((from.query.redirect || to.path) as string);
-        next(to.path === redirect ? { ...to, replace: true } : { path: redirect });
-        return;
-      }
-    }
-
-    try {
-      await userStore.getUserInfo();
-
-      if (router.hasRoute(to.name)) {
-        next();
-      } else {
-        next(`/`);
-      }
-    } catch (error) {
-      MessagePlugin.error(error);
-      next({
-        path: '/login',
-        query: { redirect: encodeURIComponent(to.fullPath) },
-      });
-      NProgress.done();
-    }
+  // 白名单页面不进行授权
+  if (whiteListRouters.indexOf(to.path) !== -1) {
+    next();
   } else {
-    /* white list router */
-    if (whiteListRouters.indexOf(to.path) !== -1) {
-      next();
+    // 进行授权判定
+    // 审视是否已登录
+    const userStore = getUserStore();
+    const { token } = userStore;
+    if (token) {
+      try {
+        // 已登录，先看权限集数据
+        const permissionStore = getPermissionStore();
+        const { initFlag } = permissionStore;
+        // 已完成路由初始化
+        if (!initFlag) {
+          // 读取用户权限
+          const userInfo = await userStore.getUserInfo();
+          // 开始初始化路由
+          await permissionStore.initRoutes(userInfo.roles);
+        }
+        // 判定路由
+        if (router.hasRoute(to.name)) {
+          next();
+        } else {
+          next(`/`);
+        }
+      } catch (error) {
+        MessagePlugin.error(error);
+        next({
+          path: '/login',
+          query: { redirect: encodeURIComponent(to.fullPath) },
+        });
+        NProgress.done();
+      }
     } else {
+      // 未登录，去往登录入口
       next({
         path: '/login',
         query: { redirect: encodeURIComponent(to.fullPath) },
       });
     }
-    NProgress.done();
   }
+  // NProgress.done();
 });
 
 router.afterEach((to) => {
   if (to.path === '/login') {
     const userStore = getUserStore();
-    const permissionStore = getPermissionStore();
+    // const permissionStore = getPermissionStore();
 
     userStore.logout();
-    permissionStore.restoreRoutes();
+    // permissionStore.restoreRoutes();
   }
   NProgress.done();
 });

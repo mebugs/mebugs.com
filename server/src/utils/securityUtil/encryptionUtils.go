@@ -1,4 +1,4 @@
-package platformUtils
+package securityUtil
 
 import (
 	"bytes"
@@ -18,8 +18,8 @@ import (
  */
 var iv = []byte("AES_SiteOL_Stone")
 
-// 加密工具
-func Encrypt(origData, key string) (string, error) {
+// AESEncrypt 加密工具
+func AESEncrypt(origData, key string) (string, error) {
 	origBytes := []byte(origData)
 	keyBytes := []byte(key)
 	block, err := aes.NewCipher(keyBytes)
@@ -36,8 +36,8 @@ func Encrypt(origData, key string) (string, error) {
 	return base64.StdEncoding.EncodeToString(cry), nil
 }
 
-// 解密工具
-func Decrypt(cryData, key string) (string, error) {
+// AESDecrypt 解密工具
+func AESDecrypt(cryData, key string) (string, error) {
 	keyBytes := []byte(key)
 	decodeData, err := base64.StdEncoding.DecodeString(cryData)
 	if err != nil {

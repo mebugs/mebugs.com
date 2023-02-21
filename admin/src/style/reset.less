@@ -73,3 +73,37 @@ a {
 #nprogress .bar {
   background: var(--td-brand-color) !important;
 }
+// Logo图片动态样式
+.logo {
+  height: 32px;
+  width: 120px;
+  background: url('/static/img/logo.png');
+  background-size: auto 100%;
+}
+.dark {
+  .logo {
+    background: url('/static/img/logo-dark.png');
+    background-size: auto 100%;
+  }
+}
+.menu{
+  .logo{
+    margin: auto;
+    transition:all .4s ease;
+  }
+  .t-is-collapsed {
+    .logo{
+      width: 38px;
+      height: 46px;
+    }
+    .t-menu .t-menu__item{
+      padding: 0;
+      height: var(--td-comp-size-xxl);
+      line-height: var(--td-comp-size-xxl);
+      svg{
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}

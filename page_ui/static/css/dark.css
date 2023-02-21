@@ -1,6 +1,6 @@
 .dark *,.dark .cnt i,.dark .cns i,.dark .cnc i{color:#eaeaea}
 .dark::-webkit-scrollbar-track{background:#010103}
-.dark .hmm,.dark .h,.dark .pf,.dark .e,.dark .f,.dark .cnt,.dark .cns,.dark .cnc{background:#010103}
+.dark .hmm,.dark .h,.dark .pf,.dark .e,.dark .f,.dark .cnt,.dark .cns,.dark .cnc,.dark .pl:hover .pit span{background:#010103}
 .dark .hmm a:hover,.dark .hmm a.hck,.dark .hmr:hover,.dark .e span,.dark .ftl a:hover,.dark .ftlbtn a,body.dark{background:#242424}
 .dark .hmi li,.dark .hmm a em,.dark .hmr em{background:#eaeaea}
 .dark .bni1{background-image:linear-gradient(to right,#bf4971,#44ad8b)}

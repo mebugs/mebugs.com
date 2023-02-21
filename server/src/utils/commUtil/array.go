@@ -1,8 +1,8 @@
-package utils
+package commUtil
 
 import "strings"
 
-// 字符串是否位于数组中
+// ArrayInclude 字符串是否位于数组中
 func ArrayInclude(node string, nodes []string) bool {
 	if len(nodes) == 0 {
 		return false
@@ -15,7 +15,7 @@ func ArrayInclude(node string, nodes []string) bool {
 	return false
 }
 
-// 字符串是否以某开头
+// ArrayStartWith 字符串是否以某开头
 func ArrayStartWith(node string, nodes []string) bool {
 	if len(nodes) == 0 {
 		return false

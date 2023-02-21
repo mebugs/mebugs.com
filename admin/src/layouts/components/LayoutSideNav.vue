@@ -7,6 +7,7 @@
     :menu="sideMenu"
     :theme="settingStore.displayMode"
     :is-compact="settingStore.isSidebarCompact"
+    class="menu"
   />
 </template>
 

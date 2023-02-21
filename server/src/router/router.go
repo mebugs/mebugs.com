@@ -1,58 +1,21 @@
 package router
 
 import (
-	"log"
-	"net/http"
-	"regexp"
-	"server/src/data/resp"
+	"io/ioutil"
+
+	"siteOl.com/stone/server/src/router/middleware"
+
+	"github.com/gin-gonic/gin"
 )
 
-// 路由对象
-type Router struct {
-	routers       map[string]http.Handler // 路由列表
-	middlewareFun []MDFunc                // 中间件列表
-}
+func NewRouter() *gin.Engine {
+	gin.SetMode(gin.ReleaseMode)
+	gin.DefaultWriter = ioutil.Discard
+	gin.ForceConsoleColor()
 
-func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	find := false
-	// 遍历路由开始匹配
-	for route, handler := range r.routers {
-		matched, err := regexp.MatchString(route, req.URL.Path)
-		if err != nil {
-			log.Printf("Match Router Fail  %s", err.Error())
-			resp.RouterErr(w)
-			return
-		}
-		// 未匹配到数据
-		if !matched {
-			continue
-		}
-		// 读取路由方法
-		find = true
-		handler.ServeHTTP(w, req)
-		break
-	}
-	if !find {
-		log.Printf("Match Router Never Find  %s", req.URL.Path)
-		resp.RouterErr(w)
-	}
-}
+	router := gin.Default()
+	// 公共的Panic中间件
+	router.Use(middleware.Recover)
 
-// 应用中间件
-func (r *Router) Use(m MDFunc) {
-	r.middlewareFun = append(r.middlewareFun, m)
-}
-
-// 注册路由
-func (r *Router) Register(path string, handler http.Handler) {
-	// 组合handler = handler + 中间件
-	var mergedHandler = handler
-	if len(r.middlewareFun) > 0 {
-		// 依照正常的中间件顺序写入（先写的在前，后写的在后）
-		for _, mdFunc := range r.middlewareFun {
-			mergedHandler = mdFunc(mergedHandler)
-		}
-	}
-	// 最终组合的 handler
-	r.routers[path] = mergedHandler
+	return router
 }

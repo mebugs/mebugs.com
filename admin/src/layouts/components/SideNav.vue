@@ -2,9 +2,7 @@
   <div :class="sideNavCls">
     <t-menu :class="menuCls" :theme="theme" :value="active" :collapsed="collapsed" :default-expanded="defaultExpanded">
       <template #logo>
-        <span v-if="showLogo" :class="`${prefix}-side-nav-logo-wrapper`" @click="goHome">
-          <component :is="getLogo()" :class="`${prefix}-side-nav-logo-${collapsed ? 't' : 'tdesign'}-logo`" />
-        </span>
+        <div class="logo"></div>
       </template>
       <menu-content :nav-data="menu" />
     </t-menu>
@@ -15,16 +13,12 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import type { PropType } from 'vue';
-import { useRouter } from 'vue-router';
 import union from 'lodash/union';
 
 import { useSettingStore } from '@/store';
 import { prefix } from '@/config/global';
 import type { MenuRoute } from '@/types/interface';
 import { getActive, getRoutesExpanded } from '@/router';
-
-import AssetLogo from '@/assets/assets-t-logo.svg?component';
-import AssetLogoFull from '@/assets/assets-logo-full.svg?component';
 import MenuContent from './MenuContent.vue';
 
 const MIN_POINT = 992 - 1;
@@ -93,7 +87,6 @@ const menuCls = computed(() => {
   ];
 });
 
-const router = useRouter();
 const settingStore = useSettingStore();
 
 const autoCollapsed = () => {
@@ -109,15 +102,6 @@ onMounted(() => {
     autoCollapsed();
   };
 });
-
-const goHome = () => {
-  router.push('/dashboard/base');
-};
-
-const getLogo = () => {
-  if (collapsed.value) return AssetLogo;
-  return AssetLogoFull;
-};
 </script>
 
 <style lang="less" scoped></style>

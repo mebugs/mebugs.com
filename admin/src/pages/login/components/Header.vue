@@ -1,12 +1,12 @@
 <template>
   <header class="login-header">
-    <logo-full-icon class="logo" />
+    <div class="logo"></div>
     <div class="operations-container">
       <t-button theme="default" shape="square" variant="text" @click="navToGitHub">
-        <t-icon name="logo-github" class="icon" />
+        <logo-github-icon />
       </t-button>
       <t-button theme="default" shape="square" variant="text" @click="navToHelper">
-        <t-icon name="help-circle" class="icon" />
+        <help-circle-icon />
       </t-button>
       <t-button theme="default" shape="square" variant="text" @click="changeMode">
         <icon v-if="settingStore.displayMode == 'dark'" size="26px" name="darkMode" url="/static/svg/mode.js" />
@@ -17,8 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from 'tdesign-icons-vue-next';
-import LogoFullIcon from '@/assets/assets-logo-full.svg?component';
+import { Icon, HelpCircleIcon, LogoGithubIcon } from 'tdesign-icons-vue-next';
 import { useSettingStore } from '@/store';
 
 const settingStore = useSettingStore();
@@ -47,11 +46,6 @@ const navToHelper = () => {
   align-items: center;
   backdrop-filter: blur(5px);
   color: var(--td-text-color-primary);
-
-  .logo {
-    width: 188px;
-  }
-
   .operations-container {
     display: flex;
     align-items: center;
