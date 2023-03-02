@@ -1,0 +1,12 @@
+.sc{position:relative;width:100%;margin-bottom:30px}
+.sc input{line-height:38px;padding:0 10px;padding-left:40px;border:0;font-size:15px;border-bottom:2px solid #d8cdb0;outline:0;border-radius:0;height:40px;background:#fefefc;width:60%;margin:auto;display:block}
+.sc i{position:absolute;top:0;width:36px;text-align:center;height:40px;line-height:40px;font-size:22px;left:20%;color:#d8cdb0}
+.sci{width:100%;background:#fefefc;padding:10px;text-align:center;display:none}
+.sci p{line-height:30px;font-size:12px;color:#a2a6b4}
+.sci p b{line-height:30px;margin:0 5px}
+.lks{width:200px;line-height:40px;margin:10px auto;background:#efece5;font-weight:900;display:flex;justify-content:center}
+.lks i{margin-right:5px}
+.lks:hover{background:#d8cdb0!important;color:#fefefc}
+.lks:hover i{color:#fefefc}
+.plist{display:flex;flex-wrap:wrap;padding:10px;width: 100%;background:#fefefc}
+.plist a{line-height:36px;padding:0 12px;border-left:2px solid #d8cdb0;width:calc(100% - 10px);margin:5px;background:#fcf9f1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

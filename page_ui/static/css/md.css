@@ -1,0 +1,139 @@
+.md{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5;word-wrap:break-word}
+.md .pl-c{color:#969896}
+.md .pl-c1,.md .pl-s .pl-v{color:#0086b3}
+.md .pl-e,.md .pl-en{color:#795da3}
+.md .pl-smi,.md .pl-s .pl-s1{color:#333}
+.md .pl-ent{color:#63a35c}
+.md .pl-k{color:#a71d5d}
+.md .pl-s,.md .pl-pds,.md .pl-s .pl-pse .pl-s1,.md .pl-sr,.md .pl-sr .pl-cce,.md .pl-sr .pl-sre,.md .pl-sr .pl-sra{color:#183691}
+.md .pl-v,.md .pl-smw{color:#ed6a43}
+.md .pl-bu{color:#b52a1d}
+.md .pl-ii{color:#f8f8f8;background-color:#b52a1d}
+.md .pl-c2{color:#f8f8f8;background-color:#b52a1d}
+.md .pl-c2::before{content:"^M"}
+.md .pl-sr .pl-cce{font-weight:bold;color:#63a35c}
+.md .pl-ml{color:#693a17}
+.md .pl-mh,.md .pl-mh .pl-en,.md .pl-ms{font-weight:bold;color:#1d3e81}
+.md .pl-mq{color:#008080}
+.md .pl-mi{font-style:italic;color:#333}
+.md .pl-mb{font-weight:bold;color:#333}
+.md .pl-md{color:#bd2c00;background-color:#ffecec}
+.md .pl-mi1{color:#55a532;background-color:#eaffea}
+.md .pl-mc{color:#ef9700;background-color:#ffe3b4}
+.md .pl-mi2{color:#d8d8d8;background-color:#808080}
+.md .pl-mdr{font-weight:bold;color:#795da3}
+.md .pl-mo{color:#1d3e81}
+.md .pl-ba{color:#595e62}
+.md .pl-sg{color:#c0c0c0}
+.md .pl-corl{text-decoration:underline;color:#183691}
+.md .octicon{display:inline-block;vertical-align:text-top;fill:currentColor}
+.md a{background-color:transparent;-webkit-text-decoration-skip:objects}
+.md a:active,.md a:hover{outline-width:0}
+.md strong{font-weight:inherit}
+.md strong{font-weight:bolder}
+.md h1{font-size:2.4em;margin:0.67em 0}
+.md img{border-style:none}
+.md svg:not(:root){overflow:hidden}
+.md code,.md kbd,.md pre{font-family:monospace,monospace;font-size:1em}
+.md hr{box-sizing:content-box;height:0;overflow:visible}
+.md input{font:inherit;margin:0}
+.md input{overflow:visible}
+.md [type="checkbox"]{box-sizing:border-box;padding:0}
+.md input{font-family:inherit;font-size:inherit;line-height:inherit}
+.md a{color:#0366d6;text-decoration:none}
+.md a:hover{text-decoration:underline}
+.md strong{font-weight:600}
+.md hr{height:0;margin:15px 0;overflow:hidden;background:transparent;border:0;border-bottom:1px solid #dfe2e5}
+.md hr::before{display:table;content:""}
+.md hr::after{display:table;clear:both;content:""}
+.md table{border-spacing:0;border-collapse:collapse}
+.md td,.md th{padding:0}
+.md h1{font-size:28px}
+.md h2{font-size:24px}
+.md h3{font-size:22px}
+.md h4{font-size:20px}
+.md h5{font-size:18px}
+.md h6{font-size:17px}
+.md p{margin:8px 0;line-height:26px;}
+.md blockquote{margin:0}
+.md ul,.md ol{padding-left:0;margin-top:0;margin-bottom:0}
+.md ol ol,.md ul ol{list-style-type:lower-roman}
+.md ul ul ol,.md ul ol ol,.md ol ul ol,.md ol ol ol{list-style-type:lower-alpha}
+.md dd{margin-left:0}
+.md code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;font-size:12px}
+.md pre{margin-top:0;margin-bottom:0;font:12px "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace}
+.md .octicon{vertical-align:text-bottom}
+.md .pl-0{padding-left:0 !important}
+.md .pl-1{padding-left:4px !important}
+.md .pl-2{padding-left:8px !important}
+.md .pl-3{padding-left:16px !important}
+.md .pl-4{padding-left:24px !important}
+.md .pl-5{padding-left:32px !important}
+.md .pl-6{padding-left:40px !important}
+.md::before{display:table;content:""}
+.md::after{display:table;clear:both;content:""}
+.md a:not([href]){color:inherit;text-decoration:none;position:relative;top:-80px}
+.md .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}
+.md .anchor:focus{outline:none}
+.md blockquote,.md ul,.md ol,.md dl,.md table,.md pre{margin-top:0;margin-bottom:10px}
+.md hr{height:0.25em;padding:0;margin:24px 0;background-color:#e1e4e8;border:0}
+.md blockquote{padding:0 1em;color:#6a737d;border-left:0.25em solid #dfe2e5}
+.md blockquote >:first-child{margin-top:0}
+.md blockquote >:last-child{margin-bottom:0}
+.md kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:solid 1px #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}
+.md h1,.md h2,.md h3,.md h4,.md h5,.md h6{padding:20px 0 12px 0;margin-bottom:12px;font-weight:500;line-height:1.25;border-bottom: 2px solid #a2a6b4;}
+.md h1 .octicon-link,.md h2 .octicon-link,.md h3 .octicon-link,.md h4 .octicon-link,.md h5 .octicon-link,.md h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}
+.md h1:hover .anchor,.md h2:hover .anchor,.md h3:hover .anchor,.md h4:hover .anchor,.md h5:hover .anchor,.md h6:hover .anchor{text-decoration:none}
+.md h1:hover .anchor .octicon-link,.md h2:hover .anchor .octicon-link,.md h3:hover .anchor .octicon-link,.md h4:hover .anchor .octicon-link,.md h5:hover .anchor .octicon-link,.md h6:hover .anchor .octicon-link{visibility:visible}
+.md ul,.md ol{padding-left:2em}
+.md ul ul,.md ul ol,.md ol ol,.md ol ul{margin-top:0;margin-bottom:0}
+.md li > p{margin-top:16px}
+.md li + li{margin-top:0.25em}
+.md dl{padding:0}
+.md dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}
+.md dl dd{padding:0 16px;margin-bottom:12px}
+.md table{display:block;width:100%;overflow:auto}
+.md table th{font-weight:600}
+.md table th,.md table td{padding:6px 13px;border:1px solid #dfe2e5}
+.md table tr{background-color:#fff;border-top:1px solid #c6cbd1}
+.md table tr:nth-child(2n){background-color:#f6f8fa}
+.md img{max-width:100%;box-sizing:border-box;border: 2px solid #a2a6b4;}
+.md code{padding:0;padding-top:0.2em;padding-bottom:0.2em;margin:0;font-size:85%;background-color:rgba(27,31,35,0.05);border-radius:3px}
+.md code::before,.md code::after{letter-spacing:-0.2em;content:"\00a0"}
+.md pre{word-wrap:normal}
+.md pre > code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}
+.md .highlight{margin-bottom:12px}
+.md .highlight pre{margin-bottom:0;word-break:normal}
+.md .highlight pre,.md pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;border-radius:3px}
+.md pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}
+.md pre code::before,.md pre code::after{content:normal}
+.md .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}
+.md kbd{display:inline-block;padding:3px 5px;font:11px "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:solid 1px #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}
+.md:checked + .radio-label{position:relative;z-index:1;border-color:#0366d6}
+.md .task-list-item{list-style-type:none}
+.md .task-list-item + .task-list-item{margin-top:3px}
+.md .task-list-item input{margin:0 0.2em 0.25em -1.6em;vertical-align:middle}
+.md hr{border-bottom-color:#eee}
+.md .hljs{display:block;overflow-x:auto;padding:0.5em;color:#333;background:#f2f3f1}
+.md .hljs-comment,.hljs-quote{color:#998;font-style:italic}
+.md .hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:bold}
+.md .hljs-number,.hljs-literal,.hljs-variable,.hljs-template-variable,.hljs-tag .hljs-attr{color:#008080}
+.md .hljs-string,.hljs-doctag{color:#d14}
+.md .hljs-title,.hljs-section,.hljs-selector-id{color:#900;font-weight:bold}
+.md .hljs-subst{font-weight:normal}
+.md .hljs-type,.hljs-class .hljs-title{color:#458;font-weight:bold}
+.md .hljs-tag,.hljs-name,.hljs-attribute{color:#000080;font-weight:normal}
+.md .hljs-regexp,.hljs-link{color:#009926}
+.md .hljs-symbol,.hljs-bullet{color:#990073}
+.md .hljs-built_in,.hljs-builtin-name{color:#0086b3}
+.md .hljs-meta{color:#999;font-weight:bold}
+.md .hljs-deletion{background:#fdd}
+.md .hljs-addition{background:#dfd}
+.md .hljs-emphasis{font-style:italic}
+.md .hljs-strong{font-weight:bold}
+.md strong{font-weight:bolder}
+.md .hljs-center{text-align:center}
+.md .hljs-right{text-align:right}
+.md .hljs-left{text-align:left}
+.md .hljs{overflow:auto}
+.md h1,.md h2,.md h3,.md h4,.md h5,.md h6,.md p{margin-left:10px;margin-right:10px}

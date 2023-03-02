@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="UTF-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <meta name="renderer" content="webkit" /> 
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <title>米虫博客 - 做一个有理想的米虫，全栈程序员，乐观主义者，坚信一切都是最好的安排！ - www.mebugs.com</title> 
+    <!-- <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" />  -->
+    <meta name="description" content="程序员米虫的个人修炼手册（米虫博客），做一个有理想的米虫，乐观主义者，坚信一切都是最好的安排！技术学习笔记、经验教训小结、工作心得体会、自我充电提升！希望您也能有所收获！" /> 
+    <meta name="keywords" content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" /> 
+    <link rel="icon" href="/static/img/icon.png" /> 
+    <link rel="shortcut icon" href="/static/img/icon.png" /> 
+    <link rel="apple-touch-icon-precomposed" href="/static/img/icon.png" /> 
+    <link href="/static/css/comm.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="/static/css/list.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="/static/css/link.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="/static/css/coms.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="/static/css/join.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="/static/css/dark.css?v=1.0" rel="stylesheet" type="text/css" />
+    <!-- 谷歌广告 -->
+    <!-- <script data-ad-client="ca-pub-2699978133125218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  </head> 
+  <body>
+    <img src="/static/img/limg.jpg" class="so"/>
+    <div class="h">
+      <div class="hd">
+        <a class="hl" href="/" title="米虫博客"></a>
+        <div class="hm">
+          <ul class="hmi" onclick="doMenu()"><li></li><li></li><li></li></ul>
+          <div class="hmm">
+            <a href="/">首页<em></em></a>
+            <a href="/posts/new_1.html">发现<em></em></a>
+            <a href="/topic">专题<em></em></a>
+            <a href="/category">分类<em></em></a>
+            <a href="/tag">标签<em></em></a>
+            <a href="/page/about.html">关于<em></em></a>
+            <a href="/page/msg.html">留言<em></em></a>
+            <a class="hck" href="/page/link.html">友链<em></em></a>
+          </div>
+          <a class="hmr" href="/page/map.html"><i>&#xF117;</i><em></em></a>
+          <a class="hmr hmre" href="javascript:doMod(true)"><i id="mod">&#xF116;</i><em></em></a>
+        </div>
+      </div>
+    </div>
+    <div class="m t">
+      <div class="r">
+        <div class="o">
+          <h1>友链申请</h1>
+          <p></p>
+          <span>欢迎新朋友申请友链</span>
+        </div>
+        <div class="mse">
+          <p>【填写链接】【快速采集】【提交申请】</p>
+          <p>^_^申请友链就是如此简单^_^</p>
+          <p>如果贵站图片防盗链，请自行上传站点标识。</p>
+          <p>2工作日内完成处理，请先添加本站为友情链接。</p>
+          <p>申请首页友链需要贵站也添加首页友情链接。</p>
+          <p>友链申请原则上无要求，原创类、独立博客类、资源类、教程类站点优先。</p>
+          <p>友链申请不关注PR或搜索引擎收录，请至少保持月更，如您长期无更新（季度）可能会撤销链接。</p>
+          <p>米虫不定期访问友站，如您的站点已关闭或停止运营，本站撤链将不另行通知。</p>
+          <p>本站拒绝以下类型站点申请：采集站、聚合站、涉嫌诈骗或非法类信息站、伪原创，拒绝理由将回复在内容下。</p>
+        </div>  
+      </div>
+      <div class="r">
+        <div class="b">
+          <div class="lkform">
+            <div class="lkl">
+              <select class="lkll" name="ffix" id="ffix">
+                <option value="http://" selected="selected">http://</option>
+                <option value="https://">https://</option>
+              </select>
+              <input class="lklr" name="furl" id="furl" placeholder="*必填,站点地址，请在左侧选择访问协议">      
+            </div>
+            <p class="lktp">↑ 输入地址 ↓ 快速采集，自动获取站点信息，可修改</p> 
+            <button class="lkt lks" type="button" onclick="getInfo()"><i>&#xF202;</i>快速采集</button>
+            <div class="lkl">
+              <span class="lkll">站点名称</span>
+              <input class="lklr" name="fname" id="fname" type="text" placeholder="*必填,建议8~16位(超出部分可能无法展示)" maxlength="16">   
+            </div>
+            <div class="lkl">
+              <span class="lkll">站点简介</span>
+              <input class="lklr" name="fdesc" id="fdesc" type="text" placeholder="选填,建议12~20位(超出部分可能无法展示)" maxlength="16">   
+            </div>    
+            <div class="lkl">
+              <span class="lkll">友链类型</span>
+              <select class="lklr" name="findex" id="findex">
+                <option value="0" selected="selected">仅申请友链</option>
+                <option value="1">同时申请首页友链</option>
+              </select>
+            </div> 
+            <div class="lkl">
+              <span class="lkll">站点图标</span>
+              <div class="fimg" onclick="chooseImg('fuimg')">
+                <img id="ficon" src="/static/img/icon.png" onerror="javascript:this.src='/static/img/icon.png'"> 
+                <p>自行上传</p> 
+              </div>
+              <input name="fuimg" id="fuimg" accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none;" onchange="loadImg(this,'ficon')">
+            </div> 
+            <button type="button" class="lks" onclick="sendInfo()"><i>&#xF1D8;</i>提交申请</button>
+          </div>
+        </div>
+      </div>
+      <div class="r">
+        <div class="o">
+          <h1>近期申请</h1>
+          <p></p>
+          <span>友链申请的记录信息</span>
+        </div>
+        <div class="b">
+          <div class="c l">
+            <h1>Vetrue</h1>
+            <p>通过 [站点失效，已停止]</p>
+          </div>
+          <div class="c l">
+            <h1>图灵技术域</h1>
+            <p>通过</p>
+          </div>
+          <div class="c l">
+            <h1>ChainOE</h1>
+            <p>通过</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   <div class="f">
+     <div class="ft">
+       <div class="ftl">
+         <a href="https://www.omegaxyz.com" target="_blank">图灵技术域</a> 
+         <a href="https://chainoe.com" target="_blank">ChainOE</a>
+       </div>
+       <div class="ftl ftlbtn">
+         <a href="/">申请友链</a>
+         <a href="/">更多邻居</a>
+       </div>
+       <div class="ftc">
+         <p>Copyright © 2022 <a href="http://www.mebugs.com">米虫Mebugs</a> & <a href="http://www.qiantaoyuan.cn" target="_blank">桃园Pro</a></p>
+         <p><a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备20039109号</a> | <a href="/page/about.html">关于</a> | <a href="/page/msg.html">留言</a> | <a href="/page/link.html">友链</a> | <a href="/page/map.html">地图</a></p>
+       </div>
+     </div>
+     <a class="fto" href="/" title="米虫博客"></a>
+   </div>
+    <div class="cn">
+      <div class="cnt" onclick="doBackTop()"><i>&#xF1D6;</i></div>
+      <div class="cns">
+        <a href="" target="_blank"><i>&#xF1D1;</i></a>
+        <a href="" target="_blank"><i>&#xF1D2;</i></a>
+        <a href="" target="_blank"><i>&#xF1D3;</i></a>
+        <a href="" target="_blank"><i>&#xF1D4;</i></a>
+        <a href="" ><i>&#xF1D5;</i></a>
+      </div><div class="cnc" onclick="doConn()">
+        <i>&#xF1D7;</i>
+      </div>
+    </div>
+    <script src="/static/js/base.js?v=1.0"></script>
+    <script src="/static/js/jquery-3.6.3.min.js?v=1.0"></script>
+    <script src="/static/js/link.js?v=1.0"></script>
+    <script src="/static/js/upload.js?v=1.0"></script>
+    <script src="/static/js/pops.js?v=1.0"></script>
+  </body>
+</html>

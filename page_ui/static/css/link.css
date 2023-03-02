@@ -1,0 +1,20 @@
+.l{width:calc(50% - 10px);margin:5px;padding:10px;background:#fefefc}
+.l img{max-height:80px;display:block;margin:5px auto}
+.l h1,.l p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.l h1{line-height:30px;width:100%;text-align:center}
+.l p{line-height:20px;font-size:12px;text-align:center;width:100%;margin-bottom:10px;color:#a2a6b4}
+.lkform{background:#fefefc;padding:20px 10px;width:100%;margin:5px}
+.lkl{display:flex;align-items:center;margin:10px 0}
+.lkll{width: 90px;font-size:13px;text-align:center;font-weight:900}
+.lklr{width: calc(100% - 95px);margin-left:5px}
+.lkl input,.lkl select{line-height:20px;padding:5px 10px;border:0;font-size: 13px;border-bottom:2px solid #d8cdb0;outline:0;border-radius:0;height:32px;background: #fcf9f1;}
+.fimg{position:relative;cursor:pointer;padding:5px 10px;background:#fcf9f1;margin-left: 5px;}
+.fimg img{height:120px}
+.fimg p{position:absolute;cursor:pointer;bottom:5px;display:flex;font-size:13px;font-weight:900;line-height:24px;width:80px;justify-content:center;left:15px;background: #efece5;left:calc(50% - 40px)}
+.fimg p:hover{background: #d8cdb0!important;color: #fefefc;}
+.lks{width:200px;line-height:40px;margin:10px auto;margin-top:30px;background: #efece5;font-weight:900;display:flex;justify-content:center;}
+.lktp{text-align:center;font-size:12px;color:#a2a6b4}
+.lks i{font-size:20px;margin-right:5px;}
+.lkt{margin:10px auto}
+.lks:hover{background: #d8cdb0!important;color: #fefefc;}
+.lks:hover i{color: #fefefc;}

@@ -1,0 +1,37 @@
+.hc{position:absolute;height:40px;margin:10px 0;width:30px;text-align:center}
+.hc i{font-size:22px;line-height:40px}
+.hs .hc{margin:5px 0}
+.cata{right:unset;left:-260px}
+.ocata .cata{left:0}
+.ocata .m{right:-240px}
+.ocata .h{right:-95px}
+ul li{list-style:none;position:relative}
+ul li:after,ul ul ul ul ul li:after{content:'◆';position:absolute;left:-16px;height:28px;line-height:24px;font-size:18px;top:0;color:#d8cdb0}
+ul ul li:after,ul ul ul ul ul ul li:after{content:'◇'}
+ul ul ul li:after{content:'●'}
+ul ul ul ul li:after{content:'○'}
+.list a.cak{color:#d8cdb0;padding:0 5px;font-size:14px;font-weight:900}
+.list{height: 100%;width:100%;overflow-y:auto;padding-left:10px}
+.list::-webkit-scrollbar{width:4px;height:4}
+.list::-webkit-scrollbar-thumb{background-color:#efece5;border-radius:2px}
+.list::-webkit-scrollbar-track{background-color:#fcf9f1}
+.list *{line-height:24px;margin:5px 0}
+.list h3{cursor:pointer}
+.list a{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block}
+.list ul{padding-left:20px}
+.phd img{width:100%}
+.phi{position:relative;margin:0 10px;padding:10px;text-align:center;background:#fcf9f1;top:-50px;margin-bottom:-50px}
+.phi h1{line-height:25px}
+.phi p{line-height:30px;display:flex;justify-content:center}
+.phi p span{margin:0 5px;font-size:13px;color:#a2a6b4}
+.phi p span i{line-height:30px;margin-right:3px;font-size:14px;color:#d8cdb0}
+.phe{margin:10px;padding:10px;line-height:20px;font-size:13px;text-indent:2em;background:#fefefc}
+.pbd{width:100%;overflow:hidden}
+.pm{max-width:960px;margin:0 auto}
+.pmr{margin:10px}
+.ptt{border-top: 2px solid #a2a6b4;padding-top:10px;margin: 10px;}
+.ptl{padding: 5px 0;display:flex;justify-content:left;align-items:center}
+.ptl p{width:calc(100% - 65px)}
+.ptl p.ptli{font-size:12px;color:#a2a6b4;width:65px}
+.ptl p a{display:inline-block;line-height:20px;padding:0 5px;border:1px solid;color:#d8cdb0;font-size:12px;margin:2px;background:#fefefc}
+.ptl p a i{line-height:20px;font-size:13px;margin-right:2px;color:#d8cdb0}

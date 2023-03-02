@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "admin"
+		}
+	],
+	"settings": {
+		"eslint.codeActionsOnSave.rules": null,
+		"search.exclude": {
+			"**/*.code-search": false,
+			"**/bower_components": false,
+			"**/node_modules": false
+		}
+	}
+}
