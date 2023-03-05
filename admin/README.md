@@ -1,20 +1,17 @@
-<p style="display:flex; justify-content: center">
-
-</p>
-<p align="center">
-  <a href="https://tdesign.tencent.com/starter/vue-next/#/dashboard/base" target="_blank">
-    <img alt="TDesign Logo" width="200" src="https://tdesign.gtimg.com/starter/brand-logo.svg">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
-  <a href="https://github.com/Tencent/tdesign-vue-next/blob/develop/LICENSE">
-    <img src="https://img.shields.io/npm/l/tdesign-vue-next.svg?sanitize=true" alt="License">
-  </a>
-</p>
-
 English | [简体中文](./README-zh_CN.md) 
+
+# LocalChange
+
+The svg pointing of tdesign-icons-vue-next is changed to local
+
+node_modules\tdesign-icons-vue-next\lib\svg-sprite\svg-sprite.js
+
+```js
+// Load local URL
+// var CDN_ICONFONT_URL = "https://tdesign.gtimg.com/icon/0.1.3/fonts/index.js";
+var CDN_ICONFONT_URL = "/static/svg/tdesign.js";
+```
+
 ### Introduction
 
 TDesign Vue Next Starter is a TDesign-based developed with `Vue3`, `Vite2`, `Pinia`, `TypeScript`. It can be customized theme configuration, and aims to provide project out-of-the-box, configuration-style middle and background projects.

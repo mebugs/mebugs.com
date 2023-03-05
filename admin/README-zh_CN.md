@@ -1,21 +1,16 @@
-
-<p style="display:flex; justify-content: center">
-
-</p>
-<p align="center">
-  <a href="https://tdesign.tencent.com/starter/vue-next/#/dashboard/base" target="_blank">
-    <img alt="TDesign Logo" width="200" src="https://tdesign.gtimg.com/starter/brand-logo.svg">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
-  <a href="https://github.com/Tencent/tdesign-vue-next/blob/develop/LICENSE">
-    <img src="https://img.shields.io/npm/l/tdesign-vue-next.svg?sanitize=true" alt="License">
-  </a>
-</p>
-
 简体中文 | [English](./README.md) 
+
+# 本地化修改
+
+tdesign-icons-vue-next 的 svg 指向修改为本地
+
+node_modules\tdesign-icons-vue-next\lib\svg-sprite\svg-sprite.js
+
+```js
+// 加载本地URL
+// var CDN_ICONFONT_URL = "https://tdesign.gtimg.com/icon/0.1.3/fonts/index.js";
+var CDN_ICONFONT_URL = "/static/svg/tdesign.js";
+```
 
 ### 项目简介
 
