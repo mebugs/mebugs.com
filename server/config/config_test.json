@@ -7,5 +7,10 @@
   "MySQL": {
     "Platform": "root:123456@tcp(localhost:3306)/platform?charset=utf8mb4&parseTime=True&loc=Local",
     "Blog": "root:123456@tcp(localhost:3306)/blog"
+  },
+  "Redis":{
+    "Addr":"127.0.0.1:6379",
+    "DB": 1,
+    "Password":""
   }
 }

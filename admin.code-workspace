@@ -1,9 +1,5 @@
 {
-	"folders": [
-		{
-			"path": "admin"
-		}
-	],
+	"folders": [],
 	"settings": {
 		"eslint.codeActionsOnSave.rules": null,
 		"search.exclude": {

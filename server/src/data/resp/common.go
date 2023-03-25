@@ -13,40 +13,33 @@ import (
  * @since 2022-08-16
  */
 
+// 定义一些常量
+var (
+	// OK Json默认成功返回
+	OK = Success(nil)
+	// SysErr Json默认系统异常
+	SysErr = Error()
+)
+
 type ResBody struct {
 	Code int         `json:"code"` // 响应码
 	Msg  string      `json:"msg"'` // 响应消息
 	Data interface{} `json:"data"` // 响应数据
 }
 
-// RouterErr 404 路由获取失败
-func RouterErr() ResBody {
-	return jsonResult(http.StatusNotFound, http.StatusText(http.StatusNotFound), nil)
+// Success Json数据返回
+func Success(data interface{}) ResBody {
+	return jsonResult(http.StatusOK, "", data)
 }
 
-// AuthErr 403 鉴权失败
-func AuthErr() ResBody {
-	return jsonResult(http.StatusForbidden, http.StatusText(http.StatusForbidden), nil)
-}
-
-// JsonOK Json默认成功返回
-func JsonOK() ResBody {
-	return JsonSuccess(nil)
-}
-
-// JsonSuccess Json数据返回
-func JsonSuccess(data interface{}) ResBody {
-	return jsonResult(http.StatusOK, http.StatusText(http.StatusOK), data)
-}
-
-// JsonFail Json失败返回
-func JsonFail(msg string) ResBody {
-	return jsonResult(http.StatusInternalServerError, msg, nil)
-}
-
-// JsonError Json错误返回
-func JsonError(err error) ResBody {
+// Validate Json校验返回400（已翻译）
+func Validate(err error) ResBody {
 	return jsonResult(http.StatusInternalServerError, err.Error(), nil)
+}
+
+// Error Json错误返回500
+func Error() ResBody {
+	return jsonResult(http.StatusInternalServerError, "", nil)
 }
 
 // 公共调用

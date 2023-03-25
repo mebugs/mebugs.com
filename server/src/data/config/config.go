@@ -3,10 +3,9 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-	"log"
+	logDef "log"
 	"os"
-
-	"siteOl.com/stone/server/src/utils/logUtil"
+	"siteOl.com/stone/server/src/utils/log"
 )
 
 var RunConfig *Config
@@ -15,6 +14,7 @@ var RunConfig *Config
 type Config struct {
 	Server Server // 服务配置
 	MySQL  MySQL  // MySQL数据配置
+	Redis  Redis  // Redis配置
 }
 
 // Server 服务配置
@@ -30,13 +30,20 @@ type MySQL struct {
 	Blog     string // 博客应用
 }
 
+// Redis Redis配
+type Redis struct {
+	Addr     string // Redis服务地址
+	DB       int    // 数据库号
+	Password string // 密码（可为空）
+}
+
 // 配置初始化
 func init() {
-	SetEnv("server")                             // 初始化环境变量
-	ReadConfig()                                 // 读取
-	logUtil.SetLevel(RunConfig.Server.LogLevel)  // 日志等级
-	logUtil.SetAutoSplit(logUtil.CronDaily)      // 日志切割
-	logUtil.SetAppRoot(RunConfig.Server.LogRoot) // 日志深度(2表示上级../logs/）
+	SetEnv("server")                         // 初始化环境变量
+	ReadConfig()                             // 读取
+	log.SetLevel(RunConfig.Server.LogLevel)  // 日志等级
+	log.SetAutoSplit(log.CronDaily)          // 日志切割
+	log.SetAppRoot(RunConfig.Server.LogRoot) // 日志深度(2表示上级../logs/）
 }
 
 // ReadConfig 启动读取配置文件
@@ -49,8 +56,9 @@ func ReadConfig() {
 	for decoder.More() {
 		err := decoder.Decode(RunConfig)
 		if err != nil {
-			log.Printf("Read %s Error: %v \n", filePath, err)
+			logDef.Printf("Read %s Error: %v \n", filePath, err)
+			os.Exit(1)
 		}
 	}
-	log.Printf("Config Read %s Success .\n", filePath)
+	logDef.Printf("Config Read %s Success .\n", filePath)
 }
