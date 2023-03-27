@@ -1,17 +1,15 @@
 <template>
   <div class="navbar">
     <div class="left-side">
-      <a-button class="nav-btn" @click="onCollapse">
-        <template #icon>
-          <icon-menu-fold v-if="!collapsed" :style="{ fontSize: '22px' }" />
-          <icon-menu-unfold v-else :style="{ fontSize: '22px' }" />
-        </template>
-      </a-button>
+      <img class="logo" :src="'/static/img/logo' + (theme === 'light' ? '' : '_dark') + '.png'" />
+    </div>
+    <div class="center-side">
+      <!-- <Menu v-if="topMenu" /> -->
     </div>
     <ul class="right-side">
       <li>
         <a-tooltip :content="$t('settings.search')">
-          <a-button class="nav-btn" :shape="'circle'">
+          <a-button class="nav-btn" type="outline" :shape="'circle'">
             <template #icon>
               <icon-search />
             </template>
@@ -20,7 +18,7 @@
       </li>
       <li>
         <a-tooltip :content="$t('settings.language')">
-          <a-button class="nav-btn" :shape="'circle'" @click="setDropDownVisible">
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setDropDownVisible">
             <template #icon>
               <icon-language />
             </template>
@@ -40,7 +38,7 @@
       </li>
       <li>
         <a-tooltip :content="theme === 'light' ? $t('settings.navbar.theme.toDark') : $t('settings.navbar.theme.toLight')">
-          <a-button class="nav-btn" :shape="'circle'" @click="handleToggleTheme">
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="handleToggleTheme">
             <template #icon>
               <icon-moon-fill v-if="theme === 'dark'" />
               <icon-sun-fill v-else />
@@ -52,13 +50,13 @@
         <a-tooltip :content="$t('settings.navbar.alerts')">
           <div class="message-box-trigger">
             <a-badge :count="9" dot>
-              <a-button class="nav-btn" :shape="'circle'" @click="setPopoverVisible">
+              <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setPopoverVisible">
                 <icon-notification />
               </a-button>
             </a-badge>
           </div>
         </a-tooltip>
-        <a-popover trigger="click" :arrow-style="{ display: 'none' }" :content-style="{ padding: 0, width: '400px' }" content-class="message-popover">
+        <a-popover trigger="click" :arrow-style="{ display: 'none' }" :content-style="{ padding: 0, minWidth: '400px' }" content-class="message-popover">
           <div ref="refBtn" class="ref-btn"></div>
           <template #content>
             <message-box />
@@ -67,7 +65,7 @@
       </li>
       <li>
         <a-tooltip :content="isFullscreen ? $t('settings.navbar.screen.toExit') : $t('settings.navbar.screen.toFull')">
-          <a-button class="nav-btn" :shape="'circle'" @click="toggleFullScreen">
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="toggleFullScreen">
             <template #icon>
               <icon-fullscreen-exit v-if="isFullscreen" />
               <icon-fullscreen v-else />
@@ -77,7 +75,7 @@
       </li>
       <li>
         <a-tooltip :content="$t('settings.title')">
-          <a-button class="nav-btn" :shape="'circle'" @click="setVisible">
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setVisible">
             <template #icon>
               <icon-settings />
             </template>
@@ -152,14 +150,7 @@ const avatar = computed(() => {
 const theme = computed(() => {
   return appStore.theme;
 });
-// 菜单折叠
-const collapsed = computed(() => {
-  return appStore.menuCollapse;
-});
-const onCollapse = () => {
-  appStore.updateSettings({ menuCollapse: !collapsed.value });
-};
-// 暗黑模式
+const topMenu = computed(() => appStore.topMenu && appStore.menu);
 const isDark = useDark({
   selector: 'body',
   attribute: 'arco-theme',
@@ -210,7 +201,7 @@ const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
 .navbar {
   display: flex;
   justify-content: space-between;
-  height: 60px;
+  height: 100%;
   background-color: var(--color-bg-2);
   border-bottom: 1px solid var(--color-border);
 }
@@ -219,6 +210,10 @@ const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
   display: flex;
   align-items: center;
   padding-left: 20px;
+}
+
+.center-side {
+  flex: 1;
 }
 
 .right-side {
@@ -246,7 +241,7 @@ const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
   .trigger-btn,
   .ref-btn {
     position: absolute;
-    top: 50px;
+    bottom: 14px;
   }
   .trigger-btn {
     margin-left: 14px;

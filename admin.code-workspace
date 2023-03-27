@@ -1,11 +1,10 @@
 {
-	"folders": [],
-	"settings": {
-		"eslint.codeActionsOnSave.rules": null,
-		"search.exclude": {
-			"**/*.code-search": false,
-			"**/bower_components": false,
-			"**/node_modules": false
+	"folders": [
+		{
+			"path": "center"
 		}
+	],
+	"settings": {
+		"vue3snippets.enable-compile-vue-file-on-did-save-code": false
 	}
 }

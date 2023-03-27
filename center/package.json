@@ -10,27 +10,11 @@
     "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
     "report": "cross-env REPORT=true npm run build",
     "preview": "npm run build && vite preview --host",
-    "type:check": "vue-tsc --noEmit --skipLibCheck",
-    "lint-staged": "npx lint-staged",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.vue": [
-      "stylelint --fix",
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{less,css}": [
-      "stylelint --fix",
-      "prettier --write"
-    ]
+    "type:check": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.40.0",
+    "@arco-themes/vue-stone":"0.0.2",
     "@vueuse/core": "^9.3.0",
     "axios": "^0.24.0",
     "dayjs": "^1.11.5",
@@ -67,9 +51,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.6.0",
-    "husky": "^8.0.1",
     "less": "^4.1.3",
-    "lint-staged": "^13.0.3",
     "mockjs": "^1.1.0",
     "postcss-html": "^1.5.0",
     "prettier": "^2.7.1",

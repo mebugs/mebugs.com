@@ -1,0 +1,11 @@
+{
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+    "prettier.bracketSameLine": true,
+    "eslint.format.enable": false,
+    "eslint.codeAction.showDocumentation": {
+        "enable": false
+    },
+    "eslint.notebooks.rules.customizations": [
+        
+    ]
+}
