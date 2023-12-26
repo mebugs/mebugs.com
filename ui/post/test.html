@@ -1,0 +1,1021 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>
+      米虫博客 -
+      做一个有理想的米虫，全栈程序员，乐观主义者，坚信一切都是最好的安排！ -
+      www.mebugs.com
+    </title>
+
+    <meta name="pragma" content="no-cache" />
+    <meta name="Cache-Control" content="no-cache, must-revalidate" />
+    <meta name="expires" content="0" />
+
+    <!-- <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" /> -->
+    <!-- <meta name="expires" content="Mon, 09 Apr 2999 09:09:09 GMT" />  -->
+    <meta
+      name="description"
+      content="程序员米虫的个人修炼手册（米虫博客），做一个有理想的米虫，全栈程序员，乐观主义者，坚信一切都是最好的安排！技术学习笔记、经验教训小结、工作心得体会、自我充电提升！希望您也能有所收获！" />
+    <meta
+      name="keywords"
+      content="米虫,程序员,博客,学习,工作,物联网,IT,经验,总结,分享,Java,Go,Linux,前端,数据库" />
+    <link rel="icon" href="/static/img/logo.png" />
+    <link rel="shortcut icon" href="/static/img/logo.png" />
+    <link rel="apple-touch-icon-precomposed" href="/static/img/logo.png" />
+    <link href="/static/css/comm.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="/static/css/lib/vditor.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="mb">
+    <svg
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <symbol id="vditor-icon-down" viewBox="0 0 32 32">
+          <path
+            d="M31.663 5.221h-3.158c-0.215 0-0.417 0.105-0.543 0.278l-11.962 16.489-11.962-16.489c-0.126-0.173-0.328-0.278-0.543-0.278h-3.158c-0.274 0-0.434 0.312-0.274 0.535l14.847 20.468c0.539 0.741 1.642 0.741 2.177 0l14.847-20.468c0.164-0.223 0.004-0.535-0.269-0.535z"></path>
+        </symbol>
+        <symbol id="vditor-icon-copy" viewBox="0 0 32 32">
+          <path
+            d="M27.429 0h-19.143c-0.157 0-0.286 0.129-0.286 0.286v2c0 0.157 0.129 0.286 0.286 0.286h17.714v24.571c0 0.157 0.129 0.286 0.286 0.286h2c0.157 0 0.286-0.129 0.286-0.286v-26c0-0.632-0.511-1.143-1.143-1.143zM22.857 4.571h-18.286c-0.632 0-1.143 0.511-1.143 1.143v18.954c0 0.304 0.121 0.593 0.336 0.807l6.189 6.189c0.079 0.079 0.168 0.143 0.264 0.196v0.068h0.15c0.125 0.046 0.257 0.071 0.393 0.071h12.096c0.632 0 1.143-0.511 1.143-1.143v-25.143c0-0.632-0.511-1.143-1.143-1.143zM10.214 28.293l-3.075-3.079h3.075v3.079zM21.429 29.429h-8.929v-5.071c0-0.789-0.639-1.429-1.429-1.429h-5.071v-15.786h15.429v22.286z"></path>
+        </symbol>
+      </defs>
+    </svg>
+    <img src="/static/img/limg.jpg" class="so" />
+    <aside>
+      <div class="lo">
+        <div class="logo"></div>
+        <h1 class="logr">MEBUGS</h1>
+      </div>
+      <div class="me">
+        <div class="menu">
+          <a href="/">首页</a>
+          <a href="/posts" class="mck">发现</a>
+          <a href="/topic">专题</a>
+          <a href="/category">分类</a>
+          <a href="/tag">标签</a>
+          <a href="/page/map.html">地图</a>
+        </div>
+      </div>
+    </aside>
+    <header>
+      <!-- PC端不开Header -->
+      <div class="hdl">
+        <a class="hbt" href="javascript:setSide()"></a>
+      </div>
+      <div class="hdc">
+        <h1 class="hdt">MEBUGS</h1>
+      </div>
+      <div class="hdl hdr">
+        <!-- 目录 -->
+        <a class="hbt" href="javascript:setOut()"></a>
+      </div>
+    </header>
+    <section id="content" class="content">
+      <main>
+        <div class="l r ptop">
+          <div class="c mimg">
+            <div class="prbinfo">
+              <span class="mo"><i>&#xF012;</i>1000</span>
+              <span class="mo"><i>&#xF013;</i>1000</span>
+              <span class="mo"><i>&#xF015;</i>1000</span>
+              <span class="mo"><i>&#xF014;</i>1000</span>
+            </div>
+            <img src="/static/img/limg.jpg" />
+            <em></em>
+          </div>
+          <div class="c">
+            <h1 class="prebase mo">部分标准的表情符号，可使用输入法直接输入</h1>
+            <div class="preinfo">
+              <div class="prec">
+                首次发布： <a href="#" class="mo">2023-11-11 12:12:12</a>
+              </div>
+              <div class="prec">
+                所属分类：
+                <a href="" class="mo">编码</a>
+                <a href="" class="mo">JAVA</a>
+              </div>
+              <div class="prec">
+                收录专题：<a href="" class="mo">从零开始学JAVA</a>
+              </div>
+              <div class="prec">
+                文章标签：
+                <a href="" class="mo">Linux</a>
+                <a href="" class="mo">Nginx</a>
+                <a href="" class="mo">SpringBoot</a>
+                <a href="" class="mo">SpringBoot</a>
+                <a href="" class="mo">SpringBoot</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="l r">
+          <div class="c c_m">
+            <div class="prezool">
+              <img src="/static/img/logo.png" />
+              <p class="mo">
+                关于米虫的个人经历，本站的起源，域名的由来与意义，大致介绍构建本站的整体技术方案。个人过往经历的感悟，一些想法与体会，与君分享，与君共勉，希望您有所收获！
+              </p>
+            </div>
+
+            <em id="st"></em>
+
+            <article>
+              <div class="preview" id="preview">
+                <div class="vditor-reset" style="max-width: 920px">
+                  <p>''''''''''''''</p>
+                  <p class="mimg">
+                    <img
+                      src="http://localhost/static/img/limg.jpg"
+                      alt="Test" />
+                  </p>
+                  <h2 id="教程_2">教程</h2>
+                  <p>
+                    这是一篇讲解如何正确使用
+                    <strong>Markdown</strong>
+                    的排版示例，学会这个很有必要，能让你的文章有更佳清晰的排版。
+                  </p>
+                  <blockquote>
+                    <p>
+                      引用文本：Markdown is a text formatting syntax inspired
+                    </p>
+                  </blockquote>
+                  <h2 id="语法指导_5">语法指导</h2>
+                  <h3 id="普通内容_6">普通内容</h3>
+                  <p>这段内容展示了在内容里面一些排版格式，比如：</p>
+                  <ul>
+                    <li><strong>加粗</strong> - <code>**加粗**</code></li>
+                    <li><em>倾斜</em> - <code>*倾斜*</code></li>
+                    <li><del> 删除线 </del> - <code>~~删除线~~</code></li>
+                    <li><code>Code 标记</code> - <code>`Code 标记`</code></li>
+                    <li>
+                      <a href="https://ld246.com">超级链接</a> -
+                      <code>[超级链接](https://ld246.com)</code>
+                    </li>
+                    <li>
+                      <a href="mailto:username@gmail.com">username@gmail.com</a>
+                      -
+                      <code
+                        >[username@gmail.com](mailto:username@gmail.com)</code
+                      >
+                    </li>
+                  </ul>
+                  <h3 id="提及用户_9">提及用户</h3>
+                  <p>
+                    @Vanessa 通过
+                    <code>@User</code>
+                    可以在内容中提及用户，被提及的用户将会收到系统通知。
+                  </p>
+                  <blockquote>
+                    <p>NOTE:</p>
+                    <ol>
+                      <li>@ 用户名之后需要有一个空格</li>
+                      <li>新手没有艾特的功能权限</li>
+                    </ol>
+                  </blockquote>
+                  <h3 id="表情符号-Emoji_12">表情符号 Emoji</h3>
+                  <p>
+                    支持大部分标准的表情符号，可使用输入法直接输入，也可手动输入字符格式。通过输入
+                    <code>:</code> 触发自动完成，可在个人设置中<a
+                      href="https://ld246.com/settings/function"
+                      >设置常用表情</a
+                    >。
+                  </p>
+                  <h4 id="一些表情例子_14">一些表情例子</h4>
+                  <p>
+                    &#55357;&#56836; &#55357;&#56838; &#55357;&#56885;
+                    &#55357;&#56877; &#55357;&#56880; &#55357;&#56837;
+                    &#55357;&#56866; &#55357;&#56868; &#55357;&#56845;
+                    &#55357;&#56844;<br />
+                    &#55357;&#56397; &#55357;&#56398; &#55357;&#56495;
+                    &#55357;&#56399; &#55357;&#56596; &#55356;&#57217; ❓
+                    &#55357;&#56483; ❤️ ☕️ &#55356;&#57088; &#55357;&#56903;
+                    &#55357;&#56459; &#55357;&#56911; &#55357;&#56482;
+                  </p>
+                  <h3 id="大标题---Heading-3_16">大标题 - Heading 3</h3>
+                  <p>
+                    你可以选择使用 H1 至 H6，使用 ##(N)
+                    打头。建议帖子或回帖中的顶级标题使用 Heading 3，不要使用 1
+                    或 2，因为 1 是系统站点级，2 是帖子标题级。
+                  </p>
+                  <blockquote>
+                    <p>NOTE: 别忘了 # 后面需要有空格！</p>
+                  </blockquote>
+                  <h4 id="Heading-4_19">Heading 4</h4>
+                  <h5 id="Heading-5_20">Heading 5</h5>
+                  <h6 id="Heading-6_21">Heading 6</h6>
+                  <h3 id="图片_22">图片</h3>
+                  <pre>
+    <div class="vditor-copy">
+     <textarea></textarea>
+     <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+      <svg><use xlink:href="#vditor-icon-copy"></use></svg>
+     </span>
+    </div>
+    
+    <code style="max-height: 792px;" class="hljs markdown vditor-linenumber">'''![<span class="hljs-string">alt 文本</span>](<span class="hljs-link">http://image-path.png</span>)![<span class="hljs-string">alt 文本</span>](<span class="hljs-link">http://image-path.png &quot;图片 Title 值&quot;</span>)<div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span><span></span></span></code>
+    <span style="position: absolute">​</span>
+
+</pre>
+                  <p>支持复制粘贴直接上传。</p>
+                  <h3 id="代码块_25">代码块</h3>
+                  <h4 id="普通_26">普通</h4>
+                  <p>''</p>
+                  <pre>
+    <div class="vditor-copy">
+     <textarea></textarea>
+     <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+      <svg>
+       <use xlink:href="#vditor-icon-copy"></use>
+      </svg></span>
+    </div><code style="max-height: 792px;" class="hljs solidity vditor-linenumber"><span class="hljs-operator">*</span>emphasize<span class="hljs-operator">*</span>    <span class="hljs-operator">*</span><span class="hljs-operator">*</span>strong<span class="hljs-operator">*</span><span class="hljs-operator">*</span>
+_emphasize_    __strong__
+<span class="hljs-keyword">var</span> a <span class="hljs-operator">=</span> <span class="hljs-number">1</span>
+
+     <div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span><span></span><span></span></span></code><span style="position: absolute">​</span></pre>
+                  <h4 id="语法高亮支持_29">语法高亮支持</h4>
+                  <p>
+                    如果在 ``` 后面跟随语言名称，可以有语法高亮的效果哦，比如:
+                  </p>
+                  <h5 id="演示-Go-代码高亮_31">演示 Go 代码高亮</h5>
+                  <pre>
+    <div class="vditor-copy">
+     <textarea></textarea>
+     <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+      <svg>
+       <use xlink:href="#vditor-icon-copy"></use>
+      </svg></span>
+    </div><code class="language-go hljs vditor-linenumber" style="max-height: 792px;"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+fmt.Println(<span class="hljs-string">&quot;Hello, 世界&quot;</span>)
+}
+
+     <div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code><span style="position: absolute">​</span></pre>
+                  <h5 id="演示-Java-高亮_33">演示 Java 高亮</h5>
+                  <pre>
+    <div class="vditor-copy">
+     <textarea></textarea>
+     <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+      <svg>
+       <use xlink:href="#vditor-icon-copy"></use>
+      </svg></span>
+    </div><code class="language-java hljs vditor-linenumber" style="max-height: 792px;"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> </span>{
+    <span class="hljs-comment">// 1234444</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+    }
+
+}
+
+     <div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code><span style="position: absolute">​</span></pre>
+                  <blockquote>
+                    <p>
+                      Tip: 语言名称支持下面这些: <code>ruby</code>,
+                      <code>python</code>, <code>js</code>, <code>html</code>,
+                      <code>erb</code>, <code>css</code>, <code>coffee</code>,
+                      <code>bash</code>, <code>json</code>, <code>yml</code>,
+                      <code>xml</code> ...
+                    </p>
+                  </blockquote>
+                  <h3 id="有序-无序-任务列表_36">有序、无序、任务列表</h3>
+                  <h4 id="无序列表_37">无序列表</h4>
+                  <ul>
+                    <li>
+                      Java
+                      <ul>
+                        <li>
+                          Spring
+                          <ul>
+                            <li>IoC</li>
+                            <li>AOP</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Go
+                      <ul>
+                        <li>gofmt</li>
+                        <li>Wide</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Node.js
+                      <ul>
+                        <li>Koa</li>
+                        <li>Express</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <h4 id="有序列表_39">有序列表</h4>
+                  <ol>
+                    <li>
+                      Node.js
+                      <ol>
+                        <li>Express</li>
+                        <li>Koa</li>
+                        <li>Sails</li>
+                      </ol>
+                    </li>
+                    <li>
+                      Go
+                      <ol>
+                        <li>gofmt</li>
+                        <li>Wide</li>
+                      </ol>
+                    </li>
+                    <li>
+                      Java
+                      <ol>
+                        <li>Latke</li>
+                        <li>IDEA</li>
+                      </ol>
+                    </li>
+                  </ol>
+                  <h4 id="任务列表_41">任务列表</h4>
+                  <ul>
+                    <li class="vditor-task vditor-task--done">
+                      <input checked="" disabled="" type="checkbox" /> 发布 Sym
+                    </li>
+                    <li class="vditor-task vditor-task--done">
+                      <input checked="" disabled="" type="checkbox" /> 发布 Solo
+                    </li>
+                    <li class="vditor-task">
+                      <input disabled="" type="checkbox" /> 预约牙医
+                    </li>
+                  </ul>
+                  <h3 id="表格_43">表格</h3>
+                  <p>如果需要展示数据什么的，可以选择使用表格。</p>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>header 1</th>
+                        <th>header 2</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>cell 1</td>
+                        <td>cell 2</td>
+                      </tr>
+                      <tr>
+                        <td>cell 3</td>
+                        <td>cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>cell 5</td>
+                        <td>cell 6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h3 id="隐藏细节_46">隐藏细节</h3>
+                  <details>
+                    <summary>这里是摘要部分。</summary>
+                    这里是细节部分。
+                  </details>
+                  <h3 id="段落_48">段落</h3>
+                  <p>空行可以将内容进行分段，便于阅读。（这是第一段）</p>
+                  <p>使用空行在 Markdown 排版中相当重要。（这是第二段）</p>
+                  <h3 id="链接引用_51">链接引用</h3>
+                  <p>
+                    <a href="https://b3log.org">链接文本</a> https://b3log.org
+                  </p>
+                  <pre>
+    <div class="vditor-copy">
+     <textarea></textarea>
+     <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+      <svg>
+       <use xlink:href="#vditor-icon-copy"></use>
+      </svg></span>
+    </div><code style="max-height: 792px;" class="hljs less vditor-linenumber"><span class="hljs-selector-attr">[链接文本]</span><span class="hljs-selector-attr">[链接标识]</span>
+
+<span class="hljs-selector-attr">[链接标识]</span>: <span class="hljs-selector-tag">https</span>:<span class="hljs-comment">//b3log.org</span>
+
+     <div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span><span></span><span></span></span></code><span style="position: absolute">​</span></pre>
+                  <h3 id="脚注_54">脚注</h3>
+                  <p>
+                    这里是一个脚注引用<sup
+                      class="footnotes-ref"
+                      id="footnotes-ref-1"
+                      ><a href="#footnotes-def-1">1</a></sup
+                    >，这里是另一个脚注引用<sup
+                      class="footnotes-ref"
+                      id="footnotes-ref-2"
+                      ><a href="#footnotes-def-2">2</a></sup
+                    >。
+                  </p>
+                  <pre>
+    <div class="vditor-copy">
+     <textarea></textarea>
+     <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+      <svg>
+       <use xlink:href="#vditor-icon-copy"></use>
+      </svg></span>
+    </div><code style="max-height: 792px;" class="hljs markdown vditor-linenumber">这里是一个脚注引用[^1]，这里是另一个脚注引用[^bignote]。
+[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">第一个脚注定义。</span>
+[<span class="hljs-symbol">^bignote</span>]: <span class="hljs-link">脚注定义可使用多段内容。</span>
+
+<span class="hljs-code">    缩进对齐的段落包含在这个脚注定义内。
+</span>
+<span class="hljs-code">    ```
+    可以使用代码块。
+    ```
+</span>
+<span class="hljs-code">    还有其他行级排版语法，比如**加粗**和[链接](https://b3log.org)。
+</span>
+     <div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code><span style="position: absolute">​</span></pre>
+                  <h2 id="快捷键_57">快捷键</h2>
+                  <p>
+                    我们的编辑器支持很多快捷键，具体请参考
+                    <a href="https://ld246.com/article/1474030007391"
+                      >键盘快捷键</a
+                    >（或者按 &quot;<code>?</code> &quot;&#55357;&#56892;）
+                  </p>
+                  <div class="footnotes-defs-div">
+                    <hr class="footnotes-defs-hr" />
+                    <ol class="footnotes-defs-ol">
+                      <li id="footnotes-def-1">
+                        <p>
+                          第一个脚注定义。
+                          <a
+                            href="#footnotes-ref-1"
+                            class="vditor-footnotes__goto-ref"
+                            >↩</a
+                          >
+                        </p>
+                      </li>
+                      <li id="footnotes-def-2">
+                        <p>脚注定义可使用多段内容。</p>
+                        <p>缩进对齐的段落包含在这个脚注定义内。</p>
+                        <pre>
+       <div class="vditor-copy">
+        <textarea></textarea>
+        <span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="copyCode(this)">
+         <svg>
+          <use xlink:href="#vditor-icon-copy"></use>
+         </svg></span>
+       </div><code style="max-height: 792px;" class="hljs vditor-linenumber">可以使用代码块。
+
+        <div class="vditor-linenumber__temp" style="display: none;"></div><span class="vditor-linenumber__rows"><span></span></span></code><span style="position: absolute">​</span></pre>
+                        <p>
+                          还有其他行级排版语法，比如<strong>加粗</strong>和<a
+                            href="https://b3log.org"
+                            >链接</a
+                          >。
+                          <a
+                            href="#footnotes-ref-2"
+                            class="vditor-footnotes__goto-ref"
+                            >↩</a
+                          >
+                        </p>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <em id="ed"></em>
+
+            <div class="pcc">
+              <button type="button" class="pccbt" onclick="openCm(0,1)">
+                <i>&#xF010;</i>提交评论
+              </button>
+              <div class="pco">
+                <h2>10 评论</h2>
+                <div class="pcom pcom1">
+                  <div class="pcomimg mimg">
+                    <img src="/static/img/fimg.jpg" />
+                  </div>
+                  <div class="pcomif">
+                    <div class="pcomby">
+                      <a href="/" target="_blank">煎饼侠小飞侠</a>
+                      <p>2022-22-22 12:22:22</p>
+                      <button
+                        class="pcombt"
+                        type="button"
+                        onclick="openCm(1,2)">
+                        <i>&#xF010;</i>回复
+                      </button>
+                    </div>
+                    <div class="pcomp">
+                      <p>
+                        Go
+                        1.13设置了默认的GOSUMDB=sum.golang.org，是用来验证包的有效性。
+                        <br />这个网址由于墙的原因可能无法访问，所以可以使用：
+                        <br />go env -w GOSUMDB=off 命令来关闭
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="pcom pcom2">
+                  <div class="pcomimg mimg">
+                    <img src="/static/img/fimg.jpg" />
+                  </div>
+                  <div class="pcomif">
+                    <div class="pcomby">
+                      <a href="/" target="_blank">煎饼侠小飞侠</a>
+                      <p>2022-22-22 12:22:22</p>
+                      <button
+                        class="pcombt"
+                        type="button"
+                        onclick="openCm(1,2)">
+                        <i>&#xF010;</i>回复
+                      </button>
+                    </div>
+                    <div class="pcomp">
+                      <p>
+                        Go
+                        1.13设置了默认的GOSUMDB=sum.golang.org，是用来验证包的有效性。
+                        <br />这个网址由于墙的原因可能无法访问，所以可以使用：
+                        <br />go env -w GOSUMDB=off 命令来关闭
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="pcom pcom3">
+                  <div class="pcomimg mimg">
+                    <img src="/static/img/fimg.jpg" />
+                  </div>
+                  <div class="pcomif">
+                    <div class="pcomby">
+                      <a href="/" target="_blank">煎饼侠小飞侠</a>
+                      <p>2022-22-22 12:22:22</p>
+                      <button
+                        class="pcombt"
+                        type="button"
+                        onclick="openCm(1,2)">
+                        <i>&#xF010;</i>回复
+                      </button>
+                    </div>
+                    <div class="pcomp">
+                      <p>
+                        Go
+                        1.13设置了默认的GOSUMDB=sum.golang.org，是用来验证包的有效性。
+                        <br />这个网址由于墙的原因可能无法访问，所以可以使用：
+                        <br />go env -w GOSUMDB=off 命令来关闭
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="pcom pcom2">
+                  <div class="pcomimg mimg">
+                    <img src="/static/img/fimg.jpg" />
+                  </div>
+                  <div class="pcomif">
+                    <div class="pcomby">
+                      <a href="/" target="_blank">煎饼侠小飞侠</a>
+                      <p>2022-22-22 12:22:22</p>
+                      <button
+                        class="pcombt"
+                        type="button"
+                        onclick="openCm(1,2)">
+                        <i>&#xF010;</i>回复
+                      </button>
+                    </div>
+                    <div class="pcomp">
+                      <p>
+                        Go
+                        1.13设置了默认的GOSUMDB=sum.golang.org，是用来验证包的有效性。
+                        <br />这个网址由于墙的原因可能无法访问，所以可以使用：
+                        <br />go env -w GOSUMDB=off 命令来关闭
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="pcom pcom1">
+                  <div class="pcomimg mimg">
+                    <img src="/static/img/fimg.jpg" />
+                  </div>
+                  <div class="pcomif">
+                    <div class="pcomby">
+                      <a href="/" target="_blank">煎饼侠小飞侠</a>
+                      <p>2022-22-22 12:22:22</p>
+                      <button
+                        class="pcombt"
+                        type="button"
+                        onclick="openCm(1,2)">
+                        <i>&#xF010;</i>回复
+                      </button>
+                    </div>
+                    <div class="pcomp">
+                      <p>
+                        Go
+                        1.13设置了默认的GOSUMDB=sum.golang.org，是用来验证包的有效性。
+                        <br />这个网址由于墙的原因可能无法访问，所以可以使用：
+                        <br />go env -w GOSUMDB=off 命令来关闭
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c c_l mo">
+            <div id="outline" class="outline vditor-outline">
+              <div class="vditor-outline__title">大纲</div>
+              <div class="vditor-outline__content">
+                <ul>
+                  <li>
+                    <span data-target-id="教程_2"
+                      ><svg></svg><span>教程</span></span
+                    >
+                  </li>
+                  <li>
+                    <span data-target-id="语法指导_5">
+                      <svg class="vditor-outline__action">
+                        <use xlink:href="#vditor-icon-down"></use>
+                      </svg>
+                      <span>语法指导</span></span
+                    >
+                    <ul>
+                      <li>
+                        <span data-target-id="普通内容_6"
+                          ><svg></svg><span>普通内容</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="提及用户_9"
+                          ><svg></svg><span>提及用户</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="表情符号-Emoji_12"
+                          ><svg class="vditor-outline__action">
+                            <use xlink:href="#vditor-icon-down"></use></svg
+                          ><span>表情符号 Emoji</span></span
+                        >
+                        <ul>
+                          <li>
+                            <span data-target-id="一些表情例子_14"
+                              ><svg></svg><span>一些表情例子</span></span
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span data-target-id="大标题---Heading-3_16"
+                          ><svg class="vditor-outline__action">
+                            <use xlink:href="#vditor-icon-down"></use></svg
+                          ><span>大标题 - Heading 3</span></span
+                        >
+                        <ul>
+                          <li>
+                            <span data-target-id="Heading-4_19"
+                              ><svg class="vditor-outline__action">
+                                <use xlink:href="#vditor-icon-down"></use></svg
+                              ><span>Heading 4</span></span
+                            >
+                            <ul>
+                              <li>
+                                <span data-target-id="Heading-5_20"
+                                  ><svg class="vditor-outline__action">
+                                    <use
+                                      xlink:href="#vditor-icon-down"></use></svg
+                                  ><span>Heading 5</span></span
+                                >
+                                <ul>
+                                  <li>
+                                    <span data-target-id="Heading-6_21"
+                                      ><svg></svg><span>Heading 6</span></span
+                                    >
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span data-target-id="图片_22"
+                          ><svg></svg><span>图片</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="代码块_25"
+                          ><svg class="vditor-outline__action">
+                            <use xlink:href="#vditor-icon-down"></use></svg
+                          ><span>代码块</span></span
+                        >
+                        <ul>
+                          <li>
+                            <span data-target-id="普通_26"
+                              ><svg></svg><span>普通</span></span
+                            >
+                          </li>
+                          <li>
+                            <span data-target-id="语法高亮支持_29"
+                              ><svg class="vditor-outline__action">
+                                <use xlink:href="#vditor-icon-down"></use></svg
+                              ><span>语法高亮支持</span></span
+                            >
+                            <ul>
+                              <li>
+                                <span data-target-id="演示-Go-代码高亮_31"
+                                  ><svg></svg
+                                  ><span>演示 Go 代码高亮</span></span
+                                >
+                              </li>
+                              <li>
+                                <span data-target-id="演示-Java-高亮_33"
+                                  ><svg></svg><span>演示 Java 高亮</span></span
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span data-target-id="有序-无序-任务列表_36"
+                          ><svg class="vditor-outline__action">
+                            <use xlink:href="#vditor-icon-down"></use></svg
+                          ><span>有序、无序、任务列表</span></span
+                        >
+                        <ul>
+                          <li>
+                            <span data-target-id="无序列表_37"
+                              ><svg></svg><span>无序列表</span></span
+                            >
+                          </li>
+                          <li>
+                            <span data-target-id="有序列表_39"
+                              ><svg></svg><span>有序列表</span></span
+                            >
+                          </li>
+                          <li>
+                            <span data-target-id="任务列表_41"
+                              ><svg></svg><span>任务列表</span></span
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span data-target-id="表格_43"
+                          ><svg></svg><span>表格</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="隐藏细节_46"
+                          ><svg></svg><span>隐藏细节</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="段落_48"
+                          ><svg></svg><span>段落</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="链接引用_51"
+                          ><svg></svg><span>链接引用</span></span
+                        >
+                      </li>
+                      <li>
+                        <span data-target-id="脚注_54"
+                          ><svg></svg><span>脚注</span></span
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span data-target-id="快捷键_57"
+                      ><svg></svg><span>快捷键</span></span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="l">
+          <div class="t">
+            <h1><i>&#xF020;</i>相关</h1>
+          </div>
+          <div class="r">
+            <a href="#" class="c c_3 m">
+              <div class="mimg pimg">
+                <img src="/static/img/limg.jpg" />
+                <em></em>
+              </div>
+              <div class="minf pinf">
+                <div class="mint">
+                  <span class="mo"><i>&#xF021;</i>Java</span>
+                  <span class="mo"><i>&#xF014;</i>1000</span>
+                </div>
+                <h1 class="mo">
+                  ORA-00257:archiver error.Connect internal only
+                </h1>
+                <div class="minq">
+                  <span class="mo"><i>#</i>SpringBoot</span>
+                  <span class="mo"><i>#</i>SpringCloud</span>
+                  <span class="mo"><i>#</i>Linux</span>
+                  <span class="mo"><i>#</i>Nginx</span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="c c_3 m">
+              <div class="mimg pimg">
+                <img src="/static/img/limg.jpg" />
+                <em></em>
+              </div>
+              <div class="minf pinf">
+                <div class="mint">
+                  <span class="mo"><i>&#xF021;</i>Java</span>
+                  <span class="mo"><i>&#xF014;</i>1000</span>
+                </div>
+                <h1 class="mo">
+                  ORA-00257:archiver error.Connect internal only
+                </h1>
+                <div class="minq">
+                  <span class="mo"><i>#</i>SpringBoot</span>
+                  <span class="mo"><i>#</i>SpringCloud</span>
+                  <span class="mo"><i>#</i>Linux</span>
+                  <span class="mo"><i>#</i>Nginx</span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="c c_3 m">
+              <div class="mimg pimg">
+                <img src="/static/img/limg.jpg" />
+                <em></em>
+              </div>
+              <div class="minf pinf">
+                <div class="mint">
+                  <span class="mo"><i>&#xF021;</i>Java</span>
+                  <span class="mo"><i>&#xF014;</i>1000</span>
+                </div>
+                <h1 class="mo">
+                  ORA-00257:archiver error.Connect internal only
+                </h1>
+                <div class="minq">
+                  <span class="mo"><i>#</i>SpringBoot</span>
+                  <span class="mo"><i>#</i>SpringCloud</span>
+                  <span class="mo"><i>#</i>Linux</span>
+                  <span class="mo"><i>#</i>Nginx</span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="c c_3 m">
+              <div class="mimg pimg">
+                <img src="/static/img/limg.jpg" />
+                <em></em>
+              </div>
+              <div class="minf pinf">
+                <div class="mint">
+                  <span class="mo"><i>&#xF021;</i>Java</span>
+                  <span class="mo"><i>&#xF014;</i>1000</span>
+                </div>
+                <h1 class="mo">
+                  ORA-00257:archiver error.Connect internal only
+                </h1>
+                <div class="minq">
+                  <span class="mo"><i>#</i>SpringBoot</span>
+                  <span class="mo"><i>#</i>SpringCloud</span>
+                  <span class="mo"><i>#</i>Linux</span>
+                  <span class="mo"><i>#</i>Nginx</span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="c c_3 m">
+              <div class="mimg pimg">
+                <img src="/static/img/limg.jpg" />
+                <em></em>
+              </div>
+              <div class="minf pinf">
+                <div class="mint">
+                  <span class="mo"><i>&#xF021;</i>Java</span>
+                  <span class="mo"><i>&#xF014;</i>1000</span>
+                </div>
+                <h1 class="mo">
+                  ORA-00257:archiver error.Connect internal only
+                </h1>
+                <div class="minq">
+                  <span class="mo"><i>#</i>SpringBoot</span>
+                  <span class="mo"><i>#</i>SpringCloud</span>
+                  <span class="mo"><i>#</i>Linux</span>
+                  <span class="mo"><i>#</i>Nginx</span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="c c_3 m">
+              <div class="mimg pimg">
+                <img src="/static/img/limg.jpg" />
+                <em></em>
+              </div>
+              <div class="minf pinf">
+                <div class="mint">
+                  <span class="mo"><i>&#xF021;</i>Java</span>
+                  <span class="mo"><i>&#xF014;</i>1000</span>
+                </div>
+                <h1 class="mo">
+                  ORA-00257:archiver error.Connect internal only
+                </h1>
+                <div class="minq">
+                  <span class="mo"><i>#</i>SpringBoot</span>
+                  <span class="mo"><i>#</i>SpringCloud</span>
+                  <span class="mo"><i>#</i>Linux</span>
+                  <span class="mo"><i>#</i>Nginx</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="l">
+          <div class="r tg fd">
+            <a href="#" class="c c_4 m">
+              <div class="minf tinf tina">
+                <h1 class="mo"><i>&#xF015;</i>近期上升</h1>
+                <div class="minq tinq mo">最近备受关注的内容</div>
+              </div>
+            </a>
+            <a href="#" class="c c_4 m">
+              <div class="minf tinf tina">
+                <h1 class="mo"><i>&#xF014;</i>深度好文</h1>
+                <div class="minq tinq mo">深度阅读指数的内容</div>
+              </div>
+            </a>
+            <a href="#" class="c c_4 m">
+              <div class="minf tinf tina">
+                <h1 class="mo"><i>&#xF013;</i>全站热门</h1>
+                <div class="minq tinq mo">访问流量最高的内容</div>
+              </div>
+            </a>
+            <a href="#" class="c c_4 m">
+              <div class="minf tinf tina">
+                <h1 class="mo"><i>&#xF011;</i>新鲜发布</h1>
+                <div class="minq tinq mo">围观最新发布的内容</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="fo">
+          <p>
+            <a href="https://www.omegaxyz.com" target="_blank">OmegaXYZ</a>
+            <a href="https://chainoe.com" target="_blank">ChainOE</a>
+            <a class="fll" href="/page/link.html">#更多</a>
+            <a class="fll" href="/page/makeFriend.html">#申请</a>
+          </p>
+          <p>
+            <a class="frc" href="https://www.mebugs.com/">米虫博客 © MEBUGS</a>
+          </p>
+          <p>
+            <a href="https://beian.miit.gov.cn/" target="_blank"
+              >苏ICP备20039109号</a
+            >
+            丨<a href="/page/about.html">关于</a> 丨<a href="/page/msg.html"
+              >留言</a
+            >
+            丨<a href="/page/link.html">友链</a> 丨<a href="/page/map.html"
+              >地图</a
+            >
+          </p>
+          <p class="fc">
+            <a
+              href="http://wpa.qq.com/msgrd?v=3&amp;uin=7431346&amp;site=qq&amp;menu=yes"
+              target="_blank">
+              <i>&#xF016;</i>
+              <span>QQ</span>
+            </a>
+            <a
+              href="http://wpa.qq.com/msgrd?v=3&amp;uin=7431346&amp;site=qq&amp;menu=yes"
+              target="_blank">
+              <i>&#xF017;</i>
+              <span>微信</span>
+            </a>
+            <a href="mailto:iam@qiantaoyuan.com" target="_blank">
+              <i>&#xF018;</i>
+              <span>邮箱</span>
+            </a>
+            <a href="https://github.com/mebugs" target="_blank">
+              <i>&#xF019;</i>
+              <span>仓库</span>
+            </a>
+            <a href="https://github.com/mebugs">
+              <i>&#xF020;</i>
+              <span>留言</span>
+            </a>
+          </p>
+        </div>
+      </footer>
+    </section>
+    <div class="zz"></div>
+    <div class="fb">
+      <a class="fbt" href="javascript:toWhere(0)"><i>&#xF009;</i></a
+      ><!-- 返回顶部 -->
+    </div>
+    <script src="/static/js/base.js?v=1.0"></script>
+    <script src="/static/js/loadImg.js?v=1.0"></script>
+    <script src="/static/js/post.js?v=1.0"></script>
+  </body>
+</html>

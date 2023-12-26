@@ -1,0 +1,2411 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "# 概述\r\n\r\n物联网基座Stone，提供一个多层级SaaS化的基础开箱即用中台管理服务。\r\n\r\n支持响应码自定义国际化、租户赋权、高粒度权限分配、接口路由规划和实时生效，支持加盟商、业务客户多层级租户嵌套。\r\n\r\n本系统的全部接口采用【POST】【application/json】方式传输数据。\r\n\r\n除开放接口以外的其他接口均需要通过【ApiKeyAuth:请求头[Token]】完成鉴权。\r\n\r\n系统技术栈：Golang、VueNext、MySQL、Redis、Gin、Arco\r\n\r\n# 接口文档\r\n\r\n该接口文档提供Swagger[支持调试]和ReDoc[阅读增强]两个版本。\r\n\r\n[Swagger[支持调试]：http://localhost:8000/docs/swagger/index.html](http://localhost:8000/docs/swagger/index.html)\r\n\r\n[ReDoc[阅读增强]：http://localhost:8000/docs/redoc/index.html](http://localhost:8000/docs/redoc/index.html)\r\n\r\n## 生成说明\r\n\r\n// 首次集成\r\n\r\ngo install github.com/swaggo/swag/cmd/swag@latest\r\n\r\n// 初始化swagger.yaml文件\r\n\r\nswag init\r\n\r\n// 如果像本工程一样依赖了md文件\r\n\r\nswag init --md .\r\n\r\n// 删除多余的生成\r\n\r\nrm .\\docs\\docs.go\r\n\r\n删除docs.go是因为本项目中并未采用下述依赖来集成。\r\n\r\n而是通过HTML模板+JS+YAML引入集成，移除docs.go用于避免依赖编译报错。\r\n\r\n- github.com/swaggo/swag\r\n- github.com/swaggo/gin-swagger\r\n- github.com/swaggo/files\r\n\r\n源帮助页：[https://github.com/swaggo/swag/blob/master/README_zh-CN.md](https://github.com/swaggo/swag/blob/master/README_zh-CN.md)\r\n",
+        "title": "Stone",
+        "contact": {
+            "name": "Stone",
+            "url": "https://stone.siteol.com",
+            "email": "stone@siteol.com"
+        },
+        "version": "1.0",
+        "x-logo": {
+            "altText": "Stone",
+            "url": "/docs/sc/logo.png"
+        }
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/docs/sample": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "系统API基本示例",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "开放接口"
+                ],
+                "summary": "通用API示例",
+                "operationId": "Sample示例",
+                "parameters": [
+                    {
+                        "description": "示例请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.DemoReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "业务受理成功",
+                        "schema": {
+                            "$ref": "#/definitions/resp.DemoOk"
+                        }
+                    },
+                    "400": {
+                        "description": "数据校验失败",
+                        "schema": {
+                            "$ref": "#/definitions/resp.DemoVail"
+                        }
+                    },
+                    "401": {
+                        "description": "当前尚未登陆",
+                        "schema": {
+                            "$ref": "#/definitions/resp.DemoAuthLg"
+                        }
+                    },
+                    "403": {
+                        "description": "权限校验失败",
+                        "schema": {
+                            "$ref": "#/definitions/resp.DemoAuthNg"
+                        }
+                    },
+                    "500": {
+                        "description": "服务系统异常",
+                        "schema": {
+                            "$ref": "#/definitions/resp.DemoErr"
+                        }
+                    }
+                }
+            }
+        },
+        "/open/auth/login": {
+            "post": {
+                "description": "平台最基础的账号密码登陆方式登陆",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "开放接口"
+                ],
+                "summary": "开放账密登陆",
+                "operationId": "AuthLogin开放账密登陆",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.AuthLoginReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "登陆成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platModel.AuthLoginRes"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/open/tenant/get": {
+            "post": {
+                "description": "获取租户基础信息，前置开放接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "开放接口"
+                ],
+                "summary": "获取租户信息",
+                "operationId": "GetOpenTenant获取租户信息",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.OpenTenantReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platModel.OpenTenantRes"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/dict/list": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "获取字典下拉列表，用于选择框",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "数据字典"
+                ],
+                "summary": "字典下拉列表",
+                "operationId": "ListDict字典下拉列表",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "语言，不传默认为zh-CN",
+                        "name": "Lang",
+                        "in": "header"
+                    },
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.DictListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platModel.DictListRes"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/add": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "创建一个全新的权限，支持勾选接口路由",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "权限创建",
+                "operationId": "AddPermission权限创建",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.PermissionAddReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/bro": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID获取当前权限以及兄弟权限列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "获取兄弟权限",
+                "operationId": "BroPermission获取兄弟权限",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/platModel.PermissionBroRes"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/del": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID对权限数据删除，存在子集时无法删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "权限删除",
+                "operationId": "DelPermission权限删除",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/edit": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID对权限数据编辑，仅支持部分字段更新",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "权限编辑",
+                "operationId": "EditPermission权限编辑",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.PermissionEditReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/get": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID查询权限数据",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "权限查询",
+                "operationId": "GetPermission权限查询",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platDb.Permission"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/sort": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "同级权限排序功能",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "权限排序",
+                "operationId": "SortPermission权限排序",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.SortReq"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/permission/tree": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "获取权限树，不同级别用户根据所属租户权限集看到权限树",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "访问权限"
+                ],
+                "summary": "权限树",
+                "operationId": "TreePermission权限树",
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Tree"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/response/add": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "创建一个全新的响应码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "响应文言"
+                ],
+                "summary": "响应码创建",
+                "operationId": "AddResponse响应码创建",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.ResponseAddReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/response/del": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID删除响应码，本数据为软删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "响应文言"
+                ],
+                "summary": "响应码删除",
+                "operationId": "DelResponse响应码删除",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/response/edit": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID编辑响应码，只有部分字段可以修改",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "响应文言"
+                ],
+                "summary": "响应码编辑",
+                "operationId": "EditResponse响应码编辑",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.ResponseEditReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/response/get": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID查询响应码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "响应文言"
+                ],
+                "summary": "响应码查询",
+                "operationId": "GetResponse响应码查询",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platDb.Response"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/response/page": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "查询响应码分页数据",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "响应文言"
+                ],
+                "summary": "响应码分页",
+                "operationId": "PageResponse响应码分页",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.ResponsePageReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "allOf": [
+                                                {
+                                                    "$ref": "#/definitions/model.PageRes"
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "list": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/platDb.Response"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/role/add": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "创建一个全新的角色",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色配置"
+                ],
+                "summary": "角色创建",
+                "operationId": "AddRole角色创建",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.RoleAddReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/role/del": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID删除角色，本数据为软删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色配置"
+                ],
+                "summary": "角色删除",
+                "operationId": "DelRole角色删除",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/role/edit": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID编辑角色，只有部分字段可以修改",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色配置"
+                ],
+                "summary": "角色编辑",
+                "operationId": "EditRole角色编辑",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.RoleEditReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/role/get": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID查询角色",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色配置"
+                ],
+                "summary": "角色查询",
+                "operationId": "GetRole角色查询",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platDb.Role"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/role/page": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "查询角色分页数据",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "角色配置"
+                ],
+                "summary": "角色分页",
+                "operationId": "PageRole角色分页",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.RolePageReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "allOf": [
+                                                {
+                                                    "$ref": "#/definitions/model.PageRes"
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "list": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/platDb.Role"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/router/add": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "创建一个全新的路由",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "路由接口"
+                ],
+                "summary": "路由创建",
+                "operationId": "AddRouter路由创建",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.RouterAddReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/router/edit": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID编辑路由，只有部分字段可以修改",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "路由接口"
+                ],
+                "summary": "路由编辑",
+                "operationId": "EditRouter路由编辑",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.RouterEditReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/router/get": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "根据ID查询路由",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "路由接口"
+                ],
+                "summary": "路由查询",
+                "operationId": "GetRouter路由查询",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.IdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/platDb.Router"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/plat/router/page": {
+            "post": {
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ],
+                "description": "查询路由分页数据",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "路由接口"
+                ],
+                "summary": "路由分页",
+                "operationId": "PageRouter路由分页",
+                "parameters": [
+                    {
+                        "description": "请求",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/platModel.RouterPageReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.ResBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "allOf": [
+                                                {
+                                                    "$ref": "#/definitions/model.PageRes"
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "list": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/platDb.Router"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.DemoReq": {
+            "type": "object",
+            "properties": {
+                "httpCode": {
+                    "description": "响应HTTPCode，不传默认响应200，支持200/400/401/403/500",
+                    "type": "integer",
+                    "example": 200
+                }
+            }
+        },
+        "model.IdReq": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "description": "数据ID",
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "model.PageRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "分页数据"
+                },
+                "total": {
+                    "description": "数据总量",
+                    "type": "integer"
+                }
+            }
+        },
+        "model.SortReq": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "description": "数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "sort": {
+                    "description": "序号",
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "model.Tree": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "description": "子树",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Tree"
+                    }
+                },
+                "key": {
+                    "description": "树键",
+                    "type": "string",
+                    "example": "ROOT"
+                },
+                "level": {
+                    "description": "表示树等级",
+                    "type": "string",
+                    "example": "1"
+                },
+                "title": {
+                    "description": "树标题",
+                    "type": "string",
+                    "example": "根节点"
+                }
+            }
+        },
+        "platDb.Permission": {
+            "type": "object",
+            "properties": {
+                "alias": {
+                    "description": "权限别名，英文+下划线",
+                    "type": "string",
+                    "example": "plat_account"
+                },
+                "createAt": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "默认数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "level": {
+                    "description": "权限等级 1分组（一级导航）2模块（页面）3功能（按钮）",
+                    "type": "string",
+                    "example": "1"
+                },
+                "name": {
+                    "description": "权限名称，界面展示，建议与界面导航一致",
+                    "type": "string",
+                    "example": "账号管理"
+                },
+                "pid": {
+                    "description": "父级ID，默认为1",
+                    "type": "integer",
+                    "example": 1
+                },
+                "routerIds": {
+                    "description": "路由集，当前对象会忽略此字段",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "routerList": {
+                    "description": "路由对象",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/platDb.Router"
+                    }
+                },
+                "sort": {
+                    "description": "权限排序（独立接口）",
+                    "type": "integer",
+                    "example": 1
+                },
+                "static": {
+                    "description": "默认启用权限，1 不启 2启用",
+                    "type": "string",
+                    "example": "1"
+                },
+                "status": {
+                    "description": "状态 0正常 1锁定 2封存",
+                    "type": "string",
+                    "example": "0"
+                },
+                "updateAt": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "platDb.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码 F/S+XXX+XXX",
+                    "type": "string",
+                    "example": "F7000"
+                },
+                "createAt": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "enUs": {
+                    "description": "英文响应文言",
+                    "type": "string",
+                    "example": "Role query failed"
+                },
+                "id": {
+                    "description": "数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "mark": {
+                    "description": "变更标识 0可变更 1禁止变更",
+                    "type": "string",
+                    "example": "0"
+                },
+                "remark": {
+                    "description": "其他备注信息",
+                    "type": "string",
+                    "example": "角色查询失败"
+                },
+                "serviceCode": {
+                    "description": "业务ID，来源于字典，指定响应码归属业务",
+                    "type": "string",
+                    "example": "7"
+                },
+                "status": {
+                    "description": "状态 0正常 1锁定 2封存",
+                    "type": "string",
+                    "example": "0"
+                },
+                "type": {
+                    "description": "响应类型，该字段用于筛选，可配置F和S",
+                    "type": "string",
+                    "example": "F"
+                },
+                "updateAt": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "zhCn": {
+                    "description": "中文响应文言",
+                    "type": "string",
+                    "example": "角色查询失败"
+                }
+            }
+        },
+        "platDb.Role": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "createAt": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "默认数据ID",
+                    "type": "integer"
+                },
+                "mark": {
+                    "description": "变更标识 0可变更1禁止变更（前端不提交后端默认0）",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "角色名称",
+                    "type": "string",
+                    "maxLength": 16
+                },
+                "permissionIds": {
+                    "description": "权限集，当前对象会忽略此字段，权限合法性校验交给控制层",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "remark": {
+                    "description": "角色备注",
+                    "type": "string",
+                    "maxLength": 64
+                },
+                "status": {
+                    "description": "状态 0正常 1锁定 2封存",
+                    "type": "string",
+                    "example": "0"
+                },
+                "tenantId": {
+                    "description": "租户ID（后端赋值）",
+                    "type": "integer"
+                },
+                "updateAt": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "platDb.Router": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "默认数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "路由名称，用于界面展示，与权限关联",
+                    "type": "string",
+                    "example": "开放账密登陆"
+                },
+                "printReq": {
+                    "description": "请求日志打印 1 不打印 2 打印",
+                    "type": "string",
+                    "example": "1"
+                },
+                "printRes": {
+                    "description": "响应日志打印 1 不打印 2 打印",
+                    "type": "string",
+                    "example": "2"
+                },
+                "serviceCode": {
+                    "description": "业务编码（字典），为接口分组",
+                    "type": "string",
+                    "example": "1"
+                },
+                "type": {
+                    "description": "免授权路由 1 授权 2 免授权",
+                    "type": "string",
+                    "example": "1"
+                },
+                "url": {
+                    "description": "路由地址，后端访问URL 后端不再URL中携带参数，统一Post处理内容",
+                    "type": "string",
+                    "example": "/open/auth/login"
+                }
+            }
+        },
+        "platModel.AuthLoginReq": {
+            "type": "object",
+            "required": [
+                "account",
+                "password",
+                "tenantAlias"
+            ],
+            "properties": {
+                "account": {
+                    "description": "账号",
+                    "type": "string",
+                    "example": "stone"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string",
+                    "example": "123456"
+                },
+                "tenantAlias": {
+                    "description": "租户别名",
+                    "type": "string",
+                    "example": "stone"
+                }
+            }
+        },
+        "platModel.AuthLoginRes": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "description": "32位登陆Token，时间串+18位随机字符",
+                    "type": "string",
+                    "example": "20230203090105DpC4K9Tu8IYagEgGM7"
+                }
+            }
+        },
+        "platModel.DictListReq": {
+            "type": "object",
+            "properties": {
+                "groupKeys": {
+                    "description": "需要查询的字典分组",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "'serviceCode'",
+                        "'responseType'"
+                    ]
+                }
+            }
+        },
+        "platModel.DictListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "字典下拉列表 {'serviceCode':\"[{'label':'基础','value':'1'}]\"}",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/platModel.DictRes"
+                        }
+                    }
+                },
+                "map": {
+                    "description": "字典翻译Map {'serviceCode':{'1':'基础'}}",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "platModel.DictRes": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "description": "字典名",
+                    "type": "string",
+                    "example": "基础"
+                },
+                "value": {
+                    "description": "字典值",
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
+        "platModel.OpenTenantReq": {
+            "type": "object",
+            "required": [
+                "tenantAlias"
+            ],
+            "properties": {
+                "tenantAlias": {
+                    "description": "租戶别名",
+                    "type": "string",
+                    "example": "stone"
+                }
+            }
+        },
+        "platModel.OpenTenantRes": {
+            "type": "object",
+            "properties": {
+                "alias": {
+                    "description": "租戶别名，全局唯一",
+                    "type": "string",
+                    "example": "stone"
+                },
+                "icon": {
+                    "description": "租户Icon，浏览器顶部图标",
+                    "type": "string",
+                    "example": "/static/img/icon.png"
+                },
+                "logo": {
+                    "description": "租户Logo，登陆和界面中的Logo",
+                    "type": "string",
+                    "example": "/static/img/logo"
+                },
+                "name": {
+                    "description": "租戶名称，全局唯一",
+                    "type": "string",
+                    "example": "基座租户"
+                },
+                "theme": {
+                    "description": "租户模板，登陆界面的风格模板",
+                    "type": "string",
+                    "example": "light"
+                }
+            }
+        },
+        "platModel.PermissionAddReq": {
+            "type": "object",
+            "required": [
+                "alias",
+                "level",
+                "name",
+                "pid",
+                "static"
+            ],
+            "properties": {
+                "alias": {
+                    "description": "权限别名，英文+下划线，规范如下： plat  plat_account plat_account_add",
+                    "type": "string",
+                    "maxLength": 32,
+                    "example": "plat_account"
+                },
+                "level": {
+                    "description": "权限等级 1分组（一级导航）2模块（页面）3功能（按钮）",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2",
+                        "3"
+                    ],
+                    "example": "1"
+                },
+                "name": {
+                    "description": "权限名称，界面展示，建议与界面导航一致",
+                    "type": "string",
+                    "maxLength": 32,
+                    "example": "账号管理"
+                },
+                "pid": {
+                    "description": "父级ID，默认为1",
+                    "type": "integer",
+                    "example": 1
+                },
+                "routerIds": {
+                    "description": "路由集，提交路由ID数组",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "static": {
+                    "description": "默认启用权限，1 不启 2启用  启用后，该权限默认被分配，不可去勾",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "example": "1"
+                }
+            }
+        },
+        "platModel.PermissionBroRes": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "默认数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "权限名称，界面展示，建议与界面导航一致",
+                    "type": "string",
+                    "example": "账号管理"
+                },
+                "sort": {
+                    "description": "权限排序",
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "platModel.PermissionEditReq": {
+            "type": "object",
+            "required": [
+                "alias",
+                "id",
+                "name"
+            ],
+            "properties": {
+                "alias": {
+                    "description": "权限别名，英文+下划线，规范如下： plat  plat_account plat_account_add",
+                    "type": "string",
+                    "maxLength": 32,
+                    "example": "plat_account"
+                },
+                "id": {
+                    "description": "默认数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "权限名称，界面展示，建议与界面导航一致",
+                    "type": "string",
+                    "maxLength": 32,
+                    "example": "账号管理"
+                },
+                "routerIds": {
+                    "description": "路由集，提交路由ID数组",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1,
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        "platModel.ResponseAddReq": {
+            "type": "object",
+            "required": [
+                "serviceCode",
+                "type"
+            ],
+            "properties": {
+                "enUs": {
+                    "description": "英文响应文言",
+                    "type": "string",
+                    "example": "Role query failed"
+                },
+                "remark": {
+                    "description": "其他备注信息",
+                    "type": "string",
+                    "example": "角色查询失败"
+                },
+                "serviceCode": {
+                    "description": "业务ID，来源于字典，指定响应码归属业务",
+                    "type": "string",
+                    "example": "7"
+                },
+                "type": {
+                    "description": "响应类型，该字段用于筛选，可配置S和F",
+                    "type": "string",
+                    "enum": [
+                        "S",
+                        "F"
+                    ],
+                    "example": "F"
+                },
+                "zhCn": {
+                    "description": "中文响应文言",
+                    "type": "string",
+                    "example": "角色查询失败"
+                }
+            }
+        },
+        "platModel.ResponseEditReq": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "enUs": {
+                    "description": "英文响应文言",
+                    "type": "string",
+                    "example": "Role query failed"
+                },
+                "id": {
+                    "description": "数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "remark": {
+                    "description": "其他备注信息",
+                    "type": "string",
+                    "example": "角色查询失败"
+                },
+                "zhCn": {
+                    "description": "中文响应文言",
+                    "type": "string",
+                    "example": "角色查询失败"
+                }
+            }
+        },
+        "platModel.ResponsePageReq": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "F7000"
+                },
+                "current": {
+                    "description": "当前页",
+                    "type": "integer",
+                    "example": 1
+                },
+                "pageSize": {
+                    "description": "单页数量",
+                    "type": "integer",
+                    "example": 10
+                },
+                "responseType": {
+                    "description": "响应类型，该字段用于筛选，可配置S和F",
+                    "type": "string",
+                    "enum": [
+                        "S",
+                        "F"
+                    ],
+                    "example": "S"
+                },
+                "serviceCode": {
+                    "description": "业务编码，仅允许提交数字",
+                    "type": "string",
+                    "example": "7"
+                }
+            }
+        },
+        "platModel.RoleAddReq": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "description": "角色名称",
+                    "type": "string",
+                    "maxLength": 16,
+                    "example": "admin"
+                },
+                "permissionIds": {
+                    "description": "权限集",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "remark": {
+                    "description": "角色备注",
+                    "type": "string",
+                    "maxLength": 64,
+                    "example": "管理员"
+                }
+            }
+        },
+        "platModel.RoleEditReq": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "description": "数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "角色名称",
+                    "type": "string",
+                    "maxLength": 16,
+                    "example": "admin"
+                },
+                "permissionIds": {
+                    "description": "权限集",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "remark": {
+                    "description": "角色备注",
+                    "type": "string",
+                    "maxLength": 64,
+                    "example": "管理员"
+                }
+            }
+        },
+        "platModel.RolePageReq": {
+            "type": "object",
+            "properties": {
+                "current": {
+                    "description": "当前页",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "角色名称",
+                    "type": "string",
+                    "example": "admin"
+                },
+                "pageSize": {
+                    "description": "单页数量",
+                    "type": "integer",
+                    "example": 10
+                }
+            }
+        },
+        "platModel.RouterAddReq": {
+            "type": "object",
+            "required": [
+                "name",
+                "printReq",
+                "printRes",
+                "serviceCode",
+                "type",
+                "url"
+            ],
+            "properties": {
+                "name": {
+                    "description": "路由名称，用于界面展示，与权限关联",
+                    "type": "string",
+                    "maxLength": 32,
+                    "example": "开放账密登陆"
+                },
+                "printReq": {
+                    "description": "请求日志打印 1 不打印 2 打印",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "example": "1"
+                },
+                "printRes": {
+                    "description": "响应日志打印 1 不打印 2 打印",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "example": "2"
+                },
+                "serviceCode": {
+                    "description": "业务编码（字典），为接口分组",
+                    "type": "string",
+                    "example": "1"
+                },
+                "type": {
+                    "description": "免授权路由 1 授权 2 免授权",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "example": "1"
+                },
+                "url": {
+                    "description": "路由地址，后端访问URL 后端不再URL中携带参数，统一Post处理内容",
+                    "type": "string",
+                    "maxLength": 64,
+                    "example": "/open/auth/login"
+                }
+            }
+        },
+        "platModel.RouterEditReq": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "printReq",
+                "printRes",
+                "serviceCode",
+                "url"
+            ],
+            "properties": {
+                "id": {
+                    "description": "默认数据ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "路由名称，用于界面展示，与权限关联",
+                    "type": "string",
+                    "maxLength": 32,
+                    "example": "开放账密登陆"
+                },
+                "printReq": {
+                    "description": "请求日志打印 1 不打印 2 打印",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "example": "1"
+                },
+                "printRes": {
+                    "description": "响应日志打印 1 不打印 2 打印",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "example": "2"
+                },
+                "serviceCode": {
+                    "description": "业务编码（字典），为接口分组",
+                    "type": "string",
+                    "example": "1"
+                },
+                "url": {
+                    "description": "路由地址，后端访问URL 后端不再URL中携带参数，统一Post处理内容",
+                    "type": "string",
+                    "maxLength": 64,
+                    "example": "/open/auth/login"
+                }
+            }
+        },
+        "platModel.RouterPageReq": {
+            "type": "object",
+            "properties": {
+                "current": {
+                    "description": "当前页",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "路由名称",
+                    "type": "string"
+                },
+                "pageSize": {
+                    "description": "单页数量",
+                    "type": "integer",
+                    "example": 10
+                },
+                "serviceCode": {
+                    "description": "业务编码，仅允许提交数字",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "路由类型，仅允许提交1/2",
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ]
+                },
+                "url": {
+                    "description": "路由地址，仅允许提交URI",
+                    "type": "string"
+                }
+            }
+        },
+        "resp.DemoAuthLg": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "E002"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string",
+                    "example": "当前尚未登陆"
+                }
+            }
+        },
+        "resp.DemoAuthNg": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "E003"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string",
+                    "example": "当前接口禁止访问"
+                }
+            }
+        },
+        "resp.DemoErr": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "E000"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string",
+                    "example": "系统异常"
+                }
+            }
+        },
+        "resp.DemoOk": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "SX00X/FX00X"
+                },
+                "data": {
+                    "description": "响应数据",
+                    "type": "string",
+                    "example": "响应数据"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string",
+                    "example": "操作成功/失败"
+                },
+                "unPop": {
+                    "description": "免弹窗提示",
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "resp.DemoVail": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "E001"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string",
+                    "example": "xx字段应该为必填"
+                }
+            }
+        },
+        "resp.ResBody": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码",
+                    "type": "string",
+                    "example": "S0000/F0000"
+                },
+                "data": {
+                    "description": "响应数据"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string",
+                    "example": "操作成功/失败"
+                },
+                "unPop": {
+                    "description": "免弹窗提示",
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Token": {
+            "type": "apiKey",
+            "name": "Token",
+            "in": "header"
+        }
+    },
+    "tags": [
+        {
+            "description": "基础开发接口",
+            "name": "开放接口"
+        }
+    ],
+    "x-tagGroups": [
+        {
+            "name": "基础",
+            "tags": [
+                "开放接口"
+            ]
+        },
+        {
+            "name": "平台",
+            "tags": [
+                "租户管理",
+                "集团部门",
+                "角色配置",
+                "登陆账号",
+                "访问权限",
+                "路由接口",
+                "响应文言",
+                "数据字典"
+            ]
+        }
+    ]
+}
