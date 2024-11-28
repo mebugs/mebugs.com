@@ -1,9 +1,9 @@
 <template>
   <a-form size="large" label-align="left" class="form" layout="vertical" :model="formData" @submit="submit">
     <a-row :gutter="20">
-      <a-col :span="24">
+      <a-col :span="12">
         <a-form-item field="sourceShow" :label="$t('category.sourceId')" :rules="[{ required: true, message: $t('rule.required') }]">
-          <label class="upIcon" for="upMainImg">
+          <label class="upIcon" for="upMainImgCategoryMod">
             <img :src="formData.sourceShow" v-if="formData.sourceShow" />
             <p v-else>
               <icon-upload />
@@ -11,13 +11,14 @@
             </p>
           </label>
           <input
-            id="upMainImg"
+            id="upMainImgCategoryMod"
             accept="image/gif, image/jpeg, image/png, image/jpg"
             type="file"
             style="display: none"
             @change="chooesMain" />
         </a-form-item>
       </a-col>
+      <a-col :span="12"></a-col>
       <a-col :span="12">
         <a-form-item field="title" :label="$t('category.title')" :rules="[{ required: true, message: $t('rule.required') }]">
           <a-input v-model="formData.title" :max-length="32" allow-clear show-word-limit :placeholder="$t('category.title.place')" />

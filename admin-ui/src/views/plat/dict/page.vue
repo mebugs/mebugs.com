@@ -33,7 +33,7 @@
               size="large"
               type="primary"
               status="danger"
-              @click="pop.open('add', 0, $t('dict.add'), $t('dict.add.sub'), {}, search)">
+              @click="pop.open('add', 0, $t('dict.add'), $t('dict.add.sub'), {}, init)">
               <template #icon>
                 <icon-plus />
               </template>
@@ -93,7 +93,7 @@
           <a-button
             v-permission="'PlatDictEdit'"
             type="text"
-            @click="pop.open('edit', record.id, $t('dict.edit'), record.groupKey, {}, search)">
+            @click="pop.open('edit', record.id, $t('dict.edit'), record.groupKey, {}, init)">
             <template #icon> <icon-edit /> </template>
           </a-button>
         </a-tooltip>

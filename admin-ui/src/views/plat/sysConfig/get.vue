@@ -91,6 +91,18 @@
           </a-row>
         </a-col>
         <a-col :span="24">
+          <a-row :gutter="20">
+            <a-col :span="12">
+              <a-form-item field="fileFullPath" :label="$t('sysConfig.fileFullPath')">
+                <template #extra>
+                  <div>{{ $t('sysConfig.fileFullPath.tips') }}</div>
+                </template>
+                <span class="formSpan">{{ formData.fileFullPath }}</span>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-col>
+        <a-col :span="24">
           <a-divider />
           <div class="doBtn">
             <a-space>

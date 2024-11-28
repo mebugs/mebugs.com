@@ -50,42 +50,48 @@
     </a-row>
   </a-form>
   <a-divider />
-  <!--表格，吸顶和滚动条不可同时使用 -->
-  <a-table
-    :scrollbar="false"
-    :sticky-header="true"
-    :row-key="'id'"
-    :loading="load"
-    :pagination="page"
-    :columns="columns"
-    :data="list"
-    @page-change="changePage">
-    <template #sourceShow="{ record }"> <img class="smallIcon" :src="record.sourceShow" /> </template>
-    <template #operations="{ record }">
-      <a-space>
-        <a-tooltip :content="$t('button.get')" :mini="true">
-          <a-button v-permission="''" type="text" @click="pop.open('get', record.id, $t('category.get'), record.title, {}, search)">
-            <template #icon> <icon-eye /> </template>
-          </a-button>
-        </a-tooltip>
-        <a-tooltip :content="$t('button.edit')" :mini="true">
-          <a-button v-permission="''" type="text" @click="pop.open('edit', record.id, $t('category.edit'), record.title, {}, search)">
-            <template #icon> <icon-edit /> </template>
-          </a-button>
-        </a-tooltip>
-        <a-tooltip :content="$t('category.merge')" :mini="true">
-          <a-button v-permission="''" type="text" @click="openMerge(record)">
-            <template #icon> <icon-branch /> </template>
-          </a-button>
-        </a-tooltip>
-        <a-tooltip :content="$t('button.delete')" :mini="true">
-          <a-button v-permission="''" type="text" @click="openDelete(record)">
-            <template #icon> <icon-delete /> </template>
-          </a-button>
-        </a-tooltip>
-      </a-space>
-    </template>
-  </a-table>
+  <a-spin :loading="load">
+    <a-row :gutter="20">
+      <a-col :span="24" class="doBtn" style="margin-bottom: 20px">
+        <a-pagination :total="page.total" :page-size="page.pageSize" show-total @change="changePage" />
+      </a-col>
+      <a-col :span="4" v-for="record in list" :key="record.id">
+        <div class="cardlist">
+          <div class="upIcon">
+            <img :src="record.sourceShow" />
+          </div>
+          <p>{{ record.title }} / {{ record.url }}</p>
+          <p>{{ record.summary }}</p>
+          <a-space>
+            <a-tooltip :content="$t('button.get')" :mini="true">
+              <a-button v-permission="''" type="text" @click="pop.open('get', record.id, $t('category.get'), record.title, {}, search)">
+                <template #icon> <icon-eye /> </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip :content="$t('button.edit')" :mini="true">
+              <a-button
+                v-permission="''"
+                type="text"
+                @click="pop.open('edit', record.id, $t('category.edit'), record.title, {}, search)">
+                <template #icon> <icon-edit /> </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip :content="$t('category.merge')" :mini="true">
+              <a-button v-permission="''" type="text" @click="openMerge(record)">
+                <template #icon> <icon-branch /> </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip :content="$t('button.delete')" :mini="true">
+              <a-button v-permission="''" type="text" @click="openDelete(record)">
+                <template #icon> <icon-delete /> </template>
+              </a-button>
+            </a-tooltip>
+          </a-space>
+        </div>
+      </a-col>
+    </a-row>
+  </a-spin>
+
   <!-- 刪除确认-->
   <a-modal v-model:visible="delItem.delConfirm" :width="400" :title="$t('title.delete')" @before-ok="deleting">
     <div>{{ $t('category.del.tips') }}</div>
@@ -127,25 +133,16 @@ const props = defineProps({
 const { load, setLoad } = useLoad(false)
 // 当前语言
 const { currentLocale } = useLocale()
-const { t } = useI18n()
 // 分页
-const { page, setQuery, search, changePage, resetPage } = usePage()
+const { page, setQuery, search, changePage, resetPage } = usePage(12)
 // 初始化查询对象
 const initQuery = () => {
   return { title: '', url: '' }
 }
 // 查询对象
 const query = ref(initQuery())
-// 表格表头和数据指定
-const columns = computed(() => [
-  { title: t('category.sourceId'), dataIndex: 'sourceShow', slotName: 'sourceShow' },
-  { title: t('category.title'), dataIndex: 'title' },
-  { title: t('category.url'), dataIndex: 'url' },
-  { title: t('category.summary'), width: 400, dataIndex: 'summary', ellipsis: true, tooltip: true },
-  { title: t('base.oper'), slotName: 'operations', width: 190 }
-])
 // 列表对象
-const list = ref([])
+const list = ref<any>([])
 // 分页检索
 async function pageQuery() {
   if (load.value) return

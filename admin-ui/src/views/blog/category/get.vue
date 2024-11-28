@@ -2,13 +2,14 @@
   <a-spin :loading="load">
     <a-form size="large" label-align="left" class="form" layout="vertical" :model="formData">
       <a-row :gutter="20">
-        <a-col :span="24">
+        <a-col :span="12">
           <a-form-item field="sourceShow" :label="$t('category.sourceId')">
-            <label class="upIcon" for="upMainImg">
+            <label class="upIcon" for="upMainImgCategory">
               <img :src="formData.sourceShow" />
             </label>
           </a-form-item>
         </a-col>
+        <a-col :span="12"></a-col>
         <a-col :span="12">
           <a-form-item field="title" :label="$t('category.title')">
             <span class="formSpan">{{ formData.title }}</span>
