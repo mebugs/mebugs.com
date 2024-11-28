@@ -238,11 +238,16 @@ func (q *Query) countByQuery(db *gorm.DB) (int64, error) {
 func (q *Query) GetByQuery(db *gorm.DB, res any) error {
 	// 不包含Limit
 	sql, whereArray := q.makeSqlByQuery(false)
-	dbQuery := db.Raw(sql, whereArray...)
 	// 如果有Limit
 	if q.LimitRange != nil {
-		dbQuery.Offset(q.LimitRange.Offset).Limit(q.LimitRange.Limit)
+		sql += " LIMIT ?  OFFSET ?"
+		whereArray = append(whereArray, q.LimitRange.Limit)
+		whereArray = append(whereArray, q.LimitRange.Offset)
+		//dbQuery.Scopes(func(db *gorm.DB) *gorm.DB {
+		//	return db.Offset(q.LimitRange.Offset).Limit(q.LimitRange.Limit)
+		//})
 	}
+	dbQuery := db.Raw(sql, whereArray...)
 	r := dbQuery.Find(res)
 	return r.Error
 }
