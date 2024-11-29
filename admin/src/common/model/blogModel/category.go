@@ -62,7 +62,8 @@ type CategoryGetRes struct {
 
 // CategoryPageReq 文章分类 分页请求，根据实际业务替换分页条件字段
 type CategoryPageReq struct {
-	Id uint64 `json:"id" example:"1"` // 数据ID
+	Title string `json:"title" example:"demo"` // 名称
+	Url   string `json:"url" example:"demo"`   // 分类地址
 	baseModel.PageReq
 }
 

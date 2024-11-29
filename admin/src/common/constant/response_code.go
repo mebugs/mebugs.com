@@ -109,4 +109,10 @@ const (
 	CategoryDelNoNG   = "F904" // 文章分类下存在数据禁止删除
 	CategoryDelNG     = "F905" // 文章分类删除失败
 
+	SourceAddSS    = "S1000" // 资源配置表创建成功
+	SourceEditSS   = "S1001" // 资源配置表编辑成功
+	SourceDelSS    = "S1002" // 资源清理暂不开放
+	SourceGetNG    = "F1000" // 资源配置表查询失败
+	SourceFileUpNg = "F1001" // 资源文件上传失败
+
 )
