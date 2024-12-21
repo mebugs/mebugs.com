@@ -7,7 +7,6 @@ import (
 	"siteol.com/smart/src/common/model/baseModel"
 	"siteol.com/smart/src/common/model/blogModel"
 	"siteol.com/smart/src/common/mysql/blogDB"
-	"time"
 )
 
 // AddCategory 创建文章分类
@@ -17,9 +16,9 @@ func AddCategory(traceID string, req *blogModel.CategoryAddReq) *baseModel.ResBo
 		return baseModel.Fail(constant.CategoryAddNoScNG)
 	}
 	dbSourceReq, errNum, err := thirdAddSource(traceID, &blogModel.SourceAddReq{
-		FileType: 1, // ICON
+		FileType: "1", // 1 ICON
 		SourceDoReq: blogModel.SourceDoReq{
-			Name:         "Category:" + req.Title,
+			Name:         "Category_" + req.Title,
 			FileStrArray: req.Source,
 		},
 	})
@@ -67,7 +66,7 @@ func PageCategory(traceID string, req *blogModel.CategoryPageReq) *baseModel.Res
 	// 读取资源地址
 	sourceMap := make(map[uint64]string, len(sources))
 	for _, r := range sources {
-		sourceMap[r.Id] = fmt.Sprintf(constant.SourceFileUrl, r.FilePath, fmt.Sprintf("%d", r.Id), r.BackEnd, time.Now().Unix())
+		sourceMap[r.Id] = fmt.Sprintf(constant.SourceFileUrl, r.FilePath, fmt.Sprintf("%d", r.Id), r.BackEnd, r.Version)
 	}
 	return baseModel.SuccessUnPop(baseModel.SetPageRes(blogModel.ToCategoryPageRes(list, sourceMap), total))
 }
@@ -84,7 +83,7 @@ func GetCategory(traceID string, req *baseModel.IdReq) *baseModel.ResBody {
 		log.ErrorTF(traceID, "GetCategory GetSource Fail . Err Is : %v", err)
 		return baseModel.Fail(constant.CategoryGetNG)
 	}
-	return baseModel.SuccessUnPop(blogModel.ToCategoryGetRes(&res, fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, time.Now().Unix())))
+	return baseModel.SuccessUnPop(blogModel.ToCategoryGetRes(&res, fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version)))
 }
 
 // EditCategory 编辑文章分类
@@ -95,24 +94,24 @@ func EditCategory(traceID string, req *blogModel.CategoryEditReq) *baseModel.Res
 		return baseModel.Fail(constant.CategoryGetNG)
 	}
 	// 如果存在图片资源，更新图片
-	if len(req.Source) > 1 {
-		return baseModel.Fail(constant.CategoryAddNoScNG)
-	}
-	errNum, err := thirdEditSource(traceID, &blogModel.SourceEditReq{
-		Id: dbReq.SourceId,
-		SourceDoReq: blogModel.SourceDoReq{
-			Name:         "Category:" + dbReq.Title,
-			FileStrArray: req.Source,
-		},
-	})
-	if err != nil {
-		switch errNum {
-		case 1:
-			return baseModel.Fail(constant.SourceGetNG)
-		case 2:
-			return baseModel.Fail(constant.SourceFileUpNg)
-		case 3:
-			return checkSourceDBErr(err)
+	if len(req.Source) > 0 {
+		errNum, err := thirdEditSource(traceID, &blogModel.SourceEditReq{
+			Id:       dbReq.SourceId,
+			FileType: "1", // 1 ICON
+			SourceDoReq: blogModel.SourceDoReq{
+				Name:         "Category_" + dbReq.Title,
+				FileStrArray: req.Source,
+			},
+		})
+		if err != nil {
+			switch errNum {
+			case 1:
+				return baseModel.Fail(constant.SourceGetNG)
+			case 2:
+				return baseModel.Fail(constant.SourceFileUpNg)
+			case 3:
+				return checkSourceDBErr(err)
+			}
 		}
 	}
 	// 对象更新

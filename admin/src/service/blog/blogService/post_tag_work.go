@@ -12,12 +12,12 @@ import (
 // 抽取到独立文件中仅便于Server层阅读（没有特别意义）
 
 // 解析数据库错误
-func checkCategoryDBErr(err error) *baseModel.ResBody {
+func checkPostTagDBErr(err error) *baseModel.ResBody {
 	errStr := err.Error()
 	if strings.Contains(errStr, constant.DBDuplicateErr) {
-		if strings.Contains(errStr, "url_uni") {
+		if strings.Contains(errStr, "xxx_uni") {
 			// 唯一索引错误
-			return baseModel.Fail(constant.CategoryUniXxxNG)
+			return baseModel.Fail(constant.PostTagUniXxxNG)
 		}
 	}
 	// 默认业务异常
@@ -25,7 +25,7 @@ func checkCategoryDBErr(err error) *baseModel.ResBody {
 }
 
 // 分页查询对象封装
-func categoryPageQuery(req *blogModel.CategoryPageReq) (query *actuator.Query) {
+func postTagPageQuery(req *blogModel.PostTagPageReq) (query *actuator.Query) {
 	// 初始化Page
 	req.PageReq.PageInit()
 	// 组装Query

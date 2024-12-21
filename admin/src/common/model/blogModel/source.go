@@ -71,7 +71,7 @@ func ToSourceGetRes(r *blogDB.Source) *SourceGetRes {
 
 	return &SourceGetRes{
 		Id:       r.Id,
-		Img:      fmt.Sprintf(constant.SourceFileUrl, r.FilePath, fmt.Sprintf("%d", r.Id), r.BackEnd, time.Now().Unix()),
+		Img:      fmt.Sprintf(constant.SourceFileUrl, r.FilePath, fmt.Sprintf("%d", r.Id), r.BackEnd, r.Version),
 		Name:     r.Name,
 		BackEnd:  r.BackEnd,
 		FileType: r.FileType,

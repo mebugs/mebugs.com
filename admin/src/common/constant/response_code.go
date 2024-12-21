@@ -115,4 +115,13 @@ const (
 	SourceGetNG    = "F1000" // 资源配置表查询失败
 	SourceFileUpNg = "F1001" // 资源文件上传失败
 
+	TagAddSS     = "S1100" // 标签创建成功
+	TagEditSS    = "S1101" // 标签编辑成功
+	TagDelSS     = "S1102" // 标签删除成功
+	TagGetNG     = "F1100" // 标签查询失败
+	TagAddNoScNG = "F1101" // 文章标签未提交图片
+	TagUniUrlNG  = "F1102" // 标签地址全局唯一
+	TagDelPostNG = "F1103" // 文章标签下数据删除失败
+	TagDelNG     = "F1104" // 标签删除成功
+
 )

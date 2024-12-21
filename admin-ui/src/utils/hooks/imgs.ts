@@ -2,8 +2,7 @@ import { ref } from 'vue'
 import { Message } from '@arco-design/web-vue'
 import i18n from '@/locale'
 export type img = {
-  baseUrl: string
-  smallBaseUrl: Array<string> // 缩略图
+  baseUrls: Array<string> // 缩略图
   smallSize: Array<Number>
   sizeScale: Number // 高/宽比例 1:1
   chooseDown: boolean // 选择处理完成
@@ -11,23 +10,24 @@ export type img = {
 export default function useImgs() {
   // 默认无需压缩，不限比例
   const imgObj = ref<img>({
-    baseUrl: '',
-    smallBaseUrl: [],
+    baseUrls: [],
     smallSize: [1024],
     sizeScale: 0,
     chooseDown: false
   })
   const initImgQuick = (type: string) => {
     if (type == 'main') {
-      initImg([1024, 512, 128], 0.56)
-    }
-    if (type == 'icon') {
-      initImg([128], 1)
+      initImg([1024, 512, 128], 0.56) // 主图
+    } else if (type == 'icon') {
+      initImg([128], 1) // 正方图
+    } else {
+      initImg([0], 0) // 原图
     }
   }
   const initImg = (smallSize: Array<Number>, sizeScale: Number) => {
     imgObj.value.smallSize = smallSize
     imgObj.value.sizeScale = sizeScale
+    imgObj.value.baseUrls = []
   }
   const chooesImg = (e: Event) => {
     return new Promise(async (resolve, reject) => {
@@ -41,7 +41,7 @@ export default function useImgs() {
                 reject(e)
                 return
               })
-              imgObj.value.smallBaseUrl = []
+              imgObj.value.baseUrls = []
               for (var i in imgObj.value.smallSize) {
                 await resizeImg(url as string, file.type, Number(i)).catch((e) => {
                   reject(e)
@@ -96,8 +96,8 @@ export default function useImgs() {
         // 获取 canvas DOM 对象
         var canvas = document.createElement('canvas')
         var thisSize = imgObj.value.smallSize[index] as number
-        //生成首页展示图
-        if (image.width > thisSize) {
+        // 生成缩放图（注意压缩<=0表示无需压缩）
+        if (thisSize > 0 && image.width > thisSize) {
           // 宽度等比例缩放 *=
           image.height *= thisSize / image.width
           image.width = thisSize
@@ -114,11 +114,7 @@ export default function useImgs() {
           ctx.drawImage(image, 0, 0, image.width, image.height)
           // !!! 注意，image 没有加入到 dom之中
           var blob = canvas.toDataURL(type)
-          if (index == 0) {
-            imgObj.value.baseUrl = blob
-          } else {
-            imgObj.value.smallBaseUrl.push(blob)
-          }
+          imgObj.value.baseUrls.push(blob)
           resolve(0)
           return
         }

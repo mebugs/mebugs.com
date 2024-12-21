@@ -158,6 +158,15 @@ func (t Table[T]) DeleteByIds(ids []uint64) (err error) {
 	return
 }
 
+// DeleteByMap 根据条件删除
+func (t Table[T]) DeleteByMap(by map[string]any) (err error) {
+	var exe T
+	r := exe.DataBase().Delete(&exe, by)
+	//.Exec(fmt.Sprintf("DELETE FROM %s WHERE `id`IN ?", exe.TableName()), ids)
+	err = r.Error
+	return
+}
+
 // SortWithTransaction 事务+排序
 func (t Table[T]) SortWithTransaction(req []*baseModel.SortReq) error {
 	var exe T

@@ -1,11 +1,14 @@
 // 通用的分页构造器
 import { reactive } from 'vue'
 
-export default function usePage() {
+export default function usePage(pageSize?: number) {
+  if (!pageSize) {
+    pageSize = 10
+  }
   // 默认分页对象
   const page = reactive({
     current: 1,
-    pageSize: 10,
+    pageSize: pageSize,
     total: 0,
     showTotal: true
   })

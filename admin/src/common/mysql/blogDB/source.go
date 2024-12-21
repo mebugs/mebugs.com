@@ -14,6 +14,7 @@ type Source struct {
 	FileType string     `json:"fileType"` // 图片类型，枚举：0_主图 1_图标 2_正文
 	FilePath string     `json:"filePath"` // 文件子目录，年份目录
 	Status   string     `json:"status"`   // 状态，枚举：0_正常 1_锁定 2_封存
+	Version  string     `json:"version"`  // 版本号
 	CreateAt *time.Time `json:"createAt"` // 创建时间
 	UpdateAt *time.Time `json:"updateAt"` // 更新时间
 }
