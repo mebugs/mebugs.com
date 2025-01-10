@@ -55,6 +55,10 @@ export function CheckList(formData: any, idKey: string, valKey: string) {
       return i !== id
     })
   }
+  // 数据排序
+  function sortQuick(items: any) {
+    formData.value[valKey] = items
+  }
   return {
     check,
     selectData,
@@ -62,6 +66,7 @@ export function CheckList(formData: any, idKey: string, valKey: string) {
     cancel,
     done,
     doSelect,
-    removeQuick
+    removeQuick,
+    sortQuick
   }
 }

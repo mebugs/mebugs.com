@@ -137,7 +137,7 @@ func MergeCategory(c *gin.Context) {
 // @Accept		json
 // @Produce		json
 // @Security	Token
-// @Success		200		{object}	baseModel.ResBody{data=[]baseModel.SelectNumRes}	"响应成功"
+// @Success		200		{object}	baseModel.ResBody{data=[]baseModel.SelectRes}	"响应成功"
 func ListCategory(c *gin.Context) {
 	traceID := c.GetString(constant.ContextTraceID)
 	service.JsonRes(c, blogService.ListCategory(traceID))

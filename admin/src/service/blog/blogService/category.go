@@ -133,7 +133,7 @@ func DelCategory(traceID string, req *baseModel.IdReq) *baseModel.ResBody {
 		return baseModel.Fail(constant.CategoryGetNG)
 	}
 	// 如果存在数据禁止删除
-	count, err := blogDB.PostTable.CountByObject(blogDB.Post{CategoryId: req.Id})
+	count, err := blogDB.PostTable.CountByObject(blogDB.Post{Category: dbReq.Title})
 	if err != nil {
 		log.ErrorTF(traceID, "CountCategory %d Fail . Err Is : %v", req.Id, err)
 		return baseModel.Fail(constant.CategoryGetNG)
@@ -180,11 +180,11 @@ func ListCategory(traceID string) *baseModel.ResBody {
 		log.ErrorTF(traceID, "ListCategory Fail . Err Is : %v", err)
 		return baseModel.Fail(constant.CategoryGetNG)
 	}
-	resp := make([]baseModel.SelectNumRes, 0)
+	resp := make([]baseModel.SelectRes, 0)
 	for _, item := range resList {
-		resp = append(resp, baseModel.SelectNumRes{
+		resp = append(resp, baseModel.SelectRes{
 			Label: item.Title,
-			Value: item.Id,
+			Value: item.Title,
 		})
 	}
 	return baseModel.SuccessUnPop(resp)

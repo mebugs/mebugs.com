@@ -55,7 +55,7 @@ func thirdEditSource(traceID string, req *blogModel.SourceEditReq) (errNum int, 
 	}
 	// 先处理图片
 	err = setSourceFile(traceID, req.FileStrArray, &dbReq)
-	if err != nil {
+	if err != nil && err.Error() != "" {
 		log.ErrorTF(traceID, "EditSource UploadFIle Fail . Err Is : %v", err)
 		return 2, err
 	}
@@ -132,6 +132,7 @@ func setSourceFile(traceId string, baseArray []string, dbReq *blogDB.Source) (er
 	dbReq.Status = constant.StatusOpen
 	now := time.Now()
 	dbReq.UpdateAt = &now
+	dbReq.Version = fmt.Sprintf("%d", now.Unix())
 	return
 }
 
