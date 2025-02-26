@@ -36,7 +36,8 @@
       </a-col>
       <a-col :span="24">
         <a-divider orientation="left">
-          {{ $t('topic.posts') }} <span class="arco-form-item-extra" style="margin: 0 10px"> {{ $t('topic.posts.tips') }} </span>
+          {{ $t('topic.posts') }}
+          <span class="arco-form-item-extra" style="margin: 0 10px"> {{ $t('topic.posts.tips') }} </span>
           <a-tooltip :content="$t('topic.posts.check')" :mini="true">
             <a-button type="primary" size="small" @click="open">
               <template #icon>

@@ -81,8 +81,7 @@ const drag = computed(() => {
 const posts = computed(() => {
   let c: any[] = [
     { title: t('post.title'), dataIndex: 'title' },
-    { title: t('post.url'), dataIndex: 'url' },
-    { title: t('post.category'), dataIndex: 'category' }
+    { title: t('post.url'), dataIndex: 'url' }
   ]
   if (props.remove) {
     c.push({ title: t('base.oper'), slotName: 'operations', width: 80 })

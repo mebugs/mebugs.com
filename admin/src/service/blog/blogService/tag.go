@@ -147,3 +147,21 @@ func DelTag(traceID string, req *baseModel.IdReq) *baseModel.ResBody {
 	}
 	return baseModel.Success(constant.TagDelSS, true)
 }
+
+// ListTag 标签列表
+func ListTag(traceID string) *baseModel.ResBody {
+	// 查询全部标签
+	resList, err := blogDB.TagTable.GetAll()
+	if err != nil {
+		log.ErrorTF(traceID, "ListTag Fail . Err Is : %v", err)
+		return baseModel.Fail(constant.TagGetNG)
+	}
+	resp := make([]*baseModel.SelectNumRes, 0)
+	for _, item := range resList {
+		resp = append(resp, &baseModel.SelectNumRes{
+			Label: item.Title,
+			Value: item.Id,
+		})
+	}
+	return baseModel.SuccessUnPop(resp)
+}

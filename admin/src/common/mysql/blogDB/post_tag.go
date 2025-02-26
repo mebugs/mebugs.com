@@ -24,3 +24,17 @@ func (t PostTag) DataBase() *gorm.DB {
 func (t PostTag) TableName() string {
 	return "post_tag"
 }
+
+// DeleteByPostId 根据文章ID移除标签关联
+func (t PostTag) DeleteByPostId(postId uint64) (err error) {
+	r := blogDb.Where("post_id = ?", postId).Delete(&t)
+	err = r.Error
+	return
+}
+
+// GetTagIds 获取文章对应的标签ID
+func (t PostTag) GetTagIds(postId uint64) (res []uint64, err error) {
+	r := blogDb.Table(t.TableName()).Distinct("tag_id").Where("post_id = ?", postId).Find(&res)
+	err = r.Error
+	return
+}

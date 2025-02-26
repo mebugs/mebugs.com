@@ -2,6 +2,7 @@ package blogHandler
 
 import (
 	"github.com/gin-gonic/gin"
+	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/model/baseModel"
 	"siteol.com/smart/src/common/model/blogModel"
 	"siteol.com/smart/src/service"
@@ -106,4 +107,19 @@ func DelTag(c *gin.Context) {
 
 		service.JsonRes(c, blogService.DelTag(traceID, req))
 	}
+}
+
+// ListTag	godoc
+// @id			ListTag 标签列表
+// @Summary		标签列表
+// @Description	标签列表处理
+// @Router		/blog/tag/list [post]
+// @Tags		文章分类
+// @Accept		json
+// @Produce		json
+// @Security	Token
+// @Success		200		{object}	baseModel.ResBody{data=[]baseModel.SelectRes}	"响应成功"
+func ListTag(c *gin.Context) {
+	traceID := c.GetString(constant.ContextTraceID)
+	service.JsonRes(c, blogService.ListTag(traceID))
 }

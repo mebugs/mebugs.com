@@ -32,6 +32,27 @@ func BlogRouter(router *gin.Engine) {
 			categoryRouter.POST("/list", blogHandler.ListCategory)
 		}
 
+		// 标签相关
+		tagRouter := blogRouter.Group("/tag")
+		{
+			tagRouter.POST("/add", blogHandler.AddTag)
+			tagRouter.POST("/page", blogHandler.PageTag)
+			tagRouter.POST("/get", blogHandler.GetTag)
+			tagRouter.POST("/edit", blogHandler.EditTag)
+			tagRouter.POST("/del", blogHandler.DelTag)
+			tagRouter.POST("/list", blogHandler.ListTag)
+		}
+
+		// 文章专题相关
+		topicRouter := blogRouter.Group("/topic")
+		{
+			topicRouter.POST("/add", blogHandler.AddTopic)
+			topicRouter.POST("/page", blogHandler.PageTopic)
+			topicRouter.POST("/get", blogHandler.GetTopic)
+			topicRouter.POST("/edit", blogHandler.EditTopic)
+			topicRouter.POST("/del", blogHandler.DelTopic)
+		}
+
 		// 文章或页面相关
 		postRouter := blogRouter.Group("/post")
 		{
@@ -39,17 +60,6 @@ func BlogRouter(router *gin.Engine) {
 			postRouter.POST("/page", blogHandler.PagePost)
 			postRouter.POST("/get", blogHandler.GetPost)
 			postRouter.POST("/edit", blogHandler.EditPost)
-			postRouter.POST("/del", blogHandler.DelPost)
-		}
-
-		// 文章引用标签相关
-		postTagRouter := blogRouter.Group("/postTag")
-		{
-			postTagRouter.POST("/add", blogHandler.AddPostTag)
-			postTagRouter.POST("/page", blogHandler.PagePostTag)
-			postTagRouter.POST("/get", blogHandler.GetPostTag)
-			postTagRouter.POST("/edit", blogHandler.EditPostTag)
-			postTagRouter.POST("/del", blogHandler.DelPostTag)
 		}
 
 		// 文章评论相关
@@ -60,6 +70,16 @@ func BlogRouter(router *gin.Engine) {
 			postCommentRouter.POST("/get", blogHandler.GetPostComment)
 			postCommentRouter.POST("/edit", blogHandler.EditPostComment)
 			postCommentRouter.POST("/del", blogHandler.DelPostComment)
+		}
+
+		// 极简用户信息相关
+		userRouter := blogRouter.Group("/user")
+		{
+			userRouter.POST("/add", blogHandler.AddUser)
+			userRouter.POST("/page", blogHandler.PageUser)
+			userRouter.POST("/get", blogHandler.GetUser)
+			userRouter.POST("/edit", blogHandler.EditUser)
+			userRouter.POST("/del", blogHandler.DelUser)
 		}
 
 	}

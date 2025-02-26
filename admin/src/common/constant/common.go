@@ -25,7 +25,7 @@ const (
 
 	DBDuplicateErr = "Error 1062 (23000): Duplicate entry" // 唯一索引错误
 
-	SourceFileUrl = "/source/%s/%s.%s?t=%d"
+	SourceFileUrl = "/source/%s/%s.%s?t=%s"
 )
 
 var (

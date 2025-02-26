@@ -1,83 +1,44 @@
 package blogService
 
 import (
-	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/log"
-	"siteol.com/smart/src/common/model/baseModel"
-	"siteol.com/smart/src/common/model/blogModel"
 	"siteol.com/smart/src/common/mysql/blogDB"
 )
 
-// AddPostTag 创建文章引用标签
-func AddPostTag(traceID string, req *blogModel.PostTagAddReq) *baseModel.ResBody {
-	// 创建对象初始化
-	dbReq := req.ToDbReq()
-	err := blogDB.PostTagTable.InsertOne(dbReq)
-	if err != nil {
-		log.ErrorTF(traceID, "AddPostTag Fail . Err Is : %v", err)
-		// 解析数据库错误
-		return checkPostTagDBErr(err)
+// syncPostTags 刷新文档和标签关系 editFlag:true表是更细
+func syncPostTags(traceID string, postId uint64, tagIds []uint64, editFlag bool) (err error) {
+	if editFlag {
+		// 移除当前权限的路由
+		err = blogDB.PostTagTable.Executor().DeleteByPostId(postId)
+		if err != nil {
+			log.ErrorTF(traceID, "DeleteByPostId By %d Fail . Err Is : %v", postId, err)
+			return
+		}
 	}
-	return baseModel.Success(constant.PostTagAddSS, true)
+	// 重新插入路由关系
+	if len(tagIds) > 0 {
+		postTags := make([]blogDB.PostTag, len(tagIds))
+		for i, item := range tagIds {
+			postTags[i] = blogDB.PostTag{
+				Id:     0,
+				PostId: postId,
+				TagId:  item,
+			}
+		}
+		err = blogDB.PostTagTable.InsertBatch(&postTags)
+		if err != nil {
+			log.ErrorTF(traceID, "InsertBatchPostTags By topicId %d Fail . Err Is : %v", postId, err)
+
+		}
+	}
+	return
 }
 
-// PagePostTag 查询文章引用标签分页
-func PagePostTag(traceID string, req *blogModel.PostTagPageReq) *baseModel.ResBody {
-	// 查询分页
-	total, list, err := blogDB.PostTagTable.Page(postTagPageQuery(req))
+// getPostTags 获取文章标签IDS
+func getPostTagIds(traceID string, postId uint64) (tagIds []uint64, err error) {
+	tagIds, err = blogDB.PostTag{}.GetTagIds(postId)
 	if err != nil {
-		log.ErrorTF(traceID, "PagePostTag Fail . Err Is : %v", err)
-		return baseModel.Fail(constant.PostTagGetNG)
+		log.ErrorTF(traceID, "GetPostTagIds By %d Fail . Err Is : %v", postId, err)
 	}
-	return baseModel.SuccessUnPop(baseModel.SetPageRes(blogModel.ToPostTagPageRes(list), total))
-}
-
-// GetPostTag 文章引用标签详情
-func GetPostTag(traceID string, req *baseModel.IdReq) *baseModel.ResBody {
-	res, err := blogDB.PostTagTable.GetOneById(req.Id)
-	if err != nil {
-		log.ErrorTF(traceID, "GetPostTag Fail . Err Is : %v", err)
-		return baseModel.Fail(constant.PostTagGetNG)
-	}
-	return baseModel.SuccessUnPop(blogModel.ToPostTagGetRes(&res))
-}
-
-// EditPostTag 编辑文章引用标签
-func EditPostTag(traceID string, req *blogModel.PostTagEditReq) *baseModel.ResBody {
-	dbReq, err := blogDB.PostTagTable.GetOneById(req.Id)
-	if err != nil {
-		log.ErrorTF(traceID, "GetPostTag Fail . Err Is : %v", err)
-		return baseModel.Fail(constant.PostTagGetNG)
-	}
-	// 对象更新
-	req.ToDbReq(&dbReq)
-	err = blogDB.PostTagTable.UpdateOne(dbReq)
-	if err != nil {
-		log.ErrorTF(traceID, "EditPostTag %d Fail . Err Is : %v", dbReq.Id, err)
-		// 解析数据库错误
-		return checkPostTagDBErr(err)
-	}
-	return baseModel.Success(constant.PostTagEditSS, true)
-}
-
-// DelPostTag 文章引用标签移除
-func DelPostTag(traceID string, req *baseModel.IdReq) *baseModel.ResBody {
-	dbReq, err := blogDB.PostTagTable.GetOneById(req.Id)
-	if err != nil {
-		log.ErrorTF(traceID, "GetPostTag Fail . Err Is : %v", err)
-		return baseModel.Fail(constant.PostTagGetNG)
-	}
-	//	// 文章引用标签禁止刪除
-	//	if dbReq.Mark == constant.StatusLock {
-	//		log.ErrorTF(traceID, "DelPostTag %d Fail . Can not Edit", dbReq.Id)
-	//		return baseModel.Fail(constant.PostTagMarkNG)
-	//	}
-	// 物理删除
-	err = blogDB.PostTagTable.DeleteOne(dbReq.Id)
-	if err != nil {
-		log.ErrorTF(traceID, "DelPostTag %d Fail . Err Is : %v", dbReq.Id, err)
-		// 硬删除直接报错
-		return baseModel.Fail(constant.PostTagDelNG)
-	}
-	return baseModel.Success(constant.PostTagDelSS, true)
+	return
 }

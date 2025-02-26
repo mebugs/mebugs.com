@@ -1,11 +1,11 @@
 <template>
   <div class="container" :class="{ sPop: pop.pop }">
     <a-card class="sGroup sList" :bordered="false">
-      <page :pop="pop" />
+      <page :pop="pop" :doCheck="doCheck" :doC="doC" />
     </a-card>
     <a-card class="sGroup sItem" :bordered="false" :loading="false">
       <a-page-header :title="pop.header" :subtitle="pop.subHeader" @back="pop.close()" />
-      <add v-if="pop.add" :pop="pop" />
+      <add v-if="pop.add" :pop="pop" :doC="doC" />
       <get v-if="pop.get" :pop="pop" />
       <edit v-if="pop.edit" :pop="pop" />
     </a-card>
@@ -19,6 +19,18 @@ import Page from './page.vue'
 import Add from './add.vue'
 import Get from './get.vue'
 import Edit from './edit.vue'
+defineProps({
+  doC: {
+    type: Boolean,
+    default: () => {
+      return false
+    }
+  },
+  doCheck: {
+    type: Function,
+    default: (o: any) => {}
+  }
+})
 const pop = usePop()
 onUnmounted(() => {
   pop.close()

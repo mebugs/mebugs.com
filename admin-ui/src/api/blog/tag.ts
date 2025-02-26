@@ -40,3 +40,7 @@ export function tagEdit(req: tag) {
 export function tagDel(req: any) {
   return axios.post('/blog/tag/del', { id: req })
 }
+
+export function tagList() {
+  return axios.post('/blog/tag/list')
+}

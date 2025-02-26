@@ -12,12 +12,12 @@ import (
 // 抽取到独立文件中仅便于Server层阅读（没有特别意义）
 
 // 解析数据库错误
-func checkPostTagDBErr(err error) *baseModel.ResBody {
+func checkUserDBErr(err error) *baseModel.ResBody {
 	errStr := err.Error()
 	if strings.Contains(errStr, constant.DBDuplicateErr) {
 		if strings.Contains(errStr, "xxx_uni") {
 			// 唯一索引错误
-			return baseModel.Fail(constant.PostTagUniXxxNG)
+			return baseModel.Fail(constant.UserUniXxxNG)
 		}
 	}
 	// 默认业务异常
@@ -25,17 +25,19 @@ func checkPostTagDBErr(err error) *baseModel.ResBody {
 }
 
 // 分页查询对象封装
-func postTagPageQuery(req *blogModel.PostTagPageReq) (query *actuator.Query) {
+func userPageQuery(req *blogModel.UserPageReq) (query *actuator.Query) {
 	// 初始化Page
 	req.PageReq.PageInit()
 	// 组装Query
 	query = actuator.InitQuery()
-	if req.Title != "" {
-		query.Like("title", req.Title)
+	// 模拟代码，更多函数参考Query构造器
+	if req.Id != 0 {
+		query.Like("id", req.Id)
 	}
-	if req.Url != "" {
-		query.Like("url", req.Url)
+	if req.Id != 0 {
+		query.Eq("id", req.Id)
 	}
+	// 模拟代码，更多函数参考Query构造器
 	query.Eq("status", constant.StatusOpen)
 	query.Desc("id")
 	query.LimitByPage(req.Current, req.PageSize)

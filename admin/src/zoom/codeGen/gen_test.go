@@ -17,19 +17,21 @@ import (
 var url = "root:123456@tcp(localhost:3306)/information_schema?charset=utf8mb4&parseTime=True&loc=Local"
 
 // 用户生成的数据库
-var dbName = "smart"
+var dbName = "blog"
 
 /**
  * 包名，该字段将影响为各个包下传入文件的处理
  * 例：src/common/mysql/{X}DB  src/common/model/{X}Model  src/service/{X}
  */
-var packName = "plat"
+var packName = "blog"
 
 // 计划生成的表名
-var tableArray = []string{"login_record"}
+var tableArray = []string{
+	"post_more",
+}
 
 // 计划生成的文件控制 DB文件 Model文件 Handle文件/Service文件/Constant示例/Router示例
-var flagArray = []bool{true, false, false}
+var flagArray = []bool{true, true, true}
 
 // TestGen
 func TestGen(t *testing.T) {

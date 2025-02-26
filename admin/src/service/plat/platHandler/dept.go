@@ -102,7 +102,7 @@ func DelDept(c *gin.Context) {
 	traceID, reqObj, err := service.ValidateReqObj(c, &baseModel.IdReq{})
 	if err == nil {
 		req := reqObj.(*baseModel.IdReq)
-		// 执行移除
+
 		service.JsonRes(c, platService.DelDept(traceID, req))
 	}
 }

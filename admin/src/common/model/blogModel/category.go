@@ -7,6 +7,12 @@ import (
 	"time"
 )
 
+// CategoryReadRes 分组读取响应
+type CategoryReadRes struct {
+	List []*baseModel.SelectNumRes `json:"list"` // 字典下拉列表 {'serviceCode':"[{'label':'基础','value':'1'}]"}
+	Map  map[uint64]string         `json:"map"`  // 字典翻译Map {'serviceCode':{'1':'基础'}}
+}
+
 // CategoryDoReq 文章分类 通用请求，创建&编辑可复用的字段
 type CategoryDoReq struct {
 	Title   string `json:"title" binding:"max=32" example:"demo"`   // 名称

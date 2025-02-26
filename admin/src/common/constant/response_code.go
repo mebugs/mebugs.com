@@ -124,4 +124,13 @@ const (
 	TagDelPostNG = "F1103" // 文章标签下数据删除失败
 	TagDelNG     = "F1104" // 标签删除成功
 
+	TopicAddSS     = "S1200" // 文章专题创建成功
+	TopicEditSS    = "S1201" // 文章专题编辑成功
+	TopicDelSS     = "S1202" // 文章专题删除成功
+	TopicGetNG     = "F1200" // 文章专题查询失败
+	TopicAddNoScNG = "F1201" // 文章标签未提交图片
+	TopicUniInfoNG = "F1202" // 文章专题内文章应当唯一
+	TopicPostNG    = "F1203" // 文章专题关联文章同步失败
+	TopicDelNG     = "F1204" // 文章专题删除
+
 )

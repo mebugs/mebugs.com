@@ -1,12 +1,12 @@
 <template>
   <div class="container" :class="{ sPop: pop.pop }">
     <a-card class="sGroup sList" :bordered="false">
-      <page :pop="pop" />
+      <page :pop="pop" :post-type="'1'" />
     </a-card>
     <a-card class="sGroup sItem" :bordered="false" :loading="false">
       <a-page-header :title="pop.header" :subtitle="pop.subHeader" @back="pop.close()" />
-      <add v-if="pop.add" :pop="pop" />
-      <edit v-if="pop.edit" :pop="pop" />
+      <add v-if="pop.add" :pop="pop" :post-type="'1'" />
+      <edit v-if="pop.edit" :pop="pop" :post-type="'1'" />
     </a-card>
   </div>
 </template>

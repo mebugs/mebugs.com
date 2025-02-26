@@ -14,10 +14,11 @@
       <a-col :span="8">
         <a-form-item field="category" :label="$t('post.category')">
           <a-select
-            v-model="query.category"
+            v-model="query.categoryId"
             :options="dictList.categoryList"
             allow-clear
             allow-search
+            @clear="toNull"
             :placeholder="$t('button.all')" />
         </a-form-item>
       </a-col>
@@ -57,6 +58,9 @@
     style="height: 410px"
     @page-change="changePage"
     @select="selectKeys">
+    <template #category="{ record }">
+      {{ dictMap.categoryList[record.categoryId] }}
+    </template>
     <template #status="{ record }">
       <a-tag :color="flagTag[record.status]">{{ dictMap.postStatus[record.status] }}</a-tag>
     </template>
@@ -95,7 +99,10 @@ const { t } = useI18n()
 const { page, setQuery, search, changePage, resetPage } = usePage()
 // 初始化查询对象
 const initQuery = () => {
-  return { title: '', url: '', status: '', category: '', postType: '1' }
+  return { title: '', url: '', status: '', categoryId: null, postType: '1' }
+}
+const toNull = () => {
+  query.value.categoryId = null
 }
 // 状态标签
 const flagTag: any = { '0': 'orange', '1': 'green', '2': 'red' }
@@ -105,7 +112,7 @@ const query = ref(initQuery())
 const columns = computed(() => [
   { title: t('post.title'), dataIndex: 'title' },
   { title: t('post.title'), dataIndex: 'title' },
-  { title: t('post.category'), dataIndex: 'category' },
+  { title: t('post.category'), dataIndex: 'category', slotName: 'category' },
   { title: t('post.status'), dataIndex: 'status', slotName: 'status', width: 150 }
 ])
 // 列表对象
@@ -131,7 +138,7 @@ async function pageQuery() {
 setQuery(pageQuery)
 // 初始化字典对象
 const dictList = ref({ postStatus: [], categoryList: [] })
-const dictMap = ref({ postStatus: {} as any })
+const dictMap = ref({ postStatus: {} as any, categoryList: {} as any })
 // 字段初始化
 async function dictInit() {
   // 指定字典Key
@@ -140,7 +147,8 @@ async function dictInit() {
     dictMap.value.postStatus = r.data.map.postStatus
   })
   await categoryList().then((dr) => {
-    dictList.value.categoryList = dr.data
+    dictList.value.categoryList = dr.data.list
+    dictMap.value.categoryList = dr.data.map
   })
 }
 // 选择对象

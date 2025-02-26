@@ -1,72 +1,89 @@
 <template>
   <a-form size="large" label-align="left" class="form" layout="vertical" :model="formData" @submit="submit">
     <a-row :gutter="20">
-      <a-col :span="12">
-        <a-form-item field="account" :label="$t('account.account')" :rules="[{ required: true, message: $t('rule.required') }]">
-          <span class="formSpan">{{ formData.account }}</span>
+      <a-col :span="16">
+        <a-col :span="24" style="padding: 0">
+          <a-form-item field="title" :label="$t('post.title')" :rules="[{ required: true, message: $t('rule.required') }]">
+            <a-input v-model="formData.title" :max-length="64" allow-clear show-word-limit :placeholder="$t('post.title.place')" />
+          </a-form-item>
+        </a-col>
+        <a-col :span="24" style="padding: 0">
+          <a-form-item field="title" :label="$t('post.url')" :rules="[{ required: true, message: $t('rule.required') }]">
+            <a-input v-model="formData.url" :max-length="32" allow-clear show-word-limit :placeholder="$t('post.url.place')" />
+          </a-form-item>
+        </a-col>
+        <a-col :span="24" style="padding: 0">
+          <a-form-item field="summary" :label="$t('post.summary')" :rules="[{ required: true, message: $t('rule.required') }]">
+            <a-textarea
+              v-model="formData.summary"
+              :max-length="256"
+              allow-clear
+              show-word-limit
+              :placeholder="$t('post.summary.place')" />
+          </a-form-item>
+        </a-col>
+      </a-col>
+      <a-col :span="8">
+        <a-form-item field="sourceShow" :label="$t('post.img')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <label class="upImg upPostImg" for="upMainImgpostEdit">
+            <img :src="formData.sourceShow" v-if="formData.sourceShow" />
+            <p v-else>
+              <icon-upload />
+              {{ $t('button.upload') }}
+            </p>
+          </label>
+          <input
+            id="upMainImgpostEdit"
+            accept="image/gif, image/jpeg, image/png, image/jpg"
+            type="file"
+            style="display: none"
+            @change="chooesMain" />
         </a-form-item>
       </a-col>
-      <a-col :span="12">
-        <a-form-item
-          field="permissionType"
-          :label="$t('account.permissionType')"
-          :rules="[{ required: true, message: $t('rule.required') }]">
+      <a-col :span="24" style="margin: 20px 0">
+        <div id="vditorEdit"></div>
+      </a-col>
+      <a-col :span="12" v-if="postType == '1'">
+        <a-form-item field="tagIds" :label="$t('post.tags')">
           <template #extra>
-            <div>{{ $t('account.permissionType.tips') }}</div>
+            <div>
+              {{ $t('post.tags.tips') }}
+              <a-tooltip :content="$t('button.Edit')" :mini="true">
+                <a-button type="primary" size="small" @click="openTagEdit">
+                  <template #icon>
+                    <icon-plus />
+                  </template>
+                </a-button>
+              </a-tooltip>
+            </div>
           </template>
+          <a-select v-model="formData.tagIds" :options="tags" multiple allow-clear allow-search :placeholder="$t('rule.select')" />
+        </a-form-item>
+      </a-col>
+      <a-col :span="12" v-if="postType == '1'">
+        <a-form-item field="categoryId" :label="$t('post.group')" :rules="[{ required: true, message: $t('rule.required') }]">
           <a-select
-            v-model="formData.permissionType"
-            :options="pop.dictList.accountPermission"
+            v-model="formData.categoryId"
+            :options="pop.dictList.categoryList"
             allow-clear
             allow-search
-            :placeholder="$t('rule.select')" />
+            :placeholder="$t('rule.select')"
+            @clear="formData.categoryId = null" />
         </a-form-item>
       </a-col>
       <a-col :span="12">
-        <a-form-item field="deptId" :label="$t('account.deptId')" :rules="[{ required: true, message: $t('rule.required') }]">
-          <a-tree-select
-            v-model="formData.deptId"
-            :allow-search="true"
-            :allow-clear="true"
-            :data="pop.dictList.deptTree"
-            :filter-tree-node="filterDept"
-            :placeholder="$t('rule.select')" />
-        </a-form-item>
-      </a-col>
-      <a-col :span="12">
-        <a-form-item field="isLeader" :label="$t('account.isLeader')" :rules="[{ required: true, message: $t('rule.required') }]">
-          <a-select
-            v-model="formData.isLeader"
-            :options="pop.dictList.deptAccount"
-            allow-clear
-            allow-search
-            :placeholder="$t('rule.select')" />
-        </a-form-item>
-      </a-col>
-      <a-col :span="12">
-        <a-form-item field="status" :label="$t('account.status')" :rules="[{ required: true, message: $t('rule.required') }]">
+        <a-form-item field="status" :label="$t('post.status')" :rules="[{ required: true, message: $t('rule.required') }]">
           <a-select
             v-model="formData.status"
-            :options="pop.dictList.accountStatus"
+            :options="pop.dictList.postStatus"
             allow-clear
             allow-search
             :placeholder="$t('rule.select')" />
         </a-form-item>
       </a-col>
-      <a-col :span="12">
-        <a-form-item field="name" :label="$t('account.name')">
-          <a-input v-model="formData.name" :max-length="16" allow-clear show-word-limit :placeholder="$t('account.name.place')" />
-        </a-form-item>
-      </a-col>
-      <a-col :span="24">
-        <a-form-item field="roleIds" :label="$t('account.roleIds')">
-          <a-select
-            v-model="formData.roleIds"
-            :options="pop.dictList.roles"
-            multiple
-            allow-clear
-            allow-search
-            :placeholder="$t('rule.select')" />
+      <a-col :span="12" v-if="formData.status == '0'">
+        <a-form-item field="pushAt" :label="$t('post.pushAt')">
+          <a-date-picker style="width: 100%" v-model="formData.pushAt" allow-clear :placeholder="$t('post.pushAt.place')" />
         </a-form-item>
       </a-col>
       <a-col :span="24">
@@ -90,13 +107,26 @@
       </a-col>
     </a-row>
   </a-form>
+  <a-modal v-model:visible="tagEditFlag" :title="$t('tags.Edit')" :footer="false" :width="900">
+    <tag-Edit v-if="tagEditFlag" :doEdit="doEdit" :doCanc="doCanc" :do="true" />
+  </a-modal>
+  <!-- 添加图片 -->
+  <a-modal v-model:visible="openS" :title="$t('source.check')" :footer="false" :width="900">
+    <source-index v-if="openS" :doCheck="doCheck" :doC="true" />
+  </a-modal>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import type { Pop } from '@/utils/hooks/pop'
 import useLoad from '@/utils/hooks/load'
-import { accountInit, accountGet, accountEdit } from '@/api/plat/account'
+import { postInit, postGet, postEdit } from '@/api/blog/post'
+import '~/vditor/src/assets/less/index.less'
+import vditor from '@/utils/hooks/vditor'
+import { tagList } from '@/api/blog/tag'
+import useImgs from '@/utils/hooks/imgs'
+import tagEdit from '../tag/add.vue'
+import sourceIndex from '../source/index.vue'
 // 入参读取
 const props = defineProps({
   pop: {
@@ -105,21 +135,57 @@ const props = defineProps({
     default: () => {
       return {} as Pop
     }
+  },
+  postType: {
+    type: String,
+    default: () => {
+      return '1' //默认文章
+    }
   }
 })
-// 检索部门
-function filterDept(searchValue: string, nodeData: any) {
-  return nodeData.title.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
-}
+
 // 加载中变量
 const { load, setLoad } = useLoad(false)
 // 表单数据初始化
-const formData = accountInit()
+const formData = postInit(props.postType)
+// 标签列表
+const tags = ref([])
+const getTagList = async () => {
+  setLoad(true)
+  await tagList()
+    .then((r) => {
+      tags.value = r.data
+    })
+    .finally(() => {
+      setLoad(false)
+    })
+}
+const tagEditFlag = ref(false)
+const openTagEdit = () => {
+  tagEditFlag.value = true
+}
+const doEdit = () => {
+  tagEditFlag.value = false
+  getTagList()
+}
+const doCanc = () => {
+  tagEditFlag.value = false
+}
+// 打开资源选择
+const openS = ref(false)
+const openSource = () => {
+  openS.value = true
+}
+// 0 编辑 1 正文预览 2 确认发布
+const timer = ref()
+const { vd, md, getNew, toPreview, getResponse } = vditor('vditorEdit', openSource)
 async function get() {
   setLoad(true)
   try {
-    const res = await accountGet(props.pop.itemId)
+    const res = await postGet(props.pop.itemId)
     formData.value = res.data
+    // 初始化编辑器
+    getNew(formData.value.md)
     return
   } catch (err) {
     // DoNothing CommonPopUp
@@ -127,28 +193,60 @@ async function get() {
     setLoad(false)
   }
 }
-// const accountAdd = ref<FormInstance>();
+// 主图加载器
+const { imgObj, initImgQuick, chooesImg } = useImgs()
+initImgQuick('main')
+const chooesMain = async (e: Event) => {
+  await chooesImg(e)
+    .then(() => {
+      formData.value.source = imgObj.value.baseUrls
+      formData.value.sourceShow = imgObj.value.baseUrls[0]
+    })
+    .catch((er) => {
+      console.log(er)
+    })
+}
+
+// docheck
+const doCheck = (record: any) => {
+  openS.value = false
+  vd.value.insertValue(`![SC-${record.id}-${record.name}.${record.backEnd} ](${record.img})\n`, true)
+}
+
+// const postEdit = ref<FormInstance>();
 // 提交数据
 const submit = async ({ errors, values }: { errors: any; values: any }) => {
   if (load.value) return
   if (!errors) {
     setLoad(true)
-    try {
-      // const res = await accountAdd.value?.validate();
-      await accountEdit(values)
-      // Pop Close & Back
-      props.pop.close()
-      props.pop.callBack()
-    } catch (err) {
-      // DoNothing
-    } finally {
-      setLoad(false)
-    }
+    toPreview()
+    timer.value = setTimeout(async () => {
+      try {
+        const sourceList = getResponse()
+        formData.value.sourceIds = sourceList
+        formData.value.html = md.html
+        formData.value.md = md.md
+        formData.value.toc = md.outline
+        // const res = await postAdd.value?.validate();
+        await postEdit(formData.value)
+        // Pop Close & Back
+        props.pop.close()
+        props.pop.callBack()
+      } catch (err) {
+        // DoNothing
+      } finally {
+        setLoad(false)
+        toPreview()
+        console.log('F')
+      }
+    }, 5000)
   }
 }
 // 页面渲染
 onMounted(() => {
   // Nothing
+  getTagList()
+  setLoad(false)
   get()
 })
 </script>

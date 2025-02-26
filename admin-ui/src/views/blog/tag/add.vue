@@ -44,7 +44,7 @@
               </template>
               {{ $t('button.submit') }}
             </a-button>
-            <a-button size="large" @click="pop.close()">
+            <a-button size="large" @click="close()">
               <template #icon>
                 <icon-close />
               </template>
@@ -71,6 +71,20 @@ const props = defineProps({
     default: () => {
       return {} as Pop
     }
+  },
+  do: {
+    type: Boolean,
+    default: () => {
+      return false
+    }
+  },
+  doAdd: {
+    type: Function,
+    default: () => {}
+  },
+  doCanc: {
+    type: Function,
+    default: () => {}
   }
 })
 // 加载中变量
@@ -78,6 +92,13 @@ const { load, setLoad } = useLoad(false)
 // 表单数据初始化
 const formData = tagInit()
 // const tagAdd = ref<FormInstance>();
+const close = () => {
+  if (props.do) {
+    props.doCanc()
+  } else {
+    props.pop.close()
+  }
+}
 // 提交数据
 const submit = async ({ errors, values }: { errors: any; values: any }) => {
   if (load.value) return
@@ -87,8 +108,12 @@ const submit = async ({ errors, values }: { errors: any; values: any }) => {
       // const res = await tagAdd.value?.validate();
       await tagAdd(values)
       // Pop Close & Back
-      props.pop.close()
-      props.pop.callBack()
+      if (props.do) {
+        props.doAdd()
+      } else {
+        props.pop.close()
+        props.pop.callBack()
+      }
     } catch (err) {
       // DoNothing
     } finally {

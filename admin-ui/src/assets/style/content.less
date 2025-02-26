@@ -141,12 +141,7 @@
     padding: 0 5px;
   }
 }
-.upImg {
-  height: 200px;
-}
-.upIcon {
-  height: 125px;
-}
+
 .cardlist {
   border: 1px solid var(--color-fill-3);
   border-radius: 2px;
@@ -162,6 +157,15 @@
   .postImg {
     width: 180px;
     height: 100px;
+    p {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      margin: 0;
+      font-size: 12px;
+      color: #fff;
+      font-weight: 900;
+    }
   }
 
   .postBtn {
@@ -176,13 +180,9 @@
     h3 {
       margin: 0;
       line-height: 46px;
-      span {
-        margin: 0 5px;
-        font-size: 12px;
-        color: #888;
-        font-weight: 500;
-        font-style: italic;
-      }
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     p {
       padding: 2px 10px 2px 15px;
@@ -213,6 +213,15 @@
   font-size: 13px;
   height: 44px;
   color: #888;
+}
+.upImg {
+  height: 200px;
+}
+.upPostImg {
+  height: 253px;
+}
+.upIcon {
+  height: 125px;
 }
 .upImg,
 .upIcon {

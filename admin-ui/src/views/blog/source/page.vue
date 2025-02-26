@@ -27,7 +27,7 @@
             </a-button>
           </a-tooltip>
 
-          <a-tooltip :content="$t('button.clean')" :mini="true">
+          <a-tooltip v-if="!doC" :content="$t('button.clean')" :mini="true">
             <a-button v-permission="''" size="large" type="primary" status="success" @click="openDelete">
               <template #icon> <icon-brush /> </template>
             </a-button>
@@ -63,19 +63,25 @@
       </a-col>
       <a-col :span="6" v-for="record in list" :key="record.id">
         <div class="cardlist">
-          <div class="upImg">
+          <div class="upImg" :class="{ upIcon: doC }">
             <img :src="record.img" />
           </div>
-          <p>{{ record.name + '.' + record.backEnd }} / {{ dictMap.sourceType[record.fileType] }}</p>
+          <p v-if="doC">{{ record.name + '.' + record.backEnd }}</p>
+          <p v-else>{{ record.name + '.' + record.backEnd }} / {{ dictMap.sourceType[record.fileType] }}</p>
           <a-space>
-            <a-tooltip :content="$t('button.get')" :mini="true">
+            <a-tooltip v-if="!doC" :content="$t('button.get')" :mini="true">
               <a-button v-permission="''" type="text" @click="pop.open('get', record.id, $t('source.get'), record.title, {}, search)">
                 <template #icon> <icon-eye /> </template>
               </a-button>
             </a-tooltip>
-            <a-tooltip :content="$t('button.edit')" :mini="true">
+            <a-tooltip v-if="!doC" :content="$t('button.edit')" :mini="true">
               <a-button v-permission="''" type="text" @click="pop.open('edit', record.id, $t('source.edit'), record.title, {}, search)">
                 <template #icon> <icon-edit /> </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip v-if="doC" :content="$t('button.check')" :mini="true">
+              <a-button v-permission="''" type="text" @click="doCheck(record)">
+                <template #icon> <icon-check /> </template>
               </a-button>
             </a-tooltip>
           </a-space>
@@ -105,6 +111,16 @@ const props = defineProps({
     default: () => {
       return {} as Pop
     }
+  },
+  doC: {
+    type: Boolean,
+    default: () => {
+      return false
+    }
+  },
+  doCheck: {
+    type: Function,
+    default: (o: any) => {}
   }
 })
 // 加载中变量
@@ -117,6 +133,7 @@ const { page, setQuery, search, changePage, resetPage } = usePage(8)
 const initQuery = () => {
   return { name: '', fileType: '' }
 }
+
 // 查询对象
 const query = ref(initQuery())
 // 列表对象
