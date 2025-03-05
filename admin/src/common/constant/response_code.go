@@ -133,4 +133,22 @@ const (
 	TopicPostNG    = "F1203" // 文章专题关联文章同步失败
 	TopicDelNG     = "F1204" // 文章专题删除
 
+	PostAddSS        = "S1300" // 文章或页面创建成功
+	PostEditSS       = "S1301" // 文章或页面编辑成功
+	PostGetNG        = "F1300" // 文章或页面查询失败
+	PostAddNoScNG    = "F1301" // 文章或页面必须有主图
+	PostTagNG        = "F1302" // 文章关联标签更新失败
+	PostSourceNG     = "F1303" // 文章关联资源更新失败
+	PostMoreNG       = "F1304" // 文章关联详情更新失败
+	PostUniXxxNG     = "F1305" // 文章或页面地址全局唯一
+	PostMoreUniXxxNG = "F1306" // 文章关联地址全局唯一
+
+	BannerAddSS     = "S1400" // Banner创建成功
+	BannerEditSS    = "S1401" // Banner编辑成功
+	BannerDelSS     = "S1402" // Banner删除成功
+	BannerGetNG     = "F1400" // Banner查询失败
+	BannerAddNoScNG = "F1401" // Banner未提交图片
+	BannerUniXxxNG  = "F1402" // Banner地址全局唯一
+	BannerDelNG     = "F1403" // Banner删除失败
+
 )

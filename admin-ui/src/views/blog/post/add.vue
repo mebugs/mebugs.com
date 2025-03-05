@@ -61,7 +61,7 @@
         </a-form-item>
       </a-col>
       <a-col :span="12" v-if="postType == '1'">
-        <a-form-item field="categoryId" :label="$t('post.group')" :rules="[{ required: true, message: $t('rule.required') }]">
+        <a-form-item field="categoryId" :label="$t('post.category')" :rules="[{ required: true, message: $t('rule.required') }]">
           <a-select
             v-model="formData.categoryId"
             :options="pop.dictList.categoryList"
@@ -107,6 +107,7 @@
       </a-col>
     </a-row>
   </a-form>
+  <div id="minePreView" style="display: none"></div>
   <a-modal v-model:visible="tagAddFlag" :title="$t('tags.add')" :footer="false" :width="900">
     <tag-add v-if="tagAddFlag" :doAdd="doAdd" :doCanc="doCanc" :do="true" />
   </a-modal>
@@ -189,8 +190,7 @@ const openSource = () => {
   openS.value = true
 }
 // 0 编辑 1 正文预览 2 确认发布
-const timer = ref()
-const { vd, md, getNew, toPreview, getResponse } = vditor('vditorAdd', openSource)
+const { vd, md, getNew, getResponse } = vditor('vditorAdd', openSource)
 // docheck
 const doCheck = (record: any) => {
   openS.value = false
@@ -203,27 +203,24 @@ const submit = async ({ errors, values }: { errors: any; values: any }) => {
   if (load.value) return
   if (!errors) {
     setLoad(true)
-    toPreview()
-    timer.value = setTimeout(async () => {
-      try {
-        const sourceList = getResponse()
-        formData.value.sourceIds = sourceList
-        formData.value.html = md.html
-        formData.value.md = md.md
-        formData.value.toc = md.outline
-        // const res = await postAdd.value?.validate();
-        await postAdd(formData.value)
-        // Pop Close & Back
-        props.pop.close()
-        props.pop.callBack()
-      } catch (err) {
-        // DoNothing
-      } finally {
-        setLoad(false)
-        toPreview()
-        console.log('F')
-      }
-    }, 5000)
+    try {
+      const sourceList = await getResponse()
+      formData.value.sourceIds = sourceList
+      formData.value.html = md.html
+      formData.value.md = md.md
+      formData.value.toc = md.outline
+      // const res = await postAdd.value?.validate();
+      await postAdd(formData.value)
+      // Pop Close & Back
+      props.pop.close()
+      props.pop.callBack()
+    } catch (err) {
+      // DoNothing
+    } finally {
+      setLoad(false)
+      toPreview()
+      console.log('F')
+    }
   }
 }
 // 页面渲染

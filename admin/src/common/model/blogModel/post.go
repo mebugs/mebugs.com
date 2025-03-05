@@ -34,7 +34,6 @@ type PostDoReq struct {
 	Title      string     `json:"title" binding:"max=128" example:"demo"`                  // 标题
 	Url        string     `json:"url" binding:"max=32" example:"demo"`                     // 文章地址
 	Summary    string     `json:"summary" binding:"max=512" example:"demo"`                // 摘要
-	Source     []string   `json:"source"  binding:"required" example:"0"`                  // 主图资源列表（主图）
 	CategoryId uint64     `json:"categoryId" example:"0"`                                  // 分组，文章可用
 	TagIds     []uint64   `json:"tagIds"`                                                  // 文章分类
 	SourceIds  []uint64   `json:"sourceIds"`                                               // 文章关联资源
@@ -49,11 +48,13 @@ type PostDoReq struct {
 // PostAddReq 文章或页面 创建请求，酌情从通用中摘出部分字段
 type PostAddReq struct {
 	PostDoReq
+	Source []string `json:"source"  binding:"required" example:"0"` // 主图资源列表（主图）
 }
 
 // PostEditReq 文章或页面 编辑请求，酌情从通用中摘出部分字段
 type PostEditReq struct {
-	Id uint64 `json:"id" binding:"required" example:"1"` // 数据ID
+	Id     uint64   `json:"id" binding:"required" example:"1"` // 数据ID
+	Source []string `json:"source" example:"0"`                // 主图资源列表（主图）
 	PostDoReq
 }
 

@@ -15,6 +15,12 @@ const BLOG: RouteRecordRaw = {
       meta: { locale: 'menu.BlogSource', requiresAuth: false }
     },
     {
+      path: 'banner', // Banner
+      name: 'BlogBanner',
+      component: () => import('@/views/blog/banner/index.vue'),
+      meta: { locale: 'menu.BlogBanner', requiresAuth: false }
+    },
+    {
       path: 'category', // 分类
       name: 'BlogCategory',
       component: () => import('@/views/blog/category/index.vue'),

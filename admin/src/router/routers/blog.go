@@ -20,6 +20,16 @@ func BlogRouter(router *gin.Engine) {
 			sourceRouter.POST("/del", blogHandler.DelSource)
 		}
 
+		// Banner
+		bannerRouter := blogRouter.Group("/banner")
+		{
+			bannerRouter.POST("/add", blogHandler.AddBanner)
+			bannerRouter.POST("/page", blogHandler.PageBanner)
+			bannerRouter.POST("/get", blogHandler.GetBanner)
+			bannerRouter.POST("/edit", blogHandler.EditBanner)
+			bannerRouter.POST("/del", blogHandler.DelBanner)
+		}
+
 		// 文章分类相关
 		categoryRouter := blogRouter.Group("/category")
 		{

@@ -6,5 +6,4 @@ MebugsAdmin配套前端。
 
 # 技术栈
 
-Vite + TS + VueNext + Vditor(MarkDown编辑器)
-
+Vite + TS + VueNext + ArcoDesign(UI) + Vditor(MarkDown编辑器)

@@ -1,5 +1,5 @@
 import Vditor from 'vditor'
-import { reactive, ref } from 'vue'
+import { h, reactive, ref } from 'vue'
 
 // mardown编辑器对象
 export interface markdown {
@@ -229,20 +229,57 @@ export default function vditor(nodeId: string, openSource: Function) {
       }
     })
   }
-  // 模拟预览
-  const toPreview = () => {
-    var elements = document.querySelectorAll('#' + nodeId + ' .vditor-toolbar div button')
-    var lastElement = elements[elements.length - 1]
-    lastElement.dispatchEvent(new MouseEvent('click'))
+
+  const preViewSet = {
+    mode: 'light' as 'light',
+    theme: {
+      current: 'ant-design',
+      path: '/static/lib/vditor'
+    },
+    hljs: {
+      enable: true,
+      lineNumber: true,
+      defaultLang: '',
+      style: 'vs'
+    },
+    cdn: '/static/lib/vditor'
+  }
+  const sleep = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
+  const hasNum = (haystack: string, needle: string) => {
+    let regex = new RegExp(needle, 'g')
+    let matches = haystack.match(regex)
+    return matches ? matches.length : 0
   }
   // 获取提交结果
-  const getResponse = () => {
+  const getResponse = async () => {
     // 读取预览HTML
     md.md = vd.value.getValue()
     md.outline = document.querySelector('#' + nodeId + ' .vditor-outline')?.innerHTML
-    md.html = document.querySelector('#' + nodeId + ' .vditor-preview')?.innerHTML
+    var myPreView = document.querySelector('#minePreView')
+    if (myPreView != null) {
+      var bashHtml = vd.value.getHTML()
+      myPreView.innerHTML = bashHtml
+      if (bashHtml.includes('<pre><code ')) {
+        const hasCount = hasNum(bashHtml, '<pre><code ')
+        Vditor.highlightRender(preViewSet.hljs, myPreView as HTMLElement, preViewSet.cdn)
+        let runRender = true
+        while (runRender) {
+          const renderHtml = myPreView.innerHTML
+          if (renderHtml.includes('hljs vditor-linenumber')) {
+            const hasNCount = hasNum(bashHtml, '<pre><code ')
+            if (hasCount === hasNCount) {
+              runRender = false
+            }
+          }
+          await sleep(200)
+        }
+        md.html = myPreView.innerHTML
+      }
+    }
     // 处理图片关联
-    let imgNodes = document.querySelectorAll('#' + nodeId + ' .vditor-preview img')
+    let imgNodes = document.querySelectorAll('#minePreView img')
     var soucesList: number[] = []
     if (imgNodes) {
       imgNodes?.forEach((node) => {
@@ -256,22 +293,12 @@ export default function vditor(nodeId: string, openSource: Function) {
         }
       })
     }
-    if (md.html) {
-      // 替换处理
-      // Copy方法替换
-      // 特殊符号替换
-      md.html = md.html.replaceAll(
-        "this.previousElementSibling.select();document.execCommand('copy');this.setAttribute('aria-label', '已复制');this.previousElementSibling.blur()",
-        'copyCode(this)'
-      )
-    }
     return soucesList
   }
   return {
     vd,
     md,
     getNew,
-    toPreview,
     getResponse
   }
 }
