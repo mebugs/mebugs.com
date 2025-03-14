@@ -25,7 +25,8 @@ const (
 
 	DBDuplicateErr = "Error 1062 (23000): Duplicate entry" // 唯一索引错误
 
-	SourceFileUrl = "/source/%s/%s.%s?t=%s"
+	SourceFileUrl  = "/source/%s/%s.%s?t=%s"
+	SourceFilePath = "/source/%s/%s"
 )
 
 var (
@@ -39,4 +40,11 @@ var (
 	CacheRoles             = ProjectName + ":Comm:Roles"             // 角色缓存
 	CacheDeptTrees         = ProjectName + ":Comm:DeptTrees"         // 部门缓存树缓存
 	CacheAuth              = ProjectName + ":Auth:%s"                // 登陆授权缓存
+
+	PageBannerCache   = ProjectName + ":Page:Banners"
+	PageTagCache      = ProjectName + ":Page:Tags"
+	PageCategoryCache = ProjectName + ":Page:Categories"
+	PageTopicCache    = ProjectName + ":Page:Topics"
+	PagePostCache     = ProjectName + ":Page:Posts"
+	PagePostSortCache = ProjectName + ":Page:PostSorts"
 )

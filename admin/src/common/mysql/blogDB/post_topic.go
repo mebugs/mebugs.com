@@ -39,3 +39,10 @@ func (t PostTopic) GetPostIds(topicId uint64) (res []uint64, err error) {
 	err = r.Error
 	return
 }
+
+// GetTopicIds 获取主题ID
+func (t PostTopic) GetTopicIds(postId uint64) (res []uint64, err error) {
+	r := blogDb.Table(t.TableName()).Distinct("topic_id").Where("post_id = ?", postId).Order("sort").Find(&res)
+	err = r.Error
+	return
+}

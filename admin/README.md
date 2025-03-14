@@ -14,15 +14,15 @@
 
 系统技术栈：Golang、VueNext、MySQL、Redis、Gin、ArcoDesign
 
-Demo地址：[http://101.132.76.203/](http://101.132.76.203/)
+Demo地址：[http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 Demo账密：admin  123456
 
 接口文档提供Swagger[支持调试]和ReDoc[阅读增强]两个版本。
 
-[Swagger[支持调试]：http://101.132.76.203/docs/swagger/index.html](http://101.132.76.203/docs/swagger/index.html)
+[Swagger[支持调试]：http://127.0.0.1:8000/docs/swagger/index.html](http://127.0.0.1:8000/docs/swagger/index.html)
 
-[ReDoc[阅读增强]：http://101.132.76.203/docs/redoc/index.html](http://101.132.76.203/docs/redoc/index.html)
+[ReDoc[阅读增强]：http://127.0.0.1:8000/docs/redoc/index.html](http://127.0.0.1:8000/docs/redoc/index.html)
 
 ## 当前说明
 

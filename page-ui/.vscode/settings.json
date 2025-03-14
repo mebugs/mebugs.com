@@ -1,0 +1,4 @@
+{
+    "prettier.printWidth": 200,
+    "editor.minimap.maxColumn": 200
+}

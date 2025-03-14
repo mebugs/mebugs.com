@@ -249,6 +249,1388 @@ definitions:
         example: ROOT
         type: string
     type: object
+  blogModel.BannerAddReq:
+    properties:
+      source:
+        description: 主图资源列表
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      tag:
+        description: 标签
+        example: demo
+        maxLength: 12
+        type: string
+      title:
+        description: 名称
+        example: demo
+        maxLength: 32
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        maxLength: 128
+        type: string
+    required:
+    - source
+    type: object
+  blogModel.BannerEditReq:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      source:
+        description: 主图资源列表
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      tag:
+        description: 标签
+        example: demo
+        maxLength: 12
+        type: string
+      title:
+        description: 名称
+        example: demo
+        maxLength: 32
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        maxLength: 128
+        type: string
+    required:
+    - id
+    type: object
+  blogModel.BannerGetRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      tag:
+        description: 标签
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.BannerPageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.BannerPageRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      tag:
+        description: 标签
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.CategoryAddReq:
+    properties:
+      source:
+        description: 主图资源列表
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      title:
+        description: 名称
+        example: demo
+        maxLength: 32
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        maxLength: 32
+        type: string
+    required:
+    - source
+    type: object
+  blogModel.CategoryEditReq:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      source:
+        description: 主图资源列表
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      title:
+        description: 名称
+        example: demo
+        maxLength: 32
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        maxLength: 32
+        type: string
+    required:
+    - id
+    type: object
+  blogModel.CategoryGetRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.CategoryPageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.CategoryPageRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.CategoryToReq:
+    properties:
+      id:
+        description: 当前分组数据ID
+        example: 1
+        type: integer
+      toId:
+        description: 目标分组数据ID
+        example: 1
+        type: integer
+    required:
+    - id
+    - toId
+    type: object
+  blogModel.PostAddReq:
+    properties:
+      categoryId:
+        description: 分组，文章可用
+        example: 0
+        type: integer
+      createAt:
+        description: 创建时间
+        type: string
+      html:
+        description: HTML源文件
+        example: demo
+        type: string
+      md:
+        description: MD源文件
+        example: demo
+        type: string
+      postType:
+        description: 文章类型，枚举：0_页面 1_文章
+        example: "0"
+        type: string
+      pushAt:
+        description: 发布时间，标准时间格式（时间固定为08:00）
+        example: 2222-22-22
+        type: string
+      source:
+        description: 主图资源列表（主图）
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      sourceIds:
+        description: 文章关联资源
+        items:
+          type: integer
+        type: array
+      status:
+        description: 状态，枚举：0_草稿 1_发布 2_锁定
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      summary:
+        description: 摘要
+        example: demo
+        maxLength: 512
+        type: string
+      tagIds:
+        description: 文章分类
+        items:
+          type: integer
+        type: array
+      title:
+        description: 标题
+        example: demo
+        maxLength: 128
+        type: string
+      toc:
+        description: 文章导航
+        example: demo
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+      url:
+        description: 文章地址
+        example: demo
+        maxLength: 32
+        type: string
+    required:
+    - source
+    - status
+    type: object
+  blogModel.PostAllRes:
+    properties:
+      categoryId:
+        description: 分组，文章可用
+        example: 0
+        type: integer
+      html:
+        description: HTML源文件
+        example: demo
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      md:
+        description: MD源文件
+        example: demo
+        type: string
+      postType:
+        description: 文章类型，枚举：0_页面 1_文章
+        example: "0"
+        type: string
+      pushAt:
+        description: 发布时间，标准时间格式（时间固定为08:00）
+        example: 2222-22-22
+        type: string
+      sourceId:
+        description: 主图资源ID
+        example: 0
+        type: integer
+      sourceIds:
+        description: 文章关联资源
+        items:
+          type: integer
+        type: array
+      sourceShow:
+        description: 图片信息
+        example: "0"
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 摘要
+        example: demo
+        type: string
+      tagIds:
+        description: 文章分类
+        items:
+          type: integer
+        type: array
+      title:
+        description: 标题
+        example: demo
+        type: string
+      toc:
+        description: 文章导航
+        example: demo
+        type: string
+      url:
+        description: 文章地址
+        example: demo
+        type: string
+    type: object
+  blogModel.PostCommentAddReq:
+    properties:
+      createAt:
+        description: 创建时间
+        type: string
+      info:
+        description: 评论内容（暂不支持HTML）
+        example: demo
+        maxLength: 512
+        type: string
+      level:
+        description: 评论等级，枚举：0_评论 1_回复
+        enum:
+        - 0
+        - 1
+        example: 0
+        type: integer
+      postId:
+        description: 文章ID
+        example: 0
+        type: integer
+      rid:
+        description: 回复的评论者ID（来自被回复的数据）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      uid:
+        description: 评论者ID
+        example: 0
+        type: integer
+      updateAt:
+        description: 更新时间
+        type: string
+    required:
+    - status
+    type: object
+  blogModel.PostCommentEditReq:
+    properties:
+      createAt:
+        description: 创建时间
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      info:
+        description: 评论内容（暂不支持HTML）
+        example: demo
+        maxLength: 512
+        type: string
+      level:
+        description: 评论等级，枚举：0_评论 1_回复
+        enum:
+        - 0
+        - 1
+        example: 0
+        type: integer
+      postId:
+        description: 文章ID
+        example: 0
+        type: integer
+      rid:
+        description: 回复的评论者ID（来自被回复的数据）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      uid:
+        description: 评论者ID
+        example: 0
+        type: integer
+      updateAt:
+        description: 更新时间
+        type: string
+    required:
+    - id
+    - status
+    type: object
+  blogModel.PostCommentGetRes:
+    properties:
+      createAt:
+        description: 创建时间
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      info:
+        description: 评论内容（暂不支持HTML）
+        example: demo
+        type: string
+      level:
+        description: 评论等级，枚举：0_评论 1_回复
+        example: 0
+        type: integer
+      postId:
+        description: 文章ID
+        example: 0
+        type: integer
+      rid:
+        description: 回复的评论者ID（来自被回复的数据）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      uid:
+        description: 评论者ID
+        example: 0
+        type: integer
+      updateAt:
+        description: 更新时间
+        type: string
+    type: object
+  blogModel.PostCommentPageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+    type: object
+  blogModel.PostCommentPageRes:
+    properties:
+      createAt:
+        description: 创建时间
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      info:
+        description: 评论内容（暂不支持HTML）
+        example: demo
+        type: string
+      level:
+        description: 评论等级，枚举：0_评论 1_回复
+        example: 0
+        type: integer
+      postId:
+        description: 文章ID
+        example: 0
+        type: integer
+      rid:
+        description: 回复的评论者ID（来自被回复的数据）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      uid:
+        description: 评论者ID
+        example: 0
+        type: integer
+      updateAt:
+        description: 更新时间
+        type: string
+    type: object
+  blogModel.PostEditReq:
+    properties:
+      categoryId:
+        description: 分组，文章可用
+        example: 0
+        type: integer
+      createAt:
+        description: 创建时间
+        type: string
+      html:
+        description: HTML源文件
+        example: demo
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      md:
+        description: MD源文件
+        example: demo
+        type: string
+      postType:
+        description: 文章类型，枚举：0_页面 1_文章
+        example: "0"
+        type: string
+      pushAt:
+        description: 发布时间，标准时间格式（时间固定为08:00）
+        example: 2222-22-22
+        type: string
+      source:
+        description: 主图资源列表（主图）
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      sourceIds:
+        description: 文章关联资源
+        items:
+          type: integer
+        type: array
+      status:
+        description: 状态，枚举：0_草稿 1_发布 2_锁定
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      summary:
+        description: 摘要
+        example: demo
+        maxLength: 512
+        type: string
+      tagIds:
+        description: 文章分类
+        items:
+          type: integer
+        type: array
+      title:
+        description: 标题
+        example: demo
+        maxLength: 128
+        type: string
+      toc:
+        description: 文章导航
+        example: demo
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+      url:
+        description: 文章地址
+        example: demo
+        maxLength: 32
+        type: string
+    required:
+    - id
+    - status
+    type: object
+  blogModel.PostListRes:
+    properties:
+      CategoryId:
+        description: 分组，文章可用
+        example: 0
+        type: integer
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      title:
+        description: 标题
+        example: demo
+        type: string
+      url:
+        description: 文章地址
+        example: demo
+        type: string
+    type: object
+  blogModel.PostPageReq:
+    properties:
+      categoryId:
+        description: 分组，文章可用
+        example: 0
+        type: integer
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+      postType:
+        description: 文章类型，枚举：0_页面 1_文章
+        example: "1"
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      title:
+        description: 标题
+        example: demo
+        type: string
+      url:
+        description: 文章地址
+        example: demo
+        type: string
+    type: object
+  blogModel.PostPageRes:
+    properties:
+      categoryId:
+        description: 分组，文章可用
+        example: 0
+        type: integer
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      postType:
+        description: 文章类型，枚举：0_页面 1_文章
+        example: "0"
+        type: string
+      sourceId:
+        description: 主图资源ID
+        example: 0
+        type: integer
+      sourceShow:
+        description: 图片信息
+        example: "0"
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 摘要
+        example: demo
+        type: string
+      title:
+        description: 标题
+        example: demo
+        type: string
+      url:
+        description: 文章地址
+        example: demo
+        type: string
+    type: object
+  blogModel.SourceAddReq:
+    properties:
+      fileStrArray:
+        description: 图片Base64数据，主图3个 后面均2个
+        example:
+        - xxx
+        items:
+          type: string
+        type: array
+      fileType:
+        description: 图片类型，枚举：0_主图 1_图标 2_正文
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      name:
+        description: 图片资源名
+        example: xxx
+        type: string
+    required:
+    - fileStrArray
+    - name
+    type: object
+  blogModel.SourceEditReq:
+    properties:
+      fileStrArray:
+        description: 图片Base64数据，主图3个 后面均2个
+        example:
+        - xxx
+        items:
+          type: string
+        type: array
+      fileType:
+        description: 图片类型，枚举：0_主图 1_图标 2_正文
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      name:
+        description: 图片资源名
+        example: xxx
+        type: string
+    required:
+    - fileStrArray
+    - id
+    - name
+    type: object
+  blogModel.SourceGetRes:
+    properties:
+      backEnd:
+        description: 图片后缀，jpg png gif
+        example: jpg
+        type: string
+      createAt:
+        description: 创建时间
+        type: string
+      filePath:
+        description: 文件子目录，年份目录
+        example: demo
+        type: string
+      fileType:
+        description: 图片类型，枚举：0_主图 1_图标 2_正文
+        example: "0"
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      img:
+        description: 图片地址
+        example: "1"
+        type: string
+      name:
+        description: 图片资源名
+        example: xxx
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+    type: object
+  blogModel.SourcePageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      fileType:
+        description: 图片类型，枚举：0_主图 1_图标 2_正文
+        example: "0"
+        type: string
+      name:
+        description: 图片资源名
+        example: xxx
+        type: string
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+    type: object
+  blogModel.SourcePageRes:
+    properties:
+      backEnd:
+        description: 图片后缀，jpg png gif
+        example: jpg
+        type: string
+      createAt:
+        description: 创建时间
+        type: string
+      filePath:
+        description: 文件子目录，年份目录
+        example: demo
+        type: string
+      fileType:
+        description: 图片类型，枚举：0_主图 1_图标 2_正文
+        example: "0"
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      img:
+        description: 图片地址
+        example: "1"
+        type: string
+      name:
+        description: 图片资源名
+        example: xxx
+        type: string
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+    type: object
+  blogModel.TagAddReq:
+    properties:
+      source:
+        description: 主图资源列表
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      title:
+        description: 名称
+        example: demo
+        maxLength: 32
+        type: string
+      url:
+        description: 标签地址
+        example: demo
+        maxLength: 32
+        type: string
+    required:
+    - source
+    type: object
+  blogModel.TagEditReq:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      source:
+        description: 主图资源列表
+        example:
+        - "0"
+        items:
+          type: string
+        type: array
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      title:
+        description: 名称
+        example: demo
+        maxLength: 32
+        type: string
+      url:
+        description: 标签地址
+        example: demo
+        maxLength: 32
+        type: string
+    required:
+    - id
+    type: object
+  blogModel.TagGetRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 标签地址
+        example: demo
+        type: string
+    type: object
+  blogModel.TagPageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.TagPageRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 标签地址
+        example: demo
+        type: string
+    type: object
+  blogModel.TopicAddReq:
+    type: object
+  blogModel.TopicEditReq:
+    type: object
+  blogModel.TopicGetRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      postIds:
+        description: 文章ID列表
+        example:
+        - 1
+        items:
+          type: integer
+        type: array
+      posts:
+        description: 关联文章
+        items:
+          $ref: '#/definitions/blogModel.PostListRes'
+        type: array
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 专题地址
+        example: demo
+        type: string
+    type: object
+  blogModel.TopicPageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 分类地址
+        example: demo
+        type: string
+    type: object
+  blogModel.TopicPageRes:
+    properties:
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      postIds:
+        description: 文章ID列表
+        example:
+        - 1
+        items:
+          type: integer
+        type: array
+      posts:
+        description: 关联文章
+        items:
+          $ref: '#/definitions/blogModel.PostListRes'
+        type: array
+      sourceShow:
+        description: 资源图片地址
+        example: /xxx.jpg
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      title:
+        description: 名称
+        example: demo
+        type: string
+      url:
+        description: 专题地址
+        example: demo
+        type: string
+    type: object
+  blogModel.UserAddReq:
+    properties:
+      clientId:
+        description: 客户端ID（前端生成，清除会丢失）
+        example: demo
+        maxLength: 64
+        type: string
+      code:
+        description: 用户编码（允许访问用户）默认=ID
+        example: demo
+        maxLength: 32
+        type: string
+      createAt:
+        description: 创建时间
+        type: string
+      name:
+        description: 用户名
+        example: demo
+        maxLength: 32
+        type: string
+      openId:
+        description: 小程序账号绑定登录（允许授权转移）
+        example: demo
+        maxLength: 64
+        type: string
+      sourceId:
+        description: 头像资源ID（仅小程序提供）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      thirdUrl:
+        description: 三方网站（需要审核）
+        example: demo
+        maxLength: 255
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+      waitUrl:
+        description: 待审核三方URL
+        example: demo
+        maxLength: 255
+        type: string
+    required:
+    - status
+    type: object
+  blogModel.UserEditReq:
+    properties:
+      clientId:
+        description: 客户端ID（前端生成，清除会丢失）
+        example: demo
+        maxLength: 64
+        type: string
+      code:
+        description: 用户编码（允许访问用户）默认=ID
+        example: demo
+        maxLength: 32
+        type: string
+      createAt:
+        description: 创建时间
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      name:
+        description: 用户名
+        example: demo
+        maxLength: 32
+        type: string
+      openId:
+        description: 小程序账号绑定登录（允许授权转移）
+        example: demo
+        maxLength: 64
+        type: string
+      sourceId:
+        description: 头像资源ID（仅小程序提供）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        enum:
+        - "0"
+        - "1"
+        - "2"
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        maxLength: 64
+        type: string
+      thirdUrl:
+        description: 三方网站（需要审核）
+        example: demo
+        maxLength: 255
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+      waitUrl:
+        description: 待审核三方URL
+        example: demo
+        maxLength: 255
+        type: string
+    required:
+    - id
+    - status
+    type: object
+  blogModel.UserGetRes:
+    properties:
+      clientId:
+        description: 客户端ID（前端生成，清除会丢失）
+        example: demo
+        type: string
+      code:
+        description: 用户编码（允许访问用户）默认=ID
+        example: demo
+        type: string
+      createAt:
+        description: 创建时间
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      name:
+        description: 用户名
+        example: demo
+        type: string
+      openId:
+        description: 小程序账号绑定登录（允许授权转移）
+        example: demo
+        type: string
+      sourceId:
+        description: 头像资源ID（仅小程序提供）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      thirdUrl:
+        description: 三方网站（需要审核）
+        example: demo
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+      waitUrl:
+        description: 待审核三方URL
+        example: demo
+        type: string
+    type: object
+  blogModel.UserPageReq:
+    properties:
+      current:
+        description: 当前页
+        example: 1
+        type: integer
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      pageSize:
+        description: 单页数量
+        example: 10
+        type: integer
+    type: object
+  blogModel.UserPageRes:
+    properties:
+      clientId:
+        description: 客户端ID（前端生成，清除会丢失）
+        example: demo
+        type: string
+      code:
+        description: 用户编码（允许访问用户）默认=ID
+        example: demo
+        type: string
+      createAt:
+        description: 创建时间
+        type: string
+      id:
+        description: 数据ID
+        example: 1
+        type: integer
+      name:
+        description: 用户名
+        example: demo
+        type: string
+      openId:
+        description: 小程序账号绑定登录（允许授权转移）
+        example: demo
+        type: string
+      sourceId:
+        description: 头像资源ID（仅小程序提供）
+        example: 0
+        type: integer
+      status:
+        description: 状态，枚举：0_正常 1_锁定 2_封存
+        example: "0"
+        type: string
+      summary:
+        description: 简介
+        example: demo
+        type: string
+      thirdUrl:
+        description: 三方网站（需要审核）
+        example: demo
+        type: string
+      updateAt:
+        description: 更新时间
+        type: string
+      waitUrl:
+        description: 待审核三方URL
+        example: demo
+        type: string
+    type: object
   platModel.AccountAddReq:
     properties:
       account:
@@ -1519,6 +2901,10 @@ definitions:
     type: object
   platModel.SysConfigEditReq:
     properties:
+      fileFullPath:
+        description: 文件存放根目录
+        example: /www/xxx
+        type: string
       loginFailLockNum:
         description: 登陆失败锁定数量，最小为1
         example: 1
@@ -1573,12 +2959,17 @@ definitions:
         example: "1"
         type: string
     required:
+    - fileFullPath
     - loginFailSwitch
     - loginSwitch
     - logoutSwitch
     type: object
   platModel.SysConfigGetRes:
     properties:
+      fileFullPath:
+        description: 文件存放根目录
+        example: /www/xxx
+        type: string
       loginFailLockNum:
         description: 登陆失败锁定数量，最小为1
         example: 1
@@ -1637,7 +3028,8 @@ info:
     格式化注释代码 (选用)\r\n\r\nswag fmt\r\n\r\n- 初始化swagger.yaml文件\r\n\r\nswag init\r\n\r\n-
     如果像本工程一样依赖了api.md和独立的api.go文件描述项目（推荐，后续持续使用）\r\n\r\nswag init -g api.go --md .\r\n\r\n-
     删除多余的生成\r\n\r\nrm .\\docs\\docs.go\r\n\r\n删除docs.go是因为本项目中并未采用下述依赖来集成。\r\n\r\n-
-    github.com/swaggo/swag\r\n- github.com/swaggo/gin-swagger\r\n- github.com/swaggo/files\r\n\r\n而是通过HTML模板+JS+YAML引入集成，移除docs.go用于避免依赖编译报错。\r\n\r\n源帮助页：[https://github.com/swaggo/swag/blob/master/README_zh-CN.md](https://github.com/swaggo/swag/blob/master/README_zh-CN.md)\r\n"
+    github.com/swaggo/swag\r\n- github.com/swaggo/gin-swagger\r\n- github.com/swaggo/files\r\n\r\n而是通过HTML模板+JS+YAML引入集成，移除docs.go用于避免依赖编译报错。\r\n\r\n源帮助页：[https://github.com/swaggo/swag/blob/master/README_zh-CN.md](https://github.com/swaggo/swag/blob/master/README_zh-CN.md)\r\n\r\n#
+    V1.0Fixed"
   title: smart
   version: "1.0"
   x-logo:
@@ -1760,6 +3152,1312 @@ paths:
       summary: 账号密码重置
       tags:
       - 开放接口
+  /blog/banner/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建Banner
+      operationId: AddBanner Banner新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.BannerAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: Banner新建
+      tags:
+      - Banner
+  /blog/banner/del:
+    post:
+      consumes:
+      - application/json
+      description: Banner移除处理
+      operationId: DelBanner Banner移除
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: Banner移除
+      tags:
+      - Banner
+  /blog/banner/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑Banner
+      operationId: EditBanner Banner编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.BannerEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: Banner编辑
+      tags:
+      - Banner
+  /blog/banner/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询Banner详情
+      operationId: GetBanner Banner详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.BannerGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: Banner详情
+      tags:
+      - Banner
+  /blog/banner/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询Banner
+      operationId: PageBanner Banner分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.BannerPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.BannerPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: Banner分页
+      tags:
+      - Banner
+  /blog/category/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建文章分类
+      operationId: AddCategory 文章分类新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.CategoryAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类新建
+      tags:
+      - 文章分类
+  /blog/category/del:
+    post:
+      consumes:
+      - application/json
+      description: 文章分类移除处理
+      operationId: DelCategory 文章分类移除
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类移除
+      tags:
+      - 文章分类
+  /blog/category/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑文章分类
+      operationId: EditCategory 文章分类编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.CategoryEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类编辑
+      tags:
+      - 文章分类
+  /blog/category/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询文章分类详情
+      operationId: GetCategory 文章分类详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.CategoryGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类详情
+      tags:
+      - 文章分类
+  /blog/category/list:
+    post:
+      consumes:
+      - application/json
+      description: 文章分类列表处理
+      operationId: ListCategory 文章分类列表
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/baseModel.SelectRes'
+                  type: array
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类列表
+      tags:
+      - 文章分类
+  /blog/category/merge:
+    post:
+      consumes:
+      - application/json
+      description: 文章分类合并处理
+      operationId: MergeCategory 文章分类合并
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.CategoryToReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类合并
+      tags:
+      - 文章分类
+  /blog/category/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询文章分类
+      operationId: PageCategory 文章分类分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.CategoryPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.CategoryPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 文章分类分页
+      tags:
+      - 文章分类
+  /blog/post/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建文章或页面
+      operationId: AddPost 文章或页面新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.PostAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章或页面新建
+      tags:
+      - 文章或页面
+  /blog/post/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑文章或页面
+      operationId: EditPost 文章或页面编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.PostEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章或页面编辑
+      tags:
+      - 文章或页面
+  /blog/post/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询文章或页面详情
+      operationId: GetPost 文章或页面详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.PostAllRes'
+              type: object
+      security:
+      - Token: []
+      summary: 文章或页面详情
+      tags:
+      - 文章或页面
+  /blog/post/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询文章或页面
+      operationId: PagePost 文章或页面分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.PostPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.PostPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 文章或页面分页
+      tags:
+      - 文章或页面
+  /blog/postComment/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建文章评论
+      operationId: AddPostComment 文章评论新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.PostCommentAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章评论新建
+      tags:
+      - 文章评论
+  /blog/postComment/del:
+    post:
+      consumes:
+      - application/json
+      description: 文章评论移除处理
+      operationId: DelPostComment 文章评论移除
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章评论移除
+      tags:
+      - 文章评论
+  /blog/postComment/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑文章评论
+      operationId: EditPostComment 文章评论编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.PostCommentEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章评论编辑
+      tags:
+      - 文章评论
+  /blog/postComment/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询文章评论详情
+      operationId: GetPostComment 文章评论详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.PostCommentGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: 文章评论详情
+      tags:
+      - 文章评论
+  /blog/postComment/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询文章评论
+      operationId: PagePostComment 文章评论分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.PostCommentPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.PostCommentPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 文章评论分页
+      tags:
+      - 文章评论
+  /blog/source/add:
+    post:
+      consumes:
+      - application/json
+      description: 提交资源
+      operationId: AddSource 提交资源
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.SourceAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 提交资源
+      tags:
+      - 资源配置表
+  /blog/source/del:
+    post:
+      consumes:
+      - application/json
+      description: 资源配置表清理处理
+      operationId: DelSource 资源配置表清理
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 资源配置表清理
+      tags:
+      - 资源配置表
+  /blog/source/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑资源配置表
+      operationId: EditSource 资源配置表编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.SourceEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 资源配置表编辑
+      tags:
+      - 资源配置表
+  /blog/source/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询资源配置表详情
+      operationId: GetSource 资源配置表详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.SourceGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: 资源配置表详情
+      tags:
+      - 资源配置表
+  /blog/source/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询资源配置表
+      operationId: PageSource 资源配置表分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.SourcePageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.SourcePageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 资源配置表分页
+      tags:
+      - 资源配置表
+  /blog/tag/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建标签
+      operationId: AddTag 标签新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.TagAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 标签新建
+      tags:
+      - 标签
+  /blog/tag/del:
+    post:
+      consumes:
+      - application/json
+      description: 标签移除处理
+      operationId: DelTag 标签移除
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 标签移除
+      tags:
+      - 标签
+  /blog/tag/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑标签
+      operationId: EditTag 标签编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.TagEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 标签编辑
+      tags:
+      - 标签
+  /blog/tag/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询标签详情
+      operationId: GetTag 标签详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.TagGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: 标签详情
+      tags:
+      - 标签
+  /blog/tag/list:
+    post:
+      consumes:
+      - application/json
+      description: 标签列表处理
+      operationId: ListTag 标签列表
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/baseModel.SelectRes'
+                  type: array
+              type: object
+      security:
+      - Token: []
+      summary: 标签列表
+      tags:
+      - 文章分类
+  /blog/tag/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询标签
+      operationId: PageTag 标签分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.TagPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.TagPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 标签分页
+      tags:
+      - 标签
+  /blog/topic/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建文章专题
+      operationId: AddTopic 文章专题新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.TopicAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章专题新建
+      tags:
+      - 文章专题
+  /blog/topic/del:
+    post:
+      consumes:
+      - application/json
+      description: 文章专题移除处理
+      operationId: DelTopic 文章专题移除
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章专题移除
+      tags:
+      - 文章专题
+  /blog/topic/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑文章专题
+      operationId: EditTopic 文章专题编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.TopicEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 文章专题编辑
+      tags:
+      - 文章专题
+  /blog/topic/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询文章专题详情
+      operationId: GetTopic 文章专题详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.TopicGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: 文章专题详情
+      tags:
+      - 文章专题
+  /blog/topic/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询文章专题
+      operationId: PageTopic 文章专题分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.TopicPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.TopicPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 文章专题分页
+      tags:
+      - 文章专题
+  /blog/user/add:
+    post:
+      consumes:
+      - application/json
+      description: 新建极简用户信息
+      operationId: AddUser 极简用户信息新建
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.UserAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 极简用户信息新建
+      tags:
+      - 极简用户信息
+  /blog/user/del:
+    post:
+      consumes:
+      - application/json
+      description: 极简用户信息移除处理
+      operationId: DelUser 极简用户信息移除
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 极简用户信息移除
+      tags:
+      - 极简用户信息
+  /blog/user/edit:
+    post:
+      consumes:
+      - application/json
+      description: 基于数据ID编辑极简用户信息
+      operationId: EditUser 极简用户信息编辑
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.UserEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  type: boolean
+              type: object
+      security:
+      - Token: []
+      summary: 极简用户信息编辑
+      tags:
+      - 极简用户信息
+  /blog/user/get:
+    post:
+      consumes:
+      - application/json
+      description: 查询极简用户信息详情
+      operationId: GetUser 极简用户信息详情
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/baseModel.IdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/blogModel.UserGetRes'
+              type: object
+      security:
+      - Token: []
+      summary: 极简用户信息详情
+      tags:
+      - 极简用户信息
+  /blog/user/page:
+    post:
+      consumes:
+      - application/json
+      description: 分页查询极简用户信息
+      operationId: PageUser 极简用户信息分页
+      parameters:
+      - description: 请求
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/blogModel.UserPageReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/baseModel.ResBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/baseModel.PageRes'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/blogModel.UserPageRes'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Token: []
+      summary: 极简用户信息分页
+      tags:
+      - 极简用户信息
   /docs/sample:
     post:
       consumes:
@@ -1801,6 +4499,20 @@ paths:
       summary: 通用API示例
       tags:
       - 开放接口
+  /page/index:
+    post:
+      consumes:
+      - application/json
+      description: 获取首页数据
+      operationId: GetIndex 获取首页数据
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - Token: []
+      summary: 获取首页数据
+      tags:
+      - Page
   /plat/account/add:
     post:
       consumes:

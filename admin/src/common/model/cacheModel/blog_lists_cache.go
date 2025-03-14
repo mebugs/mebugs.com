@@ -1,0 +1,379 @@
+package cacheModel
+
+import (
+	"fmt"
+	"siteol.com/smart/src/common/constant"
+	"siteol.com/smart/src/common/log"
+	"siteol.com/smart/src/common/mysql/blogDB"
+	"siteol.com/smart/src/common/redis"
+	"sort"
+	"time"
+)
+
+// BlogListCache 博客列表ID缓存
+type BlogListCache struct {
+	PostNews  []uint64 `json:"postNews"`
+	PostViews []uint64 `json:"postViews"`
+	PostGoods []uint64 `json:"postGoods"`
+	PostHots  []uint64 `json:"postHots"`
+	Category  []uint64 `json:"category"`
+	Tag       []uint64 `json:"tag"`
+	Topic     []uint64 `json:"topic"`
+}
+
+// BannerCache 轮播缓存
+type BannerCache struct {
+	Title      string `json:"title"`      // 名称
+	Tag        string `json:"tag"`        // 标签
+	Url        string `json:"url"`        // 分类地址
+	Summary    string `json:"summary"`    // 简介
+	SourceShow string `json:"sourceShow"` // 资源图片地址
+}
+
+// PostCache 文章缓存（列表缓存，全文）
+type PostCache struct {
+	Id           uint64   `json:"id"`           // 数据ID
+	Title        string   `json:"title"`        // 标题
+	Url          string   `json:"url"`          // 文章地址
+	SourcePath   string   `json:"sourcePath"`   // 图片路径
+	SourceBack   string   `json:"sourceBack"`   // 图片后缀
+	CategoryId   uint64   `json:"categoryId"`   // 分组ID
+	CategoryName string   `json:"categoryName"` // 分组
+	TagIds       []uint64 `json:"tagIds"`       // 标签ID
+	TagNames     []string `json:"tagNames"`     // 标签列表
+	TopicIds     []uint64 `json:"topicIds"`     // 主题ID
+	TopicNames   []string `json:"topicNames"`   // 主题名称
+	PushAt       string   `json:"pushAt"`       // 发布时间
+	Views        uint64   `json:"views" `       // 总浏览量
+	Goods        uint64   `json:"goods"`        // 总支持量
+	Hots         uint64   `json:"hots"`         // 近期热度
+}
+
+// CategoryCache 分类缓存
+type CategoryCache struct {
+	Id         uint64   `json:"id"`         // 数据ID
+	Title      string   `json:"title"`      // 名称
+	Url        string   `json:"url"`        // 分类地址
+	Summary    string   `json:"summary"`    // 简介
+	SourceShow string   `json:"sourceShow"` // 资源图片地址
+	Num        uint64   `json:"num"`        // 数据量
+	PostIds    []uint64 `json:"postIds"`    // 对应的文章
+}
+
+// TagCache 标签缓存
+type TagCache struct {
+	Id         uint64   `json:"id"`         // 数据ID
+	Title      string   `json:"title"`      // 名称
+	Url        string   `json:"url"`        // 分类地址
+	Summary    string   `json:"summary"`    // 简介
+	SourceShow string   `json:"sourceShow"` // 资源图片地址
+	Num        uint64   `json:"num"`        // 数据量
+	PostIds    []uint64 `json:"postIds"`    // 对应的文章
+}
+
+// TopicCache 专题缓存
+type TopicCache struct {
+	Id         uint64   `json:"id"`         // 数据ID
+	Title      string   `json:"title"`      // 名称
+	Url        string   `json:"url"`        // 分类地址
+	SourceShow string   `json:"sourceShow"` // 资源图片地址
+	Num        uint64   `json:"num"`        // 数据量
+	PostIds    []uint64 `json:"postIds"`    // 对应的文章
+}
+
+// BlogSort 排序，三大组排序（时间单独一个序）
+type BlogSort struct {
+	Id  uint64
+	Num uint64
+}
+
+// PostSortCache 顺序缓存
+type PostSortCache struct {
+	News  []uint64 // 新旧
+	Views []uint64 // 查看
+	Goods []uint64 // 好文
+	Hots  []uint64 // 上升
+}
+
+// BlogSortArray 自定义排序
+type BlogSortArray []*BlogSort
+
+func (p BlogSortArray) Len() int {
+	return len(p)
+}
+
+func (p BlogSortArray) Less(i, j int) bool {
+	return p[i].Num < p[j].Num
+}
+
+func (p BlogSortArray) Swap(i, j int) {
+	p[i], p[j] = p[j], p[i]
+}
+
+// SyncBlogs 每小时刷新一次缓存
+func SyncBlogs(traceID string) {
+	for {
+		log.InfoTF(traceID, "Start SyncBlogPostAllCache")
+		_ = SyncBlogPostAllCache(traceID)
+		log.InfoTF(traceID, "End SyncBlogPostAllCache")
+		time.Sleep(time.Hour)
+	}
+}
+
+// SyncBlogPostAllCache 同步全部文章/分类/标签/专题的缓存
+func SyncBlogPostAllCache(traceID string) (err error) {
+	// 刷新Banner缓存
+	SyncBanners(traceID)
+
+	// 获取已发布的文章列表
+	posts, err := blogDB.PostTable.Executor().GetPosts()
+	if err != nil {
+		log.ErrorTF(traceID, "SyncBlogPostAllCache Fail . Err Is : %v", err)
+		return
+	}
+	postsMap := make(map[uint64]*PostCache, 0)
+	postNewArray := make([]uint64, len(posts))
+	postViewSortArray := make(BlogSortArray, len(posts))
+	postGoodSortArray := make(BlogSortArray, len(posts))
+	postHotSortArray := make(BlogSortArray, len(posts))
+	categorySortArray := make(BlogSortArray, 0)
+	tagSortArray := make(BlogSortArray, 0)
+	topicSortArray := make(BlogSortArray, 0)
+	// 查分类
+	categoryMap, err := getCategory(traceID)
+	if err != nil {
+		return
+	}
+	// 查标签
+	tagMap, err := getTag(traceID)
+	if err != nil {
+		return
+	}
+	// 查主题
+	topicMap, err := getTopic(traceID)
+	if err != nil {
+		return
+	}
+	// 遍历文章
+	for i, post := range posts {
+		// 获取主图信息
+		source, err := blogDB.SourceTable.GetOneById(post.SourceId)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetSource %d Fail . Err Is : %v", post.SourceId, err)
+			continue
+		}
+		// 列表页使用_2图
+		postsMap[post.Id] = &PostCache{
+			Id:           post.Id,
+			Title:        post.Title,
+			Url:          post.Url,
+			SourcePath:   fmt.Sprintf(constant.SourceFilePath, source.FilePath, fmt.Sprintf("%d", source.Id)),
+			SourceBack:   source.BackEnd,
+			CategoryId:   post.CategoryId,
+			CategoryName: categoryMap[post.CategoryId].Title,
+			PushAt:       post.PushAt.Format("2006-01-02"),
+		}
+		// 为分类填充数据
+		categoryMap[post.CategoryId].Num++
+		categoryMap[post.CategoryId].PostIds = append(categoryMap[post.CategoryId].PostIds, post.Id)
+		// 查询归属标签
+		tagIds, err := blogDB.PostTagTable.Executor().GetTagIds(post.Id)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetTag %d Fail . Err Is : %v", post.Id, err)
+			continue
+		}
+		tagNames := make([]string, len(tagIds))
+		for i, tagId := range tagIds {
+			tagNames[i] = tagMap[tagId].Title
+			tagMap[tagId].Num++
+			tagMap[tagId].PostIds = append(tagMap[tagId].PostIds, post.Id)
+		}
+		postsMap[post.Id].TagIds = tagIds
+		postsMap[post.Id].TagNames = tagNames
+		// 查询归属主题
+		topicIds, err := blogDB.PostTopicTable.Executor().GetTopicIds(post.Id)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetGetTopic %d Fail . Err Is : %v", post.Id, err)
+			continue
+		}
+		topicNames := make([]string, len(topicIds))
+		for i, topicId := range topicIds {
+			topicNames[i] = topicMap[topicId].Title
+			topicMap[topicId].Num++
+			topicMap[topicId].PostIds = append(topicMap[topicId].PostIds, post.Id)
+		}
+		postsMap[post.Id].TopicIds = topicIds
+		postsMap[post.Id].TopicNames = topicNames
+		// 填充时间顺序
+		postNewArray[i] = post.Id
+		postViewSortArray[i] = &BlogSort{Id: post.Id, Num: post.Views}
+		postGoodSortArray[i] = &BlogSort{Id: post.Id, Num: post.Goods}
+		postHotSortArray[i] = &BlogSort{Id: post.Id, Num: post.Hots}
+	}
+	// 循环完成后，填充分类、标签、主题的排序对象
+	for _, caC := range categoryMap {
+		categorySortArray = append(categorySortArray, &BlogSort{Id: caC.Id, Num: caC.Num})
+	}
+	for _, taC := range tagMap {
+		tagSortArray = append(tagSortArray, &BlogSort{Id: taC.Id, Num: taC.Num})
+	}
+	for _, toC := range topicMap {
+		topicSortArray = append(topicSortArray, &BlogSort{Id: toC.Id, Num: toC.Num})
+	}
+	// 对数据进行Sort
+	sort.Sort(postViewSortArray)
+	sort.Sort(postGoodSortArray)
+	sort.Sort(postHotSortArray)
+	sort.Sort(categorySortArray)
+	sort.Sort(tagSortArray)
+	sort.Sort(topicSortArray)
+	// 组装ID缓存对象
+	pageSortCache := &BlogListCache{
+		PostNews:  postNewArray,
+		PostViews: sortToArray(postViewSortArray),
+		PostGoods: sortToArray(postGoodSortArray),
+		PostHots:  sortToArray(postHotSortArray),
+		Category:  sortToArray(categorySortArray),
+		Tag:       sortToArray(tagSortArray),
+		Topic:     sortToArray(topicSortArray),
+	}
+	// 保存缓存
+	err = redis.Set(constant.PagePostCache, postsMap, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache CachePagePosts Fail . Err Is : %v", err)
+	}
+	err = redis.Set(constant.PageCategoryCache, categoryMap, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache CachePageCategories Fail . Err Is : %v", err)
+	}
+	err = redis.Set(constant.PageTagCache, tagMap, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache PageTagCache Fail . Err Is : %v", err)
+	}
+	err = redis.Set(constant.PageTopicCache, topicMap, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache PageTopicCache Fail . Err Is : %v", err)
+	}
+	err = redis.Set(constant.PagePostSortCache, pageSortCache, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache CachePageSorts Fail . Err Is : %v", err)
+	}
+	return
+}
+
+// Sort转ID
+func sortToArray(sortArray BlogSortArray) []uint64 {
+	array := make([]uint64, len(sortArray))
+	for i, sor := range sortArray {
+		array[i] = sor.Id
+	}
+	return array
+}
+
+// 读取标签数据
+func getTopic(traceID string) (topicMap map[uint64]*TopicCache, err error) {
+	topicMap = make(map[uint64]*TopicCache)
+	// 最后需要组装
+	topicList, err := blogDB.TopicTable.GetAll()
+	if err != nil {
+		log.ErrorTF(traceID, "SyncBlogPostAllCache GetTopic Fail . Err Is : %v", err)
+		return
+	}
+	for _, topic := range topicList {
+		source, err := blogDB.SourceTable.GetOneById(topic.SourceId)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetTopicSource %d Fail . Err Is : %v", topic.SourceId, err)
+			continue
+		}
+		topicMap[topic.Id] = &TopicCache{
+			Id:         topic.Id,
+			Title:      topic.Title,
+			Url:        topic.Url,
+			SourceShow: fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version),
+			Num:        0,
+		}
+	}
+	return
+}
+
+// 读取标签数据
+func getTag(traceID string) (tagMap map[uint64]*TagCache, err error) {
+	tagMap = make(map[uint64]*TagCache)
+	// 最后需要组装
+	tagList, err := blogDB.TagTable.GetAll()
+	if err != nil {
+		log.ErrorTF(traceID, "SyncBlogPostAllCache GetTag Fail . Err Is : %v", err)
+		return
+	}
+	for _, tag := range tagList {
+		source, err := blogDB.SourceTable.GetOneById(tag.SourceId)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetTagSource %d Fail . Err Is : %v", tag.SourceId, err)
+			continue
+		}
+		tagMap[tag.Id] = &TagCache{
+			Id:         tag.Id,
+			Title:      tag.Title,
+			Url:        tag.Url,
+			Summary:    tag.Summary,
+			SourceShow: fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version),
+			Num:        0,
+		}
+	}
+	return
+}
+
+// 读取分类数据
+func getCategory(traceID string) (categoryMap map[uint64]*CategoryCache, err error) {
+	categoryMap = make(map[uint64]*CategoryCache)
+	// 最后需要组装
+	categoryList, err := blogDB.CategoryTable.GetAll()
+	if err != nil {
+		log.ErrorTF(traceID, "SyncBlogPostAllCache GetCategory Fail . Err Is : %v", err)
+		return
+	}
+	for _, category := range categoryList {
+		source, err := blogDB.SourceTable.GetOneById(category.SourceId)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetCategorySource %d Fail . Err Is : %v", category.SourceId, err)
+			continue
+		}
+		categoryMap[category.Id] = &CategoryCache{
+			Id:         category.Id,
+			Title:      category.Title,
+			Url:        category.Url,
+			Summary:    category.Summary,
+			SourceShow: fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version),
+			Num:        0,
+		}
+	}
+	return
+}
+
+// SyncBanners 刷新Banner
+func SyncBanners(traceID string) {
+	banners, err := blogDB.BannerTable.Executor().GetBanners()
+	if err != nil {
+		log.ErrorTF(traceID, "SyncBlogPostAllCache GetBanners Fail . Err Is : %v", err)
+		return
+	}
+	bannerCache := make([]*BannerCache, len(banners))
+	for i, banner := range banners {
+		bannerCache[i] = &BannerCache{
+			Title:   banner.Title,
+			Tag:     banner.Tag,
+			Url:     banner.Url,
+			Summary: banner.Summary,
+		}
+		source, err := blogDB.SourceTable.GetOneById(banner.SourceId)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncBlogPostAllCache GetBannerSource %d Fail . Err Is : %v", banner.SourceId, err)
+		}
+		bannerCache[i].SourceShow = fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version)
+	}
+	// 写入缓存
+	err = redis.Set(constant.PageBannerCache, bannerCache, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache SetBannersCache Fail . Err Is : %v", err)
+	}
+}

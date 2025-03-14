@@ -103,5 +103,7 @@ func serviceInit(traceId string) {
 			os.Exit(1)
 		}
 		log.InfoTF(traceId, "InitDeptTreeCache success")
+		// 博客缓存初始化
+		go cacheModel.SyncBlogs(traceId)
 	}
 }

@@ -31,3 +31,10 @@ func (t Banner) DataBase() *gorm.DB {
 func (t Banner) TableName() string {
 	return "banner"
 }
+
+// GetBanners 获取Banners
+func (t Banner) GetBanners() (res []*Banner, err error) {
+	r := blogDb.Table(t.TableName()).Order("update_at").Find(&res)
+	err = r.Error
+	return
+}

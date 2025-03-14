@@ -91,6 +91,10 @@ func BlogRouter(router *gin.Engine) {
 			userRouter.POST("/edit", blogHandler.EditUser)
 			userRouter.POST("/del", blogHandler.DelUser)
 		}
+	}
 
+	pageRouter := router.Group("/page", middleware.CommMiddleWare) // 授权中间件
+	{
+		pageRouter.GET("/index", blogHandler.GetIndex) // 获取首页数据
 	}
 }

@@ -1,6 +1,6 @@
 {
   "Server": {
-    "Name": "Smart",
+    "Name": "Blog",
     "Port": ":8000",
     "LogLevel": "debug",
     "LogRoot": 2,

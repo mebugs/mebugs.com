@@ -47,3 +47,10 @@ func (t Post) ToCategory(id, toId uint64) (err error) {
 	err = r.Error
 	return
 }
+
+// GetPosts 迁移到新分组
+func (t Post) GetPosts() (res []*Post, err error) {
+	r := blogDb.Table(t.TableName()).Where("status = ?", "1").Where("post_type", "1").Order("push_at").Find(&res)
+	err = r.Error
+	return
+}

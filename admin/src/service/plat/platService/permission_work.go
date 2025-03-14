@@ -61,7 +61,7 @@ func recursionPermissionTree(traceID string, treeNode *baseModel.Tree) (err erro
 			Id:       item.Id,
 		}
 		// 递归子集
-		recursionPermissionTree(traceID, treeChild)
+		_ = recursionPermissionTree(traceID, treeChild)
 		// 加入子集
 		treeNode.Children = append(treeNode.Children, treeChild)
 	}
