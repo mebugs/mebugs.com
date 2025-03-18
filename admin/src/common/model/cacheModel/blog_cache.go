@@ -25,7 +25,7 @@ func GetBannerCache(traceID string) (res []*BannerCache) {
 }
 
 // GetCategoryCache 获取Category缓存
-func GetCategoryCache(traceID string) (res map[uint64]*CategoryCache) {
+func GetCategoryCache(traceID string) (res map[string]*CategoryCache) {
 	// 读取缓存
 	str, err := redis.Get(constant.PageCategoryCache)
 	if err != nil {
@@ -33,7 +33,7 @@ func GetCategoryCache(traceID string) (res map[uint64]*CategoryCache) {
 		return
 
 	}
-	res = make(map[uint64]*CategoryCache)
+	res = make(map[string]*CategoryCache)
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetCategoryCache Fail . Err Is : %v", err)
@@ -42,7 +42,7 @@ func GetCategoryCache(traceID string) (res map[uint64]*CategoryCache) {
 }
 
 // GetTagCache 获取Tag配置
-func GetTagCache(traceID string) (res map[uint64]*TagCache) {
+func GetTagCache(traceID string) (res map[string]*TagCache) {
 	// 读取缓存
 	str, err := redis.Get(constant.PageTagCache)
 	if err != nil {
@@ -50,7 +50,7 @@ func GetTagCache(traceID string) (res map[uint64]*TagCache) {
 		return
 
 	}
-	res = make(map[uint64]*TagCache)
+	res = make(map[string]*TagCache)
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetTagCache Fail . Err Is : %v", err)
@@ -59,7 +59,7 @@ func GetTagCache(traceID string) (res map[uint64]*TagCache) {
 }
 
 // GetTopicCache 获取Topic缓存
-func GetTopicCache(traceID string) (res map[uint64]*TopicCache) {
+func GetTopicCache(traceID string) (res map[string]*TopicCache) {
 	// 读取缓存
 	str, err := redis.Get(constant.PageTopicCache)
 	if err != nil {
@@ -67,7 +67,7 @@ func GetTopicCache(traceID string) (res map[uint64]*TopicCache) {
 		return
 
 	}
-	res = make(map[uint64]*TopicCache)
+	res = make(map[string]*TopicCache)
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetTopicCache Fail . Err Is : %v", err)
@@ -76,7 +76,7 @@ func GetTopicCache(traceID string) (res map[uint64]*TopicCache) {
 }
 
 // GetPostCache 获取Post缓存
-func GetPostCache(traceID string) (res map[uint64]*PostCache) {
+func GetPostCache(traceID string) (res map[string]*PostCache) {
 	// 读取缓存
 	str, err := redis.Get(constant.PagePostCache)
 	if err != nil {
@@ -84,7 +84,7 @@ func GetPostCache(traceID string) (res map[uint64]*PostCache) {
 		return
 
 	}
-	res = make(map[uint64]*PostCache)
+	res = make(map[string]*PostCache)
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetPostCache Fail . Err Is : %v", err)

@@ -96,5 +96,6 @@ func BlogRouter(router *gin.Engine) {
 	pageRouter := router.Group("/page", middleware.CommMiddleWare) // 授权中间件
 	{
 		pageRouter.GET("/index", blogHandler.GetIndex) // 获取首页数据
+		pageRouter.GET("/posts", blogHandler.GetPosts) // 获取文章列表数据
 	}
 }

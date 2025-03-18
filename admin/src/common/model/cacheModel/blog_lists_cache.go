@@ -12,13 +12,13 @@ import (
 
 // BlogListCache 博客列表ID缓存
 type BlogListCache struct {
-	PostNews  []uint64 `json:"postNews"`
-	PostViews []uint64 `json:"postViews"`
-	PostGoods []uint64 `json:"postGoods"`
-	PostHots  []uint64 `json:"postHots"`
-	Category  []uint64 `json:"category"`
-	Tag       []uint64 `json:"tag"`
-	Topic     []uint64 `json:"topic"`
+	PostNews  []string `json:"postNews"`
+	PostViews []string `json:"postViews"`
+	PostGoods []string `json:"postGoods"`
+	PostHots  []string `json:"postHots"`
+	Category  []string `json:"category"`
+	Tag       []string `json:"tag"`
+	Topic     []string `json:"topic"`
 }
 
 // BannerCache 轮播缓存
@@ -37,11 +37,11 @@ type PostCache struct {
 	Url          string   `json:"url"`          // 文章地址
 	SourcePath   string   `json:"sourcePath"`   // 图片路径
 	SourceBack   string   `json:"sourceBack"`   // 图片后缀
-	CategoryId   uint64   `json:"categoryId"`   // 分组ID
+	Category     string   `json:"category"`     // 分组ID
 	CategoryName string   `json:"categoryName"` // 分组
-	TagIds       []uint64 `json:"tagIds"`       // 标签ID
+	TagUrls      []string `json:"tagUrls"`      // 标签ID
 	TagNames     []string `json:"tagNames"`     // 标签列表
-	TopicIds     []uint64 `json:"topicIds"`     // 主题ID
+	TopicUrls    []string `json:"topicUrls"`    // 主题ID
 	TopicNames   []string `json:"topicNames"`   // 主题名称
 	PushAt       string   `json:"pushAt"`       // 发布时间
 	Views        uint64   `json:"views" `       // 总浏览量
@@ -57,7 +57,7 @@ type CategoryCache struct {
 	Summary    string   `json:"summary"`    // 简介
 	SourceShow string   `json:"sourceShow"` // 资源图片地址
 	Num        uint64   `json:"num"`        // 数据量
-	PostIds    []uint64 `json:"postIds"`    // 对应的文章
+	Posts      []string `json:"posts"`      // 对应的文章
 }
 
 // TagCache 标签缓存
@@ -68,7 +68,7 @@ type TagCache struct {
 	Summary    string   `json:"summary"`    // 简介
 	SourceShow string   `json:"sourceShow"` // 资源图片地址
 	Num        uint64   `json:"num"`        // 数据量
-	PostIds    []uint64 `json:"postIds"`    // 对应的文章
+	Posts      []string `json:"posts"`      // 对应的文章
 }
 
 // TopicCache 专题缓存
@@ -78,12 +78,12 @@ type TopicCache struct {
 	Url        string   `json:"url"`        // 分类地址
 	SourceShow string   `json:"sourceShow"` // 资源图片地址
 	Num        uint64   `json:"num"`        // 数据量
-	PostIds    []uint64 `json:"postIds"`    // 对应的文章
+	Posts      []string `json:"posts"`      // 对应的文章
 }
 
 // BlogSort 排序，三大组排序（时间单独一个序）
 type BlogSort struct {
-	Id  uint64
+	Url string
 	Num uint64
 }
 
@@ -131,8 +131,8 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 		log.ErrorTF(traceID, "SyncBlogPostAllCache Fail . Err Is : %v", err)
 		return
 	}
-	postsMap := make(map[uint64]*PostCache, 0)
-	postNewArray := make([]uint64, len(posts))
+	postsMap := make(map[uint64]*PostCache)
+	postNewArray := make([]string, len(posts))
 	postViewSortArray := make(BlogSortArray, len(posts))
 	postGoodSortArray := make(BlogSortArray, len(posts))
 	postHotSortArray := make(BlogSortArray, len(posts))
@@ -169,26 +169,28 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 			Url:          post.Url,
 			SourcePath:   fmt.Sprintf(constant.SourceFilePath, source.FilePath, fmt.Sprintf("%d", source.Id)),
 			SourceBack:   source.BackEnd,
-			CategoryId:   post.CategoryId,
+			Category:     categoryMap[post.CategoryId].Url,
 			CategoryName: categoryMap[post.CategoryId].Title,
 			PushAt:       post.PushAt.Format("2006-01-02"),
 		}
 		// 为分类填充数据
 		categoryMap[post.CategoryId].Num++
-		categoryMap[post.CategoryId].PostIds = append(categoryMap[post.CategoryId].PostIds, post.Id)
+		categoryMap[post.CategoryId].Posts = append(categoryMap[post.CategoryId].Posts, post.Url)
 		// 查询归属标签
 		tagIds, err := blogDB.PostTagTable.Executor().GetTagIds(post.Id)
 		if err != nil {
 			log.ErrorTF(traceID, "SyncBlogPostAllCache GetTag %d Fail . Err Is : %v", post.Id, err)
 			continue
 		}
+		tagUrls := make([]string, len(tagIds))
 		tagNames := make([]string, len(tagIds))
 		for i, tagId := range tagIds {
+			tagUrls[i] = tagMap[tagId].Url
 			tagNames[i] = tagMap[tagId].Title
 			tagMap[tagId].Num++
-			tagMap[tagId].PostIds = append(tagMap[tagId].PostIds, post.Id)
+			tagMap[tagId].Posts = append(tagMap[tagId].Posts, post.Url)
 		}
-		postsMap[post.Id].TagIds = tagIds
+		postsMap[post.Id].TagUrls = tagUrls
 		postsMap[post.Id].TagNames = tagNames
 		// 查询归属主题
 		topicIds, err := blogDB.PostTopicTable.Executor().GetTopicIds(post.Id)
@@ -196,29 +198,31 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 			log.ErrorTF(traceID, "SyncBlogPostAllCache GetGetTopic %d Fail . Err Is : %v", post.Id, err)
 			continue
 		}
+		topicUrls := make([]string, len(topicIds))
 		topicNames := make([]string, len(topicIds))
 		for i, topicId := range topicIds {
+			topicUrls[i] = topicMap[topicId].Url
 			topicNames[i] = topicMap[topicId].Title
 			topicMap[topicId].Num++
-			topicMap[topicId].PostIds = append(topicMap[topicId].PostIds, post.Id)
+			topicMap[topicId].Posts = append(topicMap[topicId].Posts, post.Url)
 		}
-		postsMap[post.Id].TopicIds = topicIds
+		postsMap[post.Id].TopicUrls = topicUrls
 		postsMap[post.Id].TopicNames = topicNames
 		// 填充时间顺序
-		postNewArray[i] = post.Id
-		postViewSortArray[i] = &BlogSort{Id: post.Id, Num: post.Views}
-		postGoodSortArray[i] = &BlogSort{Id: post.Id, Num: post.Goods}
-		postHotSortArray[i] = &BlogSort{Id: post.Id, Num: post.Hots}
+		postNewArray[i] = post.Url
+		postViewSortArray[i] = &BlogSort{Url: post.Url, Num: post.Views}
+		postGoodSortArray[i] = &BlogSort{Url: post.Url, Num: post.Goods}
+		postHotSortArray[i] = &BlogSort{Url: post.Url, Num: post.Hots}
 	}
 	// 循环完成后，填充分类、标签、主题的排序对象
 	for _, caC := range categoryMap {
-		categorySortArray = append(categorySortArray, &BlogSort{Id: caC.Id, Num: caC.Num})
+		categorySortArray = append(categorySortArray, &BlogSort{Url: caC.Url, Num: caC.Num})
 	}
 	for _, taC := range tagMap {
-		tagSortArray = append(tagSortArray, &BlogSort{Id: taC.Id, Num: taC.Num})
+		tagSortArray = append(tagSortArray, &BlogSort{Url: taC.Url, Num: taC.Num})
 	}
 	for _, toC := range topicMap {
-		topicSortArray = append(topicSortArray, &BlogSort{Id: toC.Id, Num: toC.Num})
+		topicSortArray = append(topicSortArray, &BlogSort{Url: toC.Url, Num: toC.Num})
 	}
 	// 对数据进行Sort
 	sort.Sort(postViewSortArray)
@@ -238,19 +242,19 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 		Topic:     sortToArray(topicSortArray),
 	}
 	// 保存缓存
-	err = redis.Set(constant.PagePostCache, postsMap, 0)
+	err = redis.Set(constant.PagePostCache, makePostUrlMap(postsMap), 0)
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache CachePagePosts Fail . Err Is : %v", err)
 	}
-	err = redis.Set(constant.PageCategoryCache, categoryMap, 0)
+	err = redis.Set(constant.PageCategoryCache, makeCategoryUrlMap(categoryMap), 0)
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache CachePageCategories Fail . Err Is : %v", err)
 	}
-	err = redis.Set(constant.PageTagCache, tagMap, 0)
+	err = redis.Set(constant.PageTagCache, makeTagUrlMap(tagMap), 0)
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache PageTagCache Fail . Err Is : %v", err)
 	}
-	err = redis.Set(constant.PageTopicCache, topicMap, 0)
+	err = redis.Set(constant.PageTopicCache, makeTopicUrlMap(topicMap), 0)
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache PageTopicCache Fail . Err Is : %v", err)
 	}
@@ -261,11 +265,47 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 	return
 }
 
+// makePostUrlMap 生产文章URLMap
+func makePostUrlMap(sMap map[uint64]*PostCache) map[string]*PostCache {
+	res := make(map[string]*PostCache)
+	for _, s := range sMap {
+		res[s.Url] = s
+	}
+	return res
+}
+
+// makeCategoryUrlMap 生产分类URLMap
+func makeCategoryUrlMap(sMap map[uint64]*CategoryCache) map[string]*CategoryCache {
+	res := make(map[string]*CategoryCache)
+	for _, s := range sMap {
+		res[s.Url] = s
+	}
+	return res
+}
+
+// makeTagUrlMap 生产标签URLMap
+func makeTagUrlMap(sMap map[uint64]*TagCache) map[string]*TagCache {
+	res := make(map[string]*TagCache)
+	for _, s := range sMap {
+		res[s.Url] = s
+	}
+	return res
+}
+
+// makeTopicUrlMap 生产话题URLMap
+func makeTopicUrlMap(sMap map[uint64]*TopicCache) map[string]*TopicCache {
+	res := make(map[string]*TopicCache)
+	for _, s := range sMap {
+		res[s.Url] = s
+	}
+	return res
+}
+
 // Sort转ID
-func sortToArray(sortArray BlogSortArray) []uint64 {
-	array := make([]uint64, len(sortArray))
+func sortToArray(sortArray BlogSortArray) []string {
+	array := make([]string, len(sortArray))
 	for i, sor := range sortArray {
-		array[i] = sor.Id
+		array[i] = sor.Url
 	}
 	return array
 }

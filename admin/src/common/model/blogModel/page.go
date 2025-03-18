@@ -13,3 +13,10 @@ type IndexData struct {
 	PostsGood []*cacheModel.PostCache     `json:"postsGood"`
 	PostsNew  []*cacheModel.PostCache     `json:"postsNew"`
 }
+
+// PostsReq 查询文章的对象
+type PostsReq struct {
+	By    string `json:"by"`    // 查询源：new good view hot category tag topic all=new
+	Value string `json:"value"` // 查询源：category tag topic
+	Page  int    `json:"page"`  // 查询页，每页固定15个
+}
