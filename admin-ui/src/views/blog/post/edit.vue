@@ -107,9 +107,8 @@
       </a-col>
     </a-row>
   </a-form>
-  <div id="minePreView" style="display: none"></div>
   <a-modal v-model:visible="tagEditFlag" :title="$t('tags.Edit')" :footer="false" :width="900">
-    <tag-Edit v-if="tagEditFlag" :doEdit="doEdit" :doCanc="doCanc" :do="true" />
+    <tag-add v-if="tagEditFlag" :doAdd="doAdd" :doCanc="doCanc" :do="true" />
   </a-modal>
   <!-- 添加图片 -->
   <a-modal v-model:visible="openS" :title="$t('source.check')" :footer="false" :width="900">
@@ -118,15 +117,15 @@
 </template>
 
 <script lang="ts" setup>
+import '~/vditor/src/assets/less/index.less'
 import { onMounted, ref } from 'vue'
 import type { Pop } from '@/utils/hooks/pop'
 import useLoad from '@/utils/hooks/load'
-import { postInit, postGet, postEdit } from '@/api/blog/post'
-import '~/vditor/src/assets/less/index.less'
 import vditor from '@/utils/hooks/vditor'
+import { postInit, postGet, postEdit } from '@/api/blog/post'
 import { tagList } from '@/api/blog/tag'
 import useImgs from '@/utils/hooks/imgs'
-import tagEdit from '../tag/add.vue'
+import tagAdd from '../tag/add.vue'
 import sourceIndex from '../source/index.vue'
 // 入参读取
 const props = defineProps({
@@ -165,12 +164,26 @@ const tagEditFlag = ref(false)
 const openTagEdit = () => {
   tagEditFlag.value = true
 }
-const doEdit = () => {
+const doAdd = () => {
   tagEditFlag.value = false
   getTagList()
 }
 const doCanc = () => {
   tagEditFlag.value = false
+}
+
+// 主图加载器
+const { imgObj, initImgQuick, chooesImg } = useImgs()
+initImgQuick('main')
+const chooesMain = async (e: Event) => {
+  await chooesImg(e)
+    .then(() => {
+      formData.value.source = imgObj.value.baseUrls
+      formData.value.sourceShow = imgObj.value.baseUrls[0]
+    })
+    .catch((er) => {
+      console.log(er)
+    })
 }
 // 打开资源选择
 const openS = ref(false)
@@ -193,20 +206,6 @@ async function get() {
     setLoad(false)
   }
 }
-// 主图加载器
-const { imgObj, initImgQuick, chooesImg } = useImgs()
-initImgQuick('main')
-const chooesMain = async (e: Event) => {
-  await chooesImg(e)
-    .then(() => {
-      formData.value.source = imgObj.value.baseUrls
-      formData.value.sourceShow = imgObj.value.baseUrls[0]
-    })
-    .catch((er) => {
-      console.log(er)
-    })
-}
-
 // docheck
 const doCheck = (record: any) => {
   openS.value = false
@@ -219,8 +218,6 @@ const submit = async ({ errors, values }: { errors: any; values: any }) => {
   if (load.value) return
   if (!errors) {
     setLoad(true)
-    // toPreview()
-    // timer.value = setTimeout(async () => {
     try {
       const sourceList = await getResponse()
       formData.value.sourceIds = sourceList
@@ -236,10 +233,8 @@ const submit = async ({ errors, values }: { errors: any; values: any }) => {
       // DoNothing
     } finally {
       setLoad(false)
-      // toPreview()
       console.log('F')
     }
-    //}, 100)
   }
 }
 // 页面渲染

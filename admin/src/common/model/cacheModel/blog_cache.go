@@ -2,6 +2,7 @@ package cacheModel
 
 import (
 	"encoding/json"
+	"fmt"
 	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/log"
 	"siteol.com/smart/src/common/redis"
@@ -105,6 +106,22 @@ func GetPostSortCache(traceID string) (res *BlogListCache) {
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetPostSortCache Fail . Err Is : %v", err)
+	}
+	return
+}
+
+// GetPostMainCache 获取文章换算
+func GetPostMainCache(traceID, url string) (res *PostMainCache) {
+	// 读取缓存
+	str, err := redis.Get(fmt.Sprintf(constant.PagePostCache, url))
+	if err != nil {
+		log.WarnTF(traceID, "GetPostCache Fail . Err Is : %v", err)
+		return
+	}
+	res = &PostMainCache{}
+	err = json.Unmarshal([]byte(str), &res)
+	if err != nil {
+		log.ErrorTF(traceID, "Unmarshal GetPostCache Fail . Err Is : %v", err)
 	}
 	return
 }

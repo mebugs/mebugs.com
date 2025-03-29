@@ -12,7 +12,7 @@
   text-decoration: none;
   font-family: "Microsoft YaHei", "SimHei", Avenir, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple color emoji, segoe ui emoji,
     segoe ui symbol, noto color emoji, sans-serif;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.36s ease-in-out;
 }
 
 body {
@@ -21,27 +21,40 @@ body {
   overflow-x: hidden;
 }
 
+button {
+  outline: 0;
+  border: 0;
+}
+
 img {
   display: block;
   width: 100%;
 }
 
 h1 {
-  font-size: 24px;
-}
-
-h2 {
   font-size: 22px;
 }
-
-h3 {
+.post h1 {
+  font-size: 32px;
+}
+h2 {
   font-size: 20px;
 }
-
+.post h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 19px;
+}
+.post h3 {
+  font-size: 24px;
+}
 h4 {
   font-size: 18px;
 }
-
+.post h4 {
+  font-size: 20px;
+}
 i {
   font-family: foxBlack;
   font-style: normal;
@@ -131,6 +144,14 @@ i {
   flex-wrap: wrap;
   margin: 0 -15px;
 }
+.rbx {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+.b1 {
+  width: calc(100% - 30px);
+}
 .b4 {
   width: calc(25% - 30px);
 }
@@ -139,6 +160,12 @@ i {
 }
 .b5 {
   width: calc(20% - 30px);
+}
+.bl {
+  width: calc(75% - 30px);
+}
+.br {
+  width: calc(25% - 30px);
 }
 .bn {
   width: 100%;
@@ -164,6 +191,14 @@ i {
   overflow: hidden;
   background: #fff;
   margin: 15px;
+}
+.bx {
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 10px;
+}
+.rt .b {
+  border-radius: 35px;
 }
 .rtg .b {
   border-radius: 30px;
@@ -193,16 +228,21 @@ i {
   align-items: center;
   position: relative;
 }
+.bix {
+  width: 100%;
+  padding: 20px;
+}
 .bit {
   line-height: 24px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   display: flex;
   align-items: center;
 }
 .bit span {
+  display: block;
   margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: #a2a6b4;
   font-size: 14px;
   display: flex;
@@ -251,9 +291,16 @@ i {
   color: #fff;
   border-radius: 6px;
 }
+.b4 .bg {
+  height: 134px;
+}
+.b3 .bg {
+  height: 183px;
+}
 .rt .bg {
   width: 70px;
   height: 70px;
+  border-radius: 35px;
 }
 .rtg .bg {
   width: 60px;
@@ -264,19 +311,58 @@ i {
   width: calc(100% - 70px);
   height: 70px;
 }
+.rt .bi h2 {
+  width: 100%;
+  margin-right: 45px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .rtg .bi {
   width: calc(100% - 60px);
   height: 60px;
   padding: 5px 10px;
+}
+.rtgb .b {
+  border-radius: 50px;
+}
+
+.rtgb .bg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.rtgb .bi {
+  width: calc(100% - 100px);
+  height: 100px;
+}
+.rtgb .bi h2 {
+  margin-right: 80px;
+}
+
+.rtgb .bno {
+  right: 30px;
+  top: 18px;
+  width: 50px;
+  font-size: 13px;
+  line-height: 30px;
+  border-radius: 15px;
+}
+
+.rtgb .bi h2 {
+  font-size: 22px;
+}
+
+.rtgb .bit span {
+  font-size: 16px;
 }
 .rt .bg i {
   width: 100%;
   font-size: 50px;
   line-height: 70px;
 }
-.rc .bg {
-  height: 134px;
-}
+
 .rp {
   border-bottom: 1px solid #eee;
   padding-bottom: 15px;
@@ -292,9 +378,7 @@ i {
   color: #a2a6b4;
   width: 35px;
 }
-.ro .bg {
-  height: 183px;
-}
+
 .bgt {
   position: absolute;
   z-index: -1;
@@ -320,15 +404,15 @@ i {
 }
 .bno {
   position: absolute !important;
-  right: 10px;
+  right: 15px;
   top: 10px;
   font-size: 12px;
   line-height: 20px;
   width: 40px;
   text-align: center;
-  background: #3491fa;
-  color: #fff;
+  background: #f0f0f0;
   border-radius: 10px;
+  opacity: 0;
 }
 .b5 {
   width: calc(20% - 30px);
@@ -343,15 +427,16 @@ i {
 }
 .rtt .bi {
   width: calc(100% - 40px);
-  padding: 5px 10px;
+  padding: 0 10px;
+  height: 40px;
 }
 .rtt .bi h2 {
-  line-height: 20px;
-  font-size: 18px;
+  line-height: 30px;
+  margin: 0;
 }
 .f {
   padding: 30px 0;
-  margin-top: 30px;
+  margin-top: 50px;
   border-top: 1px solid #eee;
 }
 .fr {
@@ -414,8 +499,19 @@ i {
 .bzd .bz::after {
   opacity: 0;
 }
+.bzd .bz a,
+.bzd .bz .outline_box {
+  z-index: 2;
+}
 .bzd .bgt {
   z-index: 1;
+}
+.bzd .bzr .bz::after,
+.bzd .bno {
+  opacity: 1;
+}
+.bzd .bzr .bgt {
+  z-index: -1;
 }
 .bm {
   display: block;
@@ -458,7 +554,161 @@ i {
 .fbt i {
   font-size: 30px;
 }
+.bcn {
+  width: 240px;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+}
 
+.totp .bg {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin: auto;
+}
+.totp * {
+  color: #a2a6b4;
+}
+.bcn .bi {
+  justify-content: center;
+}
+.bcn .bi * {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  justify-content: center;
+}
+
+.bcn .toot {
+  margin: 5px;
+  width: 70px;
+}
+
+.bcn .toot .bg {
+  height: 50px;
+  border-radius: 25px;
+  width: 50px;
+  margin: auto;
+}
+.bcn .toot .bi {
+  padding: 5px 0;
+}
+.bcn .toot h2 {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.bcn i {
+  line-height: 120px;
+  font-size: 60px;
+  width: 100%;
+}
+
+.bcn .toot i {
+  line-height: 50px;
+  font-size: 35px;
+}
+.bcn button {
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.bcn button i {
+  line-height: 40px;
+  width: 100%;
+  font-size: 30px;
+}
+
+.bcn p {
+  line-height: 40px;
+  margin: 0 15px;
+  font-weight: 900;
+}
+
+.bcn button.nc {
+  cursor: unset;
+  background: unset;
+}
+.nft {
+  text-align: center;
+  margin: 60px auto;
+}
+
+.nft i {
+  margin: 20px;
+  font-size: 150px;
+  color: #a2a6b4;
+}
+
+.nft p {
+  color: #a2a6b4;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 900;
+  margin: 10px;
+}
+
+.nft a {
+  margin: 10px;
+  width: 120px;
+  display: inline-block;
+  line-height: 36px;
+  background: #fff;
+  border-radius: 6px;
+  font-weight: 900;
+}
+.bt a {
+  text-align: center;
+  margin: 0 auto;
+  width: 120px;
+  color: #1d2129;
+  background: #fff;
+  border-radius: 6px;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: 900;
+  display: block;
+}
+.bcn button.nc * {
+  color: #a2a6b4;
+}
+.bip {
+  width: 100%;
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+}
+
+.bip span,
+.bip a {
+  display: inline-block;
+  line-height: 28px;
+  margin: 5px;
+  padding: 0 8px;
+  background: #f7f8fa;
+  border-radius: 6px;
+  color: #a2a6b4;
+  font-size: 14px;
+}
+.bip em {
+  display: inline-block;
+  font-style: normal;
+  font-size: 12px;
+}
+.bip a {
+  color: #1d2129;
+}
+.bip em,
+.bip span i {
+  color: #a2a6b4;
+}
 .bm:hover {
   color: #3491fa;
   padding-right: 22px;
@@ -466,16 +716,39 @@ i {
 .bm:hover em {
   right: 0;
 }
+.pdesc {
+  border-radius: 6px;
+  padding: 15px;
+  background: #fff;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.pdesc span {
+  width: 45px;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.pdesc p {
+  line-height: 30px;
+  width: calc(100% - 45px);
+}
+
+.brdh {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  border-radius: 0;
+  border-left: 1px dashed #a2a6b4;
+}
 .lmn a.hv,
 .lmn a:hover {
   color: #3491fa;
   box-shadow: inset 3px 4px 5px 0 #e1e4e8;
 }
-.fcn a:hover i,
-.flk a:hover {
-  color: #3491fa;
-}
-.b:hover .bg img {
+
+.b:hover .bg.bgd img {
   opacity: 0.8;
   transform: scale(1.1);
 }
@@ -483,19 +756,37 @@ i {
   opacity: 1;
 }
 .b:hover,
-.bn:hover {
+.bn:hover,
+.bcn button:hover,
+.nft a:hover,
+.bt a:hover {
   box-shadow: 0 5px 15px #e1e4e8;
 }
 .b:hover .bno,
 .bia a:hover {
   background: #1d2129;
+  color: #fff;
 }
 .b:hover .bg i,
 .b:hover .bi h1,
 .b:hover .bi h2,
-.fbt:hover i {
+.fbt:hover i,
+.toot:hover *,
+.fcn a:hover i,
+.flk a:hover,
+.bcn button:hover i,
+.nft a:hover,
+.bt a:hover,
+.bip a:hover,
+.bip a:hover i,
+.outline_box ul span:hover span {
   color: #3491fa;
 }
 .b:hover .bi .bit span i {
   color: #1d2129;
+}
+.bcn button.nc:hover,
+.bcn button.nc:hover * {
+  box-shadow: unset;
+  color: #a2a6b4;
 }

@@ -2,10 +2,12 @@ package cacheModel
 
 import (
 	"fmt"
+	"math"
 	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/log"
 	"siteol.com/smart/src/common/mysql/blogDB"
 	"siteol.com/smart/src/common/redis"
+	"siteol.com/smart/src/common/utils"
 	"sort"
 	"time"
 )
@@ -35,18 +37,26 @@ type PostCache struct {
 	Id           uint64   `json:"id"`           // 数据ID
 	Title        string   `json:"title"`        // 标题
 	Url          string   `json:"url"`          // 文章地址
+	Summary      string   `json:"summary"`      // 摘要
 	SourcePath   string   `json:"sourcePath"`   // 图片路径
 	SourceBack   string   `json:"sourceBack"`   // 图片后缀
-	Category     string   `json:"category"`     // 分组ID
+	Category     string   `json:"category"`     // 分组URL
 	CategoryName string   `json:"categoryName"` // 分组
-	TagUrls      []string `json:"tagUrls"`      // 标签ID
+	TagUrls      []string `json:"tagUrls"`      // 标签URL
 	TagNames     []string `json:"tagNames"`     // 标签列表
-	TopicUrls    []string `json:"topicUrls"`    // 主题ID
+	TopicUrls    []string `json:"topicUrls"`    // 主题URL
 	TopicNames   []string `json:"topicNames"`   // 主题名称
 	PushAt       string   `json:"pushAt"`       // 发布时间
-	Views        uint64   `json:"views" `       // 总浏览量
-	Goods        uint64   `json:"goods"`        // 总支持量
-	Hots         uint64   `json:"hots"`         // 近期热度
+	Views        uint64   `json:"views" `       // 总浏览量 ++
+	Goods        uint64   `json:"goods"`        // 总支持量 60秒+1，页面不刷新最多+6次
+	Hots         uint64   `json:"hots"`         // 近期热度 ++ Goods触发时++，每天对数据进行0.99取整进1处理
+}
+
+// PostMainCache 文章更新信息（触发时缓存12H）
+type PostMainCache struct {
+	Toc  string   `json:"toc"`  // 文章导航
+	Html string   `json:"html"` // HTML源文件
+	Like []string `json:"like"` // 相关文章
 }
 
 // CategoryCache 分类缓存
@@ -76,6 +86,7 @@ type TopicCache struct {
 	Id         uint64   `json:"id"`         // 数据ID
 	Title      string   `json:"title"`      // 名称
 	Url        string   `json:"url"`        // 分类地址
+	Summary    string   `json:"summary"`    // 简介
 	SourceShow string   `json:"sourceShow"` // 资源图片地址
 	Num        uint64   `json:"num"`        // 数据量
 	Posts      []string `json:"posts"`      // 对应的文章
@@ -102,8 +113,9 @@ func (p BlogSortArray) Len() int {
 	return len(p)
 }
 
+// Less 倒序处理
 func (p BlogSortArray) Less(i, j int) bool {
-	return p[i].Num < p[j].Num
+	return p[i].Num > p[j].Num
 }
 
 func (p BlogSortArray) Swap(i, j int) {
@@ -122,6 +134,8 @@ func SyncBlogs(traceID string) {
 
 // SyncBlogPostAllCache 同步全部文章/分类/标签/专题的缓存
 func SyncBlogPostAllCache(traceID string) (err error) {
+	// 先处理缓存入库
+	postMapInnerDb(traceID)
 	// 刷新Banner缓存
 	SyncBanners(traceID)
 
@@ -167,11 +181,15 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 			Id:           post.Id,
 			Title:        post.Title,
 			Url:          post.Url,
+			Summary:      post.Summary,
 			SourcePath:   fmt.Sprintf(constant.SourceFilePath, source.FilePath, fmt.Sprintf("%d", source.Id)),
 			SourceBack:   source.BackEnd,
 			Category:     categoryMap[post.CategoryId].Url,
 			CategoryName: categoryMap[post.CategoryId].Title,
 			PushAt:       post.PushAt.Format("2006-01-02"),
+			Views:        post.Views,
+			Goods:        post.Goods,
+			Hots:         post.Hots,
 		}
 		// 为分类填充数据
 		categoryMap[post.CategoryId].Num++
@@ -329,6 +347,7 @@ func getTopic(traceID string) (topicMap map[uint64]*TopicCache, err error) {
 			Id:         topic.Id,
 			Title:      topic.Title,
 			Url:        topic.Url,
+			Summary:    topic.Summary,
 			SourceShow: fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version),
 			Num:        0,
 		}
@@ -416,4 +435,116 @@ func SyncBanners(traceID string) {
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache SetBannersCache Fail . Err Is : %v", err)
 	}
+}
+
+// SyncPostMain 刷新文章正文16H
+func SyncPostMain(traceID string, postBase *PostCache) (res *PostMainCache) {
+	postMore, err := blogDB.PostMoreTable.GetOneById(postBase.Id)
+	if err != nil {
+		return
+	}
+	res = &PostMainCache{
+		Toc:  postMore.Toc,
+		Html: postMore.Html,
+	}
+	// 开始计算Like
+	like := make([]string, 0)
+	if len(postBase.TagUrls) > 0 {
+		tagPosts := make([]string, 0)
+		tagCache := GetTagCache(traceID)
+		for _, tag := range postBase.TagUrls {
+			if tagInfo, ok := tagCache[tag]; ok {
+				tagPosts = append(tagPosts, tagInfo.Posts...)
+			}
+		}
+		if len(tagPosts) > 0 {
+			if len(tagPosts) <= 6 {
+				like = tagPosts
+			} else {
+				// 随机选举6条数据
+				like = utils.ShuffleAndSelect(tagPosts, 6)
+			}
+		}
+	}
+	// 不满足6位，提前分组下文章
+	if len(like) < 6 {
+		needCount := 6 - len(like)
+		category := GetCategoryCache(traceID)
+		if cat, ok := category[postBase.Category]; ok {
+			if len(cat.Posts) > 0 {
+				if len(cat.Posts) <= needCount {
+					like = append(like, cat.Posts...)
+				} else {
+					// 分类下选举剩下的条目
+					like = append(like, utils.ShuffleAndSelect(cat.Posts, needCount)...)
+				}
+			}
+		}
+	}
+	// 不满足6位，获取最新文章
+	if len(like) < 6 {
+		needCount := 6 - len(like)
+		postSort := GetPostSortCache(traceID)
+		if len(postSort.PostNews) <= needCount {
+			like = append(like, postSort.PostNews...)
+		} else {
+			// 从最新文章获得前N位的数据
+			like = append(like, postSort.PostNews[:needCount]...)
+		}
+	}
+	res.Like = like
+	// 写入缓存
+	err = redis.SetByTimeDuration(fmt.Sprintf(constant.PagePostUrl, postBase.Url), res, 16*time.Hour)
+	if err != nil {
+		log.InfoTF(traceID, "SyncPostMain Fail . Err Is : %v", err)
+	}
+	return
+}
+
+// postMapInnerDb 更新文章处理数据
+func postMapInnerDb(traceId string) {
+	// 判断是否执行Hots消除
+	today := time.Now().Format("20060102")
+	updateDate, _ := redis.Get(constant.PagePostUpdateDate)
+	needRun := today != updateDate
+	if needRun {
+		_ = redis.Set(constant.PagePostUpdateDate, today, 0)
+	}
+	postMap := GetPostCache(traceId)
+	if postMap == nil {
+		return
+	}
+	i := 0
+	req := make([]*blogDB.PostUpdateData, 0)
+	// 300个一轮
+	for _, post := range postMap {
+		if i == 300 {
+			// 先执行一轮
+			err := blogDB.PostTable.Executor().UpdatePostDataBatch(req)
+			if err != nil {
+				log.ErrorTF(traceId, "UpdatePostDataBatch Fail . Err Is : %v", err)
+			}
+			i = 0
+			req = make([]*blogDB.PostUpdateData, 0)
+		}
+		hots := post.Hots
+		if needRun {
+			hots = uint64(math.Ceil(float64(hots) * 0.99))
+		}
+		req = append(req, &blogDB.PostUpdateData{
+			Id:    post.Id,
+			Views: post.Views,
+			Goods: post.Goods,
+			Hots:  hots,
+		})
+		i++
+	}
+	if len(req) > 0 {
+		// 最后一轮
+		err := blogDB.PostTable.Executor().UpdatePostDataBatch(req)
+		if err != nil {
+			log.ErrorTF(traceId, "UpdatePostDataBatch Fail . Err Is : %v", err)
+		}
+	}
+	log.InfoTF(traceId, "UpdatePostDataBatch Done ")
 }

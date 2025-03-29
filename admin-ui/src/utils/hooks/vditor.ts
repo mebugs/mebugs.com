@@ -252,18 +252,24 @@ export default function vditor(nodeId: string, openSource: Function) {
     let matches = haystack.match(regex)
     return matches ? matches.length : 0
   }
+  // 模拟预览
+  const toPreview = () => {
+    var elements = document.querySelectorAll('#' + nodeId + ' .vditor-toolbar div button')
+    var lastElement = elements[elements.length - 1]
+    lastElement.dispatchEvent(new MouseEvent('click'))
+  }
   // 获取提交结果
   const getResponse = async () => {
     // 读取预览HTML
     md.md = vd.value.getValue()
-    md.outline = document.querySelector('#' + nodeId + ' .vditor-outline')?.innerHTML
-    var myPreView = document.querySelector('#minePreView')
+    var bashHtml = vd.value.getHTML()
+    toPreview()
+    var outline = document.querySelector('#' + nodeId + ' .vditor-outline')
+    var myPreView = document.querySelector('#' + nodeId + ' .vditor-preview')
     if (myPreView != null) {
-      var bashHtml = vd.value.getHTML()
-      myPreView.innerHTML = bashHtml
+      await sleep(200)
       if (bashHtml.includes('<pre><code ')) {
         const hasCount = hasNum(bashHtml, '<pre><code ')
-        Vditor.highlightRender(preViewSet.hljs, myPreView as HTMLElement, preViewSet.cdn)
         let runRender = true
         while (runRender) {
           const renderHtml = myPreView.innerHTML
@@ -275,11 +281,35 @@ export default function vditor(nodeId: string, openSource: Function) {
           }
           await sleep(200)
         }
-        md.html = myPreView.innerHTML
       }
+      if (outline != null) {
+        let runRender = true
+        while (runRender) {
+          let outHtml = outline.innerHTML
+          if (!outHtml.includes('data-target-id="ir-')) {
+            runRender = false
+          }
+          await sleep(200)
+        }
+        md.outline = outline.innerHTML
+      }
+      md.html = myPreView.innerHTML
+      md.html = md.html.replaceAll('<p><img src="', '<p class="bg"><img src="')
+      md.html = md.html.replaceAll(
+        `<div class="vditor-copy"><textarea></textarea><span aria-label="复制" onmouseover="this.setAttribute('aria-label', '复制')" class="vditor-tooltipped vditor-tooltipped__w" onclick="this.previousElementSibling.select();document.execCommand('copy');this.setAttribute('aria-label', '已复制');this.previousElementSibling.blur()"><svg><use xlink:href="#vditor-icon-copy"></use></svg></span></div>`,
+        ''
+      )
+      md.outline = md.outline?.replaceAll('<svg class="vditor-outline__action"><use xlink:href="#vditor-icon-down"></use></svg>', '')
+      md.outline = md.outline?.replaceAll(
+        '<svg class="vditor-outline__action" viewBox="0 0 32 32"><path d="M3.76 6.12l12.24 12.213 12.24-12.213 3.76 3.76-16 16-16-16 3.76-3.76z"></path></svg>',
+        ''
+      )
+      md.outline = md.outline?.replaceAll('<svg></svg>', '')
+      md.outline = md.outline?.replaceAll('vditor-outline__title', 'outline')
+      md.outline = md.outline?.replaceAll('vditor-outline__content', 'outline_box')
     }
     // 处理图片关联
-    let imgNodes = document.querySelectorAll('#minePreView img')
+    let imgNodes = document.querySelectorAll('#' + nodeId + ' .vditor-preview img')
     var soucesList: number[] = []
     if (imgNodes) {
       imgNodes?.forEach((node) => {

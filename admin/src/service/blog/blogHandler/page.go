@@ -40,3 +40,87 @@ func GetPosts(c *gin.Context) {
 		service.JsonRes(c, blogService.GetPosts(traceID, req))
 	}
 }
+
+// GetTopics 	godoc
+// @id			GetTopics 获取专栏数据
+// @Summary		获取专栏数据
+// @Description	获取专栏数据
+// @Router		/page/topics [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func GetTopics(c *gin.Context) {
+	// traceID 日志追踪
+	traceID := c.GetString(constant.ContextTraceID)
+	service.JsonRes(c, blogService.GetTopics(traceID))
+}
+
+// GetCategoryList 	godoc
+// @id			GetCategoryList 获取分类数据
+// @Summary		获取分类数据
+// @Description	获取分类数据
+// @Router		/page/categoryList [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func GetCategoryList(c *gin.Context) {
+	// traceID 日志追踪
+	traceID := c.GetString(constant.ContextTraceID)
+	service.JsonRes(c, blogService.GetCategoryList(traceID))
+}
+
+// GetTags 	godoc
+// @id			GetTags 获取标签数据
+// @Summary		获取标签数据
+// @Description	获取标签数据
+// @Router		/page/tags [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func GetTags(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.PostsReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.PostsReq)
+		// 执行创建
+		service.JsonRes(c, blogService.GetTags(traceID, req))
+	}
+}
+
+// GetPostDetail 	godoc
+// @id			GetPostDetail 获取文章详情
+// @Summary		获取文章详情
+// @Description	获取文章详情
+// @Router		/page/post [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func GetPostDetail(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.PostReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.PostReq)
+		// 执行创建
+		service.JsonRes(c, blogService.GetPostDetail(traceID, req))
+	}
+}
+
+// SetPostGood 	godoc
+// @id			SetPostGood 文章深度追加
+// @Summary		文章深度追加
+// @Description	文章深度追加
+// @Router		/page/post/good [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func SetPostGood(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.PostReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.PostReq)
+		// 执行创建
+		service.JsonRes(c, blogService.SetPostGood(traceID, req))
+	}
+}

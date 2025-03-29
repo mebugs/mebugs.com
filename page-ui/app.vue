@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+const runtimeConfig = useRuntimeConfig();
 useHead({
   link: [{ rel: "stylesheet", href: "/static/css/base.css" }],
   script: [{ src: "/static/js/base.js", tagPosition: "bodyClose" }],

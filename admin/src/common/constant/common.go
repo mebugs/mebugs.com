@@ -41,10 +41,12 @@ var (
 	CacheDeptTrees         = ProjectName + ":Comm:DeptTrees"         // 部门缓存树缓存
 	CacheAuth              = ProjectName + ":Auth:%s"                // 登陆授权缓存
 
-	PageBannerCache   = ProjectName + ":Page:Banners"
-	PageTagCache      = ProjectName + ":Page:Tags"
-	PageCategoryCache = ProjectName + ":Page:Categories"
-	PageTopicCache    = ProjectName + ":Page:Topics"
-	PagePostCache     = ProjectName + ":Page:Posts"
-	PagePostSortCache = ProjectName + ":Page:PostSorts"
+	PageBannerCache    = ProjectName + ":Page:Banners"
+	PageTagCache       = ProjectName + ":Page:Tags"
+	PageCategoryCache  = ProjectName + ":Page:Categories"
+	PageTopicCache     = ProjectName + ":Page:Topics"
+	PagePostCache      = ProjectName + ":Page:Posts"
+	PagePostSortCache  = ProjectName + ":Page:PostSorts"
+	PagePostUrl        = ProjectName + ":Page:Post:%s"
+	PagePostUpdateDate = ProjectName + ":Page:PostUpdateDate"
 )

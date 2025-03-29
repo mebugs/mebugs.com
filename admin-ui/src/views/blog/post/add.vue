@@ -107,7 +107,6 @@
       </a-col>
     </a-row>
   </a-form>
-  <div id="minePreView" style="display: none"></div>
   <a-modal v-model:visible="tagAddFlag" :title="$t('tags.add')" :footer="false" :width="900">
     <tag-add v-if="tagAddFlag" :doAdd="doAdd" :doCanc="doCanc" :do="true" />
   </a-modal>
@@ -165,6 +164,7 @@ const openTagAdd = () => {
   tagAddFlag.value = true
 }
 const doAdd = () => {
+  console.log('INADD')
   tagAddFlag.value = false
   getTagList()
 }
@@ -218,7 +218,6 @@ const submit = async ({ errors, values }: { errors: any; values: any }) => {
       // DoNothing
     } finally {
       setLoad(false)
-      toPreview()
       console.log('F')
     }
   }

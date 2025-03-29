@@ -1,8 +1,8 @@
 <template>
   <div class="m">
-    <div class="r bn swiper-container" v-if="banners && banners[0]">
+    <div class="r bn swiper-container" v-if="resData.banners && resData.banners[0]">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="bann in banners">
+        <div class="swiper-slide" v-for="bann in resData.banners">
           <div class="b">
             <div class="bg bgb"><img :src="bann.sourceShow" /></div>
             <div class="bi bib">
@@ -11,7 +11,7 @@
                 <span class="bz"><i>#</i>{{ bann.tag }}</span>
               </div>
               <p class="bz">{{ bann.summary }}</p>
-              <div class="bia"><a class="bz" :href="bann.url">点击前往</a></div>
+              <div class="bia"><NuxtLink class="bz" :to="bann.url">点击前往</NuxtLink></div>
             </div>
           </div>
         </div>
@@ -21,42 +21,23 @@
     </div>
     <div class="r">
       <div class="rb rt">
-        <a href="/" class="b b4">
-          <div class="bg"><i class="bz">&#xF007;</i></div>
+        <NuxtLink class="b b4" v-for="other in postsMain" :to="'/posts/' + other.url">
+          <div class="bg"><i class="bz" v-html="other.icon"></i></div>
           <div class="bi">
-            <h2 class="bz">近期上升</h2>
-            <div class="bit"><span class="bz">最近备受关注的内容</span></div>
+            <h2 class="bz">{{ other.tip }}</h2>
+            <div class="bit">
+              <span class="bz">{{ other.desc }}</span>
+            </div>
           </div>
-        </a>
-        <a href="/" class="b b4">
-          <div class="bg"><i class="bz">&#xF010;</i></div>
-          <div class="bi">
-            <h2 class="bz">全站热门</h2>
-            <div class="bit"><span class="bz">访问流量最高的内容</span></div>
-          </div>
-        </a>
-        <a href="/" class="b b4">
-          <div class="bg"><i class="bz">&#xF011;</i></div>
-          <div class="bi">
-            <h2 class="bz">深度好文</h2>
-            <div class="bit"><span class="bz">深度价值指数的内容</span></div>
-          </div>
-        </a>
-        <a href="/" class="b b4">
-          <div class="bg"><i class="bz">&#xF008;</i></div>
-          <div class="bi">
-            <h2 class="bz">新鲜发布</h2>
-            <div class="bit"><span class="bz">围观最新发布的内容</span></div>
-          </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1 class="bz"><i>&#xF007;</i> 近期上升</h1>
       </div>
-      <div class="rb ro" v-if="postsHot && postsHot[0]">
-        <a class="b b3" v-for="post in postsHot" :href="'/post/' + post.url">
+      <div class="rb" v-if="resData.postsHot && resData.postsHot[0]">
+        <NuxtLink class="b b3" v-for="post in resData.postsHot" :to="'/post/' + post.url">
           <div class="bg">
             <img :src="post.sourcePath + '_1.' + post.sourceBack" />
             <div class="bgt">
@@ -70,15 +51,15 @@
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF012;</i> 文章分类</h1>
       </div>
-      <div class="rb rt rtg" v-if="category && category[0]">
-        <a v-for="cat in category" :href="'/category/' + cat.url" class="b b4">
+      <div class="rb rt rtg" v-if="resData.category && resData.category[0]">
+        <NuxtLink v-for="cat in resData.category" :to="'/category/' + cat.url" class="b b4">
           <div class="bg"><img :src="cat.sourceShow" /></div>
           <div class="bi">
             <span class="bno bz">{{ cat.num }}</span>
@@ -87,15 +68,15 @@
               <span class="bz">{{ cat.summary }}</span>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF010;</i> 全站热门</h1>
       </div>
-      <div class="rb ro" v-if="postsView && postsView[0]">
-        <a class="b b3" v-for="post in postsView" :href="'/post/' + post.url">
+      <div class="rb" v-if="resData.postsView && resData.postsView[0]">
+        <NuxtLink class="b b3" v-for="post in resData.postsView" :to="'/post/' + post.url">
           <div class="bg">
             <img :src="post.sourcePath + '_1.' + post.sourceBack" />
             <div class="bgt">
@@ -109,30 +90,30 @@
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF014;</i> 专题专栏</h1>
       </div>
-      <div class="rb rc" v-if="topic && topic[0]">
-        <a v-for="to in topic" class="b b4" href="/">
+      <div class="rb rc" v-if="resData.topic && resData.topic[0]">
+        <NuxtLink v-for="top in resData.topic" class="b b3" :to="'/topic/' + top.url">
           <div class="bg">
-            <img :src="to.sourceShow" />
+            <img :src="top.sourceShow" />
             <div class="bgt">
-              <span class="bz">{{ to.num }}</span>
+              <span class="bz">{{ top.num }}</span>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF011;</i> 深度好文</h1>
       </div>
-      <div class="rb ro" v-if="postsGood && postsGood[0]">
-        <a class="b b3" v-for="post in postsGood" :href="'/post/' + post.url">
+      <div class="rb" v-if="resData.postsGood && resData.postsGood[0]">
+        <NuxtLink class="b b3" v-for="post in resData.postsGood" :to="'/post/' + post.url">
           <div class="bg">
             <img :src="post.sourcePath + '_1.' + post.sourceBack" />
             <div class="bgt">
@@ -146,28 +127,28 @@
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF013;</i> 核心标签</h1>
       </div>
-      <div class="rb rtt" v-if="tag && tag[0]">
-        <a v-for="ta in tag" :href="'/tag/' + ta.url" class="b b5">
+      <div class="rb rt rtt" v-if="resData.tag && resData.tag[0]">
+        <NuxtLink v-for="ta in resData.tag" :to="'/tag/' + ta.url" class="b b5">
           <div class="bg"><img :src="ta.sourceShow" /></div>
           <div class="bi">
             <h2 class="bz">{{ ta.title }}</h2>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF008;</i> 新鲜发布</h1>
       </div>
-      <div class="rb ro" v-if="postsNew && postsNew[0]">
-        <a class="b b3" v-for="post in postsNew" :href="'/post/' + post.url">
+      <div class="rb" v-if="resData.postsNew && resData.postsNew[0]">
+        <NuxtLink class="b b3" v-for="post in resData.postsNew" :to="'/post/' + post.url">
           <div class="bg">
             <img :src="post.sourcePath + '_1.' + post.sourceBack" />
             <div class="bgt">
@@ -181,31 +162,78 @@
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="r">
-      <a class="b bm" href="/post">查看更多<em></em></a>
+      <NuxtLink class="b bm" to="/posts/new">查看更多<em></em></NuxtLink>
     </div>
     <Foot></Foot>
   </div>
 </template>
 <script setup lang="ts">
 const runtimeConfig = useRuntimeConfig();
+const needRun = useState("indexRun", () => true);
+const resData = useState("resData", () => <any>{});
 useHead({
+  title: `米虫博客 - 技术经验分享 做一个有理想的米虫，全栈程序员，乐观主义者，坚信一切都是最好的安排！${runtimeConfig.public.siteName}`,
+  meta: [{ hid: "description", name: "description", content: `${runtimeConfig.public.description}` }],
   link: [{ href: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.css", rel: "stylesheet" }],
-  script: [
-    { src: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.js", tagPosition: "bodyClose" },
-    { src: "/static/js/index.js", tagPosition: "bodyClose" },
-  ],
+  script: [{ src: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.js", tagPosition: "bodyClose", onload: initSwiper }],
 });
-
 // 读取页面数据
-const { data } = await useFetch(runtimeConfig.public.backServer + "/page/index", {});
-const resData = (data.value as any).data;
-const { banners, category, tag, topic, postsHot, postsView, postsGood, postsNew } = resData;
-// let data2 = ref({});
-// async function handleFormSubmit() {
-//   data2.value = await $fetch("/api/page/index");
-// }
+if (process.server) {
+  const res = await useFetch(runtimeConfig.public.backServer + "/page/index", {});
+  resData.value = (res.data.value as any).data;
+  needRun.value = false;
+}
+const postsMain = [
+  { url: "hot", tip: "近期上升", desc: "最近备受关注的内容", icon: "&#xF007;" },
+  { url: "view", tip: "全站热门", desc: "访问流量最高的内容", icon: "&#xF010;" },
+  { url: "good", tip: "深度好文", desc: "深度价值指数的内容", icon: "&#xF011;" },
+  { url: "new", tip: "新鲜发布", desc: "围观最新发布的内容", icon: "&#xF008;" },
+];
+// 页面挂载后的初始化
+onMounted(async () => {
+  // 如果SSR没有
+  if (needRun.value) {
+    await initByClient();
+  }
+  initPage();
+});
+async function initByClient() {
+  const res = await $fetch("/api/page/index", { server: false, method: "GET" });
+  resData.value = (res as any).data;
+}
+onUnmounted(() => {
+  needRun.value = true;
+  // @ts-ignore
+  InitBack();
+});
+function initPage() {
+  // @ts-ignore
+  InitDom();
+}
+// Page Init (ext IE)
+function initSwiper() {
+  // banner
+  // @ts-ignore
+  new Swiper(".swiper-container", {
+    loop: true,
+    autoplay: {
+      disableOnInteraction: false,
+      stopOnLastSlide: false,
+      delay: 3500000,
+    },
+    grabCursor: true,
+    speed: 400,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    on: {
+      init: function () {
+        // @ts-ignore
+        LoadBannImg();
+      },
+    },
+  });
+}
 </script>

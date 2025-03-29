@@ -7,16 +7,16 @@
       <a href="https://chainoe.com" target="_blank">ChainOE</a>
       <a href="https://chainoe.com" target="_blank">ChainOE</a>
       <a href="https://chainoe.com" target="_blank">ChainOE</a>
-      <a class="bt" href="/page/link">#更多</a>
+      <NuxtLink class="bt" to="/page/link">#更多</NuxtLink>
     </div>
-    <div class="fr flk"><a href="/page/about">关于</a>丨<a href="/page/msg">留言</a>丨<a href="/page/link">友链</a>丨<a href="/page/map">地图</a></div>
+    <div class="fr flk"><NuxtLink to="/post/about">关于</NuxtLink>丨<NuxtLink to="/page/msg">留言</NuxtLink>丨<NuxtLink to="/page/link">友链</NuxtLink>丨<NuxtLink to="/page/map">地图</NuxtLink></div>
     <div class="fr flk fcn">
       <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=7431346&amp;site=qq&amp;menu=yes" target="_blank"> <i>&#xF016;</i>QQ</a>
       <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=7431346&amp;site=qq&amp;menu=yes" target="_blank"> <i>&#xF017;</i>微信</a>
       <a href="mailto:iam@qiantaoyuan.com" target="_blank"> <i>&#xF018;</i>邮箱</a>
       <a href="https://github.com/mebugs" target="_blank"> <i>&#xF019;</i>仓库</a>
-      <a href="/page/msg"> <i>&#xF020;</i>留言</a>
+      <NuxtLink to="/page/msg"> <i>&#xF020;</i>留言</NuxtLink>
     </div>
-    <div class="fr flk kc"><a class="kc" href="/">&#xF015; MEBUGS</a></div>
+    <div class="fr flk kc"><NuxtLink class="kc" href="/">&#xF015; MEBUGS</NuxtLink></div>
   </div>
 </template>

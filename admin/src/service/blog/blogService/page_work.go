@@ -4,15 +4,16 @@ import (
 	"siteol.com/smart/src/common/model/cacheModel"
 )
 
-// getRunUrls 获得需要处理的URL列表 0：Index
-func getRunUrls(traceID string, runBy, page int) (backIds [][]string) {
+// getRunUrls 获得需要处理的URL列表 0：Index 1:
+func getRunUrls(traceID string, runBy, page int) (backIds [][]string, total int) {
 	// 获取ID列表
 	idList := cacheModel.GetPostSortCache(traceID)
 	if idList == nil {
 		return
 	}
+	total = len(idList.PostNews)
 	switch runBy {
-	case 0: // Index  0 category 1 tag 2 topic 3 new 4 view 5 good 6 hot
+	case 0: // 0 Index  1 new 2 good 3 view 4 hot 5 all=new 6 category 7 tag 8 topic
 		backIds = [][]string{
 			idList.Category,
 			getUrlsByPage(idList.Tag, page, 20),
@@ -22,13 +23,63 @@ func getRunUrls(traceID string, runBy, page int) (backIds [][]string) {
 			getUrlsByPage(idList.PostGoods, page, 6),
 			getUrlsByPage(idList.PostHots, page, 6),
 		}
+	case 1: // 1 new
+		backIds = [][]string{getUrlsByPage(idList.PostNews, page, 15)}
+	case 2: // 2 good
+		backIds = [][]string{getUrlsByPage(idList.PostGoods, page, 15)}
+	case 3: // 3 view
+		backIds = [][]string{getUrlsByPage(idList.PostViews, page, 15)}
+	case 4: // 4 hot
+		backIds = [][]string{getUrlsByPage(idList.PostHots, page, 15)}
+	case 6: // 6 category
+		backIds = [][]string{idList.Category}
+	case 7: // 7 tag
+		backIds = [][]string{getUrlsByPage(idList.Tag, page, 24)}
+		total = len(idList.Tag)
+	case 8: // 8 topic
+		backIds = [][]string{idList.Topic}
+	default: // 5 || Other
+		backIds = [][]string{idList.PostNews}
+	}
+	return
+}
 
+// getGroupRunUrls 获取相关分组下的文章数据
+func getGroupRunUrls(traceID, url string, runBy, page int) (backIds [][]string, total int, group any) {
+	switch runBy {
+	case 6: //  6 category 7 tag 8 topic
+		resMap := cacheModel.GetCategoryCache(traceID)
+		if res, ok := resMap[url]; ok {
+			total = len(res.Posts)
+			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
+			res.Posts = nil
+			group = res
+		}
+	case 7: //  6 category 7 tag 8 topic
+		resMap := cacheModel.GetTagCache(traceID)
+		if res, ok := resMap[url]; ok {
+			total = len(res.Posts)
+			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
+			res.Posts = nil
+			group = res
+		}
+	case 8: //  6 category 7 tag 8 topic
+		resMap := cacheModel.GetTopicCache(traceID)
+		if res, ok := resMap[url]; ok {
+			total = len(res.Posts)
+			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
+			res.Posts = nil
+			group = res
+		}
 	}
 	return
 }
 
 // getUrlsByPage 根据分页获得ID
 func getUrlsByPage(urls []string, page, size int) []string {
+	if page < 1 {
+		page = 1
+	}
 	length := len(urls)
 	start := (page - 1) * size
 	end := page * size
@@ -88,14 +139,31 @@ func getPostByUrlSort(traceID string, new, view, good, hot []string) (res [][]*c
 	if cache == nil {
 		return
 	}
-	res = [][]*cacheModel.PostCache{getPostByIds(new, cache), getPostByIds(view, cache), getPostByIds(good, cache), getPostByIds(hot, cache)}
+	res = [][]*cacheModel.PostCache{getPostByUrls(new, cache), getPostByUrls(view, cache), getPostByUrls(good, cache), getPostByUrls(hot, cache)}
 	return
 }
 
-func getPostByIds(urls []string, cache map[string]*cacheModel.PostCache) (res []*cacheModel.PostCache) {
+func getPostByUrlSortSingle(traceID string, urls []string) (res []*cacheModel.PostCache) {
+	cache := cacheModel.GetPostCache(traceID)
+	if cache == nil {
+		return
+	}
+	return getPostByUrls(urls, cache)
+}
+
+func getPostByUrls(urls []string, cache map[string]*cacheModel.PostCache) (res []*cacheModel.PostCache) {
 	res = make([]*cacheModel.PostCache, len(urls))
 	for i, url := range urls {
 		res[i] = cache[url]
 	}
+	return
+}
+
+func getPostByUrl(traceID, url string) (res *cacheModel.PostCache, cache map[string]*cacheModel.PostCache) {
+	cache = cacheModel.GetPostCache(traceID)
+	if cache == nil {
+		return
+	}
+	res = cache[url]
 	return
 }

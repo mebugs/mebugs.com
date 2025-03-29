@@ -1,8 +1,10 @@
 var body, html, loc, side, out;
 // 初始化
-init(InitDom);
-// 初始化
 function InitDom() {
+  initDomLoad(domInit());
+}
+
+function domInit() {
   side = true;
   out = true;
   html = document.documentElement;
@@ -10,7 +12,15 @@ function InitDom() {
   loc = window.localStorage;
   setTimeout(() => {
     body.classList.add("bzd");
-  }, 500);
+  }, 200);
+  loadNormalImg();
+}
+
+// 恢复部分场景
+function InitBack() {
+  if (body.classList.contains("bzd")) {
+    body.classList.remove("bzd");
+  }
 }
 
 // 移动定时器
@@ -49,29 +59,31 @@ function toWhere(where) {
   }, 10);
 }
 
-// 初始化图片加载器
-init(loadNormalImg);
-
 // 常规加载
 function loadNormalImg() {
-  loadImg(false);
+  loadImg(".m");
+}
+
+// 指定加载
+function LoadPostsImg() {
+  loadImg(".pos");
 }
 
 // Bann独立加载
-function loadBannImg() {
-  loadImg(true);
+function LoadBannImg() {
+  loadImg(".bn");
 }
 
 // 加载图片 TODO
-function loadImg(isBann) {
-  var allImg = document.querySelectorAll(".m img");
+function loadImg(from) {
+  var allImg = document.querySelectorAll(from + " img");
   var imgs = [];
   var index = 0;
   for (var i = 0; i < allImg.length; i++) {
     let img = allImg[i];
     let oimg = img.parentNode;
     let isBannImg = oimg.classList.contains("bgb");
-    if (isBann == !isBannImg) {
+    if (from == ".m" && isBannImg) {
       continue;
     }
     let imgSrc = img.getAttribute("src");
@@ -96,19 +108,19 @@ function lazyLoadImg(imgs, index) {
     setTimeout(() => {
       img.parentNode.classList.add("bgd");
       lazyLoadImg(imgs, index);
-    }, 50);
+    }, 100);
   };
   loder.onerror = () => {
     img.setAttribute("src", imgSrc);
     setTimeout(() => {
       img.parentNode.classList.add("bgd");
       lazyLoadImg(imgs, index);
-    }, 50);
+    }, 100);
   };
 }
 
 // 初始化函数
-function init(fn) {
+function initDomLoad(fn) {
   if (document.addEventListener) {
     document.addEventListener("DOMContentLoaded", function () {
       document.removeEventListener("DOMContentLoaded", arguments.callee);

@@ -95,7 +95,12 @@ func BlogRouter(router *gin.Engine) {
 
 	pageRouter := router.Group("/page", middleware.CommMiddleWare) // 授权中间件
 	{
-		pageRouter.GET("/index", blogHandler.GetIndex) // 获取首页数据
-		pageRouter.GET("/posts", blogHandler.GetPosts) // 获取文章列表数据
+		pageRouter.GET("/index", blogHandler.GetIndex)               // 获取首页数据
+		pageRouter.POST("/posts", blogHandler.GetPosts)              // 获取文章列表数据
+		pageRouter.GET("/topics", blogHandler.GetTopics)             // 获取专栏列表数据
+		pageRouter.GET("/categoryList", blogHandler.GetCategoryList) // 获取分类列表数据
+		pageRouter.POST("/tags", blogHandler.GetTags)                // 获取文章列表数据
+		pageRouter.POST("/post", blogHandler.GetPostDetail)          // 获取文章详情
+		pageRouter.POST("/post/good", blogHandler.SetPostGood)       // Push文章Goods
 	}
 }

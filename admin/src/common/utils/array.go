@@ -1,6 +1,10 @@
 package utils
 
-import "strings"
+import (
+	"math/rand"
+	"strings"
+	"time"
+)
 
 // ArrayInclude 字符串是否位于数组中
 func ArrayInclude(node string, nodes []string) bool {
@@ -26,4 +30,13 @@ func ArrayStartWith(node string, nodes []string) bool {
 		}
 	}
 	return false
+}
+
+// ShuffleAndSelect 洗牌算法，指定位数的新数组
+func ShuffleAndSelect(arr []string, count int) []string {
+	rand.New(rand.NewSource(time.Now().UnixNano()))
+	rand.Shuffle(len(arr), func(i, j int) {
+		arr[i], arr[j] = arr[j], arr[i]
+	})
+	return arr[:count]
 }
