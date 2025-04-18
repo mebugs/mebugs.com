@@ -17,7 +17,6 @@ func getRunUrls(traceID string, runBy, page int) (backIds [][]string, total int)
 		backIds = [][]string{
 			idList.Category,
 			getUrlsByPage(idList.Tag, page, 20),
-			getUrlsByPage(idList.Topic, page, 4),
 			getUrlsByPage(idList.PostNews, page, 15),
 			getUrlsByPage(idList.PostViews, page, 6),
 			getUrlsByPage(idList.PostGoods, page, 6),
@@ -36,8 +35,6 @@ func getRunUrls(traceID string, runBy, page int) (backIds [][]string, total int)
 	case 7: // 7 tag
 		backIds = [][]string{getUrlsByPage(idList.Tag, page, 24)}
 		total = len(idList.Tag)
-	case 8: // 8 topic
-		backIds = [][]string{idList.Topic}
 	default: // 5 || Other
 		backIds = [][]string{idList.PostNews}
 	}
@@ -57,14 +54,6 @@ func getGroupRunUrls(traceID, url string, runBy, page int) (backIds [][]string, 
 		}
 	case 7: //  6 category 7 tag 8 topic
 		resMap := cacheModel.GetTagCache(traceID)
-		if res, ok := resMap[url]; ok {
-			total = len(res.Posts)
-			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
-			res.Posts = nil
-			group = res
-		}
-	case 8: //  6 category 7 tag 8 topic
-		resMap := cacheModel.GetTopicCache(traceID)
 		if res, ok := resMap[url]; ok {
 			total = len(res.Posts)
 			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
@@ -114,19 +103,6 @@ func getTagByUrlSort(traceID string, urls []string) (res []*cacheModel.TagCache)
 		return
 	}
 	res = make([]*cacheModel.TagCache, len(urls))
-	for i, url := range urls {
-		res[i] = cache[url]
-	}
-	return
-}
-
-// getTopicByUrlSort 获取分类顺序数据
-func getTopicByUrlSort(traceID string, urls []string) (res []*cacheModel.TopicCache) {
-	cache := cacheModel.GetTopicCache(traceID)
-	if cache == nil {
-		return
-	}
-	res = make([]*cacheModel.TopicCache, len(urls))
 	for i, url := range urls {
 		res[i] = cache[url]
 	}

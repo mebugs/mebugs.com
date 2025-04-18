@@ -31,3 +31,9 @@ func (t PostComment) DataBase() *gorm.DB {
 func (t PostComment) TableName() string {
 	return "post_comment"
 }
+
+func (t PostComment) Comments(postId uint64) (res []*PostComment, err error) {
+	r := blogDb.Table(t.TableName()).Where("post_id = ?", postId).Order("`level`,create_at").Find(&res)
+	err = r.Error
+	return
+}

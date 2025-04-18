@@ -41,21 +41,6 @@ func GetPosts(c *gin.Context) {
 	}
 }
 
-// GetTopics 	godoc
-// @id			GetTopics 获取专栏数据
-// @Summary		获取专栏数据
-// @Description	获取专栏数据
-// @Router		/page/topics [post]
-// @Tags		Page
-// @Accept		json
-// @Produce		json
-// @Security	Token
-func GetTopics(c *gin.Context) {
-	// traceID 日志追踪
-	traceID := c.GetString(constant.ContextTraceID)
-	service.JsonRes(c, blogService.GetTopics(traceID))
-}
-
 // GetCategoryList 	godoc
 // @id			GetCategoryList 获取分类数据
 // @Summary		获取分类数据
@@ -122,5 +107,41 @@ func SetPostGood(c *gin.Context) {
 		req := reqObj.(*blogModel.PostReq)
 		// 执行创建
 		service.JsonRes(c, blogService.SetPostGood(traceID, req))
+	}
+}
+
+// AddComm 	godoc
+// @id			AddComm 添加文章评论
+// @Summary		文章深度追加
+// @Description	文章深度追加
+// @Router		/page/comm/add [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func AddComm(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.PostCommReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.PostCommReq)
+		// 执行创建
+		service.JsonRes(c, blogService.AddComm(traceID, req))
+	}
+}
+
+// Comments 	godoc
+// @id			AddComm 查询评论
+// @Summary		查询评论
+// @Description	查询评论
+// @Router		/page/comments [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func Comments(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.CommentsReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.CommentsReq)
+		// 执行创建
+		service.JsonRes(c, blogService.Comments(traceID, req))
 	}
 }

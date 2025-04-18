@@ -1,11 +1,15 @@
 package blogService
 
 import (
+	"fmt"
 	"siteol.com/smart/src/common/constant"
+	"siteol.com/smart/src/common/log"
 	"siteol.com/smart/src/common/model/baseModel"
 	"siteol.com/smart/src/common/model/blogModel"
 	"siteol.com/smart/src/common/model/cacheModel"
+	"siteol.com/smart/src/common/mysql/blogDB"
 	"siteol.com/smart/src/common/redis"
+	"time"
 )
 
 // GetIndex 获取首页数据
@@ -18,8 +22,7 @@ func GetIndex(traceID string) *baseModel.ResBody {
 	// 处理首页数据
 	indexData.Category = getCategoryByUrlSort(traceID, indexIds[0])
 	indexData.Tag = getTagByUrlSort(traceID, indexIds[1])
-	indexData.Topic = getTopicByUrlSort(traceID, indexIds[2])
-	posts := getPostByUrlSort(traceID, indexIds[3], indexIds[4], indexIds[5], indexIds[6])
+	posts := getPostByUrlSort(traceID, indexIds[2], indexIds[3], indexIds[4], indexIds[5])
 	indexData.PostsNew = posts[0]
 	indexData.PostsView = posts[1]
 	indexData.PostsGood = posts[2]
@@ -48,17 +51,6 @@ func GetPosts(traceID string, req *blogModel.PostsReq) *baseModel.ResBody {
 		Posts: posts,
 		Total: total,
 	})
-}
-
-// GetTopics 获取专栏数据
-func GetTopics(traceID string) *baseModel.ResBody {
-	urls, _ := getRunUrls(traceID, 8, 1)
-	topicsMap := cacheModel.GetTopicCache(traceID)
-	topics := make([]*cacheModel.TopicCache, len(urls[0]))
-	for i, url := range urls[0] {
-		topics[i] = topicsMap[url]
-	}
-	return baseModel.Success(constant.Success, &blogModel.TopicsData{Topic: topics})
 }
 
 // GetCategoryList 获取专栏数据
@@ -129,10 +121,138 @@ func SetPostGood(traceID string, req *blogModel.PostReq) *baseModel.ResBody {
 		return baseModel.Success(constant.Success, nil)
 	}
 	// 处理最新统计数据
+	postBase.Views++
 	postBase.Hots++
 	postBase.Goods++
 	// 写回缓存
 	allMap[postBase.Url] = postBase
 	_ = redis.Set(constant.PagePostCache, allMap, 0)
 	return baseModel.Success(constant.Success, nil)
+}
+
+// AddComm 提交文章评论
+func AddComm(traceID string, req *blogModel.PostCommReq) *baseModel.ResBody {
+	// 查询用户
+	now := time.Now()
+	user, err := blogDB.UserTable.GetOneByObject(&blogDB.User{ClientId: req.User.ClientId})
+	if err != nil {
+		user = blogDB.User{
+			Status:   constant.StatusOpen,
+			CreateAt: &now,
+		}
+	}
+	user.UpdateAt = &now
+	user.Name = req.User.Name
+	user.Email = req.User.Email
+	user.Summary = req.User.Summary
+	user.SourceId = req.User.SourceId
+	user.ClientId = req.User.ClientId
+	if user.ThirdUrl != req.User.Url {
+		user.WaitUrl = req.User.Url
+	}
+	if user.Id == 0 {
+		err = blogDB.UserTable.InsertOne(&user)
+	} else {
+		err = blogDB.UserTable.UpdateOne(&user)
+	}
+	if err != nil {
+		log.ErrorTF(traceID, "AddComm Add/UpDate User Failed . Err Is %v", err)
+		return baseModel.Fail(constant.PageCommUserUpsertNG)
+	}
+	// 开始添加评论（当日同UID在相同文章下最多提交5条评论）
+	userPostCache := cacheModel.GetPostCommUserCache(traceID, user.Id)
+	if num, ok := userPostCache[req.PostId]; ok {
+		if num >= 5 {
+			return baseModel.Fail(constant.PageCommCommentPutLimit)
+		}
+		userPostCache[req.PostId] = num + 1
+	} else {
+		userPostCache[req.PostId] = 1
+	}
+	err = blogDB.PostCommentTable.InsertOne(&blogDB.PostComment{
+		Id:       0,
+		PostId:   req.PostId,
+		Level:    req.Level,
+		Uid:      user.Id,
+		Rid:      req.Rid,
+		Info:     req.Info,
+		Status:   constant.StatusLock, // 待审核
+		CreateAt: &now,
+		UpdateAt: &now,
+	})
+	if err != nil {
+		log.ErrorTF(traceID, "AddComm PostComment Failed . Err Is %v", err)
+		return baseModel.Fail(constant.PageCommCommentPutNG)
+	}
+	tom := now.AddDate(0, 0, 1)
+	expTime := time.Date(tom.Year(), tom.Month(), tom.Day(), 0, 0, 0, 0, time.Local)
+	expD := expTime.Sub(now)
+	_ = redis.SetByTimeDuration(fmt.Sprintf(constant.PagePostCommUserCache, user.Id), userPostCache, expD)
+	return baseModel.Success(constant.Success, nil)
+}
+
+// Comments 评论查询
+func Comments(traceID string, req *blogModel.CommentsReq) *baseModel.ResBody {
+	res := &blogModel.CommentsRes{}
+	// 查询全部评论，以时间倒序
+	comments, err := blogDB.PostCommentTable.Executor().Comments(req.PostId)
+	if err != nil {
+		return baseModel.Success(constant.Success, res)
+	}
+	var uid uint64
+	userMap := make(map[uint64]*blogModel.CommentsUser)
+	if req.ClientId != "" {
+		user, err := blogDB.UserTable.GetOneByObject(&blogDB.User{ClientId: req.ClientId})
+		if err == nil {
+			uid = user.Id
+			userMap[uid] = blogModel.ToCommentsUser(&user)
+		}
+	}
+	// 记录需要展示的ID信息
+	total := 0
+	ids := make([]uint64, 0)
+	commentsMap := make(map[uint64]*blogModel.Comments)
+	for _, comment := range comments {
+		// 关闭的评论
+		if comment.Status == constant.StatusClose {
+			continue
+		}
+		// 非受访用户的待评审评论
+		if comment.Status == constant.StatusLock && comment.Uid != uid {
+			continue
+		}
+		// 计数
+		total++
+		user, ok := userMap[comment.Uid]
+		if !ok {
+			dbUser, err := blogDB.UserTable.GetOneById(comment.Uid)
+			if err != nil {
+				user = blogModel.NormalUser
+			} else {
+				user = blogModel.ToCommentsUser(&dbUser)
+			}
+			userMap[comment.Uid] = user
+		}
+		// 一级评论
+		if comment.Level == 0 {
+			ids = append(ids, comment.Id)
+			commentsMap[comment.Id] = blogModel.ToComments(user, comment)
+		} else {
+			// 二级评论
+			rComm := commentsMap[comment.Rid] // 必然存在
+			if rComm == nil {
+				continue
+			}
+			rComm.Comments = append(rComm.Comments, blogModel.ToComments(user, comment))
+			commentsMap[comment.Id] = rComm
+		}
+	}
+	// 组装
+	resComments := make([]*blogModel.Comments, len(ids))
+	for i, id := range ids {
+		resComments[i] = commentsMap[id]
+	}
+	res.Total = total
+	res.Comments = resComments
+	return baseModel.Success(constant.Success, res)
 }

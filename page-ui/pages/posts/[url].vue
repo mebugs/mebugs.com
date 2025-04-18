@@ -29,7 +29,10 @@
             <img :src="post.sourcePath + '_1.' + post.sourceBack" />
             <div class="bgt">
               <span class="bz"><i>&#xF013;</i>{{ post.categoryName }}</span>
-              <span class="bz"><i>&#xF008;</i>{{ post.pushAt }}</span>
+              <span class="bz" v-if="urlCode == 1"><i>&#xF008;</i>{{ post.pushAt }}</span>
+              <span class="bz" v-if="urlCode == 2"><i>&#xF011;</i>{{ post.goods }}</span>
+              <span class="bz" v-if="urlCode == 3"><i>&#xF010;</i>{{ post.views }}</span>
+              <span class="bz" v-if="urlCode == 4"><i>&#xF007;</i>{{ post.hots }}</span>
             </div>
           </div>
           <div class="bi">

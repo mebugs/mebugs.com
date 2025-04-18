@@ -72,35 +72,36 @@ func BlogRouter(router *gin.Engine) {
 			postRouter.POST("/edit", blogHandler.EditPost)
 		}
 
-		// 文章评论相关
-		postCommentRouter := blogRouter.Group("/postComment")
-		{
-			postCommentRouter.POST("/add", blogHandler.AddPostComment)
-			postCommentRouter.POST("/page", blogHandler.PagePostComment)
-			postCommentRouter.POST("/get", blogHandler.GetPostComment)
-			postCommentRouter.POST("/edit", blogHandler.EditPostComment)
-			postCommentRouter.POST("/del", blogHandler.DelPostComment)
-		}
-
-		// 极简用户信息相关
-		userRouter := blogRouter.Group("/user")
-		{
-			userRouter.POST("/add", blogHandler.AddUser)
-			userRouter.POST("/page", blogHandler.PageUser)
-			userRouter.POST("/get", blogHandler.GetUser)
-			userRouter.POST("/edit", blogHandler.EditUser)
-			userRouter.POST("/del", blogHandler.DelUser)
-		}
+		//// 文章评论相关
+		//postCommentRouter := blogRouter.Group("/postComment")
+		//{
+		//	postCommentRouter.POST("/add", blogHandler.AddPostComment)
+		//	postCommentRouter.POST("/page", blogHandler.PagePostComment)
+		//	postCommentRouter.POST("/get", blogHandler.GetPostComment)
+		//	postCommentRouter.POST("/edit", blogHandler.EditPostComment)
+		//	postCommentRouter.POST("/del", blogHandler.DelPostComment)
+		//}
+		//
+		//// 极简用户信息相关
+		//userRouter := blogRouter.Group("/user")
+		//{
+		//	userRouter.POST("/add", blogHandler.AddUser)
+		//	userRouter.POST("/page", blogHandler.PageUser)
+		//	userRouter.POST("/get", blogHandler.GetUser)
+		//	userRouter.POST("/edit", blogHandler.EditUser)
+		//	userRouter.POST("/del", blogHandler.DelUser)
+		//}
 	}
 
 	pageRouter := router.Group("/page", middleware.CommMiddleWare) // 授权中间件
 	{
 		pageRouter.GET("/index", blogHandler.GetIndex)               // 获取首页数据
 		pageRouter.POST("/posts", blogHandler.GetPosts)              // 获取文章列表数据
-		pageRouter.GET("/topics", blogHandler.GetTopics)             // 获取专栏列表数据
 		pageRouter.GET("/categoryList", blogHandler.GetCategoryList) // 获取分类列表数据
 		pageRouter.POST("/tags", blogHandler.GetTags)                // 获取文章列表数据
 		pageRouter.POST("/post", blogHandler.GetPostDetail)          // 获取文章详情
 		pageRouter.POST("/post/good", blogHandler.SetPostGood)       // Push文章Goods
+		pageRouter.POST("/comments", blogHandler.Comments)           // 获取评论
+		pageRouter.POST("/comm/add", blogHandler.AddComm)            // 提交评论
 	}
 }

@@ -59,23 +59,6 @@ func GetTagCache(traceID string) (res map[string]*TagCache) {
 	return
 }
 
-// GetTopicCache 获取Topic缓存
-func GetTopicCache(traceID string) (res map[string]*TopicCache) {
-	// 读取缓存
-	str, err := redis.Get(constant.PageTopicCache)
-	if err != nil {
-		log.WarnTF(traceID, "GetTopicCache Fail . Err Is : %v", err)
-		return
-
-	}
-	res = make(map[string]*TopicCache)
-	err = json.Unmarshal([]byte(str), &res)
-	if err != nil {
-		log.ErrorTF(traceID, "Unmarshal GetTopicCache Fail . Err Is : %v", err)
-	}
-	return
-}
-
 // GetPostCache 获取Post缓存
 func GetPostCache(traceID string) (res map[string]*PostCache) {
 	// 读取缓存
@@ -122,6 +105,22 @@ func GetPostMainCache(traceID, url string) (res *PostMainCache) {
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetPostCache Fail . Err Is : %v", err)
+	}
+	return
+}
+
+// GetPostCommUserCache 获取用户当日评论缓存
+func GetPostCommUserCache(traceID string, uid uint64) (res map[uint64]uint64) {
+	res = make(map[uint64]uint64)
+	// 读取缓存
+	str, err := redis.Get(fmt.Sprintf(constant.PagePostCommUserCache, uid))
+	if err != nil {
+		log.WarnTF(traceID, "GetPostCommUserCache Fail . Err Is : %v", err)
+		return
+	}
+	err = json.Unmarshal([]byte(str), &res)
+	if err != nil {
+		log.ErrorTF(traceID, "Unmarshal GetPostCommUserCache Fail . Err Is : %v", err)
 	}
 	return
 }

@@ -95,15 +95,13 @@
     </div>
     <div class="r">
       <div class="rp">
-        <h1><i>&#xF014;</i> 专题专栏</h1>
+        <h1><i>&#xF013;</i> 核心标签</h1>
       </div>
-      <div class="rb rc" v-if="resData.topic && resData.topic[0]">
-        <NuxtLink v-for="top in resData.topic" class="b b3" :to="'/topic/' + top.url">
-          <div class="bg">
-            <img :src="top.sourceShow" />
-            <div class="bgt">
-              <span class="bz">{{ top.num }}</span>
-            </div>
+      <div class="rb rt rtt" v-if="resData.tag && resData.tag[0]">
+        <NuxtLink v-for="ta in resData.tag" :to="'/tag/' + ta.url" class="b b5">
+          <div class="bg"><img :src="ta.sourceShow" /></div>
+          <div class="bi">
+            <h2 class="bz">{{ ta.title }}</h2>
           </div>
         </NuxtLink>
       </div>
@@ -126,19 +124,6 @@
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
-          </div>
-        </NuxtLink>
-      </div>
-    </div>
-    <div class="r">
-      <div class="rp">
-        <h1><i>&#xF013;</i> 核心标签</h1>
-      </div>
-      <div class="rb rt rtt" v-if="resData.tag && resData.tag[0]">
-        <NuxtLink v-for="ta in resData.tag" :to="'/tag/' + ta.url" class="b b5">
-          <div class="bg"><img :src="ta.sourceShow" /></div>
-          <div class="bi">
-            <h2 class="bz">{{ ta.title }}</h2>
           </div>
         </NuxtLink>
       </div>

@@ -11,6 +11,7 @@ type User struct {
 	Id       uint64     `json:"id"`       // 数据ID
 	ClientId string     `json:"clientId"` // 客户端ID（前端生成，清除会丢失）
 	Name     string     `json:"name"`     // 用户名
+	Email    string     `json:"email"`    // 邮箱
 	Code     string     `json:"code"`     // 用户编码（允许访问用户）默认=ID
 	Summary  string     `json:"summary"`  // 简介
 	ThirdUrl string     `json:"thirdUrl"` // 三方网站（需要审核）

@@ -24,6 +24,7 @@ body {
 button {
   outline: 0;
   border: 0;
+  cursor: pointer;
 }
 
 img {
@@ -32,28 +33,28 @@ img {
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 20px;
 }
 .post h1 {
-  font-size: 32px;
-}
-h2 {
-  font-size: 20px;
-}
-.post h2 {
   font-size: 28px;
 }
-h3 {
+h2 {
   font-size: 19px;
 }
-.post h3 {
-  font-size: 24px;
+.post h2 {
+  font-size: 25px;
 }
-h4 {
+h3 {
   font-size: 18px;
 }
+.post h3 {
+  font-size: 22px;
+}
+h4 {
+  font-size: 17px;
+}
 .post h4 {
-  font-size: 20px;
+  font-size: 19px;
 }
 i {
   font-family: foxBlack;
@@ -222,15 +223,17 @@ i {
   height: 390px;
 }
 .bi {
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   position: relative;
+  padding: 10px;
 }
 .bix {
-  width: 100%;
-  padding: 20px;
+  padding: 0;
+}
+.bix * {
+  font-size: 12px;
 }
 .bit {
   line-height: 24px;
@@ -678,8 +681,8 @@ i {
   color: #a2a6b4;
 }
 .bip {
-  width: 100%;
   margin: 5px 0;
+  margin-right: 15px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -689,13 +692,12 @@ i {
 .bip span,
 .bip a {
   display: inline-block;
-  line-height: 28px;
+  line-height: 24px;
   margin: 5px;
   padding: 0 8px;
-  background: #f7f8fa;
+  background: #eee;
   border-radius: 6px;
   color: #a2a6b4;
-  font-size: 14px;
 }
 .bip em {
   display: inline-block;
@@ -734,13 +736,362 @@ i {
   line-height: 30px;
   width: calc(100% - 45px);
 }
+.bpm {
+  margin-bottom: 40px;
+}
 
+.bpt {
+  margin-bottom: 20px;
+  padding-left: 15px;
+  line-height: 2;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.brl {
+  overflow: visible;
+}
 .brdh {
   height: 100vh;
   position: sticky;
   top: 0;
-  border-radius: 0;
-  border-left: 1px dashed #a2a6b4;
+}
+.post .rpm h1 {
+  font-size: 22px;
+}
+
+.rpm .bg {
+  width: 120px;
+  height: 68px;
+}
+
+.rpm .bi {
+  width: calc(100% - 120px);
+  height: 68px;
+}
+
+.post .rpm .bi h1 {
+  line-height: 24px;
+  font-size: 18px;
+  margin: 0;
+}
+
+.pcom {
+  margin: 20px 0;
+}
+.pcom button {
+  line-height: 50px;
+  width: 100%;
+  background: unset;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pcom button i {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.pcoms {
+  margin: 20px 0;
+}
+
+.pcomt {
+  line-height: 32px;
+  padding-left: 10px;
+  color: #a2a6b4;
+  font-weight: 900;
+  border-left: 3px solid;
+}
+.pcomt b {
+  margin: 0 5px;
+  font-size: 18px;
+}
+.commz {
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  width: calc(100vw - 240px);
+  height: 100vh;
+  z-index: -1;
+  opacity: 0;
+}
+
+.commp {
+  width: 800px;
+  height: 385px;
+  padding: 20px 30px;
+  background: #fff;
+  border-radius: 6px;
+  margin: auto;
+  position: relative;
+  margin-top: 50vh;
+}
+
+.commx {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  line-height: 30px;
+  width: 30px;
+  background: unset;
+}
+
+.commx i {
+  font-size: 30px;
+}
+
+.commr {
+  display: flex;
+  margin: 20px -10px 0 -10px;
+}
+
+.commavt {
+  margin: 10px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 3px solid #a2a6b4;
+}
+
+.commavt button {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  width: 40px;
+  left: calc(50% - 20px);
+  line-height: 24px;
+  font-size: 12px;
+  border-radius: 12px;
+  background: #3491fa;
+  color: #fff;
+}
+.comminf {
+  margin: 10px 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 130px);
+}
+
+.comminfr {
+  margin-left: 15px;
+  width: calc(50% - 15px);
+  display: flex;
+  position: relative;
+}
+
+.comminfr i,
+.commdtl i {
+  width: 30px;
+  line-height: 40px;
+  font-size: 22px;
+  color: #a2a6b4;
+  position: absolute;
+}
+.comminfr i.ineed,
+.commdtl i.ineed {
+  color: #e2817a;
+}
+.comminfr input {
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid #a2a6b4;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  padding: 0 10px 0 35px;
+  background: #f7f8fa;
+}
+
+.commp p {
+  line-height: 30px;
+  font-size: 12px;
+}
+
+.commdtl {
+  margin: 10px 0 60px 0;
+  position: relative;
+}
+
+.commdtl textarea {
+  width: 100%;
+  outline: 0;
+  border: 0;
+  line-height: 25px;
+  height: 75px;
+  resize: none;
+  padding: 7px 5px 5px 35px;
+  background: #f7f8fa;
+  border-bottom: 2px solid #a2a6b4;
+}
+
+.commsd {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  width: 120px;
+  line-height: 32px;
+  border-radius: 6px;
+  background: #3491fa;
+  color: #fff;
+}
+.commzs,
+.commvs {
+  z-index: 10;
+  opacity: 1;
+}
+
+.commzs .commp {
+  margin-top: calc(50vh - 193px);
+}
+
+.comvp {
+  width: 520px;
+  height: 460px;
+}
+
+.commvs .comvp {
+  margin-top: calc(50vh - 230px);
+}
+.comvr {
+  flex-wrap: wrap;
+}
+.comvr img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 10px;
+  cursor: pointer;
+  border: 4px solid #a2a6b4;
+}
+.errTips,
+.succTips {
+  opacity: 0;
+  position: fixed;
+  z-index: 11;
+  width: 350px;
+  top: -50px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 6px;
+  left: calc(50% - 3px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.errTips i,
+.succTips i {
+  margin-right: 5px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #ff9800;
+}
+.succTips i {
+  color: #4caf50;
+}
+.tipsHas {
+  opacity: 1;
+  top: 20px;
+}
+.pcomll {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.pcomll .pcomll {
+  padding-left: 30px;
+  margin: 20px 0;
+}
+
+.pcomavt {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px #e1e4e8;
+}
+
+.pcomavt img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pcominf {
+  width: calc(100% - 60px);
+  padding-left: 10px;
+}
+.pcomina {
+  height: 45px;
+  position: relative;
+}
+
+.pcomina h2 {
+  line-height: 26px;
+  height: 30px;
+}
+
+.pcomina h2 em {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #a2a6b4;
+}
+
+.pcomina p {
+  line-height: 15px;
+  font-size: 12px;
+  color: #aaa;
+  padding-left: 5px;
+  border-left: 2px solid;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pcomina button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 30px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.pcominp {
+  padding: 10px;
+  position: relative;
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.pcominp:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 10px;
+  top: -8px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ffffff;
+}
+
+.pcominp p {
+  line-height: 20px;
+  color: #666;
 }
 .lmn a.hv,
 .lmn a:hover {
@@ -759,11 +1110,14 @@ i {
 .bn:hover,
 .bcn button:hover,
 .nft a:hover,
-.bt a:hover {
+.bt a:hover,
+.pcomina button:hover {
   box-shadow: 0 5px 15px #e1e4e8;
 }
 .b:hover .bno,
-.bia a:hover {
+.bia a:hover,
+.commavt button:hover,
+.commsd:hover {
   background: #1d2129;
   color: #fff;
 }
@@ -779,7 +1133,12 @@ i {
 .bt a:hover,
 .bip a:hover,
 .bip a:hover i,
-.outline_box ul span:hover span {
+.outline_box ul span:hover span,
+.pcom button:hover,
+.pcom button:hover i,
+.commx:hover i,
+.pcomina h2 a:hover,
+.pcomina button:hover i {
   color: #3491fa;
 }
 .b:hover .bi .bit span i {
@@ -789,4 +1148,17 @@ i {
 .bcn button.nc:hover * {
   box-shadow: unset;
   color: #a2a6b4;
+}
+
+input:focus,
+textarea:focus {
+  border-bottom: 2px solid #3491fa;
+  background: #f0f2f4;
+}
+.commavt:hover {
+  border: 3px solid #3491fa;
+}
+.comvr img:hover,
+.comvr img.avtc {
+  border: 4px solid #3491fa;
 }

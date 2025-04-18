@@ -20,7 +20,6 @@ type BlogListCache struct {
 	PostHots  []string `json:"postHots"`
 	Category  []string `json:"category"`
 	Tag       []string `json:"tag"`
-	Topic     []string `json:"topic"`
 }
 
 // BannerCache 轮播缓存
@@ -44,8 +43,6 @@ type PostCache struct {
 	CategoryName string   `json:"categoryName"` // 分组
 	TagUrls      []string `json:"tagUrls"`      // 标签URL
 	TagNames     []string `json:"tagNames"`     // 标签列表
-	TopicUrls    []string `json:"topicUrls"`    // 主题URL
-	TopicNames   []string `json:"topicNames"`   // 主题名称
 	PushAt       string   `json:"pushAt"`       // 发布时间
 	Views        uint64   `json:"views" `       // 总浏览量 ++
 	Goods        uint64   `json:"goods"`        // 总支持量 60秒+1，页面不刷新最多+6次
@@ -72,17 +69,6 @@ type CategoryCache struct {
 
 // TagCache 标签缓存
 type TagCache struct {
-	Id         uint64   `json:"id"`         // 数据ID
-	Title      string   `json:"title"`      // 名称
-	Url        string   `json:"url"`        // 分类地址
-	Summary    string   `json:"summary"`    // 简介
-	SourceShow string   `json:"sourceShow"` // 资源图片地址
-	Num        uint64   `json:"num"`        // 数据量
-	Posts      []string `json:"posts"`      // 对应的文章
-}
-
-// TopicCache 专题缓存
-type TopicCache struct {
 	Id         uint64   `json:"id"`         // 数据ID
 	Title      string   `json:"title"`      // 名称
 	Url        string   `json:"url"`        // 分类地址
@@ -163,11 +149,6 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 	if err != nil {
 		return
 	}
-	// 查主题
-	topicMap, err := getTopic(traceID)
-	if err != nil {
-		return
-	}
 	// 遍历文章
 	for i, post := range posts {
 		// 获取主图信息
@@ -210,22 +191,6 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 		}
 		postsMap[post.Id].TagUrls = tagUrls
 		postsMap[post.Id].TagNames = tagNames
-		// 查询归属主题
-		topicIds, err := blogDB.PostTopicTable.Executor().GetTopicIds(post.Id)
-		if err != nil {
-			log.ErrorTF(traceID, "SyncBlogPostAllCache GetGetTopic %d Fail . Err Is : %v", post.Id, err)
-			continue
-		}
-		topicUrls := make([]string, len(topicIds))
-		topicNames := make([]string, len(topicIds))
-		for i, topicId := range topicIds {
-			topicUrls[i] = topicMap[topicId].Url
-			topicNames[i] = topicMap[topicId].Title
-			topicMap[topicId].Num++
-			topicMap[topicId].Posts = append(topicMap[topicId].Posts, post.Url)
-		}
-		postsMap[post.Id].TopicUrls = topicUrls
-		postsMap[post.Id].TopicNames = topicNames
 		// 填充时间顺序
 		postNewArray[i] = post.Url
 		postViewSortArray[i] = &BlogSort{Url: post.Url, Num: post.Views}
@@ -238,9 +203,6 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 	}
 	for _, taC := range tagMap {
 		tagSortArray = append(tagSortArray, &BlogSort{Url: taC.Url, Num: taC.Num})
-	}
-	for _, toC := range topicMap {
-		topicSortArray = append(topicSortArray, &BlogSort{Url: toC.Url, Num: toC.Num})
 	}
 	// 对数据进行Sort
 	sort.Sort(postViewSortArray)
@@ -257,7 +219,6 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 		PostHots:  sortToArray(postHotSortArray),
 		Category:  sortToArray(categorySortArray),
 		Tag:       sortToArray(tagSortArray),
-		Topic:     sortToArray(topicSortArray),
 	}
 	// 保存缓存
 	err = redis.Set(constant.PagePostCache, makePostUrlMap(postsMap), 0)
@@ -271,10 +232,6 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 	err = redis.Set(constant.PageTagCache, makeTagUrlMap(tagMap), 0)
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache PageTagCache Fail . Err Is : %v", err)
-	}
-	err = redis.Set(constant.PageTopicCache, makeTopicUrlMap(topicMap), 0)
-	if err != nil {
-		log.InfoTF(traceID, "SyncBlogPostAllCache PageTopicCache Fail . Err Is : %v", err)
 	}
 	err = redis.Set(constant.PagePostSortCache, pageSortCache, 0)
 	if err != nil {
@@ -310,15 +267,6 @@ func makeTagUrlMap(sMap map[uint64]*TagCache) map[string]*TagCache {
 	return res
 }
 
-// makeTopicUrlMap 生产话题URLMap
-func makeTopicUrlMap(sMap map[uint64]*TopicCache) map[string]*TopicCache {
-	res := make(map[string]*TopicCache)
-	for _, s := range sMap {
-		res[s.Url] = s
-	}
-	return res
-}
-
 // Sort转ID
 func sortToArray(sortArray BlogSortArray) []string {
 	array := make([]string, len(sortArray))
@@ -326,33 +274,6 @@ func sortToArray(sortArray BlogSortArray) []string {
 		array[i] = sor.Url
 	}
 	return array
-}
-
-// 读取标签数据
-func getTopic(traceID string) (topicMap map[uint64]*TopicCache, err error) {
-	topicMap = make(map[uint64]*TopicCache)
-	// 最后需要组装
-	topicList, err := blogDB.TopicTable.GetAll()
-	if err != nil {
-		log.ErrorTF(traceID, "SyncBlogPostAllCache GetTopic Fail . Err Is : %v", err)
-		return
-	}
-	for _, topic := range topicList {
-		source, err := blogDB.SourceTable.GetOneById(topic.SourceId)
-		if err != nil {
-			log.ErrorTF(traceID, "SyncBlogPostAllCache GetTopicSource %d Fail . Err Is : %v", topic.SourceId, err)
-			continue
-		}
-		topicMap[topic.Id] = &TopicCache{
-			Id:         topic.Id,
-			Title:      topic.Title,
-			Url:        topic.Url,
-			Summary:    topic.Summary,
-			SourceShow: fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version),
-			Num:        0,
-		}
-	}
-	return
 }
 
 // 读取标签数据
@@ -449,6 +370,7 @@ func SyncPostMain(traceID string, postBase *PostCache) (res *PostMainCache) {
 	}
 	// 开始计算Like
 	like := make([]string, 0)
+	like = append(like, postBase.Url)
 	if len(postBase.TagUrls) > 0 {
 		tagPosts := make([]string, 0)
 		tagCache := GetTagCache(traceID)
@@ -457,42 +379,47 @@ func SyncPostMain(traceID string, postBase *PostCache) (res *PostMainCache) {
 				tagPosts = append(tagPosts, tagInfo.Posts...)
 			}
 		}
+		// 去重
+		tagPosts = utils.ArrayToSet(tagPosts)
 		if len(tagPosts) > 0 {
-			if len(tagPosts) <= 6 {
+			if len(tagPosts) <= 9 {
 				like = tagPosts
 			} else {
-				// 随机选举6条数据
-				like = utils.ShuffleAndSelect(tagPosts, 6)
+				// 随机选举9条数据
+				like = utils.ShuffleAndSelectEx(tagPosts, like, 9)
 			}
 		}
 	}
-	// 不满足6位，提前分组下文章
-	if len(like) < 6 {
-		needCount := 6 - len(like)
+	// 不满足9位，提前分组下文章
+	if len(like) < 9 {
+		needCount := 9 - len(like)
 		category := GetCategoryCache(traceID)
 		if cat, ok := category[postBase.Category]; ok {
 			if len(cat.Posts) > 0 {
 				if len(cat.Posts) <= needCount {
-					like = append(like, cat.Posts...)
+					// 补充加入
+					like = utils.GetFirstAndExt(cat.Posts, like, len(cat.Posts))
 				} else {
-					// 分类下选举剩下的条目
-					like = append(like, utils.ShuffleAndSelect(cat.Posts, needCount)...)
+					// 分类下选举剩下的条目，去掉已存在的
+					like = utils.ShuffleAndSelectEx(cat.Posts, like, needCount)
 				}
 			}
 		}
 	}
-	// 不满足6位，获取最新文章
-	if len(like) < 6 {
-		needCount := 6 - len(like)
+	// 不满足9位，获取最新文章
+	if len(like) < 9 {
+		needCount := 9 - len(like)
 		postSort := GetPostSortCache(traceID)
 		if len(postSort.PostNews) <= needCount {
-			like = append(like, postSort.PostNews...)
+			// 补充加入
+			like = utils.GetFirstAndExt(postSort.PostNews, like, len(postSort.PostNews))
 		} else {
-			// 从最新文章获得前N位的数据
-			like = append(like, postSort.PostNews[:needCount]...)
+			// 从最新文章获得前N位的数据，去掉已存在的
+			like = utils.GetFirstAndExt(postSort.PostNews, like, needCount)
 		}
 	}
-	res.Like = like
+	// 去掉第一位是自己
+	res.Like = like[1:]
 	// 写入缓存
 	err = redis.SetByTimeDuration(fmt.Sprintf(constant.PagePostUrl, postBase.Url), res, 16*time.Hour)
 	if err != nil {

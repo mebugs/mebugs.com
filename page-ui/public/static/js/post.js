@@ -40,9 +40,6 @@ function initMdMiHs() {
       };
     }
   });
-  console.log(st);
-  console.log(mdMiHs);
-  console.log(ed);
 }
 // 刷新高度并选择高度
 function refreshMdMiHs() {

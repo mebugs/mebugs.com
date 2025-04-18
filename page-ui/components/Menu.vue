@@ -7,7 +7,6 @@
     <div class="lmn">
       <NuxtLink :class="{ hv: route.path == '/' }" to="/">首页</NuxtLink>
       <NuxtLink :class="{ hv: route.path.includes('/posts') }" to="/posts/new">发现</NuxtLink>
-      <NuxtLink :class="{ hv: route.path.includes('/topic') }" to="/topic">专题</NuxtLink>
       <NuxtLink :class="{ hv: route.path.includes('/category') }" to="/category">分类</NuxtLink>
       <NuxtLink :class="{ hv: route.path.includes('/tag') }" to="/tag">标签</NuxtLink>
       <NuxtLink :class="{ hv: route.path == '/post/about' }" to="/post/about">关于</NuxtLink>

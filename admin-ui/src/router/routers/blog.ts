@@ -33,12 +33,6 @@ const BLOG: RouteRecordRaw = {
       meta: { locale: 'menu.BlogTag', requiresAuth: false }
     },
     {
-      path: 'topic', // 专题
-      name: 'BlogTopic',
-      component: () => import('@/views/blog/topic/index.vue'),
-      meta: { locale: 'menu.BlogTopic', requiresAuth: false }
-    },
-    {
       path: 'post', // 文章
       name: 'BlogPost',
       component: () => import('@/views/blog/post/index.vue'),
