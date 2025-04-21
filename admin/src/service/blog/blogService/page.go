@@ -30,6 +30,11 @@ func GetIndex(traceID string) *baseModel.ResBody {
 	return baseModel.Success(constant.Success, indexData)
 }
 
+// GetPage 获取页面数据
+func GetPage(traceID string) *baseModel.ResBody {
+	return baseModel.Success(constant.Success, cacheModel.GetPagesCache(traceID))
+}
+
 // GetPosts 获取文章数据
 func GetPosts(traceID string, req *blogModel.PostsReq) *baseModel.ResBody {
 	var urls [][]string

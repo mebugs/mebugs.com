@@ -2,6 +2,12 @@
   <a-form size="large" label-align="left" class="form" layout="vertical" :model="formData" @submit="submit">
     <a-row :gutter="20">
       <a-col :span="12">
+        <a-form-item field="type" :label="$t('banner.type')">
+          <span class="formSpan">{{ pop.dictMap.bannerType[formData.type] }}</span>
+        </a-form-item>
+      </a-col>
+      <a-col :span="12"></a-col>
+      <a-col :span="12">
         <a-form-item field="sourceShow" :label="$t('banner.sourceId')" :rules="[{ required: true, message: $t('rule.required') }]">
           <label class="upImg" for="upMainImgbannerMod">
             <img :src="formData.sourceShow" v-if="formData.sourceShow" />

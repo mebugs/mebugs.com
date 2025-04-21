@@ -6,6 +6,7 @@ export type banner = {
   tag: string // 标签
   title: string // 标题
   url: string // 静态地址
+  type: string
   summary: string // 摘要
   sourceShow: string
   source: Array<string> // 选择数组（资源选择）
@@ -16,6 +17,7 @@ export function bannerInit() {
     id: 0,
     title: '',
     tag: '',
+    type: '',
     url: '',
     summary: '',
     sourceShow: '',

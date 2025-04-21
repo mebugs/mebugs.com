@@ -12,6 +12,7 @@ type Banner struct {
 	Tag      string     `json:"tag"`      // 标签（仅用于展示）
 	Title    string     `json:"title"`    // 名称
 	Url      string     `json:"url"`      // 链接地址
+	Type     string     `json:"type"`     // 类型 0 banner 1 page
 	Summary  string     `json:"summary"`  // 简介
 	SourceId uint64     `json:"sourceId"` // 主图资源ID
 	Status   string     `json:"status"`   // 状态，枚举：0_正常 1_锁定 2_封存

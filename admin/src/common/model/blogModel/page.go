@@ -16,6 +16,17 @@ type IndexData struct {
 	PostsNew  []*cacheModel.PostCache `json:"postsNew"`
 }
 
+// PageData 页面数据对象
+type PageData struct {
+	Banners []*cacheModel.BannerCache `json:"banners"` // BANNER
+	TagData
+	CategoryData
+	PostsHot  []*cacheModel.PostCache `json:"postsHot"`
+	PostsView []*cacheModel.PostCache `json:"postsView"`
+	PostsGood []*cacheModel.PostCache `json:"postsGood"`
+	PostsNew  []*cacheModel.PostCache `json:"postsNew"`
+}
+
 // CategoryData 分类数据对象
 type CategoryData struct {
 	Category []*cacheModel.CategoryCache `json:"category"`

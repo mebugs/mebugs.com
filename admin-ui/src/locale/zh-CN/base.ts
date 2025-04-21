@@ -38,7 +38,7 @@ export default {
   'button.upload': '上传',
   'menu.Blog': '博客管理',
   'menu.BlogCategory': '分类',
-  'menu.BlogBanner': '顶图',
+  'menu.BlogBanner': '链接',
   'menu.BlogComment': '评论',
   'menu.BlogPage': '页面',
   'menu.BlogPost': '文章',

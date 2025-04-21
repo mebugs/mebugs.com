@@ -337,9 +337,10 @@ func SyncBanners(traceID string) {
 		log.ErrorTF(traceID, "SyncBlogPostAllCache GetBanners Fail . Err Is : %v", err)
 		return
 	}
-	bannerCache := make([]*BannerCache, len(banners))
-	for i, banner := range banners {
-		bannerCache[i] = &BannerCache{
+	bannerCache := make([]*BannerCache, 0)
+	pageCache := make([]*BannerCache, 0)
+	for _, banner := range banners {
+		cache := &BannerCache{
 			Title:   banner.Title,
 			Tag:     banner.Tag,
 			Url:     banner.Url,
@@ -349,12 +350,21 @@ func SyncBanners(traceID string) {
 		if err != nil {
 			log.ErrorTF(traceID, "SyncBlogPostAllCache GetBannerSource %d Fail . Err Is : %v", banner.SourceId, err)
 		}
-		bannerCache[i].SourceShow = fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version)
+		cache.SourceShow = fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version)
+		if banner.Type == constant.StatusOpen {
+			bannerCache = append(bannerCache, cache)
+		} else {
+			pageCache = append(pageCache, cache)
+		}
 	}
 	// 写入缓存
 	err = redis.Set(constant.PageBannerCache, bannerCache, 0)
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache SetBannersCache Fail . Err Is : %v", err)
+	}
+	err = redis.Set(constant.PagePageCache, pageCache, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncBlogPostAllCache SetPagesCache Fail . Err Is : %v", err)
 	}
 }
 

@@ -11,7 +11,11 @@
           <a-input v-model="query.url" :max-length="16" allow-clear show-word-limit :placeholder="$t('banner.url.sc')" />
         </a-form-item>
       </a-col>
-      <a-col :span="8"> </a-col>
+      <a-col :span="8">
+        <a-form-item field="type" :label="$t('banner.type')">
+          <a-select v-model="query.type" :options="dictList.bannerType" allow-clear allow-search :placeholder="$t('button.all')" />
+        </a-form-item>
+      </a-col>
       <a-col :span="12">
         <a-space>
           <a-tooltip :content="$t('button.add')" :mini="true">
@@ -57,7 +61,8 @@
       </a-col>
       <a-col :span="6" v-for="record in list" :key="record.id">
         <div class="cardlist">
-          <div class="upImg">
+          <div class="upImg bannerImg">
+            <p>{{ dictMap.bannerType[record.type as string] }}</p>
             <img :src="record.sourceShow" />
           </div>
           <p>{{ record.title }}</p>
@@ -96,6 +101,7 @@ import type { Pop } from '@/utils/hooks/pop'
 import useLocale from '@/utils/hooks/locale'
 import useLoad from '@/utils/hooks/load'
 import usePage from '@/utils/hooks/page'
+import { dictRead } from '@/api/plat/dict'
 import { bannerPage, bannerDel } from '@/api/blog/banner'
 // 入参读取
 const props = defineProps({
@@ -115,7 +121,7 @@ const { currentLocale } = useLocale()
 const { page, setQuery, search, changePage, resetPage } = usePage(12)
 // 初始化查询对象
 const initQuery = () => {
-  return { title: '', url: '' }
+  return { title: '', url: '', type: '' }
 }
 // 查询对象
 const query = ref(initQuery())
@@ -141,12 +147,17 @@ async function pageQuery() {
 // 初始化分页
 setQuery(pageQuery)
 // 初始化字典对象
-const dictList = ref({})
-const dictMap = ref({})
+const dictList = ref({ bannerType: [] })
+const dictMap = ref({ bannerType: {} as any })
 // 字段初始化
 async function dictInit() {
-  props.pop.dictMap = dictMap
-  props.pop.dictList = dictList
+  // 指定字典Key
+  await dictRead({ groupKeys: ['bannerType'] }).then((r) => {
+    dictList.value = r.data.list
+    dictMap.value = r.data.map
+    props.pop.dictList = dictList
+    props.pop.dictMap = dictMap
+  })
 }
 function init() {
   // 初始化后端字典对象
@@ -162,12 +173,6 @@ function resetQuery() {
   resetPage()
   init()
 }
-// 合并对象
-const mergeItem = reactive({
-  mergeConfirm: false,
-  id: 0,
-  toId: ''
-})
 // 删除对象
 const delItem = reactive({
   delConfirm: false,
@@ -191,6 +196,8 @@ async function deleting() {
 }
 // 页面渲染
 onMounted(() => {
+  // 初始化后端字典对象
+  dictInit()
   init()
 })
 // 语言监听

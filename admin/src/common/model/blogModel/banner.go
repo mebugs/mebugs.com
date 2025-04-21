@@ -12,6 +12,7 @@ type BannerDoReq struct {
 	Title   string `json:"title" binding:"max=32" example:"demo"`   // 名称
 	Tag     string `json:"tag" binding:"max=12" example:"demo"`     // 标签
 	Url     string `json:"url" binding:"max=128" example:"demo"`    // 分类地址
+	Type    string `json:"type" binding:"required" example:"1"`     // 类型 0 Banner 1 Page
 	Summary string `json:"summary" binding:"max=64" example:"demo"` // 简介
 }
 
@@ -36,6 +37,7 @@ func (r *BannerAddReq) ToDbReq() *blogDB.Banner {
 		Title:    r.Title,
 		Url:      r.Url,
 		Tag:      r.Tag,
+		Type:     r.Type,
 		Summary:  r.Summary,
 		Status:   constant.StatusOpen,
 		CreateAt: &now,
@@ -55,19 +57,21 @@ func (r *BannerEditReq) ToDbReq(d *blogDB.Banner) {
 
 // BannerGetRes Banner详情响应
 type BannerGetRes struct {
-	Id         uint64 `json:"id" example:"1"`                // 数据ID
-	Title      string `json:"title" example:"demo"`          // 名称
-	Tag        string `json:"tag" example:"demo"`            // 标签
-	Url        string `json:"url" example:"demo"`            // 分类地址
-	Summary    string `json:"summary" example:"demo"`        // 简介
-	SourceShow string `json:"sourceShow" example:"/xxx.jpg"` // 资源图片地址
-	Status     string `json:"status" example:"0"`            // 状态，枚举：0_正常 1_锁定 2_封存
+	Id         uint64 `json:"id" example:"1"`                      // 数据ID
+	Title      string `json:"title" example:"demo"`                // 名称
+	Tag        string `json:"tag" example:"demo"`                  // 标签
+	Type       string `json:"type" binding:"required" example:"1"` // 类型 0 Banner 1 Page
+	Url        string `json:"url" example:"demo"`                  // 分类地址
+	Summary    string `json:"summary" example:"demo"`              // 简介
+	SourceShow string `json:"sourceShow" example:"/xxx.jpg"`       // 资源图片地址
+	Status     string `json:"status" example:"0"`                  // 状态，枚举：0_正常 1_锁定 2_封存
 }
 
 // BannerPageReq Banner分页请求，根据实际业务替换分页条件字段
 type BannerPageReq struct {
 	Title string `json:"title" example:"demo"` // 名称
 	Url   string `json:"url" example:"demo"`   // 分类地址
+	Type  string `json:"type" example:"1"`     // 类型 0 Banner 1 Page
 	baseModel.PageReq
 }
 
@@ -83,6 +87,7 @@ func ToBannerGetRes(r *blogDB.Banner, sourceShow string) *BannerGetRes {
 		Title:      r.Title,
 		Tag:        r.Tag,
 		Url:        r.Url,
+		Type:       r.Type,
 		Summary:    r.Summary,
 		SourceShow: sourceShow,
 		Status:     r.Status,

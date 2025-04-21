@@ -23,6 +23,21 @@ func GetIndex(c *gin.Context) {
 	service.JsonRes(c, blogService.GetIndex(traceID))
 }
 
+// GetPage	godoc
+// @id			GetPage 获取页面数据
+// @Summary		获取页面数据
+// @Description	获取页面数据
+// @Router		/page/pages [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func GetPage(c *gin.Context) {
+	// traceID 日志追踪
+	traceID := c.GetString(constant.ContextTraceID)
+	service.JsonRes(c, blogService.GetPage(traceID))
+}
+
 // GetPosts 	godoc
 // @id			GetPosts 获取文章数据
 // @Summary		获取文章数据

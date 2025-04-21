@@ -42,6 +42,7 @@ var (
 	CacheAuth              = ProjectName + ":Auth:%s"                // 登陆授权缓存
 
 	PageBannerCache       = ProjectName + ":Page:Banners"
+	PagePageCache         = ProjectName + ":Page:Pages"
 	PageTagCache          = ProjectName + ":Page:Tags"
 	PageCategoryCache     = ProjectName + ":Page:Categories"
 	PageTopicCache        = ProjectName + ":Page:Topics"

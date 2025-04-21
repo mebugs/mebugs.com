@@ -2,6 +2,17 @@
   <a-form size="large" label-align="left" class="form" layout="vertical" :model="formData" @submit="submit">
     <a-row :gutter="20">
       <a-col :span="12">
+        <a-form-item field="type" :label="$t('banner.type')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <a-select
+            v-model="formData.type"
+            :options="pop.dictList.bannerType"
+            allow-clear
+            allow-search
+            :placeholder="$t('rule.select')" />
+        </a-form-item>
+      </a-col>
+      <a-col :span="12"></a-col>
+      <a-col :span="12">
         <a-form-item field="sourceShow" :label="$t('banner.sourceId')" :rules="[{ required: true, message: $t('rule.required') }]">
           <label class="upImg" for="upMainImgbannerAdd">
             <img :src="formData.sourceShow" v-if="formData.sourceShow" />

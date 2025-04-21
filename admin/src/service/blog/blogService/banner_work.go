@@ -24,7 +24,7 @@ func checkBannerDBErr(err error) *baseModel.ResBody {
 	return baseModel.ResFail
 }
 
-// 分页查询对象封装
+// BannerPageQuery 分页查询对象封装
 func BannerPageQuery(req *blogModel.BannerPageReq) (query *actuator.Query) {
 	// 初始化Page
 	req.PageReq.PageInit()
@@ -35,6 +35,9 @@ func BannerPageQuery(req *blogModel.BannerPageReq) (query *actuator.Query) {
 	}
 	if req.Url != "" {
 		query.Like("url", req.Url)
+	}
+	if req.Type != "" {
+		query.Eq("type", req.Type)
 	}
 	query.Eq("status", constant.StatusOpen)
 	query.Desc("update_at")

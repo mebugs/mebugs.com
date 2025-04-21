@@ -39,12 +39,6 @@ const BLOG: RouteRecordRaw = {
       meta: { locale: 'menu.BlogPost', requiresAuth: false }
     },
     {
-      path: 'page', // 页面
-      name: 'BlogPage',
-      component: () => import('@/views/blog/page/index.vue'),
-      meta: { locale: 'menu.BlogPage', requiresAuth: false }
-    },
-    {
       path: 'Comment', // 评论
       name: 'BlogComment',
       component: () => import('@/views/blog/comment/index.vue'),

@@ -25,6 +25,23 @@ func GetBannerCache(traceID string) (res []*BannerCache) {
 	return
 }
 
+// GetPagesCache 获取Pages配置
+func GetPagesCache(traceID string) (res []*BannerCache) {
+	// 读取缓存
+	str, err := redis.Get(constant.PagePageCache)
+	if err != nil {
+		log.WarnTF(traceID, "GetPagesCache Fail . Err Is : %v", err)
+		return
+
+	}
+	res = make([]*BannerCache, 0)
+	err = json.Unmarshal([]byte(str), &res)
+	if err != nil {
+		log.ErrorTF(traceID, "Unmarshal GetPagesCache Fail . Err Is : %v", err)
+	}
+	return
+}
+
 // GetCategoryCache 获取Category缓存
 func GetCategoryCache(traceID string) (res map[string]*CategoryCache) {
 	// 读取缓存
