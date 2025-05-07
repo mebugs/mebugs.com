@@ -37,3 +37,9 @@ func (t PostComment) Comments(postId uint64) (res []*PostComment, err error) {
 	err = r.Error
 	return
 }
+
+func (t PostComment) FindByRid(rid uint64) (res []*PostComment, err error) {
+	r := blogDb.Table(t.TableName()).Where("rid = ?", rid).Order("create_at").Find(&res)
+	err = r.Error
+	return
+}

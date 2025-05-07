@@ -72,15 +72,13 @@ func BlogRouter(router *gin.Engine) {
 			postRouter.POST("/edit", blogHandler.EditPost)
 		}
 
-		//// 文章评论相关
-		//postCommentRouter := blogRouter.Group("/postComment")
-		//{
-		//	postCommentRouter.POST("/add", blogHandler.AddPostComment)
-		//	postCommentRouter.POST("/page", blogHandler.PagePostComment)
-		//	postCommentRouter.POST("/get", blogHandler.GetPostComment)
-		//	postCommentRouter.POST("/edit", blogHandler.EditPostComment)
-		//	postCommentRouter.POST("/del", blogHandler.DelPostComment)
-		//}
+		// 文章评论相关
+		postCommentRouter := blogRouter.Group("/postComment")
+		{
+			postCommentRouter.POST("/page", blogHandler.PagePostComment)
+			postCommentRouter.POST("/get", blogHandler.GetPostComment)
+			postCommentRouter.POST("/edit", blogHandler.EditPostComment)
+		}
 		//
 		//// 极简用户信息相关
 		//userRouter := blogRouter.Group("/user")

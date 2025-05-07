@@ -156,4 +156,6 @@ const (
 	BannerUniXxxNG  = "F1402" // Banner地址全局唯一
 	BannerDelNG     = "F1403" // Banner删除失败
 
+	PostCommentEditSS = "S1500" // 评论更新成功
+	PostCommentGetNG  = "F1500" // 评论查询失败
 )

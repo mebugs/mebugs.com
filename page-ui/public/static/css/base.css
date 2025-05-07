@@ -1092,6 +1092,7 @@ i {
 .pcominp p {
   line-height: 20px;
   color: #666;
+  white-space: pre-wrap;
 }
 .lmn a.hv,
 .lmn a:hover {

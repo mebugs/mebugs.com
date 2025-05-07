@@ -264,6 +264,70 @@
     margin: 0;
   }
 }
+.commList {
+  padding: 5px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  * {
+    text-align: left;
+    margin: 0;
+  }
+  .postIf {
+    line-height: 25px;
+    * {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    p {
+      font-size: 12px;
+      color: #aaa;
+    }
+  }
+  .commDt {
+    display: flex;
+    width: calc(100% - 50px);
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+    }
+  }
+  .commInf {
+    width: calc(100% - 60px);
+    padding-left: 5px;
+    .pcominp {
+      margin-top: 3px;
+      padding: 5px 10px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #444;
+        white-space: pre-wrap;
+      }
+    }
+  }
+  .postBtn {
+    width: 40px;
+    margin-left: 10px;
+  }
+}
+.commli {
+  max-height: calc(100vh - 325px);
+  overflow-y: auto;
+  .commlii {
+    white-space: pre-wrap;
+    p {
+      padding: 5px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+}
 .smallIcon {
   height: 80px;
 }

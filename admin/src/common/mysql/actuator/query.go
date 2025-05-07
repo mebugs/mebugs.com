@@ -215,7 +215,7 @@ func (q *Query) makeOrderSql(sql *bytes.Buffer) {
 			sql.WriteString(" ORDER BY ")
 		} else {
 			// 逗号分隔
-			sql.WriteString(", ")
+			sql.WriteString(",")
 		}
 		sql.WriteString(order.Name)
 		// 降序指定
