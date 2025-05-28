@@ -117,8 +117,10 @@ async function getPosts(lazyLoad: boolean) {
 }
 function initHeader() {
   useHead({
-    title: `${resData.value.null ? "哎呀呀！没找到！" : resData.value?.main?.title} - 专题专栏${runtimeConfig.public.siteName}`,
-    meta: [{ hid: "description", name: "description", content: `${resData.value.null ? "哎呀呀！没找到！" : resData.value?.main?.summary} - 专题专栏 - ${runtimeConfig.public.description}` }],
+    title: `${resData.value?.main?.title ? resData.value?.main?.title : "哎呀呀！没找到！"} - 专题专栏${runtimeConfig.public.siteName}`,
+    meta: [
+      { hid: "description", name: "description", content: `${resData.value?.main?.summary ? resData.value?.main?.summary : "哎呀呀！没找到！"} - 专题专栏 - ${runtimeConfig.public.description}` },
+    ],
   });
 }
 // 页面挂载后的初始化

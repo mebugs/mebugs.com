@@ -6,6 +6,7 @@ import (
 	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/log"
 	"siteol.com/smart/src/common/redis"
+	"strconv"
 )
 
 // GetBannerCache 获取Banner配置
@@ -38,6 +39,23 @@ func GetPagesCache(traceID string) (res []*BannerCache) {
 	err = json.Unmarshal([]byte(str), &res)
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetPagesCache Fail . Err Is : %v", err)
+	}
+	return
+}
+
+// GetLinksCache 获取Links
+func GetLinksCache(traceID string) (res []*LinksCache) {
+	// 读取缓存
+	str, err := redis.Get(constant.PageLinksCache)
+	if err != nil {
+		log.WarnTF(traceID, "GetLinksCache Fail . Err Is : %v", err)
+		return
+
+	}
+	res = make([]*LinksCache, 0)
+	err = json.Unmarshal([]byte(str), &res)
+	if err != nil {
+		log.ErrorTF(traceID, "Unmarshal GetLinksCache Fail . Err Is : %v", err)
 	}
 	return
 }
@@ -139,5 +157,17 @@ func GetPostCommUserCache(traceID string, uid uint64) (res map[uint64]uint64) {
 	if err != nil {
 		log.ErrorTF(traceID, "Unmarshal GetPostCommUserCache Fail . Err Is : %v", err)
 	}
+	return
+}
+
+// GetClientLinkCache 获取客户端提交的链接上线
+func GetClientLinkCache(traceID, clientId string) (res int64) {
+	// 读取缓存
+	str, err := redis.Get(fmt.Sprintf(constant.PageClientLinkCache, clientId))
+	if err != nil {
+		log.WarnTF(traceID, "GetPostCommUserCache Fail . Err Is : %v", err)
+		return
+	}
+	res, _ = strconv.ParseInt(str, 10, 64)
 	return
 }

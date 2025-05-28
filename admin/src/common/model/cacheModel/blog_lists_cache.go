@@ -24,11 +24,30 @@ type BlogListCache struct {
 
 // BannerCache 轮播缓存
 type BannerCache struct {
-	Title      string `json:"title"`      // 名称
-	Tag        string `json:"tag"`        // 标签
-	Url        string `json:"url"`        // 分类地址
-	Summary    string `json:"summary"`    // 简介
-	SourceShow string `json:"sourceShow"` // 资源图片地址
+	Title      string           `json:"title"`               // 名称
+	Tag        string           `json:"tag"`                 // 标签
+	Url        string           `json:"url"`                 // 分类地址
+	Summary    string           `json:"summary"`             // 简介
+	SourceShow string           `json:"sourceShow"`          // 资源图片地址
+	Links      []*LinksCache    `json:"links,omitempty"`     // 友情链接
+	LitePosts  []*PostLiteCache `json:"litePosts,omitempty"` // 全部文章
+}
+
+func ToLitePost(posts []*PostCache) (litePosts []*PostLiteCache) {
+	litePosts = make([]*PostLiteCache, len(posts))
+	for i, post := range posts {
+		litePosts[i] = &PostLiteCache{
+			Title: post.Title,
+			Url:   post.Url,
+		}
+	}
+	return
+}
+
+// PostLiteCache 轻量的文章
+type PostLiteCache struct {
+	Title string `json:"title"` // 标题
+	Url   string `json:"url"`   // 文章地址
 }
 
 // PostCache 文章缓存（列表缓存，全文）
@@ -54,6 +73,15 @@ type PostMainCache struct {
 	Toc  string   `json:"toc"`  // 文章导航
 	Html string   `json:"html"` // HTML源文件
 	Like []string `json:"like"` // 相关文章
+}
+
+// LinksCache 友情链接 详情响应
+type LinksCache struct {
+	Id         uint64 `json:"id" example:"1"`                // 数据ID
+	Title      string `json:"title" example:"demo"`          // 名称
+	Url        string `json:"url" example:"demo"`            // 分类地址
+	Summary    string `json:"summary" example:"demo"`        // 简介
+	SourceShow string `json:"sourceShow" example:"/xxx.jpg"` // 资源图片地址
 }
 
 // CategoryCache 分类缓存
@@ -124,6 +152,8 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 	postMapInnerDb(traceID)
 	// 刷新Banner缓存
 	SyncBanners(traceID)
+	// 刷新友链
+	SyncLinks(traceID)
 
 	// 获取已发布的文章列表
 	posts, err := blogDB.PostTable.Executor().GetPosts()
@@ -334,7 +364,7 @@ func getCategory(traceID string) (categoryMap map[uint64]*CategoryCache, err err
 func SyncBanners(traceID string) {
 	banners, err := blogDB.BannerTable.Executor().GetBanners()
 	if err != nil {
-		log.ErrorTF(traceID, "SyncBlogPostAllCache GetBanners Fail . Err Is : %v", err)
+		log.ErrorTF(traceID, "SyncBanners GetBanners Fail . Err Is : %v", err)
 		return
 	}
 	bannerCache := make([]*BannerCache, 0)
@@ -348,7 +378,7 @@ func SyncBanners(traceID string) {
 		}
 		source, err := blogDB.SourceTable.GetOneById(banner.SourceId)
 		if err != nil {
-			log.ErrorTF(traceID, "SyncBlogPostAllCache GetBannerSource %d Fail . Err Is : %v", banner.SourceId, err)
+			log.ErrorTF(traceID, "SyncBanners GetBannerSource %d Fail . Err Is : %v", banner.SourceId, err)
 		}
 		cache.SourceShow = fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version)
 		if banner.Type == constant.StatusOpen {
@@ -360,11 +390,41 @@ func SyncBanners(traceID string) {
 	// 写入缓存
 	err = redis.Set(constant.PageBannerCache, bannerCache, 0)
 	if err != nil {
-		log.InfoTF(traceID, "SyncBlogPostAllCache SetBannersCache Fail . Err Is : %v", err)
+		log.InfoTF(traceID, "SyncBanners SetBannersCache Fail . Err Is : %v", err)
 	}
 	err = redis.Set(constant.PagePageCache, pageCache, 0)
 	if err != nil {
-		log.InfoTF(traceID, "SyncBlogPostAllCache SetPagesCache Fail . Err Is : %v", err)
+		log.InfoTF(traceID, "SyncBanners SetPagesCache Fail . Err Is : %v", err)
+	}
+}
+
+// SyncLinks 刷新Links
+func SyncLinks(traceID string) {
+	links, err := blogDB.LinksTable.Executor().GetLinks()
+	if err != nil {
+		log.ErrorTF(traceID, "SyncLinks GetBanners Fail . Err Is : %v", err)
+		return
+	}
+	linkCache := make([]*LinksCache, 0)
+	for _, link := range links {
+		cache := &LinksCache{
+			Id:      link.Id,
+			Title:   link.Title,
+			Url:     link.Url,
+			Summary: link.Summary,
+		}
+		source, err := blogDB.SourceTable.GetOneById(link.SourceId)
+		if err != nil {
+			log.ErrorTF(traceID, "SyncLinks GetSource %d Fail . Err Is : %v", link.SourceId, err)
+		}
+		cache.SourceShow = fmt.Sprintf(constant.SourceFileUrl, source.FilePath, fmt.Sprintf("%d", source.Id), source.BackEnd, source.Version)
+
+		linkCache = append(linkCache, cache)
+	}
+	// 写入缓存
+	err = redis.Set(constant.PageLinksCache, linkCache, 0)
+	if err != nil {
+		log.InfoTF(traceID, "SyncLinks SetLinksCache Fail . Err Is : %v", err)
 	}
 }
 

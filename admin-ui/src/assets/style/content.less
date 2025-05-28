@@ -314,6 +314,44 @@
     margin-left: 10px;
   }
 }
+.linksList {
+  display: flex;
+  .upIcon {
+    width: 125px;
+  }
+  .linksInf {
+    width: calc(100% - 170px);
+    padding-left: 10px;
+    text-align: left;
+    .linksT {
+      font-size: 18px;
+      line-height: 45px;
+      margin: 0;
+      margin-bottom: 5px;
+      white-space: nowrap;
+    }
+    .linksS {
+      display: -webkit-box; /* 启用弹性盒子布局 */
+      -webkit-box-orient: vertical; /* 内容垂直排列 */
+      -webkit-line-clamp: 3; /* 限制显示5行 */
+      overflow: hidden; /* 隐藏溢出内容 */
+      text-overflow: ellipsis; /* 超出部分显示省略号 */
+      margin: 0;
+      max-height: 70px;
+      font-size: 13px;
+      line-height: 20px;
+      width: 100%;
+      padding-left: 5px;
+      border-left: solid 2px #eee;
+    }
+  }
+  .linksBtn {
+    width: 40px;
+    margin-left: 5px;
+    flex-wrap: wrap;
+  }
+}
+
 .commli {
   max-height: calc(100vh - 325px);
   overflow-y: auto;

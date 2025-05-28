@@ -1,7 +1,7 @@
 <template>
   <div class="errTips" :class="{ tipsHas: comm.err }"><i>&#xF029;</i>{{ comm.errTips }}</div>
   <div class="succTips" :class="{ tipsHas: comm.ok }"><i>&#xF030;</i>提交成功，请等待审核通过后全面展示！</div>
-  <div class="commz" :class="{ commzs: post.show && !comm.choose }">
+  <div class="commz" id="commz">
     <div class="commp">
       <h1 v-if="comm.rid == 0">发表评论</h1>
       <h1 v-else="comm.rid == 0">提交回复</h1>
@@ -13,32 +13,30 @@
         </div>
         <div class="comminf">
           <div class="comminfr">
-            <i class="ineed">&#xF024;</i>
+            <span class="ineed">昵称</span>
             <input type="text" v-model="comm.user.name" placeholder="必填，请输入昵称" />
           </div>
           <div class="comminfr">
-            <i>&#xF025;</i>
+            <span>邮箱</span>
             <input type="text" v-model="comm.user.email" placeholder="选填，请输入邮箱" />
           </div>
           <div class="comminfr">
-            <i>&#xF026;</i>
+            <span>链接</span>
             <input type="text" v-model="comm.user.url" placeholder="选填，请输入网址" />
           </div>
           <div class="comminfr">
-            <i>&#xF027;</i>
+            <span>签名</span>
             <input type="text" v-model="comm.user.summary" placeholder="选填，请输入签名" />
           </div>
+          <div class="comminfr commdtl">
+            <span class="ineed">评论</span>
+            <textarea v-model="comm.info" placeholder="必填,请输入您的精彩观点！" />
+          </div>
+          <p>温馨提示：系统将通过浏览器临时记忆您曾经填写的个人信息且支持修改，评论提交后仅自己可见，内容需要经过审核后方可全面展示。</p>
         </div>
       </div>
-      <p>温馨提示：系统将通过浏览器临时记忆您曾经填写的个人信息且支持修改，评论提交后仅自己可见，内容需要经过审核后方可全面展示。</p>
-      <div class="commdtl">
-        <i class="ineed">&#xF028;</i>
-        <textarea v-model="comm.info" placeholder="必填,请输入您的精彩观点！" />
-      </div>
-      <button class="commsd" type="button" @click="sendComm()">提交</button>
+      <button class="commsd" type="button" :class="{ sending: comm.send }" @click="sendComm()">提交</button>
     </div>
-  </div>
-  <div class="commz" :class="{ commvs: comm.choose }">
     <div class="commp comvp">
       <h1>选择头像</h1>
       <button class="commx" type="button" @click="closeComv()"><i>&#xF021;</i></button>
@@ -65,8 +63,18 @@ const props = defineProps({
     },
   },
 });
-watch(props.post, () => {
-  initUser();
+watch(props.post, (newV) => {
+  let commz = document.getElementById("commz");
+  if (newV.show) {
+    commz?.classList.add("commidx");
+    setTimeout(() => {
+      commz?.classList.add("commtrans");
+      setTimeout(() => {
+        commz?.classList.add("commzs");
+      }, 100);
+    }, 50);
+    initUser();
+  }
 });
 const comm = ref({
   user: { clientId: "", name: "", url: "", summary: "", sourceId: 0, email: "" },
@@ -78,6 +86,7 @@ const comm = ref({
   ok: false,
   err: false,
   errTips: "",
+  send: false,
 });
 function initUser() {
   // 获取客户端ID
@@ -97,6 +106,10 @@ function initUser() {
 }
 // 提交评论
 async function sendComm() {
+  if (comm.value.send) {
+    return;
+  }
+  comm.value.send = true;
   comm.value.errTips = "";
   if (comm.value.user.name == "") {
     comm.value.errTips = "请输入昵称";
@@ -108,6 +121,7 @@ async function sendComm() {
     comm.value.err = true;
     setTimeout(() => {
       comm.value.err = false;
+      comm.value.send = false;
     }, 2000);
     return;
   }
@@ -128,12 +142,14 @@ async function sendComm() {
     comm.value.err = true;
     setTimeout(() => {
       comm.value.err = false;
+      comm.value.send = false;
     }, 2000);
     return;
   }
   if (comm.value.ok) {
     setTimeout(() => {
       comm.value.ok = false;
+      comm.value.send = false;
     }, 2000);
     // 关闭评论框
     comm.value.info = "";
@@ -143,12 +159,22 @@ async function sendComm() {
 function closeComm() {
   window.localStorage.setItem("MEBUGS_COMM_USER", JSON.stringify(comm.value.user));
   props.post.show = false;
+  let commz = document.getElementById("commz");
+  commz?.classList.remove("commzs");
+  setTimeout(() => {
+    commz?.classList.remove("commtrans");
+    commz?.classList.remove("commidx");
+  }, 310);
 }
 function openComv() {
   comm.value.choose = true;
+  let commz = document.getElementById("commz");
+  commz?.classList.add("commpa");
 }
 function closeComv() {
   comm.value.choose = false;
+  let commz = document.getElementById("commz");
+  commz?.classList.remove("commpa");
 }
 function chooseComv(i: number) {
   comm.value.user.sourceId = i;

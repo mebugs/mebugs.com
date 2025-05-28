@@ -4,7 +4,7 @@ import { userStore } from '@/store'
 // 路由权限判定
 export default function userPermission() {
   return {
-    async permissionRouter(route: RouteLocationNormalized | RouteRecordRaw) {
+    permissionRouter(route: RouteLocationNormalized | RouteRecordRaw) {
       const user = userStore()
       const routerName = route.name ? route.name.toString() : ''
       // 无路由名或免授权返回成功

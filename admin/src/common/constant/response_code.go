@@ -12,23 +12,18 @@ package constant
 const (
 	CodeFmt = "%s%s%02d" // 成功码Format
 
-	PageCommUserUpsertNG    = "P000" // 评论用户初始化失败
-	PageCommCommentPutLimit = "P001" // 用户超出文章的当日评论限制
-	PageCommCommentPutNG    = "P002" // 评论提交失败，系统异常
-	PageLinkGetMeNG         = "P003" // 目标元数据获取异常
-	PageLinkPutNG           = "P004" // 友链申请失败，系统异常
-	Error                   = "E000" // 系统异常（默认）
-	ValidErr                = "E001" // 参数非法（默认）（免翻译）
-	LoginErr                = "E002" // 尚未登陆（默认）
-	AuthErr                 = "E003" // 无权访问（默认）
-	PathErr                 = "E004" // 路径不存在（默认）
-	Success                 = "S000" // 处理成功（默认）
-	AuthLoginSS             = "S001" // 登陆成功
-	AuthResetSS             = "S002" // 密码重置成功
-	Fail                    = "F000" // 处理失败（默认）
-	AuthLoginNG             = "F001" // 登陆失败，请联系管理员
-	AuthLoginRuleNG         = "F002" // 异常登陆，请联系管理员
-	AuthResetNG             = "F003" // 密码重置失败，请联系管理员
+	Error           = "E000" // 系统异常（默认）
+	ValidErr        = "E001" // 参数非法（默认）（免翻译）
+	LoginErr        = "E002" // 尚未登陆（默认）
+	AuthErr         = "E003" // 无权访问（默认）
+	PathErr         = "E004" // 路径不存在（默认）
+	Success         = "S000" // 处理成功（默认）
+	AuthLoginSS     = "S001" // 登陆成功
+	AuthResetSS     = "S002" // 密码重置成功
+	Fail            = "F000" // 处理失败（默认）
+	AuthLoginNG     = "F001" // 登陆失败，请联系管理员
+	AuthLoginRuleNG = "F002" // 异常登陆，请联系管理员
+	AuthResetNG     = "F003" // 密码重置失败，请联系管理员
 
 	DictAddSS  = "S100" // 字典创建成功
 	DictEditSS = "S101" // 字典编辑成功
@@ -158,4 +153,13 @@ const (
 
 	PostCommentEditSS = "S1500" // 评论更新成功
 	PostCommentGetNG  = "F1500" // 评论查询失败
+
+	LinksAddSS     = "S1600" // 友情链接创建成功
+	LinksEditSS    = "S1601" // 友情链接编辑成功
+	LinksDelSS     = "S1602" // 友情链接删除成功
+	LinksGetNG     = "F1600" // 友情链接查询失败
+	LinksAddNoScNG = "F1601" // 友情链接未提交图片
+	LinksUniXxxNG  = "F1602" // 友情链接地址全局唯一
+	LinksDelNG     = "F1603" // 友情链接删除失败
+
 )

@@ -70,8 +70,8 @@ func tableMsgTrans(res *baseModel.ResBody, lang, traceID string) {
 	}
 	// 读取配置
 	codeMap, ok := transMap[res.Code]
-	// 未能匹配的响应码，复用基础文言
-	if !ok {
+	// 未能匹配的响应码，且不是自定义返回文言，复用基础文言
+	if !ok && res.Code != "F9999" {
 		useCode := constant.Success
 		if strings.HasPrefix(res.Code, "F") {
 			useCode = constant.Fail

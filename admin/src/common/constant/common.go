@@ -45,10 +45,11 @@ var (
 	PagePageCache         = ProjectName + ":Page:Pages"
 	PageTagCache          = ProjectName + ":Page:Tags"
 	PageCategoryCache     = ProjectName + ":Page:Categories"
-	PageTopicCache        = ProjectName + ":Page:Topics"
+	PageLinksCache        = ProjectName + ":Page:Links"
 	PagePostCache         = ProjectName + ":Page:Posts"
 	PagePostSortCache     = ProjectName + ":Page:PostSorts"
 	PagePostUrl           = ProjectName + ":Page:Post:%s"
 	PagePostUpdateDate    = ProjectName + ":Page:PostUpdateDate"
 	PagePostCommUserCache = ProjectName + ":Page:PostComm:%d"
+	PageClientLinkCache   = ProjectName + ":Page:ClientLink:%s"
 )

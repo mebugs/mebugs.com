@@ -1,7 +1,11 @@
 package blogService
 
 import (
+	"errors"
 	"fmt"
+	"golang.org/x/net/html"
+	"gorm.io/gorm"
+	"net/http"
 	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/log"
 	"siteol.com/smart/src/common/model/baseModel"
@@ -9,6 +13,7 @@ import (
 	"siteol.com/smart/src/common/model/cacheModel"
 	"siteol.com/smart/src/common/mysql/blogDB"
 	"siteol.com/smart/src/common/redis"
+	"strings"
 	"time"
 )
 
@@ -33,6 +38,28 @@ func GetIndex(traceID string) *baseModel.ResBody {
 // GetPage 获取页面数据
 func GetPage(traceID string) *baseModel.ResBody {
 	return baseModel.Success(constant.Success, cacheModel.GetPagesCache(traceID))
+}
+
+// GetPageDetail 获取页面数据
+func GetPageDetail(traceID string, req *blogModel.PostReq) *baseModel.ResBody {
+	allPage := cacheModel.GetPagesCache(traceID)
+	res := &cacheModel.BannerCache{}
+	for _, item := range allPage {
+		if item.Url == req.Url {
+			res = item
+			// 读取友情链接
+			if item.Url == "/page/link" {
+				res.Links = cacheModel.GetLinksCache(traceID)
+			}
+			// 读取全部文章
+			if item.Url == "/page/map" {
+				indexIds, _ := getRunUrls(traceID, 5, 1)
+				posts := getPostByUrlSortSingle(traceID, indexIds[0])
+				res.LitePosts = cacheModel.ToLitePost(posts)
+			}
+		}
+	}
+	return baseModel.Success(constant.Success, res)
 }
 
 // GetPosts 获取文章数据
@@ -162,13 +189,13 @@ func AddComm(traceID string, req *blogModel.PostCommReq) *baseModel.ResBody {
 	}
 	if err != nil {
 		log.ErrorTF(traceID, "AddComm Add/UpDate User Failed . Err Is %v", err)
-		return baseModel.Fail(constant.PageCommUserUpsertNG)
+		return baseModel.FailWithMsg("评论用户初始化失败")
 	}
 	// 开始添加评论（当日同UID在相同文章下最多提交5条评论）
 	userPostCache := cacheModel.GetPostCommUserCache(traceID, user.Id)
 	if num, ok := userPostCache[req.PostId]; ok {
 		if num >= 5 {
-			return baseModel.Fail(constant.PageCommCommentPutLimit)
+			return baseModel.FailWithMsg("用户超出文章的当日评论限制")
 		}
 		userPostCache[req.PostId] = num + 1
 	} else {
@@ -187,7 +214,7 @@ func AddComm(traceID string, req *blogModel.PostCommReq) *baseModel.ResBody {
 	})
 	if err != nil {
 		log.ErrorTF(traceID, "AddComm PostComment Failed . Err Is %v", err)
-		return baseModel.Fail(constant.PageCommCommentPutNG)
+		return baseModel.FailWithMsg("评论提交失败，系统异常")
 	}
 	tom := now.AddDate(0, 0, 1)
 	expTime := time.Date(tom.Year(), tom.Month(), tom.Day(), 0, 0, 0, 0, time.Local)
@@ -260,4 +287,125 @@ func Comments(traceID string, req *blogModel.CommentsReq) *baseModel.ResBody {
 	res.Total = total
 	res.Comments = resComments
 	return baseModel.Success(constant.Success, res)
+}
+
+// LinkScan 链接扫描
+func LinkScan(traceID string, req *blogModel.LinksScanReq) *baseModel.ResBody {
+	// 读取站点信息
+	// 获取网页内容
+	resp, err := http.Get(req.Url)
+	if err != nil {
+		log.ErrorTF(traceID, "LinkScan Query %s Failed. Err Is %v ", req.Url, err)
+		return baseModel.FailWithMsg("请求失败，请检查链接地址！")
+	}
+	defer func() {
+		_ = resp.Body.Close()
+	}()
+	if resp.StatusCode != http.StatusOK {
+		log.ErrorTF(traceID, "LinkScan Query %s Res Failed. Code Is %d ", req.Url, resp.StatusCode)
+		return baseModel.FailWithMsg(fmt.Sprintf("请求失败，响应码: %d！", resp.StatusCode))
+	}
+	// 解析HTML
+	doc, err := html.Parse(resp.Body)
+	if err != nil {
+		log.ErrorTF(traceID, "LinkScan Query %s Format Failed. Err Is %v ", req.Url, err)
+		return baseModel.FailWithMsg("目标链接响应数据不符合HTML规范！")
+	}
+	var title, description, icon string
+	// 遍历HTML节点
+	var f func(*html.Node)
+	f = func(n *html.Node) {
+		if n.Type == html.ElementNode {
+			switch n.Data {
+			case "title":
+				if n.FirstChild != nil {
+					title = n.FirstChild.Data
+				}
+			case "meta":
+				if getAttr(n, "name") == "description" {
+					description = getAttr(n, "content")
+				}
+			case "link":
+				rel := getAttr(n, "rel")
+				if strings.Contains(rel, "icon") && icon == "" {
+					icon = getAttr(n, "href")
+				}
+			}
+		}
+
+		// 递归遍历子节点
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			f(c)
+		}
+	}
+	f(doc)
+
+	return baseModel.Success(constant.Success, &blogModel.LinksGetRes{
+		Title:      title,
+		Url:        req.Url,
+		Summary:    description,
+		SourceShow: getImgBase64(traceID, req.Url, icon),
+	})
+}
+
+// LinkAdd 链接提交
+func LinkAdd(traceID string, req *blogModel.LinksAddClientReq) *baseModel.ResBody {
+	// 一天最多提交三次链接
+	linkNo := cacheModel.GetClientLinkCache(traceID, req.ClientId)
+	if linkNo >= 3 {
+		return baseModel.FailWithMsg("用户超出友链提交的当日限制")
+	} else {
+		linkNo++
+	}
+	// 查询链接存在性
+	one, err := blogDB.LinksTable.GetOneByObject(&blogDB.Links{Url: req.Url})
+	if err != nil && !errors.As(err, &gorm.ErrRecordNotFound) {
+		return baseModel.FailWithMsg("友链检查失败，系统异常")
+	}
+	if one.Url == req.Url {
+		return baseModel.FailWithMsg("友链地址已存在")
+	}
+	dbSourceReq, errNum, err := thirdAddSource(traceID, &blogModel.SourceAddReq{
+		FileType: "1", // 1 ICON
+		SourceDoReq: blogModel.SourceDoReq{
+			Name:         "Links_" + req.Title,
+			FileStrArray: req.Source,
+		},
+	})
+	if err != nil {
+		switch errNum {
+		case 1:
+			// 解析数据库错误
+			return checkSourceDBErr(err)
+		case 2:
+			return baseModel.Fail(constant.SourceFileUpNg)
+		}
+	}
+	now := time.Now()
+	link := &blogDB.Links{
+		Title:    req.Title,
+		Url:      req.Url,
+		Summary:  req.Summary,
+		SourceId: dbSourceReq.Id,
+		Status:   "1",
+		CreateAt: &now,
+		UpdateAt: &now,
+	}
+	err = blogDB.LinksTable.InsertOne(link)
+	if err != nil {
+		errStr := err.Error()
+		if strings.Contains(errStr, constant.DBDuplicateErr) {
+			if strings.Contains(errStr, "url_uni") {
+				// 唯一索引错误
+				return baseModel.FailWithMsg("友链地址已存在")
+			}
+		}
+		log.ErrorTF(traceID, "LinkAdd Failed . Err Is %v", err)
+		return baseModel.FailWithMsg("友链提交失败，系统异常")
+	}
+	tom := now.AddDate(0, 0, 1)
+	expTime := time.Date(tom.Year(), tom.Month(), tom.Day(), 0, 0, 0, 0, time.Local)
+	expD := expTime.Sub(now)
+	_ = redis.SetByTimeDuration(fmt.Sprintf(fmt.Sprintf(constant.PageClientLinkCache, req.ClientId)), linkNo, expD)
+	return baseModel.Success(constant.Success, nil)
 }

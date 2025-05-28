@@ -59,6 +59,11 @@ func Fail(code string) *ResBody {
 	return jsonResult(http.StatusOK, code, "", nil, false)
 }
 
+// FailWithMsg 200 业务失败携带自定义响应码
+func FailWithMsg(msg string) *ResBody {
+	return jsonResult(http.StatusOK, "F9999", msg, nil, false)
+}
+
 // Validate 400 Json校验失败
 func Validate(err error) *ResBody {
 	return jsonResult(http.StatusBadRequest, constant.ValidErr, err.Error(), nil, false)

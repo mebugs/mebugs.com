@@ -1,7 +1,14 @@
 package blogService
 
 import (
+	"encoding/base64"
+	"fmt"
+	"golang.org/x/net/html"
+	"io"
+	"net/http"
+	"siteol.com/smart/src/common/log"
 	"siteol.com/smart/src/common/model/cacheModel"
+	"strings"
 )
 
 // getRunUrls 获得需要处理的URL列表 0：Index 1:
@@ -142,4 +149,46 @@ func getPostByUrl(traceID, url string) (res *cacheModel.PostCache, cache map[str
 	}
 	res = cache[url]
 	return
+}
+
+func getAttr(n *html.Node, key string) string {
+	for _, a := range n.Attr {
+		if a.Key == key {
+			return a.Val
+		}
+	}
+	return ""
+}
+
+func getImgBase64(traceID, url, icon string) string {
+	// 处理图片URL
+	if !strings.HasPrefix(icon, "http") {
+		if !strings.HasPrefix(icon, "/") {
+			icon = url + "/" + icon
+		} else {
+			icon = url + icon
+		}
+	}
+	// 1. 发起 HTTP GET 请求获取图片
+	resp, err := http.Get(icon)
+	if err != nil {
+		log.ErrorTF(traceID, "getImgBase64 Get fail . Err is %v", err)
+		return ""
+	}
+	defer func() {
+		_ = resp.Body.Close()
+	}()
+
+	// 2. 读取图片二进制数据
+	imageBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.ErrorTF(traceID, "getImgBase64 Read fail . Err is %v", err)
+		return ""
+	}
+	// 3. 转换为 Base64 字符串
+	base64Str := base64.StdEncoding.EncodeToString(imageBytes)
+	mimeType := http.DetectContentType(imageBytes)
+	dataURL := fmt.Sprintf("data:%s;base64,%s", mimeType, base64Str)
+
+	return dataURL
 }

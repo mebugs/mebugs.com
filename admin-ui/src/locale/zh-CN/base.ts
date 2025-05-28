@@ -45,6 +45,7 @@ export default {
   'menu.BlogSource': '资源',
   'menu.BlogTag': '标签',
   'menu.BlogTopic': '专题',
+  'menu.BlogLinks': '友链',
   'menu.Center': '主页',
   'menu.CenterIndex': '工作中心',
   'menu.Plat': '平台管理',

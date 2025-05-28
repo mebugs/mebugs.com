@@ -12,7 +12,7 @@
   text-decoration: none;
   font-family: "Microsoft YaHei", "SimHei", Avenir, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple color emoji, segoe ui emoji,
     segoe ui symbol, noto color emoji, sans-serif;
-  transition: all 0.36s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 body {
@@ -191,6 +191,11 @@ i {
   border-radius: 6px;
   overflow: hidden;
   background: #fff;
+  margin: 15px;
+}
+.bmar {
+  border-radius: 6px;
+  overflow: hidden;
   margin: 15px;
 }
 .bx {
@@ -814,27 +819,31 @@ i {
 .commz {
   position: fixed;
   top: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.3);
-  width: calc(100vw - 240px);
+  width: 100%;
   height: 100vh;
   z-index: -1;
   opacity: 0;
+  transition: all 0.05s ease-in-out;
 }
 
 .commp {
-  width: 800px;
-  height: 385px;
+  z-index: 1;
+  width: 400px;
+  height: 100%;
   padding: 20px 30px;
   background: #fff;
-  border-radius: 6px;
+  border-radius: 20px 0 0 20px;
   margin: auto;
-  position: relative;
-  margin-top: 50vh;
+  bottom: 0;
+  right: -200px;
+  position: absolute;
 }
 
 .commx {
   position: absolute;
-  right: 20px;
+  right: 25px;
   top: 20px;
   line-height: 30px;
   width: 30px;
@@ -846,89 +855,112 @@ i {
 }
 
 .commr {
-  display: flex;
-  margin: 20px -10px 0 -10px;
+  margin: 20px 0;
+  padding: 5px;
+  height: calc(100% - 90px);
+  overflow: auto;
 }
 
 .commavt {
-  margin: 10px;
+  margin: 10px auto;
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 60px;
   overflow: hidden;
-  border: 3px solid #a2a6b4;
+  border: 4px solid #eee;
+  display: block;
 }
 
 .commavt button {
   position: absolute;
   z-index: 1;
   bottom: 10px;
-  width: 40px;
-  left: calc(50% - 20px);
-  line-height: 24px;
+  width: 50px;
+  left: calc(50% - 25px);
+  line-height: 28px;
   font-size: 12px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #3491fa;
   color: #fff;
 }
 .comminf {
-  margin: 10px 10px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: calc(100% - 130px);
+  width: 100%;
 }
 
 .comminfr {
-  margin-left: 15px;
-  width: calc(50% - 15px);
-  display: flex;
+  width: 100%;
+  margin: 20px 0;
   position: relative;
 }
-
-.comminfr i,
-.commdtl i {
-  width: 30px;
-  line-height: 40px;
-  font-size: 22px;
-  color: #a2a6b4;
+.comminfr span {
   position: absolute;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 900;
+  text-align: center;
+  display: inline-block;
+  background: #fff;
+  width: 60px;
+  top: -12px;
+  left: 10px;
+  border-radius: 10px;
 }
-.comminfr i.ineed,
-.commdtl i.ineed {
-  color: #e2817a;
+.comminfr span.ineed {
+  color: #de3b2f;
 }
-.comminfr input {
+.comminfr input,
+.mapSearch {
   outline: 0;
+  font-size: 15px;
   border: 0;
-  border-bottom: 2px solid #a2a6b4;
-  line-height: 40px;
-  height: 40px;
+  border: 1px solid #a2a6b4;
+  border-radius: 6px;
+  line-height: 30px;
+  height: 45px;
   width: 100%;
-  padding: 0 10px 0 35px;
+  padding: 15px 15px 10px;
   background: #f7f8fa;
 }
+.syncinfr {
+  display: flex;
+}
 
+.syncinfr input {
+  width: calc(100% - 45px);
+}
+
+.syncinfr button {
+  border-radius: 6px;
+  background: #3491fa;
+  color: #fff;
+  width: 40px;
+  margin-left: 5px;
+  font-size: 14px;
+  line-height: 40px;
+}
 .commp p {
-  line-height: 30px;
-  font-size: 12px;
+  line-height: 1.5;
+  font-size: 10px;
+  text-align: center;
 }
 
 .commdtl {
-  margin: 10px 0 60px 0;
   position: relative;
 }
 
 .commdtl textarea {
   width: 100%;
+  font-size: 15px;
   outline: 0;
   border: 0;
   line-height: 25px;
-  height: 75px;
+  height: 125px;
   resize: none;
-  padding: 7px 5px 5px 35px;
+  padding: 15px 15px 10px;
+  border-radius: 6px;
   background: #f7f8fa;
-  border-bottom: 2px solid #a2a6b4;
+  border: 1px solid #a2a6b4;
 }
 
 .commsd {
@@ -941,23 +973,29 @@ i {
   background: #3491fa;
   color: #fff;
 }
-.commzs,
-.commvs {
-  z-index: 10;
+.commtrans {
+  transition: all 0.3s ease-in-out;
+}
+.commidx {
+  z-index: 101;
+}
+.commzs {
   opacity: 1;
 }
 
 .commzs .commp {
-  margin-top: calc(50vh - 193px);
+  right: 0;
 }
 
-.comvp {
-  width: 520px;
-  height: 460px;
+.commzs .comvp {
+  z-index: 0;
+  opacity: 0;
+  right: -200px;
 }
-
-.commvs .comvp {
-  margin-top: calc(50vh - 230px);
+.commpa .comvp {
+  z-index: 1;
+  opacity: 1;
+  right: 0;
 }
 .comvr {
   flex-wrap: wrap;
@@ -966,21 +1004,22 @@ i {
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  margin: 10px;
+  display: inline-block;
+  margin: 5px;
   cursor: pointer;
-  border: 4px solid #a2a6b4;
+  border: 4px solid #ddd;
 }
 .errTips,
 .succTips {
   opacity: 0;
   position: fixed;
-  z-index: 11;
+  right: -50px;
+  z-index: 102;
   width: 350px;
-  top: -50px;
+  bottom: 80px;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 6px;
-  left: calc(50% - 3px);
   color: #fff;
   display: flex;
   align-items: center;
@@ -998,8 +1037,9 @@ i {
 }
 .tipsHas {
   opacity: 1;
-  top: 20px;
+  right: 25px;
 }
+
 .pcomll {
   width: 100%;
   display: flex;
@@ -1094,6 +1134,26 @@ i {
   color: #666;
   white-space: pre-wrap;
 }
+.rtlink .bit {
+  width: 100%;
+}
+
+.rtlink .bit span {
+  font-size: 12px;
+}
+
+.rtlink .bi h2 {
+  margin: 0;
+}
+.rmap .bi h1 {
+  -webkit-line-clamp: 1;
+  margin: 0;
+  font-size: 16px;
+}
+.mapSearch {
+  background: #fff;
+  padding: 10px;
+}
 .lmn a.hv,
 .lmn a:hover {
   color: #3491fa;
@@ -1118,7 +1178,8 @@ i {
 .b:hover .bno,
 .bia a:hover,
 .commavt button:hover,
-.commsd:hover {
+.commsd:hover,
+.syncinfr button:hover {
   background: #1d2129;
   color: #fff;
 }
@@ -1151,15 +1212,23 @@ i {
   color: #a2a6b4;
 }
 
-input:focus,
-textarea:focus {
+.comminfr:focus {
   border-bottom: 2px solid #3491fa;
   background: #f0f2f4;
 }
 .commavt:hover {
-  border: 3px solid #3491fa;
+  border: 4px solid #3491fa;
 }
 .comvr img:hover,
 .comvr img.avtc {
   border: 4px solid #3491fa;
+}
+input:focus,
+textarea:focus {
+  border: 1px solid #3491fa;
+  background: #ffffff;
+}
+.sending,
+.sending:hover {
+  background: #aaa !important;
 }

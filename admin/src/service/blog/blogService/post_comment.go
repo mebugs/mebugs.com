@@ -128,7 +128,7 @@ func EditPostComment(traceID string, req *blogModel.PostCommentEditReq) *baseMod
 	err = blogDB.UserTable.UpdateOne(&user)
 	if err != nil {
 		log.ErrorTF(traceID, "EditPostComment UpDate User Failed . Err Is %v", err)
-		return baseModel.Fail(constant.PageCommUserUpsertNG)
+		return baseModel.FailWithMsg("评论用户初始化失败")
 	}
 	dbReq, err := blogDB.PostCommentTable.GetOneById(req.Id)
 	if err != nil {

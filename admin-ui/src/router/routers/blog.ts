@@ -43,6 +43,12 @@ const BLOG: RouteRecordRaw = {
       name: 'BlogComment',
       component: () => import('@/views/blog/comment/index.vue'),
       meta: { locale: 'menu.BlogComment', requiresAuth: false }
+    },
+    {
+      path: 'links', // 评论
+      name: 'BlogLinks',
+      component: () => import('@/views/blog/links/index.vue'),
+      meta: { locale: 'menu.BlogLinks', requiresAuth: false }
     }
   ]
 }

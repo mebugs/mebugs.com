@@ -23,19 +23,37 @@ func GetIndex(c *gin.Context) {
 	service.JsonRes(c, blogService.GetIndex(traceID))
 }
 
+// GetPages	godoc
+// @id			GetPages 获取页面数据
+// @Summary		获取页面数据
+// @Description	获取页面数据
+// @Router		/page/pages [get]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func GetPages(c *gin.Context) {
+	// traceID 日志追踪
+	traceID := c.GetString(constant.ContextTraceID)
+	service.JsonRes(c, blogService.GetPage(traceID))
+}
+
 // GetPage	godoc
 // @id			GetPage 获取页面数据
 // @Summary		获取页面数据
 // @Description	获取页面数据
-// @Router		/page/pages [post]
+// @Router		/page/page [post]
 // @Tags		Page
 // @Accept		json
 // @Produce		json
 // @Security	Token
 func GetPage(c *gin.Context) {
-	// traceID 日志追踪
-	traceID := c.GetString(constant.ContextTraceID)
-	service.JsonRes(c, blogService.GetPage(traceID))
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.PostReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.PostReq)
+		// 执行创建
+		service.JsonRes(c, blogService.GetPageDetail(traceID, req))
+	}
 }
 
 // GetPosts 	godoc
@@ -158,5 +176,41 @@ func Comments(c *gin.Context) {
 		req := reqObj.(*blogModel.CommentsReq)
 		// 执行创建
 		service.JsonRes(c, blogService.Comments(traceID, req))
+	}
+}
+
+// LinkScan 	godoc
+// @id			LinkScan 链接扫描
+// @Summary		链接扫描
+// @Description	链接扫描
+// @Router		/page/link/scan [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func LinkScan(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.LinksScanReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.LinksScanReq)
+		// 执行创建
+		service.JsonRes(c, blogService.LinkScan(traceID, req))
+	}
+}
+
+// LinkAdd 	godoc
+// @id			LinkAdd 链接提交
+// @Summary		链接提交
+// @Description	链接提交
+// @Router		/page/link/add [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func LinkAdd(c *gin.Context) {
+	traceID, reqObj, err := service.ValidateReqObj(c, &blogModel.LinksAddClientReq{})
+	if err == nil {
+		req := reqObj.(*blogModel.LinksAddClientReq)
+		// 执行创建
+		service.JsonRes(c, blogService.LinkAdd(traceID, req))
 	}
 }

@@ -126,8 +126,8 @@ if (process.server) {
 }
 function initHeader() {
   useHead({
-    title: `${resData.value.null ? "哎呀呀！没找到！" : resData.value?.post?.title}${runtimeConfig.public.siteName}`,
-    meta: [{ hid: "description", name: "description", content: `${resData.value.null ? "哎呀呀！没找到！" : resData.value?.post?.summary} - ${runtimeConfig.public.description}` }],
+    title: `${resData.value?.post?.title ? resData.value?.post?.title : "哎呀呀！没找到！"}${runtimeConfig.public.siteName}`,
+    meta: [{ hid: "description", name: "description", content: `${resData.value?.post?.summary ? resData.value?.post?.summary : "哎呀呀！没找到！"} - ${runtimeConfig.public.description}` }],
     link: [{ href: "/static/css/ant-design.css", rel: "stylesheet" }],
     script: [{ src: "/static/js/post.js", tagPosition: "bodyClose" }],
   });

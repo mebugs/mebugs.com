@@ -79,22 +79,23 @@ func BlogRouter(router *gin.Engine) {
 			postCommentRouter.POST("/get", blogHandler.GetPostComment)
 			postCommentRouter.POST("/edit", blogHandler.EditPostComment)
 		}
-		//
-		//// 极简用户信息相关
-		//userRouter := blogRouter.Group("/user")
-		//{
-		//	userRouter.POST("/add", blogHandler.AddUser)
-		//	userRouter.POST("/page", blogHandler.PageUser)
-		//	userRouter.POST("/get", blogHandler.GetUser)
-		//	userRouter.POST("/edit", blogHandler.EditUser)
-		//	userRouter.POST("/del", blogHandler.DelUser)
-		//}
+
+		// 友情链接相关
+		linksRouter := blogRouter.Group("/links")
+		{
+			linksRouter.POST("/add", blogHandler.AddLinks)
+			linksRouter.POST("/page", blogHandler.PageLinks)
+			linksRouter.POST("/get", blogHandler.GetLinks)
+			linksRouter.POST("/edit", blogHandler.EditLinks)
+			linksRouter.POST("/del", blogHandler.DelLinks)
+		}
 	}
 
 	pageRouter := router.Group("/page", middleware.CommMiddleWare) // 授权中间件
 	{
 		pageRouter.GET("/index", blogHandler.GetIndex)               // 获取首页数据
-		pageRouter.GET("/pages", blogHandler.GetPage)                // 获取页面
+		pageRouter.GET("/pages", blogHandler.GetPages)               // 获取页面
+		pageRouter.POST("/page", blogHandler.GetPage)                // 获取页面
 		pageRouter.POST("/posts", blogHandler.GetPosts)              // 获取文章列表数据
 		pageRouter.GET("/categoryList", blogHandler.GetCategoryList) // 获取分类列表数据
 		pageRouter.POST("/tags", blogHandler.GetTags)                // 获取文章列表数据
@@ -102,5 +103,7 @@ func BlogRouter(router *gin.Engine) {
 		pageRouter.POST("/post/good", blogHandler.SetPostGood)       // Push文章Goods
 		pageRouter.POST("/comments", blogHandler.Comments)           // 获取评论
 		pageRouter.POST("/comm/add", blogHandler.AddComm)            // 提交评论
+		pageRouter.POST("/link/scan", blogHandler.LinkScan)          // 链接扫描
+		pageRouter.POST("/link/add", blogHandler.LinkAdd)            // 链接扫描
 	}
 }
