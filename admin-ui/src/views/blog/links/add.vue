@@ -1,0 +1,117 @@
+<template>
+  <a-form size="large" label-align="left" class="form" layout="vertical" :model="formData" @submit="submit">
+    <a-row :gutter="20">
+      <a-col :span="12">
+        <a-form-item field="sourceShow" :label="$t('links.sourceId')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <label class="upIcon" for="upMainImglinksAdd">
+            <img :src="formData.sourceShow" v-if="formData.sourceShow" />
+            <p v-else>
+              <icon-upload />
+              {{ $t('button.upload') }}
+            </p>
+          </label>
+          <input
+            id="upMainImglinksAdd"
+            accept="image/gif, image/jpeg, image/png, image/jpg"
+            type="file"
+            style="display: none"
+            @change="chooesMain" />
+        </a-form-item>
+      </a-col>
+      <a-col :span="12"></a-col>
+      <a-col :span="12">
+        <a-form-item field="title" :label="$t('links.title')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <a-input v-model="formData.title" :max-length="32" allow-clear show-word-limit :placeholder="$t('links.title.place')" />
+        </a-form-item>
+      </a-col>
+      <a-col :span="12">
+        <a-form-item field="url" :label="$t('links.url')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <a-input v-model="formData.url" :max-length="128" allow-clear show-word-limit :placeholder="$t('links.url.place')" />
+        </a-form-item>
+      </a-col>
+      <a-col :span="24">
+        <a-form-item field="summary" :label="$t('links.summary')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <a-input v-model="formData.summary" :max-length="256" allow-clear show-word-limit :placeholder="$t('links.summary.place')" />
+        </a-form-item>
+      </a-col>
+      <a-col :span="24">
+        <a-divider />
+        <div class="doBtn">
+          <a-space>
+            <a-button size="large" type="primary" html-type="submit" :loading="load">
+              <template #icon>
+                <icon-check />
+              </template>
+              {{ $t('button.submit') }}
+            </a-button>
+            <a-button size="large" @click="pop.close()">
+              <template #icon>
+                <icon-close />
+              </template>
+              {{ $t('button.cancel') }}</a-button
+            >
+          </a-space>
+        </div>
+      </a-col>
+    </a-row>
+  </a-form>
+</template>
+
+<script lang="ts" setup>
+import { onMounted } from 'vue'
+import type { Pop } from '@/utils/hooks/pop'
+import useLoad from '@/utils/hooks/load'
+import { linksInit, linksAdd } from '@/api/blog/links'
+import useImgs from '@/utils/hooks/imgs'
+// 入参读取
+const props = defineProps({
+  pop: {
+    type: Object,
+    required: true,
+    default: () => {
+      return {} as Pop
+    }
+  }
+})
+// 加载中变量
+const { load, setLoad } = useLoad(false)
+// 表单数据初始化
+const formData = linksInit()
+// const linksAdd = ref<FormInstance>();
+// 提交数据
+const submit = async ({ errors, values }: { errors: any; values: any }) => {
+  if (load.value) return
+  if (!errors) {
+    setLoad(true)
+    try {
+      // const res = await linksAdd.value?.validate();
+      await linksAdd(values)
+      // Pop Close & Back
+      props.pop.close()
+      props.pop.callBack()
+    } catch (err) {
+      // DoNothing
+    } finally {
+      setLoad(false)
+    }
+  }
+}
+// 主图加载器
+const { imgObj, initImgQuick, chooesImg } = useImgs()
+initImgQuick('icon')
+const chooesMain = async (e: Event) => {
+  await chooesImg(e)
+    .then(() => {
+      formData.value.source = imgObj.value.baseUrls
+      formData.value.sourceShow = imgObj.value.baseUrls[0]
+    })
+    .catch((er) => {
+      console.log(er)
+    })
+}
+// 页面渲染
+onMounted(() => {
+  // Nothing
+  setLoad(false)
+})
+</script>

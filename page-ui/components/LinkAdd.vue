@@ -4,7 +4,7 @@
   <div class="commz" id="commz">
     <div class="commp commlink">
       <h1>提交友链</h1>
-      <button class="commx" type="button" @click="closeLink()"><i>&#xF021;</i></button>
+      <button class="commx" v-ripples type="button" @click="closeLink()"><i>&#xF021;</i></button>
       <label class="commavt" for="logoAdd">
         <img :src="link.sourceShow" v-if="link.sourceShow" />
       </label>

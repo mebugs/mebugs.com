@@ -10,6 +10,11 @@ import (
 func BlogRouter(router *gin.Engine) {
 	blogRouter := router.Group("/blog", middleware.CommMiddleWare) // 授权中间件
 	{
+		// 首页统计
+		indexRouter := blogRouter.Group("/center")
+		{
+			indexRouter.POST("/index", blogHandler.CenterIndex)
+		}
 		// 资源配置表相关
 		sourceRouter := blogRouter.Group("/source")
 		{

@@ -4,7 +4,7 @@
     "Port": ":8000",
     "LogLevel": "debug",
     "LogRoot": 2,
-    "Debug": true
+    "Debug": false
   },
   "MySQL": {
     "Plat": "root:123456@tcp(localhost:3306)/blog?charset=utf8mb4&parseTime=True&loc=Local",

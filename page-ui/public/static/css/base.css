@@ -556,6 +556,7 @@ i {
   justify-content: center;
   height: 50px;
   border-radius: 25px;
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0 5px 15px #e1e4e8;
 }
 
@@ -837,7 +838,7 @@ i {
   border-radius: 20px 0 0 20px;
   margin: auto;
   bottom: 0;
-  right: -200px;
+  right: -400px;
   position: absolute;
 }
 
@@ -990,7 +991,7 @@ i {
 .commzs .comvp {
   z-index: 0;
   opacity: 0;
-  right: -200px;
+  right: -400px;
 }
 .commpa .comvp {
   z-index: 1;
@@ -1157,7 +1158,7 @@ i {
 .lmn a.hv,
 .lmn a:hover {
   color: #3491fa;
-  box-shadow: inset 3px 4px 5px 0 #e1e4e8;
+  background: #f0f5fb;
 }
 
 .b:hover .bg.bgd img {
@@ -1231,4 +1232,24 @@ textarea:focus {
 .sending,
 .sending:hover {
   background: #aaa !important;
+}
+
+.typeofnan_vue_ripples {
+  position: absolute;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.08);
+  background-clip: padding-box;
+  pointer-events: none;
+  user-select: none;
+  transform: scale(0);
+  opacity: 1;
+}
+
+.typeofnan_vue_ripples.z-active {
+  opacity: 0;
+  transform: scale(2);
+  -webkit-transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
+  transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
+  transition: opacity 1.2s ease-out, transform 0.6s ease-out;
+  transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;
 }

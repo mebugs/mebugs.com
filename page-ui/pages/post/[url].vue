@@ -39,7 +39,7 @@
           <div class="vditor-reset bz" v-html="resData.postMain.html"></div>
           <em id="ed"></em>
           <div class="b pcom">
-            <button type="button" @click="putComms()"><i>&#xF009;</i>评论</button>
+            <button type="button" v-ripples @click="putComms()"><i>&#xF009;</i>评论</button>
           </div>
           <div class="pcoms">
             <div class="pcomt bz" v-if="comms.total">
