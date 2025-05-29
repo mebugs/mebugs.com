@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
@@ -46,11 +46,11 @@
     </div>
     <div class="r" v-if="resData.posts && resData.posts[0]">
       <div class="bcn">
-        <button type="button" :class="{ nc: !changeSet.pre }" @click="go(1, true)"><i>&#xF003;</i></button>
-        <button type="button" :class="{ nc: !changeSet.pre }" @click="go(-1, false)"><i>&#xF004;</i></button>
+        <button type="button" v-ripples :class="{ nc: !changeSet.pre }" @click="go(1, true)"><i>&#xF003;</i></button>
+        <button type="button" v-ripples :class="{ nc: !changeSet.pre }" @click="go(-1, false)"><i>&#xF004;</i></button>
         <p>{{ changeSet.page }}</p>
-        <button type="button" :class="{ nc: !changeSet.next }" @click="go(1, false)"><i>&#xF005;</i></button>
-        <button type="button" :class="{ nc: !changeSet.next }" @click="go(changeSet.maxPage, true)"><i>&#xF006;</i></button>
+        <button type="button" v-ripples :class="{ nc: !changeSet.next }" @click="go(1, false)"><i>&#xF005;</i></button>
+        <button type="button" v-ripples :class="{ nc: !changeSet.next }" @click="go(changeSet.maxPage, true)"><i>&#xF006;</i></button>
       </div>
     </div>
     <Foot></Foot>
@@ -58,6 +58,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitDom, InitBack, LoadPostsImg, ToWhere } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const router = useRouter();
@@ -105,20 +106,19 @@ if (process.server) {
 // 翻页
 let query = { by: urlCode, page: 1 };
 function go(i: number, to: boolean) {
+  if (changeSet.value.page == 1 && i < 0) {
+    return;
+  }
+  if (changeSet.value.page == changeSet.value.maxPage && i > 0) {
+    return;
+  }
   if (to) {
     changeSet.value.page = i;
   } else {
-    if (changeSet.value.page == 1 && i < 0) {
-      return;
-    }
-    if (changeSet.value.page == changeSet.value.maxPage && i > 0) {
-      return;
-    }
     changeSet.value.page = changeSet.value.page + i;
   }
+
   query.page = changeSet.value.page;
-  // @ts-ignore
-  toWhere(0);
   getPosts(true);
 }
 // 查询更多文章
@@ -132,10 +132,10 @@ async function getPosts(lazyLoad: boolean) {
   resData.value = (res as any)?.data;
   syncPageSet(Math.ceil(resData.value.total / 15));
   await nextTick();
+  ToWhere(0);
   setTimeout(() => {
     changeDown.value = true;
     if (lazyLoad) {
-      // @ts-ignore
       LoadPostsImg();
     }
   }, 200);
@@ -176,11 +176,9 @@ onMounted(async () => {
 });
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
   InitDom();
 }
 </script>

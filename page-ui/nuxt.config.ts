@@ -20,4 +20,10 @@ export default defineNuxtConfig({
       apiBase: "/api",
     },
   },
+  plugins: [
+    { src: "~/plugins/ripples.js", ssr: false }, // ssr: false 表示仅客户端生效
+  ],
+  build: {
+    transpile: ["swiper"],
+  },
 });

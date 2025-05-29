@@ -83,7 +83,7 @@
             </div>
           </div>
         </div>
-        <div class="bx br brl">
+        <div class="bx br brl" id="bdh">
           <div class="brdh bz" v-html="resData.postMain.toc"></div>
         </div>
       </div>
@@ -98,7 +98,7 @@
             <img :src="post.sourcePath + '_2.' + post.sourceBack" />
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
           </div>
         </NuxtLink>
       </div>
@@ -109,6 +109,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitPostDom, InitBack } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const url = route.params.url;
@@ -129,7 +130,7 @@ function initHeader() {
     title: `${resData.value?.post?.title ? resData.value?.post?.title : "哎呀呀！没找到！"}${runtimeConfig.public.siteName}`,
     meta: [{ hid: "description", name: "description", content: `${resData.value?.post?.summary ? resData.value?.post?.summary : "哎呀呀！没找到！"} - ${runtimeConfig.public.description}` }],
     link: [{ href: "/static/css/ant-design.css", rel: "stylesheet" }],
-    script: [{ src: "/static/js/post.js", tagPosition: "bodyClose" }],
+    // script: [{ src: "/static/js/post.js", tagPosition: "bodyClose" }],
   });
 }
 // 评论数据
@@ -163,6 +164,7 @@ onMounted(async () => {
     await initByClient();
     initHeader();
   }
+  await nextTick();
   initPage();
 });
 async function initByClient() {
@@ -170,7 +172,7 @@ async function initByClient() {
   resData.value = (res as any).data;
 }
 var intv: NodeJS.Timeout;
-var waitPostLoad: NodeJS.Timeout;
+// var waitPostLoad: NodeJS.Timeout;
 // 执行深度处理
 function initPageGoods() {
   var nums: number = 1;
@@ -186,25 +188,11 @@ function initPageGoods() {
 onUnmounted(() => {
   needRun.value = true;
   clearInterval(intv);
-  clearInterval(waitPostLoad);
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
-  InitDom();
+  InitPostDom();
   initPageGoods();
   getCommnents();
-  initPost();
-}
-function initPost() {
-  waitPostLoad = setInterval(() => {
-    // @ts-ignore
-    if (typeof mdMiHs !== "undefined") {
-      // @ts-ignore
-      InitPostDom();
-      clearInterval(waitPostLoad);
-    }
-  }, 100);
 }
 </script>

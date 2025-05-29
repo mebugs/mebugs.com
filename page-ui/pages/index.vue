@@ -7,9 +7,6 @@
             <div class="bg bgb"><img :src="bann.sourceShow" /></div>
             <div class="bi bib">
               <h1 class="bz">{{ bann.title }}</h1>
-              <div class="bit">
-                <span class="bz"><i>#</i>{{ bann.tag }}</span>
-              </div>
               <p class="bz">{{ bann.summary }}</p>
               <div class="bia"><NuxtLink class="bz" :to="bann.url">点击前往</NuxtLink></div>
             </div>
@@ -46,7 +43,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
@@ -85,7 +82,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
@@ -120,7 +117,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
@@ -142,7 +139,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
@@ -157,14 +154,18 @@
   </div>
 </template>
 <script setup lang="ts">
+import "swiper/css/bundle";
+import { Swiper } from "swiper";
+import { Pagination } from "swiper/modules";
+import { InitDom, InitBack, LoadBannImg } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const needRun = useState("indexRun", () => true);
 const resData = useState("resData", () => <any>{});
 useHead({
   title: `米虫博客 - 技术经验分享 做一个有理想的米虫，全栈程序员，乐观主义者，坚信一切都是最好的安排！${runtimeConfig.public.siteName}`,
   meta: [{ hid: "description", name: "description", content: `${runtimeConfig.public.description}` }],
-  link: [{ href: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.css", rel: "stylesheet" }],
-  script: [{ src: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.js", tagPosition: "bodyClose", onload: initSwiper }],
+  //link: [{ href: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.css", rel: "stylesheet" }],
+  //script: [{ src: "https://cdn.staticfile.net/Swiper/11.0.5/swiper-bundle.min.js", tagPosition: "bodyClose", onload: initSwiper }],
 });
 // 读取页面数据
 if (process.server) {
@@ -192,18 +193,17 @@ async function initByClient() {
 }
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
+  initSwiper();
   InitDom();
 }
 // Page Init (ext IE)
 function initSwiper() {
   // banner
-  // @ts-ignore
   new Swiper(".swiper-container", {
+    modules: [Pagination],
     loop: true,
     autoplay: {
       disableOnInteraction: false,

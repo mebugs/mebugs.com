@@ -40,6 +40,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitDom, InitBack, LoadPostsImg, ToWhere } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const needRun = useState("tagRun", () => true);
 const resData = useState("resData", () => <any>{});
@@ -82,8 +83,6 @@ function go(i: number, to: boolean) {
     changeSet.value.page = changeSet.value.page + i;
   }
   query.page = changeSet.value.page;
-  // @ts-ignore
-  toWhere(0);
   getTags(true);
 }
 // 查询更多文章
@@ -97,6 +96,7 @@ async function getTags(lazyLoad: boolean) {
   resData.value = (res as any)?.data;
   syncPageSet(Math.ceil(resData.value.total / 24));
   await nextTick();
+  ToWhere(0);
   setTimeout(() => {
     changeDown.value = true;
     if (lazyLoad) {
@@ -122,11 +122,9 @@ onMounted(async () => {
 });
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
   InitDom();
 }
 </script>

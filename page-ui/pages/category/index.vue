@@ -31,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitDom, InitBack } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const needRun = useState("categorysRun", () => true);
 const resData = useState("resData", () => <any>{});
@@ -59,11 +60,9 @@ async function initByClient() {
 }
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
   InitDom();
 }
 </script>

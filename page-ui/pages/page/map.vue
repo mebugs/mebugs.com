@@ -21,7 +21,7 @@
       <div class="rb rc rmap" v-if="posts && posts[0]">
         <NuxtLink v-for="post in posts" class="b b3" :to="'/post/' + post.url">
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
           </div>
         </NuxtLink>
       </div>
@@ -31,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitDom, InitBack } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const needRun = useState("pageMap", () => true);
 const resData = useState("resData", () => <any>{});
@@ -79,11 +80,9 @@ async function initByClient() {
 }
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
   InitDom();
 }
 </script>

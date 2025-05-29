@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">{{ post.title }}</h1>
+            <h1 class="bz">📖 {{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>
@@ -52,6 +52,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitDom, InitBack, LoadPostsImg, ToWhere } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const url = route.params.url;
@@ -92,8 +93,6 @@ function go(i: number, to: boolean) {
     changeSet.value.page = changeSet.value.page + i;
   }
   query.page = changeSet.value.page;
-  // @ts-ignore
-  toWhere(0);
   getPosts(true);
 }
 // 查询更多文章
@@ -107,10 +106,10 @@ async function getPosts(lazyLoad: boolean) {
   resData.value = (res as any)?.data;
   syncPageSet(Math.ceil(resData.value.total / 15));
   await nextTick();
+  ToWhere(0);
   setTimeout(() => {
     changeDown.value = true;
     if (lazyLoad) {
-      // @ts-ignore
       LoadPostsImg();
     }
   }, 200);
@@ -134,11 +133,9 @@ onMounted(async () => {
 });
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
 });
 function initPage() {
-  // @ts-ignore
   InitDom();
 }
 </script>

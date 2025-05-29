@@ -223,9 +223,16 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 		postsMap[post.Id].TagNames = tagNames
 		// 填充时间顺序
 		postNewArray[i] = post.Url
-		postViewSortArray[i] = &BlogSort{Url: post.Url, Num: post.Views}
-		postGoodSortArray[i] = &BlogSort{Url: post.Url, Num: post.Goods}
-		postHotSortArray[i] = &BlogSort{Url: post.Url, Num: post.Hots}
+		// about 放在最后
+		if post.Url == "about" {
+			postViewSortArray[i] = &BlogSort{Url: post.Url, Num: 0}
+			postGoodSortArray[i] = &BlogSort{Url: post.Url, Num: 0}
+			postHotSortArray[i] = &BlogSort{Url: post.Url, Num: 0}
+		} else {
+			postViewSortArray[i] = &BlogSort{Url: post.Url, Num: post.Views}
+			postGoodSortArray[i] = &BlogSort{Url: post.Url, Num: post.Goods}
+			postHotSortArray[i] = &BlogSort{Url: post.Url, Num: post.Hots}
+		}
 	}
 	// 循环完成后，填充分类、标签、主题的排序对象
 	for _, caC := range categoryMap {

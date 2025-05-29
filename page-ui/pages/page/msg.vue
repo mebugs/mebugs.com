@@ -12,7 +12,7 @@
             <p>{{ resData.summary }}</p>
           </div>
           <div class="b pcom">
-            <button type="button" @click="putComms()"><i>&#xF009;</i>评论</button>
+            <button type="button" v-ripples @click="putComms()"><i>&#xF009;</i>评论</button>
           </div>
           <div class="pcoms">
             <div class="pcomt bz" v-if="comms.total">
@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import { InitDom, InitBack } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
 const needRun = useState("pageMsg", () => true);
 const resData = useState("resData", () => <any>{});
@@ -87,7 +88,7 @@ async function getCommnents() {
   if (!clientId) {
     clientId = "";
   }
-  const commRes = await $fetch("/api/page/comments", { server: false, method: "POST", body: { postId: resData.value.post.id, clientId: clientId } });
+  const commRes = await $fetch("/api/page/comments", { server: false, method: "POST", body: { postId: 0, clientId: clientId } });
   comms.value = (commRes as any).data;
 }
 // 提交评论
@@ -111,6 +112,7 @@ onMounted(async () => {
     await initByClient();
     initHeader();
   }
+  getCommnents();
   initPage();
 });
 async function initByClient() {
@@ -119,12 +121,9 @@ async function initByClient() {
 }
 onUnmounted(() => {
   needRun.value = true;
-  // @ts-ignore
   InitBack();
-  getCommnents();
 });
 function initPage() {
-  // @ts-ignore
   InitDom();
 }
 </script>
