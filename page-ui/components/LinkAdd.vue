@@ -1,36 +1,35 @@
 <template>
   <div class="errTips" :class="{ tipsHas: link.err }"><i>&#xF029;</i>{{ link.errTips }}</div>
   <div class="succTips" :class="{ tipsHas: link.ok }"><i>&#xF030;</i>{{ link.succTips }}</div>
-  <div class="commz" id="commz">
-    <div class="commp commlink">
-      <h1>提交友链</h1>
-      <button class="commx" v-ripples type="button" @click="closeLink()"><i>&#xF021;</i></button>
-      <label class="commavt" for="logoAdd">
-        <img :src="link.sourceShow" v-if="link.sourceShow" />
-      </label>
-      <p>
-        你可点击上方直接上传LOGO，也可以输入链接后自动同步贵站的数据。<br />
-        链接为完整地址，不要涉及重定向，防盗链可能导致LOGO获取失败。<br />
-        链接示例：https://www.mebugs.com
-      </p>
-      <input id="logoAdd" accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none" @change="chooesImg" />
-      <div class="comminf">
-        <div class="comminfr syncinfr">
-          <span class="ineed">链接</span>
-          <input type="text" v-model="link.url" placeholder="必填，请输入网站地址" />
-          <button type="button" :class="{ sending: link.send }" @click="syncLink()">同步</button>
-        </div>
-        <div class="comminfr">
-          <span class="ineed">名称</span>
-          <input type="text" v-model="link.title" placeholder="必填，请输入名称，建议8字以内" />
-        </div>
-        <div class="comminfr commdtl">
-          <span>简介</span>
-          <textarea v-model="link.summary" placeholder="选填,请输入站点简介，建议64字以内" />
-        </div>
+  <div class="commz" id="commz" @click="closeLink()"></div>
+  <div class="commp commlink" id="commlk">
+    <h1>提交友链</h1>
+    <button class="commx" type="button" @click="closeLink()"><i>&#xF021;</i></button>
+    <label class="commavt" for="logoAdd">
+      <img :src="link.sourceShow" v-if="link.sourceShow" />
+    </label>
+    <p>
+      你可点击上方直接上传LOGO，也可以输入链接后自动同步贵站的数据。<br />
+      链接为完整地址，不要涉及重定向，防盗链可能导致LOGO获取失败。<br />
+      链接示例：https://www.mebugs.com
+    </p>
+    <input id="logoAdd" accept="image/gif, image/jpeg, image/png, image/jpg" type="file" style="display: none" @change="chooesImg" />
+    <div class="comminf">
+      <div class="comminfr syncinfr">
+        <span class="ineed">链接</span>
+        <input type="text" v-model="link.url" placeholder="必填，请输入网站地址" />
+        <button type="button" :class="{ sending: link.send }" @click="syncLink()">同步</button>
       </div>
-      <button class="commsd" type="button" :class="{ sending: link.send }" @click="sendLink()">提交</button>
+      <div class="comminfr">
+        <span class="ineed">名称</span>
+        <input type="text" v-model="link.title" placeholder="必填，请输入名称，建议8字以内" />
+      </div>
+      <div class="comminfr commdtl">
+        <span>简介</span>
+        <textarea v-model="link.summary" placeholder="选填,请输入站点简介，建议64字以内" />
+      </div>
     </div>
+    <button class="commsd" type="button" :class="{ sending: link.send }" @click="sendLink()">提交</button>
   </div>
 </template>
 
@@ -48,12 +47,14 @@ const props = defineProps({
 });
 watch(props.linkAdd, () => {
   let commz = document.getElementById("commz");
+  let commlk = document.getElementById("commlk");
   if (props.linkAdd.show) {
     commz?.classList.add("commidx");
     setTimeout(() => {
       commz?.classList.add("commtrans");
       setTimeout(() => {
         commz?.classList.add("commzs");
+        commlk?.classList.add("commolk");
       }, 100);
     }, 50);
     initUser();
@@ -295,7 +296,9 @@ const resizeImg = (url: string | ArrayBuffer | null, type: string, thisSize: num
 function closeLink() {
   props.linkAdd.show = false;
   let commz = document.getElementById("commz");
+  let commlk = document.getElementById("commlk");
   commz?.classList.remove("commzs");
+  commlk?.classList.remove("commolk");
   setTimeout(() => {
     commz?.classList.remove("commtrans");
     commz?.classList.remove("commidx");
