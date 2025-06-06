@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="tp">
-    <div class="tbt"><i v-ripples class="bz" @click="openMenu">&#xF000;</i></div>
+    <div class="tbt"><i v-ripples class="bz" @click="openMenu">&#xF031;</i></div>
     <div class="tcen">
       <NuxtLink v-ripples href="/"><img src="/static/img/logo.png" /> <span>MEBUGS</span></NuxtLink>
     </div>

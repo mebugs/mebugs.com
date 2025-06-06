@@ -3,7 +3,7 @@
     <div class="r">
       <div class="rb">
         <div class="bmar b1">
-          <h1 class="bz bpt">📖 {{ resData.title }}</h1>
+          <h1 class="bz bpt">📖{{ resData.title }}</h1>
           <div class="bg bpm">
             <img :src="resData.sourceShow" />
           </div>

@@ -233,6 +233,7 @@ i {
   align-items: center;
   position: relative;
   padding: 10px;
+  width: 100%;
 }
 .bix {
   padding: 0;
@@ -1436,13 +1437,16 @@ textarea:focus {
 
   .bia {
     text-align: center;
-    margin: 10px;
+    margin: 10px 0 20px 0;
   }
-
+  .rbx {
+    margin: 0 -6px;
+  }
   .b3 .bg {
     height: 26vw;
   }
-  .b1 {
+  .b1,
+  .bl {
     width: calc(100% - 12px);
     margin: 6px;
   }
@@ -1500,18 +1504,41 @@ textarea:focus {
   }
   .rtgb .bno {
     right: 15px;
-
     top: 10px;
-
     font-size: 12px;
-
     line-height: 20px;
-
     width: 40px;
-
     text-align: center;
-
     border-radius: 10px;
+  }
+  .bip {
+    margin: 0;
+  }
+
+  .bip span,
+  .bip a {
+    margin: 5px 5px 5px 0;
+  }
+
+  .bix {
+    justify-content: center;
+  }
+  .bit span i {
+    bottom: -2px;
+    position: relative;
+  }
+
+  .rp {
+    padding-bottom: 5px;
+  }
+
+  .rp h1 {
+    font-size: 18px;
+    padding: 0 5px;
+  }
+
+  .rp h1 i {
+    font-size: 24px;
   }
 }
 @media (max-width: 527px) {
@@ -1522,7 +1549,9 @@ textarea:focus {
   .bi h1 {
     font-size: 17px;
   }
-
+  .rt .bi h2 {
+    font-size: 16px;
+  }
   .rtt .b5 {
     width: calc(33.33% - 12px);
   }
@@ -1538,6 +1567,9 @@ textarea:focus {
   }
 }
 @media (max-width: 450px) {
+  .bi {
+    padding: 5px 8px;
+  }
   .bgt span {
     margin: 0 2.5px;
   }
@@ -1549,9 +1581,27 @@ textarea:focus {
     width: 100%;
     border-radius: 0;
     right: -100%;
+    padding: 15px;
+  }
+  .commr {
+    margin: 10px 0;
+  }
+  .commx {
+    top: 15px;
+    right: 13px;
+  }
+  .commsd {
+    right: 15px;
+    bottom: 15px;
   }
   .rmap .bi h1 {
     -webkit-line-clamp: 2;
+  }
+
+  .bno,
+  .rtgb .bno {
+    right: 8px;
+    top: 6px;
   }
 }
 
@@ -1570,11 +1620,6 @@ textarea:focus {
   .tcen img {
     width: 30px;
     height: 30px;
-  }
-  .bno,
-  .rtgb .bno {
-    right: 8px;
-    top: 6px;
   }
 }
 @media (max-width: 351px) {

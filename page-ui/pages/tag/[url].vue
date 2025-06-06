@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="bi">
-            <h1 class="bz">📖 {{ post.title }}</h1>
+            <h1 class="bz">📖{{ post.title }}</h1>
             <div class="bit">
               <span class="bz" v-for="t in post.tagNames"><i>#</i>{{ t }}</span>
             </div>

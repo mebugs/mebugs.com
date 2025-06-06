@@ -3,7 +3,7 @@
     <div class="r">
       <div class="rbx">
         <div class="bx b1">
-          <h1 class="bz bpt">📖 {{ resData.post.title }}</h1>
+          <h1 class="bz bpt">📖{{ resData.post.title }}</h1>
           <div class="bi bix">
             <div class="bip bz">
               <em>发布：</em><span><i>&#xF008;</i> {{ resData.post.pushAt }}</span>
@@ -98,7 +98,7 @@
             <img :src="post.sourcePath + '_2.' + post.sourceBack" />
           </div>
           <div class="bi">
-            <h1 class="bz">📖 {{ post.title }}</h1>
+            <h1 class="bz">📖{{ post.title }}</h1>
           </div>
         </NuxtLink>
       </div>

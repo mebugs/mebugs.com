@@ -3,7 +3,7 @@
     <div class="r">
       <div class="rb">
         <div class="bmar b1">
-          <h1 class="bz bpt">📖 {{ resData.title }}</h1>
+          <h1 class="bz bpt">📖{{ resData.title }}</h1>
           <div class="bg bpm">
             <img :src="resData.sourceShow" />
           </div>
@@ -21,7 +21,7 @@
       <div class="rb rc rmap" v-if="posts && posts[0]">
         <NuxtLink v-for="post in posts" class="b b3" :to="'/post/' + post.url">
           <div class="bi">
-            <h1 class="bz">📖 {{ post.title }}</h1>
+            <h1 class="bz">📖{{ post.title }}</h1>
           </div>
         </NuxtLink>
       </div>

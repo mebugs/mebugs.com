@@ -19,7 +19,7 @@
             <img :src="page.sourceShow" />
           </div>
           <div class="bi">
-            <h1 class="bz">📖 {{ page.title }}</h1>
+            <h1 class="bz">📖{{ page.title }}</h1>
           </div>
         </NuxtLink>
       </div>
