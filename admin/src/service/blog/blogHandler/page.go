@@ -2,8 +2,10 @@ package blogHandler
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/model/blogModel"
+	"siteol.com/smart/src/common/model/cacheModel"
 	"siteol.com/smart/src/service"
 	"siteol.com/smart/src/service/blog/blogService"
 )
@@ -179,6 +181,21 @@ func Comments(c *gin.Context) {
 	}
 }
 
+// PageLink 	godoc
+// @id			PageLink 获取友链
+// @Summary		获取友链
+// @Description	获取友链
+// @Router		/page/link [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func PageLink(c *gin.Context) {
+	// traceID 日志追踪
+	traceID := c.GetString(constant.ContextTraceID)
+	service.JsonRes(c, blogService.PageLink(traceID))
+}
+
 // LinkScan 	godoc
 // @id			LinkScan 链接扫描
 // @Summary		链接扫描
@@ -213,4 +230,19 @@ func LinkAdd(c *gin.Context) {
 		// 执行创建
 		service.JsonRes(c, blogService.LinkAdd(traceID, req))
 	}
+}
+
+// SiteMap 	godoc
+// @id			SiteMap 索引
+// @Summary		索引
+// @Description	索引
+// @Router		/page/sitemap.xml [post]
+// @Tags		Page
+// @Accept		json
+// @Produce		json
+// @Security	Token
+func SiteMap(c *gin.Context) {
+	traceID := c.GetString(constant.ContextTraceID)
+	xmlString := cacheModel.GetSiteMapCache(traceID)
+	c.Data(http.StatusOK, "application/xml", []byte(xmlString))
 }

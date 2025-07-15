@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
+  devServer: {
+    host: "0.0.0.0", // 开放所有网络接口访问
+    port: 3000, // 可自定义端口
+  },
   app: {
     head: {
       charset: "utf-8",

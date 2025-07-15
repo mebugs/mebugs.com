@@ -980,6 +980,8 @@ INSERT INTO `router` VALUES (104, '博客页面', '/page/post', '1', '12', '1', 
 INSERT INTO `router` VALUES (105, '博客页面', '/page/post/good', '1', '12', '1', '1', NULL, '1', NULL, NULL, '1', '0', NULL, NULL);
 INSERT INTO `router` VALUES (106, '博客页面', '/page/posts', '1', '12', '1', '1', NULL, '1', NULL, NULL, '1', '0', NULL, NULL);
 INSERT INTO `router` VALUES (107, '博客页面', '/page/tags', '1', '12', '1', '1', NULL, '1', NULL, NULL, '1', '0', NULL, NULL);
+INSERT INTO `router` VALUES (108, '博客页面', '/page/link', '1', '12', '1', '1', NULL, '1', NULL, NULL, '1', '0', NULL, NULL);
+
 
 -- ----------------------------
 -- Table structure for router_log

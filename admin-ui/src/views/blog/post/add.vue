@@ -8,7 +8,7 @@
           </a-form-item>
         </a-col>
         <a-col :span="24" style="padding: 0">
-          <a-form-item field="title" :label="$t('post.url')" :rules="[{ required: true, message: $t('rule.required') }]">
+          <a-form-item field="url" :label="$t('post.url')" :rules="[{ required: true, message: $t('rule.required') }]">
             <a-input v-model="formData.url" :max-length="32" allow-clear show-word-limit :placeholder="$t('post.url.place')" />
           </a-form-item>
         </a-col>
@@ -81,7 +81,7 @@
             :placeholder="$t('rule.select')" />
         </a-form-item>
       </a-col>
-      <a-col :span="12" v-if="formData.status == '0'">
+      <a-col :span="12">
         <a-form-item field="pushAt" :label="$t('post.pushAt')">
           <a-date-picker style="width: 100%" v-model="formData.pushAt" allow-clear :placeholder="$t('post.pushAt.place')" />
         </a-form-item>

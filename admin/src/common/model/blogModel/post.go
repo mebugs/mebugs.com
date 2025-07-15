@@ -1,7 +1,6 @@
 package blogModel
 
 import (
-	"siteol.com/smart/src/common/constant"
 	"siteol.com/smart/src/common/model/baseModel"
 	"siteol.com/smart/src/common/mysql/blogDB"
 	"time"
@@ -63,8 +62,8 @@ func (r *PostAddReq) ToDbReq() *blogDB.Post {
 	now := time.Now()
 	// PUSH 的定时任务每天扫描1次，固定8点开始发布
 	pushAt := &now
-	// 草稿态需要设置计划发布时间
-	if r.Status == constant.StatusOpen {
+	// 如果指定了发布时间
+	if r.PushAt != "" {
 		pushTime, err := time.Parse("2006-01-02", r.PushAt)
 		if err == nil {
 			pushAt = &pushTime
@@ -89,8 +88,8 @@ func (r *PostEditReq) ToDbReq(d *blogDB.Post) {
 	now := time.Now()
 	// PUSH 的定时任务每天扫描1次，固定8点开始发布
 	pushAt := &now
-	// 草稿态需要设置计划发布时间
-	if r.Status == constant.StatusOpen {
+	// 如果指定了发布时间
+	if r.PushAt != "" {
 		pushTime, err := time.Parse("2006-01-02", r.PushAt)
 		if err == nil {
 			pushAt = &pushTime

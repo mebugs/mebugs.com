@@ -289,6 +289,16 @@ func Comments(traceID string, req *blogModel.CommentsReq) *baseModel.ResBody {
 	return baseModel.Success(constant.Success, res)
 }
 
+// PageLink 获取友链数据
+func PageLink(traceID string) *baseModel.ResBody {
+	links := cacheModel.GetLinksCache(traceID)
+	liteLinks := make([]*cacheModel.LinksCacheLite, len(links))
+	for i, link := range links {
+		liteLinks[i] = link.LinksCacheLite
+	}
+	return baseModel.Success(constant.Success, liteLinks)
+}
+
 // LinkScan 链接扫描
 func LinkScan(traceID string, req *blogModel.LinksScanReq) *baseModel.ResBody {
 	// 读取站点信息

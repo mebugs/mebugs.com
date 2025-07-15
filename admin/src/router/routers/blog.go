@@ -108,7 +108,13 @@ func BlogRouter(router *gin.Engine) {
 		pageRouter.POST("/post/good", blogHandler.SetPostGood)       // Push文章Goods
 		pageRouter.POST("/comments", blogHandler.Comments)           // 获取评论
 		pageRouter.POST("/comm/add", blogHandler.AddComm)            // 提交评论
+		pageRouter.POST("/link", blogHandler.PageLink)               // 获取友链
 		pageRouter.POST("/link/scan", blogHandler.LinkScan)          // 链接扫描
-		pageRouter.POST("/link/add", blogHandler.LinkAdd)            // 链接扫描
+		pageRouter.POST("/link/add", blogHandler.LinkAdd)            // 链接添加
+
+	}
+	openRouter := router.Group("/open")
+	{
+		openRouter.GET("/sitemap.xml", blogHandler.SiteMap) // SITEMAP
 	}
 }

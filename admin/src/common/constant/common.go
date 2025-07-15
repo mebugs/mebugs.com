@@ -6,6 +6,15 @@ import "siteol.com/smart/src/config"
 var TransLangSupport = []string{"zh-CN", "en-US"}
 
 const (
+	DomainUrl              = "https://www.mebugs.com"
+	DomainGroupUrl         = "%s/posts/%s"
+	DomainCategoryUrl      = "%s/category"
+	DomainTagUrl           = "%s/tag"
+	DomainCateTagDetailUrl = "%s/%s/%s"
+	DomainPageUrl          = "%s/page"
+	DomainPageDetailUrl    = "%s%s"
+	DomainPostUrl          = "%s/post/%s"
+
 	HeaderToken = "Token" // 固定请求头（登陆Token）
 
 	ContextLang     = "Lang"       // 语言
@@ -52,4 +61,5 @@ var (
 	PagePostUpdateDate    = ProjectName + ":Page:PostUpdateDate"
 	PagePostCommUserCache = ProjectName + ":Page:PostComm:%d"
 	PageClientLinkCache   = ProjectName + ":Page:ClientLink:%s"
+	SiteMapCache          = ProjectName + ":SiteMap"
 )

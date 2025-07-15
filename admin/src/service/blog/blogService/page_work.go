@@ -24,19 +24,19 @@ func getRunUrls(traceID string, runBy, page int) (backIds [][]string, total int)
 		backIds = [][]string{
 			idList.Category,
 			getUrlsByPage(idList.Tag, page, 20),
-			getUrlsByPage(idList.PostNews, page, 15),
+			getUrlsByPage(idList.PostNews, page, 18),
 			getUrlsByPage(idList.PostViews, page, 6),
 			getUrlsByPage(idList.PostGoods, page, 6),
 			getUrlsByPage(idList.PostHots, page, 6),
 		}
 	case 1: // 1 new
-		backIds = [][]string{getUrlsByPage(idList.PostNews, page, 15)}
+		backIds = [][]string{getUrlsByPage(idList.PostNews, page, 18)}
 	case 2: // 2 good
-		backIds = [][]string{getUrlsByPage(idList.PostGoods, page, 15)}
+		backIds = [][]string{getUrlsByPage(idList.PostGoods, page, 18)}
 	case 3: // 3 view
-		backIds = [][]string{getUrlsByPage(idList.PostViews, page, 15)}
+		backIds = [][]string{getUrlsByPage(idList.PostViews, page, 18)}
 	case 4: // 4 hot
-		backIds = [][]string{getUrlsByPage(idList.PostHots, page, 15)}
+		backIds = [][]string{getUrlsByPage(idList.PostHots, page, 18)}
 	case 6: // 6 category
 		backIds = [][]string{idList.Category}
 	case 7: // 7 tag
@@ -55,7 +55,7 @@ func getGroupRunUrls(traceID, url string, runBy, page int) (backIds [][]string, 
 		resMap := cacheModel.GetCategoryCache(traceID)
 		if res, ok := resMap[url]; ok {
 			total = len(res.Posts)
-			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
+			backIds = [][]string{getUrlsByPage(res.Posts, page, 18)}
 			res.Posts = nil
 			group = res
 		}
@@ -63,7 +63,7 @@ func getGroupRunUrls(traceID, url string, runBy, page int) (backIds [][]string, 
 		resMap := cacheModel.GetTagCache(traceID)
 		if res, ok := resMap[url]; ok {
 			total = len(res.Posts)
-			backIds = [][]string{getUrlsByPage(res.Posts, page, 15)}
+			backIds = [][]string{getUrlsByPage(res.Posts, page, 18)}
 			res.Posts = nil
 			group = res
 		}

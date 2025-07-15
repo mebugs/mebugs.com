@@ -1,6 +1,7 @@
 .vditor-reset {
   font-size: 14px;
   line-height: 2;
+  height: auto;
 }
 
 .vditor-reset hr {
@@ -38,11 +39,12 @@
 
 .vditor-reset code {
   margin: 0 1px;
-  padding: 0.2em 0.4em;
-  font-size: 0.9em;
+  padding: 5px 10px;
+  font-size: 15px;
   border-radius: 3px;
   border: 1px solid #f0f0f0;
   font-family: sfmono-regular, Consolas, liberation mono, Menlo, Courier, monospace;
+  max-height: unset !important;
 }
 
 .vditor-reset code:not(.hljs):not(.highlight-chroma) {
@@ -51,7 +53,9 @@
 }
 
 .vditor-reset pre {
+  position: relative;
   font-family: sfmono-regular, Consolas, liberation mono, Menlo, Courier, monospace;
+  z-index: 2;
   border-radius: 2px;
 }
 
@@ -133,6 +137,69 @@
   text-decoration: none;
   outline: none;
   cursor: pointer;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: white;
+  color: black;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+  color: #008000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #a31515;
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #2b91af;
+}
+
+.hljs-doctag {
+  color: #808080;
+}
+
+.hljs-attr {
+  color: #f00;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #00b0e8;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }
 
 .outline {

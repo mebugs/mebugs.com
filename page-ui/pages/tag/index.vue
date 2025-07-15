@@ -28,7 +28,7 @@
     </div>
     <div class="r" v-if="resData.tag && resData.tag[0]">
       <div class="bcn">
-        <button type="button" :class="{ nc: !changeSet.pre }" @click="go(1, true)"><i>&#xF003;</i></button>
+        <button type="button" :class="{ nc: !changeSet.pre }" @click="go(0, true)"><i>&#xF003;</i></button>
         <button type="button" :class="{ nc: !changeSet.pre }" @click="go(-1, false)"><i>&#xF004;</i></button>
         <p>{{ changeSet.page }}</p>
         <button type="button" :class="{ nc: !changeSet.next }" @click="go(1, false)"><i>&#xF005;</i></button>
@@ -71,15 +71,18 @@ if (process.server) {
 // 翻页
 let query = { by: 7, page: 1 };
 function go(i: number, to: boolean) {
+  if (changeSet.value.page == 1 && i < 1) {
+    return;
+  }
+  if (changeSet.value.page == changeSet.value.maxPage && i > 0) {
+    return;
+  }
   if (to) {
+    if (i == 0) {
+      i = 1;
+    }
     changeSet.value.page = i;
   } else {
-    if (changeSet.value.page == 1 && i < 0) {
-      return;
-    }
-    if (changeSet.value.page == changeSet.value.maxPage && i > 0) {
-      return;
-    }
     changeSet.value.page = changeSet.value.page + i;
   }
   query.page = changeSet.value.page;

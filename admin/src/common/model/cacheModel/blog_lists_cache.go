@@ -1,6 +1,7 @@
 package cacheModel
 
 import (
+	"encoding/xml"
 	"fmt"
 	"math"
 	"siteol.com/smart/src/common/constant"
@@ -75,11 +76,16 @@ type PostMainCache struct {
 	Like []string `json:"like"` // 相关文章
 }
 
+// LinksCacheLite 轻量版友链
+type LinksCacheLite struct {
+	Title string `json:"title" example:"demo"` // 名称
+	Url   string `json:"url" example:"demo"`   // 分类地址
+}
+
 // LinksCache 友情链接 详情响应
 type LinksCache struct {
-	Id         uint64 `json:"id" example:"1"`                // 数据ID
-	Title      string `json:"title" example:"demo"`          // 名称
-	Url        string `json:"url" example:"demo"`            // 分类地址
+	Id uint64 `json:"id" example:"1"` // 数据ID
+	*LinksCacheLite
 	Summary    string `json:"summary" example:"demo"`        // 简介
 	SourceShow string `json:"sourceShow" example:"/xxx.jpg"` // 资源图片地址
 }
@@ -146,12 +152,30 @@ func SyncBlogs(traceID string) {
 	}
 }
 
+// URLSet SITEMAP对象
+type URLSet struct {
+	XMLName xml.Name `xml:"urlset"`
+	Xmlns   string   `xml:"xmlns,attr"`
+	URLs    []*URL   `xml:"url"`
+}
+type URL struct {
+	Loc        string  `xml:"loc"`
+	LastMod    string  `xml:"lastmod,omitempty"`
+	ChangeFreq string  `xml:"changefreq,omitempty"`
+	Priority   float64 `xml:"priority,omitempty"`
+}
+
 // SyncBlogPostAllCache 同步全部文章/分类/标签/专题的缓存
 func SyncBlogPostAllCache(traceID string) (err error) {
 	// 先处理缓存入库
 	postMapInnerDb(traceID)
+	firstUrl := makeFirstUrls()
+	cateAndTagHaveMap := make(map[string]bool)
+	categoryUrl := make([]*URL, 0)
+	tagUrl := make([]*URL, 0)
+	postUrl := make([]*URL, 0)
 	// 刷新Banner缓存
-	SyncBanners(traceID)
+	lastUrl := SyncBanners(traceID)
 	// 刷新友链
 	SyncLinks(traceID)
 
@@ -202,6 +226,10 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 			Goods:        post.Goods,
 			Hots:         post.Hots,
 		}
+		// SiteMap日志
+		doDay := post.PushAt.Format("2006-01-02")
+		// 分组追加
+		categoryUrl = setCateTagUrls(categoryUrl, cateAndTagHaveMap, doDay, "category", categoryMap[post.CategoryId].Url, post.CategoryId)
 		// 为分类填充数据
 		categoryMap[post.CategoryId].Num++
 		categoryMap[post.CategoryId].Posts = append(categoryMap[post.CategoryId].Posts, post.Url)
@@ -218,6 +246,8 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 			tagNames[i] = tagMap[tagId].Title
 			tagMap[tagId].Num++
 			tagMap[tagId].Posts = append(tagMap[tagId].Posts, post.Url)
+			// 标签追加
+			tagUrl = setCateTagUrls(tagUrl, cateAndTagHaveMap, doDay, "tag", tagMap[tagId].Url, tagId)
 		}
 		postsMap[post.Id].TagUrls = tagUrls
 		postsMap[post.Id].TagNames = tagNames
@@ -233,6 +263,8 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 			postGoodSortArray[i] = &BlogSort{Url: post.Url, Num: post.Goods}
 			postHotSortArray[i] = &BlogSort{Url: post.Url, Num: post.Hots}
 		}
+		// 开始文章添加
+		postUrl = setPostUrls(postUrl, doDay, post.Url)
 	}
 	// 循环完成后，填充分类、标签、主题的排序对象
 	for _, caC := range categoryMap {
@@ -274,6 +306,8 @@ func SyncBlogPostAllCache(traceID string) (err error) {
 	if err != nil {
 		log.InfoTF(traceID, "SyncBlogPostAllCache CachePageSorts Fail . Err Is : %v", err)
 	}
+	// 生成siteMAP缓存
+	makeSiteMapCache(traceID, firstUrl, categoryUrl, tagUrl, postUrl, lastUrl)
 	return
 }
 
@@ -368,11 +402,11 @@ func getCategory(traceID string) (categoryMap map[uint64]*CategoryCache, err err
 }
 
 // SyncBanners 刷新Banner
-func SyncBanners(traceID string) {
+func SyncBanners(traceID string) []*URL {
 	banners, err := blogDB.BannerTable.Executor().GetBanners()
 	if err != nil {
 		log.ErrorTF(traceID, "SyncBanners GetBanners Fail . Err Is : %v", err)
-		return
+		return nil
 	}
 	bannerCache := make([]*BannerCache, 0)
 	pageCache := make([]*BannerCache, 0)
@@ -403,6 +437,7 @@ func SyncBanners(traceID string) {
 	if err != nil {
 		log.InfoTF(traceID, "SyncBanners SetPagesCache Fail . Err Is : %v", err)
 	}
+	return makeLastUrls(pageCache)
 }
 
 // SyncLinks 刷新Links
@@ -415,9 +450,11 @@ func SyncLinks(traceID string) {
 	linkCache := make([]*LinksCache, 0)
 	for _, link := range links {
 		cache := &LinksCache{
-			Id:      link.Id,
-			Title:   link.Title,
-			Url:     link.Url,
+			Id: link.Id,
+			LinksCacheLite: &LinksCacheLite{
+				Title: link.Title,
+				Url:   link.Url,
+			},
 			Summary: link.Summary,
 		}
 		source, err := blogDB.SourceTable.GetOneById(link.SourceId)

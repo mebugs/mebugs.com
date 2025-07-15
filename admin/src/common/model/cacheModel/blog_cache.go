@@ -171,3 +171,14 @@ func GetClientLinkCache(traceID, clientId string) (res int64) {
 	res, _ = strconv.ParseInt(str, 10, 64)
 	return
 }
+
+// GetSiteMapCache 获取地图
+func GetSiteMapCache(traceID string) (res string) {
+	// 读取缓存
+	res, err := redis.Get(constant.SiteMapCache)
+	if err != nil {
+		log.WarnTF(traceID, "GetSiteMapCache Fail . Err Is : %v", err)
+		return
+	}
+	return
+}

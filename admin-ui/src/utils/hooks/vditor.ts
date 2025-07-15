@@ -273,8 +273,9 @@ export default function vditor(nodeId: string, openSource: Function) {
         let runRender = true
         while (runRender) {
           const renderHtml = myPreView.innerHTML
-          if (renderHtml.includes('hljs vditor-linenumber')) {
-            const hasNCount = hasNum(bashHtml, '<pre><code ')
+          if (renderHtml.includes('vditor-linenumber')) {
+            // 优化预览比对细节，部分代码的Class排列有差异
+            const hasNCount = hasNum(renderHtml, ' vditor-linenumber"')
             if (hasCount === hasNCount) {
               runRender = false
             }

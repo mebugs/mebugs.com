@@ -175,6 +175,21 @@ server
 
 让客户端可以直接都渠道，上传的图片。
 
+### sitemap配置
+
+后端新增`/open/sitemap.xml`接口，用于响应索引XML文件。
+
+在客户端Nginx配置增加如下转发：
+
+```Nginx
+#转发api
+location /sitemap.xml {
+    proxy_pass  http://127.0.0.1:8000/open/sitemap.xml; # 转发sitemap规则
+    proxy_set_header Host $proxy_host; 
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}   
+```
 
 # 感谢 
 

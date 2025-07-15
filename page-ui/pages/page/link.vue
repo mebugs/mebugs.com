@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { InitDom, InitBack } from "~/utils/base.js";
 const runtimeConfig = useRuntimeConfig();
-const needRun = useState("pageLink", () => true);
+const needRun = useState("pageLinks", () => true);
 const resData = useState("resData", () => <any>{});
 // 读取页面数据
 if (process.server) {

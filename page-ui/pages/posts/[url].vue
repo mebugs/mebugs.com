@@ -46,7 +46,7 @@
     </div>
     <div class="r" v-if="resData.posts && resData.posts[0]">
       <div class="bcn">
-        <button type="button" v-ripples :class="{ nc: !changeSet.pre }" @click="go(1, true)"><i>&#xF003;</i></button>
+        <button type="button" v-ripples :class="{ nc: !changeSet.pre }" @click="go(0, true)"><i>&#xF003;</i></button>
         <button type="button" v-ripples :class="{ nc: !changeSet.pre }" @click="go(-1, false)"><i>&#xF004;</i></button>
         <p>{{ changeSet.page }}</p>
         <button type="button" v-ripples :class="{ nc: !changeSet.next }" @click="go(1, false)"><i>&#xF005;</i></button>
@@ -98,7 +98,7 @@ if (process.server) {
     body: { by: urlCode, page: 1 },
   });
   resData.value = (res.data.value as any).data;
-  syncPageSet(Math.ceil(resData.value.total / 15));
+  syncPageSet(Math.ceil(resData.value.total / 18));
   initHeader();
   needRun.value = false;
 }
@@ -106,13 +106,16 @@ if (process.server) {
 // 翻页
 let query = { by: urlCode, page: 1 };
 function go(i: number, to: boolean) {
-  if (changeSet.value.page == 1 && i < 0) {
+  if (changeSet.value.page == 1 && i < 1) {
     return;
   }
   if (changeSet.value.page == changeSet.value.maxPage && i > 0) {
     return;
   }
   if (to) {
+    if (i == 0) {
+      i = 1;
+    }
     changeSet.value.page = i;
   } else {
     changeSet.value.page = changeSet.value.page + i;
@@ -130,7 +133,7 @@ async function getPosts(lazyLoad: boolean) {
     body: query,
   });
   resData.value = (res as any)?.data;
-  syncPageSet(Math.ceil(resData.value.total / 15));
+  syncPageSet(Math.ceil(resData.value.total / 18));
   await nextTick();
   ToWhere(0);
   setTimeout(() => {
