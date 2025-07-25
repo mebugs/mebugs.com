@@ -11,6 +11,8 @@
             <span>🎯</span>
             <p>{{ resData.summary }}</p>
           </div>
+          <!--广告位 -->
+          <div class="addeare"><Adsbygoogle ad-slot="9654230756" /></div>
           <div class="b pcom">
             <button type="button" v-ripples @click="openAddLink()"><i>&#xF027;</i>友链申请</button>
           </div>
@@ -28,6 +30,8 @@
         </NuxtLink>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="1524459291" /></div>
     <Foot></Foot>
   </div>
   <LinkAdd :linkAdd="openLink" />

@@ -1,6 +1,9 @@
 <template>
   <div class="m">
     <Null></Null>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="1524459291" /></div>
+
     <Foot></Foot>
   </div>
 </template>

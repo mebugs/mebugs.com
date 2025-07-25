@@ -29,6 +29,9 @@
         </NuxtLink>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="9517100589" /></div>
+
     <div class="r">
       <div class="rp">
         <h1 class="bz"><i>&#xF007;</i> 近期上升</h1>
@@ -125,6 +128,8 @@
         </NuxtLink>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="6275342659" /></div>
     <div class="r">
       <div class="rp">
         <h1><i>&#xF008;</i> 新鲜发布</h1>

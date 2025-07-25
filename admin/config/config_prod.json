@@ -4,11 +4,11 @@
     "Port": ":8000",
     "LogLevel": "info",
     "LogRoot": 2,
-    "Debug": true
+    "Debug": false
   },
   "MySQL": {
-    "Plat": "root:123456@tcp(localhost:3306)/smart?charset=utf8mb4&parseTime=True&loc=Local",
-    "Blog": "root:123456@tcp(localhost:3306)/blog"
+    "Plat": "root:123456@tcp(localhost:3306)/blog?charset=utf8mb4&parseTime=True&loc=Local",
+    "Blog": "root:123456@tcp(localhost:3306)/blog?charset=utf8mb4&parseTime=True&loc=Local"
   },
   "Redis":{
     "Addr": "127.0.0.1:6379",

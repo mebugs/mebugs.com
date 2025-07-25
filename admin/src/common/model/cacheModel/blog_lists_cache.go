@@ -496,41 +496,28 @@ func SyncPostMain(traceID string, postBase *PostCache) (res *PostMainCache) {
 		// 去重
 		tagPosts = utils.ArrayToSet(tagPosts)
 		if len(tagPosts) > 0 {
-			if len(tagPosts) <= 9 {
-				like = tagPosts
-			} else {
-				// 随机选举9条数据
-				like = utils.ShuffleAndSelectEx(tagPosts, like, 9)
-			}
+			// 排除自己意外取9个
+			like = utils.ShuffleAndSelectEx(tagPosts, like, 9)
 		}
 	}
 	// 不满足9位，提前分组下文章
-	if len(like) < 9 {
-		needCount := 9 - len(like)
+	if len(like) < 10 {
+		// 由于要去掉自己，所以去掉前应该为10
+		needCount := 10 - len(like)
 		category := GetCategoryCache(traceID)
 		if cat, ok := category[postBase.Category]; ok {
 			if len(cat.Posts) > 0 {
-				if len(cat.Posts) <= needCount {
-					// 补充加入
-					like = utils.GetFirstAndExt(cat.Posts, like, len(cat.Posts))
-				} else {
-					// 分类下选举剩下的条目，去掉已存在的
-					like = utils.ShuffleAndSelectEx(cat.Posts, like, needCount)
-				}
+				// 尝试补充剩余的数量
+				like = utils.ShuffleAndSelectEx(cat.Posts, like, needCount)
 			}
 		}
 	}
-	// 不满足9位，获取最新文章
-	if len(like) < 9 {
-		needCount := 9 - len(like)
+	// 不满足9位，获取最新文章 // 由于要去掉自己，所以去掉前应该为10
+	if len(like) < 10 {
+		needCount := 10 - len(like)
 		postSort := GetPostSortCache(traceID)
-		if len(postSort.PostNews) <= needCount {
-			// 补充加入
-			like = utils.GetFirstAndExt(postSort.PostNews, like, len(postSort.PostNews))
-		} else {
-			// 从最新文章获得前N位的数据，去掉已存在的
-			like = utils.GetFirstAndExt(postSort.PostNews, like, needCount)
-		}
+		// 从最新文章获得前N位的数据，去掉已存在的 // 尝试补充剩余的数量
+		like = utils.GetFirstAndExt(postSort.PostNews, like, needCount)
 	}
 	// 去掉第一位是自己
 	res.Like = like[1:]

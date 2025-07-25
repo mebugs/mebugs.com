@@ -11,6 +11,8 @@
             <span>🎯</span>
             <p>{{ resData.summary }}</p>
           </div>
+          <!--广告位 -->
+          <div class="addeare"><Adsbygoogle ad-slot="9872323800" /></div>
           <div class="b pcom">
             <button type="button" v-ripples @click="putComms()"><i>&#xF009;</i>评论</button>
           </div>

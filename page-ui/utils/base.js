@@ -1,4 +1,4 @@
-var body, html, loc, side, out;
+var loc, side, out;
 // 菜单高度
 var mdMiHs = {};
 var mdMis, st, ed, outDoc, outH, outTop, isMob;
@@ -16,8 +16,8 @@ export function InitPostDom() {
 
 // 恢复部分场景
 export function InitBack() {
-  if (body.classList.contains("bzd")) {
-    body.classList.remove("bzd");
+  if (document.body.classList.contains("bzd")) {
+    document.body.classList.remove("bzd");
   }
   window.removeEventListener("scroll", refreshMdMiHs);
 }
@@ -36,7 +36,7 @@ export function LoadBannImg() {
 var runTimer = null;
 export function ToWhere(where) {
   clearInterval(runTimer);
-  let runNow = body.scrollTop || document.documentElement.scrollTop;
+  let runNow = document.body.scrollTop || document.documentElement.scrollTop;
   let runDo = false;
   if (where > runNow) {
     // 下移
@@ -71,11 +71,9 @@ export function ToWhere(where) {
 function domInit() {
   side = true;
   out = true;
-  html = document.documentElement;
-  body = document.body;
   loc = window.localStorage;
   setTimeout(() => {
-    body.classList.add("bzd");
+    document.body.classList.add("bzd");
   }, 200);
   loadNormalImg();
 }
@@ -145,6 +143,8 @@ function initPost() {
 function initMdMiHs() {
   st = document.getElementById("st").offsetTop;
   ed = document.getElementById("ed").offsetTop;
+  // 初始化
+  mdMiHs = {};
   mdMis.forEach((mdMi) => {
     let mdMiId = mdMi.getAttribute("data-target-id");
     if (mdMiId) {
@@ -171,7 +171,7 @@ function refreshMdMiHs() {
   miKeys.forEach((miKey) => {
     mdMiHs[miKey] = document.getElementById(miKey).offsetTop + st;
   });
-  let runNow = body.scrollTop || document.documentElement.scrollTop;
+  let runNow = document.body.scrollTop || document.documentElement.scrollTop;
   refreshCheck(runNow);
 }
 

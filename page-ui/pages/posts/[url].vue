@@ -22,6 +22,8 @@
         </NuxtLink>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="6001361550" /></div>
     <div class="r">
       <div class="rb pos" :class="{ bzr: !changeDown }" v-if="resData.posts && resData.posts[0]">
         <NuxtLink class="b b3" v-for="post in resData.posts" :to="'/post/' + post.url">
@@ -53,6 +55,8 @@
         <button type="button" v-ripples :class="{ nc: !changeSet.next }" @click="go(changeSet.maxPage, true)"><i>&#xF006;</i></button>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="1524459291" /></div>
     <Foot></Foot>
   </div>
 </template>

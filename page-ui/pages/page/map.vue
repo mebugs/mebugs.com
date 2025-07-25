@@ -13,6 +13,8 @@
           </div>
         </div>
       </div>
+      <!--广告位 -->
+      <div class="addeare"><Adsbygoogle ad-slot="9654230756" /></div>
       <div class="rb">
         <div class="b b1" v-ripples>
           <input class="mapSearch" v-model="seachTitle" type="text" @keyup.enter="handleSearch" placeholder="输入标题，回车搜索，支持模糊查询" />
@@ -26,6 +28,8 @@
         </NuxtLink>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="1524459291" /></div>
     <Foot></Foot>
   </div>
 </template>

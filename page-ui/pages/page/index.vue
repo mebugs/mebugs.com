@@ -12,6 +12,8 @@
         </div>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="6001361550" /></div>
     <div class="r">
       <div class="rb rc" v-if="resData && resData[0]">
         <NuxtLink v-for="page in resData" class="b b3" :to="page.url">
@@ -24,6 +26,8 @@
         </NuxtLink>
       </div>
     </div>
+    <!--广告位 -->
+    <div class="addeare"><Adsbygoogle ad-slot="1524459291" /></div>
     <Foot></Foot>
   </div>
 </template>

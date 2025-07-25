@@ -1322,7 +1322,10 @@ textarea:focus {
   transition: opacity 1.2s ease-out, transform 0.6s ease-out;
   transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;
 }
-
+.addeare {
+  max-width: 100%;
+  max-height: 250px;
+}
 @media (max-width: 1301px) {
   .tp {
     display: flex;
@@ -1396,6 +1399,10 @@ textarea:focus {
   }
   .brl.opdh {
     right: 0;
+  }
+  .addeare {
+    max-width: 100%;
+    max-height: 25vw;
   }
 }
 @media (max-width: 769px) {
@@ -1541,6 +1548,10 @@ textarea:focus {
   .rp h1 i {
     font-size: 24px;
   }
+  .addeare {
+    max-width: 100%;
+    max-height: 30vw;
+  }
 }
 @media (max-width: 527px) {
   .rt .b4 {
@@ -1604,6 +1615,10 @@ textarea:focus {
     right: 8px;
     top: 6px;
   }
+  .addeare {
+    max-width: 100%;
+    max-height: 40vw;
+  }
 }
 
 @media (max-width: 376px) {
@@ -1622,6 +1637,10 @@ textarea:focus {
     width: 30px;
     height: 30px;
   }
+  .addeare {
+    max-width: 100%;
+    max-height: 50vw;
+  }
 }
 @media (max-width: 351px) {
   .b3,
@@ -1634,4 +1653,8 @@ textarea:focus {
   .b3 .bg {
     height: 53vw;
   }
+}
+.google-auto-placed {
+  position: relative;
+  z-index: 2;
 }

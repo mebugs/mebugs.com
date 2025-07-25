@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/google-adsense": "^3.0.0",
     "nuxt": "^3.15.4",
     "swiper": "10.0.4",
     "vue": "latest",

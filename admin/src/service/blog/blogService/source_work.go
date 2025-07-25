@@ -95,7 +95,7 @@ func setSourceFile(traceId string, baseArray []string, dbReq *blogDB.Source) (er
 	// 建立完整文件目录
 	fullPath := filepath.Join(config.FileFullPath, subPath)
 	if _, err := os.Stat(fullPath); err != nil {
-		errM := os.MkdirAll(fullPath, 755)
+		errM := os.MkdirAll(fullPath, 0755)
 		if errM != nil {
 			return errM
 		}
@@ -123,7 +123,7 @@ func setSourceFile(traceId string, baseArray []string, dbReq *blogDB.Source) (er
 		} else {
 			fileName = fmt.Sprintf("%d_%d.%s", dbReq.Id, i, fileBack)
 		}
-		err = os.WriteFile(filepath.Join(fullPath, fileName), imageData, 755)
+		err = os.WriteFile(filepath.Join(fullPath, fileName), imageData, 0644)
 		if err != nil {
 			return err
 		}

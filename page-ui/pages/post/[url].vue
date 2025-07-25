@@ -35,9 +35,13 @@
             <span>🎯</span>
             <p>{{ resData.post.summary }}</p>
           </div>
+          <!--广告位 -->
+          <div class="addeare"><Adsbygoogle ad-slot="9654230756" /></div>
           <em id="st"></em>
           <div class="vditor-reset bz" v-html="resData.postMain.html"></div>
           <em id="ed"></em>
+          <!--广告位 -->
+          <div class="addeare"><Adsbygoogle ad-slot="9872323800" /></div>
           <div class="b pcom">
             <button type="button" v-ripples @click="putComms()"><i>&#xF009;</i>评论</button>
           </div>

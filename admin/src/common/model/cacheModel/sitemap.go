@@ -87,6 +87,8 @@ func setCateTagUrls(url []*URL, cateAndTagHaveMap map[string]bool, doDay, pre, p
 		ChangeFreq: "weekly",
 		Priority:   0.8,
 	})
+	// 修复重复的错误
+	cateAndTagHaveMap[fmt.Sprintf("%s_%d", pre, id)] = true
 	return url
 }
 
