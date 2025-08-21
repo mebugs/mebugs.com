@@ -1658,3 +1658,6 @@ textarea:focus {
   position: relative;
   z-index: 2;
 }
+.post .google-auto-placed * {
+  text-align: left;
+}

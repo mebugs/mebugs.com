@@ -137,6 +137,8 @@
   text-decoration: none;
   outline: none;
   cursor: pointer;
+  position: relative;
+  z-index: 10 !important;
 }
 
 .hljs {
